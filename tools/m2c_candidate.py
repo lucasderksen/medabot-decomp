@@ -505,7 +505,8 @@ def matched_functions():
     result = []
     for segment in load_segments():
         section = segment.get("input_section", "")
-        if segment["kind"] == "c" and segment.get("compiler") == "agbcc" and not segment.get("category") and section.startswith(".text."):
+        if (segment["kind"] == "c" and segment.get("compiler") == "agbcc" and not segment.get("category")
+                and not segment.get("nonmatching") and section.startswith(".text.")):
             result.append((BASE + segment["start"], BASE + segment["end"], section[len(".text."):], segment.get("cflags", [])))
     return result
 
@@ -543,9 +544,9 @@ def evaluate(data, symbols, count, seed, production_context=False, fix_pointer_s
 
 
 def code_gaps():
-    """Copied intervals inside the provisional code region, as GBA addresses."""
+    """Unmatched intervals (copied or NONMATCH) inside the provisional code region, as GBA addresses."""
     from common import load_segments
-    segments = load_segments()
+    segments = [s for s in load_segments() if not s.get("nonmatching")]
     code_end = max(s["end"] for s in segments if s.get("category") != "data")
     gaps, cursor = [], 0
     for segment in segments:

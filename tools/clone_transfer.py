@@ -177,7 +177,8 @@ def main():
     twins = collections.defaultdict(list)
     for segment in segments:
         section = segment.get("input_section", "")
-        if segment["kind"] != "c" or segment.get("compiler") != "agbcc" or segment.get("category") or not section.startswith(".text."):
+        if (segment["kind"] != "c" or segment.get("compiler") != "agbcc" or segment.get("category")
+                or segment.get("nonmatching") or not section.startswith(".text.")):
             continue
         start, end = BASE + int(segment["start"], 0), BASE + int(segment["end"], 0)
         try:
@@ -187,7 +188,7 @@ def main():
         twins[shape(code)].append((section[len(".text."):], segment, start, describe(data, code, start, symbols),
                                    describe(data, code, start, symbols, fold_constants=True)))
     rows = json.loads((OUTPUT / "harvest.json").read_text(encoding="utf-8"))
-    done = {int(s["start"], 0) for s in segments}
+    done = {int(s["start"], 0) for s in segments if not s.get("nonmatching")}
     solved = json.loads(MANUAL.read_text(encoding="utf-8")) if MANUAL.exists() else []
     skip = {entry["name"] for entry in solved}
     for queue in (() if args.include_queued else ("permute_queue.json", "hand_queue.json")):

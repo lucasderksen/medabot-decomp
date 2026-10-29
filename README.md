@@ -16,8 +16,10 @@ produce it), and compare every rebuild against the original dump.
 ## Status
 
 - **3,526 of 3,540 functions** match as C or assembly (98.1% of the code bytes).
-  The 14 functions left, 9,148 bytes, are still copied from the ROM; their
-  closest drafts and blockers are in [docs/drafts/README.md](docs/drafts/README.md).
+  The 14 functions left, 9,148 bytes, are `NONMATCH` functions: the build
+  assembles their original code, and the closest C attempt sits alongside in
+  `src/non_matching/`. Each one's problem is listed in
+  [docs/NONMATCHING.md](docs/NONMATCHING.md).
 - **All data is source.** Every byte after the code is a typed C array. Tables
   with a known layout have named types and symbols; bytes whose consumer is
   not identified yet are labelled `gUnknown_<address>` arrays.
@@ -26,8 +28,9 @@ produce it), and compare every rebuild against the original dump.
   profiles are recorded in `config/segments.json`.
 - Most functions still have address names (`sub_08xxxxxx`). Naming is the
   next phase.
-- Three functions use a marked *fake match* (a register pin) and five fall off
-  the end like the reference. `grep -rn "FAKE MATCH" src` lists the former.
+- Three functions use a marked *fake match* (a `FORCE_REGISTER` pin) and five
+  fall off the end like the reference; both are listed in
+  [docs/NONMATCHING.md](docs/NONMATCHING.md).
 
 Progress is measured from `config/segments.json` on every push to `main` by
 [.github/workflows/progress.yml](.github/workflows/progress.yml). The workflow
@@ -47,8 +50,8 @@ same numbers locally.
 | SHA-1 | `cd3d674e88f40a0707b150c4293588a659001d29` |
 | SHA-256 | `4c64595190db3b4f50062d90a446fcab590f4e31c01830384558deca0691a26d` |
 
-The build needs your own dump of this cartridge: the 14 unmatched functions and
-the Nintendo logo in the header are still read from it. Put the `.gba` file in
+The build needs your own dump of this cartridge: the Nintendo logo in the
+header is still read from it, and every build is compared against it. Put the `.gba` file in
 the project root; the first build finds it, checks its hash and copies it to
 `baserom.gba`. A different version or a modified dump is rejected. ROMs, build
 products and downloaded tools are never committed.
@@ -86,8 +89,8 @@ currently support Windows x64 only.
 
 | Path | Contents |
 | --- | --- |
-| `src/` | Game, runtime (`libgcc/`, `libc/`) and data sources |
-| `asm/` | Header, startup, BIOS wrappers, call trampolines and libgcc assembly |
+| `src/` | Game, runtime (`libgcc/`, `libc/`) and data sources; `non_matching/` holds the NONMATCH functions |
+| `asm/` | Header, startup, BIOS wrappers, call trampolines and libgcc assembly; `non_matching/` holds the original code of unmatched functions |
 | `include/` | Shared declarations, struct layouts and RAM/IO definitions |
 | `config/` | `segments.json` (every ROM interval, its source and flags), `symbols.json`, ROM description |
 | `data/` | Data includes for the C sources: audio samples, compressed graphics streams and frames |

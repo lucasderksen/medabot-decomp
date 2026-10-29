@@ -68,7 +68,7 @@ u32 sub_080185E8(void) {
         for (i = 0, root = gSetupBytes185E8; i <= 2; i++) {
             index = gState0TypedWork.bytes[0x3C] * 3 + i;
             if (*(const u8 *)((u32)root + (index << 8) + 0x40) != 0) {
-                register u32 twice asm("r0") = index * 2; /* FAKE MATCH: keeps index * 2 in r0 as the reference does; local-alloc priority otherwise swaps it with the counter byte in r1 */
+                FORCE_REGISTER(u32 twice, r0) = index * 2; /* FAKE MATCH: keeps index * 2 in r0 as the reference does; local-alloc priority otherwise swaps it with the counter byte in r1 */
                 x = *(const u8 *)((u32)gUnknown_083AD524 + twice) + (gState0TypedWork.bytes[0x40] << 3);
                 { register u32 off = twice + 1; sub_08017994(index, x, *(const u8 *)((u32)gUnknown_083AD524 + off)); }
             }
@@ -88,7 +88,7 @@ u32 sub_080185E8(void) {
 
 s32 sub_080488E8(s32 value, u8 digits) {
 
-    register s32 i asm("r4"); /* FAKE MATCH: pins i to r4; global-alloc priority otherwise gives r4 to power */
+    FORCE_REGISTER(s32 i, r4); /* FAKE MATCH: pins i to r4; global-alloc priority otherwise gives r4 to power */
     s32 j;
     s32 power;
     s32 rest;

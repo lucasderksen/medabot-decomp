@@ -1,3 +1,32 @@
+/*
+ * sub_08052784: not matching yet. The build assembles asm/non_matching/sub_08052784.inc
+ * in its place; the C below is the closest attempt (docs/drafts/README.md).
+ */
+
+#include "global.h"
+#include "action_aux_data.h"
+#include "background_state.h"
+#include "battle_work.h"
+#include "bg_scroll.h"
+#include "continued_commands.h"
+#include "continued_late_graphics.h"
+#include "continued_scene_records.h"
+#include "encounter_choices.h"
+#include "frame.h"
+#include "graphics.h"
+#include "main_callbacks.h"
+#include "map_metadata.h"
+#include "map_object_spawns.h"
+#include "pose_channels.h"
+#include "record_helpers.h"
+#include "render_work.h"
+#include "scene_setup_data.h"
+#include "sound_samples.h"
+#include "sound_work.h"
+#include "sprite_layouts.h"
+#include "state0_work.h"
+#include "tile_text.h"
+
 struct ContinuedWorkC48
 {
     u8 unknown000[0xC48];
@@ -6,7 +35,7 @@ struct ContinuedWorkC48
 };
 extern struct ContinuedWorkC48 gContinuedWork_030057E0;
 
-void sub_08052784(void)
+NONMATCH("asm/non_matching/sub_08052784.inc", void sub_08052784(void))
 {
     s32 i;
     s32 k;
@@ -53,3 +82,4 @@ void sub_08052784(void)
         }
     }
 }
+END_NONMATCH

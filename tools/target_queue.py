@@ -37,7 +37,7 @@ def rank_targets(harvest, segments, base, size, minimum=32, families=None,
         if not 0 <= start < end <= size or start % 4 or end % 4:
             excluded["invalid_bounds"] += 1
             continue
-        if any(start < segment["end"] and end > segment["start"] for segment in segments):
+        if any(start < segment["end"] and end > segment["start"] for segment in segments if not segment.get("nonmatching")):
             excluded["overlaps_integrated_source"] += 1
             continue
         if end - start < minimum:
@@ -87,7 +87,7 @@ def clone_families(harvest, segments, data, base):
         start, end = address(draft["start"], base), address(draft["end"], base)
         if not 0 <= start < end <= len(data) or start % 4 or end % 4 or end-start <= 8:
             continue
-        if any(start < segment["end"] and end > segment["start"] for segment in segments):
+        if any(start < segment["end"] and end > segment["start"] for segment in segments if not segment.get("nonmatching")):
             continue
         try:
             code, _, _, _ = decode(data, base+start, base+end)

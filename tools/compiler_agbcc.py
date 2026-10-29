@@ -27,6 +27,8 @@ BINARY = DOWNLOAD_DIR / ("agbcc.exe" if os.name == "nt" else "agbcc")
 METADATA = DOWNLOAD_DIR / "provenance.json"
 CFLAGS = ["-O2", "-mthumb-interwork", "-ffunction-sections", "-Werror"]
 CPPFLAGS = ["-E", "-P", "-x", "c", "-std=gnu89", "-nostdinc", "-undef", "-Iinclude"]
+# `asm(".include " "\"path\"")` as NONMATCH (include/global.h) expands in preprocessed C.
+ASM_INCLUDE = re.compile(r'\.include[ "]*\\"([^"\\]+)\\"')
 
 
 def run(command, cwd=ROOT, **kwargs):
@@ -127,6 +129,10 @@ def _compilation_key(source, preprocessed, cflags):
         "adapter": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         "cflags": [*CFLAGS, *cflags],
         "assembler_flags": ["-mcpu=arm7tdmi"],
+        # NONMATCH functions (include/global.h) assemble these files in place.
+        "assembler_includes": {path: hashlib.sha256((ROOT / path).read_bytes()).hexdigest()
+                               for path in sorted(set(ASM_INCLUDE.findall(preprocessed.read_text(encoding="utf-8"))))
+                               if (ROOT / path).is_file()},
     }
     return hashlib.sha256(json.dumps(inputs, sort_keys=True).encode()).hexdigest()
 

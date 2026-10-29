@@ -1,4 +1,28 @@
+/*
+ * sub_08064EB4: not matching yet. The build assembles asm/non_matching/sub_08064EB4.inc
+ * in its place; the C below is the closest attempt (docs/drafts/README.md).
+ */
 
+#include "global.h"
+#include "battle_work.h"
+#include "bios_lz77_streams.h"
+#include "composite_graphics.h"
+#include "compression.h"
+#include "continued_late_graphics.h"
+#include "continued_scene_records.h"
+#include "fallback_map_assets.h"
+#include "frame.h"
+#include "frame_objects.h"
+#include "gba.h"
+#include "main_callbacks.h"
+#include "map_metadata.h"
+#include "native_le_streams.h"
+#include "record_helpers.h"
+#include "sound_samples.h"
+#include "sound_work.h"
+#include "state0_callbacks.h"
+#include "state0_display.h"
+#include "state0_next_helpers.h"
 
 struct MenuContext64EB4 {
     u8 pad00[0x2E];
@@ -10,7 +34,7 @@ extern struct MenuContext64EB4 *gMenuContext64EB4 asm("gMainContextPointer_03006
 extern u32 gPostDispatchWord_03002B70;
 extern u8 gScratch6030C02030000[];
 
-void sub_08064EB4(void)
+NONMATCH("asm/non_matching/sub_08064EB4.inc", void sub_08064EB4(void))
 {
     u32 size;
     u8 i;
@@ -45,7 +69,7 @@ void sub_08064EB4(void)
         gFrameObjects[i + 10].screenY = i * 0x48 + 0x14;
     }
     do {
-    { register u16 r asm("r0") = gFrameObjects[11].flags | 0x2000; gFrameObjects[11].flags = r; } /* FAKE MATCH: the reference ors into the copied constant in r0 */
+    { FORCE_REGISTER(u16 r, r0) = gFrameObjects[11].flags | 0x2000; gFrameObjects[11].flags = r; } /* FAKE MATCH: the reference ors into the copied constant in r0 */
     gFrameObjects[7].flags = 0xC000;
     gFrameObjects[7].tableSelector = 2;
     gFrameObjects[7].palette = 0xA;
@@ -57,3 +81,4 @@ void sub_08064EB4(void)
     sub_08040DB8(gDebugMenuTextBuffer, 0, 0x15, 1, 7, 0xF, 1, 0);
     gUnknown_0300137C++;
 }
+END_NONMATCH

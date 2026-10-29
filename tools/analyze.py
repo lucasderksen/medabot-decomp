@@ -44,10 +44,11 @@ def info(data):
 
 def progress():
     segments = load_segments()
-    counts = {kind: sum(s["end"] - s["start"] for s in segments if ("data" if s.get("category") == "data" else s["kind"]) == kind) for kind in ("c", "asm", "data")}
+    unmatched = sum(s["end"] - s["start"] for s in segments if s.get("nonmatching"))
+    counts = {kind: sum(s["end"] - s["start"] for s in segments if not s.get("nonmatching") and ("data" if s.get("category") == "data" else s["kind"]) == kind) for kind in ("c", "asm", "data")}
     runtime = sum(s["end"] - s["start"] for s in segments if s["kind"] == "c" and s.get("category") == "runtime")
     total = rom_config()["size"]
-    lines = [f"Reference ROM: {total:,} bytes", f"Matching C code intervals: {counts['c']:,} bytes (includes literal pools)", f"Typed data intervals: {counts['data']:,} bytes", f"Assembly/header intervals: {counts['asm']:,} bytes (header includes 156 copied logo bytes)", f"Remaining incbin intervals: {total - sum(counts.values()):,} bytes", "", "A complete matching rebuild is a baseline; it does not mean the game is fully decompiled.", ""]
+    lines = [f"Reference ROM: {total:,} bytes", f"Matching C code intervals: {counts['c']:,} bytes (includes literal pools)", f"Typed data intervals: {counts['data']:,} bytes", f"Assembly/header intervals: {counts['asm']:,} bytes (header includes 156 copied logo bytes)", f"Nonmatching functions (original assembly in NONMATCH, src/non_matching/): {unmatched:,} bytes", f"Remaining incbin intervals: {total - sum(counts.values()) - unmatched:,} bytes", "", "A complete matching rebuild is a baseline; it does not mean the game is fully decompiled.", ""]
     if runtime:
         lines.insert(2, f"  Game C: {counts['c'] - runtime:,} bytes; imported compiler-runtime C: {runtime:,} bytes")
     for segment in segments:

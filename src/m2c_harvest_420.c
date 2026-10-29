@@ -72,7 +72,7 @@ void sub_08060708(void) {
     sub_0805BA34(gBiosLz77Stream_0878BC1C, *bg3);
     if (gMainSubstate == 0x17)
     {
-        register u8 one asm("r0") = 1; /* FAKE MATCH: a fresh 1 as in the reference; cse otherwise stores block's register and the arms do not cross-jump */
+        FORCE_REGISTER(u8 one, r0) = 1; /* FAKE MATCH: a fresh 1 as in the reference; cse otherwise stores block's register and the arms do not cross-jump */
         ((struct Main2MapContext *)gMainContextPointer_03006F74)->byte18 = one;
     }
     else

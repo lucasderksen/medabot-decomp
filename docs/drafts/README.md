@@ -1,23 +1,10 @@
-# Remaining functions and unfinished drafts
+# Notes from earlier matching attempts
 
-These 14 functions are still copied from the ROM (`python tools/remaining_intervals.py 0 0x7E858`):
-
-| Function | Size | Function | Size | Function | Size |
-| --- | ---: | --- | ---: | --- | ---: |
-| sub_08001520 | 1,932 B | sub_08048BE0 | 200 B | sub_08059960 | 1,264 B |
-| sub_08020B4C | 416 B | sub_080513C8 | 1,064 B | sub_08064EB4 | 448 B |
-| sub_0804538C | 208 B | sub_08051CB8 | 384 B | sub_080697B4 | 348 B |
-| sub_08045E6C | 456 B | sub_08052784 | 372 B | sub_08072080 | 264 B |
-| sub_080465B8 | 1,192 B | sub_0804842C | 600 B | | |
-
-The notes below are working notes from earlier attempts (newest last); some
-rows describe functions that have matched since.
-
-## Unfinished drafts
-
-Best non-matching drafts kept so the next attempt starts from them rather than
-from m2c. Not built; copy one into `build/m2c/<name>/` work and iterate with
-`tools/try_draft.py`.
+The open functions, their current problem and their C attempts are listed in
+[../NONMATCHING.md](../NONMATCHING.md); the attempts themselves now live in
+`src/non_matching/<name>.c`. This page keeps the longer notes on what was
+tried, newest last; some rows describe functions that have matched since.
+`sub_0804538C_pre.c` is an alternative 0804538C attempt referenced below.
 
 | Draft | Size | Best result | Notes |
 | --- | --- | --- | --- |

@@ -1,5 +1,15 @@
+/*
+ * sub_08048BE0: not matching yet. The build assembles asm/non_matching/sub_08048BE0.inc
+ * in its place; the C below is the closest attempt (docs/drafts/README.md).
+ */
+
+#include "global.h"
+#include "background_state.h"
+#include "frame.h"
+
 extern u8 gContinuedByte_03002B64;
-void sub_08048BE0(void)
+
+NONMATCH("asm/non_matching/sub_08048BE0.inc", void sub_08048BE0(void))
 {
   if (gContinuedByte_03002B64 & 2)
   {
@@ -39,3 +49,4 @@ void sub_08048BE0(void)
     gBackgroundState_03005310.angle = (gBackgroundState_03005310.angle + 0xFF) & 0xFF;
   }
 }
+END_NONMATCH

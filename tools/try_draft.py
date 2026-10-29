@@ -8,7 +8,8 @@ compiles it through tools/match.py and prints the differing instruction rows.
     python tools/accept_draft.py sub_08048B70      # once it matches
 
 FILE holds one complete function definition (any extern declarations it
-needs may precede it; they replace the draft's).
+needs may precede it; they replace the draft's). A src/non_matching/ file
+works as it is: its NONMATCH wrapper and #include lines are dropped.
 """
 
 import argparse
@@ -41,6 +42,10 @@ def main():
     marker = f"#define {args.name} m2c_{args.name}\n"
     prefix, _ = candidate.split(marker, 1)
     code = Path(args.file).read_text(encoding="utf-8") if args.file else sys.stdin.read()
+    # A src/non_matching/ file: try its C attempt as an ordinary definition.
+    code = re.sub(r'^NONMATCH\("[^"]*",\s*(.*)\)\s*$', r"\1", code, flags=re.M)
+    code = re.sub(r"^END_NONMATCH\s*$", "", code, flags=re.M)
+    code = "\n".join(line for line in code.splitlines() if not line.lstrip().startswith("#include"))
     if not re.search(rf"\b{args.name}\s*\(", code):
         raise SystemExit(f"The replacement does not define {args.name}.")
     candidate_path.write_text(prefix + marker + "\n" + code.strip() + "\n", encoding="utf-8")

@@ -15,7 +15,7 @@ import json
 from pathlib import Path
 import shutil
 
-from common import ROOT, load_segments
+from common import ROOT, load_segments, replace_nonmatching
 
 SEGMENTS = ROOT / "config" / "segments.json"
 SYMBOLS = ROOT / "config" / "symbols.json"
@@ -35,7 +35,8 @@ def main():
     if target.exists():
         raise SystemExit(f"{target.relative_to(ROOT)} already exists.")
     segments = json.loads(SEGMENTS.read_text(encoding="utf-8"))
-    occupied = [(s["start"], s["end"]) for s in load_segments(entries=segments)]
+    # A NONMATCH function is still unmatched: the spec's match replaces it.
+    occupied = [(s["start"], s["end"]) for s in load_segments(entries=segments) if not s.get("nonmatching")]
     new = []
     for entry in spec["segments"]:
         start, end = int(entry["start"], 0) & 0xFFFFFF, int(entry["end"], 0) & 0xFFFFFF
@@ -46,6 +47,8 @@ def main():
                     "source": f"src/{args.name}.c", "input_section": entry["input_section"], "description": args.description})
 
     shutil.copyfile(source, target)
+    for entry in new:
+        segments = replace_nonmatching(segments, int(entry["start"], 0), int(entry["end"], 0))
     segments = sorted(segments + new, key=lambda entry: int(entry["start"], 0))
     SEGMENTS.write_text(json.dumps(segments, indent=2) + "\n", encoding="utf-8")
     symbols = json.loads(SYMBOLS.read_text(encoding="utf-8"))

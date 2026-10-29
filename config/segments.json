@@ -422,6 +422,20 @@
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
+    "name": "sub_08001520",
+    "start": "0x001520",
+    "end": "0x001CAC",
+    "kind": "c",
+    "compiler": "agbcc",
+    "cflags": [
+      "-fprologue-bugfix"
+    ],
+    "source": "src/non_matching/sub_08001520.c",
+    "input_section": ".text.sub_08001520",
+    "nonmatching": true,
+    "description": "Not matching yet: original assembly in a NONMATCH function, closest C attempt alongside"
+  },
+  {
     "name": "frame_affine_rotation",
     "start": "0x001CAC",
     "end": "0x001EA8",
@@ -12498,6 +12512,20 @@
     "source": "src/m2c_harvest_202.c",
     "input_section": ".text.sub_08020AD0",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
+  },
+  {
+    "name": "sub_08020B4C",
+    "start": "0x020B4C",
+    "end": "0x020CEC",
+    "kind": "c",
+    "compiler": "agbcc",
+    "cflags": [
+      "-fprologue-bugfix"
+    ],
+    "source": "src/non_matching/sub_08020B4C.c",
+    "input_section": ".text.sub_08020B4C",
+    "nonmatching": true,
+    "description": "Not matching yet: original assembly in a NONMATCH function, closest C attempt alongside"
   },
   {
     "name": "sub_08020CEC",
@@ -28179,6 +28207,20 @@
     ]
   },
   {
+    "name": "sub_0804538C",
+    "start": "0x04538C",
+    "end": "0x04545C",
+    "kind": "c",
+    "compiler": "agbcc",
+    "cflags": [
+      "-fprologue-bugfix"
+    ],
+    "source": "src/non_matching/sub_0804538C.c",
+    "input_section": ".text.sub_0804538C",
+    "nonmatching": true,
+    "description": "Not matching yet: original assembly in a NONMATCH function, closest C attempt alongside"
+  },
+  {
     "name": "sub_0804545C",
     "start": "0x04545C",
     "end": "0x0454F0",
@@ -28439,6 +28481,20 @@
     ]
   },
   {
+    "name": "sub_08045E6C",
+    "start": "0x045E6C",
+    "end": "0x046034",
+    "kind": "c",
+    "compiler": "agbcc",
+    "cflags": [
+      "-fprologue-bugfix"
+    ],
+    "source": "src/non_matching/sub_08045E6C.c",
+    "input_section": ".text.sub_08045E6C",
+    "nonmatching": true,
+    "description": "Not matching yet: original assembly in a NONMATCH function, closest C attempt alongside"
+  },
+  {
     "name": "sub_08046034",
     "start": "0x46034",
     "end": "0x460B0",
@@ -28463,6 +28519,20 @@
     "source": "src/m2c_lean_b_47.c",
     "input_section": ".text.sub_080460B0",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
+  },
+  {
+    "name": "sub_080465B8",
+    "start": "0x0465B8",
+    "end": "0x046A60",
+    "kind": "c",
+    "compiler": "agbcc",
+    "cflags": [
+      "-fprologue-bugfix"
+    ],
+    "source": "src/non_matching/sub_080465B8.c",
+    "input_section": ".text.sub_080465B8",
+    "nonmatching": true,
+    "description": "Not matching yet: original assembly in a NONMATCH function, closest C attempt alongside"
   },
   {
     "name": "sub_08046A60",
@@ -29162,6 +29232,20 @@
     ]
   },
   {
+    "name": "sub_0804842C",
+    "start": "0x04842C",
+    "end": "0x048684",
+    "kind": "c",
+    "compiler": "agbcc",
+    "cflags": [
+      "-fprologue-bugfix"
+    ],
+    "source": "src/non_matching/sub_0804842C.c",
+    "input_section": ".text.sub_0804842C",
+    "nonmatching": true,
+    "description": "Not matching yet: original assembly in a NONMATCH function, closest C attempt alongside"
+  },
+  {
     "name": "selector_48684",
     "start": "0x48684",
     "end": "0x486B0",
@@ -29388,6 +29472,20 @@
       "-fno-rerun-loop-opt"
     ],
     "description": "Reviewed isolated exact match; full-ROM verification required"
+  },
+  {
+    "name": "sub_08048BE0",
+    "start": "0x048BE0",
+    "end": "0x048CA8",
+    "kind": "c",
+    "compiler": "agbcc",
+    "cflags": [
+      "-fprologue-bugfix"
+    ],
+    "source": "src/non_matching/sub_08048BE0.c",
+    "input_section": ".text.sub_08048BE0",
+    "nonmatching": true,
+    "description": "Not matching yet: original assembly in a NONMATCH function, closest C attempt alongside"
   },
   {
     "name": "copy_48CA8",
@@ -34121,6 +34219,20 @@
     "description": "m2c draft, exact without edits; control-flow-decoded bounds await review"
   },
   {
+    "name": "sub_080513C8",
+    "start": "0x0513C8",
+    "end": "0x0517F0",
+    "kind": "c",
+    "compiler": "agbcc",
+    "cflags": [
+      "-fprologue-bugfix"
+    ],
+    "source": "src/non_matching/sub_080513C8.c",
+    "input_section": ".text.sub_080513C8",
+    "nonmatching": true,
+    "description": "Not matching yet: original assembly in a NONMATCH function, closest C attempt alongside"
+  },
+  {
     "name": "sub_080517F0",
     "start": "0x517F0",
     "end": "0x51940",
@@ -34184,6 +34296,21 @@
       "-fprologue-bugfix"
     ],
     "description": "Exact complete scene lookup, palette transfer or position update"
+  },
+  {
+    "name": "sub_08051CB8",
+    "start": "0x051CB8",
+    "end": "0x051E38",
+    "kind": "c",
+    "compiler": "agbcc",
+    "cflags": [
+      "-fprologue-bugfix",
+      "-fno-regmove"
+    ],
+    "source": "src/non_matching/sub_08051CB8.c",
+    "input_section": ".text.sub_08051CB8",
+    "nonmatching": true,
+    "description": "Not matching yet: original assembly in a NONMATCH function, closest C attempt alongside"
   },
   {
     "name": "sub_08051E38",
@@ -34365,6 +34492,20 @@
       "-fprologue-bugfix"
     ],
     "description": "Exact complete scene helper, coordinate conversion or state-zero callback"
+  },
+  {
+    "name": "sub_08052784",
+    "start": "0x052784",
+    "end": "0x0528F8",
+    "kind": "c",
+    "compiler": "agbcc",
+    "cflags": [
+      "-fprologue-bugfix"
+    ],
+    "source": "src/non_matching/sub_08052784.c",
+    "input_section": ".text.sub_08052784",
+    "nonmatching": true,
+    "description": "Not matching yet: original assembly in a NONMATCH function, closest C attempt alongside"
   },
   {
     "name": "sub_080528F8",
@@ -35639,6 +35780,21 @@
     "source": "src/continued_numeric_strip.c",
     "cflags": [],
     "description": "Independently reproduced complete function; pools and padding included"
+  },
+  {
+    "name": "sub_08059960",
+    "start": "0x059960",
+    "end": "0x059E50",
+    "kind": "c",
+    "compiler": "agbcc",
+    "cflags": [
+      "-O1",
+      "-fprologue-bugfix"
+    ],
+    "source": "src/non_matching/sub_08059960.c",
+    "input_section": ".text.sub_08059960",
+    "nonmatching": true,
+    "description": "Not matching yet: original assembly in a NONMATCH function, closest C attempt alongside"
   },
   {
     "name": "sub_08059E50",
@@ -38676,6 +38832,21 @@
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
+    "name": "sub_08064EB4",
+    "start": "0x064EB4",
+    "end": "0x065074",
+    "kind": "c",
+    "compiler": "agbcc",
+    "cflags": [
+      "-fprologue-bugfix",
+      "-fno-expensive-optimizations"
+    ],
+    "source": "src/non_matching/sub_08064EB4.c",
+    "input_section": ".text.sub_08064EB4",
+    "nonmatching": true,
+    "description": "Not matching yet: original assembly in a NONMATCH function, closest C attempt alongside"
+  },
+  {
     "name": "sub_08065074",
     "start": "0x065074",
     "end": "0x065198",
@@ -39991,6 +40162,20 @@
     "source": "src/m2c_harvest_214.c",
     "input_section": ".text.sub_080696A8",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
+  },
+  {
+    "name": "sub_080697B4",
+    "start": "0x0697B4",
+    "end": "0x069910",
+    "kind": "c",
+    "compiler": "agbcc",
+    "cflags": [
+      "-fprologue-bugfix"
+    ],
+    "source": "src/non_matching/sub_080697B4.c",
+    "input_section": ".text.sub_080697B4",
+    "nonmatching": true,
+    "description": "Not matching yet: original assembly in a NONMATCH function, closest C attempt alongside"
   },
   {
     "name": "sub_08069910",
@@ -42490,6 +42675,20 @@
     "source": "src/m2c_harvest_218.c",
     "input_section": ".text.sub_08071FF8",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
+  },
+  {
+    "name": "sub_08072080",
+    "start": "0x072080",
+    "end": "0x072188",
+    "kind": "c",
+    "compiler": "agbcc",
+    "cflags": [
+      "-fprologue-bugfix"
+    ],
+    "source": "src/non_matching/sub_08072080.c",
+    "input_section": ".text.sub_08072080",
+    "nonmatching": true,
+    "description": "Not matching yet: original assembly in a NONMATCH function, closest C attempt alongside"
   },
   {
     "name": "sub_08072188",

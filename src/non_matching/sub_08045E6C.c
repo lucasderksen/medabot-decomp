@@ -1,7 +1,30 @@
-extern u8 D_02030400[];
-extern u8 D_02030800[];
+/*
+ * sub_08045E6C: not matching yet. The build assembles asm/non_matching/sub_08045E6C.inc
+ * in its place; the C below is the closest attempt (docs/drafts/README.md).
+ */
 
-u32 sub_08045E6C(const struct RecordAssetSet *const *sets, const u32 *commands, u8 selector, u8 palette, struct RecordTileBlock *records, u16 *tileBase, u32 mode)
+#include "global.h"
+#include "audio.h"
+#include "background_state.h"
+#include "battle_work.h"
+#include "composite_graphics.h"
+#include "fallback_map_assets.h"
+#include "frame.h"
+#include "frame_command_data.h"
+#include "gba.h"
+#include "initialization.h"
+#include "link_menu.h"
+#include "main_callbacks.h"
+#include "pose_channels.h"
+#include "record_asset_data.h"
+#include "record_helpers.h"
+#include "render_work.h"
+#include "state0_work.h"
+
+extern u8 gUnknown_02030400[];
+extern u8 gUnknown_02030800[];
+
+NONMATCH("asm/non_matching/sub_08045E6C.inc", u32 sub_08045E6C(const struct RecordAssetSet *const *sets, const u32 *commands, u8 selector, u8 palette, struct RecordTileBlock *records, u16 *tileBase, u32 mode))
 {
     const struct RecordAssetSet *set;
     struct RecordTileBlock *block;
@@ -39,7 +62,7 @@ u32 sub_08045E6C(const struct RecordAssetSet *const *sets, const u32 *commands, 
                     {
                         size = 0x20;
                         CpuSet(((const void *const *)set->entries)[index + 1], (void *)(((set->palette + palette) << 5) + 0x05000200), 0x10);
-                        CpuSet(((const void *const *)set->entries)[index + 1], ((set->palette + palette) << 5) + D_02030400, 0x10);
+                        CpuSet(((const void *const *)set->entries)[index + 1], ((set->palette + palette) << 5) + gUnknown_02030400, 0x10);
                     }
                     break;
                 }
@@ -56,9 +79,9 @@ u32 sub_08045E6C(const struct RecordAssetSet *const *sets, const u32 *commands, 
     }
     if (size != 0 && ((const void *const *)set->entries)[index] != NULL)
     {
-        size = sub_08044D0C(((const void *const *)set->entries)[index], D_02030800);
+        size = sub_08044D0C(((const void *const *)set->entries)[index], gUnknown_02030800);
         if (size != 0)
-            CpuSet(D_02030800, (void *)((*tileBase << 5) + 0x06010000), size << 10 >> 11);
+            CpuSet(gUnknown_02030800, (void *)((*tileBase << 5) + 0x06010000), size << 10 >> 11);
         block = &records[selector];
         { u32 sum = sub_08045D34((struct OamEntry *)block, set, palette, *tileBase) + *tileBase; *tileBase = sum; }
         if (gState0TypedWork.bytes[0x96])
@@ -73,3 +96,4 @@ u32 sub_08045E6C(const struct RecordAssetSet *const *sets, const u32 *commands, 
         total += sub_08045E6C(sets, commands, sets[selector]->child0F, palette, records, tileBase, mode);
     return total;
 }
+END_NONMATCH

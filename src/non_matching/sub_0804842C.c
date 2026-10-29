@@ -1,8 +1,25 @@
-extern const u8 D_083D2B36[][4];
+/*
+ * sub_0804842C: not matching yet. The build assembles asm/non_matching/sub_0804842C.inc
+ * in its place; the C below is the closest attempt (docs/drafts/README.md).
+ */
+
+#include "global.h"
+#include "bios_lz77.h"
+#include "continued_callbacks.h"
+#include "continued_commands.h"
+#include "continued_scene_records.h"
+#include "encounter_choices.h"
+#include "frame.h"
+#include "fresh_helpers.h"
+#include "graphics.h"
+#include "post_dispatch.h"
+#include "state0_work.h"
+
+extern const u8 gUnknown_083D2B36[][4];
 extern u8 gFreshWork_03006D38[];
 extern u8 gContinuedWork_030057E0[];
 
-u32 sub_0804842C(u32 first, u32 second)
+NONMATCH("asm/non_matching/sub_0804842C.inc", u32 sub_0804842C(u32 first, u32 second))
 {
     /* Falls off the end like the reference (r0 keeps first or the last call result); no caller uses it: sub_0804A6A0, sub_0804A6F8, sub_0804A764, sub_0804A944, sub_0804AA74, sub_0804AB60, sub_0804ABCC, sub_0804ACD4, sub_0804AE80, sub_0804C960, sub_0804C984, sub_0804C9A0, sub_0804C9C4, sub_08050CCC, sub_0805424C */
     u32 value;
@@ -79,20 +96,20 @@ u32 sub_0804842C(u32 first, u32 second)
             sub_08047BB4(gContinuedWork_030057E0[0xC31]);
         break;
     case 23:
-        if (D_083D2B36[gFreshWork_03006D38[1]][0] != 0)
+        if (gUnknown_083D2B36[gFreshWork_03006D38[1]][0] != 0)
             sub_08047BC0(0x1E);
         break;
     case 24:
-        if (D_083D2B36[gFreshWork_03006D38[1]][0] != 0) {
-            gContinuedWork_030057E0[0xC30] = D_083D2B36[gFreshWork_03006D38[1]][1];
-            sub_08047BB4(D_083D2B36[gFreshWork_03006D38[1]][1]);
+        if (gUnknown_083D2B36[gFreshWork_03006D38[1]][0] != 0) {
+            gContinuedWork_030057E0[0xC30] = gUnknown_083D2B36[gFreshWork_03006D38[1]][1];
+            sub_08047BB4(gUnknown_083D2B36[gFreshWork_03006D38[1]][1]);
         }
         break;
     case 25:
-        switch (D_083D2B36[gFreshWork_03006D38[1]][2]) {
+        switch (gUnknown_083D2B36[gFreshWork_03006D38[1]][2]) {
         case 1:
-            gContinuedWork_030057E0[0xC30] = D_083D2B36[gFreshWork_03006D38[1]][3];
-            sub_08047BB4(D_083D2B36[gFreshWork_03006D38[1]][3]);
+            gContinuedWork_030057E0[0xC30] = gUnknown_083D2B36[gFreshWork_03006D38[1]][3];
+            sub_08047BB4(gUnknown_083D2B36[gFreshWork_03006D38[1]][3]);
             break;
         case 2:
             value = sub_080483F8();
@@ -103,3 +120,4 @@ u32 sub_0804842C(u32 first, u32 second)
         break;
     }
 }
+END_NONMATCH

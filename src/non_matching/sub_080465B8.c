@@ -1,8 +1,39 @@
+/*
+ * sub_080465B8: not matching yet. The build assembles asm/non_matching/sub_080465B8.inc
+ * in its place; the C below is the closest attempt (docs/drafts/README.md).
+ */
+
+#include "global.h"
+#include "action_aux_data.h"
+#include "action_scene_data.h"
+#include "audio.h"
+#include "background_state.h"
+#include "battle_work.h"
+#include "bg_scroll.h"
+#include "composite_graphics.h"
+#include "continued_scene_records.h"
+#include "fallback_map_assets.h"
+#include "frame.h"
+#include "frame_command_data.h"
+#include "gba.h"
+#include "graphics.h"
+#include "main_callbacks.h"
+#include "map_object_spawns.h"
+#include "pose_channels.h"
+#include "record_helpers.h"
+#include "render_work.h"
+#include "scene_view.h"
+#include "sound_work.h"
+#include "sprite_layouts.h"
+#include "state0_display.h"
+#include "state0_work.h"
+#include "tile_text.h"
+
 struct ObjectAffineInput { s16 xScale; s16 yScale; u16 angle; };
 struct ObjectAffineOutput { s16 pa, pb, pc, pd; };
 void ObjAffineSet(const void *, void *, u32, u32);
-extern const struct ObjectAffineOutput D_080ABD64;
-extern const u8 D_08081490[];
+extern const struct ObjectAffineOutput gUnknown_080ABD64;
+extern const u8 gUnknown_08081490[];
 struct OamView
 {
     u8 y;
@@ -39,7 +70,7 @@ struct AssetSetView
 struct RenderAffineView { u8 unknown000[0xF8C]; u16 affine[0x84]; u8 byte1094; u8 byte1095; };
 struct LaterWork { struct RenderAffineView *render; const struct AssetSetView **sets; struct TileBlockView *blocks; };
 
-void sub_080465B8(struct LaterWork *work, const u32 *commands, u32 selectorArg, s32 y, s32 x, s32 priorityArg, s32 angleArg, u32 flipArg)
+NONMATCH("asm/non_matching/sub_080465B8.inc", void sub_080465B8(struct LaterWork *work, const u32 *commands, u32 selectorArg, s32 y, s32 x, s32 priorityArg, s32 angleArg, u32 flipArg))
 {
   struct OamView *obj;
   u8 selector = selectorArg;
@@ -53,7 +84,7 @@ void sub_080465B8(struct LaterWork *work, const u32 *commands, u32 selectorArg, 
   u16 depth;
   const struct AssetSetView *set = work->sets[selector];
   struct TileBlockView *block = &work->blocks[selector];
-  struct ObjectAffineOutput matrix = D_080ABD64;
+  struct ObjectAffineOutput matrix = gUnknown_080ABD64;
   struct ObjectAffineInput input = {0x100, 0x100, -angle};
   s32 dx;
   s32 dy;
@@ -71,7 +102,7 @@ void sub_080465B8(struct LaterWork *work, const u32 *commands, u32 selectorArg, 
   u8 index;
   if (flip)
   {
-    index = D_08081490[selector];
+    index = gUnknown_08081490[selector];
     set = work->sets[index];
     angleOffset = work->blocks[index].angle;
     by = work->blocks[index].y;
@@ -259,3 +290,4 @@ void sub_080465B8(struct LaterWork *work, const u32 *commands, u32 selectorArg, 
   }
   } while (0);
 }
+END_NONMATCH

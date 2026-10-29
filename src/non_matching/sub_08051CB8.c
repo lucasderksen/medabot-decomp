@@ -1,3 +1,15 @@
+/*
+ * sub_08051CB8: not matching yet. The build assembles asm/non_matching/sub_08051CB8.inc
+ * in its place; the C below is the closest attempt (docs/drafts/README.md).
+ */
+
+#include "global.h"
+#include "continued_commands.h"
+#include "encounter_parts.h"
+#include "frame.h"
+#include "later_graphics.h"
+#include "post_dispatch.h"
+
 struct HeldKeys1CB8 {
     u8 low:4;
     u8 right:1;
@@ -11,7 +23,7 @@ extern struct HeldKeys1CB8 gHeldKeys1CB8 asm("gContinuedByte_03002B64");
 extern u8 gWork1CB8[] asm("gContinuedWork_030057E0");
 s32 sub_0807CD2C(s32, s32);
 
-void sub_08051CB8(void)
+NONMATCH("asm/non_matching/sub_08051CB8.inc", void sub_08051CB8(void))
 {
     u8 direction = 0;
     u32 keys;
@@ -70,3 +82,4 @@ void sub_08051CB8(void)
         sub_0805203C(gWork1CB8[0xC75]);
     }
 }
+END_NONMATCH

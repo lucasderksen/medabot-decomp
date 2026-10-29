@@ -1,3 +1,39 @@
+/*
+ * sub_080513C8: not matching yet. The build assembles asm/non_matching/sub_080513C8.inc
+ * in its place; the C below is the closest attempt (docs/drafts/README.md).
+ */
+
+#include "global.h"
+#include "action_aux_data.h"
+#include "background_state.h"
+#include "battle_work.h"
+#include "bg_scroll.h"
+#include "continued_commands.h"
+#include "continued_late_graphics.h"
+#include "continued_scene_records.h"
+#include "encounter_choices.h"
+#include "frame.h"
+#include "graphics.h"
+#include "later_graphics.h"
+#include "map_metadata.h"
+#include "map_object_spawns.h"
+#include "object_numeric_helpers.h"
+#include "palette_transfer_helpers.h"
+#include "pose_channels.h"
+#include "record_helpers.h"
+#include "render_work.h"
+#include "scene_animation.h"
+#include "scene_setup_data.h"
+#include "scene_view.h"
+#include "sound_samples.h"
+#include "sound_voice.h"
+#include "sound_work.h"
+#include "sprite_layouts.h"
+#include "state0_debug_menu.h"
+#include "state0_inventory.h"
+#include "state0_work.h"
+#include "tile_text.h"
+
 struct SelectionWork13C8
 {
     u8 unknown000[0x5DC];
@@ -24,9 +60,9 @@ struct ObjectAttributes13C8
 };
 extern struct SelectionWork13C8 gSelectionWork13C8 asm("gContinuedWork_030057E0");
 extern struct ObjectAttributes13C8 gObjectAttributes13C8[] asm("gLaterBuffer_030055A0");
-extern const struct SelectionRecord *const D_08483234[] asm("gMapObjectLists_08483234");
+extern const struct SelectionRecord *const gUnknown_08483234[] asm("gMapObjectLists_08483234");
 
-void sub_080513C8(u32 value)
+NONMATCH("asm/non_matching/sub_080513C8.inc", void sub_080513C8(u32 value))
 {
     s32 slot;
     struct SelectionRecord saved[64];
@@ -51,7 +87,7 @@ void sub_080513C8(u32 value)
     k = 0;
     for (row = 0; row < 32; row++)
     {
-        entry = D_08483234[gSelectionWork13C8.byte7FE];
+        entry = gUnknown_08483234[gSelectionWork13C8.byte7FE];
         while (entry->x != 0xFF)
         {
             if (((entry->unknown06 >> gSelectionWork13C8.byte7FF) & 1) && entry->frame == row
@@ -172,3 +208,4 @@ void sub_080513C8(u32 value)
     }
     gSelectionWork13C8.byteCBA = 2;
 }
+END_NONMATCH

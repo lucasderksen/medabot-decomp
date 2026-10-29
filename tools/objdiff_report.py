@@ -3,8 +3,9 @@
 Needs no ROM. Trackers such as bytematch.dev read this file from the
 `A8BP_report` CI artifact (see .github/workflows/progress.yml). The build
 compares every byte of the ROM, so each source segment counts as matched and
-complete; only the `.incbin` gaps before the end of the last code segment are
-unmatched code (one function each).
+complete. Unmatched code is every NONMATCH function (original assembly in a C
+file, `"nonmatching": true`) and any `.incbin` gap before the end of the last
+code segment (one function each).
 
     python tools/objdiff_report.py -o build/A8BP/report.json
 
@@ -108,12 +109,13 @@ def build(segments):
         size = segment["end"] - segment["start"]
         counts = entry["counts"]
         if code:
+            matched = not segment.get("nonmatching")
             counts["total_code"] += size
-            counts["matched_code"] += size
+            counts["matched_code"] += size * matched
             counts["total_functions"] += 1
-            counts["matched_functions"] += 1
+            counts["matched_functions"] += matched
             entry["categories"].add(category)
-            entry["functions"].append(item(function_name(segment), segment["start"], segment["end"], True))
+            entry["functions"].append(item(function_name(segment), segment["start"], segment["end"], matched))
         else:
             counts["total_data"] += size
             counts["matched_data"] += size

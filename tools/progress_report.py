@@ -16,7 +16,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from common import load_segments, rom_config  # noqa: E402
+from common import load_segments, nonmatching, rom_config  # noqa: E402
 
 FIELDS = ("date", "sha", "total", "game_c", "runtime_c", "data", "asm", "functions", "code_end", "code_done")
 ALL = ("game_c", "runtime_c", "data", "asm")
@@ -26,6 +26,8 @@ def measure(segments=None):
     segments = load_segments() if segments is None else segments
     row = {"total": rom_config()["size"], "game_c": 0, "runtime_c": 0, "data": 0, "asm": 0, "functions": 0}
     row["code_end"] = max(s["end"] for s in segments if s.get("category") != "data")
+    # NONMATCH functions assemble the original code: still unmatched.
+    segments = [s for s in segments if not nonmatching(s)]
     row["code_done"] = sum(min(s["end"], row["code_end"]) - s["start"] for s in segments if s["start"] < row["code_end"])
     for segment in segments:
         size = segment["end"] - segment["start"]
@@ -130,7 +132,7 @@ def summary(row, previous):
     if previous and previous.get("code_end"):
         lines.append(f"| Code region | {int(row['code_done']):,} / {int(row['code_end']):,} | {code_percent(row):.1f}% | {code_percent(row) - code_percent(previous):+.2f} pts |")
     lines += ["", "The code region ends at the last code segment and still holds copied data; treat it as provisional.",
-              "A matching rebuild is a baseline; remaining bytes are still copied from the ROM with `.incbin`.", ""]
+              "Unmatched functions are assembled from their original code (NONMATCH, src/non_matching/) and count as not in source.", ""]
     return "\n".join(lines)
 
 

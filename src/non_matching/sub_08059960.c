@@ -1,11 +1,49 @@
+/*
+ * sub_08059960: not matching yet. The build assembles asm/non_matching/sub_08059960.inc
+ * in its place; the C below is the closest attempt (docs/drafts/README.md).
+ */
+
+#include "global.h"
+#include "action_aux_data.h"
+#include "background_state.h"
+#include "battle_work.h"
+#include "bg_scroll.h"
+#include "bitfields.h"
+#include "composite_graphics.h"
+#include "continued_commands.h"
+#include "continued_late_graphics.h"
+#include "continued_scene_records.h"
+#include "encounter_choices.h"
+#include "fallback_map_assets.h"
+#include "frame.h"
+#include "fresh_helpers.h"
+#include "graphics.h"
+#include "later_graphics.h"
+#include "link_menu.h"
+#include "main_callbacks.h"
+#include "map_metadata.h"
+#include "map_object_spawns.h"
+#include "object_numeric_helpers.h"
+#include "packed_fields.h"
+#include "palette_transfer_helpers.h"
+#include "pose_channels.h"
+#include "record_helpers.h"
+#include "scene_animation.h"
+#include "scene_setup_data.h"
+#include "sound_samples.h"
+#include "sound_work.h"
+#include "sprite_layouts.h"
+#include "state0_work.h"
+#include "tile_text.h"
+
 struct NavigationWork9960
 {
     u8 unknown00[0x20];
     u16 half20;
 };
 extern struct NavigationWork9960 gNavigationWork9960 asm("gContinuedOtherWork_030057A0");
-extern u16 D_03006432;
-extern u16 D_03006434;
+extern u16 gUnknown_03006432;
+extern u16 gUnknown_03006434;
 extern s16 gNavigationBuffer9960[] asm("gLaterBuffer_030055A0");
 
 union Coord9960
@@ -28,8 +66,8 @@ static inline struct FrameObject *SetupNavigationObject(u32 index, s32 dx, s32 d
 
     obj = GetObject(index);
     obj->value30 = ((struct NavigationWork9960 *)0x030057A0)->half20;
-    ((union Coord9960 *)&obj->positionX)->parts.integer = D_03006432 + dx;
-    ((union Coord9960 *)&obj->positionY)->parts.integer = D_03006434 + dy;
+    ((union Coord9960 *)&obj->positionX)->parts.integer = gUnknown_03006432 + dx;
+    ((union Coord9960 *)&obj->positionY)->parts.integer = gUnknown_03006434 + dy;
     obj->flags = 0xC804;
     GetObject(index)->unknown2C[2] = 1;
     shadow = GetObject(index + 0x2A);
@@ -45,7 +83,7 @@ static inline struct FrameObject *SetupNavigationObject(u32 index, s32 dx, s32 d
     return obj;
 }
 
-void sub_08059960(void)
+NONMATCH("asm/non_matching/sub_08059960.inc", void sub_08059960(void))
 {
     struct FrameObject *obj;
     struct FrameObject *shadow;
@@ -70,8 +108,8 @@ void sub_08059960(void)
         u8 palette = ExtractHighNibble(0);
         sub_08048864(0x39, 0xC804, frame, palette, 1);
         gFrameObjects[0x39].byte2B = ExtractHighNibble(0);
-        obj->positionX.value = (obj->positionX.value & 0xFF) | ((D_03006432 - 0x30) << 8);
-        obj->positionY = (obj->positionY & 0xFF) | ((D_03006434 + 0x30) << 8);
+        obj->positionX.value = (obj->positionX.value & 0xFF) | ((gUnknown_03006432 - 0x30) << 8);
+        obj->positionY = (obj->positionY & 0xFF) | ((gUnknown_03006434 + 0x30) << 8);
         gNavigationBuffer9960[0x72] = -1;
         gFrameObjects[0x39].unknown2C[0] = 0;
         sub_08049420(0x39, 0x60);
@@ -85,3 +123,4 @@ void sub_08059960(void)
         shadow->screenY = obj->screenY + (u16)(gFrameObjects[0x39].unknown2C[0] - 5);
     }
 }
+END_NONMATCH

@@ -1,4 +1,35 @@
-void sub_080697B4(u8 selector, u8 x, u8 y) {
+/*
+ * sub_080697B4: not matching yet. The build assembles asm/non_matching/sub_080697B4.inc
+ * in its place; the C below is the closest attempt (docs/drafts/README.md).
+ */
+
+#include "global.h"
+#include "action_aux_data.h"
+#include "background_state.h"
+#include "battle_work.h"
+#include "bg_scroll.h"
+#include "continued_scene_records.h"
+#include "encounter_choices.h"
+#include "frame.h"
+#include "gba.h"
+#include "graphics.h"
+#include "link_tiles.h"
+#include "main_callbacks.h"
+#include "map_object_spawns.h"
+#include "pose_channels.h"
+#include "post_dispatch.h"
+#include "record_helpers.h"
+#include "rom_libc.h"
+#include "scene_graphics_loads.h"
+#include "sound_voice.h"
+#include "sound_work.h"
+#include "sprite_layouts.h"
+#include "state0_display.h"
+#include "state0_work.h"
+#include "tile_text.h"
+
+NONMATCH("asm/non_matching/sub_080697B4.inc", void sub_080697B4(u8 selector, u8 x, u8 y))
+{
     u8 widths[8];
     u8 heights[8];
     u16 offsets[8];
@@ -40,3 +71,4 @@ void sub_080697B4(u8 selector, u8 x, u8 y) {
         }
     }
 }
+END_NONMATCH

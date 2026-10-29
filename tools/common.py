@@ -57,6 +57,27 @@ def prepare_rom(path=None):
     return canonical
 
 
+def nonmatching(segment):
+    """A NONMATCH function (include/global.h): original assembly in a C file, still unmatched code."""
+    return bool(segment.get("nonmatching"))
+
+
+def replace_nonmatching(entries, start, end):
+    """Drop NONMATCH entries overlapping [start, end), with their C file and assembly.
+
+    A newly matched function replaces its NONMATCH version; returns the kept entries.
+    """
+    kept = []
+    for entry in entries:
+        lo, hi = (int(entry[key], 0) if isinstance(entry[key], str) else entry[key] for key in ("start", "end"))
+        if nonmatching(entry) and lo < end and start < hi:
+            (ROOT / entry["source"]).unlink(missing_ok=True)
+            (ROOT / "asm" / "non_matching" / f"{entry['name']}.inc").unlink(missing_ok=True)
+        else:
+            kept.append(entry)
+    return kept
+
+
 def load_segments(size=None, entries=None):
     size = rom_config()["size"] if size is None else size
     entries = json.loads(SEGMENTS_CONFIG.read_text(encoding="utf-8")) if entries is None else entries

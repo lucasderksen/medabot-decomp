@@ -1,16 +1,50 @@
-extern u8 D_03000438;
-extern struct { s16 x; s16 y; } D_03001794;
-extern struct BgScroll D_03002C24;
-extern s32 D_03005040;
-extern s32 D_03005044;
-extern s32 D_0300504C;
+/*
+ * sub_08001520: not matching yet. The build assembles asm/non_matching/sub_08001520.inc
+ * in its place; the C below is the closest attempt (docs/drafts/README.md).
+ */
+
+#include "global.h"
+#include "action_aux_data.h"
+#include "audio.h"
+#include "background_state.h"
+#include "battle_work.h"
+#include "bg_scroll.h"
+#include "composite_graphics.h"
+#include "continued_scene_records.h"
+#include "encounter_choices.h"
+#include "fallback_map_assets.h"
+#include "frame.h"
+#include "frame_command_data.h"
+#include "gba.h"
+#include "graphics.h"
+#include "initialization.h"
+#include "main_callbacks.h"
+#include "map_metadata.h"
+#include "map_object_spawns.h"
+#include "pose_channels.h"
+#include "record_helpers.h"
+#include "render_work.h"
+#include "scene_view.h"
+#include "sound_samples.h"
+#include "sound_work.h"
+#include "sprite_layouts.h"
+#include "state0_debug_menu.h"
+#include "state0_work.h"
+#include "tile_text.h"
+
+extern u8 gUnknown_03000438;
+extern struct { s16 x; s16 y; } gUnknown_03001794;
+extern struct BgScroll gUnknown_03002C24;
+extern s32 gUnknown_03005040;
+extern s32 gUnknown_03005044;
+extern s32 gUnknown_0300504C;
 extern s32 sub_0807CD2C(s32, s32);
 extern const struct SpriteFrameHeader *const *const gSpriteFrameGroups_Default[];
 extern const struct SpriteFrameHeader *const *const gSpriteFrameGroups_083AC208[];
 extern const struct SpriteFrameHeader *const *const gSpriteFrameGroups_083AC248[];
 extern const struct SpriteFrameHeader *const *const gSpriteFrameGroups_083AC288[];
 
-void sub_08001520(void)
+NONMATCH("asm/non_matching/sub_08001520.inc", void sub_08001520(void))
 {
     union FrameOrderEntry order[128];
     u32 zero;
@@ -41,9 +75,9 @@ void sub_08001520(void)
     s32 scroll;
     struct OamEntry *oam;
 
-    if (1 & D_03000438)
+    if (1 & gUnknown_03000438)
     {
-        D_03000438 = 0;
+        gUnknown_03000438 = 0;
         return;
     }
     zero = 0;
@@ -59,10 +93,10 @@ void sub_08001520(void)
             count++;
         }
     }
-    if (!(2 & D_03000438))
+    if (!(2 & gUnknown_03000438))
         sub_08002060(order, count);
     else
-        D_03000438 = 0;
+        gUnknown_03000438 = 0;
 
     affine = gRenderMode == 2 ? 0x16 : 0;
     oamIndex = 0;
@@ -74,21 +108,21 @@ void sub_08001520(void)
         {
         case 0x80:
             screenX = (object->positionX.value >> 8) * 4;
-            screenY = ((object->positionY >> 8) + D_03005044) * 4;
+            screenY = ((object->positionY >> 8) + gUnknown_03005044) * 4;
             depth = object->positionZ >> 8;
             depth = (depth + 0x3000) / 64;
             screenX = sub_0807CD2C(screenX, depth);
             screenY = sub_0807CD2C(screenY, depth);
-            object->screenX = D_03005040 + screenX;
-            object->screenY = D_0300504C + screenY;
+            object->screenX = gUnknown_03005040 + screenX;
+            object->screenY = gUnknown_0300504C + screenY;
             scale = sub_0807CD2C(0x8000, depth);
             object->scaleY = scale;
             object->scaleX = scale;
             gFrameAffineOverride = sub_0807CD2C(0x700000, depth);
             break;
         case 0x40:
-            object->screenX = (object->positionX.value >> 16) - D_03002C24.x;
-            object->screenY = (((object->positionY >> 8) + (object->positionZ >> 8)) >> 8) - D_03002C24.y;
+            object->screenX = (object->positionX.value >> 16) - gUnknown_03002C24.x;
+            object->screenY = (((object->positionY >> 8) + (object->positionZ >> 8)) >> 8) - gUnknown_03002C24.y;
             break;
         case 0xC0:
             break;
@@ -113,9 +147,9 @@ void sub_08001520(void)
         do {
         part = (const struct SpriteFramePart *)(frames[object->frameAndGroup & 0xFF] + 1);
         scroll = (s16)gBgScrollBase.x;
-        screenX = D_03001794.x - scroll + object->screenX;
+        screenX = gUnknown_03001794.x - scroll + object->screenX;
         scroll = (s16)gBgScrollBase.y;
-        screenY = D_03001794.y - scroll + object->screenY;
+        screenY = gUnknown_03001794.y - scroll + object->screenY;
         } while (0);
         flags = object->flags;
         if ((0xC0 & flags) == 0x40)
@@ -308,3 +342,4 @@ done:
         gOamShadow[i].attr0 = 0x200;
     gState0TypedWork.bytes[0x12E] = 1;
 }
+END_NONMATCH

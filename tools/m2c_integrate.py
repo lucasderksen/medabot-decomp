@@ -17,7 +17,7 @@ import argparse
 import json
 import re
 
-from common import ROOT, load_segments
+from common import ROOT, load_segments, replace_nonmatching
 from clone_transfer import file_scope_types
 
 SEGMENTS = ROOT / "config" / "segments.json"
@@ -195,7 +195,8 @@ def main():
     dropped = {int(text, 0) & 0xFFFFFF for text in args.drop}
     # Only add: earlier harvest files are accepted source and stay as they are.
     segments = json.loads(SEGMENTS.read_text(encoding="utf-8"))
-    occupied = [(segment["start"], segment["end"]) for segment in load_segments(entries=segments)]
+    # A NONMATCH function is still unmatched: an exact result replaces it.
+    occupied = [(segment["start"], segment["end"]) for segment in load_segments(entries=segments) if not segment.get("nonmatching")]
     symbols = json.loads(SYMBOLS.read_text(encoding="utf-8"))
     # Names already defined somewhere: absolute symbols, or functions in source.
     known_names = set(symbols) | {entry["name"] for entry in segments}
@@ -265,6 +266,8 @@ def main():
         unit["defined"].add(function["name"])
         unit["functions"].append(function)
 
+    for function in accepted:
+        segments = replace_nonmatching(segments, function["start"], function["end"])
     first_index = 1 + max([int(path.stem.rsplit("_", 1)[1]) for path in (ROOT / "src").glob(f"{args.prefix}_*.c")
                            if path.stem.rsplit("_", 1)[1].isdigit()], default=-1)
     # Check alias conflicts before writing any source or configuration files.

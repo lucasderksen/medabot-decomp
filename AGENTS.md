@@ -58,7 +58,8 @@ score-0 result.
   immediately reloads them and no other form fits, and uninitialized reads
   that copy the reference (including real bugs in the shipped ROM).
 - Fake matches are accepted once the time-box is spent and no natural form
-  has turned up: register pins (`register T x asm("rN")`),
+  has turned up: register pins (`FORCE_REGISTER(T x, rN)` from
+  `include/global.h`),
   `do { } while (0)` wraps beyond what reads naturally (nested wrap padding),
   and dead stores or dead padding statements. Behaviour must stay that of
   the reference: a dead store must really be dead, and a wrap must not
@@ -78,8 +79,16 @@ score-0 result.
   never collide, then commit 5-15 matched functions per commit on their branch.
   One integration checkout merges worker branches and runs one
   `tools/checkpoint.py` per merged batch.
+- Functions that do not match yet are NONMATCH functions
+  (`src/non_matching/<name>.c` with the original code in
+  `asm/non_matching/<name>.inc`, see [docs/NONMATCHING.md](docs/NONMATCHING.md)).
+  Keep the C attempt there and its row in docs/NONMATCHING.md at the best
+  result; `python tools/try_draft.py <name> src/non_matching/<name>.c` compiles
+  it as it is. `tools/m2c_integrate.py` replaces the NONMATCH entry once the
+  function matches. Unmatched code that is still an `.incbin` gap gets one with
+  `python tools/nonmatch.py <name>`.
 - Only document findings that help many functions (compiler idioms in
   [docs/IDIOMS.md](docs/IDIOMS.md), struct
   layouts); put struct knowledge in `include/` headers rather than prose.
-  The remaining unmatched functions and their closest drafts are listed in
-  [docs/drafts/README.md](docs/drafts/README.md).
+  The remaining unmatched functions and fake matches are listed in
+  [docs/NONMATCHING.md](docs/NONMATCHING.md).

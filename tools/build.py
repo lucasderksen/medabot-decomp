@@ -34,6 +34,11 @@ def generate_linker(entries, base, symbols=None):
             input_section = entry["input_section"]
         lines.append(f"  {section} 0x{base + entry['start']:08X} : {{ {obj}({input_section}) }}")
         lines.append(f'  ASSERT(SIZEOF({section}) == 0x{entry["end"] - entry["start"]:X}, "Size mismatch: {entry["name"]}")')
+    # NONMATCH functions (include/global.h) assemble the original code; agbcc can
+    # still emit constants for their dead C attempt, which must not reach the ROM.
+    dead = " ".join(f"{object_path(entry['source'])}(.rodata)" for entry in entries if entry.get("nonmatching"))
+    if dead:
+        lines.append(f"  /DISCARD/ : {{ {dead} }}")
     lines += [
         "  .unexpected : { *(.text) *(.text.*) *(.data) *(.data.*) *(.rodata*) *(.bss*) *(COMMON) *(.glue_7) *(.glue_7t) *(.vfp11_veneer) *(.v4_bx) *(.iplt) *(.rel.iplt) *(.igot.plt) }",
         '  ASSERT(SIZEOF(.unexpected) == 0, "Unexpected code/data: add it to config/segments.json")',

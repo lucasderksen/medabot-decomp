@@ -1,8 +1,25 @@
+/*
+ * sub_08072080: not matching yet. The build assembles asm/non_matching/sub_08072080.inc
+ * in its place; the C below is the closest attempt (docs/drafts/README.md).
+ */
+
+#include "global.h"
+#include "battle_work.h"
+#include "gba.h"
+#include "main.h"
+#include "record_helpers.h"
+#include "scene_graphics_loads.h"
+#include "sound_voice.h"
+#include "state0_callbacks.h"
+#include "state0_display.h"
+
 extern u16 gUnknown_0202FE00[];
 extern u16 *gPalettePointer71FF80300700C;
 extern void sub_0806B718(u8);
 struct DmaRegs72080 { u32 source, destination, control; };
-s32 sub_08072080(void) {
+
+NONMATCH("asm/non_matching/sub_08072080.inc", s32 sub_08072080(void))
+{
     u8 k;
     u8 inv;
     s32 i;
@@ -37,3 +54,4 @@ s32 sub_08072080(void) {
         gCounter6ED08_03001800.pad00[0x11]++;
     return 0;
 }
+END_NONMATCH

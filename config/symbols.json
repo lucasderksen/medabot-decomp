@@ -23,10 +23,6 @@
   "gFrameCounter": "0x03001780",
   "gSerialState": "0x03005170",
   "gSerialIrqCode": "0x03005050",
-  "sub_08001520": {
-    "address": "0x08001521",
-    "kind": "thumb_function"
-  },
   "gOamShadow": "0x03001380",
   "gMainSerialWork": "0x03005010",
   "gUnknownCallback_03000B98": "0x03000B98",
@@ -153,10 +149,6 @@
   "gUnknownBytes_083B7F8C": "0x083B7F8C",
   "gUnknownBytes_083B7E54": "0x083B7E54",
   "gUnknownPointers_083B74B8": "0x083B74B8",
-  "sub_0804538C": {
-    "address": "0x0804538C",
-    "kind": "thumb_function"
-  },
   "gUnknownAffine_080ABD5C": "0x080ABD5C",
   "gUnknownPointers_083B803C": "0x083B803C",
   "gLaterBuffer_03005310": "0x03005310",
@@ -186,10 +178,6 @@
   "gLaterCommands_0807F610": "0x0807F610",
   "gLaterCommands_0807FDB0": "0x0807FDB0",
   "gLaterCommands_08080550": "0x08080550",
-  "sub_08045E6C": {
-    "address": "0x08045E6D",
-    "kind": "thumb_function"
-  },
   "gDebugMenuTextBuffer": "0x030004DE",
   "gDebugProcessLabels_083ACBE4": "0x083ACBE4",
   "gDebugMenuProcessCallbacks_083ACACC": "0x083ACACC",
@@ -215,14 +203,6 @@
   "gPostDispatchTextBuffers_080ABD6C": "0x080ABD6C",
   "gFreshSettings_03005310": "0x03005310",
   "gFreshPointers_083F7E80": "0x083F7E80",
-  "sub_080513C8": {
-    "address": "0x080513C8",
-    "kind": "thumb_function"
-  },
-  "sub_08052784": {
-    "address": "0x08052784",
-    "kind": "thumb_function"
-  },
   "gState0NextScripts_083BE564": "0x83be564",
   "gState0NextScripts_083BEAAC": "0x83beaac",
   "gState0NextCommands_083B6100": "0x083B6100",
@@ -244,10 +224,6 @@
   "gLaterMatrices_03006D40": "0x03006D40",
   "gRandomBytes_083F7D80": "0x083F7D80",
   "gContinuedBlendWork_03006F40": "0x03006F40",
-  "sub_0804842C": {
-    "address": "0x0804842D",
-    "kind": "thumb_function"
-  },
   "gContinuedWork_030057E0": "0x030057E0",
   "gContinuedOtherWork_030057A0": "0x030057A0",
   "gContinuedScripts_08411AE0": "0x08411AE0",
@@ -286,10 +262,6 @@
   "gState0MapTimers_03002B84": "0x03002B84",
   "gState0PartMessages_083C6F68": "0x083C6F68",
   "gSetupCompressed_085FB6A4": "0x085FB6A4",
-  "sub_08051CB8": {
-    "address": "0x08051CB8",
-    "kind": "thumb_function"
-  },
   "gObjectFactorBytes_083D2A40": "0x083D2A40",
   "gObjectRowBytes_083D2A43": "0x083D2A43",
   "gObjectCellBytes_0847E40C": "0x0847E40C",
@@ -399,10 +371,6 @@
   "gNavigationHalfwordPointers_083D6268": "0x083D6268",
   "gNavigationBytePointers_083D6274": "0x083D6274",
   "gNavigationNestedBytePointers_083D62C8": "0x083D62C8",
-  "sub_08059960": {
-    "address": "0x08059961",
-    "kind": "thumb_function"
-  },
   "gNumericTiles_080ACCF4": "0x080ACCF4",
   "gMainContextPointer_03006F74": "0x03006F74",
   "gMainFlag_03005030": "0x03005030",
@@ -918,10 +886,6 @@
   "gUnknown_083C4B90": "0x083C4B90",
   "gUnknown_084E09A0": "0x084E09A0",
   "gUnknown_08510338": "0x08510338",
-  "sub_080697B4": {
-    "address": "0x080697B5",
-    "kind": "thumb_function"
-  },
   "gUnknown_087C60B0": "0x087C60B0",
   "gUnknown_087C613C": "0x087C613C",
   "gUnknown_087C61D0": "0x087C61D0",
@@ -2947,10 +2911,6 @@
   "gUnknown_08799F20": "0x08799F20",
   "gUnknown_0202F840": "0x0202F840",
   "gUnknown_0202F860": "0x0202F860",
-  "sub_080465B8": {
-    "address": "0x080465B9",
-    "kind": "thumb_function"
-  },
   "gUnknown_083AF600": "0x083AF600",
   "gUnknown_083D5F70": "0x083D5F70",
   "gUnknown_0847E76C": "0x0847E76C",
@@ -3001,18 +2961,6 @@
   "gUnknown_083AF5C0": "0x083AF5C0",
   "gUnknown_083AF850": "0x083AF850",
   "gUnknown_083B29EC": "0x083B29EC",
-  "sub_08064EB4": {
-    "address": "0x8064eb5",
-    "kind": "thumb_function"
-  },
-  "sub_08020B4C": {
-    "address": "0x8020b4d",
-    "kind": "thumb_function"
-  },
-  "sub_08072080": {
-    "address": "0x08072081",
-    "kind": "thumb_function"
-  },
   "gUnknown_087A56EC": "0x087A56EC",
   "gUnknown_02020000": "0x02020000",
   "gUnknown_087883F4": "0x087883F4",

@@ -1,10 +1,10 @@
-"""List uncovered code-region intervals and push-starts in a ROM range.
+"""List unmatched code-region intervals (copied gaps and NONMATCH functions) and push-starts in a ROM range.
 
     python tools/remaining_intervals.py 0x5C000 0x69000
 """
 import json,struct,sys
 lo,hi=(int(x,0)&0xFFFFFF for x in sys.argv[1:3])
-c=json.load(open('config/segments.json')); rom=open('baserom.gba','rb').read()
+c=[s for s in json.load(open('config/segments.json')) if not s.get('nonmatching')]; rom=open('baserom.gba','rb').read()
 iv=sorted((int(s['start'],16),int(s['end'],16)) for s in c); p=0; gaps=[]
 for a,b in iv:
     if a>p: gaps.append((p,a))
