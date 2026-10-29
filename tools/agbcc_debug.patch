@@ -1,0 +1,98 @@
+--- a/gcc/local-alloc.c
++++ b/gcc/local-alloc.c
+@@ -60,6 +60,7 @@
+    here if their preferred class is likely to be used by spills.  */
+ 
+ #include "config.h"
++#include <stdlib.h>
+ #include "system.h"
+ #include "rtl.h"
+ #include "flags.h"
+@@ -1414,6 +1415,23 @@
+ 	for (i = qty_first_reg[q]; i >= 0; i = reg_next_in_qty[i])
+ 	  reg_renumber[i] = qty_phys_reg[q] + reg_offset[i];
+       }
++  if (getenv ("AGBDBG"))
++    {
++      fprintf (stderr, "LOCAL block %d: %d qtys\n", b, next_qty);
++      for (i = 0; i < next_qty; i++)
++	{
++	  int r;
++	  q = qty_order[i];
++	  fprintf (stderr, "  ord %d qty %d -> hr %d pri %d sugg %d/%d calls %d refs %d birth %d death %d regs:",
++		   i, q, qty_phys_reg[q],
++		   (int) (((double) (floor_log2 (qty_n_refs[q]) * qty_n_refs[q] * qty_size[q]) / (qty_death[q] - qty_birth[q])) * 10000),
++		   qty_phys_num_sugg[q], qty_phys_num_copy_sugg[q], qty_n_calls_crossed[q],
++		   qty_n_refs[q], qty_birth[q], qty_death[q]);
++	  for (r = qty_first_reg[q]; r >= 0; r = reg_next_in_qty[r])
++	    fprintf (stderr, " %d", r);
++	  fprintf (stderr, "\n");
++	}
++    }
+ }
+ 
+ /* Compare two quantities' priority for getting real registers.
+--- a/gcc/reload1.c
++++ b/gcc/reload1.c
+@@ -20,6 +20,7 @@
+ 
+ 
+ #include "config.h"
++#include <stdlib.h>
+ #include "system.h"
+ 
+ #include "machmode.h"
+@@ -5194,6 +5195,13 @@
+ 	       && ! HARD_REGNO_MODE_OK (regno, GET_MODE (reload_out[r]))))
+ 	  {
+ 	    /* The reg is OK.  */
++	    if (getenv ("AGBDBG"))
++	      {
++		int k;
++		fprintf (stderr, "RELOAD insn %d r%d -> hr %d (idx %d prev %d) spills:", INSN_UID (insn), r, spill_regs[i], i, last_spill_reg);
++		for (k = 0; k < n_spills; k++) fprintf (stderr, " %d", spill_regs[k]);
++		fprintf (stderr, "\n");
++	      }
+ 	    last_spill_reg = i;
+ 
+ 	    /* Mark as in use for this insn the reload regs we use
+@@ -6150,6 +6158,16 @@
+   rtx other_output_reload_insns[MAX_RECOG_OPERANDS];
+   rtx following_insn = NEXT_INSN (insn);
+   rtx before_insn = PREV_INSN (insn);
++  if (getenv ("AGBDBG"))
++    {
++      int k;
++      for (k = 0; k < n_reloads; k++)
++	fprintf (stderr, "EMIT insn %d r%d reg %d in %s out %s inh %d\n", INSN_UID (insn), k,
++		 reload_reg_rtx[k] ? (int) REGNO (reload_reg_rtx[k]) : -1,
++		 reload_in[k] ? GET_RTX_NAME (GET_CODE (reload_in[k])) : "-",
++		 reload_out[k] ? GET_RTX_NAME (GET_CODE (reload_out[k])) : "-",
++		 reload_inherited[k]);
++    }
+   int special;
+   /* Values to be put in spill_reg_store are put here first.  */
+   rtx new_spill_reg_store[FIRST_PSEUDO_REGISTER];
+--- a/gcc/combine.c
++++ b/gcc/combine.c
+@@ -75,6 +75,7 @@
+    combine anyway.  */
+ 
+ #include "config.h"
++#include <stdlib.h>
+ #include "system.h"
+ #include "rtl.h" /* stdio.h must precede rtl.h for FFS.  */
+ #include "flags.h"
+@@ -2630,6 +2631,12 @@
+   }
+ 
+   combine_successes++;
++  if (getenv ("AGBDBG"))
++    {
++      fprintf (stderr, "COMBINE i3 %d i2 %d i1 %d: ", INSN_UID (i3), i2 ? INSN_UID (i2) : -1, i1 ? INSN_UID (i1) : -1);
++      print_inline_rtx (stderr, newpat, 0);
++      fprintf (stderr, "\n");
++    }
+ 
+   /* Clear this here, so that subsequent get_last_value calls are not
+      affected.  */

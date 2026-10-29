@@ -1,0 +1,14 @@
+{
+  "source": "src/callback_dispatch.c",
+  "segments": [
+    {"name": "dispatch_state0", "start": "0x2534", "end": "0x2554", "input_section": ".text.sub_08002534"},
+    {"name": "dispatch_state1", "start": "0x4763C", "end": "0x4765C", "input_section": ".text.sub_0804763C"},
+    {"name": "dispatch_state3", "start": "0x68440", "end": "0x68460", "input_section": ".text.sub_08068440"}
+  ],
+  "symbols": {
+    "gMainSubstate": "0x03002B8C",
+    "gMainState0Callbacks": "0x083AC2C8",
+    "gMainState1Callbacks": "0x083D2104",
+    "gMainState3Callbacks": "0x084856E8"
+  }
+}

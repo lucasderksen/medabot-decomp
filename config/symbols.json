@@ -1,0 +1,3020 @@
+{
+  "gVBlankFlags": "0x03002B90",
+  "gGraphicsTransferCounter": "0x03001800",
+  "gVBlankMissedFrames": "0x03002410",
+  "gBgScrollFlags": "0x03000434",
+  "gBgScrollBase": "0x03002C2C",
+  "gBgScroll0": "0x03005000",
+  "gBgScroll1": "0x03004C30",
+  "gBgScroll2": "0x0300057C",
+  "gBgScroll3": "0x03001C04",
+  "gRenderMode": "0x03000430",
+  "gRenderWork": "0x03002414",
+  "gIntrTable": "0x03000BA0",
+  "gIntrMainBuffer": "0x03001C10",
+  "gHeldKeys": "0x03002B64",
+  "gPreviousKeys": "0x03001790",
+  "gNewKeys": "0x0300058C",
+  "gReleasedKeys": "0x03001C00",
+  "gRepeatedKeys": "0x03001798",
+  "gKeyRepeatCounter": "0x03002418",
+  "gUnknown_03000440": "0x03000440",
+  "gMainState": "0x0300178C",
+  "gFrameCounter": "0x03001780",
+  "gSerialState": "0x03005170",
+  "gSerialIrqCode": "0x03005050",
+  "sub_08001520": {
+    "address": "0x08001521",
+    "kind": "thumb_function"
+  },
+  "gOamShadow": "0x03001380",
+  "gMainSerialWork": "0x03005010",
+  "gUnknownCallback_03000B98": "0x03000B98",
+  "gUnknownCallback_030017F0": "0x030017F0",
+  "gUnknownCallback_03002C20": "0x03002C20",
+  "gAudioData_080B012C": "0x080B012C",
+  "gAudioData_080B0860": "0x080B0860",
+  "gAudioData_080B18FC": "0x080B18FC",
+  "gAudioData_080B16E4": "0x080B16E4",
+  "gAudioData_080B188C": "0x080B188C",
+  "gEepromConfig": "0x03007018",
+  "gEepromTimerNumber": "0x030003F4",
+  "gEepromCountdown": "0x030003F6",
+  "gEepromTimedOut": "0x030003F8",
+  "gEepromTimerRegs": "0x030003FC",
+  "gEepromSavedIme": "0x03000400",
+  "gMainSubstate": "0x03002B8C",
+  "gMainState1Callbacks": "0x083D2104",
+  "gTilemapEntryOffset": "0x03000580",
+  "gRandomCounter": "0x03005034",
+  "gRandomValue": "0x03005038",
+  "gRandomState": "0x0300503C",
+  "gFrameObjects": "0x03002C30",
+  "gFrameAffineOverride": "0x03005048",
+  "gLibgccNanDouble": "0x03000408",
+  "gLibgccNanSingle": "0x03000420",
+  "gUnknown_0300137C": "0x0300137C",
+  "gUnknown_03002B70": "0x03002B70",
+  "gUnknownPointers_083B5578": "0x083B5578",
+  "gUnknownPointers_083B4C60": "0x083B4C60",
+  "gUnknown_03000588": "0x03000588",
+  "gUnknownPalette_0850F2B8": "0x0850F2B8",
+  "gUnknown_0300047C": "0x300047c",
+  "gUnknownRecords_030017A0": "0x030017A0",
+  "gState0TypedWork": "0x03000440",
+  "gState0TransferWork": "0x03001800",
+  "gMainSerialOutgoingWork": "0x03005010",
+  "gUnknown_03000B90": "0x03000B90",
+  "gTransferSendBuffers": "0x03000590",
+  "gTransferReceiveBuffers": "0x03000890",
+  "gUnknownPointers_083B6590": "0x083B6590",
+  "gUnknown_0300049E": "0x300049e",
+  "gUnknown_0300052E": "0x300052e",
+  "gUnknown_03000BAA": "0x3000baa",
+  "gUnknownBytes_084C29D8": "0x84c29d8",
+  "gUnknownBytes_084C38D8": "0x84c38d8",
+  "gRecordDisplayWork": "0x2026000",
+  "gRecordDisplayData": "0x20260d0",
+  "gRecordDisplayExtra": "0x20268d0",
+  "gRecordDisplayExtraPointer": "0x3005308",
+  "gUnknownBytes_083D1D78": "0x83d1d78",
+  "gUnknown_03001798": "0x3001798",
+  "gUnknown_0300058C": "0x300058c",
+  "gInventoryRecords": "0x03000BE0",
+  "gInventoryNames": "0x03000BEA",
+  "gInventoryMetadata_083B62D8": "0x083B62D8",
+  "gObjectParameterWork": "0x03000468",
+  "gObjectCallbacks_083B2994": "0x083B2994",
+  "gObjectCallbacks_083B29CC": "0x083B29CC",
+  "gObjectCallbacks_083B29E4": "0x083B29E4",
+  "sub_08040B50": {
+    "address": "0x08040B50",
+    "kind": "thumb_function"
+  },
+  "gObjectHalfwordBytes": "0x03004C40",
+  "gUnknownBytes_08487388": "0x8487388",
+  "gUnknownBytes_08487408": "0x8487408",
+  "gUnknownBytes_084C88B8": "0x84c88b8",
+  "gUnknownBytes_0848816C": "0x848816c",
+  "gUnknownBytes_084881B4": "0x84881b4",
+  "gUnknownWords_084E43F8": "0x084E43F8",
+  "gPartNameTextBase": "0x83ba838",
+  "gUnknownBytes_083B83FC": "0x083B83FC",
+  "gUnknownSines_083D6A2C": "0x083D6A2C",
+  "gUnknownSines_083D6C2C": "0x083D6C2C",
+  "gObjectSortEntries": "0x02023000",
+  "gObjectFourthKey": "0x02023018",
+  "gObjectCountPairs": "0x03002BA0",
+  "gUnknownBytes_083BEB94": "0x083BEB94",
+  "gUnknown_03000590": "0x03000590",
+  "gState0NextRow_083AC5E8": "0x083AC5E8",
+  "gTransferSelectedSlots": "0x03001841",
+  "gUnknownPalette_0850F2F8": "0x0850F2F8",
+  "sub_08000840": {
+    "address": "0x8000841",
+    "kind": "thumb_function"
+  },
+  "gUnknownBytes_083B2AEC": "0x083B2AEC",
+  "gUnknownPalette_0850F3D8": "0x0850F3D8",
+  "gUnknownBytes_083B2AF0": "0x083B2AF0",
+  "gUnknown_030057E0": "0x030057E0",
+  "gUnknown_03000BE0": "0x03000BE0",
+  "gEquipmentAssets_083B2578": "0x083B2578",
+  "gEquipmentAssets_083B2628": "0x083B2628",
+  "gEquipmentPaletteShadow": "0x0202FA00",
+  "gEquipmentTable_083C3CDC": "0x083C3CDC",
+  "gEquipmentWidths_083C4238": "0x083C4238",
+  "gEquipmentFrames_083C4243": "0x083C4243",
+  "gEquipmentTiles_02027000": "0x02027000",
+  "gUnknownPalette_0850F358": "0x0850F358",
+  "gUnknownPointers_083B7D80": "0x083B7D80",
+  "gUnknownWords_083C6F78": "0x083C6F78",
+  "gUnknown_03000490": "0x3000490",
+  "gUnknown_03000430": "0x3000430",
+  "gUnknownPointer_03002414": "0x3002414",
+  "gUnknownPointer_03005308": "0x3005308",
+  "gUnknown_02026000": "0x2026000",
+  "gUnknown_020260D0": "0x20260d0",
+  "gUnknown_020268F0": "0x20268f0",
+  "gUnknown_02024000": "0x2024000",
+  "gEquipmentWork": "0x030057E0",
+  "gEquipmentTable_083BEC10": "0x083BEC10",
+  "gEquipmentScanlineA": "0x02023C00",
+  "gEquipmentScanlineB": "0x02023200",
+  "gUnknownPointers_083B83DC": "0x083B83DC",
+  "gUnknownMask_03002B68": "0x03002B68",
+  "gUnknownPointers_083AC614": "0x083AC614",
+  "gUnknown_03005290": "0x3005290",
+  "gUnknown_030052B0": "0x30052b0",
+  "gUnknown_030052D0": "0x30052d0",
+  "gUnknown_030052F0": "0x30052f0",
+  "gUnknownPointers_083B66EC": "0x083B66EC",
+  "gUnknownPointers_083B7048": "0x083B7048",
+  "gUnknownBytes_083B7F8C": "0x083B7F8C",
+  "gUnknownBytes_083B7E54": "0x083B7E54",
+  "gUnknownPointers_083B74B8": "0x083B74B8",
+  "sub_0804538C": {
+    "address": "0x0804538C",
+    "kind": "thumb_function"
+  },
+  "gUnknownAffine_080ABD5C": "0x080ABD5C",
+  "gUnknownPointers_083B803C": "0x083B803C",
+  "gLaterBuffer_03005310": "0x03005310",
+  "gLaterBuffer_030057A0": "0x030057A0",
+  "gLaterBuffer_03006D14": "0x03006D14",
+  "gLaterBuffer_030057DC": "0x030057DC",
+  "gLaterBuffer_0300534C": "0x0300534C",
+  "gLaterBuffer_030055A0": "0x030055A0",
+  "gLaterBuffer_03006D40": "0x03006D40",
+  "gLaterBuffer_03006F40": "0x03006F40",
+  "gLaterBuffer_03006D38": "0x03006D38",
+  "gLaterBuffer_03006D20": "0x03006D20",
+  "gLaterBuffer_030057D8": "0x030057D8",
+  "gLaterBuffer_03005590": "0x03005590",
+  "gLaterBuffer_03005350": "0x03005350",
+  "gLaterBuffer_03006D30": "0x03006D30",
+  "gLaterBuffer_030064A0": "0x030064A0",
+  "gState0Page": "0x0300047F",
+  "gState0CursorCoordinates_083ACA2C": "0x083ACA2C",
+  "gState0ConfirmCallbacks_083ACA4C": "0x083ACA4C",
+  "gState0FrameBackup": "0x02020800",
+  "gDebugMenuCallbacks_083ACA5C": "0x083ACA5C",
+  "gDebugMenuPages_083ACA80": "0x083ACA80",
+  "gDebugMenuValues_083ACAC0": "0x083ACAC0",
+  "gDebugMenuCategoryText_083ACBA0": "0x083ACBA0",
+  "gLaterCommands_0807EE70": "0x0807EE70",
+  "gLaterCommands_0807F610": "0x0807F610",
+  "gLaterCommands_0807FDB0": "0x0807FDB0",
+  "gLaterCommands_08080550": "0x08080550",
+  "sub_08045E6C": {
+    "address": "0x08045E6D",
+    "kind": "thumb_function"
+  },
+  "gDebugMenuTextBuffer": "0x030004DE",
+  "gDebugProcessLabels_083ACBE4": "0x083ACBE4",
+  "gDebugMenuProcessCallbacks_083ACACC": "0x083ACACC",
+  "gDebugProcessStateByte": "0x03000475",
+  "gDebugTinpetLabels_083ACC40": "0x083ACC40",
+  "gDebugRandomLabels_083ACCA0": "0x083ACCA0",
+  "gDebugBattleLabels_083ACCAC": "0x083ACCAC",
+  "gDebugMotionLabels_083ACCD0": "0x083ACCD0",
+  "gDebugMedalLabels_083ACC08": "0x083ACC08",
+  "gDebugProcessCallbackByte": "0x03000477",
+  "gDebugMedalWork_03000BEA": "0x03000BEA",
+  "gDebugMedalMetadata_083B6590": "0x083B6590",
+  "gDebugPartLabels_083ACC2C": "0x083ACC2C",
+  "gDebugItemLabels_083ACC5C": "0x083ACC5C",
+  "gDebugFaceLabels_083ACC78": "0x083ACC78",
+  "gDebugSoundLabels_083ACCC0": "0x083ACCC0",
+  "gState0NextCallbacks_083ACCD4": "0x083ACCD4",
+  "gState0NextText_083B4C60": "0x083B4C60",
+  "gPostDispatchPointers_083BA658": "0x083BA658",
+  "gPostDispatchWord_03002B70": "0x03002B70",
+  "gFreshWork_030064A0": "0x030064A0",
+  "gFreshPointers_08483ED8": "0x08483ED8",
+  "gPostDispatchTextBuffers_080ABD6C": "0x080ABD6C",
+  "gFreshSettings_03005310": "0x03005310",
+  "gFreshPointers_083F7E80": "0x083F7E80",
+  "sub_080513C8": {
+    "address": "0x080513C8",
+    "kind": "thumb_function"
+  },
+  "sub_08052784": {
+    "address": "0x08052784",
+    "kind": "thumb_function"
+  },
+  "gState0NextScripts_083BE564": "0x83be564",
+  "gState0NextScripts_083BEAAC": "0x83beaac",
+  "gState0NextCommands_083B6100": "0x083B6100",
+  "gFreshPointers_08409480": "0x08409480",
+  "gFreshPointer_030057DC": "0x030057DC",
+  "gFreshBytes_083D2B26": "0x083D2B26",
+  "gFreshPointers_08413EE0": "0x08413EE0",
+  "gFreshWork_03006D38": "0x03006D38",
+  "gFreshBytes_0847E644": "0x0847E644",
+  "gFrameByteMetrics": "0x083B4E08",
+  "gPaletteSelectorTables_08413160": "0x08413160",
+  "gPaletteSourcePointers_083F83C0": "0x083F83C0",
+  "gFramePriorityLookup_083D2C5D": "0x083D2C5D",
+  "gBackgroundState_03005310": "0x03005310",
+  "gBlendSetupWork_03006F40": "0x03006F40",
+  "gSelectorLookup_083D2B6B": "0x083D2B6B",
+  "gPartTypeNames_083BEAFC": "0x083BEAFC",
+  "gAffineSineTable_080AE8F4": "0x080AE8F4",
+  "gLaterMatrices_03006D40": "0x03006D40",
+  "gRandomBytes_083F7D80": "0x083F7D80",
+  "gContinuedBlendWork_03006F40": "0x03006F40",
+  "sub_0804842C": {
+    "address": "0x0804842D",
+    "kind": "thumb_function"
+  },
+  "gContinuedWork_030057E0": "0x030057E0",
+  "gContinuedOtherWork_030057A0": "0x030057A0",
+  "gContinuedScripts_08411AE0": "0x08411AE0",
+  "gFrameCallbacks_083D212C": "0x083D212C",
+  "gContinuedSettings_03005310": "0x03005310",
+  "gSetupBuffer_03000590": "0x03000590",
+  "gSetupPointer_03005590": "0x03005590",
+  "gSetupPointer_030057D8": "0x030057D8",
+  "gSetupPointer_03006D30": "0x03006D30",
+  "gSetupPointer_03006D14": "0x03006D14",
+  "gSetupPointer_030057DC": "0x030057DC",
+  "gSetupCoordinate_03006428": "0x03006428",
+  "gSetupData_08765EC0": "0x08765EC0",
+  "gContinuedMapEntries_08412E60": "0x08412E60",
+  "gContinuedRecordBuffer_030063F0": "0x030063F0",
+  "gContinuedByte_03002B64": "0x03002B64",
+  "gContinuedLookup_083D2A30": "0x083D2A30",
+  "gContinuedLookup_083D262C": "0x083D262C",
+  "gContinuedCommandWork_030064A0": "0x030064A0",
+  "gContinuedArguments_03006474": "0x03006474",
+  "gActionPaletteSelector_083D2B18": "0x083D2B18",
+  "gState0MapImage_084C7F08": "0x084C7F08",
+  "gState0MapPalette_084C8014": "0x084C8014",
+  "gQuantityResult_030017EC": "0x030017EC",
+  "gState0MapCallbacks_083ACE24": "0x083ACE24",
+  "gFrameByteLookup_083D2A88": "0x083D2A88",
+  "gScrollOscillationSines_083D6A2C": {
+    "address": "0x083D6A2C"
+  },
+  "gSetupByteLookup_083D2B66": {
+    "address": "0x083D2B66"
+  },
+  "gObjectAuxiliaryLookup_083D2D0D": {
+    "address": "0x083D2D0D"
+  },
+  "gState0MapTimers_03002B84": "0x03002B84",
+  "gState0PartMessages_083C6F68": "0x083C6F68",
+  "gSetupCompressed_085FB6A4": "0x085FB6A4",
+  "sub_08051CB8": {
+    "address": "0x08051CB8",
+    "kind": "thumb_function"
+  },
+  "gObjectFactorBytes_083D2A40": "0x083D2A40",
+  "gObjectRowBytes_083D2A43": "0x083D2A43",
+  "gObjectCellBytes_0847E40C": "0x0847E40C",
+  "gSelectionRecords_03005DBC": "0x03005DBC",
+  "gCellDirectionTables_0840F880": "0x0840F880",
+  "gLaterBuffer_03003810": "0x03003810",
+  "gState0EquipmentChoices_083BF210": "0x083BF210",
+  "gState0EncounterRecords_083C1B80": "0x083C1B80",
+  "gState0EncounterLabels_083C40B8": "0x083C40B8",
+  "gState0MapPartLabels_083BEB68": "0x083BEB68",
+  "gState0MapRowPositions_083AD064": "0x083AD064",
+  "gState0ScrollControls_083C3C84": "0x083C3C84",
+  "gSceneEightByteRows_083D2A98": "0x083D2A98",
+  "gSecondaryFloatTable_083D6F2C": "0x083D6F2C",
+  "gSecondaryFloatTable_083D732C": "0x083D732C",
+  "gState0MapPhaseCallbacks_083AD080": "0x083AD080",
+  "gState0Palette_084E44F8": "0x84e44f8",
+  "gState0Palette_084E45D8": "0x84e45d8",
+  "gState0Palette_084E44D8": "0x84e44d8",
+  "gState0Palette_084E4518": "0x084E4518",
+  "gUnknownCallbacks_083D5FF4": "0x083D5FF4",
+  "gUnknownBytes_085FB6E4": "0x085FB6E4",
+  "gUnknownBytes_085FBB78": "0x085FBB78",
+  "gUnknownBytes_085FBA78": "0x085FBA78",
+  "gUnknownBytes_085FBBC0": "0x085FBBC0",
+  "gUnknownBytes_085FBC00": "0x085FBC00",
+  "gUnknownBytes_085FBC88": "0x085FBC88",
+  "gUnknownBytes_085FBD14": "0x085FBD14",
+  "gUnknownBytes_085FBD9C": "0x085FBD9C",
+  "gUnknownBytes_085FBE1C": "0x085FBE1C",
+  "gUnknownBytes_085FBEA4": "0x085FBEA4",
+  "gUnknownBytes_085FBF30": "0x085FBF30",
+  "gUnknownBytes_085FBFB8": "0x085FBFB8",
+  "gUnknownBytes_085FC038": "0x085FC038",
+  "gUnknownBytes_085FBBE0": "0x085FBBE0",
+  "gUnknownBytes_085FBDFC": "0x085FBDFC",
+  "gUnknownBytes_084C7F34": "0x084C7F34",
+  "gUnknownHalfwords_083D611C": "0x083D611C",
+  "gUnknownBytes_084C22E8": "0x084C22E8",
+  "gUnknownBytes_083D6118": "0x083D6118",
+  "gCopiedBytes_080AC604": "0x080AC604",
+  "gCopiedBytes_080AC608": "0x080AC608",
+  "gCopiedBytes_080AC60C": "0x080AC60C",
+  "gCopiedBytes_080AC610": "0x080AC610",
+  "gCopiedBytes_080AC614": "0x080AC614",
+  "gCopiedBytes_080AC618": "0x080AC618",
+  "gCopiedBytes_080AC61C": "0x080AC61C",
+  "gCopiedBytes_080AC620": "0x080AC620",
+  "gCopiedBytes_080AC624": "0x080AC624",
+  "gCopiedBytes_080AC628": "0x080AC628",
+  "gCopiedBytes_080AC62C": "0x080AC62C",
+  "gCopiedBytes_080AC630": "0x080AC630",
+  "gCopiedBytes_080AC634": "0x080AC634",
+  "gCopiedBytes_080AC638": "0x080AC638",
+  "gCopiedBytes_080AC63C": "0x080AC63C",
+  "gCopiedBytes_080AC640": "0x080AC640",
+  "gCopiedBytes_080AC644": "0x080AC644",
+  "gCopiedBytes_080AC648": "0x080AC648",
+  "gCopiedBytes_080AC64C": "0x080AC64C",
+  "gCopiedBytes_080AC650": "0x080AC650",
+  "gCopiedBytes_080AC654": "0x080AC654",
+  "gCopiedBytes_080AC658": "0x080AC658",
+  "gCopiedBytes_080AC65C": "0x080AC65C",
+  "gCopiedBytes_080AC660": "0x080AC660",
+  "gCopiedBytes_080AC664": "0x080AC664",
+  "gCopiedBytes_080AC668": "0x080AC668",
+  "gCopiedBytes_080AC66C": "0x080AC66C",
+  "gCopiedBytes_080AC670": "0x080AC670",
+  "gCopiedBytes_080AC678": "0x080AC678",
+  "gCopiedBytes_080AC67C": "0x080AC67C",
+  "gCopiedBytes_080AC680": "0x080AC680",
+  "gCopiedBytes_080AC684": "0x080AC684",
+  "gCopiedBytes_080AC688": "0x080AC688",
+  "gCopiedBytes_080AC690": "0x080AC690",
+  "gCopiedBytes_080AC694": "0x080AC694",
+  "gCopiedBytes_080AC698": "0x080AC698",
+  "gCopiedBytes_080AC6A4": "0x080AC6A4",
+  "gCopiedBytes_080AC6A8": "0x080AC6A8",
+  "gCopiedBytes_080AC6AC": "0x080AC6AC",
+  "gCopiedBytes_080AC6B0": "0x080AC6B0",
+  "gCopiedBytes_080AC6B4": "0x080AC6B4",
+  "gCopiedBytes_080AC6B8": "0x080AC6B8",
+  "gCopiedBytes_080AC6BC": "0x080AC6BC",
+  "gCopiedBytes_080AC6C0": "0x080AC6C0",
+  "gCopiedBytes_080AC6C4": "0x080AC6C4",
+  "gCopiedBytes_080AC6C8": "0x080AC6C8",
+  "gCopiedBytes_080AC6CC": "0x080AC6CC",
+  "gCopiedBytes_080AC6D0": "0x080AC6D0",
+  "gCopiedBytes_080AC6D4": "0x080AC6D4",
+  "gCopiedBytes_080AC6D8": "0x080AC6D8",
+  "gCopiedBytes_080AC6DC": "0x080AC6DC",
+  "gCopiedBytes_080AC6E4": "0x080AC6E4",
+  "gCopiedBytes_080AC6E8": "0x080AC6E8",
+  "gCopiedBytes_080AC6F0": "0x080AC6F0",
+  "gCopiedBytes_080AC6F4": "0x080AC6F4",
+  "gCopiedBytes_080AC6F8": "0x080AC6F8",
+  "gCopiedBytes_080AC6FC": "0x080AC6FC",
+  "gCopiedBytes_080AC700": "0x080AC700",
+  "gCopiedBytes_080AC704": "0x080AC704",
+  "gCopiedBytes_080AC708": "0x080AC708",
+  "gCopiedBytes_080AC70C": "0x080AC70C",
+  "gCopiedBytes_080AC710": "0x080AC710",
+  "gCopiedBytes_080AC714": "0x080AC714",
+  "gCopiedBytes_080AC718": "0x080AC718",
+  "gNavigationHalfwordPointers_083D625C": "0x083D625C",
+  "gCopiedBytes_083D2DBD": "0x083D2DBD",
+  "gNavigationHalfwordPointers_083D6268": "0x083D6268",
+  "gNavigationBytePointers_083D6274": "0x083D6274",
+  "gNavigationNestedBytePointers_083D62C8": "0x083D62C8",
+  "sub_08059960": {
+    "address": "0x08059961",
+    "kind": "thumb_function"
+  },
+  "gNumericTiles_080ACCF4": "0x080ACCF4",
+  "gMainContextPointer_03006F74": "0x03006F74",
+  "gMainFlag_03005030": "0x03005030",
+  "gMain2Callbacks_08483594": "0x08483594",
+  "gMain2Subcallbacks_0848360C": "0x0848360C",
+  "gFrameStepBytes_083AD533": "0x083AD533",
+  "gMain2Map_08790DA8": "0x8790da8",
+  "gMain2Map_08790F78": "0x8790f78",
+  "gMain2Map_087911BC": "0x87911bc",
+  "gMain2Map_0879131C": "0x879131c",
+  "gMain2Tiles_0878F7E8": "0x878f7e8",
+  "gMain2ObjectTiles_08785FB4": "0x8785fb4",
+  "gMain2Palette_0878F5E8": "0x878f5e8",
+  "gBlendStepWords_080AF868": "0x080AF868",
+  "gMainByte_03001788": "0x3001788",
+  "gMainByte_03001360": "0x3001360",
+  "gMainByte_03000B94": "0x3000b94",
+  "gMain2SoundChoices_080AF8CA": "0x80af8ca",
+  "gMainFlagsWord_03001784": "0x3001784",
+  "gUnknown_03002B74": "0x03002B74",
+  "gState0PriorityTable_083AD470": "0x083AD470",
+  "gState0ChoiceWeights_083AF080": "0x083AF080",
+  "gState0ActionCallbackWords_083AF090": "0x083AF090",
+  "gTransferByte_03001860": "0x03001860",
+  "gActionBytePointers_083C6CA8": "0x083C6CA8",
+  "gMain2LocalCallbackWords_080AF920": "0x080AF920",
+  "gMain2LocalMessage_080AF8CD": "0x080AF8CD",
+  "gActionTransferBuffer_03003470": "0x03003470",
+  "gActionParameterLengths_083C6EB8": "0x083C6EB8",
+  "gMain2FrameChoices_080AF958": "0x080AF958",
+  "gActionRandomBytes_083AF380": {
+    "address": "0x083AF380"
+  },
+  "gMain2StatsMap_0878F004": "0x0878F004",
+  "gMain2StatsMap_0878F1D4": "0x0878F1D4",
+  "gMain2StatsMap_0878F2F8": "0x0878F2F8",
+  "gMain2StatsTiles_0878DE74": "0x0878DE74",
+  "gMain2AdditionalTiles_08785EC0": "0x8785ec0",
+  "gMain2Map_0878D694": "0x878d694",
+  "gMain2Map_0878D7C4": "0x878d7c4",
+  "gMain2Map_0878D960": "0x878d960",
+  "gMain2Tiles_0878C288": "0x878c288",
+  "gMain2SharedObjectTiles_084C8034": "0x84c8034",
+  "gActionDispatchCallbacks_083AE580": {
+    "address": "0x83ae580"
+  },
+  "gActionDispatchCallbacks_083AE5C0": {
+    "address": "0x83ae5c0"
+  },
+  "gActionDispatchCallbacks_083AE600": {
+    "address": "0x83ae600"
+  },
+  "gActionDispatchCallbacks_083AE640": {
+    "address": "0x83ae640"
+  },
+  "gActionDispatchCallbacks_083AE680": {
+    "address": "0x83ae680"
+  },
+  "gActionDispatchCallbacks_083AE6C0": {
+    "address": "0x83ae6c0"
+  },
+  "gActionDispatchCallbacks_083AE700": {
+    "address": "0x83ae700"
+  },
+  "gActionDispatchCallbacks_083AE740": {
+    "address": "0x83ae740"
+  },
+  "gActionDispatchCallbacks_083AE780": {
+    "address": "0x83ae780"
+  },
+  "gActionDispatchCallbacks_083AE7C0": {
+    "address": "0x83ae7c0"
+  },
+  "gActionDispatchCallbacks_083AE800": {
+    "address": "0x83ae800"
+  },
+  "gActionDispatchCallbacks_083AE840": {
+    "address": "0x83ae840"
+  },
+  "gActionDispatchCallbacks_083AE880": {
+    "address": "0x83ae880"
+  },
+  "gActionDispatchCallbacks_083AE8D0": {
+    "address": "0x83ae8d0"
+  },
+  "gActionDispatchCallbacks_083AE910": {
+    "address": "0x83ae910"
+  },
+  "gActionDispatchCallbacks_083AE954": {
+    "address": "0x83ae954"
+  },
+  "gActionDispatchCallbacks_083AE994": {
+    "address": "0x83ae994"
+  },
+  "gActionDispatchCallbacks_083AE9D4": {
+    "address": "0x83ae9d4"
+  },
+  "gActionDispatchCallbacks_083AEA30": {
+    "address": "0x83aea30"
+  },
+  "gActionDispatchCallbacks_083AEA88": {
+    "address": "0x83aea88"
+  },
+  "gActionDispatchCallbacks_083AEB1C": {
+    "address": "0x83aeb1c"
+  },
+  "gActionDispatchCallbacks_083AEB88": {
+    "address": "0x83aeb88"
+  },
+  "gActionDispatchCallbacks_083AEBC4": {
+    "address": "0x83aebc4"
+  },
+  "gActionDispatchCallbacks_083AEC04": {
+    "address": "0x83aec04"
+  },
+  "gActionDispatchCallbacks_083AEC58": {
+    "address": "0x83aec58"
+  },
+  "gActionDispatchCallbacks_083AEC98": {
+    "address": "0x83aec98"
+  },
+  "gMain2SaveSignature_084836C5": "0x084836C5",
+  "gActionDispatchCallbacks_083AD5CC": {
+    "address": "0x83ad5cc"
+  },
+  "gActionDispatchCallbacks_083AD68C": {
+    "address": "0x83ad68c"
+  },
+  "gActionDispatchCallbacks_083AD6B0": {
+    "address": "0x83ad6b0"
+  },
+  "gActionDispatchCallbacks_083AD6D0": {
+    "address": "0x83ad6d0"
+  },
+  "gActionDispatchCallbacks_083AD6F0": {
+    "address": "0x83ad6f0"
+  },
+  "gActionDispatchCallbacks_083AD730": {
+    "address": "0x83ad730"
+  },
+  "gActionDispatchCallbacks_083AD750": {
+    "address": "0x83ad750"
+  },
+  "gActionDispatchCallbacks_083AD790": {
+    "address": "0x83ad790"
+  },
+  "gActionDispatchCallbacks_083AD8D0": {
+    "address": "0x83ad8d0"
+  },
+  "gActionDispatchCallbacks_083AD914": {
+    "address": "0x83ad914"
+  },
+  "gActionDispatchCallbacks_083AD954": {
+    "address": "0x83ad954"
+  },
+  "gActionDispatchCallbacks_083AD994": {
+    "address": "0x83ad994"
+  },
+  "gActionDispatchCallbacks_083AD9F8": {
+    "address": "0x83ad9f8"
+  },
+  "gActionDispatchCallbacks_083ADA18": {
+    "address": "0x83ada18"
+  },
+  "gActionDispatchCallbacks_083ADA38": {
+    "address": "0x83ada38"
+  },
+  "gActionDispatchCallbacks_083ADA58": {
+    "address": "0x83ada58"
+  },
+  "gActionDispatchCallbacks_083ADABC": {
+    "address": "0x83adabc"
+  },
+  "gActionDispatchCallbacks_083ADADC": {
+    "address": "0x83adadc"
+  },
+  "gActionDispatchCallbacks_083ADB40": {
+    "address": "0x83adb40"
+  },
+  "gActionDispatchCallbacks_083ADBEC": {
+    "address": "0x83adbec"
+  },
+  "gActionDispatchCallbacks_083ADC6C": {
+    "address": "0x83adc6c"
+  },
+  "gActionDispatchCallbacks_083ADCAC": {
+    "address": "0x83adcac"
+  },
+  "gActionDispatchCallbacks_083ADCEC": {
+    "address": "0x83adcec"
+  },
+  "gActionDispatchCallbacks_083ADD2C": {
+    "address": "0x83add2c"
+  },
+  "gActionDispatchCallbacks_083ADD8C": {
+    "address": "0x83add8c"
+  },
+  "gActionDispatchCallbacks_083ADDEC": {
+    "address": "0x83addec"
+  },
+  "gActionDispatchCallbacks_083ADE40": {
+    "address": "0x83ade40"
+  },
+  "gActionDispatchCallbacks_083ADEA0": {
+    "address": "0x83adea0"
+  },
+  "gActionDispatchCallbacks_083ADF00": {
+    "address": "0x83adf00"
+  },
+  "gActionDispatchCallbacks_083ADF60": {
+    "address": "0x83adf60"
+  },
+  "gActionDispatchCallbacks_083ADFE0": {
+    "address": "0x83adfe0"
+  },
+  "gActionDispatchCallbacks_083AE064": {
+    "address": "0x83ae064"
+  },
+  "gActionDispatchCallbacks_083AE0C4": {
+    "address": "0x83ae0c4"
+  },
+  "gActionDispatchCallbacks_083AE124": {
+    "address": "0x83ae124"
+  },
+  "gActionDispatchCallbacks_083AE184": {
+    "address": "0x83ae184"
+  },
+  "gActionDispatchCallbacks_083AE1E4": {
+    "address": "0x83ae1e4"
+  },
+  "gActionDispatchCallbacks_083AE264": {
+    "address": "0x83ae264"
+  },
+  "gActionDispatchCallbacks_083AE280": {
+    "address": "0x83ae280"
+  },
+  "gActionDispatchCallbacks_083AE298": {
+    "address": "0x83ae298"
+  },
+  "gActionDispatchCallbacks_083AE2EC": {
+    "address": "0x83ae2ec"
+  },
+  "gActionDispatchCallbacks_083AE340": {
+    "address": "0x83ae340"
+  },
+  "gActionDispatchCallbacks_083AE3C0": {
+    "address": "0x83ae3c0"
+  },
+  "gActionDispatchCallbacks_083AE480": {
+    "address": "0x83ae480"
+  },
+  "gActionDispatchCallbacks_083AE500": {
+    "address": "0x83ae500"
+  },
+  "gMain2SerializerSignature_084836B4": "0x084836B4",
+  "gMain2FrameChoices_080AF980": "0x080AF980",
+  "gMain2SaveCallbacks_084836D8": "0x084836D8",
+  "gActionKindAsset_084CA61C": "0x084CA61C",
+  "gActionKindAsset_084CA828": "0x084CA828",
+  "gActionKindAsset_084CABC4": "0x084CABC4",
+  "gActionKindAsset_084CAD2C": "0x084CAD2C",
+  "gActionKindPalette_0850F5F8": "0x0850F5F8",
+  "gActionKindPalette_0850F618": "0x0850F618",
+  "gActionKindPalette_0850F638": "0x0850F638",
+  "gActionKindPalette_0850F658": "0x0850F658",
+  "gActionMotionAsset_084CF178": "0x084CF178",
+  "gActionMotionPalette_0850F918": "0x0850F918",
+  "gActionMotionAsset_084CDF48": "0x084CDF48",
+  "gActionMotionPalette_0850F8D8": "0x0850F8D8",
+  "gMain2SaveNamePointers_084836FC": "0x084836FC",
+  "gMain2NameTransfer_08483534": "0x08483534",
+  "gMain2NameTransfer_084E43D8": "0x084E43D8",
+  "gMain2NameTransfer_080AF988": "0x080AF988",
+  "gMain2NameTransfer_0879461C": "0x0879461C",
+  "gActionPalette_084E45D8": "0x084E45D8",
+  "gMain2NameCallbacks_08483700": "0x08483700",
+  "gActionPartnerAsset_084CAE20": "0x84cae20",
+  "gActionPartnerAsset_084CB128": "0x84cb128",
+  "gActionPartnerAsset_084CB43C": "0x84cb43c",
+  "gActionPartnerPalette_0850F698": "0x850f698",
+  "gActionPartnerPalette_0850F6B8": "0x850f6b8",
+  "gActionPartnerPalette_0850F6D8": "0x850f6d8",
+  "gMain2NameMap_08792888": "0x08792888",
+  "gMain2NameMap_087929E8": "0x087929E8",
+  "gMain2NameMap_08792BB8": "0x08792BB8",
+  "gMain2NameTiles_087917F4": "0x087917F4",
+  "gMain2NamePalette_087915F4": "0x087915F4",
+  "gMain2Byte_03007008": "0x03007008",
+  "gMain2SoundTable_080AF9CC": "0x080AF9CC",
+  "gMain2SoundTable_080AFA00": "0x080AFA00",
+  "gUnknown_08488200": "0x08488200",
+  "gUnknown_084881E0": "0x084881E0",
+  "gUnknown_08488240": "0x08488240",
+  "gUnknown_08488290": "0x08488290",
+  "gUnknown_084882CC": "0x084882CC",
+  "gUnknown_08488344": "0x08488344",
+  "gUnknown_084883F8": "0x084883F8",
+  "gUnknown_08488380": "0x08488380",
+  "gUnknown_084883BC": "0x084883BC",
+  "gUnknown_084CA064": "0x084CA064",
+  "gUnknown_084E4618": "0x084E4618",
+  "gUnknown_084D7318": "0x084D7318",
+  "gUnknown_0850FD18": "0x0850FD18",
+  "gUnknown_084DCD28": "0x084DCD28",
+  "gUnknown_085100D8": "0x085100D8",
+  "gUnknown_084DD368": "0x084DD368",
+  "gUnknown_08510158": "0x08510158",
+  "gUnknown_084E4498": "0x084E4498",
+  "gUnknown_084E44B8": "0x084E44B8",
+  "gUnknown_084C9A84": "0x084C9A84",
+  "gUnknown_084E4578": "0x084E4578",
+  "gUnknown_08488450": "0x08488450",
+  "gUnknown_0202FC00": "0x0202FC00",
+  "gUnknown_0202FE00": "0x0202FE00",
+  "gUnknown_03006F88": "0x03006F88",
+  "gUnknown_03006F8C": "0x03006F8C",
+  "gUnknown_03001830": "0x03001830",
+  "gUnknown_08485A70": "0x08485A70",
+  "gUnknown_087C9F48": "0x087C9F48",
+  "gUnknown_03007014": "0x03007014",
+  "gUnknown_03001864": "0x03001864",
+  "gUnknown_02021000": "0x02021000",
+  "gUnknown_084CB9C8": "0x084CB9C8",
+  "gUnknown_0850F718": "0x0850F718",
+  "gUnknown_084D819C": "0x084D819C",
+  "gUnknown_084E1584": "0x084E1584",
+  "gUnknown_08510418": "0x08510418",
+  "gUnknown_084E1900": "0x084E1900",
+  "gUnknown_08510438": "0x08510438",
+  "gUnknown_0202F880": "0x0202F880",
+  "gUnknown_0202F8A0": "0x0202F8A0",
+  "gUnknown_0202F8C0": "0x0202F8C0",
+  "gUnknown_0202F8E0": "0x0202F8E0",
+  "gUnknown_0202F900": "0x0202F900",
+  "gUnknown_0202F920": "0x0202F920",
+  "gUnknown_0202F940": "0x0202F940",
+  "gUnknown_0202F960": "0x0202F960",
+  "gUnknown_084C7C54": "0x084C7C54",
+  "gUnknown_084C7E7C": "0x084C7E7C",
+  "gUnknown_084E3698": "0x084E3698",
+  "gUnknown_084EF490": "0x084EF490",
+  "gUnknown_084F0C08": "0x084F0C08",
+  "gUnknown_084F1734": "0x084F1734",
+  "gUnknown_084F233C": "0x084F233C",
+  "gUnknown_084F3788": "0x084F3788",
+  "gUnknown_084F4F40": "0x084F4F40",
+  "gUnknown_085104F8": "0x085104F8",
+  "gUnknown_0300198A": "0x0300198A",
+  "sub_0807CF40": {
+    "address": "0x0807CF41",
+    "kind": "thumb_function"
+  },
+  "sub_0807CD2C": {
+    "address": "0x0807CD2D",
+    "kind": "thumb_function"
+  },
+  "sub_0807CEC8": {
+    "address": "0x0807CEC9",
+    "kind": "thumb_function"
+  },
+  "gUnknown_08484FC0": "0x08484FC0",
+  "gUnknown_020264E0": "0x020264E0",
+  "gUnknown_03006F80": "0x03006F80",
+  "gUnknown_03006F94": "0x03006F94",
+  "gUnknown_03006FDC": "0x03006FDC",
+  "gUnknown_030018E8": "0x030018E8",
+  "gUnknown_0202F800": "0x0202F800",
+  "sub_0807CDF8": {
+    "address": "0x0807CDF9",
+    "kind": "thumb_function"
+  },
+  "gUnknown_03006F84": "0x03006F84",
+  "gUnknown_03006F90": "0x03006F90",
+  "gUnknown_084CE3E8": "0x084CE3E8",
+  "gUnknown_0850F8F8": "0x0850F8F8",
+  "gUnknown_08487D90": "0x08487D90",
+  "gUnknown_084885C0": "0x084885C0",
+  "gUnknown_084C3E64": "0x084C3E64",
+  "gUnknown_084C571C": "0x084C571C",
+  "gUnknown_084C7B64": "0x084C7B64",
+  "gUnknown_084C7FF4": "0x084C7FF4",
+  "gUnknown_084E4638": "0x084E4638",
+  "gUnknown_084E1A0C": "0x084E1A0C",
+  "gUnknown_08510458": "0x08510458",
+  "gUnknown_084D6A5C": "0x084D6A5C",
+  "gUnknown_0850FC38": "0x0850FC38",
+  "gUnknown_083AFDF8": "0x083AFDF8",
+  "gUnknown_083AD06A": "0x083AD06A",
+  "gUnknown_0300056F": "0x0300056F",
+  "gUnknown_083AF6B0": "0x083AF6B0",
+  "gUnknown_083AF860": "0x083AF860",
+  "gUnknown_083AF8A0": "0x083AF8A0",
+  "gUnknown_08483834": "0x08483834",
+  "gUnknown_084838A4": "0x084838A4",
+  "gUnknown_08483920": "0x08483920",
+  "gUnknown_08483948": "0x08483948",
+  "gUnknown_084858FC": "0x084858FC",
+  "gUnknown_084859BC": "0x084859BC",
+  "gUnknown_030018D2": "0x030018D2",
+  "gUnknown_083B6298": "0x083B6298",
+  "gUnknown_084CD9D0": "0x084CD9D0",
+  "gUnknown_0850F878": "0x0850F878",
+  "gUnknown_083B62A0": "0x083B62A0",
+  "gUnknown_083B620C": "0x083B620C",
+  "gUnknown_0850F898": "0x0850F898",
+  "gUnknown_084CDB98": "0x084CDB98",
+  "gUnknown_0850FA38": "0x0850FA38",
+  "gUnknown_084D2E8C": "0x084D2E8C",
+  "gUnknown_03000648": "0x03000648",
+  "gUnknown_03000660": "0x03000660",
+  "gUnknown_0300059A": "0x0300059A",
+  "gUnknown_0202F980": "0x0202F980",
+  "gUnknown_0202F9A0": "0x0202F9A0",
+  "gUnknown_0202FB00": "0x0202FB00",
+  "gUnknown_0202FB20": "0x0202FB20",
+  "gUnknown_084C50D0": "0x084C50D0",
+  "gUnknown_084C5250": "0x084C5250",
+  "gUnknown_084C7F74": "0x084C7F74",
+  "gUnknown_084C7F94": "0x084C7F94",
+  "gUnknown_084E823C": "0x084E823C",
+  "gUnknown_084F0FD4": "0x084F0FD4",
+  "gUnknown_084F3F80": "0x084F3F80",
+  "gUnknown_0850F3F8": "0x0850F3F8",
+  "gUnknown_0850F498": "0x0850F498",
+  "gUnknown_0300049A": "0x0300049A",
+  "gUnknown_030018C8": "0x030018C8",
+  "gUnknown_083B627C": "0x083B627C",
+  "gUnknown_083B6280": "0x083B6280",
+  "gUnknown_03001855": "0x03001855",
+  "gUnknown_084D178C": "0x084D178C",
+  "gUnknown_0850F9D8": "0x0850F9D8",
+  "gUnknown_084D1CDC": "0x084D1CDC",
+  "gUnknown_0850F9F8": "0x0850F9F8",
+  "gUnknown_08483554": "0x08483554",
+  "gUnknown_03007010": "0x03007010",
+  "gUnknown_084859B4": "0x084859B4",
+  "gUnknown_08485994": "0x08485994",
+  "gUnknown_08485B60": "0x08485B60",
+  "gUnknown_08485B4C": "0x08485B4C",
+  "gUnknown_083C47EC": "0x083C47EC",
+  "gUnknown_083CEDF4": "0x083CEDF4",
+  "gUnknown_083AD51A": "0x083AD51A",
+  "gUnknown_083AF660": "0x083AF660",
+  "gUnknown_080AFCBD": "0x080AFCBD",
+  "gUnknown_087C9FF4": "0x087C9FF4",
+  "gUnknown_087CD9B0": "0x087CD9B0",
+  "gUnknown_087CDCE0": "0x087CDCE0",
+  "gUnknown_087D2074": "0x087D2074",
+  "gUnknown_087D5440": "0x087D5440",
+  "gUnknown_087D5758": "0x087D5758",
+  "gUnknown_084DEE34": "0x084DEE34",
+  "gUnknown_084E4658": "0x084E4658",
+  "gUnknown_08510278": "0x08510278",
+  "gUnknown_084DF444": "0x084DF444",
+  "gUnknown_08510298": "0x08510298",
+  "gUnknown_0807C430": "0x0807C430",
+  "gUnknown_084DEBE8": "0x084DEBE8",
+  "gUnknown_08510258": "0x08510258",
+  "gUnknown_083AF6A0": "0x083AF6A0",
+  "gUnknown_03000030": "0x03000030",
+  "gUnknown_03000584": "0x03000584",
+  "gUnknown_03002420": "0x03002420",
+  "gUnknown_0850F2B8": "0x0850F2B8",
+  "gUnknown_083AE950": "0x083AE950",
+  "gUnknown_084D777C": "0x084D777C",
+  "gUnknown_0850FD98": "0x0850FD98",
+  "gUnknown_084D78C0": "0x084D78C0",
+  "gUnknown_0850FDB8": "0x0850FDB8",
+  "gUnknown_08485924": "0x08485924",
+  "gUnknown_084D667C": "0x084D667C",
+  "gUnknown_0850FBF8": "0x0850FBF8",
+  "gUnknown_084D66DC": "0x084D66DC",
+  "gUnknown_0850FC18": "0x0850FC18",
+  "gUnknown_08485BB4": "0x08485BB4",
+  "gUnknown_083AFC38": "0x083AFC38",
+  "gUnknown_084DD484": "0x084DD484",
+  "gUnknown_084DD6A0": "0x084DD6A0",
+  "gUnknown_084DDAE4": "0x084DDAE4",
+  "gUnknown_084DDD70": "0x084DDD70",
+  "gUnknown_084DE728": "0x084DE728",
+  "gUnknown_08510178": "0x08510178",
+  "gUnknown_08510198": "0x08510198",
+  "gUnknown_085101B8": "0x085101B8",
+  "gUnknown_085101D8": "0x085101D8",
+  "gUnknown_08510218": "0x08510218",
+  "gUnknown_083AD524": "0x083AD524",
+  "gUnknown_084D6E00": "0x084D6E00",
+  "gUnknown_0850FC98": "0x0850FC98",
+  "gUnknown_084D70A8": "0x084D70A8",
+  "gUnknown_0850FCD8": "0x0850FCD8",
+  "gUnknown_084D7D20": "0x084D7D20",
+  "gUnknown_0850FE18": "0x0850FE18",
+  "gUnknown_084D8264": "0x084D8264",
+  "gUnknown_084D83C0": "0x084D83C0",
+  "gUnknown_0850FE98": "0x0850FE98",
+  "gUnknown_0850FEB8": "0x0850FEB8",
+  "gUnknown_080AFBB4": "0x080AFBB4",
+  "gUnknown_084D6B70": "0x084D6B70",
+  "gUnknown_0850FC58": "0x0850FC58",
+  "gUnknown_087B2EE0": "0x087B2EE0",
+  "gUnknown_087C23B8": "0x087C23B8",
+  "gUnknown_087C378C": "0x087C378C",
+  "gUnknown_087C4B1C": "0x087C4B1C",
+  "gUnknown_087C4CE8": "0x087C4CE8",
+  "gUnknown_087C4F34": "0x087C4F34",
+  "gUnknown_087C52A4": "0x087C52A4",
+  "gUnknown_087C5404": "0x087C5404",
+  "gUnknown_087C568C": "0x087C568C",
+  "gUnknown_080AFC80": "0x080AFC80",
+  "gUnknown_080AFC83": "0x080AFC83",
+  "gUnknown_08485C00": "0x08485C00",
+  "gUnknown_03002C30": "0x03002C30",
+  "gUnknown_083C4B90": "0x083C4B90",
+  "gUnknown_084E09A0": "0x084E09A0",
+  "gUnknown_08510338": "0x08510338",
+  "sub_080697B4": {
+    "address": "0x080697B5",
+    "kind": "thumb_function"
+  },
+  "gUnknown_087C60B0": "0x087C60B0",
+  "gUnknown_087C613C": "0x087C613C",
+  "gUnknown_087C61D0": "0x087C61D0",
+  "gUnknown_087C63B4": "0x087C63B4",
+  "gUnknown_087C643C": "0x087C643C",
+  "gUnknown_087C645C": "0x087C645C",
+  "gUnknown_087C647C": "0x087C647C",
+  "gUnknown_087C649C": "0x087C649C",
+  "gUnknown_03001800": "0x03001800",
+  "gUnknown_02030000": "0x02030000",
+  "gUnknown_0850F458": "0x0850F458",
+  "gUnknown_0879BC34": "0x0879BC34",
+  "gUnknown_0879BE34": "0x0879BE34",
+  "gUnknown_0879D260": "0x0879D260",
+  "gUnknown_0879D454": "0x0879D454",
+  "gUnknown_0879D594": "0x0879D594",
+  "gUnknown_084D804C": "0x084D804C",
+  "gUnknown_0850FE58": "0x0850FE58",
+  "gUnknown_08485ACC": "0x08485ACC",
+  "gUnknown_0807C3F0": "0x0807C3F0",
+  "gUnknown_0807C210": "0x0807C210",
+  "gUnknown_087AB390": "0x087AB390",
+  "gUnknown_087B4D24": "0x087B4D24",
+  "gUnknown_087B62A0": "0x087B62A0",
+  "gUnknown_087B6408": "0x087B6408",
+  "gUnknown_087B64D8": "0x087B64D8",
+  "gUnknown_087B6710": "0x087B6710",
+  "gUnknown_084CC0F8": "0x084CC0F8",
+  "gUnknown_084CC578": "0x084CC578",
+  "gUnknown_084CC90C": "0x084CC90C",
+  "gUnknown_084CCC24": "0x084CCC24",
+  "gUnknown_0850F778": "0x0850F778",
+  "gUnknown_0850F798": "0x0850F798",
+  "gUnknown_0850F7B8": "0x0850F7B8",
+  "gUnknown_0850F7D8": "0x0850F7D8",
+  "gUnknown_0850F318": "0x0850F318",
+  "gUnknown_0879D890": "0x0879D890",
+  "gUnknown_0879DA90": "0x0879DA90",
+  "gUnknown_0879EFC0": "0x0879EFC0",
+  "gUnknown_0879F138": "0x0879F138",
+  "gUnknown_0879F3D0": "0x0879F3D0",
+  "gUnknown_02030040": "0x02030040",
+  "gUnknown_02031000": "0x02031000",
+  "gUnknown_02031040": "0x02031040",
+  "gUnknown_087A1540": "0x087A1540",
+  "gUnknown_087A1660": "0x087A1660",
+  "gUnknown_087A2278": "0x087A2278",
+  "gUnknown_087A9AC0": "0x087A9AC0",
+  "gUnknown_087AA4C8": "0x087AA4C8",
+  "gUnknown_084E02BC": "0x084E02BC",
+  "gUnknown_085102F8": "0x085102F8",
+  "gUnknown_08485A78": "0x08485A78",
+  "gUnknown_084E05C4": "0x084E05C4",
+  "gUnknown_08510318": "0x08510318",
+  "gUnknown_084D7ABC": "0x084D7ABC",
+  "gUnknown_0850FDF8": "0x0850FDF8",
+  "gUnknown_084D8528": "0x084D8528",
+  "gUnknown_0850FED8": "0x0850FED8",
+  "gUnknown_084D8778": "0x084D8778",
+  "gUnknown_0850FF18": "0x0850FF18",
+  "gUnknown_084DFBC8": "0x084DFBC8",
+  "gUnknown_085102D8": "0x085102D8",
+  "gUnknown_02021800": "0x02021800",
+  "gUnknown_02022000": "0x02022000",
+  "gUnknown_02028000": "0x02028000",
+  "gUnknown_084E1028": "0x084E1028",
+  "gUnknown_08510358": "0x08510358",
+  "gUnknown_084DD0C8": "0x084DD0C8",
+  "gUnknown_084DD24C": "0x084DD24C",
+  "gUnknown_084DD2AC": "0x084DD2AC",
+  "gUnknown_084DD300": "0x084DD300",
+  "gUnknown_085100F8": "0x085100F8",
+  "gUnknown_08510118": "0x08510118",
+  "gUnknown_08510138": "0x08510138",
+  "gUnknown_030005D8": "0x030005D8",
+  "gUnknown_084E11B8": "0x084E11B8",
+  "gUnknown_085103D8": "0x085103D8",
+  "gUnknown_0202F9C0": "0x0202F9C0",
+  "gUnknown_0202F9E0": "0x0202F9E0",
+  "gUnknown_0202FB40": "0x0202FB40",
+  "gUnknown_0202FB60": "0x0202FB60",
+  "gUnknown_0202FB80": "0x0202FB80",
+  "gUnknown_0202FBA0": "0x0202FBA0",
+  "gUnknown_0848748C": "0x0848748C",
+  "gUnknown_084874C0": "0x084874C0",
+  "gUnknown_0848761C": "0x0848761C",
+  "gUnknown_08487730": "0x08487730",
+  "gUnknown_08487808": "0x08487808",
+  "gUnknown_08487904": "0x08487904",
+  "gUnknown_08487A00": "0x08487A00",
+  "gUnknown_08487AD8": "0x08487AD8",
+  "gUnknown_08487BB0": "0x08487BB0",
+  "gUnknown_08487C88": "0x08487C88",
+  "gUnknown_08488560": "0x08488560",
+  "gUnknown_08488580": "0x08488580",
+  "gUnknown_084885A0": "0x084885A0",
+  "gUnknown_084C53C8": "0x084C53C8",
+  "gUnknown_084C57A8": "0x084C57A8",
+  "gUnknown_084C5824": "0x084C5824",
+  "gUnknown_084C589C": "0x084C589C",
+  "gUnknown_084C7FB4": "0x084C7FB4",
+  "gUnknown_084C7FD4": "0x084C7FD4",
+  "gUnknown_084C8BD4": "0x084C8BD4",
+  "gUnknown_084C9560": "0x084C9560",
+  "gUnknown_084CADEC": "0x084CADEC",
+  "gUnknown_084E3EF0": "0x084E3EF0",
+  "gUnknown_084E41B8": "0x084E41B8",
+  "gUnknown_0850F598": "0x0850F598",
+  "gUnknown_0850F678": "0x0850F678",
+  "gUnknown_084D745C": "0x084D745C",
+  "gUnknown_0850FD58": "0x0850FD58",
+  "gUnknown_080AFBC4": "0x080AFBC4",
+  "gUnknown_0807C410": "0x0807C410",
+  "gUnknown_085104B8": "0x085104B8",
+  "gUnknown_030004C9": "0x030004C9",
+  "gUnknown_083AD553": "0x083AD553",
+  "gUnknown_083AD573": "0x083AD573",
+  "gUnknown_084E4598": "0x084E4598",
+  "gUnknown_084D7638": "0x084D7638",
+  "gUnknown_0850FD78": "0x0850FD78",
+  "gUnknown_03006FF8": "0x03006FF8",
+  "gUnknown_03007000": "0x03007000",
+  "gUnknown_03006FE0": "0x03006FE0",
+  "gUnknown_03006FEC": "0x03006FEC",
+  "gUnknown_03006FF0": "0x03006FF0",
+  "gGraphicsCounter6BD7003001800": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gFrameCommandTable084857FC": {
+    "address": "0x084857FC",
+    "kind": "data"
+  },
+  "gGraphicsWork6EEA803001800": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gUnknown_087BF688": {
+    "address": "0x087BF688",
+    "kind": "data"
+  },
+  "gUnknown_087C9AE8": {
+    "address": "0x087C9AE8",
+    "kind": "data"
+  },
+  "gUnknown_087C9DCC": {
+    "address": "0x087C9DCC",
+    "kind": "data"
+  },
+  "gUnknown_087C9E88": {
+    "address": "0x087C9E88",
+    "kind": "data"
+  },
+  "gUnknown_087C9ED8": {
+    "address": "0x087C9ED8",
+    "kind": "data"
+  },
+  "gUnknown_087C1DB4": {
+    "address": "0x087C1DB4",
+    "kind": "data"
+  },
+  "gUnknown_087C2000": {
+    "address": "0x087C2000",
+    "kind": "data"
+  },
+  "gUnknown_087C1BB4": {
+    "address": "0x087C1BB4",
+    "kind": "data"
+  },
+  "gUnknown_087C9EE8": {
+    "address": "0x087C9EE8",
+    "kind": "data"
+  },
+  "gUnknown_087C9F08": {
+    "address": "0x087C9F08",
+    "kind": "data"
+  },
+  "gUnknown_087C9F28": {
+    "address": "0x087C9F28",
+    "kind": "data"
+  },
+  "gGraphicsWork70D7403001800": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gPaletteAnchor0807C870": {
+    "address": "0x0807C870",
+    "kind": "data"
+  },
+  "gPalette087C5FF0": {
+    "address": "0x087C5FF0",
+    "kind": "data"
+  },
+  "gUnknown_084D8AC8": "0x084D8AC8",
+  "gUnknown_0850FF38": "0x0850FF38",
+  "gUnknown_083AF630": "0x083AF630",
+  "gTable08483854": {
+    "address": "0x08483854",
+    "kind": "data"
+  },
+  "gTable08483868": {
+    "address": "0x08483868",
+    "kind": "data"
+  },
+  "gTable08483878": {
+    "address": "0x08483878",
+    "kind": "data"
+  },
+  "gTable08483888": {
+    "address": "0x08483888",
+    "kind": "data"
+  },
+  "gFrames080AFAE0": {
+    "address": "0x080AFAE0",
+    "kind": "data"
+  },
+  "gGraphicsWork6EBA403001800": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gGraphicsWork6E50403001800": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gWaveTable08485924": {
+    "address": "0x08485924",
+    "kind": "data"
+  },
+  "gGraphicsWork6CD6803001800": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gUnknown_083AD520": "0x083AD520",
+  "gSelectionOrder03006F94": {
+    "address": "0x3006f94",
+    "kind": "data"
+  },
+  "gScriptTable08485F88": {
+    "address": "0x8485f88",
+    "kind": "data"
+  },
+  "gEncounterChoiceTable08485C00": {
+    "address": "0x8485c00",
+    "kind": "data"
+  },
+  "gUnknown_083C4D90": "0x083C4D90",
+  "gUnknown_083CE600": "0x083CE600",
+  "gPalette0807C3D0": {
+    "address": "0x0807C3D0",
+    "kind": "data"
+  },
+  "gGraphicsWork6E96C03001800": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gUnknown_083B6200": "0x083B6200",
+  "gUnknown_083B6204": "0x083B6204",
+  "gUnknown_084D8F0C": "0x084D8F0C",
+  "gFrameSequence080AFAF8": {
+    "address": "0x080AFAF8",
+    "kind": "data"
+  },
+  "gTransferStep03000000": {
+    "address": "0x3000000",
+    "kind": "data"
+  },
+  "gTransferDivisor03000005": {
+    "address": "0x3000005",
+    "kind": "data"
+  },
+  "gTransferOffsets03000008": {
+    "address": "0x3000008",
+    "kind": "data"
+  },
+  "gUnknown_083AEE98": "0x083AEE98",
+  "gGraphicsWork6E18403001800": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gGraphicsWork701A803001800": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gCopySource6113C08488540": {
+    "address": "0x8488540",
+    "kind": "data"
+  },
+  "gCopySource6113C08797910": {
+    "address": "0x8797910",
+    "kind": "data"
+  },
+  "gCopyDest6113C0202F800": {
+    "address": "0x202f800",
+    "kind": "data"
+  },
+  "gGraphicsWork6DC7C03001800": {
+    "address": "0x3001800",
+    "kind": "data"
+  },
+  "gGraphicsWork6F1C003001800": {
+    "address": "0x3001800",
+    "kind": "data"
+  },
+  "gPalettePointer6F1C008485A78": {
+    "address": "0x8485a78",
+    "kind": "data"
+  },
+  "gCopyDest6113C0202F9E0": {
+    "address": "0x202f9e0",
+    "kind": "data"
+  },
+  "gCopyDest6113C0202F9C0": {
+    "address": "0x202f9c0",
+    "kind": "data"
+  },
+  "gCopyDest6113C0202F820": {
+    "address": "0x202f820",
+    "kind": "data"
+  },
+  "gUnknown_083AFACC": "0x083AFACC",
+  "gCopy6280C08488540": {
+    "address": "0x8488540",
+    "kind": "data"
+  },
+  "gCopy6280C08797910": {
+    "address": "0x8797910",
+    "kind": "data"
+  },
+  "gCopy6280C0202F800": {
+    "address": "0x202f800",
+    "kind": "data"
+  },
+  "gCopy6280C0202F9E0": {
+    "address": "0x202f9e0",
+    "kind": "data"
+  },
+  "gCopy6280C0202F9C0": {
+    "address": "0x202f9c0",
+    "kind": "data"
+  },
+  "gCopy6280C0202F820": {
+    "address": "0x202f820",
+    "kind": "data"
+  },
+  "gSwap6355C0202F800": {
+    "address": "0x202f800",
+    "kind": "data"
+  },
+  "gSwap6355C0202F880": {
+    "address": "0x202f880",
+    "kind": "data"
+  },
+  "gSetup6D7A0_tiles087B67B0": {
+    "address": "0x87b67b0",
+    "kind": "data"
+  },
+  "gSetup6D7A0_tiles087BB060": {
+    "address": "0x87bb060",
+    "kind": "data"
+  },
+  "gSetup6D7A0_tiles087BB2A0": {
+    "address": "0x87bb2a0",
+    "kind": "data"
+  },
+  "gSetup6D7A0_tiles087AEFD0": {
+    "address": "0x87aefd0",
+    "kind": "data"
+  },
+  "gSetup6D7A0_map087BAD60": {
+    "address": "0x87bad60",
+    "kind": "data"
+  },
+  "gSetup6D7A0_palette087BAFA0": {
+    "address": "0x87bafa0",
+    "kind": "data"
+  },
+  "gSetup6D7A0_map087BB7E0": {
+    "address": "0x87bb7e0",
+    "kind": "data"
+  },
+  "gSetup6D7A0_palette0807C490": {
+    "address": "0x807c490",
+    "kind": "data"
+  },
+  "gSetup6D7A0_saved0300180C": {
+    "address": "0x300180c",
+    "kind": "data"
+  },
+  "gUnknown_083AF620": "0x083AF620",
+  "gUnknown_083AD070": "0x083AD070",
+  "gUnknown_030018A8": "0x030018A8",
+  "gUnknown_083BE868": "0x083BE868",
+  "gUnknown_083B618C": "0x083B618C",
+  "gTiles696A8087C64BC": {
+    "address": "0x87c64bc",
+    "kind": "data"
+  },
+  "gTiles696A8087C670C": {
+    "address": "0x87c670c",
+    "kind": "data"
+  },
+  "gPalette696A8087C67C4": {
+    "address": "0x87c67c4",
+    "kind": "data"
+  },
+  "gPalette696A8087C67E4": {
+    "address": "0x87c67e4",
+    "kind": "data"
+  },
+  "gUnknown_083AD530": "0x083AD530",
+  "gUnknown_03001988": "0x03001988",
+  "gScratch6030C02030000": {
+    "address": "0x2030000",
+    "kind": "data"
+  },
+  "gPalette6030C080AFB00": {
+    "address": "0x80afb00",
+    "kind": "data"
+  },
+  "gTiles6030C08787144": {
+    "address": "0x8787144",
+    "kind": "data"
+  },
+  "gPalette6030C08792E9C": {
+    "address": "0x8792e9c",
+    "kind": "data"
+  },
+  "gAsset6030C08792F7C": {
+    "address": "0x8792f7c",
+    "kind": "data"
+  },
+  "gTilemap6030C08793EC4": {
+    "address": "0x8793ec4",
+    "kind": "data"
+  },
+  "gTilemap6030C08794060": {
+    "address": "0x8794060",
+    "kind": "data"
+  },
+  "gTilemap6030C087941B8": {
+    "address": "0x87941b8",
+    "kind": "data"
+  },
+  "gResetGraphicsWork6E1EC": {
+    "address": "0x3001800",
+    "kind": "data"
+  },
+  "gResetFreshWork6E1EC": {
+    "address": "0x3006d38",
+    "kind": "data"
+  },
+  "gPaletteWork71FF803001800": {
+    "address": "0x3001800",
+    "kind": "data"
+  },
+  "gPalettePointer71FF80300700C": {
+    "address": "0x300700c",
+    "kind": "data"
+  },
+  "gScratch60620": {
+    "address": "0x2030000",
+    "kind": "data"
+  },
+  "gAnimationBlocks60620": {
+    "address": "0x8483898",
+    "kind": "data"
+  },
+  "gUnknown_0300199A": "0x0300199A",
+  "gSoundRoot72734": {
+    "address": "0x3007014",
+    "kind": "data"
+  },
+  "gUnknown_030004F2": "0x030004F2",
+  "gUnknown_03000506": "0x03000506",
+  "gGraphicsTable62C28": {
+    "address": "0x083AC614",
+    "kind": "data"
+  },
+  "gScriptSlots640EC": {
+    "address": "0x08485678",
+    "kind": "data"
+  },
+  "gDigitWork6FE44": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gUnknown_083AF390": "0x083AF390",
+  "gBackgroundWork692EC": {
+    "address": "0x03005310",
+    "kind": "data"
+  },
+  "gRenderPhase72188": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gUnknown_083AFE18": "0x083AFE18",
+  "gWork080712C8": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gWork08072234": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gLookup74F74": {
+    "address": "0x083ABDFC",
+    "kind": "data"
+  },
+  "gAnimationRecords6B4C8": {
+    "address": "0x084857FC",
+    "kind": "data"
+  },
+  "gScriptWork6E3C4": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gScriptTable6E3C4": {
+    "address": "0x0848698C",
+    "kind": "data"
+  },
+  "gDigitWork700C8": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gFillWork70170": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gUnknown_083CE164": "0x083CE164",
+  "gUnknown_083AF180": {
+    "address": "0x083AF180",
+    "kind": "data"
+  },
+  "gTimerRoot6445C": {
+    "address": "0x03006F74",
+    "kind": "data"
+  },
+  "gUnknown_030004C4": "0x030004C4",
+  "gSoundRoot74EA0": {
+    "address": "0x03007014",
+    "kind": "data"
+  },
+  "gWaitWork6D6AC": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gUnknown_02016000": "0x02016000",
+  "gContinuedPalettePointers_083B2704": "0x083B2704",
+  "gUnknown_083B61E0": "0x083B61E0",
+  "gUnknown_083B6188": "0x083B6188",
+  "gUnknown_083AECD8": "0x083AECD8",
+  "gUnknown_083AEEA0": "0x083AEEA0",
+  "gUnknown_083AEF90": "0x083AEF90",
+  "gUnknown_083AF810": "0x083AF810",
+  "gUnknown_083CE374": "0x083CE374",
+  "gUnknown_083AFC78": "0x083AFC78",
+  "gWaitWork6F934": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gUnknown_083AF8C0": "0x083AF8C0",
+  "gUnknown_08486E64": {
+    "address": "0x08486E64",
+    "kind": "data"
+  },
+  "gUnknown_083AFAEC": "0x083AFAEC",
+  "gFamilyWork4C588": {
+    "address": "0x030057E0",
+    "kind": "data"
+  },
+  "gUnknown_03000000": {
+    "address": "0x03000000",
+    "kind": "data"
+  },
+  "gUnknown_03000005": {
+    "address": "0x03000005",
+    "kind": "data"
+  },
+  "gUnknown_080AF864": {
+    "address": "0x080AF864",
+    "kind": "data"
+  },
+  "gSoundRoot74C30": {
+    "address": "0x03007014",
+    "kind": "data"
+  },
+  "gUnknown_083CEE88": "0x083CEE88",
+  "gUnknown_083CEF08": "0x083CEF08",
+  "gUnknown_083CEF88": "0x083CEF88",
+  "gUnknown_083CF008": "0x083CF008",
+  "gUnknown_083CF048": "0x083CF048",
+  "gUnknown_083CF088": "0x083CF088",
+  "gUnknown_083CF0C8": "0x083CF0C8",
+  "gUnknown_083CF108": "0x083CF108",
+  "gUnknown_083CF148": "0x083CF148",
+  "gUnknown_083CF188": "0x083CF188",
+  "gUnknown_083CF1C8": "0x083CF1C8",
+  "gUnknown_083CF208": "0x083CF208",
+  "gUnknown_083CF248": "0x083CF248",
+  "gUnknown_083CF288": "0x083CF288",
+  "gUnknown_083CF2C8": "0x083CF2C8",
+  "gFamilyWork3D2A8": "0x03001800",
+  "gWaitWork6E90C": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gWaitWork6F8D8": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gUnknown_08488308": "0x08488308",
+  "gUnknown_083AD580": "0x083AD580",
+  "gUnknown_083AD590": "0x083AD590",
+  "gUnknown_083AD5A4": "0x083AD5A4",
+  "ProgramEepromDwordExWord0807CC80": {
+    "address": "0x0807CC81",
+    "kind": "thumb_function"
+  },
+  "gUnknown_08486E5C": {
+    "address": "0x08486E5C",
+    "kind": "data"
+  },
+  "gUnknown_084C4B4C": "0x084C4B4C",
+  "gUnknown_084C4BDC": "0x084C4BDC",
+  "gUnknown_084C4FBC": "0x084C4FBC",
+  "gUnknown_084C4FFC": "0x084C4FFC",
+  "gUnknown_084EE0DC": "0x084EE0DC",
+  "gUnknown_084F0B44": "0x084F0B44",
+  "gUnknown_084F1608": "0x084F1608",
+  "gUnknown_084F2244": "0x084F2244",
+  "gUnknown_084F3468": "0x084F3468",
+  "gUnknown_084F4BC0": "0x084F4BC0",
+  "gUnknown_0850F378": "0x0850F378",
+  "gUnknown_02023078": "0x02023078",
+  "gUnknown_080AFBE4": {
+    "address": "0x080AFBE4",
+    "kind": "data"
+  },
+  "gUnknown_080AFC18": {
+    "address": "0x080AFC18",
+    "kind": "data"
+  },
+  "gUnknown_08485BB8": {
+    "address": "0x08485BB8",
+    "kind": "data"
+  },
+  "gUnknown_083B6100": "0x083B6100",
+  "gUnknown_083B4C60": "0x083B4C60",
+  "gCounter6ED08_03001800": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gUnknown_08485A58": "0x08485A58",
+  "gUnknown_08485A60": "0x08485A60",
+  "gUnknown_08485A68": "0x08485A68",
+  "gUnknown_087BBA60": "0x087BBA60",
+  "gUnknown_087BEE04": "0x087BEE04",
+  "gUnknown_087BF004": "0x087BF004",
+  "gUnknown_087BF380": "0x087BF380",
+  "gUnknown_087C955C": "0x087C955C",
+  "gUnknown_087C9A0C": "0x087C9A0C",
+  "gUnknown_087C9A2C": "0x087C9A2C",
+  "gUnknown_080AFC48": "0x080AFC48",
+  "gUnknown_080AFCC0": "0x080AFCC0",
+  "gUnknown_03000004": "0x03000004",
+  "gUnknown_0202FA20": "0x0202FA20",
+  "gUnknown_080AFC60": "0x080AFC60",
+  "gUnknown_0879AD8C": "0x0879AD8C",
+  "gUnknown_080B0020": "0x080B0020",
+  "gUnknown_080B003C": "0x080B003C",
+  "gUnknown_08483738": "0x08483738",
+  "gUnknown_08483758": "0x08483758",
+  "gUnknown_080AFB98": "0x080AFB98",
+  "gUnknown_080AFC58": "0x080AFC58",
+  "gUnknown_080AFC88": "0x080AFC88",
+  "gUnknown_08485964": "0x08485964",
+  "gUnknown_08485A08": "0x08485A08",
+  "gUnknown_08485B68": "0x08485B68",
+  "gCounter708D8": {
+    "address": "0x03001800",
+    "kind": "data"
+  },
+  "gUnknown_08486E54": "0x08486E54",
+  "gFamilySoundRoot750AC": {
+    "address": "0x03007014",
+    "kind": "data"
+  },
+  "gUnknown_080AFB88": "0x080AFB88",
+  "gFamilySoundRoot74028": {
+    "address": "0x03007014",
+    "kind": "data"
+  },
+  "gUnknown_083AF4B0": "0x083AF4B0",
+  "gUnknown_084859D8": "0x084859D8",
+  "gUnknown_08485BD8": "0x08485BD8",
+  "gUnknown_0300002C": "0x0300002C",
+  "gUnknown_083AD579": "0x083AD579",
+  "gSoundRoot75028": {
+    "address": "0x03007014",
+    "kind": "data"
+  },
+  "gSoundRoot751E4": {
+    "address": "0x03007014",
+    "kind": "data"
+  },
+  "gUnknown_03005310": "0x03005310",
+  "gFamilyKeyBytes49558_0300058C": "0x0300058C",
+  "gUnknown_080B000E": "0x080B000E",
+  "gUnknown_083C4E08": "0x083C4E08",
+  "gUnknown_083C4E0C": "0x083C4E0C",
+  "gUnknown_084E3444": "0x084E3444",
+  "gFramesPrefix2FE78": "0x03002C30",
+  "gTransferPrefix2FE78": "0x03001800",
+  "gUnknown_083AD502": "0x083AD502",
+  "gUnknown_084850E3": "0x084850E3",
+  "gUnknown_08484FE5": "0x08484FE5",
+  "gUnknown_08485014": "0x08485014",
+  "gUnknown_03000170": "0x03000170",
+  "gUnknown_030002B0": "0x030002B0",
+  "gUnknown_0300183C": "0x0300183C",
+  "gUnknown_084E45B8": "0x084E45B8",
+  "gUnknown_083AF7F0": "0x083AF7F0",
+  "gUnknown_083AEB08": "0x083AEB08",
+  "gUnknown_083B6190": "0x083B6190",
+  "gUnknown_03000491": "0x03000491",
+  "gUnknown_03001845": "0x03001845",
+  "gUnknown_083AF490": "0x083AF490",
+  "gUnknown_087CDEE0": "0x087CDEE0",
+  "gUnknown_087D1B48": "0x087D1B48",
+  "gUnknown_087D1E74": "0x087D1E74",
+  "gUnknown_080AFA78": {
+    "address": "0x080AFA78",
+    "kind": "data"
+  },
+  "gUnknown_08787144": {
+    "address": "0x08787144",
+    "kind": "data"
+  },
+  "gUnknown_08796790": {
+    "address": "0x08796790",
+    "kind": "data"
+  },
+  "gUnknown_08796990": {
+    "address": "0x08796990",
+    "kind": "data"
+  },
+  "gUnknown_087974DC": {
+    "address": "0x087974DC",
+    "kind": "data"
+  },
+  "gUnknown_08797668": {
+    "address": "0x08797668",
+    "kind": "data"
+  },
+  "gUnknown_0879778C": {
+    "address": "0x0879778C",
+    "kind": "data"
+  },
+  "gUnknown_084E2E24": "0x084E2E24",
+  "gUnknown_08510498": "0x08510498",
+  "gFrameCommandHandlers_084857D0": "0x084857D0",
+  "gUnknown_084D7A04": "0x084D7A04",
+  "gUnknown_0850FDD8": "0x0850FDD8",
+  "gSpriteSetupMetadataBytes_083AD502": "0x083AD502",
+  "gSelectionLatchWork4AA44": {
+    "address": "0x030057E0",
+    "kind": "data"
+  },
+  "gUnknown_080B0114": "0x080B0114",
+  "gAudioWaveformBytes_080B0820": "0x080B0820",
+  "gCompressedGraphics_084CE3E8": "0x084CE3E8",
+  "gPaletteBytes_0850F8F8": "0x0850F8F8",
+  "gState0MotionSteps_083AF7B0": "0x083AF7B0",
+  "gRevealCommandLists_080B0014": {
+    "address": "0x080B0014",
+    "kind": "data"
+  },
+  "gUnknown_084CCEF0": "0x084CCEF0",
+  "gUnknown_084CD1B0": "0x084CD1B0",
+  "gUnknown_084CD4A4": "0x084CD4A4",
+  "gUnknown_084CD73C": "0x084CD73C",
+  "gUnknown_084CDD68": "0x084CDD68",
+  "gUnknown_0850F7F8": "0x0850F7F8",
+  "gUnknown_0850F818": "0x0850F818",
+  "gUnknown_0850F838": "0x0850F838",
+  "gUnknown_0850F858": "0x0850F858",
+  "gUnknown_0850F8B8": "0x0850F8B8",
+  "gUnknown_0300047D": "0x0300047D",
+  "gTransfer70C0C0807C890": {
+    "address": "0x0807C890",
+    "kind": "data"
+  },
+  "gTransfer70C0C085E1FD8": {
+    "address": "0x085E1FD8",
+    "kind": "data"
+  },
+  "gTransfer70C0C085E1FF8": {
+    "address": "0x085E1FF8",
+    "kind": "data"
+  },
+  "gTransfer70C0C085E2F8C": {
+    "address": "0x085E2F8C",
+    "kind": "data"
+  },
+  "gTransfer70C0C085E2FAC": {
+    "address": "0x085E2FAC",
+    "kind": "data"
+  },
+  "gTransfer70C0C085E4840": {
+    "address": "0x085E4840",
+    "kind": "data"
+  },
+  "gTransfer70C0C085E4860": {
+    "address": "0x085E4860",
+    "kind": "data"
+  },
+  "gTransfer70C0C085E5048": {
+    "address": "0x085E5048",
+    "kind": "data"
+  },
+  "gTransfer70C0C085E5068": {
+    "address": "0x085E5068",
+    "kind": "data"
+  },
+  "gTransfer70C0C087C5A10": {
+    "address": "0x087C5A10",
+    "kind": "data"
+  },
+  "gTransfer70C0C087C5E50": {
+    "address": "0x087C5E50",
+    "kind": "data"
+  },
+  "gUnknown_087F2D40": "0x087F2D40",
+  "gUnknown_087F3040": "0x087F3040",
+  "gUnknown_087F312C": "0x087F312C",
+  "gUnknown_087F314C": "0x087F314C",
+  "gUnknown_087F384C": "0x087F384C",
+  "gUnknown_087F39CC": "0x087F39CC",
+  "gUnknown_08486DC4": "0x08486DC4",
+  "gUnknown_08486DF4": "0x08486DF4",
+  "gUnknown_08486E24": "0x08486E24",
+  "gCompressed6E7EC_087F39EC": "0x87f39ec",
+  "gCompressed6E7EC_087F4264": "0x87f4264",
+  "gSoundDispatchRoot73094": {
+    "address": "0x03007014",
+    "kind": "data"
+  },
+  "gUnknown_083D2B18": "0x083D2B18",
+  "gUnknown_03006F40": "0x03006F40",
+  "gUnknown_083AD4F0": "0x083AD4F0",
+  "gUnknown_083B61F0": "0x83b61f0",
+  "gUnknown_083AE060": "0x083AE060",
+  "gUnknown_084CF274": "0x084CF274",
+  "gUnknown_0850F938": "0x0850F938",
+  "gUnknown_084D2DC4": "0x084D2DC4",
+  "gUnknown_0850F5B8": "0x0850F5B8",
+  "gUnknown_084CBBBC": "0x084CBBBC",
+  "gUnknown_0850F738": "0x0850F738",
+  "gUnknown_084CBE3C": "0x084CBE3C",
+  "gUnknown_0850F758": "0x0850F758",
+  "gUnknown_084CF6F4": "0x084CF6F4",
+  "gUnknown_0850F958": "0x0850F958",
+  "gUnknown_084CFBE4": "0x084CFBE4",
+  "gUnknown_0850F978": "0x0850F978",
+  "gUnknown_084D04B4": "0x084D04B4",
+  "gUnknown_0850F998": "0x0850F998",
+  "gUnknown_084D08E0": "0x084D08E0",
+  "gUnknown_0850F9B8": "0x0850F9B8",
+  "gUnknown_084CB744": "0x084CB744",
+  "gUnknown_0850F6F8": "0x0850F6F8",
+  "gUnknown_084D2614": "0x084D2614",
+  "gUnknown_0850FA18": "0x0850FA18",
+  "gUnknown_083F7B80": "0x083F7B80",
+  "gUnknown_080AEB74": "0x080AEB74",
+  "gUnknown_03006FD0": "0x03006FD0",
+  "gUnknown_08485764": "0x08485764",
+  "gUnknown_08485783": "0x08485783",
+  "gUnknown_080B00C8": "0x080B00C8",
+  "gUnknown_080AF8B8": "0x080AF8B8",
+  "gUnknown_03001887": "0x03001887",
+  "gUnknown_084D6D28": "0x084D6D28",
+  "gUnknown_0850FC78": "0x0850FC78",
+  "gUnknown_084DE4F4": "0x084DE4F4",
+  "gUnknown_085101F8": "0x085101F8",
+  "gUnknown_084DE9FC": "0x084DE9FC",
+  "gUnknown_08510238": "0x08510238",
+  "gUnknown_080B010C": "0x080B010C",
+  "gUnknown_080B0120": "0x080B0120",
+  "gUnknown_030017EE": "0x030017EE",
+  "gUnknown_030018F8": "0x030018F8",
+  "gUnknown_084E1174": "0x084E1174",
+  "gUnknown_08510398": "0x08510398",
+  "gUnknown_084E2AB8": "0x084E2AB8",
+  "gUnknown_08510478": "0x08510478",
+  "gUnknown_084E2D80": "0x084E2D80",
+  "gUnknown_084E3138": "0x084E3138",
+  "gUnknown_083AD4F6": "0x083AD4F6",
+  "gUnknown_083AD4FC": "0x083AD4FC",
+  "gUnknown_083AD380": "0x083AD380",
+  "gUnknown_080AC71C": "0x080AC71C",
+  "gUnknown_03006494": "0x03006494",
+  "gUnknown_083D2A83": "0x083D2A83",
+  "gUnknown_083AFA08": "0x083AFA08",
+  "gUnknown_083AFE78": "0x083AFE78",
+  "gUnknown_084E45F8": "0x084E45F8",
+  "gUnknown_080AF774": "0x080AF774",
+  "gUnknown_080AF7EC": "0x080AF7EC",
+  "gUnknown_080AFCA8": "0x080AFCA8",
+  "gUnknown_080AFCB7": "0x080AFCB7",
+  "gUnknown_080B00B8": "0x080B00B8",
+  "gUnknown_080B00C0": "0x080B00C0",
+  "gUnknown_087AE6D8": "0x087AE6D8",
+  "gSoundStream_080B0809": {
+    "address": "0x080B0809",
+    "kind": "data"
+  },
+  "gSoundStream_080B1516": {
+    "address": "0x080B1516",
+    "kind": "data"
+  },
+  "gSoundStream_080B19E0": {
+    "address": "0x080B19E0",
+    "kind": "data"
+  },
+  "gSoundStream_080B1A90": {
+    "address": "0x080B1A90",
+    "kind": "data"
+  },
+  "gSoundStream_080B1BAE": {
+    "address": "0x080B1BAE",
+    "kind": "data"
+  },
+  "gSoundStream_080B1C67": {
+    "address": "0x080B1C67",
+    "kind": "data"
+  },
+  "gSoundStream_080B1DC0": {
+    "address": "0x080B1DC0",
+    "kind": "data"
+  },
+  "gSoundStream_080B1E7B": {
+    "address": "0x080B1E7B",
+    "kind": "data"
+  },
+  "gSoundStream_080B1F20": {
+    "address": "0x080B1F20",
+    "kind": "data"
+  },
+  "gSoundStream_080B1FDD": {
+    "address": "0x080B1FDD",
+    "kind": "data"
+  },
+  "gSoundStream_080B2091": {
+    "address": "0x080B2091",
+    "kind": "data"
+  },
+  "gSoundStream_080B213C": {
+    "address": "0x080B213C",
+    "kind": "data"
+  },
+  "gSoundStream_080B2238": {
+    "address": "0x080B2238",
+    "kind": "data"
+  },
+  "gSoundStream_080B22E0": {
+    "address": "0x080B22E0",
+    "kind": "data"
+  },
+  "gSoundStream_080B2387": {
+    "address": "0x080B2387",
+    "kind": "data"
+  },
+  "gSoundStream_080B247D": {
+    "address": "0x080B247D",
+    "kind": "data"
+  },
+  "gSoundStream_080B2575": {
+    "address": "0x080B2575",
+    "kind": "data"
+  },
+  "gSoundStream_080B2627": {
+    "address": "0x080B2627",
+    "kind": "data"
+  },
+  "gSoundStream_080B26C0": {
+    "address": "0x080B26C0",
+    "kind": "data"
+  },
+  "gSoundStream_080B2809": {
+    "address": "0x080B2809",
+    "kind": "data"
+  },
+  "gSoundStream_080B294F": {
+    "address": "0x080B294F",
+    "kind": "data"
+  },
+  "gSoundStream_080B2AB2": {
+    "address": "0x080B2AB2",
+    "kind": "data"
+  },
+  "gSoundStream_080B2B43": {
+    "address": "0x080B2B43",
+    "kind": "data"
+  },
+  "gSoundStream_080B2D8B": {
+    "address": "0x080B2D8B",
+    "kind": "data"
+  },
+  "gSoundStream_080B2E70": {
+    "address": "0x080B2E70",
+    "kind": "data"
+  },
+  "gSoundStream_080B2EA8": {
+    "address": "0x080B2EA8",
+    "kind": "data"
+  },
+  "gSoundStream_080B2EED": {
+    "address": "0x080B2EED",
+    "kind": "data"
+  },
+  "gSoundStream_080B2F26": {
+    "address": "0x080B2F26",
+    "kind": "data"
+  },
+  "gSoundStream_080B2F4E": {
+    "address": "0x080B2F4E",
+    "kind": "data"
+  },
+  "gSoundStream_080B2F90": {
+    "address": "0x080B2F90",
+    "kind": "data"
+  },
+  "gSoundStream_080B3066": {
+    "address": "0x080B3066",
+    "kind": "data"
+  },
+  "gSoundStream_080B313C": {
+    "address": "0x080B313C",
+    "kind": "data"
+  },
+  "gSoundStream_080B3210": {
+    "address": "0x080B3210",
+    "kind": "data"
+  },
+  "gSoundStream_080B3240": {
+    "address": "0x080B3240",
+    "kind": "data"
+  },
+  "gSoundStream_080B333B": {
+    "address": "0x080B333B",
+    "kind": "data"
+  },
+  "gSoundStream_080B33E7": {
+    "address": "0x080B33E7",
+    "kind": "data"
+  },
+  "gSoundStream_080B3415": {
+    "address": "0x080B3415",
+    "kind": "data"
+  },
+  "gSoundStream_080B347B": {
+    "address": "0x080B347B",
+    "kind": "data"
+  },
+  "gSoundStream_080B34F0": {
+    "address": "0x080B34F0",
+    "kind": "data"
+  },
+  "gSoundStream_080B36C9": {
+    "address": "0x080B36C9",
+    "kind": "data"
+  },
+  "gSoundStream_080B3831": {
+    "address": "0x080B3831",
+    "kind": "data"
+  },
+  "gSoundStream_080B3A57": {
+    "address": "0x080B3A57",
+    "kind": "data"
+  },
+  "gSoundStream_080B3BEE": {
+    "address": "0x080B3BEE",
+    "kind": "data"
+  },
+  "gSoundStream_080B3D30": {
+    "address": "0x080B3D30",
+    "kind": "data"
+  },
+  "gSoundStream_080B3E34": {
+    "address": "0x080B3E34",
+    "kind": "data"
+  },
+  "gSoundStream_080B41AD": {
+    "address": "0x080B41AD",
+    "kind": "data"
+  },
+  "gSoundStream_080B4251": {
+    "address": "0x080B4251",
+    "kind": "data"
+  },
+  "gSoundStream_080B4380": {
+    "address": "0x080B4380",
+    "kind": "data"
+  },
+  "gSoundStream_080B44F0": {
+    "address": "0x080B44F0",
+    "kind": "data"
+  },
+  "gSoundStream_080B45F6": {
+    "address": "0x080B45F6",
+    "kind": "data"
+  },
+  "gSoundStream_080B4765": {
+    "address": "0x080B4765",
+    "kind": "data"
+  },
+  "gSoundStream_080B48CC": {
+    "address": "0x080B48CC",
+    "kind": "data"
+  },
+  "gSoundStream_080B49D0": {
+    "address": "0x080B49D0",
+    "kind": "data"
+  },
+  "gSoundStream_080B4AF3": {
+    "address": "0x080B4AF3",
+    "kind": "data"
+  },
+  "gSoundStream_080B4BBF": {
+    "address": "0x080B4BBF",
+    "kind": "data"
+  },
+  "gSoundStream_080B4C53": {
+    "address": "0x080B4C53",
+    "kind": "data"
+  },
+  "gSoundStream_080B4C84": {
+    "address": "0x080B4C84",
+    "kind": "data"
+  },
+  "gSoundStream_080B4D86": {
+    "address": "0x080B4D86",
+    "kind": "data"
+  },
+  "gSoundStream_080B4E30": {
+    "address": "0x080B4E30",
+    "kind": "data"
+  },
+  "gSoundStream_080B4F00": {
+    "address": "0x080B4F00",
+    "kind": "data"
+  },
+  "gSoundStream_080B4FEC": {
+    "address": "0x080B4FEC",
+    "kind": "data"
+  },
+  "gSoundStream_080B50C0": {
+    "address": "0x080B50C0",
+    "kind": "data"
+  },
+  "gSoundStream_080B5214": {
+    "address": "0x080B5214",
+    "kind": "data"
+  },
+  "gSoundStream_080B5293": {
+    "address": "0x080B5293",
+    "kind": "data"
+  },
+  "gSoundStream_080B5340": {
+    "address": "0x080B5340",
+    "kind": "data"
+  },
+  "gSoundStream_080B5408": {
+    "address": "0x080B5408",
+    "kind": "data"
+  },
+  "gSoundStream_080B5504": {
+    "address": "0x080B5504",
+    "kind": "data"
+  },
+  "gSoundStream_080B556B": {
+    "address": "0x080B556B",
+    "kind": "data"
+  },
+  "gSoundStream_080B55EB": {
+    "address": "0x080B55EB",
+    "kind": "data"
+  },
+  "gSoundStream_080B5680": {
+    "address": "0x080B5680",
+    "kind": "data"
+  },
+  "gSoundStream_080B5813": {
+    "address": "0x080B5813",
+    "kind": "data"
+  },
+  "gSoundStream_080B5905": {
+    "address": "0x080B5905",
+    "kind": "data"
+  },
+  "gSoundStream_080B59E7": {
+    "address": "0x080B59E7",
+    "kind": "data"
+  },
+  "gSoundStream_080B5A93": {
+    "address": "0x080B5A93",
+    "kind": "data"
+  },
+  "gSoundStream_080B5BF8": {
+    "address": "0x080B5BF8",
+    "kind": "data"
+  },
+  "gSoundStream_080B5CF0": {
+    "address": "0x080B5CF0",
+    "kind": "data"
+  },
+  "gSoundStream_080B5D9B": {
+    "address": "0x080B5D9B",
+    "kind": "data"
+  },
+  "gSoundStream_080B5EB7": {
+    "address": "0x080B5EB7",
+    "kind": "data"
+  },
+  "gSoundStream_080B5FFC": {
+    "address": "0x080B5FFC",
+    "kind": "data"
+  },
+  "gSoundStream_080B6045": {
+    "address": "0x080B6045",
+    "kind": "data"
+  },
+  "gSoundStream_080B60F8": {
+    "address": "0x080B60F8",
+    "kind": "data"
+  },
+  "gSoundStream_080B6180": {
+    "address": "0x080B6180",
+    "kind": "data"
+  },
+  "gSoundStream_080B61F3": {
+    "address": "0x080B61F3",
+    "kind": "data"
+  },
+  "gSoundStream_080B6273": {
+    "address": "0x080B6273",
+    "kind": "data"
+  },
+  "gSoundStream_080B62A2": {
+    "address": "0x080B62A2",
+    "kind": "data"
+  },
+  "gSoundStream_080B6310": {
+    "address": "0x080B6310",
+    "kind": "data"
+  },
+  "gSoundStream_080B6360": {
+    "address": "0x080B6360",
+    "kind": "data"
+  },
+  "gSoundStream_080B6395": {
+    "address": "0x080B6395",
+    "kind": "data"
+  },
+  "gSoundStream_080B63CA": {
+    "address": "0x080B63CA",
+    "kind": "data"
+  },
+  "gSoundStream_080B63F2": {
+    "address": "0x080B63F2",
+    "kind": "data"
+  },
+  "gSoundStream_080B6413": {
+    "address": "0x080B6413",
+    "kind": "data"
+  },
+  "gSoundStream_080B6440": {
+    "address": "0x080B6440",
+    "kind": "data"
+  },
+  "gSoundStream_080B64DA": {
+    "address": "0x080B64DA",
+    "kind": "data"
+  },
+  "gSoundStream_080B6542": {
+    "address": "0x080B6542",
+    "kind": "data"
+  },
+  "gSoundStream_080B65B8": {
+    "address": "0x080B65B8",
+    "kind": "data"
+  },
+  "gSoundStream_080B6643": {
+    "address": "0x080B6643",
+    "kind": "data"
+  },
+  "gSoundStream_080B6690": {
+    "address": "0x080B6690",
+    "kind": "data"
+  },
+  "gSoundStream_080B69DE": {
+    "address": "0x080B69DE",
+    "kind": "data"
+  },
+  "gSoundStream_080B6D49": {
+    "address": "0x080B6D49",
+    "kind": "data"
+  },
+  "gSoundStream_080B70F7": {
+    "address": "0x080B70F7",
+    "kind": "data"
+  },
+  "gSoundStream_080B769A": {
+    "address": "0x080B769A",
+    "kind": "data"
+  },
+  "gSoundStream_080B7AE0": {
+    "address": "0x080B7AE0",
+    "kind": "data"
+  },
+  "gSoundStream_080B7B81": {
+    "address": "0x080B7B81",
+    "kind": "data"
+  },
+  "gSoundStream_080B7BAA": {
+    "address": "0x080B7BAA",
+    "kind": "data"
+  },
+  "gSoundStream_080B7BDA": {
+    "address": "0x080B7BDA",
+    "kind": "data"
+  },
+  "gSoundStream_080B7C2E": {
+    "address": "0x080B7C2E",
+    "kind": "data"
+  },
+  "gSoundStream_080B7C90": {
+    "address": "0x080B7C90",
+    "kind": "data"
+  },
+  "gSoundStream_080B7D0A": {
+    "address": "0x080B7D0A",
+    "kind": "data"
+  },
+  "gSoundStream_080B7D7E": {
+    "address": "0x080B7D7E",
+    "kind": "data"
+  },
+  "gSoundStream_080B7E01": {
+    "address": "0x080B7E01",
+    "kind": "data"
+  },
+  "gSoundStream_080B7E68": {
+    "address": "0x080B7E68",
+    "kind": "data"
+  },
+  "gSoundStream_080B7EB2": {
+    "address": "0x080B7EB2",
+    "kind": "data"
+  },
+  "gSoundStream_080B7F40": {
+    "address": "0x080B7F40",
+    "kind": "data"
+  },
+  "gSoundStream_080B80E7": {
+    "address": "0x080B80E7",
+    "kind": "data"
+  },
+  "gSoundStream_080B81CD": {
+    "address": "0x080B81CD",
+    "kind": "data"
+  },
+  "gSoundStream_080B835A": {
+    "address": "0x080B835A",
+    "kind": "data"
+  },
+  "gSoundStream_080B84E1": {
+    "address": "0x080B84E1",
+    "kind": "data"
+  },
+  "gSoundStream_080B85B6": {
+    "address": "0x080B85B6",
+    "kind": "data"
+  },
+  "gSoundStream_080B8680": {
+    "address": "0x080B8680",
+    "kind": "data"
+  },
+  "gSoundStream_080B869D": {
+    "address": "0x080B869D",
+    "kind": "data"
+  },
+  "gSoundStream_080B86BA": {
+    "address": "0x080B86BA",
+    "kind": "data"
+  },
+  "gSoundStream_080B86D3": {
+    "address": "0x080B86D3",
+    "kind": "data"
+  },
+  "gSoundStream_080B86DA": {
+    "address": "0x080B86DA",
+    "kind": "data"
+  },
+  "gSoundStream_080B86F3": {
+    "address": "0x080B86F3",
+    "kind": "data"
+  },
+  "gSoundStream_080B8700": {
+    "address": "0x080B8700",
+    "kind": "data"
+  },
+  "gSoundStream_080B8979": {
+    "address": "0x080B8979",
+    "kind": "data"
+  },
+  "gSoundStream_080B8A74": {
+    "address": "0x080B8A74",
+    "kind": "data"
+  },
+  "gSoundStream_080B8BD0": {
+    "address": "0x080B8BD0",
+    "kind": "data"
+  },
+  "gSoundStream_080B8C66": {
+    "address": "0x080B8C66",
+    "kind": "data"
+  },
+  "gSoundStream_080B8D30": {
+    "address": "0x080B8D30",
+    "kind": "data"
+  },
+  "gSoundStream_080B8FD1": {
+    "address": "0x080B8FD1",
+    "kind": "data"
+  },
+  "gSoundStream_080B90E2": {
+    "address": "0x080B90E2",
+    "kind": "data"
+  },
+  "gSoundStream_080B92C7": {
+    "address": "0x080B92C7",
+    "kind": "data"
+  },
+  "gSoundStream_080B94BD": {
+    "address": "0x080B94BD",
+    "kind": "data"
+  },
+  "gSoundStream_080B968B": {
+    "address": "0x080B968B",
+    "kind": "data"
+  },
+  "gSoundStream_080B97D0": {
+    "address": "0x080B97D0",
+    "kind": "data"
+  },
+  "gSoundStream_080B9881": {
+    "address": "0x080B9881",
+    "kind": "data"
+  },
+  "gSoundStream_080B9932": {
+    "address": "0x080B9932",
+    "kind": "data"
+  },
+  "gSoundStream_080B9964": {
+    "address": "0x080B9964",
+    "kind": "data"
+  },
+  "gSoundStream_080B9999": {
+    "address": "0x080B9999",
+    "kind": "data"
+  },
+  "gSoundStream_080B99E0": {
+    "address": "0x080B99E0",
+    "kind": "data"
+  },
+  "gSoundStream_080B9AD8": {
+    "address": "0x080B9AD8",
+    "kind": "data"
+  },
+  "gSoundStream_080B9B96": {
+    "address": "0x080B9B96",
+    "kind": "data"
+  },
+  "gSoundStream_080B9C91": {
+    "address": "0x080B9C91",
+    "kind": "data"
+  },
+  "gSoundStream_080B9D98": {
+    "address": "0x080B9D98",
+    "kind": "data"
+  },
+  "gSoundStream_080B9E02": {
+    "address": "0x080B9E02",
+    "kind": "data"
+  },
+  "gSoundStream_080B9EC0": {
+    "address": "0x080B9EC0",
+    "kind": "data"
+  },
+  "gSoundStream_080B9F7F": {
+    "address": "0x080B9F7F",
+    "kind": "data"
+  },
+  "gSoundStream_080B9FDB": {
+    "address": "0x080B9FDB",
+    "kind": "data"
+  },
+  "gSoundStream_080BA056": {
+    "address": "0x080BA056",
+    "kind": "data"
+  },
+  "gSoundStream_080BA113": {
+    "address": "0x080BA113",
+    "kind": "data"
+  },
+  "gSoundStream_080BA1C0": {
+    "address": "0x080BA1C0",
+    "kind": "data"
+  },
+  "gSoundStream_080BA65F": {
+    "address": "0x080BA65F",
+    "kind": "data"
+  },
+  "gSoundStream_080BB590": {
+    "address": "0x080BB590",
+    "kind": "data"
+  },
+  "gSoundStream_080BB7A7": {
+    "address": "0x080BB7A7",
+    "kind": "data"
+  },
+  "gSoundStream_080BB88F": {
+    "address": "0x080BB88F",
+    "kind": "data"
+  },
+  "gSoundStream_080BB98F": {
+    "address": "0x080BB98F",
+    "kind": "data"
+  },
+  "gSoundStream_080BB9E4": {
+    "address": "0x080BB9E4",
+    "kind": "data"
+  },
+  "gSoundStream_080BBB3D": {
+    "address": "0x080BBB3D",
+    "kind": "data"
+  },
+  "gSoundStream_080BBBD0": {
+    "address": "0x080BBBD0",
+    "kind": "data"
+  },
+  "gSoundStream_080BBE43": {
+    "address": "0x080BBE43",
+    "kind": "data"
+  },
+  "gSoundStream_080BC022": {
+    "address": "0x080BC022",
+    "kind": "data"
+  },
+  "gSoundStream_080BC1B8": {
+    "address": "0x080BC1B8",
+    "kind": "data"
+  },
+  "gSoundStream_080BC3A9": {
+    "address": "0x080BC3A9",
+    "kind": "data"
+  },
+  "gSoundStream_080BC59C": {
+    "address": "0x080BC59C",
+    "kind": "data"
+  },
+  "gSoundStream_080BC720": {
+    "address": "0x080BC720",
+    "kind": "data"
+  },
+  "gSoundStream_080BC97B": {
+    "address": "0x080BC97B",
+    "kind": "data"
+  },
+  "gSoundStream_080BCB13": {
+    "address": "0x080BCB13",
+    "kind": "data"
+  },
+  "gSoundStream_080BCC97": {
+    "address": "0x080BCC97",
+    "kind": "data"
+  },
+  "gSoundStream_080BCEF6": {
+    "address": "0x080BCEF6",
+    "kind": "data"
+  },
+  "gSoundStream_080BD0F2": {
+    "address": "0x080BD0F2",
+    "kind": "data"
+  },
+  "gSoundStream_080BD280": {
+    "address": "0x080BD280",
+    "kind": "data"
+  },
+  "gSoundStream_080BD40C": {
+    "address": "0x080BD40C",
+    "kind": "data"
+  },
+  "gSoundStream_080BD574": {
+    "address": "0x080BD574",
+    "kind": "data"
+  },
+  "gSoundStream_080BD6B9": {
+    "address": "0x080BD6B9",
+    "kind": "data"
+  },
+  "gSoundStream_080BD6E0": {
+    "address": "0x080BD6E0",
+    "kind": "data"
+  },
+  "gSoundStream_080BD9F8": {
+    "address": "0x080BD9F8",
+    "kind": "data"
+  },
+  "gSoundStream_080BDB90": {
+    "address": "0x080BDB90",
+    "kind": "data"
+  },
+  "gSoundStream_080BDC54": {
+    "address": "0x080BDC54",
+    "kind": "data"
+  },
+  "gSoundStream_080BDCF2": {
+    "address": "0x080BDCF2",
+    "kind": "data"
+  },
+  "gSoundStream_080BDD97": {
+    "address": "0x080BDD97",
+    "kind": "data"
+  },
+  "gSoundStream_080BDE46": {
+    "address": "0x080BDE46",
+    "kind": "data"
+  },
+  "gSoundStream_080BDEF7": {
+    "address": "0x080BDEF7",
+    "kind": "data"
+  },
+  "gSoundStream_080BDF60": {
+    "address": "0x080BDF60",
+    "kind": "data"
+  },
+  "gSoundStream_080BE032": {
+    "address": "0x080BE032",
+    "kind": "data"
+  },
+  "gSoundStream_080BE05C": {
+    "address": "0x080BE05C",
+    "kind": "data"
+  },
+  "gSoundStream_080BE0BF": {
+    "address": "0x080BE0BF",
+    "kind": "data"
+  },
+  "gSoundStream_080BE132": {
+    "address": "0x080BE132",
+    "kind": "data"
+  },
+  "gSoundStream_080BE1E7": {
+    "address": "0x080BE1E7",
+    "kind": "data"
+  },
+  "gSoundStream_080BE210": {
+    "address": "0x080BE210",
+    "kind": "data"
+  },
+  "gSoundStream_080BE455": {
+    "address": "0x080BE455",
+    "kind": "data"
+  },
+  "gSoundStream_080BE67D": {
+    "address": "0x080BE67D",
+    "kind": "data"
+  },
+  "gSoundStream_080BE79B": {
+    "address": "0x080BE79B",
+    "kind": "data"
+  },
+  "gSoundStream_080BE7CE": {
+    "address": "0x080BE7CE",
+    "kind": "data"
+  },
+  "gSoundStream_080BEADD": {
+    "address": "0x080BEADD",
+    "kind": "data"
+  },
+  "gSoundStream_080BEB20": {
+    "address": "0x080BEB20",
+    "kind": "data"
+  },
+  "gSoundStream_080BECB1": {
+    "address": "0x080BECB1",
+    "kind": "data"
+  },
+  "gSoundStream_080BED86": {
+    "address": "0x080BED86",
+    "kind": "data"
+  },
+  "gSoundStream_080BEEC5": {
+    "address": "0x080BEEC5",
+    "kind": "data"
+  },
+  "gSoundStream_080BEF6C": {
+    "address": "0x080BEF6C",
+    "kind": "data"
+  },
+  "gSoundStream_080BF057": {
+    "address": "0x080BF057",
+    "kind": "data"
+  },
+  "gSoundStream_080BF130": {
+    "address": "0x080BF130",
+    "kind": "data"
+  },
+  "gSoundStream_080BF1C6": {
+    "address": "0x080BF1C6",
+    "kind": "data"
+  },
+  "gSoundStream_080BF26C": {
+    "address": "0x080BF26C",
+    "kind": "data"
+  },
+  "gSoundStream_080BF360": {
+    "address": "0x080BF360",
+    "kind": "data"
+  },
+  "gSoundStream_080BF469": {
+    "address": "0x080BF469",
+    "kind": "data"
+  },
+  "gSoundStream_080BF530": {
+    "address": "0x080BF530",
+    "kind": "data"
+  },
+  "gSoundStream_080BF5C0": {
+    "address": "0x080BF5C0",
+    "kind": "data"
+  },
+  "gSoundStream_080BF64E": {
+    "address": "0x080BF64E",
+    "kind": "data"
+  },
+  "gSoundStream_080BF6EC": {
+    "address": "0x080BF6EC",
+    "kind": "data"
+  },
+  "gSoundStream_080BF7F2": {
+    "address": "0x080BF7F2",
+    "kind": "data"
+  },
+  "gSoundStream_080BF8F5": {
+    "address": "0x080BF8F5",
+    "kind": "data"
+  },
+  "gSoundStream_080BF96B": {
+    "address": "0x080BF96B",
+    "kind": "data"
+  },
+  "gSoundStream_080BFA00": {
+    "address": "0x080BFA00",
+    "kind": "data"
+  },
+  "gSoundStream_080BFBCB": {
+    "address": "0x080BFBCB",
+    "kind": "data"
+  },
+  "gSoundStream_080BFE8E": {
+    "address": "0x080BFE8E",
+    "kind": "data"
+  },
+  "gSoundStream_080BFFCF": {
+    "address": "0x080BFFCF",
+    "kind": "data"
+  },
+  "gSoundStream_080C0103": {
+    "address": "0x080C0103",
+    "kind": "data"
+  },
+  "gSoundStream_080C0375": {
+    "address": "0x080C0375",
+    "kind": "data"
+  },
+  "gSoundStream_080C06B0": {
+    "address": "0x080C06B0",
+    "kind": "data"
+  },
+  "gSoundStream_080C090B": {
+    "address": "0x080C090B",
+    "kind": "data"
+  },
+  "gSoundStream_080C09D9": {
+    "address": "0x080C09D9",
+    "kind": "data"
+  },
+  "gSoundStream_080C0B0D": {
+    "address": "0x080C0B0D",
+    "kind": "data"
+  },
+  "gSoundStream_080C0C98": {
+    "address": "0x080C0C98",
+    "kind": "data"
+  },
+  "gSoundStream_080C0EEA": {
+    "address": "0x080C0EEA",
+    "kind": "data"
+  },
+  "gSoundStream_080C0FA0": {
+    "address": "0x080C0FA0",
+    "kind": "data"
+  },
+  "gSoundStream_080C10D7": {
+    "address": "0x080C10D7",
+    "kind": "data"
+  },
+  "gSoundStream_080C1188": {
+    "address": "0x080C1188",
+    "kind": "data"
+  },
+  "gSoundStream_080C11F5": {
+    "address": "0x080C11F5",
+    "kind": "data"
+  },
+  "gSoundStream_080C1256": {
+    "address": "0x080C1256",
+    "kind": "data"
+  },
+  "gSoundStream_080C12A4": {
+    "address": "0x080C12A4",
+    "kind": "data"
+  },
+  "gSoundStream_080C1300": {
+    "address": "0x080C1300",
+    "kind": "data"
+  },
+  "gSoundStream_080C143C": {
+    "address": "0x080C143C",
+    "kind": "data"
+  },
+  "gSoundStream_080C1588": {
+    "address": "0x080C1588",
+    "kind": "data"
+  },
+  "gSoundStream_080C16E0": {
+    "address": "0x080C16E0",
+    "kind": "data"
+  },
+  "gSoundStream_080C18BB": {
+    "address": "0x080C18BB",
+    "kind": "data"
+  },
+  "gSoundStream_080C1A41": {
+    "address": "0x080C1A41",
+    "kind": "data"
+  },
+  "gSoundStream_080C1B90": {
+    "address": "0x080C1B90",
+    "kind": "data"
+  },
+  "gSoundStream_080C1C3E": {
+    "address": "0x080C1C3E",
+    "kind": "data"
+  },
+  "gSoundStream_080C1C9A": {
+    "address": "0x080C1C9A",
+    "kind": "data"
+  },
+  "gSoundStream_080C1D49": {
+    "address": "0x080C1D49",
+    "kind": "data"
+  },
+  "gSoundStream_080C1DD0": {
+    "address": "0x080C1DD0",
+    "kind": "data"
+  },
+  "gSoundStream_080C1E5D": {
+    "address": "0x080C1E5D",
+    "kind": "data"
+  },
+  "gSoundStream_080C1ED0": {
+    "address": "0x080C1ED0",
+    "kind": "data"
+  },
+  "gSoundStream_080C224A": {
+    "address": "0x080C224A",
+    "kind": "data"
+  },
+  "gSoundStream_080C2678": {
+    "address": "0x080C2678",
+    "kind": "data"
+  },
+  "gSoundStream_080C2A2C": {
+    "address": "0x080C2A2C",
+    "kind": "data"
+  },
+  "gSoundStream_080C2C23": {
+    "address": "0x080C2C23",
+    "kind": "data"
+  },
+  "gSoundStream_080C3156": {
+    "address": "0x080C3156",
+    "kind": "data"
+  },
+  "gSoundStream_080C3170": {
+    "address": "0x080C3170",
+    "kind": "data"
+  },
+  "gSoundStream_080C32D8": {
+    "address": "0x080C32D8",
+    "kind": "data"
+  },
+  "gSoundStream_080C338E": {
+    "address": "0x080C338E",
+    "kind": "data"
+  },
+  "gSoundStream_080C3479": {
+    "address": "0x080C3479",
+    "kind": "data"
+  },
+  "gSoundStream_080C354C": {
+    "address": "0x080C354C",
+    "kind": "data"
+  },
+  "gSoundStream_080C367F": {
+    "address": "0x080C367F",
+    "kind": "data"
+  },
+  "gSoundStream_080C3720": {
+    "address": "0x080C3720",
+    "kind": "data"
+  },
+  "gSoundStream_080C37E2": {
+    "address": "0x080C37E2",
+    "kind": "data"
+  },
+  "gSoundStream_080C386C": {
+    "address": "0x080C386C",
+    "kind": "data"
+  },
+  "gSoundStream_080C38C0": {
+    "address": "0x080C38C0",
+    "kind": "data"
+  },
+  "gSoundStream_080C3979": {
+    "address": "0x080C3979",
+    "kind": "data"
+  },
+  "gSoundStream_080C3A1E": {
+    "address": "0x080C3A1E",
+    "kind": "data"
+  },
+  "gSoundStream_080C3AA0": {
+    "address": "0x080C3AA0",
+    "kind": "data"
+  },
+  "gSoundStream_080C3D9B": {
+    "address": "0x080C3D9B",
+    "kind": "data"
+  },
+  "gSoundStream_080C3FBD": {
+    "address": "0x080C3FBD",
+    "kind": "data"
+  },
+  "gSoundStream_080C41E2": {
+    "address": "0x080C41E2",
+    "kind": "data"
+  },
+  "gSoundStream_080C4488": {
+    "address": "0x080C4488",
+    "kind": "data"
+  },
+  "gSoundStream_080C468C": {
+    "address": "0x080C468C",
+    "kind": "data"
+  },
+  "gSoundStream_080C47C0": {
+    "address": "0x080C47C0",
+    "kind": "data"
+  },
+  "gSoundStream_080C491C": {
+    "address": "0x080C491C",
+    "kind": "data"
+  },
+  "gSoundStream_080C4CBC": {
+    "address": "0x080C4CBC",
+    "kind": "data"
+  },
+  "gSoundStream_080C4E0B": {
+    "address": "0x080C4E0B",
+    "kind": "data"
+  },
+  "gSoundStream_080C4E52": {
+    "address": "0x080C4E52",
+    "kind": "data"
+  },
+  "gSoundStream_080C4F38": {
+    "address": "0x080C4F38",
+    "kind": "data"
+  },
+  "gPartTextPointers_083BBB4C": "0x083BBB4C",
+  "gUnknown_083D2F30": "0x083D2F30",
+  "gUnknown_080AF960": "0x080AF960",
+  "gUnknown_0850F298": "0x0850F298",
+  "gUnknown_0878DC74": "0x0878DC74",
+  "gUnknown_080AFABA": "0x080AFABA",
+  "gUnknown_080AFAD2": "0x080AFAD2",
+  "gUnknown_03006FA0": "0x03006FA0",
+  "gUnknown_0848576D": "0x0848576D",
+  "gUnknown_087B4CE4": "0x087B4CE4",
+  "gUnknown_03000028": "0x03000028",
+  "gUnknown_087A25A4": "0x087A25A4",
+  "gUnknown_080B00AC": "0x080B00AC",
+  "gUnknown_030003F0": "0x030003F0",
+  "gUnknown_080B0108": "0x080B0108",
+  "gSavedPalettes": "0x0202F800",
+  "gBlendedPalettes": "0x0202FC00",
+  "gUnknown_084C7F54": "0x084C7F54",
+  "gUnknown_08799F20": "0x08799F20",
+  "gUnknown_0202F840": "0x0202F840",
+  "gUnknown_0202F860": "0x0202F860",
+  "sub_080465B8": {
+    "address": "0x080465B9",
+    "kind": "thumb_function"
+  },
+  "gUnknown_083AF600": "0x083AF600",
+  "gUnknown_083D5F70": "0x083D5F70",
+  "gUnknown_0847E76C": "0x0847E76C",
+  "gUnknown_0847E704": "0x0847E704",
+  "gUnknown_083D2C2B": "0x083D2C2B",
+  "gUnknown_083D2C34": "0x083D2C34",
+  "gUnknown_083D2C58": "0x083D2C58",
+  "gUnknown_083D2C59": "0x083D2C59",
+  "gBridgeSteps_08485AEC": "0x08485AEC",
+  "gUnknown_083C4DF8": "0x083C4DF8",
+  "gUnknown_083C4DFC": "0x083C4DFC",
+  "gUnknown_083C4E00": "0x083C4E00",
+  "gUnknown_083C4E04": "0x083C4E04",
+  "gUnknown_083C4E20": "0x083C4E20",
+  "gUnknown_083AF610": "0x083AF610",
+  "gUnknown_083AF640": "0x083AF640",
+  "gUnknown_03003474": "0x03003474",
+  "gUnknown_083AFC2C": "0x083AFC2C",
+  "gUnknown_0879F6CC": "0x0879F6CC",
+  "gUnknown_084E4438": "0x084E4438",
+  "gUnknown_02023001": "0x02023001",
+  "gUnknown_02023002": "0x02023002",
+  "gUnknown_02023003": "0x02023003",
+  "gUnknown_02040004": "0x02040004",
+  "gObjectSortBytes": "0x02023000",
+  "gUnknown_080AC74C": "0x080AC74C",
+  "gUnknown_080AC7EC": "0x080AC7EC",
+  "gUnknown_080AC88C": "0x080AC88C",
+  "gUnknown_080AC92C": "0x080AC92C",
+  "gUnknown_080AC9CC": "0x080AC9CC",
+  "gUnknown_080ACA6C": "0x080ACA6C",
+  "gUnknown_085102B8": "0x085102B8",
+  "gUnknown_083C4DE0": "0x083C4DE0",
+  "gUnknown_083C4DE4": "0x083C4DE4",
+  "gUnknown_083C4DE8": "0x083C4DE8",
+  "gUnknown_083C4DEC": "0x083C4DEC",
+  "gUnknown_083C4DF0": "0x083C4DF0",
+  "gUnknown_083C4DF4": "0x083C4DF4",
+  "gUnknown_083C4E10": "0x083C4E10",
+  "gUnknown_083C4E14": "0x083C4E14",
+  "gUnknown_083C4E18": "0x083C4E18",
+  "gUnknown_083C4E1C": "0x083C4E1C",
+  "gUnknown_08483C10": "0x08483C10",
+  "gUnknown_080AF9C8": "0x080AF9C8",
+  "gUnknown_083AF500": "0x083AF500",
+  "gUnknown_083AF540": "0x083AF540",
+  "gUnknown_083AF580": "0x083AF580",
+  "gUnknown_083AF5C0": "0x083AF5C0",
+  "gUnknown_083AF850": "0x083AF850",
+  "gUnknown_083B29EC": "0x083B29EC",
+  "sub_08064EB4": {
+    "address": "0x8064eb5",
+    "kind": "thumb_function"
+  },
+  "sub_08020B4C": {
+    "address": "0x8020b4d",
+    "kind": "thumb_function"
+  },
+  "sub_08072080": {
+    "address": "0x08072081",
+    "kind": "thumb_function"
+  },
+  "gUnknown_087A56EC": "0x087A56EC",
+  "gUnknown_02020000": "0x02020000",
+  "gUnknown_087883F4": "0x087883F4",
+  "gUnknown_080AFB20": "0x080AFB20"
+}

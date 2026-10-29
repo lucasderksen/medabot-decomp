@@ -1,0 +1,12 @@
+{
+  "source": "src/main.c",
+  "compiler": "agbcc",
+  "segments": [
+    {
+      "name": "main",
+      "start": "0x25C",
+      "end": "0x458",
+      "input_section": ".text.GameMain"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "source": "src/compression.c",
+  "segments": [
+    {
+      "name": "le_decompress",
+      "start": "0x9BC",
+      "end": "0xA0C",
+      "input_section": ".text.LeDecompress"
+    }
+  ],
+  "symbols": {
+    "LeDecompressBytes": {"address": "0x08000A0D", "kind": "thumb_function"},
+    "LeDecompressVram": {"address": "0x08000B15", "kind": "thumb_function"}
+  }
+}

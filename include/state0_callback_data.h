@@ -1,0 +1,81 @@
+#ifndef GUARD_STATE0_CALLBACK_DATA_H
+#define GUARD_STATE0_CALLBACK_DATA_H
+#include "global.h"
+
+/* Dispatchers pass no arguments and ignore callback results. */
+typedef void (*State0StoredCallback)(void);
+
+extern const State0StoredCallback gState0MapCallbacks_083ACE24[144];
+extern const State0StoredCallback gState0MapPhaseCallbacks_083AD080[192];
+extern const State0StoredCallback gActionDispatchCallbacks_083AD5CC[48];
+extern const State0StoredCallback gActionDispatchCallbacks_083AD68C[9];
+extern const State0StoredCallback gActionDispatchCallbacks_083AD6B0[8];
+extern const State0StoredCallback gActionDispatchCallbacks_083AD6D0[8];
+extern const State0StoredCallback gActionDispatchCallbacks_083AD6F0[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AD730[8];
+extern const State0StoredCallback gActionDispatchCallbacks_083AD750[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AD790[80];
+extern const State0StoredCallback gActionDispatchCallbacks_083AD8D0[17];
+extern const State0StoredCallback gActionDispatchCallbacks_083AD914[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AD954[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AD994[25];
+extern const State0StoredCallback gActionDispatchCallbacks_083AD9F8[8];
+extern const State0StoredCallback gActionDispatchCallbacks_083ADA18[8];
+extern const State0StoredCallback gActionDispatchCallbacks_083ADA38[8];
+extern const State0StoredCallback gActionDispatchCallbacks_083ADA58[25];
+extern const State0StoredCallback gActionDispatchCallbacks_083ADABC[8];
+extern const State0StoredCallback gActionDispatchCallbacks_083ADADC[25];
+extern const State0StoredCallback gActionDispatchCallbacks_083ADB40[43];
+extern const State0StoredCallback gActionDispatchCallbacks_083ADBEC[32];
+extern const State0StoredCallback gActionDispatchCallbacks_083ADC6C[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083ADCAC[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083ADCEC[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083ADD2C[24];
+extern const State0StoredCallback gActionDispatchCallbacks_083ADD8C[24];
+extern const State0StoredCallback gActionDispatchCallbacks_083ADDEC[21];
+extern const State0StoredCallback gActionDispatchCallbacks_083ADE40[24];
+extern const State0StoredCallback gActionDispatchCallbacks_083ADEA0[24];
+extern const State0StoredCallback gActionDispatchCallbacks_083ADF00[24];
+extern const State0StoredCallback gActionDispatchCallbacks_083ADF60[32];
+extern const State0StoredCallback gActionDispatchCallbacks_083ADFE0[32];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE064[24];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE0C4[24];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE124[24];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE184[24];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE1E4[32];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE264[7];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE280[6];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE298[21];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE2EC[21];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE340[32];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE3C0[48];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE480[32];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE500[32];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE580[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE5C0[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE600[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE640[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE680[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE6C0[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE700[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE740[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE780[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE7C0[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE800[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE840[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE880[20];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE8D0[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE910[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE954[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE994[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AE9D4[23];
+extern const State0StoredCallback gActionDispatchCallbacks_083AEA30[22];
+extern const State0StoredCallback gActionDispatchCallbacks_083AEA88[32];
+extern const State0StoredCallback gActionDispatchCallbacks_083AEB1C[27];
+extern const State0StoredCallback gActionDispatchCallbacks_083AEB88[15];
+extern const State0StoredCallback gActionDispatchCallbacks_083AEBC4[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AEC04[21];
+extern const State0StoredCallback gActionDispatchCallbacks_083AEC58[16];
+extern const State0StoredCallback gActionDispatchCallbacks_083AEC98[16];
+
+#endif

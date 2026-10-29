@@ -1,0 +1,24 @@
+# Cartridge images and locally extracted copyrighted data.
+*.gba
+*.sav
+*.ss0
+*.ss1
+baserom.*
+data/extracted/
+
+# Downloaded tools, generated analysis, and build products.
+tools/toolchain/
+tools/downloads/
+tools/python/
+build/
+.venv/
+__pycache__/
+*.pyc
+
+# Local browser screenshots and scratch output.
+.playwright-cli/
+output/
+
+# Local credentials and settings.
+.discord.local.json
+.discord.local.json.tmp

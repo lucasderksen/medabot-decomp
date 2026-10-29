@@ -1,0 +1,11 @@
+{
+  "name": "Medabots - Metabee (Europe)",
+  "title": "MEDABOTSMTBV",
+  "game_code": "A8BP",
+  "maker_code": "E9",
+  "revision": 0,
+  "size": 8388608,
+  "rom_base": "0x08000000",
+  "sha1": "cd3d674e88f40a0707b150c4293588a659001d29",
+  "sha256": "4c64595190db3b4f50062d90a446fcab590f4e31c01830384558deca0691a26d"
+}
