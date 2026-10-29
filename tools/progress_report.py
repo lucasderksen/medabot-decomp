@@ -80,7 +80,7 @@ def chart(rows):
     series = [("Code region in source", code_percent, "#2da44e"),
               ("Whole ROM in source", lambda row: percent(row, *ALL), "#d9822b")]
     peak = max(value for _, measure_row, _ in series for row in rows if (value := measure_row(row)) is not None)
-    top = max(0.5, next(step for step in (0.5, 1, 2, 5, 10, 20, 25, 50, 100) if step >= peak * 1.15))
+    top = max(0.5, next((step for step in (0.5, 1, 2, 5, 10, 20, 25, 50) if step >= peak * 1.15), 100))
     count = len(rows)
 
     def point(index, value):

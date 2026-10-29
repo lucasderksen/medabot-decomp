@@ -37,6 +37,7 @@ jobs:
       - name: Measure progress
         id: measure
         run: |
+          set -o pipefail
           python3 tools/progress_report.py --out progress-data --sha "$GITHUB_SHA" --summary "$GITHUB_STEP_SUMMARY" | tee report.txt
           grep '^STATUS=' report.txt | sed 's/^STATUS=/status=/' >> "$GITHUB_OUTPUT"
 
