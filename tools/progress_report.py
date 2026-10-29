@@ -75,7 +75,7 @@ def badge(label, value):
 
 
 def chart(rows):
-    width, height, pad_left, pad_right, pad_top, pad_bottom = 760, 300, 64, 24, 40, 40
+    width, height, pad_left, pad_right, pad_top, pad_bottom = 760, 300, 64, 24, 40, 58
     plot_w, plot_h = width - pad_left - pad_right, height - pad_top - pad_bottom
     series = [("Code region in source", code_percent, "#2da44e"),
               ("Whole ROM in source", lambda row: percent(row, *ALL), "#d9822b")]
@@ -101,7 +101,7 @@ def chart(rows):
         parts.append(f'<text class="axis" x="{pad_left - 8}" y="{y + 4:.1f}" text-anchor="end">{value:g}%</text>')
     for label_index in sorted({0, count - 1}):
         x, _ = point(label_index, 0)
-        parts.append(f'<text class="axis" x="{x:.1f}" y="{height - 16}" text-anchor="middle">{rows[label_index]["date"][:10]}</text>')
+        parts.append(f'<text class="axis" x="{x:.1f}" y="{height - pad_bottom + 18}" text-anchor="middle">{rows[label_index]["date"][:10]}</text>')
     for legend_index, (name, measure_row, color) in enumerate(series):
         coords = [point(index, value) for index, row in enumerate(rows) if (value := measure_row(row)) is not None]
         if not coords:
@@ -111,8 +111,9 @@ def chart(rows):
         x, y = coords[-1]
         parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3" fill="{color}"/>')
         lx = width - pad_right - 330 + legend_index * 175
-        parts.append(f'<rect x="{lx}" y="{height - 26}" width="10" height="10" fill="{color}"/>'
-                     f'<text class="label" x="{lx + 14}" y="{height - 17}">{name}</text>')
+        # The legend has its own row below the date labels, which can sit anywhere on the x axis.
+        parts.append(f'<rect x="{lx}" y="{height - 23}" width="10" height="10" fill="{color}"/>'
+                     f'<text class="label" x="{lx + 14}" y="{height - 14}">{name}</text>')
     parts.append("</svg>\n")
     return "\n".join(parts)
 
