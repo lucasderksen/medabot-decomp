@@ -4,15 +4,22 @@ import argparse
 import hashlib
 from pathlib import Path
 import platform
+import shutil
 import subprocess
 import sys
+import tarfile
 import urllib.request
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-ARCHIVE = "arm-gnu-toolchain-14.3.rel1-mingw-w64-x86_64-arm-none-eabi.zip"
-URL = "https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu/14.3.rel1/binrel/" + ARCHIVE
-SHA256 = "864c0c8815857d68a1bbba2e5e2782255bb922845c71c97636004a3d74f60986"
+RELEASE = "https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu/14.3.rel1/binrel/"
+# Archive and SHA-256 per host, as Arm publishes them beside each archive (.sha256asc).
+ARCHIVES = {
+    "Windows": ("arm-gnu-toolchain-14.3.rel1-mingw-w64-x86_64-arm-none-eabi.zip",
+                "864c0c8815857d68a1bbba2e5e2782255bb922845c71c97636004a3d74f60986"),
+    "Linux": ("arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi.tar.xz",
+              "8f6903f8ceb084d9227b9ef991490413014d991874a1e34074443c2a72b14dbd"),
+}
 M2C_UPSTREAM = "https://github.com/matt-kempster/m2c.git"
 M2C_COMMIT = "708d2d2cb2698f091a92492b328f73b24209f72d"
 PERMUTER_UPSTREAM = "https://github.com/WhenGryphonsFly/decomp-permuter-agbcc.git"
@@ -20,10 +27,12 @@ PERMUTER_COMMIT = "1f7ef872b12f54db7678ff00e0346abc015410ae"
 
 
 def bootstrap_toolchain():
-    if platform.system() != "Windows" or platform.machine().lower() not in ("amd64", "x86_64"):
-        raise SystemExit("This bootstrap downloads Windows x64 tools. On other hosts install arm-none-eabi tools and set ARM_TOOLCHAIN to their bin directory.")
+    if platform.system() not in ARCHIVES or platform.machine().lower() not in ("amd64", "x86_64"):
+        raise SystemExit("This bootstrap downloads Windows or Linux x64 tools. On other hosts install arm-none-eabi tools and set ARM_TOOLCHAIN to their bin directory.")
+    ARCHIVE, SHA256 = ARCHIVES[platform.system()]
+    URL = RELEASE + ARCHIVE
     destination = ROOT / "tools" / "toolchain"
-    compiler = destination / "bin" / "arm-none-eabi-gcc.exe"
+    compiler = destination / "bin" / ("arm-none-eabi-gcc.exe" if platform.system() == "Windows" else "arm-none-eabi-gcc")
     if compiler.exists():
         subprocess.run([str(compiler), "--version"], check=True)
         return
@@ -31,7 +40,7 @@ def bootstrap_toolchain():
     downloads.mkdir(parents=True, exist_ok=True)
     archive = downloads / ARCHIVE
     if not archive.exists():
-        partial = archive.with_suffix(".zip.part")
+        partial = archive.with_name(archive.name + ".part")
         print(f"Downloading {URL}", flush=True)
         with urllib.request.urlopen(URL, timeout=60) as response, partial.open("wb") as output:
             total = int(response.headers.get("Content-Length", "0"))
@@ -49,6 +58,10 @@ def bootstrap_toolchain():
     if digest != SHA256:
         raise SystemExit(f"Archive checksum mismatch: {digest}; remove {archive} and retry.")
     print(f"Verified SHA-256: {digest}", flush=True)
+    if ARCHIVE.endswith(".tar.xz"):
+        extract_tar(archive, destination)
+        subprocess.run([str(compiler), "--version"], check=True)
+        return
     destination.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(archive) as bundle:
         members = bundle.infolist()
@@ -68,6 +81,19 @@ def bootstrap_toolchain():
                     while chunk := source.read(1024 * 1024):
                         output.write(chunk)
     subprocess.run([str(compiler), "--version"], check=True)
+
+
+def extract_tar(archive, destination):
+    """Unpack the Linux archive (one top-level folder, symlinks, executable bits) into destination."""
+    staging = destination.with_name(destination.name + ".partial")
+    shutil.rmtree(staging, ignore_errors=True)
+    staging.mkdir(parents=True)
+    with tarfile.open(archive) as bundle:
+        # The "data" filter refuses absolute paths and links leaving the folder.
+        bundle.extractall(staging, filter="data")
+    (top,) = list(staging.iterdir())
+    top.rename(destination)
+    staging.rmdir()
 
 
 def checkout(name, upstream, commit):

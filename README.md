@@ -1,5 +1,6 @@
 # Medabots - Metabee decompilation
 
+[![Build](https://github.com/lucasderksen/medabot-decomp/actions/workflows/build.yml/badge.svg)](https://github.com/lucasderksen/medabot-decomp/actions/workflows/build.yml)
 [![Progress](https://github.com/lucasderksen/medabot-decomp/actions/workflows/progress.yml/badge.svg)](https://github.com/lucasderksen/medabot-decomp/actions/workflows/progress.yml)
 [![Code](https://bytematch.dev/lucasderksen/medabot-decomp.svg?label=Code&measure=matched_code_percent)](https://bytematch.dev/lucasderksen/medabot-decomp)
 [![Data](https://bytematch.dev/lucasderksen/medabot-decomp.svg?label=Data&measure=matched_data_percent)](https://bytematch.dev/lucasderksen/medabot-decomp)
@@ -61,8 +62,9 @@ are never committed.
 
 ## Building
 
-Requirements: Python 3.11 or newer and Git. On Windows the historical compiler
-also uses Git Bash and a MinGW GCC to build itself. From the project root:
+Requirements: Python 3.11 or newer, Git, and a host C compiler with `make` to
+build the historical compiler (on Windows: Git Bash and a MinGW GCC; on Linux:
+`gcc` and `make`). From the project root:
 
 ```powershell
 python tools/bootstrap.py --analysis
@@ -84,9 +86,10 @@ A successful build ends with `MATCH: all 8,388,608 bytes ...` and writes
 the build. To compare against a dump outside the project root, pass
 `--rom <path>`.
 
-On Linux and macOS, install an `arm-none-eabi` toolchain yourself and put it on
-PATH or set `ARM_TOOLCHAIN` to its `bin` directory. The bootstrap scripts
-currently support Windows x64 only.
+The bootstrap supports Windows and Linux on x64; CI builds on Ubuntu with the
+same commands (`.github/workflows/build.yml`). On other hosts, install an
+`arm-none-eabi` toolchain yourself and put it on PATH or set `ARM_TOOLCHAIN` to
+its `bin` directory; matching was verified with Arm GNU Toolchain 14.3.
 
 ## Repository layout
 

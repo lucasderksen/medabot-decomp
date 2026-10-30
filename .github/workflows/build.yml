@@ -1,0 +1,44 @@
+name: Build
+
+# Builds the complete ROM from source on every push and pull request and checks
+# it against the documented SHA-1 and SHA-256 in config/rom.json. No cartridge
+# dump is used: every byte comes from the repository.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # The pinned Arm toolchain and the two agbcc builds take a few minutes.
+      - name: Restore toolchain and compilers
+        uses: actions/cache@v4
+        with:
+          path: |
+            tools/toolchain
+            tools/downloads/agbcc
+          key: tools-${{ runner.os }}-${{ hashFiles('tools/bootstrap.py', 'tools/compiler_agbcc.py', 'tools/compiler_libgcc.py') }}
+
+      - name: Bootstrap toolchain and agbcc
+        run: |
+          python tools/bootstrap.py
+          python tools/compiler_agbcc.py bootstrap
+          python tools/compiler_libgcc.py bootstrap
+
+      - name: Build and compare
+        run: python tools/build.py
+
+      - name: Unit tests
+        run: python -m unittest discover -s tests
