@@ -13,11 +13,11 @@
 <line class="grid" x1="64" x2="736" y1="40.0" y2="40.0"/>
 <text class="axis" x="56" y="44.0" text-anchor="end">100%</text>
 <text class="axis" x="64.0" y="260" text-anchor="middle">2026-10-29</text>
-<text class="axis" x="736.0" y="260" text-anchor="middle">2026-10-29</text>
-<polyline fill="none" stroke="#2da44e" stroke-width="2" points="64.0,43.6 400.0,43.6 736.0,43.6"/>
+<text class="axis" x="736.0" y="260" text-anchor="middle">2026-10-30</text>
+<polyline fill="none" stroke="#2da44e" stroke-width="2" points="64.0,43.6 288.0,43.6 512.0,43.6 736.0,43.6"/>
 <circle cx="736.0" cy="43.6" r="3" fill="#2da44e"/>
 <rect x="406" y="277" width="10" height="10" fill="#2da44e"/><text class="label" x="420" y="286">Code region in source</text>
-<polyline fill="none" stroke="#d9822b" stroke-width="2" points="64.0,40.2 400.0,40.2 736.0,40.2"/>
+<polyline fill="none" stroke="#d9822b" stroke-width="2" points="64.0,40.2 288.0,40.2 512.0,40.2 736.0,40.2"/>
 <circle cx="736.0" cy="40.2" r="3" fill="#d9822b"/>
 <rect x="581" y="277" width="10" height="10" fill="#d9822b"/><text class="label" x="595" y="286">Whole ROM in source</text>
 </svg>
