@@ -9,7 +9,7 @@ A matching decompilation of **Medabots - Metabee (Europe)** for the Game Boy
 Advance. The source rebuilds the original cartridge image byte for byte. The
 approach follows [pret/pokefirered](https://github.com/pret/pokefirered): keep
 the exact ROM layout, replace each interval with C (or assembly where C cannot
-produce it), and compare every rebuild against the original dump.
+produce it), and check that every rebuild is identical to the original.
 
 ![Progress history](../progress/progress.svg)
 
@@ -50,11 +50,14 @@ same numbers locally.
 | SHA-1 | `cd3d674e88f40a0707b150c4293588a659001d29` |
 | SHA-256 | `4c64595190db3b4f50062d90a446fcab590f4e31c01830384558deca0691a26d` |
 
-The build needs your own dump of this cartridge: the Nintendo logo in the
-header is still read from it, and every build is compared against it. Put the `.gba` file in
-the project root; the first build finds it, checks its hash and copies it to
-`baserom.gba`. A different version or a modified dump is rejected. ROMs, build
-products and downloaded tools are never committed.
+You don't need a copy of the game to build it: every byte of the ROM comes
+from this repository, and without a dump the build checks its output against
+the SHA-1 and SHA-256 above. With your own dump in the project root, the
+build compares byte for byte instead and reports the first differing bytes of
+any interval that changed; the matching tools (`tools/match.py`,
+`tools/m2c_candidate.py`, the permuter) also read the reference code from it.
+A different version or a modified dump is rejected. ROMs and build products
+are never committed.
 
 ## Building
 
@@ -76,10 +79,10 @@ system PATH. The second builds the pinned agbcc from source under
 runtime in `src/libgcc/`. `make setup`, `make`, `make test` and `make clean`
 wrap the same commands.
 
-A successful build ends with `MATCH: all 8,388,608 bytes are identical.` and
-writes `build/medabots.gba`, `.elf`, `.map` and a disassembly. Any difference
-fails the build and reports the interval and the first differing bytes. To use
-a dump outside the project root, pass `--rom <path>`.
+A successful build ends with `MATCH: all 8,388,608 bytes ...` and writes
+`build/medabots.gba`, `.elf`, `.map` and a disassembly. Any difference fails
+the build. To compare against a dump outside the project root, pass
+`--rom <path>`.
 
 On Linux and macOS, install an `arm-none-eabi` toolchain yourself and put it on
 PATH or set `ARM_TOOLCHAIN` to its `bin` directory. The bootstrap scripts

@@ -99,11 +99,29 @@ def replace_verified_artifact(source, destination):
             time.sleep(0.1)
 
 
+def compare_hash(rebuilt, config):
+    """Without a dump: the rebuilt image must have the documented size, SHA-1 and SHA-256."""
+    print(f"Rebuilt:   {hashlib.sha256(rebuilt).hexdigest()}")
+    if (len(rebuilt) == config["size"] and hashlib.sha1(rebuilt).hexdigest() == config["sha1"]
+            and hashlib.sha256(rebuilt).hexdigest() == config["sha256"]):
+        print(f"MATCH: all {len(rebuilt):,} bytes match the documented SHA-1 and SHA-256 (no dump supplied).")
+        return True
+    print("MISMATCH: the rebuilt image does not have the documented hashes. Supply your dump for a byte-level comparison.")
+    return False
+
+
 def build(rom_path=None):
-    reference_path = prepare_rom(rom_path)
     config = rom_config()
     segments = load_segments()
     entries = layout(segments, config["size"])
+    # Source covers every byte, so a dump is only needed for .incbin gaps and for
+    # byte-level diagnostics; without one the result is checked by hash.
+    try:
+        reference_path = prepare_rom(rom_path)
+    except ValueError:
+        if rom_path or any(entry["kind"] == "raw" for entry in entries) or any(ROOT.glob("*.gba")):
+            raise
+        reference_path = None
     base = int(config["rom_base"], 0)
     output = ROOT / "build"
     (output / "obj").mkdir(parents=True, exist_ok=True)
@@ -157,7 +175,8 @@ def build(rom_path=None):
     listing_command = [tool("objdump"), "-d", f"@{sections}", candidate / "medabots.elf"]
     listing = subprocess.run(listing_command, cwd=ROOT, check=True, capture_output=True, text=True)
     (candidate / "medabots.disasm").write_text(listing.stdout, encoding="utf-8")
-    matched = compare(reference_path.read_bytes(), (candidate / "medabots.gba").read_bytes(), entries)
+    rebuilt = (candidate / "medabots.gba").read_bytes()
+    matched = compare(reference_path.read_bytes(), rebuilt, entries) if reference_path else compare_hash(rebuilt, config)
     if matched:
         for suffix in ("elf", "map", "disasm", "gba"):
             replace_verified_artifact(candidate / ("medabots." + suffix), output / ("medabots." + suffix))
