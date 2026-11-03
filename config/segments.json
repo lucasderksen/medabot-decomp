@@ -35786,7 +35786,6 @@
     "kind": "c",
     "compiler": "agbcc",
     "cflags": [
-      "-O1",
       "-fprologue-bugfix"
     ],
     "source": "src/non_matching/sub_08059960.c",
