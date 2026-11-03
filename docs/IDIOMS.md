@@ -1367,6 +1367,13 @@ scores are search metrics, and exact bytes still require `tools/match.py`.
   and its use lengthened it from 3 to 4 and got it hoisted in the reference order (sub_08060BE4).
 - Global-alloc refs are weighted by loop depth, and a `do { } while (0)` counts as a loop: a use
   inside a wrap counts 2. This decided a hoisted constant (refs 4 vs 3) against a parameter.
+- `-fno-expensive-optimizations` makes agbcc emit an unreferenced `.LC` constant-pool word in
+  `.rodata` for every global-symbol constant the function loads (integer addresses such as
+  `*(u16 *)0x0400000A` emit none). The ROM has no such words, so that profile is ruled out for any
+  function that loads a symbol address, whatever its text bytes say (sub_08064EB4).
+- A zero that the reference materialises in the middle of an unrelated expression can come from a
+  local assigned at that point and stored later (`u16 zero; ... zero = 0; flags |= f; ... y = zero;`),
+  not from the constant at its store (sub_08064EB4: `movs r5, #0` between a constant copy and `orrs`).
 - To raise a strength-reduced giv (a pointer stepped per iteration) without losing it, wrap the
   loop *increment*, not the store: `for (i = 0; i <= 0xFF; ) { ...; do { i++; } while (0); }`.
   loop.c emits every giv update next to the biv increment, so the giv's update refs get the extra

@@ -155,7 +155,8 @@ class MatchSessionTests(unittest.TestCase):
         def symbols(path):
             return {} if Path(path).name == "candidate.o" else self.read_symbols(path)
 
-        with patch("compiler_agbcc.compile_source", compile_source), patch("match.run", commands), patch("match.read_symbols", symbols):
+        with patch("compiler_agbcc.compile_source", compile_source), patch("match.run", commands), patch("match.read_symbols", symbols), \
+                patch("match.undefined_symbols", lambda path: []):
             output = self.root / "build/probe"
             self.assertTrue(match(spec, output, session=session))
             source.write_text("incorrect")
@@ -166,3 +167,11 @@ class MatchSessionTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class AddressNamedSymbolTests(unittest.TestCase):
+    def test_address_named_placeholders_are_defined_at_their_address(self):
+        from match import address_named_symbols
+        self.assertEqual(address_named_symbols(["gUnknown_03000438", "D_0807E858", "sub_08041164", "gFrameObjects", "memcpy"]),
+                         {"gUnknown_03000438": "0x03000438", "D_0807E858": "0x0807E858",
+                          "sub_08041164": {"address": "0x08041165", "kind": "thumb_function"}})

@@ -68,16 +68,21 @@ NONMATCH("asm/non_matching/sub_08064EB4.inc", void sub_08064EB4(void))
         gFrameObjects[i + 10].screenX = 0x20;
         gFrameObjects[i + 10].screenY = i * 0x48 + 0x14;
     }
-    do {
-    { FORCE_REGISTER(u16 r, r0) = gFrameObjects[11].flags | 0x2000; gFrameObjects[11].flags = r; } /* FAKE MATCH: the reference ors into the copied constant in r0 */
-    gFrameObjects[7].flags = 0xC000;
-    gFrameObjects[7].tableSelector = 2;
-    gFrameObjects[7].palette = 0xA;
-    gFrameObjects[7].frameAndGroup = 0x1A;
-    gFrameObjects[7].screenX = 0x98;
-    gFrameObjects[7].screenY = 0;
-    sub_08041164(gDebugMenuTextBuffer, gPostDispatchWord_03002B70);
-    } while (0);
+    {
+        u16 flags11 = gFrameObjects[11].flags;
+        u16 zero;
+        FORCE_REGISTER(u16 flags, r0) = 0x2000; /* FAKE MATCH: the reference ors object 11's flags into the copied 0x2000 in r0 */
+        zero = 0;
+        flags |= flags11;
+        gFrameObjects[11].flags = flags;
+        gFrameObjects[7].flags = 0xC000;
+        gFrameObjects[7].tableSelector = 2;
+        gFrameObjects[7].palette = 0xA;
+        gFrameObjects[7].frameAndGroup = 0x1A;
+        gFrameObjects[7].screenX = 0x98;
+        gFrameObjects[7].screenY = zero;
+        sub_08041164(gDebugMenuTextBuffer, gPostDispatchWord_03002B70);
+    }
     PlaceAlignedTextObjects(gDebugMenuTextBuffer, 0, 0x15, 1, 7, 0xF, 1, 0);
     gNestedCallbackIndex++;
 }
