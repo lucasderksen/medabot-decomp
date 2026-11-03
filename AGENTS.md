@@ -41,6 +41,8 @@ score-0 result.
   matching by then, start `tools/permute.py` on it in the background, record
   one line with `tools/target_queue.py --record <name> --minutes N --note ...`
   and move on. Do not write per-function research documents.
+- Before working on an unmatched function, run `python tools/find_siblings.py <name>`:
+  a matched function with similar code is the best draft to copy forms from.
 - When the diff needs an instruction shape your C does not produce, search the
   matched functions for it first: `python tools/asm_grep.py '<regex>'` lists every
   matching function with the C that emits the shape (often a sibling function).

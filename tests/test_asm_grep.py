@@ -29,6 +29,12 @@ class AsmGrepTests(unittest.TestCase):
         self.assertEqual([name for name, _, _ in hits], ["Matched"])
         self.assertEqual([text for _, text in hits[0][2]], ["ldr r3, =0x0000FFFF", "adds r1, r3, #0"])
 
+    def test_siblings_rank_by_masked_instruction_shape(self):
+        from find_siblings import siblings
+        target = ["push {R}", "ldr R, =N", "adds R, R, #N", "bl N", "pop {R}"]
+        pool = [("Same", {}, list(target)), ("Close", {}, target[:3] + ["pop {R}"]), ("Other", {}, ["bx R"] * 5)]
+        self.assertEqual([name for _, name, _ in siblings(target, pool, 3)], ["Same", "Close"])
+
 
 if __name__ == "__main__":
     unittest.main()
