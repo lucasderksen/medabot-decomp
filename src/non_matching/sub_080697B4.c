@@ -35,32 +35,33 @@ NONMATCH("asm/non_matching/sub_080697B4.inc", void sub_080697B4(u8 selector, u8 
     u16 offsets[8];
     struct LinkTilePatternPointers patterns;
     u16 bases[8];
-    u16 tile;
+    u16 tile[1];
     s32 row;
     s32 column;
     u32 source;
-    u32 mode;
     u32 vram;
+    u32 start;
     memcpy(widths, gLinkTileWidths, 8);
     memcpy(heights, gLinkTileHeights, 8);
     memcpy(offsets, gLinkTileOffsets, 16);
     patterns = gLinkTilePatterns;
     memcpy(bases, gLinkTileBases, 16);
-    mode = selector & 7;
-    source = (u32)patterns.items[mode];
-    for (row = 0; row < heights[mode]; row++) {
-        u32 position = (u32)x << 16;
-        for (column = 0; column < widths[mode]; column++) {
+    selector &= 7;
+    source = (u32)patterns.items[selector];
+    start = (u32)x << 16;
+    for (row = 0; row < heights[selector]; row++) {
+        u32 position = start;
+        for (column = 0; column < widths[selector]; column++) {
             u32 value;
             volatile struct DmaTransfer *dma = (volatile struct DmaTransfer *)0x040000D4;
-            if (mode > 4) value = row * 6 + column + offsets[mode];
-            else value = offsets[mode] + *(const u16 *)source;
-            tile = bases[mode] + value;
-            if (mode <= 3) {
-                dma->source = &tile;
+            if (selector > 4) value = row * 6 + column + offsets[selector];
+            else value = offsets[selector] + *(const u16 *)source;
+            tile[0] = bases[selector] + value;
+            if (selector <= 3) {
+                dma->source = tile;
                 vram = (position >> 16) * 2 + 0x0600F800;
             } else {
-                dma->source = &tile;
+                dma->source = tile;
                 vram = (position >> 16) * 2 + 0x0600E800;
             }
             dma->destination = (void *)(((u32)(u16)(row + y) << 6) + vram);
