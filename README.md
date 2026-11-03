@@ -124,6 +124,7 @@ The main tools:
 - `tools/rename.py OLD=NEW` renames a function everywhere it is referenced.
 - `tools/find_siblings.py [name]` lists the matched functions whose code most resembles
   an unmatched one; a sibling's source is the best draft.
+- `tools/alloc_priorities.py name` lists a draft's global-allocation priorities.
 - `tools/asm_grep.py PATTERN` finds an instruction pattern in the matched functions,
   so the C that produces a missing shape can be copied from a function that has it.
 - `tools/le_codec.py` unpacks the game's custom `Le` graphics compression

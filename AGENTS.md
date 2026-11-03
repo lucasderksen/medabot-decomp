@@ -46,6 +46,9 @@ score-0 result.
 - When the diff needs an instruction shape your C does not produce, search the
   matched functions for it first: `python tools/asm_grep.py '<regex>'` lists every
   matching function with the C that emits the shape (often a sibling function).
+- When registers are rotated between long-lived values, `python tools/alloc_priorities.py <name>`
+  (after `tools/try_draft.py`) shows global-allocation priorities, so the refs or live
+  length a value needs can be computed (see docs/IDIOMS.md on loop-depth weights).
 - For register-only near-misses run `tools/try_flags.py` (every flag profile the ROM already uses),
   `tools/try_wraps.py` and `tools/try_decls.py` before the
   permuter (see docs/IDIOMS.md). Then try the variable-sharing sweeps

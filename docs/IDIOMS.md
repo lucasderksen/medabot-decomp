@@ -1396,6 +1396,10 @@ scores are search metrics, and exact bytes still require `tools/match.py`.
   once InitRecordSpriteObject returned `u16`; the matched sibling shape is sub_08029FE0's
   `valuesD6[i] += valueC8`, found with tools/asm_grep.py). Check the callee still matches after
   changing its return type.
+- `ldr r4, =0xFFFB; adds r1, r4, #0; ldrb r0, [..]; adds r1, r1, r0; ldrh r0, [..]; adds r0, r0, r1`
+  is `dst->screenY = src->screenY + 0xFFFB + byte;` with the constant written as an unsigned 16-bit
+  literal between the two operands (HImode narrowing; sub_08019D9C, sub_08052784). `(u16)(byte - 5) +
+  screenY` gives a plain `subs`.
 - A reload register must be in the insn's `used_spill_regs`, so it can never be a hard register
   that an allocated pseudo occupies across the insn. `ldr r1, [sp, #N]; ldrh r1, [r1]` (address
   reload and loaded value in the same register) therefore means the loaded value was itself a
