@@ -30,7 +30,7 @@ NONMATCH("asm/non_matching/sub_08045E6C.inc", u32 sub_08045E6C(const struct Reco
     struct RecordTileBlock *block;
     const u32 *p;
     u32 total;
-    u8 visible;
+    u32 visible;
     u32 size;
     s32 k;
     u8 index;
@@ -53,10 +53,10 @@ NONMATCH("asm/non_matching/sub_08045E6C.inc", u32 sub_08045E6C(const struct Reco
                 {
                     {
                         u32 a = *p >> 6;
-                        u8 alt = (*p & 0x8000) != 0;
+                        FORCE_REGISTER(u32 alt, r1) = *p << 16 >> 31; /* FAKE MATCH: alt in r1 so mode reloads into r0 as in the reference */
                         index = (a + (mode & alt)) * 2;
                     }
-                    visible = gState0TypedWork.bytes[0x96] ? 0 : *p << 17 >> 31;
+                    if (gState0TypedWork.bytes[0x96]) visible = 0; else visible = *p << 17 >> 31;
                     size = 1;
                     if (k == 0 && ((const void *const *)set->entries)[index + 1] != NULL)
                     {
