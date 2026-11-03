@@ -45,7 +45,6 @@ Rows are the differing instruction rows from `tools/try_draft.py` for the saved 
 | `sub_08051CB8` | [sub_08051CB8.c](../src/non_matching/sub_08051CB8.c) | `-fprologue-bugfix -fno-regmove` | 384 B; 384 B, 6 rows | Register swap: direction r8 and work base r7 (reference r4 and r8); global-alloc priority |
 | `sub_08052784` | [sub_08052784.c](../src/non_matching/sub_08052784.c) | `-fprologue-bugfix` | 372 B; 364 B, 38 rows | Loop counters i and k allocated the other way round |
 | `sub_08059960` | [sub_08059960.c](../src/non_matching/sub_08059960.c) | `-O1 -fprologue-bugfix` | 1,264 B; 1,280 B, 360 rows (saved attempt; the 187-row draft described in docs/drafts/README.md was not kept) | cse's 1,000-insn hash flush lands in block 8; the reference's source expands to more RTL per object, so it lands in block 5 |
-| `sub_08064EB4` | [sub_08064EB4.c](../src/non_matching/sub_08064EB4.c) | `-fprologue-bugfix -fno-expensive-optimizations` | 448 B; 448 B, 0 rows, not integrable | Byte-exact under `-fno-expensive-optimizations`, but that profile also emits 26 unreferenced constant-pool words (`.LC*` in `.rodata`, one per global-symbol constant) that the ROM does not contain, so the original was not built that way. Default profile: 34 rows (`0x06004000` kept in r6 across `CpuSet`; the reference reloads it) |
 | `sub_080697B4` | [sub_080697B4.c](../src/non_matching/sub_080697B4.c) | `-fprologue-bugfix` | 348 B; 332 B, 98 rows (saved attempt; the 61-row draft was not kept) | Stack tables and indexed DMA reads; permuter got no closer |
 
 ## Fake-matching functions

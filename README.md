@@ -16,8 +16,8 @@ produce it), and check that every rebuild is identical to the original.
 
 ## Status
 
-- **3,527 of 3,540 functions** match as C or assembly (98.2% of the code bytes).
-  The 13 functions left, 8,884 bytes, are `NONMATCH` functions: the build
+- **3,528 of 3,540 functions** match as C or assembly (98.3% of the code bytes).
+  The 12 functions left, 8,436 bytes, are `NONMATCH` functions: the build
   assembles their original code, and the closest C attempt sits alongside in
   `src/non_matching/`. Each one's problem is listed in
   [docs/NONMATCHING.md](docs/NONMATCHING.md).
@@ -122,6 +122,8 @@ The main tools:
   [decomp-permuter](https://github.com/simonlindholm/decomp-permuter) on a
   near-miss and byte-verifies any score-0 result.
 - `tools/rename.py OLD=NEW` renames a function everywhere it is referenced.
+- `tools/asm_grep.py PATTERN` finds an instruction pattern in the matched functions,
+  so the C that produces a missing shape can be copied from a function that has it.
 - `tools/le_codec.py` unpacks the game's custom `Le` graphics compression
   ([docs/COMPRESSION.md](docs/COMPRESSION.md)).
 - `tools/emulator.py` runs optional mGBA traces ([docs/EMULATION.md](docs/EMULATION.md)).

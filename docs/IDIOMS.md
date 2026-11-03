@@ -1371,9 +1371,16 @@ scores are search metrics, and exact bytes still require `tools/match.py`.
   `.rodata` for every global-symbol constant the function loads (integer addresses such as
   `*(u16 *)0x0400000A` emit none). The ROM has no such words, so that profile is ruled out for any
   function that loads a symbol address, whatever its text bytes say (sub_08064EB4).
-- A zero that the reference materialises in the middle of an unrelated expression can come from a
-  local assigned at that point and stored later (`u16 zero; ... zero = 0; flags |= f; ... y = zero;`),
-  not from the constant at its store (sub_08064EB4: `movs r5, #0` between a constant copy and `orrs`).
+- A constant passed to a call and added to a value after it (`CpuSet(src, (void *)0x06004000, n);
+  ... (void *)(size + 0x06004000)`) is kept in a callee-saved register across the call; the
+  reference reloads the literal when the address is built in steps:
+  `u32 destination = 0x06000000; destination += size; destination += 0x4000;` (sub_08064EB4,
+  copied from the matched sibling sub_0805E478 found with `tools/asm_grep.py`).
+- Search the matched functions for a missing instruction shape before hand-searching C forms:
+  `python tools/asm_grep.py 'ldr (r\d), =0x0000FFFF\nadds r\d, \1, #0'` lists every matched
+  function that emits it, with its source file and flags.
+- `ldr r3, =K; adds r2, r3, #0; ands` comes from an HImode constant: `x = (x + 0x10) & 0x3FF`
+  stored to a `u16` narrows the `and` to HImode, and movhi of a large constant goes through r3.
 - To raise a strength-reduced giv (a pointer stepped per iteration) without losing it, wrap the
   loop *increment*, not the store: `for (i = 0; i <= 0xFF; ) { ...; do { i++; } while (0); }`.
   loop.c emits every giv update next to the biv increment, so the giv's update refs get the extra

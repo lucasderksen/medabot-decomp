@@ -41,6 +41,9 @@ score-0 result.
   matching by then, start `tools/permute.py` on it in the background, record
   one line with `tools/target_queue.py --record <name> --minutes N --note ...`
   and move on. Do not write per-function research documents.
+- When the diff needs an instruction shape your C does not produce, search the
+  matched functions for it first: `python tools/asm_grep.py '<regex>'` lists every
+  matching function with the C that emits the shape (often a sibling function).
 - For register-only near-misses run `tools/try_flags.py` (every flag profile the ROM already uses),
   `tools/try_wraps.py` and `tools/try_decls.py` before the
   permuter (see docs/IDIOMS.md). Then try the variable-sharing sweeps
