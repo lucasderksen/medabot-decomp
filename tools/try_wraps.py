@@ -2,6 +2,12 @@
 
     python tools/try_wraps.py sub_0803F684 build/m2c/work.c -fprologue-bugfix 10
 
+Besides statement ranges it tries moving each `for` loop's increment into the
+body, plain and as `do { inc; } while (0);` (loops containing `continue` are
+skipped): the loop-depth weight then falls on the biv increment and every giv
+update emitted next to it, which reorders global allocation without breaking
+strength reduction (sub_08072080).
+
 Each candidate is one tools/try_draft.py compile; the best variant is written to
 build/variants/wbest_<name>.c. Scores come from try_draft row counts; a
 score-0 result still has to be accepted with tools/accept_draft.py.
@@ -68,6 +74,28 @@ for a in range(start + 1, end):
             cands.append((a, b))
 
 
+def moved_increments():
+    """`for (init; cond; inc) {` loops with the increment moved to the body end."""
+    header = re.compile(r"^(\s*)for \(([^;]*);([^;]*);\s*([^;]+?)\s*\) \{$")
+    for a in range(start + 1, end):
+        m = header.match(lines[a])
+        if not m:
+            continue
+        d = 0
+        for b in range(a, end):
+            d += lines[b].count("{") - lines[b].count("}")
+            if d == 0:
+                break
+        else:
+            continue
+        if lines[b].strip() != "}" or re.search(r"\bcontinue\b", "\n".join(lines[a:b + 1])):
+            continue
+        ind, inner = m.group(1), m.group(1) + "    "
+        opened = ["%sfor (%s;%s; ) {" % (ind, m.group(2), m.group(3))]
+        for statement in ("%s;" % m.group(4), "do { %s; } while (0);" % m.group(4)):
+            yield lines[:a] + opened + lines[a + 1:b] + [inner + statement] + lines[b:]
+
+
 def score(text):
     fn = "build/variants/_w_%s.c" % tag
     open(fn, "w").write(text)
@@ -87,6 +115,18 @@ def wrapped(a, b):
 base = score(src)
 print("base", base, "candidates", len(cands), flush=True)
 results = []
+for variant in moved_increments():
+    new = "\n".join(variant)
+    sc = score(new)
+    print("moved increment:", sc, flush=True)
+    if sc == 0:
+        open("build/variants/wbest_%s.c" % tag, "w").write(new)
+        print("MATCH (moved increment)", flush=True)
+        sys.exit(0)
+    if sc < base:
+        open("build/variants/wbest_%s.c" % tag, "w").write(new)
+        print("best written", sc, "(moved increment)", flush=True)
+        base = sc
 for a, b in cands:
     new = "\n".join(wrapped(a, b))
     sc = score(new)

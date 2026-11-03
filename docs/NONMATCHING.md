@@ -47,7 +47,6 @@ Rows are the differing instruction rows from `tools/asm_diff.py`.
 | `sub_08059960` | [sub_08059960.c](../src/non_matching/sub_08059960.c) | `-O1 -fprologue-bugfix` | 1,264 B; 1,264 B, 187 rows | cse's 1,000-insn hash flush lands in block 8; the reference's source expands to more RTL per object, so it lands in block 5 |
 | `sub_08064EB4` | [sub_08064EB4.c](../src/non_matching/sub_08064EB4.c) | `-fprologue-bugfix -fno-expensive-optimizations` | 448 B; 448 B, 2 rows | `movs r5, #0` is emitted after the `orrs` instead of before it; empty `asm("")` barriers do not move it |
 | `sub_080697B4` | [sub_080697B4.c](../src/non_matching/sub_080697B4.c) | `-fprologue-bugfix` | 348 B; 348 B, 61 rows | Stack tables and indexed DMA reads; permuter got no closer |
-| `sub_08072080` | [sub_08072080.c](../src/non_matching/sub_08072080.c) | `-fprologue-bugfix` | 264 B; 264 B, 7 rows | Global-alloc order: the reference allocates the destination pointer before `inv * 31` |
 
 ## Fake-matching functions
 
@@ -60,6 +59,7 @@ them.
 | `sub_080185E8` | `src/m2c_harvest_419.c` | `FORCE_REGISTER(u32 twice, r0)`: keeps `index * 2` in r0 |
 | `sub_080488E8` | `src/m2c_harvest_419.c` | `FORCE_REGISTER(s32 i, r4)`: global-alloc would give r4 to `power` |
 | `sub_08060708` | `src/m2c_harvest_420.c` | `FORCE_REGISTER(u8 one, r0) = 1`: a fresh 1, so the two arms cross-jump |
+| `sub_08072080` | `src/m2c_harvest_421.c` | `do { i++; } while (0);` as the loop increment: loop-depth weight on the dest giv update, so dest outranks `inv * 31` |
 
 ## Other accepted workarounds
 

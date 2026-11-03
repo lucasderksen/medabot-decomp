@@ -1,10 +1,12 @@
 /*
- * sub_08072080: not matching yet. The build assembles asm/non_matching/sub_08072080.inc
- * in its place; the C below is the closest attempt (docs/drafts/README.md).
+ * Byte-verified functions derived from m2c drafts, source rewrites and clones.
+ * Names and types are provisional;
+ * see docs/M2C.md.
  */
 
 #include "global.h"
 #include "battle_work.h"
+#include "continued_blend_work.h"
 #include "gba.h"
 #include "main.h"
 #include "record_helpers.h"
@@ -13,17 +15,19 @@
 #include "state0_callbacks.h"
 #include "state0_display.h"
 
-extern u16 gUnknown_0202FE00[];
-extern u16 *gPalettePointer71FF80300700C;
-extern void sub_0806B718(u8);
 struct DmaRegs72080 { u32 source, destination, control; };
 
-NONMATCH("asm/non_matching/sub_08072080.inc", s32 sub_08072080(void))
-{
+extern u16 *gPalettePointer71FF80300700C;
+extern u16 gUnknown_0202FE00[];
+extern void sub_0806B718(u8);
+
+s32 sub_08072080(void);
+
+s32 sub_08072080(void) {
+
     u8 k;
     u8 inv;
     s32 i;
-    u16 c;
     if (gCounter6ED08_03001800.pad00[0x11] > 0x40) {
         sub_08074DE0(0xA);
         gCounter6ED08_03001800.pad00[0x10]++;
@@ -37,10 +41,11 @@ NONMATCH("asm/non_matching/sub_08072080.inc", s32 sub_08072080(void))
         if (gCounter6ED08_03001800.pad00[0x11] == 0x14)
             sub_08074DE0(0x51);
         inv = 0x20 - k;
-        for (i = 0; i <= 0xFF; i++) {
+        for (i = 0; i <= 0xFF; ) {
             gUnknown_0202FE00[i] = (((0x1F & gPalettePointer71FF80300700C[i]) * k + 0x1F * inv) >> 5)
                 + ((((0x3E0 & gPalettePointer71FF80300700C[i]) * k + 0x3E0 * inv) >> 5) & 0x3E0)
                 + ((((0x7C00 & gPalettePointer71FF80300700C[i]) * k + 0x7C00 * inv) >> 5) & 0x7C00);
+            do { i++; } while (0); /* FAKE MATCH: loop-depth weight on the dest giv increment so dest outranks inv * 31 (r5/r7) */
         }
         {
             volatile struct DmaRegs72080 *dma = (void *)0x040000D4;
@@ -54,4 +59,3 @@ NONMATCH("asm/non_matching/sub_08072080.inc", s32 sub_08072080(void))
         gCounter6ED08_03001800.pad00[0x11]++;
     return 0;
 }
-END_NONMATCH

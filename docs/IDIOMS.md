@@ -1367,6 +1367,12 @@ scores are search metrics, and exact bytes still require `tools/match.py`.
   and its use lengthened it from 3 to 4 and got it hoisted in the reference order (sub_08060BE4).
 - Global-alloc refs are weighted by loop depth, and a `do { } while (0)` counts as a loop: a use
   inside a wrap counts 2. This decided a hoisted constant (refs 4 vs 3) against a parameter.
+- To raise a strength-reduced giv (a pointer stepped per iteration) without losing it, wrap the
+  loop *increment*, not the store: `for (i = 0; i <= 0xFF; ) { ...; do { i++; } while (0); }`.
+  loop.c emits every giv update next to the biv increment, so the giv's update refs get the extra
+  depth; a wrap around the store instead makes it an inner-loop use and the giv is dropped. This put
+  the destination giv (7 -> 9 refs) ahead of a hoisted `inv * 31` and matched sub_08072080;
+  `tools/try_wraps.py` tries the move for every `for` loop without `continue`.
 - local-alloc's update_equiv_regs moves a constant pseudo that is set once and used once next to its
   use, even into another basic block, unless the use is inside a loop (depth > 0). A
   `do { work->data = ...; } while (0)` around the only use kept `work = (T *)0x02026000;` before the

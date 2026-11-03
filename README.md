@@ -16,8 +16,8 @@ produce it), and check that every rebuild is identical to the original.
 
 ## Status
 
-- **3,526 of 3,540 functions** match as C or assembly (98.1% of the code bytes).
-  The 14 functions left, 9,148 bytes, are `NONMATCH` functions: the build
+- **3,527 of 3,540 functions** match as C or assembly (98.2% of the code bytes).
+  The 13 functions left, 8,884 bytes, are `NONMATCH` functions: the build
   assembles their original code, and the closest C attempt sits alongside in
   `src/non_matching/`. Each one's problem is listed in
   [docs/NONMATCHING.md](docs/NONMATCHING.md).
@@ -29,9 +29,9 @@ produce it), and check that every rebuild is identical to the original.
   profiles are recorded in `config/segments.json`.
 - Most functions still have address names (`sub_08xxxxxx`). Naming is the
   next phase.
-- Three functions use a marked *fake match* (a `FORCE_REGISTER` pin) and five
-  fall off the end like the reference; both are listed in
-  [docs/NONMATCHING.md](docs/NONMATCHING.md).
+- Four functions use a marked *fake match* (three `FORCE_REGISTER` pins and one
+  `do { } while (0)` wrap) and five fall off the end like the reference; both
+  are listed in [docs/NONMATCHING.md](docs/NONMATCHING.md).
 
 Progress is measured from `config/segments.json` on every push to `main` by
 [.github/workflows/progress.yml](.github/workflows/progress.yml). The workflow
