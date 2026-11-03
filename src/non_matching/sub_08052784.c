@@ -41,12 +41,11 @@ NONMATCH("asm/non_matching/sub_08052784.inc", void sub_08052784(void))
     s32 k;
 
     i = 0x31;
-    for (k = 0; k < 36; k++, i++) {
+    for (k = 0; k < 36; ) {
         s32 visible;
         struct FrameObject *obj;
 
-        if (((u16 *)gLaterBuffer_030055A0)[i * 2] == 0)
-            continue;
+        do { do { if (((u16 *)gLaterBuffer_030055A0)[i * 2] == 0) goto next; } while (0); } while (0); /* FAKE MATCH: nested wraps weight i over the givs */
         obj = &gFrameObjects[i];
         visible = 0;
         if ((s16)gBgScroll1.y < (obj->positionY >> 8) - gContinuedWork_030057E0.cameraY + 16
@@ -64,7 +63,7 @@ NONMATCH("asm/non_matching/sub_08052784.inc", void sub_08052784(void))
                 if (gObjectAuxiliaryLookup_083D2D0D[(u16)o->value30]) {
                     gFrameObjects[i + 0x2A].flags = 0xCC0C;
                     gFrameObjects[i + 0x2A].screenX = o->screenX;
-                    gFrameObjects[i + 0x2A].screenY = (u16)(o->unknown2C[0] - 5) + o->screenY;
+                    gFrameObjects[i + 0x2A].screenY = o->screenY + 0xFFFB + o->unknown2C[0];
                 } else {
                     gFrameObjects[i + 0x2A].flags = 0;
                 }
@@ -74,12 +73,13 @@ NONMATCH("asm/non_matching/sub_08052784.inc", void sub_08052784(void))
                 gFrameObjects[i + 0x2A].flags = 0;
             }
         } else {
-            do {
             gFrameObjects[i].flags = 0;
             gFrameObjects[i].unknown2C[2] = 0;
             gFrameObjects[i + 0x2A].flags = 0;
-            } while (0);
         }
+    next:
+        i++;
+        do { k++; } while (0); /* FAKE MATCH: loop-depth weight on the reversed counter so k outranks the object givs */
     }
 }
 END_NONMATCH
