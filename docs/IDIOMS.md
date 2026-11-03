@@ -1147,6 +1147,13 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
 
 ## Allocation debug compiler and priorities (lean_c, 21 October)
 
+On Linux the same patch builds with the project's flags (output byte-identical to
+`tools/downloads/agbcc/agbcc`, checked with `cmp` on a draft's .s):
+
+    mkdir -p build/dbgcc && cp -r tools/downloads/agbcc/source/gcc build/dbgcc/gcc
+    cd build/dbgcc && patch -p1 --binary < ../../tools/agbcc_debug.patch
+    cd gcc && make normal -j1 CC=gcc        # -j>1 races on genrtl.h
+
 **Debug agbcc** (`tools/agbcc_debug.patch`). It patches local-alloc.c, reload1.c and
 combine.c and prints to stderr only when `AGBDBG` is set; the assembly output is
 byte-identical to the production compiler. Build (Git Bash, MinGW gcc first in PATH or
@@ -1381,6 +1388,12 @@ scores are search metrics, and exact bytes still require `tools/match.py`.
   function that emits it, with its source file and flags.
 - `ldr r3, =K; adds r2, r3, #0; ands` comes from an HImode constant: `x = (x + 0x10) & 0x3FF`
   stored to a `u16` narrows the `and` to HImode, and movhi of a large constant goes through r3.
+- A reload register must be in the insn's `used_spill_regs`, so it can never be a hard register
+  that an allocated pseudo occupies across the insn. `ldr r1, [sp, #N]; ldrh r1, [r1]` (address
+  reload and loaded value in the same register) therefore means the loaded value was itself a
+  reload (an unallocated pseudo), not an allocated temporary; with an allocated value the address
+  reload takes the next spill register and a later store through the same spilled pointer inherits
+  it instead of reloading (sub_08045E6C, AGBDBG `RELOAD`/`EMIT` lines).
 - To raise a strength-reduced giv (a pointer stepped per iteration) without losing it, wrap the
   loop *increment*, not the store: `for (i = 0; i <= 0xFF; ) { ...; do { i++; } while (0); }`.
   loop.c emits every giv update next to the biv increment, so the giv's update refs get the extra
