@@ -28,7 +28,7 @@ void sub_0804545C(const void *source, const u32 *header, u16 tile, u32 useCpu) {
     u16 dims[2];
     u32 value;
 
-    value = sub_08044E64(((*header << 26) >> 30) << 14, ((*header << 24) >> 30) << 30);
+    value = GetOamDimensions(((*header << 26) >> 30) << 14, ((*header << 24) >> 30) << 30);
     dims[0] = value >> 16;
     dims[1] = value;
     value = dims[0] * dims[1];
@@ -46,7 +46,7 @@ void sub_0804545C(const void *source, const u32 *header, u16 tile, u32 useCpu) {
         x = descriptor << 26;
         x >>= 30;
         t = descriptor;
-        sub_08045084(source, x << 14, ((t << 24) >> 30) << 30, (t << 20) >> 28, (t << 16) >> 28,
+        LoadReorderedObjectTiles(source, x << 14, ((t << 24) >> 30) << 30, (t << 20) >> 28, (t << 16) >> 28,
                      (descriptor << 28) >> 28, tile, value, gScratch6030C02030000, useCpu);
     }
 }

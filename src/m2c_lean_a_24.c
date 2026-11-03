@@ -136,7 +136,7 @@ void sub_0801BF14(u32 index) {
     u32 slot;
     u32 i;
 
-    slot = sub_08041D3C(gSetupBF14[index].byte01) - 1;
+    slot = FindInventoryRecordById(gSetupBF14[index].byte01) - 1;
     for (i = 0; i < 8; i++) {
         gInventoryBF14[slot].name20[i] = gSetupBF14[index].name20[i];
         gInventoryBF14[slot].name28[i] = gSetupBF14[index].name28[i];

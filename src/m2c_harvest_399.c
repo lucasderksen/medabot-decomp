@@ -23,7 +23,7 @@ extern const u8 gUnknown_083D2B18[];
 extern struct PaletteRouteMode4E370 gUnknown_03006F40;
 extern struct PaletteRouteWork4E370 gContinuedWork_030057E0;
 extern u8 gUnknown_0202F800[];
-extern void sub_08048288(void);
+extern void LoadSelectedObjTileSlots(void);
 extern void sub_08050290(void);
 extern void sub_0805330C(void);
 
@@ -45,7 +45,7 @@ void sub_0804E370(void) {
   modeByteSource = (const u8 *) (((u32) table) + ((u32) root->mode));
   root->first = *modeByteSource;
   sub_0805330C();
-  sub_08048288();
+  LoadSelectedObjTileSlots();
   directDma = (volatile struct PaletteRouteDma4E370 *) 0x040000D4;
   switch (gUnknown_03006F40.mode)
   {

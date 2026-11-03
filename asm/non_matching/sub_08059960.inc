@@ -9,7 +9,7 @@
 	sub	sp, #0x10
 	ldr	r1, .L08059D54
 	ldrh	r0, [r1, #0x20]
-	bl	sub_080482CC
+	bl	LoadObjTilesIntoAllSlots
 	ldr	r2, .L08059D54
 	ldrh	r0, [r2, #0x20]
 	bl	sub_0804877C

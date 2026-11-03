@@ -28,7 +28,7 @@ struct Main2ReturnWork
 void sub_0805DD88(void)
 {
     gMainFlag_03005030 = 0;
-    sub_080021A4();
+    StopSerialLink();
     VBlankIntrWait();
     *(volatile u16 *)0x04000050 = 0xFF;
     *(volatile u16 *)0x04000054 = 16;

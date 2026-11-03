@@ -952,7 +952,7 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
 - Indexing an array through a pointer cast, `((struct R *)gArray)[j + 1]`, distributes the `+ 1` into
   the base (`adds rB, #8` before adding `j * 8`); an array-typed view keeps `(j + 1) * 8`. A flat u8
   array view `gBytes[i * 2 + 1]` keeps `(i * 2 + 1) + base` where `gPairs[i][1]` hoists `base + 1`
-  (near-misses sub_080423A0, sub_08042318).
+  (near-misses SortObjectEntriesAscending, sub_08042318).
 - Loop-invariant hoisting order follows the order the invariants appear in the body.
   sub_08062614 hoists the `gObjectHalfwordBytes` literal before the `0x02040000` records
   base (table r6, records r5). It matched with a block-local records pointer in the loop
@@ -976,13 +976,13 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
   (`lsrs r1,r1,#8; ands r1,r0; lsls r1,r1,#0xb; adds r1,r1,r0 ...`) came from compound statements on
   one variable (`screen = control >> 8; screen &= 0x1F; screen <<= 11; screen += xAddress;
   screen += y << 6; base = screen + 0x1000;`), and `out = (u16 *)base + (row << 5)` rather than a
-  byte-address cast fixed the loop-invariant register order (sub_0803F1C8).
+  byte-address cast fixed the loop-invariant register order (CopyTilemapRect64).
 - A stack argument the reference loads after the first statement (`ldr r6,[sp,#0x28]` after the
   global store) was a parameter copied to a local there (`source = data;`).
 - Repeated computed-address stores (`dst = BG-map address; ctx = gMainContextPointer; *dst = ...`) matched only
   with `dst`/`ctx` declared in a fresh block per store; reusing one function-scope `dst`/`ctx` gave 120 rows
   of register differences at the exact size (sub_08067F64).
-- One variable reused for a call result, a product and a final total (`value = sub_08044E64(...); ...
+- One variable reused for a call result, a product and a final total (`value = GetOamDimensions(...); ...
   value = dims[0] * dims[1]; ... value = columns * (rows * value);`) reproduces the reference keeping all
   three in the same callee-saved register (sub_0804545C, 38 -> 10 rows).
 - The opposite of scope splitting, variable *reuse*, fixed two near-misses where the reference does not
@@ -1057,7 +1057,7 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
   function-scope `k` set in several blocks is global and `k + 1` gets a new register
   (sub_080366DC switch cases, sub_08038428 if/else).
 - Bubble sorts whose swap temporaries sit in r4-r6 while the record pointers take r2/r3
-  (sub_080423A0, sub_0804242C): the swap was written twice, `if (a.key < b.key) { swap }
+  (SortObjectEntriesAscending, SortObjectEntriesDescending): the swap was written twice, `if (a.key < b.key) { swap }
   else if (a.key == b.key && a.tie < b.tie) { swap }`, with the temporaries at function
   scope. Each temporary is then set in two blocks (global, allocated after the pointers);
   cross-jumping merges the copies and leaves the second copy's `key = a.key` reload in front
@@ -1260,17 +1260,17 @@ step ahead from the case-1 `0x31000000` reload on).
   (`half = size >> 1; mask = 0x1FFFFF; CpuSet(.., half & mask)`), reused by the second CpuSet, and (c)
   `chars = 0x4000; chars += vram;` instead of `vram + 0x4000`: global alloc gives a copy preference for
   `(set A (plus B const))`, which tied the sum to vram's r8; the two-statement form has none.
-- Header-field products and arguments (sub_0804545C; same 0x58-0x92 sequence in sub_08045120):
+- Header-field products and arguments (sub_0804545C; same 0x58-0x92 sequence in LoadRecordObjectGrid):
   the reference recomputes the rows argument from the cached `d << 20` and passes the columns argument
   through `adds r5, r0, #0` (a reload_cse copy: the arguments are recomputed shifts and r0 still holds
   the columns value). Source: one `t` for rows and columns, `x = value * t; t = cols; value = x * (u16)t;`
   (the no-op `(u16)` cast is what gave `t` r0 and `x` r1 in global alloc), `x = d << 26; x >>= 30;`
   for the shape (no separate shift temp, so `x` prefers only r1), then `t = descriptor;` and the
   argument shifts written on `t` (which kills the CSE equivalences).
-- A loop-invariant header word whose spill slot order and store position differ (sub_08045120 draft):
+- A loop-invariant header word whose spill slot order and store position differ (LoadRecordObjectGrid draft):
   reading it through a block-local `const u32 *h = header;` around the loops reorders the gcse PRE
   pseudos, so the slots follow the reference (`row + 1` below the header word).
-- sub_08045120 matched once the two PRE pseudos (`row + 1` and the loop-invariant header word) were
+- LoadRecordObjectGrid matched once the two PRE pseudos (`row + 1` and the loop-invariant header word) were
   created in the reference order: gcse's pre_delete walks the expression hash table bucket by bucket,
   so the order depends on the hashed register numbers modulo the table size. Reading the header in
   the loops through a pointer local assigned just before the `if (palette)` block

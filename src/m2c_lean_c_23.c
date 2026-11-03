@@ -177,7 +177,7 @@ void sub_08066460(void) {
     if (gMainSerialOutgoingWork.words[1][1] == 0xFE0F) {
         if (gMenuContext66460->cursor05 == 4) {
             gNestedCallbackIndex = 8;
-            sub_0803FB0C();
+            RestartDialogueText();
             return;
         }
         sub_080656DC(gMenuContext66460->area50, 0, 0, 1, 0xC0);

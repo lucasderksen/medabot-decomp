@@ -122,7 +122,7 @@ void sub_0804CCF4(void)
     address += 0xC38;
     address += *selection;
     *(u8 *)address = work[0xC95];
-    sub_08048288();
+    LoadSelectedObjTileSlots();
     switch (gContinuedBlendWork_03006F40.mode)
     {
     case 1:

@@ -31,14 +31,14 @@ void sub_0805CA3C(void)
     memcpy(message, gMain2LocalMessage_080AF8CD, sizeof(message));
     if (RunDialogue(message))
     {
-        sub_080415E8(1, 22, 7);
+        StartChoiceBox(1, 22, 7);
         gNestedCallbackIndex++;
     }
 }
 
 void sub_0805CA74(void)
 {
-    if (sub_08041674())
+    if (RunChoiceBox())
     {
         if (gUnknown_03000440[0x2A] == 0)
             gNestedCallbackIndex++;
@@ -49,13 +49,13 @@ void sub_0805CA74(void)
 
 void sub_0805CAA8(void)
 {
-    if (sub_08041CA4())
+    if (RunDialogueClose())
         sub_080476E8(10);
 }
 
 void sub_0805CABC(void)
 {
-    if (sub_08041CA4())
+    if (RunDialogueClose())
     {
         gNestedCallbackIndex++;
         sub_080656DC((u8 *)gMainContextPointer_03006F74 + 0x50, 0, 0, 1, 192);

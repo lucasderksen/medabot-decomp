@@ -42,13 +42,13 @@ void sub_0805DBC4(void)
         PlayMusic(6);
         if (!result)
         {
-            sub_0803FB0C();
+            RestartDialogueText();
             CONTEXT_HALFWORDS[1] = result;
             gNestedCallbackIndex++;
         }
         else
         {
-            sub_0803FB0C();
+            RestartDialogueText();
             CONTEXT_HALFWORDS[1] = 0;
             gNestedCallbackIndex = 12;
         }

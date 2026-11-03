@@ -124,7 +124,7 @@ void sub_080127DC(void) {
         }
         if (row[0xBA] == 0)
             continue;
-        index = sub_08041D3C(row[1]) - 1;
+        index = FindInventoryRecordById(row[1]) - 1;
         {
             u32 base = (u32)gInventoryView27DC;
             record = (struct InventoryView27DC *)((index << 6) + base);

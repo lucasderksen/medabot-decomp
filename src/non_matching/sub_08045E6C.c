@@ -83,7 +83,7 @@ NONMATCH("asm/non_matching/sub_08045E6C.inc", u32 sub_08045E6C(const struct Reco
         if (size != 0)
             CpuSet(gUnknown_02030800, (void *)((*tileBase << 5) + 0x06010000), size << 10 >> 11);
         block = &records[selector];
-        { u32 sum = sub_08045D34((struct OamEntry *)block, set, palette, *tileBase) + *tileBase; *tileBase = sum; }
+        { u32 sum = InitRecordSpriteObject((struct OamEntry *)block, set, palette, *tileBase) + *tileBase; *tileBase = sum; }
         if (gState0TypedWork.bytes[0x96])
             ((s8 *)block->unknown00)[1] = ((s8 *)block->unknown00)[1] & ~3;
         else

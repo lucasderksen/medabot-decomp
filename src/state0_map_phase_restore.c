@@ -21,7 +21,7 @@ void sub_08013824(void)
         u8 *record;
         selection += 0x80;
         record = buffer + *selection * 256;
-        work[1] = sub_08041D3C(record[1]) - 1;
+        work[1] = FindInventoryRecordById(record[1]) - 1;
     }
     work[5] = 1;
     work[6] = 2;

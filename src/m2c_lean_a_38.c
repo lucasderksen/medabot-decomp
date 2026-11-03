@@ -86,7 +86,7 @@ void sub_0805D860(void) {
     sub_08041164(gDebugMenuTextBuffer, gSaveHeaderView_03002B70.money);
     PlaceAlignedTextObjects(gDebugMenuTextBuffer, 1, 15, 9, 7, 15, 1, 0);
     PlaceAlignedTextObjects(gSaveHeaderView_03002B70.name, 13, 14, 4, 10, 13, 0, 0);
-    sub_080415E8(1, 0x16, 7);
+    StartChoiceBox(1, 0x16, 7);
     CpuFastSet(gUnknown_0878DC74, gEquipmentPaletteShadow, 0x80);
     CpuFastSet(gUnknown_0850F298, gUnknown_0202F9A0, 8);
     CpuFastSet(gMain2NameTransfer_084E43D8, gCopy6280C0202F9E0, 8);

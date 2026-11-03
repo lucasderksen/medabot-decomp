@@ -56,25 +56,25 @@ void sub_08066280(void) {
     if (gMenuContext66280->cursor05 > 4) {
         if (0xC1 & (u8)gRepeatedKeys) {
             gMenuContext66280->cursor05 = gMenuContext66280->cursor05 == 5 ? 1 : 4;
-            sub_0803FB0C();
+            RestartDialogueText();
         }
         return;
     }
     if (0x40 & (u8)gRepeatedKeys) {
         gMenuContext66280->cursor05 = gMenuContext66280->cursor05 != 0 ? gMenuContext66280->cursor05 - 1 : 4;
-        sub_0803FB0C();
+        RestartDialogueText();
         PlaySoundEffect(2);
     }
     if (0x80 & (u8)gRepeatedKeys) {
         gMenuContext66280->cursor05 = gMenuContext66280->cursor05 < 4 ? gMenuContext66280->cursor05 + 1 : 0;
-        sub_0803FB0C();
+        RestartDialogueText();
         PlaySoundEffect(2);
     }
     gFrameObjects[0].screenY = gMenuContext66280->cursor05 * 16 + 0x1C;
     if (1 & (u8)gRepeatedKeys) {
         if (gMenuContext66280->cursor05 == 1 && gMenuContext66280->flag7B == 0) {
             gMenuContext66280->cursor05 = 5;
-            sub_0803FB0C();
+            RestartDialogueText();
             PlaySoundEffect(6);
             return;
         }

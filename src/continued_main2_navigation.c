@@ -211,7 +211,7 @@ selection:
             case 2:
             case 3:
             case 4:
-                sub_0803FB0C();
+                RestartDialogueText();
                 PlaySoundEffect(6);
                 gFrameObjects[81].flags &= 0xBFFF;
                 gFrameObjects[82].flags &= 0xBFFF;
@@ -236,7 +236,7 @@ leave:
     return;
 changed:
     PlaySoundEffect(2);
-    sub_0803FB0C();
+    RestartDialogueText();
     sub_0805B0B0(&gFrameObjects[83]);
     gNestedCallbackIndex = 4;
     sub_0805CB90(gFrameCounter);

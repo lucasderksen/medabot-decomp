@@ -453,7 +453,7 @@
 	lsrs	r1, r1, #0x18
 	asrs	r3, r5, #0x10
 	movs	r2, #1
-	bl	sub_08045588
+	bl	MakeOamInsertGap
 	adds	r2, r0, #0
 	ldr	r3, [sp, #0x40]
 	ldr	r0, [r3]

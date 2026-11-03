@@ -80,7 +80,7 @@ void sub_08060A54(void) {
             *counter += 1;
         }
     } else {
-        sub_0803FB0C();
+        RestartDialogueText();
         counter=&gNestedCallbackIndex;
         *counter=4;
     }

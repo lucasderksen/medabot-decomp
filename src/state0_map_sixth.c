@@ -31,7 +31,7 @@ void sub_08010F6C(void)
     StepFirstBgAutoScroll();
     if (gState0TransferWork.bytes[1])
     {
-        sub_0803FB0C();
+        RestartDialogueText();
         gNestedCallbackIndex++;
     }
     else
@@ -60,7 +60,7 @@ void sub_08010FDC(void)
         u32 offset = 0x16C;
         sub_08041490(buffer, *(u16 *)(work + offset), 53);
     }
-    sub_0803FB0C();
+    RestartDialogueText();
     gNestedCallbackIndex++;
 }
 

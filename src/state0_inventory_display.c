@@ -221,7 +221,7 @@ void sub_080059D0(void)
     if (record->unknown00[2] == 30)
         work[0x97] = 30;
     else {
-        u32 mapped = sub_08041D3C(record->unknown00[2]);
+        u32 mapped = FindInventoryRecordById(record->unknown00[2]);
         mapped--;
         work[0x97] = mapped;
     }

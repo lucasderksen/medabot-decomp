@@ -17,7 +17,7 @@ struct Main2PhaseWork { u8 unknown00[0x84]; u8 phase; };
 
 void sub_0805D658(void)
 {
-    if (sub_08041CA4())
+    if (RunDialogueClose())
         gNestedCallbackIndex++;
 }
 

@@ -13,11 +13,11 @@ extern void sub_080740D4(void);
 void InitAudio(void *context)
 {
     sub_080723AC(context);
-    sub_08074A78(gSoundMusicBank);
-    sub_08074D3C(gSoundEffectBank);
-    sub_08074FE8(&gSoundAuxBank);
-    sub_08073C5C(gSoundPcmInstruments);
-    sub_08073C70(gSoundPcmDrums);
+    SetSoundMusicBank(gSoundMusicBank);
+    SetSoundEffectBank(gSoundEffectBank);
+    SetSoundAuxBank(&gSoundAuxBank);
+    SetSoundInstrumentBank(gSoundPcmInstruments);
+    SetSoundDrumBank(gSoundPcmDrums);
     PlayMusic(0);
 }
 

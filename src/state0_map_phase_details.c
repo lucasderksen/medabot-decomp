@@ -21,7 +21,7 @@ void sub_0801303C(void)
     ClearFrameObjects(30, 11);
     sub_080166AC();
     sub_0801B76C();
-    sub_08044118(12, 4, 9, 21, *(volatile u16 *)0x04000008, (u16 *)0x02020800);
+    ReadTilemapRect(12, 4, 9, 21, *(volatile u16 *)0x04000008, (u16 *)0x02020800);
     gUnknown_03000440[0x84] = 0;
     gNestedCallbackIndex++;
 }

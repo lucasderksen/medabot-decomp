@@ -56,7 +56,7 @@ void sub_08011C88(void)
         scaled = index * 256;
         identifier = records[scaled + 0x47];
         sub_080421B4(identifier, work[0x168]);
-        sub_0803FB0C();
+        RestartDialogueText();
         gNestedCallbackIndex++;
     }
 }
@@ -85,7 +85,7 @@ void sub_08011D50(void)
         gNestedCallbackIndex = 64;
     else
     {
-        sub_0803FB0C();
+        RestartDialogueText();
         gNestedCallbackIndex++;
     }
 }

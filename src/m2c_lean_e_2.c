@@ -48,7 +48,7 @@ extern struct Setup19720 gSetup19720[] asm("gSetupBuffer_03000590");
 extern void sub_08019D9C(u32 index, u32 slot, u32 mode, u32 priority);
 
 void sub_08019720(u32 arg0);
-void sub_0803F1C8(u32 width, u32 height, u32 x, u32 y, const void *data, u32 control, u32 entryOffset);
+void CopyTilemapRect64(u32 width, u32 height, u32 x, u32 y, const void *data, u32 control, u32 entryOffset);
 
 void sub_08019720(u32 arg0) {
 
@@ -169,7 +169,7 @@ void sub_08019720(u32 arg0) {
     }
 }
 
-void sub_0803F1C8(u32 width, u32 height, u32 x, u32 y, const void *data, u32 control, u32 entryOffset) {
+void CopyTilemapRect64(u32 width, u32 height, u32 x, u32 y, const void *data, u32 control, u32 entryOffset) {
 
     const u16 *source;
     u32 base;

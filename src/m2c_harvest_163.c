@@ -68,7 +68,7 @@ void sub_0806F114(void) {
     struct LocalRenderResetDma *dma;
 
     pattern = 0x2B;
-    sub_080445F4();
+    InitRecordDisplayRendering();
     sp20 = 0x200;
     dma = (struct LocalRenderResetDma *)0x040000D4;
     dma->source = &sp20;

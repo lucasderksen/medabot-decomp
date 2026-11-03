@@ -53,11 +53,11 @@ void sub_0804E7E8(void)
     switch (*state)
     {
     case 0:
-        sub_08048000(0);
+        StartChoiceBoxAfterDialogue(0);
         goto increment;
     case 1:
         {
-            u32 result = sub_08048038();
+            u32 result = RunChoiceBoxAfterDialogue();
             if (!result)
                 break;
             if (result & 0xF0)
@@ -72,7 +72,7 @@ increment:
         (*state)++;
         break;
     case 2:
-        if (sub_08041CA4())
+        if (RunDialogueClose())
             sub_08050290();
         break;
     }
@@ -85,12 +85,12 @@ void sub_0804E860(void)
     switch (*state)
     {
     case 0:
-        sub_08048000(1);
+        StartChoiceBoxAfterDialogue(1);
         (*state)++;
         break;
     case 1:
         {
-            u32 result = sub_08048038();
+            u32 result = RunChoiceBoxAfterDialogue();
             if (!result)
                 break;
             if (result & 0xF0)

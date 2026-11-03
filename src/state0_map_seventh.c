@@ -25,7 +25,7 @@ void sub_08011078(void)
         if (identifiers[scaled])
         {
             const void *const *names;
-            sub_0803FB0C();
+            RestartDialogueText();
             names = gUnknownPointers_083B6590;
             {
                 u32 identifier = identifiers[*selected * 8];
@@ -79,7 +79,7 @@ void sub_08011158(void)
             const void *const *names;
             const void *source;
             u8 *buffer;
-            sub_0803FB0C();
+            RestartDialogueText();
             names = gUnknownPointers_083B6590;
             {
                 u32 index = *selected;

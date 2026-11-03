@@ -78,7 +78,7 @@ void sub_08005118(void)
     base = gUnknownRecords_030017A0;
     record = &base[gState0TypedWork.bytes[0x51]];
     if (record->unknown00[0] > 1)
-        PlaceAlignedTextObjects(gUnknown_03000BAA + sub_08041D3C(record->unknown00[2]) * 64,
+        PlaceAlignedTextObjects(gUnknown_03000BAA + FindInventoryRecordById(record->unknown00[2]) * 64,
                     50, 1, 13, 10, 13, 0, 2);
     else
     {

@@ -149,7 +149,7 @@
 	adds	r0, r4, #0
 	adds	r1, r5, #0
 	mov	r2, r8
-	bl	sub_08045D34
+	bl	InitRecordSpriteObject
 	ldr	r1, [sp, #0x44]
 	ldrh	r1, [r1]
 	adds	r0, r0, r1

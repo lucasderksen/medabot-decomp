@@ -47,7 +47,7 @@ void sub_080108D0(void)
 {
     sub_08012098();
     StepFirstBgAutoScroll();
-    if (sub_08041CA4())
+    if (RunDialogueClose())
     {
         sub_0803FAA0(1, 2, 0);
         gNestedCallbackIndex++;

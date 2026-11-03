@@ -2,7 +2,7 @@
 
 #include "state0_display.h"
 
-void sub_08047414(struct RecordDisplayWork *work, struct RenderWork *render, const void *source, void *data)
+void InitRecordDisplayWork(struct RecordDisplayWork *work, struct RenderWork *render, const void *source, void *data)
 {
     work->render = render;
     work->source = source;
@@ -132,7 +132,7 @@ void sub_0804725C(void *unused, struct RecordDisplayWork *work, s32 mode, u32 in
                 do
                 {
                 if (!(((const u8 *)cursor)[1] >> 7))
-                    sub_08046034(work->source, work->data, gLaterCommands_0807FDB0[index], ((u32)*(const u8 *)(const void *)(cursorOffset + (u32)gLaterCommands_0807FDB0) << 26 >> 26), ((u32)*(const u8 *)cursor << 26 >> 26));
+                    LoadRecordCommandTiles(work->source, work->data, gLaterCommands_0807FDB0[index], ((u32)*(const u8 *)(const void *)(cursorOffset + (u32)gLaterCommands_0807FDB0) << 26 >> 26), ((u32)*(const u8 *)cursor << 26 >> 26));
                 cursor++;
                 cursorOffset += 4;
             } while (((u32)*(const u8 *)cursor << 26) != 0);
@@ -159,7 +159,7 @@ void sub_0804725C(void *unused, struct RecordDisplayWork *work, s32 mode, u32 in
                 do
                 {
                 if (!(((const u8 *)cursor)[1] >> 7))
-                    sub_08046034(work->source, work->data, gLaterCommands_0807F610[index], ((u32)*(const u8 *)(const void *)(cursorOffset + (u32)gLaterCommands_0807F610) << 26 >> 26), ((u32)*(const u8 *)cursor << 26 >> 26));
+                    LoadRecordCommandTiles(work->source, work->data, gLaterCommands_0807F610[index], ((u32)*(const u8 *)(const void *)(cursorOffset + (u32)gLaterCommands_0807F610) << 26 >> 26), ((u32)*(const u8 *)cursor << 26 >> 26));
                 cursor++;
                 cursorOffset += 4;
             } while (((u32)*(const u8 *)cursor << 26) != 0);

@@ -921,11 +921,11 @@ void sub_08072B18(void *arg0, u8 arg1) {
     (*(s32 *)((u8 *)(arg0) + 0x2C)) = (s32) arg1;
 }
 
-void sub_08073C5C(const struct SoundSampleHeader *const *bank) {
+void SetSoundInstrumentBank(const struct SoundSampleHeader *const *bank) {
     gFamilySoundRoot74028->instruments = bank;
 }
 
-void sub_08073C70(const struct SoundSampleHeader *const *bank) {
+void SetSoundDrumBank(const struct SoundSampleHeader *const *bank) {
     gFamilySoundRoot74028->drums = bank;
 }
 
@@ -945,15 +945,15 @@ s32 sub_08074540(void) {
     return ((u8) (*(u8 *)((u8 *)(gUnknown_03007014) + 0x72C)) >> 1) & 1;
 }
 
-void sub_08074A78(const struct SoundSongHeader *const *bank) {
+void SetSoundMusicBank(const struct SoundSongHeader *const *bank) {
     gFamilySoundRoot74028->music = bank;
 }
 
-void sub_08074D3C(const struct SoundSongHeader *const *bank) {
+void SetSoundEffectBank(const struct SoundSongHeader *const *bank) {
     gFamilySoundRoot74028->effects = bank;
 }
 
-void sub_08074FE8(const struct SoundAuxBank *bank) {
+void SetSoundAuxBank(const struct SoundAuxBank *bank) {
     gFamilySoundRoot74028->aux = bank;
 }
 

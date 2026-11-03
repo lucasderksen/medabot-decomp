@@ -7,26 +7,26 @@ ordinary C in `src/object_helpers.c`.
 | Range (end exclusive) | Function | Bytes |
 | --- | --- | ---: |
 | 415BC..415E8 | ClearBgScrolls | 44 |
-| 415E8..41624 | sub_080415E8 | 60 |
-| 41624..41674 | sub_08041624 | 80 |
-| 41674..4169C | sub_08041674 | 40 |
-| 4169C..4172C | sub_0804169C | 144 |
-| 4172C..4177C | sub_0804172C | 80 |
-| 4177C..41818 | sub_0804177C | 156 |
-| 41818..418C0 | sub_08041818 | 168 |
-| 418C0..41920 | sub_080418C0 | 96 |
-| 41920..419CC | sub_08041920 | 172 |
-| 419CC..41A28 | sub_080419CC | 92 |
-| 41BA4..41BF4 | sub_08041BA4 | 80 |
-| 41BF4..41C14 | sub_08041BF4 | 32 |
+| 415E8..41624 | StartChoiceBox | 60 |
+| 41624..41674 | StartChoiceBoxWithObject | 80 |
+| 41674..4169C | RunChoiceBox | 40 |
+| 4169C..4172C | LoadChoiceBoxGraphics | 144 |
+| 4172C..4177C | ClearChoiceBoxTilemaps | 80 |
+| 4177C..41818 | DrawChoiceBoxTwoRows | 156 |
+| 41818..418C0 | DrawChoiceBoxFourRows | 168 |
+| 418C0..41920 | DrawChoiceBoxSixRows | 96 |
+| 41920..419CC | InitChoiceCursor | 172 |
+| 419CC..41A28 | GrowChoiceCursor | 92 |
+| 41BA4..41BF4 | ShrinkChoiceCursor | 80 |
+| 41BF4..41C14 | SetChoiceBoxResult | 32 |
 | 41C14..41C5C | SetObjectXWobble | 72 |
 | 41C5C..41CA4 | SetObjectYWobble | 72 |
-| 41CA4..41CD4 | sub_08041CA4 | 48 |
-| 41CD4..41D04 | sub_08041CD4 | 48 |
+| 41CA4..41CD4 | RunDialogueClose | 48 |
+| 41CD4..41D04 | RunDialoguePortraitClose | 48 |
 | 41D04..41D28 | CopyBytesU8Count | 36 |
-| 41D28..41D3C | sub_08041D28 | 20 |
-| 41D3C..41D70 | sub_08041D3C | 52 |
-| 41FE4..42028 | sub_08041FE4 | 68 |
+| 41D28..41D3C | InitInventoryRecordIndices | 20 |
+| 41D3C..41D70 | FindInventoryRecordById | 52 |
+| 41FE4..42028 | ClearInventoryRecordById | 68 |
 | 420C4..42114 | sub_080420C4 | 80 |
 | 42114..4213C | sub_08042114 | 40 |
 | 4213C..42170 | sub_0804213C | 52 |
@@ -44,12 +44,12 @@ puts its fourth argument there. This area overlaps offsets 0x28..0x2F of
 the shared work base `0x03000440`. Its eight-byte alias records the clear
 extent, without asserting a separate original object.
 
-`sub_08041674` dispatches through pointers at `0x083B2994`, indexed by work
+`RunChoiceBox` dispatches through pointers at `0x083B2994`, indexed by work
 byte 0x29, and returns work byte 0x28 after the call. The two dispatchers at
 41CA4 and 41CD4 clear work byte 4, call a pointer indexed by work byte 0x1B
 from tables 083B29CC and 083B29E4, and return whether byte 4 exceeds seven.
 The table declarations are incomplete arrays until their bounds are checked.
-`sub_08041BF4` stores `(work[0x2A] << 4) + 1` into byte 0x28 and increments
+`SetChoiceBoxResult` stores `(work[0x2A] << 4) + 1` into byte 0x28 and increments
 byte 0x29, retaining byte truncation.
 
 4169C decompresses three assets into VRAM at 06002600, 060026E0 and
@@ -161,7 +161,7 @@ at 0x4206C..0x420C4 (88 bytes) and `.text.sub_08042278` at
 `python tools/match.py build/experiments/compiler_input/object_helpers_next.json --output-dir build/experiments/compiler_input/object_helpers_next`
 
 Proposed canonical declarations: `s32 sub_0804206C(void);`
-and `u32 sub_08042278(u8 input);`, plus `void sub_0804242C(u8 count);`
+and `u32 sub_08042278(u8 input);`, plus `void SortObjectEntriesDescending(u8 count);`
 for the copied descending sort. `ObjectSortEntry` has four halfwords at
 offsets 0/2/4/6, with the first two compared by the sort. The summary clears
 512 bytes at 0x02023000, fills the first halfword of 30 entries from

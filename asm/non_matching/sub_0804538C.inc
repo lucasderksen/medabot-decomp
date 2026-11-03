@@ -24,7 +24,7 @@
 	lsrs	r6, r0, #6
 	lsls	r0, r5, #0xe
 	lsls	r1, r6, #0x1e
-	bl	sub_08044E64
+	bl	GetOamDimensions
 	lsrs	r5, r0, #0x10
 	ldr	r1, .L080453D0
 	adds	r6, r0, #0

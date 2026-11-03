@@ -243,7 +243,7 @@ NONMATCH("asm/non_matching/sub_080465B8.inc", void sub_080465B8(struct LaterWork
     ;
   }
 
-  obj = (struct OamView *) sub_08045588(gRenderWork->objects, gRenderWork->byte1094++, 1, (s16) depth);
+  obj = (struct OamView *) MakeOamInsertGap(gRenderWork->objects, gRenderWork->byte1094++, 1, (s16) depth);
   *obj = block->oam;
   obj->affineParam = depth;
   if ((!visible) && flip)

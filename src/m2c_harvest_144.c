@@ -41,7 +41,7 @@ extern const u8 gUnknown_0850FE98[64];
 extern const u8 gUnknown_0850FEB8[64];
 extern s32 sub_0805DDEC(s32);
 extern u32 sub_08074FA4(u32);
-extern void sub_0803FB0C(void);
+extern void RestartDialogueText(void);
 
 void sub_08025858(void);
 void sub_08028E84(void);
@@ -122,11 +122,11 @@ void sub_0805FA58(void) {
             if (var_r5 == 0) break;
         }
         if (var_r5 == 0) {
-            sub_0803FB0C();
+            RestartDialogueText();
             (*(u16 *)((u8 *)(gMainContextPointer_03006F74) + 2)) = var_r5;
             gNestedCallbackIndex += 1;
         } else {
-            sub_0803FB0C();
+            RestartDialogueText();
             (*(u16 *)((u8 *)(gMainContextPointer_03006F74) + 2)) = 0U;
             gNestedCallbackIndex = 0xC;
         }

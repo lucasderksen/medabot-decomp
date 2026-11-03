@@ -61,10 +61,10 @@ void sub_0805F960(void)
 
 void sub_0805F984(void)
 {
-    if (sub_08041674())
+    if (RunChoiceBox())
     {
         CONTEXT->half02 = 0;
-        sub_0803FB0C();
+        RestartDialogueText();
         if (gUnknown_03000440[0x2A] == 0)
             gNestedCallbackIndex = 9;
         else

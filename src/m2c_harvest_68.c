@@ -55,7 +55,7 @@ void sub_0803D74C(void);
 void sub_08041A28(void);
 void sub_0805FADC(void);
 void sub_0805FB14(void);
-void sub_08060A1C(void);
+void RunSceneLocationDialogue(void);
 s32 sub_0806DFC0(s32 arg0);
 
 void sub_08023658(void) {
@@ -178,7 +178,7 @@ void sub_0805FB14(void) {
     }
 }
 
-void sub_08060A1C(void) {
+void RunSceneLocationDialogue(void) {
     u32 index = *((u8 *) gMainContextPointer_03006F74 + 0x17);
     const void *const *scripts = gUnknown_08484F98;
     index <<= 2;

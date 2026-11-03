@@ -259,7 +259,7 @@ void sub_08034FC8(u32 row, u32 frame, u32 kind) {
 
 void sub_08035C70(void) {
 
-    sub_080445F4();
+    InitRecordDisplayRendering();
     if (!(1 & gCounter6ED08_03001800.flagsF8)) {
         gCounter6ED08_03001800.pos154[0] = 0x3C;
         gCounter6ED08_03001800.byte114 = 0;

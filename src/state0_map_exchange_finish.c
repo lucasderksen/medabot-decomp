@@ -32,7 +32,7 @@ void sub_08014C84(void)
 
 void sub_08014CC8(void)
 {
-    if (sub_08041CA4())
+    if (RunDialogueClose())
         gNestedCallbackIndex++;
 }
 

@@ -88,12 +88,12 @@ s32 sub_0806A3C4(void) {
         sub_08069EDC();
         sub_0806B530(1, 6, 0, 0);
         gFrameObjects[1].screenX = ((gSelectionOrder03006F94[0] - 1) * 64) + 0x18;
-        sub_0803FB0C();
+        RestartDialogueText();
  gUnknown_03006F88++;
  break;
  case 0x97:
         if ((RunDialogue(gScriptTable08485F88[7]) != 0) && (gFrameObjects[1].commandDelay == 0)) {
-            sub_0803FB0C();
+            RestartDialogueText();
             if (gSelectionOrder03006F94[0] == 1) {
 gUnknown_03006F88 += 1;
             } else {

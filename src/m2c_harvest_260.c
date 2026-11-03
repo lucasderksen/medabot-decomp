@@ -88,7 +88,7 @@ void sub_080617E0(void) {
         return;
     }
     *(volatile u16 *)0x04000052 = 0x10;
-    sub_0803FB0C();
+    RestartDialogueText();
     gNestedCallbackIndex = 4;
 }
 

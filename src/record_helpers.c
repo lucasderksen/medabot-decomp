@@ -52,7 +52,7 @@ u32 DecompressLz77OrCopy(const void *source, void *destination)
     return bytes;
 }
 
-u32 sub_08044D64(u32 *destination, const u32 *source, u32 bytes)
+u32 CopyWordUnits(u32 *destination, const u32 *source, u32 bytes)
 {
     while (bytes > 3)
     {
@@ -62,7 +62,7 @@ u32 sub_08044D64(u32 *destination, const u32 *source, u32 bytes)
     return bytes;
 }
 
-u32 sub_08044D78(u16 *destination, const u16 *source, u32 bytes)
+u32 CopyHalfwordUnits(u16 *destination, const u16 *source, u32 bytes)
 {
     while (bytes > 1)
     {
@@ -72,7 +72,7 @@ u32 sub_08044D78(u16 *destination, const u16 *source, u32 bytes)
     return bytes;
 }
 
-void sub_08044D90(u8 *destination, const u8 *source, u32 bytes)
+void CopyByteUnits(u8 *destination, const u8 *source, u32 bytes)
 {
     while (bytes != 0)
     {
@@ -81,7 +81,7 @@ void sub_08044D90(u8 *destination, const u8 *source, u32 bytes)
     }
 }
 
-u32 sub_08044E64(s32 shape, s32 size)
+u32 GetOamDimensions(s32 shape, s32 size)
 {
     u32 result = 0;
     switch (shape)
@@ -117,7 +117,7 @@ u32 sub_08044E64(s32 shape, s32 size)
     return result;
 }
 
-void sub_08044F54(const void *source, u32 tile, void *scratch, u32 useCpu)
+void LoadObjectTiles(const void *source, u32 tile, void *scratch, u32 useCpu)
 {
     u16 destinationTile = tile;
     tile = (u16)tile;
@@ -137,7 +137,7 @@ void sub_08044F54(const void *source, u32 tile, void *scratch, u32 useCpu)
     }
 }
 
-void sub_08045A14(struct OamEntry *objects, const u16 *parameters)
+void WriteOamAffineFields(struct OamEntry *objects, const u16 *parameters)
 {
     s32 i;
     for (i = 31; i >= 0; i--)
@@ -149,7 +149,7 @@ void sub_08045A14(struct OamEntry *objects, const u16 *parameters)
     }
 }
 
-u32 sub_08045A40(s32 y, s32 x)
+u32 IsObjectPositionVisible(s32 y, s32 x)
 {
     u32 result = 0;
     if (y > -64 && x > -32 && y <= 159 && x <= 239)
@@ -172,7 +172,7 @@ void sub_08046CC8(s32 first, s32 second, s32 third, s32 fourth)
 
 #include "record_helpers.h"
 
-u32 sub_08045328(struct RecordObjectWork *work, struct OamEntry *objects, const void *source, const void *palette, const u32 *header, const struct RecordObjectPlacement *placement, u8 bank, u16 tile)
+u32 InitRecordObjectWork(struct RecordObjectWork *work, struct OamEntry *objects, const void *source, const void *palette, const u32 *header, const struct RecordObjectPlacement *placement, u8 bank, u16 tile)
 {
     work->objects = objects;
     work->placement = placement;
@@ -182,32 +182,32 @@ u32 sub_08045328(struct RecordObjectWork *work, struct OamEntry *objects, const 
         work->columns = (descriptor << 16) >> 28;
     }
     work->key = placement->key;
-    return sub_08045120(objects, source, palette, header, placement, bank, tile);
+    return LoadRecordObjectGrid(objects, source, palette, header, placement, bank, tile);
 }
 
-u32 sub_080458B8(const struct RecordObjectList *list, struct OamEntry *output, u16 limit)
+u32 CopyRecordObjectList(const struct RecordObjectList *list, struct OamEntry *output, u16 limit)
 {
     u16 result = 0;
     u16 i;
     u16 count = list->count;
     for (i = 0; i < count; i++)
     {
-        result += sub_080455E0(list->entries[i], output, result, limit);
+        result += CopyRecordObjects(list->entries[i], output, result, limit);
         if (result >= limit)
             break;
     }
     return result;
 }
 
-u32 sub_08045A60(const struct RecordObjectWork *work, struct OamEntry *output, u16 index, u32 unused, u32 priority, u8 mode)
+u32 InsertRecordObjectsLimited(const struct RecordObjectWork *work, struct OamEntry *output, u16 index, u32 unused, u32 priority, u8 mode)
 {
-    return (u16)sub_08045680(work, output, index, (s8)priority, 128, mode);
+    return (u16)InsertRecordObjects(work, output, index, (s8)priority, 128, mode);
 }
 
 
 #include "record_helpers.h"
 
-void sub_08045A8C(struct RecordObjectWork *work, u16 y, u16 x, u32 mode)
+void PositionRecordObjectWork(struct RecordObjectWork *work, u16 y, u16 x, u32 mode)
 {
     if (mode != 0)
     {
@@ -241,13 +241,13 @@ void sub_08045A8C(struct RecordObjectWork *work, u16 y, u16 x, u32 mode)
     sub_0804538C(work, (s16)y, (s16)x, work->key);
 }
 
-u32 sub_08045AEC(struct RecordObjectWork *work, struct OamEntry *output, u16 index, s16 y, s16 x, u16 key, u8 priority, u8 mode)
+u32 PlaceRecordObjects(struct RecordObjectWork *work, struct OamEntry *output, u16 index, s16 y, s16 x, u16 key, u8 priority, u8 mode)
 {
     u16 result = index;
-    if (sub_08045A40(y, x) != 0)
+    if (IsObjectPositionVisible(y, x) != 0)
     {
         sub_0804538C(work, y, x, (s16)key);
-        result = (u16)sub_08045680(work, output, result, (s8)priority, 128, mode);
+        result = (u16)InsertRecordObjects(work, output, result, (s8)priority, 128, mode);
     }
     return result;
 }
@@ -257,7 +257,7 @@ u32 sub_08045AEC(struct RecordObjectWork *work, struct OamEntry *output, u16 ind
 
 struct OamWords { u32 words[2]; };
 
-u32 sub_08045908(struct RecordObjectList *list, struct OamEntry *output, u16 limit)
+u32 SortAndCopyRecordObjectList(struct RecordObjectList *list, struct OamEntry *output, u16 limit)
 {
     u16 count = list->count;
     u16 result = 0;
@@ -274,14 +274,14 @@ u32 sub_08045908(struct RecordObjectList *list, struct OamEntry *output, u16 lim
                 list->entries[j] = first;
             }
         }
-        result += sub_080455E0(list->entries[i], output, result, limit);
+        result += CopyRecordObjects(list->entries[i], output, result, limit);
         if (result >= limit)
             break;
     }
     return result;
 }
 
-void sub_080459A4(struct OamEntry *objects, u16 start, u16 end)
+void SortOamRangeByKey(struct OamEntry *objects, u16 start, u16 end)
 {
     if (end > start)
     {
@@ -314,7 +314,7 @@ void sub_08045D1C(u8 *work)
 
 #include "record_helpers.h"
 
-void sub_08046034(const struct RecordAssetSet *const *sets, struct RecordTileBlock *records, const u32 *commands, u8 selector, u8 recordIndex)
+void LoadRecordCommandTiles(const struct RecordAssetSet *const *sets, struct RecordTileBlock *records, const u32 *commands, u8 selector, u8 recordIndex)
 {
     const struct RecordAssetSet *set = sets[selector];
     if (commands != 0 && (*(const u8 *)commands & 0x3F) != 0)
@@ -344,13 +344,13 @@ struct ObjectAffineInput { s16 xScale; s16 yScale; u16 angle; };
 struct ObjectAffineOutput { s16 pa, pb, pc, pd; };
 extern const struct ObjectAffineOutput gUnknownAffine_080ABD5C;
 
-u32 sub_08045B68(struct RecordObjectWork *work, struct OamEntry *output, u16 index, s16 y, s16 x, u16 key, u8 priority, u8 flip, u16 scale, u16 *affine, u32 mode)
+u32 PlaceScaledRecordObjects(struct RecordObjectWork *work, struct OamEntry *output, u16 index, s16 y, s16 x, u16 key, u8 priority, u8 flip, u16 scale, u16 *affine, u32 mode)
 {
     u16 result = index;
-    if (sub_08045A40(y, x) != 0)
+    if (IsObjectPositionVisible(y, x) != 0)
     {
         sub_0804538C(work, y, x, (s16)key);
-        result = (u16)sub_08045794(work, output, result, (s8)priority, 128, mode);
+        result = (u16)InsertAffineRecordObjects(work, output, result, (s8)priority, 128, mode);
         if (affine != 0)
         {
             mode *= 4;
@@ -366,13 +366,13 @@ u32 sub_08045B68(struct RecordObjectWork *work, struct OamEntry *output, u16 ind
     return result;
 }
 
-u32 sub_08045C30(struct RecordObjectWork *work, struct OamEntry *output, u16 index, s16 y, s16 x, u16 key, u8 priority, u16 angle, u16 *affine, u32 mode)
+u32 PlaceRotatedRecordObjects(struct RecordObjectWork *work, struct OamEntry *output, u16 index, s16 y, s16 x, u16 key, u8 priority, u16 angle, u16 *affine, u32 mode)
 {
     u16 result = index;
-    if (sub_08045A40(y, x) != 0)
+    if (IsObjectPositionVisible(y, x) != 0)
     {
         sub_0804538C(work, y, x, (s16)key);
-        result = (u16)sub_08045794(work, output, result, (s8)priority, 128, mode);
+        result = (u16)InsertAffineRecordObjects(work, output, result, (s8)priority, 128, mode);
         if (affine != 0)
         {
             struct ObjectAffineInput input = { 0x100, 0x100, -(u32)(u16)angle };
@@ -392,13 +392,13 @@ u32 sub_08045C30(struct RecordObjectWork *work, struct OamEntry *output, u16 ind
 
 #include "record_helpers.h"
 
-void sub_0804589C(struct RecordObjectList *list, struct RecordObjectWork **entries)
+void InitRecordObjectList(struct RecordObjectList *list, struct RecordObjectWork **entries)
 {
     list->entries = entries;
     list->count = 0;
 }
 
-void sub_080458A4(struct RecordObjectList *list, struct RecordObjectWork *work, s32 key)
+void AppendRecordObjectList(struct RecordObjectList *list, struct RecordObjectWork *work, s32 key)
 {
     work->key = key;
     list->entries[list->count] = work;
@@ -408,7 +408,7 @@ void sub_080458A4(struct RecordObjectList *list, struct RecordObjectWork *work, 
 
 #include "record_helpers.h"
 
-u32 sub_080454F0(const struct OamEntry *objects, u16 count, u16 key)
+u32 FindOamInsertIndex(const struct OamEntry *objects, u16 count, u16 key)
 {
     u16 middle = 0;
     if (count != 0)

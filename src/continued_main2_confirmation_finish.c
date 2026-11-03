@@ -32,7 +32,7 @@ void sub_0805D4A0(void)
 
 void sub_0805D4E0(void)
 {
-    if (sub_08041CA4())
+    if (RunDialogueClose())
         gNestedCallbackIndex++;
 }
 
@@ -69,7 +69,7 @@ void sub_0805D5A4(void)
     if (gUnknown_0300058C[0] & 3)
     {
         PlaySoundEffect(2);
-        sub_0803FB0C();
+        RestartDialogueText();
         gNestedCallbackIndex = 4;
     }
 }

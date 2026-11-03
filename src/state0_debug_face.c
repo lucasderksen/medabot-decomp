@@ -88,9 +88,9 @@ void sub_0800CBC8(void)
     }
     else if (*(u8 *)&gNewKeys & 1)
     {
-        sub_0803F480(*(u8 *)((u32)gDebugMenuTextBuffer - 0x69),
+        DrawPortrait(*(u8 *)((u32)gDebugMenuTextBuffer - 0x69),
                     *(u8 *)((u32)gDebugMenuTextBuffer - 0x68), 0, 7, 1);
-        sub_0803F480(*(u8 *)((u32)gDebugMenuTextBuffer - 0x69),
+        DrawPortrait(*(u8 *)((u32)gDebugMenuTextBuffer - 0x69),
                     *(u8 *)((u32)gDebugMenuTextBuffer - 0x68), 9, 7, cancel);
     }
     }

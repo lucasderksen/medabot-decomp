@@ -52,7 +52,7 @@ void sub_08062614(void) {
     s8 i;
     u32 money;
 
-    if (sub_08041674() == 0)
+    if (RunChoiceBox() == 0)
         return;
     gState0TypedWork.bytes[0x84] = 0;
     gState0TypedWork.bytes[0x1B] = 0;

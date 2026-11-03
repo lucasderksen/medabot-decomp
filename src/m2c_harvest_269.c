@@ -67,12 +67,12 @@ void sub_080655FC(void) {
  s32 busy=1;
  u32 high;
  if(((struct PurchaseContextView *)gMainContextPointer_03006F74)->active){
-  if(sub_08041CA4()){
+  if(RunDialogueClose()){
    ((struct PurchaseContextView *)gMainContextPointer_03006F74)->active=0;
    sub_0803FAA0(1,0,0);
   }
  }else if(RunDialogue(gMain2ScriptSlots_0848521C[14]))busy=0;
- if(busy==0&&(busy=sub_08041674())!=0){
+ if(busy==0&&(busy=RunChoiceBox())!=0){
   high=busy&0xF0;
   if(high){
    ((struct PurchaseContextView *)gMainContextPointer_03006F74)->active=1;

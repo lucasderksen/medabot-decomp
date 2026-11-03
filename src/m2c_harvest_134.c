@@ -158,12 +158,12 @@ void sub_08071304(void) {
         gGraphicsTransferCounter.counter += 1;
         break;
     case 4: case 8: case 12: case 16: case 20: case 24:
-        sub_0803FB0C();
+        RestartDialogueText();
         gGraphicsTransferCounter.counter += 1;
         break;
     case 1: case 5: case 9: case 13: case 17: case 21:
         if (RunDialogue(gUnknown_08486D78[(scriptWork->counter >> 2) + 8]) != 0) {
-            sub_0803FB0C();
+            RestartDialogueText();
             RunDialogue(gUnknown_08485BB4);
             scriptWork->counter += 1;
         }

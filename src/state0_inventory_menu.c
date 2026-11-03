@@ -431,7 +431,7 @@ void sub_080080C8(void)
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 8);
     if (sub_0800A8A0())
     {
-        sub_0803FB0C();
+        RestartDialogueText();
         gNestedCallbackIndex++;
     }
     else
@@ -439,7 +439,7 @@ void sub_080080C8(void)
         sub_0800A1E4();
         if (sub_0800A928())
         {
-            sub_0803FB0C();
+            RestartDialogueText();
             gNestedCallbackIndex++;
         }
         else
@@ -628,7 +628,7 @@ void sub_080085B4(void)
     ScrollBg3Diagonally();
     if (!gState0TypedWork.bytes[0x3F]) sub_0800AC2C();
     else sub_0800ACA8();
-    sub_0803FB0C();
+    RestartDialogueText();
     gNestedCallbackIndex++;
 }
 
@@ -706,20 +706,20 @@ void sub_08008650(void)
         sub_0800AD00();
         if (sub_0800AD58())
         {
-            sub_0800AB0C(); sub_0803FB0C();
+            sub_0800AB0C(); RestartDialogueText();
             gNestedCallbackIndex--;
             return;
         }
         if (sub_0800ADE8())
         {
-            sub_0803FB0C(); gNestedCallbackIndex--;
+            RestartDialogueText(); gNestedCallbackIndex--;
             return;
         }
         accept = *(u8 *)&gNewKeys & 1;
         if (accept)
         {
             PlaySoundEffect(4); HideFrameObjects(1, 2);
-            sub_0800ACA8(); sub_0803FB0C();
+            sub_0800ACA8(); RestartDialogueText();
             *page = 1;
             gNestedCallbackIndex--;
             return;
@@ -728,7 +728,7 @@ void sub_08008650(void)
         {
             PlaySoundEffect(5); HideFrameObjects(1, 2);
             work[0x46] = accept;
-            sub_0800A0FC(); sub_0803FB0C();
+            sub_0800A0FC(); RestartDialogueText();
             gNestedCallbackIndex = 43;
             return;
         }
@@ -749,14 +749,14 @@ void sub_08008650(void)
         {
             PlaySoundEffect(4); HideFrameObjects(3, 1);
             work[0x46] = changed;
-            sub_0800A0FC(); sub_0803FB0C();
+            sub_0800A0FC(); RestartDialogueText();
             gNestedCallbackIndex = 43;
             return;
         }
         if (*(u8 *)&gNewKeys & 2)
         {
             PlaySoundEffect(5); HideFrameObjects(3, 1);
-            sub_0800AC2C(); sub_0803FB0C();
+            sub_0800AC2C(); RestartDialogueText();
             *page = accept;
             gNestedCallbackIndex--;
             return;
@@ -845,7 +845,7 @@ void sub_08008B80(void)
 {
     ScrollBg3Diagonally(); HideFrameObjects(1, 5);
     CpuFastSet((const void *)0x084E4418, (void *)0x050003C0, 8);
-    sub_0800AA1C(); sub_0803FB0C();
+    sub_0800AA1C(); RestartDialogueText();
     gNestedCallbackIndex++;
 }
 
@@ -877,7 +877,7 @@ void sub_08008BE0(void)
     }
     else if (*(u8 *)&gNewKeys & 1)
     {
-        PlaySoundEffect(4); sub_0800AA1C(); sub_0803FB0C();
+        PlaySoundEffect(4); sub_0800AA1C(); RestartDialogueText();
         gNestedCallbackIndex++;
     }
     else if (*(u8 *)&gNewKeys & 10)
@@ -980,10 +980,10 @@ void sub_080090D0(void)
     switch (gState0TypedWork.bytes[0x42])
     {
     case 0:
-        sub_0803FB0C(); sub_0800A0FC(); gNestedCallbackIndex = 11;
+        RestartDialogueText(); sub_0800A0FC(); gNestedCallbackIndex = 11;
         break;
     case 1:
-        sub_0803FB0C(); sub_0800A0FC(); sub_0800A854(); gNestedCallbackIndex = 27;
+        RestartDialogueText(); sub_0800A0FC(); sub_0800A854(); gNestedCallbackIndex = 27;
         break;
     case 2:
         if (gState0TypedWork.bytes[0x46] & 128)
@@ -993,7 +993,7 @@ void sub_080090D0(void)
         }
         else
         {
-            sub_0803FB0C(); sub_0800A0FC(); gNestedCallbackIndex = 43;
+            RestartDialogueText(); sub_0800A0FC(); gNestedCallbackIndex = 43;
         }
         break;
     }

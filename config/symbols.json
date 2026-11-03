@@ -106,10 +106,6 @@
   "gState0NextRow_083AC5E8": "0x083AC5E8",
   "gTransferSelectedSlots": "0x03001841",
   "gUnknownPalette_0850F2F8": "0x0850F2F8",
-  "sub_08000840": {
-    "address": "0x8000841",
-    "kind": "thumb_function"
-  },
   "gUnknownBytes_083B2AEC": "0x083B2AEC",
   "gUnknownPalette_0850F3D8": "0x0850F3D8",
   "gUnknownBytes_083B2AF0": "0x083B2AF0",

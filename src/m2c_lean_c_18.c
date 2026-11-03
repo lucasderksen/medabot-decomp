@@ -107,7 +107,7 @@ void sub_0804A2F0(void) {
     control = 0x85000100;
     dma->control = control;
     dma->control;
-    sub_08041D28();
+    InitInventoryRecordIndices();
     sub_080421A0();
     gContinuedWork_030057E0.byteCBC = 0x10;
     gContinuedWork_030057E0.byteCBD = 0x10;

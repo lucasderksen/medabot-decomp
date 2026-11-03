@@ -34,11 +34,11 @@ void ResetGame(void)
         ((struct ResetSerialWork *)&gMainSerialWork)->word06 = -1;
         for (i = 0; i <= 7; i++)
         {
-            sub_080022DC(gMainSerialWork.unknown04);
+            PrepareSerialSendPacket(gMainSerialWork.unknown04);
             VBlankIntrWait();
         }
         gUnknown_03005030 = 0;
-        sub_080021A4();
+        StopSerialLink();
     }
 
     VBlankIntrWait();
@@ -48,7 +48,7 @@ void ResetGame(void)
     REG_IME = 0;
     ResetMemory();
     InitInterrupts();
-    sub_080020C8();
+    InitSerialLink();
     gMainState = 3;
     gUnknown_03002B8C = 0;
     gNestedCallbackIndex = 0;

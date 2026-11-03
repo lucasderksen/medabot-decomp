@@ -28,7 +28,7 @@ void sub_08061860(void) {
         (*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x48)) = (u8) (v - 1);
         return;
     }
-    if (sub_08041CA4() != 0) {
+    if (RunDialogueClose() != 0) {
         gState0TypedWork.bytes[0x84] = w;
         gNestedCallbackIndex += 1;
     }

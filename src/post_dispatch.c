@@ -94,7 +94,7 @@ u32 sub_08047D8C(u8 value) { return sub_08042278(value); }
 
 u32 sub_08047D9C(u8 index, u8 row) { return sub_08042114(index, row); }
 
-u32 sub_08047DB0(u8 identifier) { return sub_08041D3C(identifier); }
+u32 sub_08047DB0(u8 identifier) { return FindInventoryRecordById(identifier); }
 
 void sub_08047DC0(u8 index, u8 amount)
 {
@@ -164,7 +164,7 @@ u32 InitAndRunDialogue(u8 first, u8 second, u8 mode, const void *script)
         if (work[1] == 0)
             sub_0803FAA0(first, second, mode);
         else
-            sub_0803FB0C();
+            RestartDialogueText();
         gLaterBuffer_030064A0[0]++;
         break;
     case 1:

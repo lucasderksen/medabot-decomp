@@ -47,7 +47,7 @@ void sub_08044100(void)
     sub_08043FEC(gState0TransferWork.bytes[0x38]);
 }
 
-void sub_08044118(u32 width, u32 height, u32 x, u32 y, u32 control, u16 *destination)
+void ReadTilemapRect(u32 width, u32 height, u32 x, u32 y, u32 control, u16 *destination)
 {
     u32 screenOffset = ((control >> 8) & 31) << 11;
     u32 xAddress = x * 2 + 0x06000000;
@@ -61,7 +61,7 @@ void sub_08044118(u32 width, u32 height, u32 x, u32 y, u32 control, u16 *destina
     }
 }
 
-void sub_08044160(u32 width, u32 height, u32 x, u32 y, u32 control, const u16 *source)
+void WriteTilemapRect(u32 width, u32 height, u32 x, u32 y, u32 control, const u16 *source)
 {
     u32 screenOffset = ((control >> 8) & 31) << 11;
     u32 xAddress = x * 2 + 0x06000000;
@@ -136,7 +136,7 @@ void ApplyObjectMotionStep(u32 objectIndex)
     }
 }
 
-u32 sub_080442B4(s32 x1, s32 y1, s32 x2, s32 y2)
+u32 GetDirectionToPoint(s32 x1, s32 y1, s32 x2, s32 y2)
 {
     u32 xSign, ySign;
     float dx, dy;
@@ -348,7 +348,7 @@ void sub_080441B8(void)
     gNestedCallbackIndex = 0;
 }
 
-void sub_080445F4(void)
+void InitRecordDisplayRendering(void)
 {
     FillBytes(gUnknown_02026000, 0xD0, 0);
     FillBytes(gUnknown_020260D0, 0x820, 0);
@@ -366,7 +366,7 @@ void sub_080445F4(void)
     }
     gUnknownPointer_03002414[0x1094] = 0;
     gUnknownPointer_03002414[0x1095] = 0;
-    sub_08047414((struct RecordDisplayWork *)gUnknown_02026000, (struct RenderWork *)gUnknownPointer_03002414, gUnknownBytes_083D1D78, gUnknown_020260D0);
+    InitRecordDisplayWork((struct RecordDisplayWork *)gUnknown_02026000, (struct RenderWork *)gUnknownPointer_03002414, gUnknownBytes_083D1D78, gUnknown_020260D0);
 }
 
 void sub_08044BA8(u32 mode, u32 value)

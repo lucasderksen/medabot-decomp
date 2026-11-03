@@ -57,7 +57,7 @@ void sub_08012E40(void)
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     sub_08015AFC();
     sub_08016068();
-    sub_08044118(6, 5, 12, 21, *(volatile u16 *)0x0400000A, (u16 *)0x02020800);
+    ReadTilemapRect(6, 5, 12, 21, *(volatile u16 *)0x0400000A, (u16 *)0x02020800);
     gUnknown_03000440[0x84] = 0;
     gNestedCallbackIndex++;
 }

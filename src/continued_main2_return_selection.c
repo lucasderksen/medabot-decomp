@@ -27,9 +27,9 @@ struct Main2ReturnWork
 
 void sub_0805DAD4(void)
 {
-    if (sub_08041674())
+    if (RunChoiceBox())
     {
-        sub_0803FB0C();
+        RestartDialogueText();
         if (!WORK->byte2A)
         {
             u32 *index = &gNestedCallbackIndex;

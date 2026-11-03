@@ -29,8 +29,8 @@ void sub_0803FAA0(u32 inputFirst, u32 inputSecond, u32 inputMode)
     work->unknown0F = 0xFF;
     work->unknown10 = -1;
     work->unknown11 = -1;
-    sub_0803F3A8();
+    LoadDialogueWindowGraphics();
     CpuFastSet((const void *)0x084C7F34, (void *)0x050001C0, 8);
     if (mode == 1)
-        sub_0803F3E0();
+        ShowDialogueWindow();
 }

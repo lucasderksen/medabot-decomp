@@ -238,7 +238,7 @@ void sub_0803DF98(void) {
   sub_0803EB0C();
   gState0TypedWork.widths.word86 = (*new_var).widths.word86 + 1;
   new_var2 = new_var;
-  if (sub_08041CA4() != 0)
+  if (RunDialogueClose() != 0)
   {
     var_r0 = (*new_var2).widths.word86;
     block_4:
@@ -321,7 +321,7 @@ void sub_080666C8(void) {
   new_var = (void **) (((s8 *) new_var2) + 0x48);
   if (RunDialogue(*new_var) != 0)
   {
-    sub_080415E8(1U, 0x16U, 7U);
+    StartChoiceBox(1U, 0x16U, 7U);
     gNestedCallbackIndex += 1;
   }
 }
@@ -343,7 +343,7 @@ void sub_08068328(void) {
       BlendObjPaletteBanksNow(0x7FFFU, 0x20 - (temp_r2_2 >> 2), 1U);
       return;
     }
-    sub_0803FB0C();
+    RestartDialogueText();
     gNestedCallbackIndex += 1;
   }
 }

@@ -38,7 +38,7 @@ void GameMain(void)
     gMainState = 3;
     gUnknown_03002B8C = 0;
     gNestedCallbackIndex = 0;
-    sub_080020C8();
+    InitSerialLink();
     InitAudio((void *)0x03002430);
     gUnknown_03001784 = 0;
     gUnknown_03005030 = 0;
@@ -62,7 +62,7 @@ void GameMain(void)
         previousBits = gSerialState.rememberedBits;
         gMainSerialWork.appeared = 0;
         gMainSerialWork.disappeared = 0;
-        gMainSerialWork.polledBits = sub_080021F4(gMainSerialWork.words);
+        gMainSerialWork.polledBits = PollSerialLink(gMainSerialWork.words);
 
         for (i = 0; i < 4; i++)
         {
@@ -115,6 +115,6 @@ void GameMain(void)
 
         gMainCallbacks[gMainState]();
         sub_08001520();
-        sub_080022DC(gMainSerialWork.unknown04);
+        PrepareSerialSendPacket(gMainSerialWork.unknown04);
     }
 }

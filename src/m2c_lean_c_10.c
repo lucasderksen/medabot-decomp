@@ -71,7 +71,7 @@ void sub_08063FB0(void) {
             sub_08042028(buffer);
             sub_08062C28(buffer[1], buffer[8]);
         } else {
-            sub_08041FE4(buffer[1]);
+            ClearInventoryRecordById(buffer[1]);
         }
         gNestedCallbackIndex++;
     }

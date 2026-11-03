@@ -47,7 +47,7 @@ NONMATCH("asm/non_matching/sub_0804538C.inc", void sub_0804538C(struct RecordObj
     object = (struct OamBits538C *)work->objects;
     height = object->shape;
     width = object->size;
-    dims = sub_08044E64(height << 14, width << 30);
+    dims = GetOamDimensions(height << 14, width << 30);
     height = dims >> 16;
     width = dims & 0xFFFF;
     work->key = key;

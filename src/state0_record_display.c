@@ -18,7 +18,7 @@ void sub_0800529C(void)
     fill = 0;
     CpuFastSet(&fill, gRenderWork, CPU_SET_FILL | 0x426);
     gRecordDisplayExtraPointer = gRecordDisplayExtra;
-    sub_08047414(&gRecordDisplayWork, gRenderWork, gUnknownBytes_083D1D78, gRecordDisplayData);
+    InitRecordDisplayWork(&gRecordDisplayWork, gRenderWork, gUnknownBytes_083D1D78, gRecordDisplayData);
     gRecordDisplayWork.data = gRecordDisplayData;
     if (gState0TypedWork.bytes[0x5E])
         sub_08046D1C(gRenderWork->objects, &gRecordDisplayWork,

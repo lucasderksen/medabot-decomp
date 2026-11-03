@@ -109,7 +109,7 @@ void sub_0800BE8C(void)
         switch (*selected)
         {
         case 0:
-            if (*values <= 29 && !sub_08041D3C(*values))
+            if (*values <= 29 && !FindInventoryRecordById(*values))
             {
                 u8 slot = sub_08041D70(values[*selected]);
                 CopyBytes(gDebugMedalMetadata_083B6590[values[*selected]],
@@ -118,14 +118,14 @@ void sub_0800BE8C(void)
             break;
         case 1:
             if (*(u8 *)((u32)gDebugMenuTextBuffer - 0x68) <= 29
-                && sub_08041D3C(*(u8 *)((u32)gDebugMenuTextBuffer - 0x68)))
-                sub_08041FE4(values[*selected]);
+                && FindInventoryRecordById(*(u8 *)((u32)gDebugMenuTextBuffer - 0x68)))
+                ClearInventoryRecordById(values[*selected]);
             break;
         default:
             gDebugProcessCallbackByte = cancel;
             do
             {
-                if (!sub_08041D3C(gState0TypedWork.bytes[0x37]))
+                if (!FindInventoryRecordById(gState0TypedWork.bytes[0x37]))
                 {
                     u8 slot = sub_08041D70(gState0TypedWork.bytes[0x37]);
                     CopyBytes(gDebugMedalMetadata_083B6590[gState0TypedWork.bytes[0x37]],

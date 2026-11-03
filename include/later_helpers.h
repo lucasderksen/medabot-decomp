@@ -11,7 +11,7 @@ extern const u32 gLaterCommands_0807EE70[][4];
 extern const u32 gLaterCommands_0807F610[][4];
 extern const u32 gLaterCommands_0807FDB0[][4];
 extern const u32 gLaterCommands_08080550[][8];
-void sub_08047414(struct RecordDisplayWork *work, struct RenderWork *render, const void *source, void *data);
+void InitRecordDisplayWork(struct RecordDisplayWork *work, struct RenderWork *render, const void *source, void *data);
 void sub_08047570(void);
 void sub_08047574(void);
 

@@ -449,7 +449,7 @@ void sub_0800F218(void) {
     sp14 = 0;
     CpuFastSet(&sp14, &gUnknown_02024000, 0x01000426U);
     gRecordDisplayExtraPointer = gRecordDisplayExtra;
-    sub_08047414(&gRecordDisplayWork, gRenderWork, gUnknownBytes_083D1D78, gRecordDisplayData);
+    InitRecordDisplayWork(&gRecordDisplayWork, gRenderWork, gUnknownBytes_083D1D78, gRecordDisplayData);
     gRecordDisplayWork.data = gRecordDisplayData;
     sub_08046A60(gRenderWork->objects, &gRecordDisplayWork, (s32) gState0TypedWork.bytes[0x3D], (s32) gState0TypedWork.bytes[0x3E], 0x3C, 0x28, 0x1C2U, 8U, 1U);
 }
@@ -461,75 +461,75 @@ void sub_080158D0(u32 arg0) {
 
 void sub_08016614(void) {
     if ((u32) gState0TypedWork.bytes[0x84] <= 9U) {
-        sub_08044118(0xBU, 4U, 0x13U, 0x10U, (u32) *(u16 *)0x0400000A, &gState0FrameBackup);
-        sub_08044160(0xBU, 4U, 0x14U, 0x10U, (u32) *(u16 *)0x0400000A, &gState0FrameBackup);
+        ReadTilemapRect(0xBU, 4U, 0x13U, 0x10U, (u32) *(u16 *)0x0400000A, &gState0FrameBackup);
+        WriteTilemapRect(0xBU, 4U, 0x14U, 0x10U, (u32) *(u16 *)0x0400000A, &gState0FrameBackup);
     }
 }
 
 void sub_08016660(void) {
     if ((u32) gState0TypedWork.bytes[0x84] <= 4U) {
-        sub_08044118(6U, 6U, 0xCU, 0xEU, (u32) *(u16 *)0x0400000A, &gState0FrameBackup);
-        sub_08044160(6U, 6U, 0xCU, 0xFU, (u32) *(u16 *)0x0400000A, &gState0FrameBackup);
+        ReadTilemapRect(6U, 6U, 0xCU, 0xEU, (u32) *(u16 *)0x0400000A, &gState0FrameBackup);
+        WriteTilemapRect(6U, 6U, 0xCU, 0xFU, (u32) *(u16 *)0x0400000A, &gState0FrameBackup);
     }
 }
 
 void sub_080166F0(void) {
     if ((u32) gState0TypedWork.bytes[0x84] <= 3U) {
-        sub_08044160(0xCU, 4U, 9U, 0x13 - gState0TypedWork.bytes[0x84], (u32) *(u16 *)0x04000008, &gState0FrameBackup);
+        WriteTilemapRect(0xCU, 4U, 9U, 0x13 - gState0TypedWork.bytes[0x84], (u32) *(u16 *)0x04000008, &gState0FrameBackup);
     }
 }
 
 void sub_0801672C(void) {
     if ((u32) gState0TypedWork.bytes[0x84] <= 0xBU) {
-        sub_08044118(gState0TypedWork.bytes[0x84] + 1, 7U, 0x12U, 0x15U, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
-        sub_08044160(gState0TypedWork.bytes[0x84] + 1, 7U, 0x1D - gState0TypedWork.bytes[0x84], 0xDU, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
+        ReadTilemapRect(gState0TypedWork.bytes[0x84] + 1, 7U, 0x12U, 0x15U, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
+        WriteTilemapRect(gState0TypedWork.bytes[0x84] + 1, 7U, 0x1D - gState0TypedWork.bytes[0x84], 0xDU, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
     }
 }
 
 void sub_08016E90(void) {
     if ((u32) gState0TypedWork.bytes[0x84] <= 0xBU) {
-        sub_08044118(0xDU, 7U, 0x11U, 0xDU, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
-        sub_08044160(0xDU, 7U, 0x12U, 0xDU, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
+        ReadTilemapRect(0xDU, 7U, 0x11U, 0xDU, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
+        WriteTilemapRect(0xDU, 7U, 0x12U, 0xDU, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
     }
 }
 
 void sub_08016EDC(void) {
     if ((u32) gState0TypedWork.bytes[0x84] <= 3U) {
-        sub_08044118(0xCU, 5U, 9U, 0xFU, (u32) *(u16 *)0x04000008, &gState0FrameBackup);
-        sub_08044160(0xCU, 5U, 9U, 0x10U, (u32) *(u16 *)0x04000008, &gState0FrameBackup);
+        ReadTilemapRect(0xCU, 5U, 9U, 0xFU, (u32) *(u16 *)0x04000008, &gState0FrameBackup);
+        WriteTilemapRect(0xCU, 5U, 9U, 0x10U, (u32) *(u16 *)0x04000008, &gState0FrameBackup);
     }
 }
 
 void sub_08016F28(void) {
     if ((u32) gState0TypedWork.bytes[0x84] <= 4U) {
-        sub_08044160(6U, 5U, 0xCU, 0x13 - gState0TypedWork.bytes[0x84], (u32) *(u16 *)0x0400000A, &gState0FrameBackup);
+        WriteTilemapRect(6U, 5U, 0xCU, 0x13 - gState0TypedWork.bytes[0x84], (u32) *(u16 *)0x0400000A, &gState0FrameBackup);
     }
 }
 
 void sub_08016F64(void) {
     if ((u32) gState0TypedWork.bytes[0x84] <= 9U) {
-        sub_08044118(gState0TypedWork.bytes[0x84] + 1, 4U, 0x14U, 0x15U, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
-        sub_08044160(gState0TypedWork.bytes[0x84] + 1, 4U, 0x1D - gState0TypedWork.bytes[0x84], 0x10U, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
+        ReadTilemapRect(gState0TypedWork.bytes[0x84] + 1, 4U, 0x14U, 0x15U, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
+        WriteTilemapRect(gState0TypedWork.bytes[0x84] + 1, 4U, 0x1D - gState0TypedWork.bytes[0x84], 0x10U, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
     }
 }
 
 void sub_08017048(void) {
     if ((u32) gState0TypedWork.bytes[0x84] <= 3U) {
-        sub_08044160(0xCU, 4U, 9U, 0x13 - gState0TypedWork.bytes[0x84], (u32) *(u16 *)0x04000008, &gState0FrameBackup);
+        WriteTilemapRect(0xCU, 4U, 9U, 0x13 - gState0TypedWork.bytes[0x84], (u32) *(u16 *)0x04000008, &gState0FrameBackup);
     }
 }
 
 void sub_08017084(void) {
     if ((u32) gState0TypedWork.bytes[0x84] <= 0xBU) {
-        sub_08044118(gState0TypedWork.bytes[0x84] + 1, 4U, 0x12U, 0x15U, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
-        sub_08044160(gState0TypedWork.bytes[0x84] + 1, 4U, 0x1D - gState0TypedWork.bytes[0x84], 0xDU, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
+        ReadTilemapRect(gState0TypedWork.bytes[0x84] + 1, 4U, 0x12U, 0x15U, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
+        WriteTilemapRect(gState0TypedWork.bytes[0x84] + 1, 4U, 0x1D - gState0TypedWork.bytes[0x84], 0xDU, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
     }
 }
 
 void sub_08017948(void) {
     if ((u32) gState0TypedWork.bytes[0x84] <= 0xBU) {
-        sub_08044118(0xDU, 4U, 0x11U, 0xDU, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
-        sub_08044160(0xDU, 4U, 0x12U, 0xDU, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
+        ReadTilemapRect(0xDU, 4U, 0x11U, 0xDU, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
+        WriteTilemapRect(0xDU, 4U, 0x12U, 0xDU, (u32) *(u16 *)0x0400000A, &gUnknown_02021000);
     }
 }
 
@@ -545,7 +545,7 @@ void sub_08018098(void) {
     sp20 = 0;
     CpuFastSet(&sp20, &gUnknown_02024000, 0x01000426U);
     gRecordDisplayExtraPointer = gRecordDisplayExtra;
-    sub_08047414(&gRecordDisplayWork, gRenderWork, gUnknownBytes_083D1D78, gRecordDisplayData);
+    InitRecordDisplayWork(&gRecordDisplayWork, gRenderWork, gUnknownBytes_083D1D78, gRecordDisplayData);
     gRecordDisplayWork.data = gRecordDisplayData;
     sub_08046D1C(gRenderWork->objects, &gRecordDisplayWork, (u32) gState0TypedWork.bytes[0x98], (u32) gState0TypedWork.bytes[0x99], (u32) (*(u8 *)((u8 *)((&gState0TypedWork.bytes[0x98] + 1)) + 1)), (u32) gState0TypedWork.bytes[0x9B], 0x28U, 0x28U, 0x1C2U, 8U, 1U, 0U);
 }
@@ -1189,7 +1189,7 @@ void sub_080319B8(void) {
 }
 
 void sub_08031A08(void) {
-    if (sub_08041CA4() != 0) {
+    if (RunDialogueClose() != 0) {
         gNestedCallbackIndex += 1;
     }
 }
@@ -1305,13 +1305,13 @@ void sub_0803A2E8(void) {
 
 void sub_0803A444(void) {
     *(u16 *)0x04000008 = 0x4500;
-    sub_0803EFD8(0x40U, 0x20U, 0U, 0U, (u32) *(u16 *)0x04000008, 0U);
+    FillTilemapRect64(0x40U, 0x20U, 0U, 0U, (u32) *(u16 *)0x04000008, 0U);
     AdvanceActionHalfwordScript();
 }
 
 void sub_0803A6FC(void) {
-    sub_0803EFD8(0x20U, 0x20U, 0U, 0U, (u32) *(u16 *)0x04000008, 0U);
-    sub_0803EFD8(0x20U, 0x20U, 0x20U, 0U, (u32) *(u16 *)0x04000008, 0U);
+    FillTilemapRect64(0x20U, 0x20U, 0U, 0U, (u32) *(u16 *)0x04000008, 0U);
+    FillTilemapRect64(0x20U, 0x20U, 0x20U, 0U, (u32) *(u16 *)0x04000008, 0U);
     *(u16 *)0x04000008 = 0x500;
     gBgScroll0.x = 0;
     gBgScroll1.x = 0;
@@ -1427,8 +1427,8 @@ void sub_0803DB1C(void) {
 
 void sub_0803DB94(void) {
     StepFirstBgAutoScroll();
-    if (sub_08041CD4() != 0) {
-        sub_0803FB0C();
+    if (RunDialoguePortraitClose() != 0) {
+        RestartDialogueText();
         gNestedCallbackIndex += 1;
     }
 }
@@ -1686,7 +1686,7 @@ void sub_0805B594(void) {
 }
 
 void sub_0805FA00(void) {
-    if (sub_08041CA4() != 0) {
+    if (RunDialogueClose() != 0) {
         gNestedCallbackIndex = 4;
     }
 }
@@ -1707,7 +1707,7 @@ void sub_080602BC(void) {
 void sub_08060AF4(void) {
     sub_080605A0();
     sub_08060620();
-    if (sub_08041CA4() != 0) {
+    if (RunDialogueClose() != 0) {
         SnapshotPalettes();
         gState0TypedWork.bytes[0x84] = 0;
         gNestedCallbackIndex += 1;
@@ -1726,7 +1726,7 @@ void sub_080612E8(void) {
 }
 
 void sub_08061440(void) {
-    if (sub_08041CA4() != 0) {
+    if (RunDialogueClose() != 0) {
         gState0TypedWork.bytes[0x84] = 0;
         gNestedCallbackIndex += 1;
     }
@@ -1775,12 +1775,12 @@ void sub_08062A10(u32 arg0) {
         sp14 = arg0;
         CpuFastSet(&sp14, &gUnknown_02024000, 0x01000426U);
         gRecordDisplayExtraPointer = &gUnknown_020268F0;
-        sub_08047414(&gRecordDisplayWork, gRenderWork, gUnknownBytes_083D1D78, gRecordDisplayData);
+        InitRecordDisplayWork(&gRecordDisplayWork, gRenderWork, gUnknownBytes_083D1D78, gRecordDisplayData);
         gRecordDisplayWork.data = gRecordDisplayData;
         sub_08046A60(gRenderWork->objects, &gRecordDisplayWork, (s32) (*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x31)), (s32) (*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x33)), 0x3C, 0x28, 0x12BU, arg0, 1U);
         return;
     }
-    sub_08047414(&gRecordDisplayWork, gRenderWork, gUnknownBytes_083D1D78, &gUnknown_020264E0);
+    InitRecordDisplayWork(&gRecordDisplayWork, gRenderWork, gUnknownBytes_083D1D78, &gUnknown_020264E0);
     gRecordDisplayWork.data = &gUnknown_020264E0;
     sub_08046A60(gRenderWork->objects, &gRecordDisplayWork, (s32) (*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x32)), (s32) (*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x34)), 0x3C, 0x28, 0x12BU, 4U, 2U);
 }
@@ -1822,7 +1822,7 @@ void sub_08065198(void) {
 }
 
 void sub_080654C0(void) {
-    if (sub_08041CA4() != 0) {
+    if (RunDialogueClose() != 0) {
         if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
             BlendBgPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
             BlendObjPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
@@ -1836,7 +1836,7 @@ void sub_080654C0(void) {
 }
 
 void sub_0806552C(void) {
-    if (sub_08041CA4() != 0) {
+    if (RunDialogueClose() != 0) {
         if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
             BlendBgPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
             BlendObjPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
@@ -1850,7 +1850,7 @@ void sub_0806552C(void) {
 }
 
 void sub_08065A80(void) {
-    if (sub_08041CA4() != 0) {
+    if (RunDialogueClose() != 0) {
         sub_080476E8(8U);
     }
 }
@@ -1859,14 +1859,14 @@ void sub_08065C98(void) {
     u32 var_r0;
 
     if ((u32) gUnknown_03000B90 > 1U) {
-        sub_0803FB0C();
+        RestartDialogueText();
         (*(s32 *)((u8 *)(gMainContextPointer_03006F74) + 8)) = 1;
         goto block_5;
     }
     if (gMainSerialOutgoingWork.polledBits & (1 << gUnknown_03000B90)) {
         var_r0 = gNestedCallbackIndex + 1;
     } else {
-        sub_0803FB0C();
+        RestartDialogueText();
         (*(s32 *)((u8 *)(gMainContextPointer_03006F74) + 8)) = 1;
 block_5:
         var_r0 = gNestedCallbackIndex - 2;
@@ -1875,7 +1875,7 @@ block_5:
 }
 
 void sub_08065CFC(void) {
-    if (sub_08041CA4() != 0) {
+    if (RunDialogueClose() != 0) {
         sub_080476E8(7U);
     }
 }
@@ -1898,10 +1898,10 @@ void sub_08066534(void) {
 }
 
 void sub_0806668C(void) {
-    if (sub_08041674() != 0) {
+    if (RunChoiceBox() != 0) {
         if (gState0TypedWork.bytes[0x2A] == 0) {
             gNestedCallbackIndex += 1;
-            sub_0803FB0C();
+            RestartDialogueText();
             return;
         }
         gNestedCallbackIndex += 3;
@@ -1909,9 +1909,9 @@ void sub_0806668C(void) {
 }
 
 void sub_080666F4(void) {
-    if (sub_08041674() != 0) {
+    if (RunChoiceBox() != 0) {
         gNestedCallbackIndex += 1;
-        sub_0803FB0C();
+        RestartDialogueText();
     }
 }
 

@@ -12,7 +12,7 @@ original symbol.
 
 The entry configures `WAITCNT` to `0x4014`, calls memory and interrupt
 initialization, writes `0x60` to `DISPCNT`, and selects callback index 3. It
-clears two unknown word fields, calls `sub_080020C8`, initializes the sound
+clears two unknown word fields, calls `InitSerialLink`, initializes the sound
 subsystem through the provisionally named `InitAudio`, and clears several
 unknown byte/halfword fields.
 
@@ -23,7 +23,7 @@ current unsigned value is at most `0x014996FE`. The latter condition permits
 the counter to reach `0x014996FF` and then stops incrementing it.
 
 The loop snapshots the byte at `0x03005172`, clears two per-frame flag bytes,
-and passes the receive-payload area beginning at `0x03005018` to `sub_080021F4`.
+and passes the receive-payload area beginning at `0x03005018` to `PollSerialLink`.
 It stores the returned word at `0x03005010`, then checks its lowest four bits.
 For each set bit, it resets the corresponding missing-poll count. If the bit
 was absent from the snapshot, it sets that bit in `0x03005172` and ORs `0xFF`
@@ -42,7 +42,7 @@ the routine selects callback state 0 and writes 10 and 16 to the two unknown
 word fields previously cleared at startup.
 
 Finally, it invokes `gMainCallbacks[gMainState]`, calls `sub_08001520`, calls
-`sub_080022DC` with `0x03005014`, and begins the next frame. The callback table
+`PrepareSerialSendPacket` with `0x03005014`, and begins the next frame. The callback table
 has six entries at `0x083ABF98..0x083ABFB0`; the table and its boundary are
 reconstructed separately in `src/main_callbacks.c`.
 
@@ -52,8 +52,8 @@ The main-loop view of the object at `0x03005010` is:
 
 | Offset | Width | Observation |
 | --- | --- | --- |
-| `00` | u32 | Result of `sub_080021F4`; lowest four bits inspected |
-| `04` | 4 bytes | Address passed to `sub_080022DC`; type not established |
+| `00` | u32 | Result of `PollSerialLink`; lowest four bits inspected |
+| `04` | 4 bytes | Address passed to `PrepareSerialSendPacket`; type not established |
 | `08` | eight u16 | Four received payload pairs; main checks the first two for `0xFFFF` |
 | `18` | u8 | Unaccessed by this routine |
 | `19` | four u8 | Missing-poll counters; comparison explicitly casts to s8 |

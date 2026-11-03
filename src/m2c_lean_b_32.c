@@ -68,7 +68,7 @@ s32 sub_08033184(s32 slot) {
         if (part[0x59] != 0 && part[0x59] != part[0x4C])
             entry->key = part[0x4C] - part[0x59];
     }
-    sub_0804242C(4);
+    SortObjectEntriesDescending(4);
     if (gObjectSortEntries[0].key != 0)
         return gObjectSortEntries[0].word4 + 1;
     return 0;

@@ -88,7 +88,7 @@ NONMATCH("asm/non_matching/sub_08059960.inc", void sub_08059960(void))
     struct FrameObject *obj;
     struct FrameObject *shadow;
 
-    sub_080482CC(gNavigationWork9960.half20);
+    LoadObjTilesIntoAllSlots(gNavigationWork9960.half20);
     sub_0804877C(gNavigationWork9960.half20);
     SetupNavigationObject(0x31, -48, 16, 0x0, 0x4);
     SetupNavigationObject(0x32, -16, 16, 0xf, 0x9);

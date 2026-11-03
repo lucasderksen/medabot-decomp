@@ -206,7 +206,7 @@ void sub_080609D4(void) {
 
 void sub_08062754(void) {
 
-    if (sub_08041CA4() != 0) {
+    if (RunDialogueClose() != 0) {
         if (((struct ChoiceWork62754 *)&gState0TypedWork)->choice == 0) {
             HideFrameObjects(0x61U, 7U);
             HideFrameObjects(0xDU, 0x34U);

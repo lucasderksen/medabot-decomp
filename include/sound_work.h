@@ -93,11 +93,11 @@ extern const struct SoundSongHeader *const gSoundMusicBank[54];
 extern const struct SoundSongHeader *const gSoundEffectBank[128];
 extern struct SoundRootState *gFamilySoundRoot74028;
 
-void sub_08073C5C(const struct SoundSampleHeader *const *bank);
-void sub_08073C70(const struct SoundSampleHeader *const *bank);
-void sub_08074A78(const struct SoundSongHeader *const *bank);
-void sub_08074D3C(const struct SoundSongHeader *const *bank);
-void sub_08074FE8(const struct SoundAuxBank *bank);
+void SetSoundInstrumentBank(const struct SoundSampleHeader *const *bank);
+void SetSoundDrumBank(const struct SoundSampleHeader *const *bank);
+void SetSoundMusicBank(const struct SoundSongHeader *const *bank);
+void SetSoundEffectBank(const struct SoundSongHeader *const *bank);
+void SetSoundAuxBank(const struct SoundAuxBank *bank);
 void sub_080741F4(void *record);
 void sub_0807455C(struct SoundChannelState *channel, void *track);
 void sub_08074A04(void);

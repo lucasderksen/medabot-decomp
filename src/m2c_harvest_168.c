@@ -149,9 +149,9 @@ void sub_08063354(void) {
 
 void sub_0806938C(void) {
     gUnknown_03006F90 = 0;
-    sub_0803F41C(0U, 0U, (void *)0x06004000, 9U, 0U);
-    sub_0803F41C((u32) gUnknown_08485C00[gUnknown_03006FDC].firstTiles, 0U, (void *)0x06004800, 0xAU, 0U);
-    sub_0803F41C((u32) gUnknown_08485C00[gUnknown_03006FDC].secondTiles, 0U, (void *)0x06005000, 0xBU, 0U);
+    LoadPortraitGraphics(0U, 0U, (void *)0x06004000, 9U, 0U);
+    LoadPortraitGraphics((u32) gUnknown_08485C00[gUnknown_03006FDC].firstTiles, 0U, (void *)0x06004800, 0xAU, 0U);
+    LoadPortraitGraphics((u32) gUnknown_08485C00[gUnknown_03006FDC].secondTiles, 0U, (void *)0x06005000, 0xBU, 0U);
     *(volatile u16 *)0x0400000C = 0x1E02;
     gBgScroll2.x = 0xFFE8;
     gBgScroll2.y = 0xFFA0;

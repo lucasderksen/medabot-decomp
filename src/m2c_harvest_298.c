@@ -113,8 +113,8 @@ void sub_080665FC(void) {
     p[1] = 4;
     p = (u8 *)gMainContextPointer_03006F74 + 0x270;
     if (RunDialogue(p) != 0) {
-        sub_0803FB0C();
-        sub_080415E8(1U, 0x16U, 7U);
+        RestartDialogueText();
+        StartChoiceBox(1U, 0x16U, 7U);
         gNestedCallbackIndex += 1;
     }
 }

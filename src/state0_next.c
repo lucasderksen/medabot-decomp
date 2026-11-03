@@ -310,7 +310,7 @@ void sub_0800E3A0(void)
     sub_0800FD74();
     if (sub_0800FDD8())
     {
-        sub_0803FB0C();
+        RestartDialogueText();
         gNestedCallbackIndex--;
     }
     else if (*(u8 *)&gNewKeys & KEY_B)
@@ -444,7 +444,7 @@ void sub_0800E654(void)
     HideFrameObjects(1, 5);
     CpuFastSet((const void *)0x084E4418, (void *)0x050003C0, 8);
     sub_0800FF50();
-    sub_0803FB0C();
+    RestartDialogueText();
     gNestedCallbackIndex++;
 }
 
@@ -462,7 +462,7 @@ void sub_0800E9F0(void)
     sub_0800F440();
     HideFrameObjects(6, 1);
     CpuFastSet((const void *)0x084E43F8, (void *)0x050003C0, 8);
-    sub_0803FB0C();
+    RestartDialogueText();
     sub_0800FCF0();
     gNestedCallbackIndex = 19;
 }
@@ -572,7 +572,7 @@ void sub_0800E6C8(void)
     {
         PlaySoundEffect(4);
         sub_0800FF50();
-        sub_0803FB0C();
+        RestartDialogueText();
         gNestedCallbackIndex++;
     }
     else if (*(u8 *)&gNewKeys & (KEY_B | KEY_START))

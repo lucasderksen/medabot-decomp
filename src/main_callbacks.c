@@ -1,9 +1,9 @@
 #include "main_callbacks.h"
 
-extern void sub_08002534(void);
-extern void sub_0804763C(void);
+extern void DispatchMainState0(void);
+extern void DispatchMainState1(void);
 extern void sub_0805BBE0(void);
-extern void sub_08068440(void);
+extern void DispatchMainState3(void);
 extern void Nullsub_08000258(void);
 
 /* 0x083ABF98..0x083ABFB0. The next table has a separate reference at
@@ -12,10 +12,10 @@ extern void Nullsub_08000258(void);
  */
 const MainCallback gMainCallbacks[6] =
 {
-    sub_08002534,
-    sub_0804763C,
+    DispatchMainState0,
+    DispatchMainState1,
     sub_0805BBE0,
-    sub_08068440,
+    DispatchMainState3,
     Nullsub_08000258,
     Nullsub_08000258,
 };

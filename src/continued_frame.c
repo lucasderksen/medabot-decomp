@@ -42,7 +42,7 @@ void sub_0804A220(void)
         gFrameCallbacks_083D212C[gNestedCallbackIndex]();
     sub_08052784();
     sub_08052204();
-    sub_08048174();
+    StepMapTileAnimation();
     for (index = 0; index < 32; index++)
         sub_08049374((u8)index);
     sub_0804B1B0();

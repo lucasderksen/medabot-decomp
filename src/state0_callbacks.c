@@ -46,7 +46,7 @@ void sub_080025B4(void)
 
 void sub_080026A4(void)
 {
-    if ((u8)sub_0803F51C(0, 1, 8, 4, gUnknown_03000440[0x88], gUnknown_03000440[0x85]) == 1)
+    if ((u8)StepPortraitAnimation(0, 1, 8, 4, gUnknown_03000440[0x88], gUnknown_03000440[0x85]) == 1)
         gNestedCallbackIndex = 1;
 }
 
@@ -70,16 +70,16 @@ void sub_08002730(void)
 {
     if (RunDialogue(gUnknownPointers_083B5578[1]))
     {
-        sub_080415E8(0, 0x16, 7);
+        StartChoiceBox(0, 0x16, 7);
         gNestedCallbackIndex++;
     }
 }
 
 void sub_0800275C(void)
 {
-    if (sub_08041674())
+    if (RunChoiceBox())
     {
-        sub_0803FB0C();
+        RestartDialogueText();
         gNestedCallbackIndex++;
     }
 }

@@ -57,7 +57,7 @@ void sub_08014EE8(void) {
   sourceOrDestination = records;
   value = (*valueSlot) + sourceOrDestination;
   value = (u32)*(const u8 *)(*valueSlot + 2);
-  value = sub_08041D3C((u8)*valueSlot);
+  value = FindInventoryRecordById((u8)*valueSlot);
   value = (*valueSlot) << 6;
   /* Use this symbol only as an integer bus-address alias.
    * Mapper zero selects the preceding 64-byte inventory sentinel. */

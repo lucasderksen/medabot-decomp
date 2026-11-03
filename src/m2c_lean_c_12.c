@@ -66,7 +66,7 @@ void sub_08066714(void) {
         w0 = gMainSerialOutgoingWork.words[0][1];
         w1 = gMainSerialOutgoingWork.words[1][1];
         if ((w0 & 0xFF00) == 0xFF00 && (w1 & 0xFF00) == 0xFF00) {
-            sub_0803FB0C();
+            RestartDialogueText();
             if (w0 == w1) {
                 sub_080656DC(gScriptContext66714->block50, 0, 0, 1, 0xC0);
                 gNestedCallbackIndex = 5;

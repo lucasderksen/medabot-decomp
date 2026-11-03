@@ -128,7 +128,7 @@ void sub_08065A0C(void) {
    gNestedCallbackIndex--;
    return;
   }
-  sub_0803FB0C();
+  RestartDialogueText();
  }
 }
 

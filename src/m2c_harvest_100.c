@@ -20,7 +20,7 @@ void sub_08065590(void);
 void sub_08065590(void) {
     s32 waiting = 1;
     if (*((u8*)gMainContextPointer_03006F74 + 0x4C) != 0) {
-        if (sub_08041CA4() != 0) {
+        if (RunDialogueClose() != 0) {
             u32 zero;
             *((u8*)gMainContextPointer_03006F74 + 0x4C) = (zero = 0);
             sub_0803FAA0(1,zero,zero);
@@ -30,7 +30,7 @@ void sub_08065590(void) {
         if (RunDialogue(scripts[15]) != 0) waiting = 0;
     }
     if (waiting == 0 && (*(u8*)&gNewKeys & 3)) {
-        sub_0803FB0C();
+        RestartDialogueText();
         gNestedCallbackIndex = 5;
     }
 }

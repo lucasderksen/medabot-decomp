@@ -11,14 +11,14 @@
 #define BIOS_IF (*(volatile u16 *)0x03007FF8)
 
 /* 0x08002190: request a transfer only when the master byte is nonzero. */
-void sub_08002190(void)
+void RequestSerialTransfer(void)
 {
     if (gSerialState.masterFlag != 0)
         gSerialState.requestFlag = 1;
 }
 
 /* 0x080021A4: reset serial/timer control and clear the request flag. */
-void sub_080021A4(void)
+void StopSerialLink(void)
 {
     REG_IME = 0;
     REG_IE &= 0xFF3F;
@@ -30,7 +30,7 @@ void sub_080021A4(void)
 }
 
 /* 0x080022DC: prepare an eight-byte header/payload packet and its checksum. */
-void sub_080022DC(const void *payload)
+void PrepareSerialSendPacket(const void *payload)
 {
     u32 sum = 0;
     u32 i;
@@ -51,7 +51,7 @@ void sub_080022DC(const void *payload)
 extern u8 SwapSerialBuffers(void);
 extern u32 gSerialIrqCode[0x48];
 
-void sub_080020C8(void)
+void InitSerialLink(void)
 {
     u32 zero;
 
@@ -64,7 +64,7 @@ void sub_080020C8(void)
     zero = 0;
     CpuSet(&zero, &gSerialState, CPU_SET_FILL | CPU_SET_32BIT | (sizeof(gSerialState) / 4));
     CpuSet((const void *)SwapSerialBuffers, (void *)0x03005250, CPU_SET_32BIT | 0x10);
-    CpuSet((const void *)sub_08002438, gSerialIrqCode, CPU_SET_32BIT | 0x48);
+    CpuSet((const void *)SerialHandler, gSerialIrqCode, CPU_SET_32BIT | 0x48);
     gSerialState.sendPosition = 6;
     gSerialState.receivePosition = 6;
     gSerialState.pendingSend = &gSerialState.sendPackets[0];
@@ -80,7 +80,7 @@ void sub_080020C8(void)
 struct SioBitfields { u32 control:16; u32 send:16; };
 
 /* 0x080023D8: rotate buffers and start a requested multiplayer transfer. */
-void sub_080023D8(void)
+void StartSerialTransfer(void)
 {
     struct SerialPacket *temporary;
     volatile u16 *sio;
@@ -110,7 +110,7 @@ void sub_080023D8(void)
 }
 
 /* 0x080021F4: poll serial state and return packed status bits. */
-u32 sub_080021F4(u16 words[4][2])
+u32 PollSerialLink(u16 words[4][2])
 {
     volatile u32 *sio = (volatile u32 *)0x04000128;
     u32 serialControl = *sio;
@@ -142,7 +142,7 @@ u32 sub_080021F4(u16 words[4][2])
         /* Fall through to the receive poll after entering phase one. */
     case 1:
     receive:
-        sub_08002328(words);
+        ReceiveSerialPackets(words);
         break;
     }
 
@@ -164,7 +164,7 @@ u32 sub_080021F4(u16 words[4][2])
 }
 
 /* 0x08002328: consume packets whose four-halfword checksum is 0xFFFF. */
-u8 sub_08002328(u16 words[4][2])
+u8 ReceiveSerialPackets(u16 words[4][2])
 {
     u8 (*swapBuffers)(void) = (u8 (*)(void))0x03005250;
     u32 scratch[2];
@@ -209,7 +209,7 @@ u8 sub_08002328(u16 words[4][2])
 union SerialMultiReceive { u16 words[4]; u32 aligned[2]; };
 
 /* 0x08002438: exchange one serial halfword for each of four players. */
-void sub_08002438(void)
+void SerialHandler(void)
 {
     union SerialMultiReceive received = *(volatile union SerialMultiReceive *)0x04000120;
     struct SerialPacket *temporary;

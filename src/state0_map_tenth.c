@@ -44,7 +44,7 @@ void sub_08011B18(void)
 {
     sub_08012098();
     StepFirstBgAutoScroll();
-    if (sub_08041CD4())
+    if (RunDialoguePortraitClose())
     {
         u32 address = (u32)gUnknown_030057E0;
         address += 0xC2F;

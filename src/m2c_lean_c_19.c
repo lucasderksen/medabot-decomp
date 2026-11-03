@@ -254,7 +254,7 @@ void sub_0805830C(u32 mode) {
             gContinuedWork_030057E0.byteC5C = 0xB;
         if (((struct DebugWork830C *)gContinuedOtherWork_030057A0)->byte12 == 0xE || ((struct DebugWork830C *)gContinuedOtherWork_030057A0)->byte12 == 0x12)
         {
-            sub_08048288();
+            LoadSelectedObjTileSlots();
             ((volatile struct Dma830C *)0x040000D4)->source = gPaletteSourcePointers_083F83C0[gFreshBytes_083D2B26[gContinuedWork_030057E0.byteC5C]];
             ((volatile struct Dma830C *)0x040000D4)->destination = 0x05000200;
             ((volatile struct Dma830C *)0x040000D4)->control = 0x84000008;

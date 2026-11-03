@@ -44,8 +44,8 @@ void sub_08065B0C(void) {
     s16 timer;
 
     if (!(gMainSerialOutgoingWork.polledBits & 0xF00) && !(gFrameCounter & 0xF))
-        sub_080020C8();
-    sub_08002190();
+        InitSerialLink();
+    RequestSerialTransfer();
     sub_0805BB0C();
     gMainSerialOutgoingWork.word06 = gLinkContext65B0C->ready49 | tag;
     if (gMainSerialOutgoingWork.words[gUnknown_03000B90][1] == (tag | 1)) {
@@ -56,7 +56,7 @@ void sub_08065B0C(void) {
                 gMainFlag_03005030 = -1;
                 return;
             }
-            sub_0803FB0C();
+            RestartDialogueText();
             gLinkContext65B0C->state08 = 1;
             gNestedCallbackIndex--;
             gMainSerialOutgoingWork.word06 = 0;
@@ -72,7 +72,7 @@ void sub_08065B0C(void) {
     timer = ++gLinkContext65B0C->timer3A;
     if (timer > 0x12C) {
         do {
-            sub_0803FB0C();
+            RestartDialogueText();
             gLinkContext65B0C->state08 = 1;
         } while (0);
         gNestedCallbackIndex--;

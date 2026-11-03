@@ -42,7 +42,7 @@ void sub_08011344(void)
         u8 *items = work + 0x16E;
         u32 value = items[scaled];
         value--;
-        value = sub_08041D3C(value);
+        value = FindInventoryRecordById(value);
         state = gUnknown_03000440;
         value--;
         identifier = state + 0x133;

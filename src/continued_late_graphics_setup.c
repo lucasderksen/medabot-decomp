@@ -84,7 +84,7 @@ void sub_0805718C(void)
         dma->destination = 0x050003A0;
         dma->control = 0x84000008;
         (void)dma->control;
-        sub_0803F3A8();
+        LoadDialogueWindowGraphics();
         dma->source = (u32)gUnknownBytes_084C7F34;
         dma->destination = 0x050001C0;
         dma->control = 0x84000008;

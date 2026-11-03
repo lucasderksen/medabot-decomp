@@ -56,7 +56,7 @@ s32 sub_08072188(void) {
     }
     if (gFrameObjects[1].unknown1A++ > 0x1F) {
         ClearFrameObject(1);
-        sub_080445F4();
+        InitRecordDisplayRendering();
         sp20 = 0x200;
         dma=(volatile struct Dma72188 *)0x040000D4;
         dma->source=(u32)&sp20;

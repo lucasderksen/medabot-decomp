@@ -29,16 +29,16 @@ void sub_0805DB20(void)
 {
     if (RunDialogue(gMain2ScriptSlots_08485678[18]))
     {
-        sub_080415E8(1, 22, 7);
+        StartChoiceBox(1, 22, 7);
         gNestedCallbackIndex++;
     }
 }
 
 void sub_0805DB4C(void)
 {
-    if (sub_08041674())
+    if (RunChoiceBox())
     {
-        sub_0803FB0C();
+        RestartDialogueText();
         if (!WORK->byte2A)
             gNestedCallbackIndex = 6;
         else
@@ -67,7 +67,7 @@ void sub_0805DC4C(void)
 
 void sub_0805DC88(void)
 {
-    sub_0803FB0C();
+    RestartDialogueText();
     SnapshotPalettes();
     WORK->phase = 0;
     gNestedCallbackIndex++;
@@ -75,7 +75,7 @@ void sub_0805DC88(void)
 
 void sub_0805DCB0(void)
 {
-    if (sub_08041CA4())
+    if (RunDialogueClose())
         gNestedCallbackIndex++;
 }
 

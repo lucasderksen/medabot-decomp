@@ -11,7 +11,7 @@ extern const MainCallback gUnknownCallbacks_083AC3C8[];
 /* These descriptive table names identify their index in gMainCallbacks.
  * Gameplay roles and some table lengths remain provisional.
  */
-void sub_08002534(void)
+void DispatchMainState0(void)
 {
     gMainState0Callbacks[gMainSubstate]();
 }
@@ -21,12 +21,12 @@ void sub_08002554(void)
     gUnknownCallbacks_083AC3C8[gNestedCallbackIndex]();
 }
 
-void sub_0804763C(void)
+void DispatchMainState1(void)
 {
     gMainState1Callbacks[gMainSubstate]();
 }
 
-void sub_08068440(void)
+void DispatchMainState3(void)
 {
     gMainState3Callbacks[gMainSubstate]();
 }

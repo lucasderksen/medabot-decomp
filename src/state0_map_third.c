@@ -73,9 +73,9 @@ void sub_08010C28(void)
 {
     sub_08012098();
     StepFirstBgAutoScroll();
-    if (sub_08041CD4())
+    if (RunDialoguePortraitClose())
     {
-        sub_0803FB0C();
+        RestartDialogueText();
         gNestedCallbackIndex++;
     }
 }

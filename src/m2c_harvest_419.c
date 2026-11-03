@@ -62,8 +62,8 @@ u32 sub_080185E8(void) {
         for (i = 0; i <= 12; i++) {
             gFrameObjects[9 + i].screenX -= 8;
         }
-        sub_08044118(0xD, 6, 0x10 - gState0TypedWork.bytes[0x40], 0xD, *(volatile u16 *)0x04000008, (u16 *)0x02020000);
-        sub_08044160(0xD, 6, 0xF - gState0TypedWork.bytes[0x40], 0xD, *(volatile u16 *)0x04000008, (u16 *)0x02020000);
+        ReadTilemapRect(0xD, 6, 0x10 - gState0TypedWork.bytes[0x40], 0xD, *(volatile u16 *)0x04000008, (u16 *)0x02020000);
+        WriteTilemapRect(0xD, 6, 0xF - gState0TypedWork.bytes[0x40], 0xD, *(volatile u16 *)0x04000008, (u16 *)0x02020000);
     } else {
         for (i = 0, root = gSetupBytes185E8; i <= 2; i++) {
             index = gState0TypedWork.bytes[0x3C] * 3 + i;
@@ -76,8 +76,8 @@ u32 sub_080185E8(void) {
         for (i = 0; i <= 12; i++) {
             gFrameObjects[9 + i].screenX += 8;
         }
-        sub_08044118(0xD, 6, gState0TypedWork.bytes[0x40] + 1, 0xD, *(volatile u16 *)0x04000008, (u16 *)0x02020000);
-        sub_08044160(0xD, 6, gState0TypedWork.bytes[0x40] + 2, 0xD, *(volatile u16 *)0x04000008, (u16 *)0x02020000);
+        ReadTilemapRect(0xD, 6, gState0TypedWork.bytes[0x40] + 1, 0xD, *(volatile u16 *)0x04000008, (u16 *)0x02020000);
+        WriteTilemapRect(0xD, 6, gState0TypedWork.bytes[0x40] + 2, 0xD, *(volatile u16 *)0x04000008, (u16 *)0x02020000);
     }
     if (++gState0TypedWork.bytes[0x40] == 0xE) {
         sub_080187A8();

@@ -173,7 +173,7 @@ u32 sub_0801AC24(s32 arg0) {
 
 u32 sub_0801AC6C(void) {
     if ((gMainByte_03001360 == 0) || (gState0TypedWork.bytes[0x89] == 1)) {
-        return sub_08041CA4();
+        return RunDialogueClose();
     }
     return 1U;
 }
@@ -331,7 +331,7 @@ void sub_0803D608(void) {
 }
 
 void sub_0803E674(void) {
-    sub_0803EF20();
+    ResetGameAndInitAudio();
 }
 
 void sub_0804AB48(void) {

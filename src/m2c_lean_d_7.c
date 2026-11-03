@@ -50,7 +50,7 @@ void sub_08065208(void) {
 
     done = 1;
     if (gMenuContext65208->flag4C != 0) {
-        if (sub_08041CA4() != 0) {
+        if (RunDialogueClose() != 0) {
             gMenuContext65208->flag4C = 0;
             sub_0803FAA0(1, 0, 0);
         }
@@ -120,7 +120,7 @@ void sub_08065208(void) {
             gMenuContext65208->flag4C = 1;
             gState0TypedWork.bytes[0x1B] = 0;
             gNestedCallbackIndex = 9;
-            sub_080415E8(1, 0x16, 7);
+            StartChoiceBox(1, 0x16, 7);
             return;
         }
         if (2 & gFamilyKeyBytes49558_0300058C) {

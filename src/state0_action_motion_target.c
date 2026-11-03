@@ -30,7 +30,7 @@ u32 StepFrameObjectToTarget(u32 index)
         else
         {
             struct ObservedMotionQueryObject *moving = (void *)(index * 64 + (u32)objects);
-            moving->direction25 = sub_080442B4(moving->currentX02,
+            moving->direction25 = GetDirectionToPoint(moving->currentX02,
                 moving->currentY04, moving->targetX30, moving->targetY32);
             ApplyObjectMotionStep(index);
             if (sub_08035658(index))

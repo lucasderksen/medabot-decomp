@@ -10,7 +10,7 @@ void sub_080108FC(void)
     StepFirstBgAutoScroll();
     if (RunDialogue(gUnknownPointers_083B5578[20]))
     {
-        sub_080415E8(1, 22, 7);
+        StartChoiceBox(1, 22, 7);
         gNestedCallbackIndex++;
     }
 }
@@ -20,12 +20,12 @@ void sub_08010930(void)
     u32 result;
     sub_08012098();
     StepFirstBgAutoScroll();
-    result = sub_08041674();
+    result = RunChoiceBox();
     if (result)
     {
         if ((result >> 4) == 0)
         {
-            sub_0803FB0C();
+            RestartDialogueText();
             gNestedCallbackIndex++;
         }
         else

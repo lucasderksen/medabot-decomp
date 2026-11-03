@@ -162,7 +162,7 @@ void sub_08008CA0(void) {
         break;
     }
     if (result != 0) {
-        sub_0803FB0C();
+        RestartDialogueText();
         gNestedCallbackIndex = 0x49;
     }
 }
@@ -258,7 +258,7 @@ void sub_0800E78C(void) {
         break;
     }
     if (result != 0) {
-        sub_0803FB0C();
+        RestartDialogueText();
         gNestedCallbackIndex = 0x21;
     }
 }

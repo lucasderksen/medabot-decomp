@@ -64,7 +64,7 @@ void sub_0804DC34(void) { }
 void sub_0804DCF8(void) { sub_08050290(); }
 void sub_0804DD04(void)
 {
-    if (sub_08041CA4())
+    if (RunDialogueClose())
         sub_08050290();
 }
 

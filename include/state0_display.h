@@ -52,7 +52,7 @@ void sub_08005948(void);
 void sub_0800598C(void);
 
 /* Interfaces observed at these call sites; implementations remain copied. */
-void sub_08047414(struct RecordDisplayWork *, struct RenderWork *, const void *, void *);
+void InitRecordDisplayWork(struct RecordDisplayWork *, struct RenderWork *, const void *, void *);
 void sub_08046A60(void *, struct RecordDisplayWork *, s32 index, s32 category,
                  s32 y, s32 x, u32 priority, u32 palette, u32 flags);
 void sub_08046D1C(void *, struct RecordDisplayWork *, u32, u32, u32, u32, u32, u32, u32, u32, u32, u32);

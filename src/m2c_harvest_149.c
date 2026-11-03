@@ -94,43 +94,43 @@ void sub_08071164(void) {
         gGraphicsTransferCounter.counter++;
         break;
     case 2:
-        sub_0803FB0C();
+        RestartDialogueText();
         StopFrameObjectCycle(0x19,0x4B);
         StartFrameObjectCycle(0x16,0x2D,8);
         gGraphicsTransferCounter.counter++;
         break;
     case 4:
-        sub_0803FB0C();
+        RestartDialogueText();
         StopFrameObjectCycle(0x16,0x2D);
         StartFrameObjectCycle(0x19,0x4E,8);
         gGraphicsTransferCounter.counter++;
         break;
     case 6:
-        sub_0803FB0C();
+        RestartDialogueText();
         StopFrameObjectCycle(0x19,0x4B);
         StartFrameObjectCycle(0x17,0x36,8);
         gGraphicsTransferCounter.counter++;
         break;
     case 8:
-        sub_0803FB0C();
+        RestartDialogueText();
         StopFrameObjectCycle(0x17,0x36);
         StartFrameObjectCycle(0x19,0x51,8);
         gGraphicsTransferCounter.counter++;
         break;
     case 10:
-        sub_0803FB0C();
+        RestartDialogueText();
         StopFrameObjectCycle(0x19,0x4B);
         StartFrameObjectCycle(0x16,0x2D,8);
         gGraphicsTransferCounter.counter++;
         break;
     case 12:
-        sub_0803FB0C();
+        RestartDialogueText();
         StopFrameObjectCycle(0x16,0x2D);
         StartFrameObjectCycle(0x19,0x4B,8);
         gGraphicsTransferCounter.counter++;
         break;
     case 14:
-        sub_0803FB0C();
+        RestartDialogueText();
         StopFrameObjectCycle(0x16,0x27);
         StopFrameObjectCycle(0x17,0x33);
         StopFrameObjectCycle(0x19,0x4B);
@@ -163,19 +163,19 @@ void sub_08071630(void) {
         gGraphicsTransferCounter.counter++;
         break;
     case 2:
-        sub_0803FB0C();
+        RestartDialogueText();
         StopFrameObjectCycle(0x19,0x4B);
         StartFrameObjectCycle(0x17,0x36,8);
         gGraphicsTransferCounter.counter++;
         break;
     case 4:
-        sub_0803FB0C();
+        RestartDialogueText();
         StopFrameObjectCycle(0x17,0x36);
         StartFrameObjectCycle(0x19,0x4B,8);
         gGraphicsTransferCounter.counter++;
         break;
     case 6:
-        sub_0803FB0C();
+        RestartDialogueText();
         StopFrameObjectCycle(0x17,0x33);
         StopFrameObjectCycle(0x19,0x4B);
         StartFrameObjectCycle(0x18,0x3F,6);

@@ -169,7 +169,7 @@ void sub_0805F488(void)
             break;
         case 2:
             PlaySoundEffect(4);
-            sub_080415E8(1, 22, 7);
+            StartChoiceBox(1, 22, 7);
             sub_0803FAA0(1, 2, 0);
             gNestedCallbackIndex = 6;
             break;

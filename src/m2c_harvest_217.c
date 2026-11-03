@@ -25,13 +25,13 @@ extern void sub_0804B2B0(void);
 void sub_0804DDCC(void);
 
 void sub_0804DDCC(void) {
-    sub_0804830C();
+    LoadMapBgPalettes();
     sub_08048708();
     sub_0804B2B0();
     sub_0804387C();
     gContinuedWork_030057E0.first = 0;
     gContinuedWork_030057E0.second = 0;
-    sub_08048174();
+    StepMapTileAnimation();
     sub_0805330C();
     gContinuedWork_030057E0.resultX = (s16) ((gContinuedWork_030057E0.stepX * 0x10) + gContinuedWork_030057E0.x);
     gContinuedWork_030057E0.resultY = (s16) ((gContinuedWork_030057E0.stepY * 0x10) + gContinuedWork_030057E0.y);
@@ -40,6 +40,6 @@ void sub_0804DDCC(void) {
     gFrameObjects[0x2F].unknown23[2] = 1;
     sub_08052E0C((u32) gContinuedWork_030057E0.kind);
     sub_0805309C();
-    sub_08048288();
+    LoadSelectedObjTileSlots();
     sub_08050290();
 }

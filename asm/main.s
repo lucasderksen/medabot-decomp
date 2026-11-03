@@ -5,12 +5,12 @@
 .balign 4
 /* Local Thumb aliases preserve interworking metadata for routines that still
  * live in copied ROM intervals. Linker-script absolute symbols lack that type. */
-.thumb_set sub_080020C8, 0x080020C9
-.thumb_set sub_080021F4, 0x080021F5
+.thumb_set InitSerialLink, 0x080020C9
+.thumb_set PollSerialLink, 0x080021F5
 .thumb_set sub_08000964, 0x08000965
 .thumb_set CallViaR0, 0x0807CCF1
 .thumb_set sub_08001520, 0x08001521
-.thumb_set sub_080022DC, 0x080022DD
+.thumb_set PrepareSerialSendPacket, 0x080022DD
 .thumb_set InitAudio, 0x0800058D
 .global GameMain
 .type GameMain, %function
@@ -42,7 +42,7 @@ GameMain:
     str r4, [r0]
     ldr r0, .Lliteral_08000340
     str r4, [r0]
-    bl sub_080020C8
+    bl InitSerialLink
     ldr r0, .Lliteral_08000344
     bl InitAudio
     ldr r0, .Lliteral_08000348
@@ -88,7 +88,7 @@ GameMain:
     strb r0, [r4, #0x1e]
     adds r0, r4, #0
     adds r0, #8
-    bl sub_080021F4
+    bl PollSerialLink
     str r0, [r4]
     movs r6, #0
     movs r0, #1
@@ -256,7 +256,7 @@ GameMain:
     /* Run remaining per-frame work, then repeat without returning. */
     bl sub_08001520
     ldr r0, .Lliteral_08000454
-    bl sub_080022DC
+    bl PrepareSerialSendPacket
     b .L080002AC
     .short 0 /* Original alignment padding. */
 .Lliteral_08000434:
