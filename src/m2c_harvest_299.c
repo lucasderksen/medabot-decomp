@@ -234,9 +234,9 @@ void sub_08059434(u32 index, u32 value, unsigned short digits, u32 x, u32 y) {
       var_r5 = temp_r2_2;
       do
       {
-        sub_08048888((u32) w->f13);
+        ResetFrameObjectSlot((u32) w->f13);
         w->f13 = (u8) (w->f13 + 1);
-        sub_08048888((u32) w->f13);
+        ResetFrameObjectSlot((u32) w->f13);
         w->f13 = (u8) (w->f13 + 1);
         var_r5 -= 1;
       }
@@ -269,7 +269,7 @@ void sub_08061594(void) {
     if (((u8 *)gMainContextPointer_03006F74)[5] == 0) p = gUnknown_08484FE5; else p = gUnknown_08485014;
     sub_08060D28(buf, p);
     if (RunDialogue(buf) != 0) {
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
 }
 
@@ -296,7 +296,7 @@ void sub_08063644(void) {
         (*(s16 *)((u8 *)(((void *)0x04000050 + 2)) + 2)) = 8;
         (*(u16 *)((u8 *)(ctx) + 0x3C)) = y;
         gState0TypedWork.bytes[0x84] = z;
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
     sub_08062B48((*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x31)), (*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x33)), 0);
     sub_08062B48((*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x32)), (*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x34)), 1);
@@ -315,7 +315,7 @@ void sub_080648E0(void) {
     (*(s16 *)(ctx + 0x3A)) = (s16) ((u16) (*(s16 *)(ctx + 0x3A)) + 1);
     if (1 & *(u8 *)&gRepeatedKeys) {
         sub_080656DC(ctx + 0x50, 0U, 0U, 1U, 0xC0U);
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
 }
 
@@ -323,7 +323,7 @@ void sub_0806495C(void) {
 
     u16 mask;
     if (sub_08065710((u8 *)gMainContextPointer_03006F74 + 0x50) != 0) {
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
     }
     gBgScroll2.y = (((*(s16 *)((u8 *)gMainContextPointer_03006F74 + 0x3A)) * 0x10) + 0x1B8) & (mask = 0x1FF);
     gBgScroll2.x = ((s32) (0 - (s16) (0x20 & (u16) (*(s16 *)((u8 *)gMainContextPointer_03006F74 + 0x3A)))) >> 0x1F) & 0x100;
@@ -355,7 +355,7 @@ void sub_08064A08(void) {
         value = mask;
     }
     *(s32 *)(ctx + 0x1C) = value;
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_08067A70(void) {
@@ -376,10 +376,10 @@ void sub_08067A70(void) {
         t = c2[5] + 1;
         c2[5] = t;
         if ((u8)t > 2U) {
-            gUnknown_0300137C += 1;
+            gNestedCallbackIndex += 1;
         } else {
             gBgScroll1.y = zero;
-            gUnknown_0300137C -= 2;
+            gNestedCallbackIndex -= 2;
         }
     }
 }
@@ -408,7 +408,7 @@ void sub_0806EB28(void) {
         *(dispcnt = (volatile u16 *)0x04000000) &= 0xFBFF;
         gMainState = (u32) gCounter6ED08_03001800.a0;
         gMainSubstate = (u32) gCounter6ED08_03001800.a2;
-        gUnknown_0300137C = (u32) gCounter6ED08_03001800.a4;
+        gNestedCallbackIndex = (u32) gCounter6ED08_03001800.a4;
     }
     gCounter6ED08_03001800.w8 = gCounter6ED08_03001800.w8 + 1;
 }

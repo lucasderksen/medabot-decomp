@@ -10,7 +10,7 @@
 void sub_08011764(void)
 {
     volatile u32 *dma;
-    sub_08043CA8();
+    ClearBgScrolls2();
     *(volatile u16 *)0x04000000 &= 0xE0FF;
     *(volatile u16 *)0x04000008 = 0x500;
     *(volatile u16 *)0x0400000A = 0x1801;
@@ -115,5 +115,5 @@ void sub_08011764(void)
             *(u8 *)stateByteAddress = 0;
         }
     }
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

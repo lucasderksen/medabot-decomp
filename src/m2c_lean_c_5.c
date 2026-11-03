@@ -242,13 +242,13 @@ void sub_0804DF40(void) {
     work = gUnknown_030057E0;
     switch (work[0xC93]) {
     case 0:
-        sub_080497C0(work + 0xC10, work + 0xC18, 8);
+        CopyBytes2(work + 0xC10, work + 0xC18, 8);
         work[0xC10] = 0;
         work[0xC13] = 0;
         work[0xC17] = 0;
         sub_08052E0C(work[0xC94]);
         object = &gFrameObjects[0x2F];
-        sub_080497C0(object, object - 1, 0x40);
+        CopyBytes2(object, object - 1, 0x40);
         work[0xC5B] = 0;
         sub_08052BEC(0);
         object[0x2A].flags = 0xCC0C;
@@ -288,8 +288,8 @@ void sub_0804DF40(void) {
             gFrameObjects[0x2F].unknown23[3]++;
             gFrameObjects[0x2F].unknown23[5] = 0;
             copy = gUnknown_030057E0 + 0xC18;
-            sub_080497C0(copy, copy - 8, 8);
-            sub_08048888(0x2E);
+            CopyBytes2(copy, copy - 8, 8);
+            ResetFrameObjectSlot(0x2E);
             {
                 u32 flag;
                 copy[0x43] = flag = 1;
@@ -334,11 +334,11 @@ void sub_0804E134(void) {
         gFrameObjects[0x2F].unknown23[4]--;
         if (gFrameObjects[0x2F].unknown23[4] != 0)
             break;
-        gWork134.cellX = sub_0805273C(gWork134.positionX);
-        gWork134.cellY = sub_08052760(gWork134.positionY);
+        gWork134.cellX = ConvertXToCellColumn(gWork134.positionX);
+        gWork134.cellY = ConvertYToCellRow(gWork134.positionY);
         if (gWork134.hasOther != 0) {
-            gWork134.otherCellX = sub_0805273C(gWork134.otherX);
-            gWork134.otherCellY = sub_08052760(gWork134.otherY);
+            gWork134.otherCellX = ConvertXToCellColumn(gWork134.otherX);
+            gWork134.otherCellY = ConvertYToCellRow(gWork134.otherY);
         }
         if (++gFrameObjects[0x2F].unknown23[3] > 3) {
             gWork134.state++;
@@ -365,7 +365,7 @@ void sub_0804E134(void) {
         }
         break;
     case 1:
-        sub_080497C0(gWork134.copyC20, gWork134.savedC10, 8);
+        CopyBytes2(gWork134.copyC20, gWork134.savedC10, 8);
         gWork134.byteC5F = 0;
         sub_08050290();
         break;
@@ -517,8 +517,8 @@ void sub_08052E88(void) {
             sub_08052E0C(entry[i * 8 + 3] & 7);
             gWorkE88.positionX = entry[i * 8 + 6] * 16 + gWorkE88.originX;
             gWorkE88.positionY = entry[i * 8 + 7] * 16 + gWorkE88.originY;
-            gWorkE88.cellX = sub_0805273C(gWorkE88.positionX);
-            gWorkE88.cellY = sub_08052760(gWorkE88.positionY);
+            gWorkE88.cellX = ConvertXToCellColumn(gWorkE88.positionX);
+            gWorkE88.cellY = ConvertYToCellRow(gWorkE88.positionY);
             sub_08052AA4();
             found = 1;
         }

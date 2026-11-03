@@ -18,7 +18,7 @@ void sub_08014CF0(void)
         outgoing->word06 = record[0xDD] + 0x8000;
         sent = work + 0x1AF;
         if (*sent)
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         else
             *sent = 1;
     }
@@ -31,14 +31,14 @@ void sub_08014CF0(void)
             u32 offset = *selected * 256;
             u8 *record = base + offset;
             record[0xDD] = value;
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
     }
 }
 
 void sub_08014D84(void)
 {
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08014D94(void)
@@ -52,7 +52,7 @@ void sub_08014D94(void)
         u8 *record = base + offset;
         sub_08015564(*selected, record[0xDD]);
     }
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08014DC8(void)
@@ -68,13 +68,13 @@ void sub_08014DC8(void)
         if (record[0xDD] > 3)
             sub_08015668(index, record[0xDD] - 4);
     }
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08014E08(void)
 {
     gMainSerialOutgoingWork.word06 = 0;
-    gUnknown_0300137C = 69;
+    gNestedCallbackIndex = 69;
 }
 
 void sub_08014E20(void)
@@ -83,7 +83,7 @@ void sub_08014E20(void)
     if (sub_0803E79C())
     {
         gMainSerialOutgoingWork.word06 = 0;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -92,5 +92,5 @@ void sub_08014E54(void)
     if (gState0TypedWork.widths.word86)
         gState0TypedWork.widths.word86--;
     else
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }

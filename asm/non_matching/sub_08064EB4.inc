@@ -24,7 +24,7 @@
 	ldr	r0, .L08065038
 	ldr	r5, .L0806503C
 	adds	r1, r5, #0
-	bl	sub_08044D0C
+	bl	DecompressLz77OrCopy
 	adds	r4, r0, #0
 	ldr	r1, .L08065040
 	lsls	r2, r4, #0xa
@@ -215,5 +215,5 @@
 .L0806506C:
 	.word	gPostDispatchWord_03002B70
 .L08065070:
-	.word	gUnknown_0300137C
+	.word	gNestedCallbackIndex
 	.syntax divided

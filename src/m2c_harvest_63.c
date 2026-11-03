@@ -107,6 +107,6 @@ void sub_0805F9C8(void) {
         u16 *context = gMainContextPointer_03006F74;
         u16 count = context[1]++;
         if (count > 0x3C)
-            gUnknown_0300137C = 0xD;
+            gNestedCallbackIndex = 0xD;
     }
 }

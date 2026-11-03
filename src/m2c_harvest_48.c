@@ -21,7 +21,7 @@ extern const MainCallback gMainState3Callbacks[];
 extern const MainCallback gUnknownCallbacks_083AC3C8[];
 extern const MainCallback gUnknown_084858FC[];
 extern const MainCallback gUnknown_084859BC[];
-extern u32 gUnknown_0300137C;
+extern u32 gNestedCallbackIndex;
 
 void sub_08060688(void);
 void sub_08060D6C(void);
@@ -31,11 +31,11 @@ void sub_0806B744(void);
 void sub_0806E130(void);
 
 void sub_08060688(void) {
-    gUnknown_08483834[gUnknown_0300137C]();
+    gUnknown_08483834[gNestedCallbackIndex]();
 }
 
 void sub_08060D6C(void) {
-    gUnknown_084838A4[gUnknown_0300137C]();
+    gUnknown_084838A4[gNestedCallbackIndex]();
     if (gFrameCounter & 1)
     {
         gBgScroll3.x++;
@@ -44,7 +44,7 @@ void sub_08060D6C(void) {
 }
 
 void sub_08061958(void) {
-    gUnknown_08483920[gUnknown_0300137C]();
+    gUnknown_08483920[gNestedCallbackIndex]();
     if (gFrameCounter & 1)
     {
         gBgScroll3.x++;
@@ -53,7 +53,7 @@ void sub_08061958(void) {
 }
 
 void sub_08064DB4(void) {
-    gUnknown_08483948[gUnknown_0300137C]();
+    gUnknown_08483948[gNestedCallbackIndex]();
     if (gFrameCounter & 1)
     {
         gBgScroll3.x++;
@@ -62,9 +62,9 @@ void sub_08064DB4(void) {
 }
 
 void sub_0806B744(void) {
-    gUnknown_084858FC[gUnknown_0300137C]();
+    gUnknown_084858FC[gNestedCallbackIndex]();
 }
 
 void sub_0806E130(void) {
-    gUnknown_084859BC[gUnknown_0300137C]();
+    gUnknown_084859BC[gNestedCallbackIndex]();
 }

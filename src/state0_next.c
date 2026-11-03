@@ -32,7 +32,7 @@ void sub_0800D9DC(void)
             u32 fill = 512;
             CpuFastSet(&fill, gRenderWork->objects, 0x01000100);
         }
-        gState0NextCallbacks_083ACCD4[gUnknown_0300137C]();
+        gState0NextCallbacks_083ACCD4[gNestedCallbackIndex]();
     }
 }
 
@@ -96,31 +96,31 @@ void sub_0800DA34(void)
     sub_0800EFB0();
     gState0TypedWork.bytes[0x44] = 0;
     if (gState0TypedWork.bytes[0x42] != 1) sub_0800F218();
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0800DD88(void)
 {
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800EF58();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 80);
     sub_0800F440();
     sub_0803FAA0(1, 2, 0);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0800DDC0(void)
 {
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800EF58();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 80);
     sub_0800F440();
-    if (RunDialogue(gState0NextScripts_083B5578[16])) gUnknown_0300137C++;
+    if (RunDialogue(gState0NextScripts_083B5578[16])) gNestedCallbackIndex++;
 }
 
 void sub_0800DE00(void)
 {
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800EF58();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 80);
     sub_0800F440();
@@ -133,7 +133,7 @@ void sub_0800DE00(void)
         else
         {
             PlaySoundEffect(5);
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
     }
     else if (*(u8 *)&gNewKeys & 1)
@@ -141,8 +141,8 @@ void sub_0800DE00(void)
         if ((u16)sub_08042114(gState0TypedWork.bytes[0x3D], gState0TypedWork.bytes[0x3E]))
         {
             PlaySoundEffect(4);
-            if (gState0TypedWork.bytes[0x3C] == 4) gUnknown_0300137C = 64;
-            else gUnknown_0300137C = 10;
+            if (gState0TypedWork.bytes[0x3C] == 4) gNestedCallbackIndex = 64;
+            else gNestedCallbackIndex = 10;
         }
         else PlaySoundEffect(6);
     }
@@ -152,20 +152,20 @@ void sub_0800DEC8(void)
 {
     StartBlendFade(6, 63, 32);
     CpuFastSet((const void *)0x084E43D8, (void *)0x050003E0, 8);
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800EF58();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 80);
     sub_0800F440();
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0800DF14(void)
 {
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800EF58();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 80);
     sub_0800F440();
-    if (StepBlendFade()) gUnknown_0300137C++;
+    if (StepBlendFade()) gNestedCallbackIndex++;
 }
 
 void sub_0800DF4C(void)
@@ -173,7 +173,7 @@ void sub_0800DF4C(void)
     ClearFrameObjects(0, 128);
     gRenderMode = 0;
     gMainSubstate = 2;
-    gUnknown_0300137C = 16;
+    gNestedCallbackIndex = 16;
 }
 
 
@@ -200,7 +200,7 @@ void sub_0803FAA0(u32, u32, u32);
 
 void sub_0800DD00(void)
 {
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800EF58();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 80);
     sub_0800F440();
@@ -218,24 +218,24 @@ void sub_0800DD00(void)
     }
     else if (!StepBlendFade()) return;
     *state = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
     }
 }
 
 void sub_0800DF78(void)
 {
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800EF58();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 80);
     sub_0800F440();
     SnapshotPalettes();
     gState0TypedWork.bytes[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0800DFB8(void)
 {
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800EF58();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 80);
     sub_0800F440();
@@ -245,7 +245,7 @@ void sub_0800DFB8(void)
         BlendObjPaletteBanksNow(0, gState0TypedWork.bytes[0x84] * 4, 0xF0FF);
         gState0TypedWork.bytes[0x84]++;
     }
-    else gUnknown_0300137C = 16;
+    else gNestedCallbackIndex = 16;
 }
 
 
@@ -276,7 +276,7 @@ extern const void *const gState0NextScripts_083BEAAC[];
 void sub_0800E2B0(void)
 {
     u8 *work;
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800F440();
     sub_0800FD74();
     work = gState0TypedWork.bytes;
@@ -291,32 +291,32 @@ void sub_0800E2B0(void)
         }
     }
     else if (!StepBlendFade()) return;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0800E328(void)
 {
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800F440();
     sub_0800FD74();
     sub_0803FAA0(1, 2, 0);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0800E3A0(void)
 {
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800F440();
     sub_0800FD74();
     if (sub_0800FDD8())
     {
         sub_0803FB0C();
-        gUnknown_0300137C--;
+        gNestedCallbackIndex--;
     }
     else if (*(u8 *)&gNewKeys & KEY_B)
     {
         PlaySoundEffect(5);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     else if (*(u8 *)&gNewKeys & KEY_START)
     {
@@ -328,14 +328,14 @@ void sub_0800E3A0(void)
         case 2: gState0TypedWork.bytes[0x43] = 4; break;
         case 3: gState0TypedWork.bytes[0x43] = 5; break;
         }
-        gUnknown_0300137C = 32;
+        gNestedCallbackIndex = 32;
     }
 }
 
 void sub_0800E43C(void)
 {
     u8 *work;
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800F440();
     sub_0800FD74();
     work = gState0TypedWork.bytes;
@@ -345,13 +345,13 @@ void sub_0800E43C(void)
         work[0x84] = 0;
     }
     else StartBlendFade(6, 63, 32);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0800E488(void)
 {
     u8 *work;
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800F440();
     sub_0800FD74();
     work = gState0TypedWork.bytes;
@@ -366,7 +366,7 @@ void sub_0800E488(void)
         }
     }
     else if (!StepBlendFade()) return;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 
@@ -396,7 +396,7 @@ extern const void *const gState0NextScripts_083BE564[];
 extern const void *const gState0NextScripts_083BEAAC[];
 #include "equipment_helpers.h"
 #include "record_helpers.h"
-void sub_080750F0(u32);
+void FadeOutMusic(u32);
 extern const u8 *const gState0NextCommands_083B6100[];
 extern u32 gUnknownMask_03002B68;
 void sub_0800E4F8(void)
@@ -406,11 +406,11 @@ void sub_0800E4F8(void)
     switch (gState0TypedWork.bytes[0x3C])
     {
     case 0:
-    case 4: gUnknown_0300137C = 0; break;
+    case 4: gNestedCallbackIndex = 0; break;
     case 1:
         gRenderMode = 0;
         gMainSubstate = 3;
-        gUnknown_0300137C = 16;
+        gNestedCallbackIndex = 16;
         switch (gState0TypedWork.bytes[0x3E])
         {
         case 0: gState0TypedWork.bytes[0x98] = gState0TypedWork.bytes[0x3D]; break;
@@ -424,7 +424,7 @@ void sub_0800E4F8(void)
         { u32 zero = 0; CpuFastSet(&zero, (void *)0x05000000, 0x01000080); }
         gRenderMode = 0;
         gMainSubstate = 6;
-        gUnknown_0300137C = 101;
+        gNestedCallbackIndex = 101;
         break;
     case 3:
         { u32 zero = 0; CpuFastSet(&zero, (void *)0x05000200, 0x01000080); }
@@ -432,86 +432,86 @@ void sub_0800E4F8(void)
         gRenderMode = 0;
         gMainState = 2;
         gMainSubstate = 25;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
 }
 
 void sub_0800E654(void)
 {
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800F440();
     HideFrameObjects(1, 5);
     CpuFastSet((const void *)0x084E4418, (void *)0x050003C0, 8);
     sub_0800FF50();
     sub_0803FB0C();
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0800E690(void)
 {
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800F440();
     RunFrameObjectCommands(gState0NextCommands_083B6100[3], 6);
-    if (RunDialogue(gState0NextScripts_083B5578[5])) gUnknown_0300137C++;
+    if (RunDialogue(gState0NextScripts_083B5578[5])) gNestedCallbackIndex++;
 }
 
 void sub_0800E9F0(void)
 {
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800F440();
     HideFrameObjects(6, 1);
     CpuFastSet((const void *)0x084E43F8, (void *)0x050003C0, 8);
     sub_0803FB0C();
     sub_0800FCF0();
-    gUnknown_0300137C = 19;
+    gNestedCallbackIndex = 19;
 }
 
 void sub_0800EA2C(void)
 {
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800F440();
     gFrameObjects[1].flags &= 0xBFFF;
     gFrameObjects[2].flags &= 0xBFFF;
     LoadLeTilemap(18, 5, (const void *)0x08488494, *(volatile u16 *)0x04000008, 896);
     gState0TypedWork.bytes[0x4A] = 0;
     sub_08010040();
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0800EB34(void)
 {
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800F440();
     if (sub_0801013C())
     {
         HideFrameObjects(4, 1);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
 void sub_0800EB60(void)
 {
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800F440();
     switch (gState0TypedWork.bytes[0x4A])
     {
-    case 0: gUnknown_0300137C = 10; break;
-    case 1: sub_080750F0(8); gUnknown_0300137C++; break;
-    case 2: gUnknown_0300137C = 4; break;
+    case 0: gNestedCallbackIndex = 10; break;
+    case 1: FadeOutMusic(8); gNestedCallbackIndex++; break;
+    case 2: gNestedCallbackIndex = 4; break;
     }
 }
 
 void sub_0800EBB8(void)
 {
     gUnknownMask_03002B68 = (gState0TypedWork.bytes[0x3E] << 16) + gState0TypedWork.bytes[0x3D];
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0800EBE4(void)
 {
     ClearFrameObjects(0, 128);
-    sub_08043CA8();
+    ClearBgScrolls2();
     sub_08044CDC(2);
 }
 
@@ -542,13 +542,13 @@ extern const void *const gState0NextScripts_083BE564[];
 extern const void *const gState0NextScripts_083BEAAC[];
 #include "equipment_helpers.h"
 #include "record_helpers.h"
-void sub_080750F0(u32);
+void FadeOutMusic(u32);
 extern const u8 *const gState0NextCommands_083B6100[];
 extern u32 gUnknownMask_03002B68;
 void sub_0800E6C8(void)
 {
     u32 up;
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800F440();
     RunFrameObjectCommands(gState0NextCommands_083B6100[3], 6);
     up = (u8)(*(u8 *)&gRepeatedKeys & KEY_UP);
@@ -573,11 +573,11 @@ void sub_0800E6C8(void)
         PlaySoundEffect(4);
         sub_0800FF50();
         sub_0803FB0C();
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     else if (*(u8 *)&gNewKeys & (KEY_B | KEY_START))
     {
         PlaySoundEffect(5);
-        gUnknown_0300137C = 36;
+        gNestedCallbackIndex = 36;
     }
 }

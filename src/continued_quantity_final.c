@@ -24,7 +24,7 @@ void sub_0804EB0C(void)
             if (amount == 99)
             {
                 sub_08047BA8(6);
-                sub_08047CE4(0, sub_08047BEC(*row, *selected));
+                CopyStringToTextBuffer(0, sub_08047BEC(*row, *selected));
                 *state = 1;
                 break;
             }
@@ -41,18 +41,18 @@ void sub_0804EB0C(void)
                 identifier = *nextSelected;
                 nextRow = nextWork + 0xC95;
                 sub_08047DF0(identifier, *nextRow, (u8)delta);
-                sub_08047CE4(0, sub_08047BEC(*nextRow, *nextSelected));
+                CopyStringToTextBuffer(0, sub_08047BEC(*nextRow, *nextSelected));
                 sub_08047C84(1, delta);
                 nextWork[0xC93] = 2;
             }
             break;
         }
     case 1:
-        if (sub_08047C24(0, 0, 0, gQuantityScripts_0847E388[5]))
+        if (InitAndRunDialogue(0, 0, 0, gQuantityScripts_0847E388[5]))
             sub_08050290();
         break;
     case 2:
-        if (sub_08047C24(0, 0, 0, gQuantityScripts_0847E388[work[0xC95] + 6]))
+        if (InitAndRunDialogue(0, 0, 0, gQuantityScripts_0847E388[work[0xC95] + 6]))
             sub_08050290();
         break;
     }
@@ -80,7 +80,7 @@ void sub_0804EC38(void)
             if (amount == 0)
             {
                 sub_08047BA8(6);
-                sub_08047CE4(0, sub_08047BEC(*row, *selected));
+                CopyStringToTextBuffer(0, sub_08047BEC(*row, *selected));
                 *state = 1;
                 break;
             }
@@ -91,7 +91,7 @@ void sub_0804EC38(void)
             if (difference < 0)
                 delta = amount;
             sub_08047E08(*selected, *row, (u8)delta);
-            sub_08047CE4(0, sub_08047BEC(*row, *selected));
+            CopyStringToTextBuffer(0, sub_08047BEC(*row, *selected));
             sub_08047C84(1, delta);
             encoded = sub_08047D9C(*selected, *row);
             if ((encoded & mask) == 0)
@@ -106,11 +106,11 @@ void sub_0804EC38(void)
     case 2:
         script = gQuantityScripts_0847E388[work[0xC95] + 18];
 showScript:
-        if (sub_08047C24(0, 0, 0, script))
+        if (InitAndRunDialogue(0, 0, 0, script))
             sub_08050290();
         break;
     case 3:
-        if (sub_08047C24(0, 0, 0, gQuantityScripts_0847E388[work[0xC95] + 18]))
+        if (InitAndRunDialogue(0, 0, 0, gQuantityScripts_0847E388[work[0xC95] + 18]))
             sub_08050290();
         break;
     }

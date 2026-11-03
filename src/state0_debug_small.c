@@ -28,12 +28,12 @@ void sub_0800C6F8(void)
     if (*(u8 *)&gRepeatedKeys & 0x30)
         (gState0TypedWork.bytes + 0x35)[gState0TypedWork.bytes[0x34]] ^= 1;
     ClearFrameObjects(32, 3);
-    sub_08041370(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x69));
+    FormatDecimalString(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x69));
     PlaceAlignedTextObjects(gDebugMenuTextBuffer, 32, 8, 2, 3, 15, 1, 0);
     if (*(u8 *)&gNewKeys & 2)
     {
         ClearFrameObjects(8, 33);
-        gUnknown_0300137C = 1;
+        gNestedCallbackIndex = 1;
     }
     else if (*(u8 *)&gNewKeys & 1)
     {
@@ -52,12 +52,12 @@ void sub_0800D188(void)
     }
     if (*(u8 *)&gRepeatedKeys & 0x30) gUnknown_030057E0[0xC2C] ^= 1;
     ClearFrameObjects(32, 3);
-    sub_08041370(gDebugMenuTextBuffer, gUnknown_030057E0[0xC2C]);
+    FormatDecimalString(gDebugMenuTextBuffer, gUnknown_030057E0[0xC2C]);
     PlaceAlignedTextObjects(gDebugMenuTextBuffer, 32, 8, 2, 3, 15, 1, 0);
     if (*(u8 *)&gNewKeys & 2)
     {
         ClearFrameObjects(8, 33);
-        gUnknown_0300137C = 1;
+        gNestedCallbackIndex = 1;
     }
 }
 

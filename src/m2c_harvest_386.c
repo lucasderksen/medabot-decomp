@@ -106,5 +106,5 @@ void sub_08070C0C(void) {
     /* ROM helper narrows its three incoming words internally. */
     sub_08068460(4, 2, 0);
     *(volatile u16 *)0x04000000 |= 0x1E00;
-    gUnknown_0300137C = 1;
+    gNestedCallbackIndex = 1;
 }

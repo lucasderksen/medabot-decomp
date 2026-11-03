@@ -30,7 +30,7 @@ void sub_0802DE1C(void) {
     gState0TypedWork.widths.word86 += 1;
     b = (u8 *)gUnknownPointers_083B6100;
     RunFrameObjectCommands(*(u8 **)(b + 0x1A4), 0x21U);
-    sub_0804422C(0x21U);
+    ApplyObjectMotionStep(0x21U);
     gFrameObjects[0x21].unknown23[1] = 4;
     if (gFrameObjects[0x21].unknown23[5] != 0) {
         gFrameObjects[0x21].unknown23[5] -= 1;

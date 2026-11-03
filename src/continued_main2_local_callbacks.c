@@ -16,13 +16,13 @@ void sub_0805C9C4(void)
     u32 zero = 0;
     CpuFastSet(&zero, VRAM, 0x01006000);
     ClearFrameObjects(0, 128);
-    sub_080415BC();
+    ClearBgScrolls();
     DISPLAY_CONTROL = 0x60;
     CpuFastSet((const void *)0x084E43D8, (void *)0x0202F9E0, 8);
     LeDecompress((const u8 *)0x084C8034, (void *)0x06017400);
     sub_0803FAA0(1, 2, 0);
     DISPLAY_CONTROL |= 0x1000;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0805CA3C(void)
@@ -32,7 +32,7 @@ void sub_0805CA3C(void)
     if (RunDialogue(message))
     {
         sub_080415E8(1, 22, 7);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -41,9 +41,9 @@ void sub_0805CA74(void)
     if (sub_08041674())
     {
         if (gUnknown_03000440[0x2A] == 0)
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         else
-            gUnknown_0300137C += 2;
+            gNestedCallbackIndex += 2;
     }
 }
 
@@ -57,7 +57,7 @@ void sub_0805CABC(void)
 {
     if (sub_08041CA4())
     {
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
         sub_080656DC((u8 *)gMainContextPointer_03006F74 + 0x50, 0, 0, 1, 192);
     }
 }
@@ -67,12 +67,12 @@ void sub_0805CAF4(void)
     if (sub_08065710((u8 *)gMainContextPointer_03006F74 + 0x50))
     {
         gMainSubstate = 3;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
     }
 }
 
 void sub_0805CB20(void)
 {
     struct Main2LocalCallbackView callbacks = gMain2LocalCallbackWords_080AF920;
-    callbacks.items[gUnknown_0300137C]();
+    callbacks.items[gNestedCallbackIndex]();
 }

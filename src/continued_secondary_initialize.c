@@ -53,9 +53,9 @@ void sub_08052F64(void)
         sub_08052E34(*frame);
         sub_08049420(48, (u8)sub_08050300(48, *frame));
         x = (u16 *)(work + 0xC6E);
-        work[0xC72] = sub_0805273C(*x);
+        work[0xC72] = ConvertXToCellColumn(*x);
         y = (u16 *)(work + 0xC70);
-        work[0xC73] = sub_08052760(*y);
+        work[0xC73] = ConvertYToCellRow(*y);
         objects->primaryHalf30 = sub_08048684(objects->primaryByte2B);
         sub_080487C8(48);
         InitFrameObject(90, 0xCC0C, 144, 14, enabled);

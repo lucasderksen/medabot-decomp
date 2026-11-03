@@ -15,8 +15,8 @@ void sub_0805309C(void)
         value = *(u16 *)(work + 0xC54);
         y = (u16 *)(work + 0xC70);
         *y = value;
-        work[0xC72] = sub_0805273C(*x);
-        work[0xC73] = sub_08052760(*y);
+        work[0xC72] = ConvertXToCellColumn(*x);
+        work[0xC73] = ConvertYToCellRow(*y);
         { u32 address = (u32)gFrameObjects;
           u32 offset = 0xBE0;
           sub_08052E34(*(u8 *)(address + offset)); }

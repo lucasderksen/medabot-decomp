@@ -84,6 +84,6 @@ void sub_08068298(void) {
         assets = gUnknownPointers_083AC614;
         LeDecompress(assets[(category * 5) + temp_r1_4->unknown06[2]], (void *)0x06010000);
         (*(u16 *)((u8 *)(gMainContextPointer_03006F74) + 0x3A)) = 0U;
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
 }

@@ -115,6 +115,6 @@ void sub_080665FC(void) {
     if (RunDialogue(p) != 0) {
         sub_0803FB0C();
         sub_080415E8(1U, 0x16U, 7U);
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
 }

@@ -16,8 +16,8 @@
 #include "utility_helpers.h"
 
 extern s32 gState0NextCommands_083B6100;
-s32 sub_0803E894();
-s32 sub_0803ED6C();
+s32 ScrollBg3Diagonally4();
+s32 FlashSelectedChoiceTiles();
 u8 __udivsi3(u8, s32);
 u8 __umodsi3(u8, s32);
 
@@ -62,7 +62,7 @@ void sub_08031918(void) {
     (*(s8 *)((u8 *)((late0 + (gState0TransferWork.bytes[0x87] << 8))) + 0xE0)) = 0;
     (*(s8 *)((u8 *)((late0 + (gState0TransferWork.bytes[0x87] << 8))) + 0xE1)) = 0;
     gMainSubstate = 9;
-    gUnknown_0300137C = 0;
+    gNestedCallbackIndex = 0;
 }
 
 void sub_0803CF7C(void) {
@@ -84,7 +84,7 @@ void sub_0803CF7C(void) {
         temp_r0_3->byte2B = temp_r0_4 - 1;
         return;
     }
-    sub_0804422C((u32) gState0TypedWork.bytes[0x12F]);
+    ApplyObjectMotionStep((u32) gState0TypedWork.bytes[0x12F]);
 }
 
 void sub_0803DC58(void) {
@@ -92,21 +92,21 @@ void sub_0803DC58(void) {
 
     StepFirstBgAutoScroll();
     if (gState0TypedWork.bytes[0x138] == 0) {
-        gUnknown_0300137C = gUnknown_0300137C + 1;
+        gNestedCallbackIndex = gNestedCallbackIndex + 1;
     } else {
-        gUnknown_0300137C = 0x30;
+        gNestedCallbackIndex = 0x30;
     }
 }
 
 void sub_0803E120(void) {
     u32 var_r0;
 
-    sub_0803E894();
-    sub_0803ED6C();
+    ScrollBg3Diagonally4();
+    FlashSelectedChoiceTiles();
     gState0TypedWork.widths.word86 += 1;
     if ((&gState0TransferWork.bytes[0x19A])[gState0TransferWork.bytes[0x1A2]] == 4) {
-        gUnknown_0300137C = gUnknown_0300137C + 1;
+        gNestedCallbackIndex = gNestedCallbackIndex + 1;
     } else {
-        gUnknown_0300137C = 0x48;
+        gNestedCallbackIndex = 0x48;
     }
 }

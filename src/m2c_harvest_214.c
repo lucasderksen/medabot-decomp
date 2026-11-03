@@ -119,7 +119,7 @@ void sub_08029178(void) {
         const u8 *commands=*script;
         u32 current=var_r5+0x21;
         RunFrameObjectCommands(commands, (u8) (var_r6 >> 0x18));
-        sub_0804422C(current);
+        ApplyObjectMotionStep(current);
         var_r6 += 0x01000000;
         var_r5 += 1;
     } while (var_r5 <= 4U);

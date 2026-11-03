@@ -54,7 +54,7 @@ void sub_0806E5E0(void) {
     row = 0;
     paletteAddress=(u32)&gUnknown_087F312C;
     modeWork=&gState0TransferWork;
-    stateWork=&gUnknown_0300137C;
+    stateWork=&gNestedCallbackIndex;
     /* Keep separate whole-array views; this order preserves register roles. */
     zeroBase = expanded;
     zero = 0;
@@ -123,7 +123,7 @@ void sub_0806E6E4(void) {
     row = 0;
     paletteAddress=(u32)&gUnknown_087F39CC;
     modeWork=&gState0TransferWork;
-    stateWork=&gUnknown_0300137C;
+    stateWork=&gNestedCallbackIndex;
     /* Keep separate whole-array views; this order preserves register roles. */
     zeroBase = expanded;
     zero = 0;

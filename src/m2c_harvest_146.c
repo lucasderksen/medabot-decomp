@@ -102,5 +102,5 @@ void sub_080709D4(void) {
     gFrameObjects[0x1C].screenY = 0x38;
     /* Observed signed halfword at transfer-work +4. */
     gGraphicsTransferCounter.previousState = 6;
-    gUnknown_0300137C = 4;
+    gNestedCallbackIndex = 4;
 }

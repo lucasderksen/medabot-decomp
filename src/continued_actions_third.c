@@ -15,7 +15,7 @@ void sub_0804C1C0(void)
     ReadBankedScriptArgs(2);
     work = gUnknown_030057E0;
     {
-        s32 value = sub_0804DBF0(work[0xC94]);
+        s32 value = GetScriptObjectSlot(work[0xC94]);
         u32 zero;
         action = gLaterBuffer_03006D20;
         value += 79;
@@ -36,7 +36,7 @@ void sub_0804C210(void)
     u32 zero;
     ReadBankedScriptArgs(3);
     work = gUnknown_030057E0;
-    { s32 value = sub_0804DBF0(work[0xC94]); action = gLaterBuffer_03006D20; value += 79; zero = 0; action[10] = value; }
+    { s32 value = GetScriptObjectSlot(work[0xC94]); action = gLaterBuffer_03006D20; value += 79; zero = 0; action[10] = value; }
     sub_08052D90(action[10], work[0xC95] & 15);
     action[0] = zero;
     action[2] = work[0xC96];
@@ -51,7 +51,7 @@ void sub_0804C26C(void)
     u8 *action;
     u8 *objects;
     *argument = value;
-    { s32 result = sub_0804DBF0(*argument); action = gLaterBuffer_03006D20; action[10] = result + 79; }
+    { s32 result = GetScriptObjectSlot(*argument); action = gLaterBuffer_03006D20; action[10] = result + 79; }
     objects = (u8 *)gFrameObjects;
     {
         s32 position = ((struct FrameObject *)(objects + action[10] * 64))->positionY >> 8;

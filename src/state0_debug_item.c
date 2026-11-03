@@ -91,19 +91,19 @@ void sub_0800C804(void)
         else (*value)--;
     }
     ClearFrameObjects(32, 3);
-    sub_08041370(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x69));
+    FormatDecimalString(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x69));
     PlaceAlignedTextObjects(gDebugMenuTextBuffer, 32, 8, 2, 3, 15, 1, 0);
     ClearFrameObjects(35, 3);
-    sub_08041370(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x68));
+    FormatDecimalString(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x68));
     PlaceAlignedTextObjects(gDebugMenuTextBuffer, 35, 8, 4, 3, 15, 1, 0);
     ClearFrameObjects(38, 3);
-    sub_08041370(gDebugMenuTextBuffer, gDebugProcessCallbackByte);
+    FormatDecimalString(gDebugMenuTextBuffer, gDebugProcessCallbackByte);
     PlaceAlignedTextObjects(gDebugMenuTextBuffer, 38, 8, 6, 3, 15, 1, 0);
     { u32 cancel = (u8)(*(u8 *)&gNewKeys & 2);
     if (cancel)
     {
         ClearFrameObjects(8, 33);
-        gUnknown_0300137C = 1;
+        gNestedCallbackIndex = 1;
     }
     else if (*(u8 *)&gNewKeys & 1)
     {

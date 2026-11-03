@@ -106,6 +106,6 @@ void sub_0805FFF8(void) {
     {
         gFrameObjects[1].flags = 0xCA20;
         ((struct Main2TimerContext *)gMainContextPointer_03006F74)->timer3A = 0;
-        gUnknown_0300137C += 2;
+        gNestedCallbackIndex += 2;
     }
 }

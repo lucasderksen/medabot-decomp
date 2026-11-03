@@ -24,30 +24,30 @@ void sub_080025B4(void)
     if (*pressed & KEY_A)
     {
         gUnknown_03000440[0xE] = 0;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
         gUnknown_03000440[0x85] ^= 1;
     }
     if (*pressed & KEY_B)
     {
         gMainSubstate = 1;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
     }
     if (*pressed & KEY_START)
     {
         sub_0803FAA0(0, 0, 0);
-        gUnknown_0300137C += 2;
+        gNestedCallbackIndex += 2;
     }
     if (*pressed & KEY_SELECT)
     {
         sub_0803FAA0(0, 0, 0);
-        gUnknown_0300137C += 3;
+        gNestedCallbackIndex += 3;
     }
 }
 
 void sub_080026A4(void)
 {
     if ((u8)sub_0803F51C(0, 1, 8, 4, gUnknown_03000440[0x88], gUnknown_03000440[0x85]) == 1)
-        gUnknown_0300137C = 1;
+        gNestedCallbackIndex = 1;
 }
 
 void sub_080026E0(void)
@@ -63,7 +63,7 @@ void sub_080026E0(void)
     gUnknown_03002B70[12] = 0x2E;
     gUnknown_03002B70[13] = 0xFE;
     if ((u8)RunDialogue(gUnknownPointers_083B5578[0]) == 1)
-        gUnknown_0300137C = 1;
+        gNestedCallbackIndex = 1;
 }
 
 void sub_08002730(void)
@@ -71,7 +71,7 @@ void sub_08002730(void)
     if (RunDialogue(gUnknownPointers_083B5578[1]))
     {
         sub_080415E8(0, 0x16, 7);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -80,7 +80,7 @@ void sub_0800275C(void)
     if (sub_08041674())
     {
         sub_0803FB0C();
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -92,12 +92,12 @@ void sub_0800277C(void)
     else
         data = gUnknownPointers_083B5578[2];
     if (RunDialogue(data))
-        gUnknown_0300137C = 1;
+        gNestedCallbackIndex = 1;
 }
 
 void sub_080027BC(void)
 {
-    gUnknownCallbacks_083AC404[gUnknown_0300137C]();
+    gUnknownCallbacks_083AC404[gNestedCallbackIndex]();
 }
 
 void sub_080027DC(void)
@@ -123,7 +123,7 @@ void sub_080027DC(void)
     }
     PlayMusic(6);
     gUnknown_03000440[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_080028AC(void)
@@ -153,7 +153,7 @@ void sub_080028AC(void)
         PlaceAlignedTextObjects(gUnknown_03000440 + 0x9E, 10, 23, 10, 5, 15, 2, 0);
         gUnknown_03000440[0x8E] = 0;
         sub_08003300();
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -178,17 +178,17 @@ void sub_08002A2C(void)
     pressed = (const u8 *)&gNewKeys;
     if (*pressed & KEY_B)
     {
-        sub_080750F0(0x10);
+        FadeOutMusic(0x10);
         PlaySoundEffect(5);
         ClearFrameObjects(0, 1);
         ClearFrameObjects(10, 7);
         gUnknown_03000440[0x84] = 0;
-        gUnknown_0300137C = 3;
+        gNestedCallbackIndex = 3;
     }
     else if (*pressed & KEY_A)
     {
         PlaySoundEffect(4);
-        gUnknown_0300137C = 6;
+        gNestedCallbackIndex = 6;
     }
 }
 
@@ -240,7 +240,7 @@ void sub_08002C34(void)
     }
     ClearFrameObjects(0, 1);
     ClearFrameObjects(10, 7);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08002D48(void)
@@ -255,8 +255,8 @@ void sub_08002D48(void)
         SnapshotPalettes();
         gUnknown_03000440[0x84] = 0;
         if (gUnknown_03000440[0x8E] == 0)
-            sub_080750F0(0x10);
-        gUnknown_0300137C++;
+            FadeOutMusic(0x10);
+        gNestedCallbackIndex++;
     }
 }
 
@@ -274,7 +274,7 @@ void sub_08002DF4(void)
         gUnknownPointers_083B4C60[71], *(volatile u16 *)0x04000008, 0);
     gUnknown_03000440[0x88]++;
     if (gUnknown_03000440[0x88] == 19)
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_08002EC4(void)
@@ -285,13 +285,13 @@ void sub_08002EC4(void)
         PlayMusic(7);
         gUnknown_03000440[0x8F] = 0;
         gMainSubstate = 2;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         ClearFrameObjects(40, 87);
         break;
     case 1:
         gMainState = 2;
         gMainSubstate = 4;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         ClearFrameObjects(40, 87);
         break;
     case 2:
@@ -301,7 +301,7 @@ void sub_08002EC4(void)
         gUnknown_03000588 = 0;
         gMainState = 2;
         gMainSubstate = 5;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         ClearFrameObjects(40, 87);
         break;
     }
@@ -327,7 +327,7 @@ void sub_08002F70(void)
     }
     gUnknown_03000440[0x88] = 18;
     gUnknown_03000440[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08003018(void)
@@ -348,7 +348,7 @@ void sub_08003018(void)
         gUnknownCallback_030017F0 = DummyInterruptHandler;
         gUnknown_03000440[0x88] = gUnknown_03000440[0x8E] * 2 + 1;
         gUnknown_03000440[0x84] = 0;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -386,7 +386,7 @@ void sub_08003104(void)
         sub_08041164(gUnknown_03000440 + 0x9E, *(u32 *)gUnknown_03002B70);
         PlaceAlignedTextObjects(gUnknown_03000440 + 0x9E, 10, 23, 10, 5, 15, 2, 0);
         sub_08003300();
-        gUnknown_0300137C = 2;
+        gNestedCallbackIndex = 2;
     }
     else
         gUnknown_03000440[0x84]++;

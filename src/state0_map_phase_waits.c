@@ -24,7 +24,7 @@ void sub_08012D98(void)
     {
         ClearFrameObjects(30, 11);
         *counter = 0;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -59,7 +59,7 @@ void sub_08012E40(void)
     sub_08016068();
     sub_08044118(6, 5, 12, 21, *(volatile u16 *)0x0400000A, (u16 *)0x02020800);
     gUnknown_03000440[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08012EA8(void)
@@ -80,6 +80,6 @@ void sub_08012EA8(void)
     if (*counter == 10)
     {
         sub_08015F24();
-        gUnknown_0300137C = 7;
+        gNestedCallbackIndex = 7;
     }
 }

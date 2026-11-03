@@ -7,7 +7,7 @@
 #include "post_dispatch.h"
 
 extern u8 gUnknown_030057E0[];
-extern u32 gUnknown_0300137C;
+extern u32 gNestedCallbackIndex;
 extern void sub_0804B1B0(void);
 
 void sub_0804AC14(void)
@@ -34,7 +34,7 @@ void sub_0804AC14(void)
     sub_08051EFC(1);
     sub_08047BA8(87);
     gBackgroundState_03005310.unknown00[1] = 1;
-    gUnknown_0300137C = 5;
+    gNestedCallbackIndex = 5;
 }
 
 void sub_0804ADB4(void)
@@ -68,7 +68,7 @@ void sub_0804ADB4(void)
             sub_08049420(48, (u8)(objects[48 * 64 + 0x2B] * 4 + objects[48 * 64 + 0x20]));
         }
         sub_0804B1B0();
-        gUnknown_0300137C = 5;
+        gNestedCallbackIndex = 5;
     }
 }
 
@@ -103,6 +103,6 @@ void sub_0804AEC8(void)
             sub_08049420(48, (u8)(objects[48 * 64 + 0x2B] * 4 + objects[48 * 64 + 0x20]));
         }
         sub_0804B1B0();
-        gUnknown_0300137C = 5;
+        gNestedCallbackIndex = 5;
     }
 }

@@ -26,11 +26,11 @@ void sub_0804D158(void)
         {
             u32 value = *current;
             if (value != 0)
-                sub_080497C0(work + 0xC18, work + 0xC10, 8);
+                CopyBytes2(work + 0xC18, work + 0xC10, 8);
             else
             {
                 u8 *destination = work + 0xC10;
-                sub_080497C0(destination, work + 0xC18, 8);
+                CopyBytes2(destination, work + 0xC18, 8);
                 destination[0] = value;
                 work[0xC11] = value;
                 work[0xC12] = value;

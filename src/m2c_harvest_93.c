@@ -20,8 +20,8 @@
 #include "state0_work.h"
 
 extern u8 gUnknown_03001855;
-extern void sub_0803E894(void);
-extern void sub_0803ED6C(void);
+extern void ScrollBg3Diagonally4(void);
+extern void FlashSelectedChoiceTiles(void);
 
 void sub_08014634(void);
 void sub_08014754(void);
@@ -54,7 +54,7 @@ void sub_08014634(void) {
   }
   selected+=0x03000000;frame+=3;i++;
  }while(i<=5);
- if(!(gState0TransferWork.bytes[0x55]&2))gUnknown_0300137C=0x44;
+ if(!(gState0TransferWork.bytes[0x55]&2))gNestedCallbackIndex=0x44;
 }
 
 void sub_08014754(void) {
@@ -84,14 +84,14 @@ void sub_08014754(void) {
   }
   selected+=0x03000000;frame+=3;i++;
  }while(i<=5);
- if(!(gState0TransferWork.bytes[0x55]&4))gUnknown_0300137C=0x44;
+ if(!(gState0TransferWork.bytes[0x55]&4))gNestedCallbackIndex=0x44;
 }
 
 void sub_0803E1A4(void) {
     const void *commands;
     u8 *work;
-    sub_0803E894();
-    sub_0803ED6C();
+    ScrollBg3Diagonally4();
+    FlashSelectedChoiceTiles();
     work = gState0TypedWork.bytes;
     (*(u16 *) (work + 0x86))++;
     if (work[0x9C] == 1)
@@ -100,6 +100,6 @@ void sub_0803E1A4(void) {
         commands = gUnknownPointers_083CF530[5];
     if (RunDialogue(commands) != 0) {
         sub_0803FAA0(1, 0, 0);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }

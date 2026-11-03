@@ -7,7 +7,7 @@
 
 #define gUnknown_03005030 (*(s8 *)0x03005030)
 #define gUnknown_03002B8C (*(u32 *)0x03002B8C)
-#define gUnknown_0300137C (*(u32 *)0x0300137C)
+#define gNestedCallbackIndex (*(u32 *)0x0300137C)
 #define REG_BLDCNT (*(volatile u16 *)0x04000050)
 #define REG_BLDY (*(volatile u16 *)0x04000054)
 #define REG_SOUNDCNT_X (*(volatile u16 *)0x04000084)
@@ -51,7 +51,7 @@ void ResetGame(void)
     sub_080020C8();
     gMainState = 3;
     gUnknown_03002B8C = 0;
-    gUnknown_0300137C = 0;
+    gNestedCallbackIndex = 0;
     REG_DMA0CNT_H = 0;
 }
 

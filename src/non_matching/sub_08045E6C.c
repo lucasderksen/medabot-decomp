@@ -79,7 +79,7 @@ NONMATCH("asm/non_matching/sub_08045E6C.inc", u32 sub_08045E6C(const struct Reco
     }
     if (size != 0 && ((const void *const *)set->entries)[index] != NULL)
     {
-        size = sub_08044D0C(((const void *const *)set->entries)[index], gUnknown_02030800);
+        size = DecompressLz77OrCopy(((const void *const *)set->entries)[index], gUnknown_02030800);
         if (size != 0)
             CpuSet(gUnknown_02030800, (void *)((*tileBase << 5) + 0x06010000), size << 10 >> 11);
         block = &records[selector];

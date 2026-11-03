@@ -53,12 +53,12 @@ void sub_0805C454(void)
             sub_0805BFEC(3, 0);
             gFrameObjects[14].screenY = MAIN2_CONTEXT->byte05 * 24 + 80;
             gFrameObjects[14].flags |= 0x4000;
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
         else
         {
             MAIN2_CONTEXT->byte48 = 45;
-            gUnknown_0300137C = 6;
+            gNestedCallbackIndex = 6;
         }
     }
 }

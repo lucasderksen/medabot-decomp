@@ -13,7 +13,7 @@ void sub_080039E0(void)
             u32 fill = 0x200;
             CpuFastSet(&fill, gRenderWork->objects, CPU_SET_FILL | 0x100);
         }
-        gUnknownCallbacks_083AC4A0[gUnknown_0300137C]();
+        gUnknownCallbacks_083AC4A0[gNestedCallbackIndex]();
     }
 }
 
@@ -23,7 +23,7 @@ void sub_080039E0(void)
 #include "graphics.h"
 #include "frame.h"
 
-extern void sub_08043CA8(void);
+extern void ClearBgScrolls2(void);
 extern void sub_080054C0(void);
 extern void sub_08004FD0(void);
 extern void sub_08005000(void);
@@ -43,7 +43,7 @@ void sub_08003A38(void)
     switch (gUnknown_03000440[0x139])
     {
     case 0:
-        sub_08043CA8();
+        ClearBgScrolls2();
         if (gUnknown_03000440[0x56] == 1)
             sub_080054C0();
         *(volatile u16 *)0x04000000 &= 0xF0FF;
@@ -114,7 +114,7 @@ void sub_08003A38(void)
         }
         else if (gUnknown_03000440[0x52] & 0x80)
             sub_08005628();
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
         gUnknown_03000440[0x139] = 0;
         break;
     }
@@ -126,8 +126,8 @@ void sub_08003A38(void)
 #include "graphics.h"
 #include "render_work.h"
 
-extern void sub_08004E74(void);
-extern void sub_08004EF8(u32);
+extern void ScrollBg3Diagonally2(void);
+extern void StepMarkerOrbitForward(u32);
 extern void sub_080054C0(void);
 extern void sub_08005798(void);
 extern void sub_0800598C(void);
@@ -140,11 +140,11 @@ extern void sub_08007408(void);
 
 /* Repeated observed calls, expanded inline to preserve the original sequence. */
 #define ENTRY_FRAME_WORK(extra) do { \
-    sub_08004E74(); \
-    sub_08004EF8(0); \
-    sub_08004EF8(1); \
-    sub_08004EF8(2); \
-    sub_08004EF8(3); \
+    ScrollBg3Diagonally2(); \
+    StepMarkerOrbitForward(0); \
+    StepMarkerOrbitForward(1); \
+    StepMarkerOrbitForward(2); \
+    StepMarkerOrbitForward(3); \
     sub_080054C0(); \
     extra; \
     sub_0800598C(); \
@@ -164,13 +164,13 @@ void sub_08003D4C(void)
         else
         {
             gUnknown_03000440[0x56] = 0;
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
     }
     else if (StepBlendFade())
     {
         gUnknown_03000440[0x56] = 0;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -195,14 +195,14 @@ void sub_08003E54(void)
     ENTRY_FRAME_WORK((void)0);
     StartBlendFade(6, 63, 32);
     gUnknown_03000440[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08003EA0(void)
 {
     ENTRY_FRAME_WORK((void)0);
     if (StepBlendFade())
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_08003EE0(void)
@@ -212,7 +212,7 @@ void sub_08003EE0(void)
     gUnknown_03000440[0x96] = 0;
     gRenderMode = 0;
     gMainSubstate = 2;
-    gUnknown_0300137C = 16;
+    gNestedCallbackIndex = 16;
 }
 
 void sub_08003F28(void)
@@ -220,7 +220,7 @@ void sub_08003F28(void)
     ENTRY_FRAME_WORK(sub_08005798());
     SnapshotPalettes();
     gUnknown_03000440[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08003F74(void)
@@ -233,21 +233,21 @@ void sub_08003F74(void)
         gUnknown_03000440[0x84]++;
     }
     else
-        gUnknown_0300137C = 16;
+        gNestedCallbackIndex = 16;
 }
 
 void sub_08003FE8(void)
 {
     ENTRY_FRAME_WORK((void)0);
     sub_0803FAA0(1, 2, 0);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08004028(void)
 {
     ENTRY_FRAME_WORK((void)0);
     if (RunDialogue(gUnknownPointers_083B5578[22]))
-        gUnknown_0300137C = 2;
+        gNestedCallbackIndex = 2;
 }
 
 
@@ -358,7 +358,7 @@ void sub_0800406C(void)
     if (gUnknown_03000440[0x56] != 0)
         sub_0800656C();
     gUnknown_03000440[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 
@@ -367,7 +367,7 @@ void sub_0800406C(void)
 #include "input.h"
 #include "render_work.h"
 
-extern void sub_08004E74(void);
+extern void ScrollBg3Diagonally2(void);
 extern void sub_08006764(void);
 extern void sub_08006514(void);
 extern void sub_08006824(void);
@@ -388,7 +388,7 @@ extern void sub_080070F0(void);
 extern u8 gUnknown_0300047C[];
 
 #define DESTINATION_FRAME_WORK() do { \
-    sub_08004E74(); \
+    ScrollBg3Diagonally2(); \
     sub_08006764(); \
     sub_08006514(); \
     sub_08006824(); \
@@ -410,13 +410,13 @@ void sub_080043A8(void)
         else
         {
             gUnknown_03000440[0x56] = 1;
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
     }
     else if (StepBlendFade())
     {
         gUnknown_03000440[0x56] = 1;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -430,7 +430,7 @@ void sub_0800442C(void)
         if (*pressed & KEY_B)
         {
             PlaySoundEffect(5);
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
         else if (pressed[1] & 3)
         {
@@ -447,7 +447,7 @@ void sub_0800442C(void)
             else if (choice == 1)
             {
                 PlaySoundEffect(4);
-                gUnknown_0300137C = 24;
+                gNestedCallbackIndex = 24;
             }
         }
     }
@@ -463,7 +463,7 @@ void sub_080044F8(void)
     }
     else
         StartBlendFade(6, 63, 32);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0800454C(void)
@@ -478,31 +478,31 @@ void sub_0800454C(void)
             gUnknown_03000440[0x84]++;
         }
         else
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
     }
     else if (StepBlendFade())
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_080045C4(void)
 {
     sub_08006764();
     sub_08006FB0();
-    gUnknown_0300137C = 0;
+    gNestedCallbackIndex = 0;
 }
 
 void sub_080045DC(void)
 {
     DESTINATION_FRAME_WORK();
     StartBlendFade(6, 63, 32);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08004610(void)
 {
     DESTINATION_FRAME_WORK();
     if (StepBlendFade())
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_08004644(void)
@@ -518,7 +518,7 @@ void sub_08004644(void)
         gUnknown_0300047C[1] = gUnknown_0300047C[0x5B];
         sub_080070F0();
         gMainSubstate = 4;
-        gUnknown_0300137C = 8;
+        gNestedCallbackIndex = 8;
         break;
     case 1:
         FillBytes(gUnknown_0300047C, 20, 0);
@@ -526,7 +526,7 @@ void sub_08004644(void)
         gUnknown_0300047C[1] = gUnknown_0300047C[0x5C];
         gUnknown_0300047C[2] = 0;
         gMainSubstate = 5;
-        gUnknown_0300137C = 16;
+        gNestedCallbackIndex = 16;
         break;
     case 2:
         FillBytes(gUnknown_0300047C, 20, 0);
@@ -534,7 +534,7 @@ void sub_08004644(void)
         gUnknown_0300047C[1] = gUnknown_0300047C[0x5D];
         gUnknown_0300047C[2] = 1;
         gMainSubstate = 5;
-        gUnknown_0300137C = 16;
+        gNestedCallbackIndex = 16;
         break;
     case 3:
         FillBytes(gUnknown_0300047C, 20, 0);
@@ -542,7 +542,7 @@ void sub_08004644(void)
         gUnknown_0300047C[1] = gUnknown_0300047C[0x5E];
         gUnknown_0300047C[2] = 2;
         gMainSubstate = 5;
-        gUnknown_0300137C = 16;
+        gNestedCallbackIndex = 16;
         break;
     case 4:
         FillBytes(gUnknown_0300047C, 20, 0);
@@ -550,7 +550,7 @@ void sub_08004644(void)
         gUnknown_0300047C[1] = gUnknown_0300047C[0x5F];
         gUnknown_0300047C[2] = 3;
         gMainSubstate = 5;
-        gUnknown_0300137C = 16;
+        gNestedCallbackIndex = 16;
         break;
     }
 }

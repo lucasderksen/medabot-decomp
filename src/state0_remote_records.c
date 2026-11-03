@@ -35,7 +35,7 @@ void sub_0801520C(void)
         do
         {
             *destination = 3;
-            sub_08042B58(record[0], 0, scratch);
+            CopyPartMetadataSlot(record[0], 0, scratch);
             destination[1] = scratch[3];
             destination[2] = source[1];
             destination[3] = record[0];

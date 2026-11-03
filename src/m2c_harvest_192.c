@@ -47,6 +47,6 @@ void sub_0806EBA4(void) {
   *(volatile u16 *)0x04000000&=0x80FF;
   gMainState=gGraphicsWork6EBA403001800.savedState;
   gMainSubstate=gGraphicsWork6EBA403001800.savedSubstate;
-  gUnknown_0300137C=gGraphicsWork6EBA403001800.savedStep;
+  gNestedCallbackIndex=gGraphicsWork6EBA403001800.savedStep;
  }
 }

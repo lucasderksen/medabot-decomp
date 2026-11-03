@@ -103,12 +103,12 @@ void sub_08021AFC(void) {
     RunFrameObjectCommands((*(u8 **)((u8 *)(work0) + 0xEC)), 0x21U);
     RunFrameObjectCommands((*(u8 **)((u8 *)(work0) + 0xEC)), 0x22U);
     RunFrameObjectCommands((*(u8 **)((u8 *)(work0) + 0xEC)), 0x23U);
-    temp_r0 = sub_080355F0(0x21U);
+    temp_r0 = StepFrameObjectToTarget(0x21U);
     var_r4 = (u32) ((0 - temp_r0) | temp_r0) >> 0x1F;
-    if (sub_080355F0(0x22U) != 0) {
+    if (StepFrameObjectToTarget(0x22U) != 0) {
         var_r4 += 1;
     }
-    if (sub_080355F0(0x23U) != 0) {
+    if (StepFrameObjectToTarget(0x23U) != 0) {
         var_r4 += 1;
     }
     if (var_r4 == 3) {
@@ -221,7 +221,7 @@ void sub_0803858C(void) {
     array0 = gFrameObjects;
     temp_r1 = &array0[gState0TypedWork.bytes[0x12F]];
     temp_r1->angle = (temp_r1->angle + 0x10) & 0x3FF;
-    if (sub_080355F0((u32) gState0TypedWork.bytes[0x12F]) != 0) {
+    if (StepFrameObjectToTarget((u32) gState0TypedWork.bytes[0x12F]) != 0) {
         ClearFrameObjects(gState0TypedWork.bytes[0x12F], 1U);
     }
 }

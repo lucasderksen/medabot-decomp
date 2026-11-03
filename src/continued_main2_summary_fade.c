@@ -40,6 +40,6 @@ void sub_0805DA14(void)
     else
     {
         sub_0803FAA0(1, 2, 0);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }

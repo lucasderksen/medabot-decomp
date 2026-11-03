@@ -15,5 +15,5 @@ void sub_08013DE4(void)
     SetObjectXWobble(8, counter, sub_0801827C());
     sub_080182AC();
     if (StepBlendFade())
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }

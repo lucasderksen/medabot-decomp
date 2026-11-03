@@ -137,7 +137,7 @@ void sub_0802C960(void) {
                 gFrameObjects[i + 0x21].angle = (gFrameObjects[i + 0x21].angle - 0x40) & 0x3FF;
             else
                 gFrameObjects[i + 0x21].angle = (gFrameObjects[i + 0x21].angle + 0x40) & 0x3FF;
-            if (sub_080355F0(i + 0x21) != 0)
+            if (StepFrameObjectToTarget(i + 0x21) != 0)
                 done++;
         }
     }
@@ -212,10 +212,10 @@ void sub_0802CFAC(void) {
                     gFrameObjects[i + 0x21].angle = (gFrameObjects[i + 0x21].angle + 0x10) & 0x3FF;
                 }
             }
-            sub_080353CC((gCounter6ED08_03001800.base60 + i) * 4 + 0x5A);
-            sub_080353CC((gCounter6ED08_03001800.base60 + i) * 4 + 0x5B);
-            sub_080353CC((gCounter6ED08_03001800.base60 + i) * 4 + 0x5C);
-            done += sub_080353CC((gCounter6ED08_03001800.base60 + i) * 4 + 0x5D);
+            StepObjectHop((gCounter6ED08_03001800.base60 + i) * 4 + 0x5A);
+            StepObjectHop((gCounter6ED08_03001800.base60 + i) * 4 + 0x5B);
+            StepObjectHop((gCounter6ED08_03001800.base60 + i) * 4 + 0x5C);
+            done += StepObjectHop((gCounter6ED08_03001800.base60 + i) * 4 + 0x5D);
             if (gFrameObjects[(gCounter6ED08_03001800.base60 + i) * 4 + 0x5D].unknown23[0] == 0x10) {
                 gFrameObjects[(gCounter6ED08_03001800.base60 + i) * 4 + 0x5A].screenY += 8;
                 gFrameObjects[(gCounter6ED08_03001800.base60 + i) * 4 + 0x5B].screenY -= 8;
@@ -250,7 +250,7 @@ void sub_0802D270(void) {
             j = 0;
             k = i * 4 + 0x30;
         next:
-            sub_0804422C(j + k);
+            ApplyObjectMotionStep(j + k);
             j++;
             if (j <= 3)
                 goto next;

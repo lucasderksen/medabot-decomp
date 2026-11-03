@@ -84,7 +84,7 @@ void sub_08037C50(void) {
         negativePhaseFrame = &gFrameObjects[gState0TypedWork.bytes[0x12F]];
         negativePhaseFrame->unknown2C[0] -= 1;
         negativePositionFrame = &gFrameObjects[gState0TypedWork.bytes[0x12F]];
-        result4.coordinates=sub_08042BC0((u32)negativePositionFrame->unknown2C[0],(u32)negativePositionFrame->byte2B,0xB8U,0x34);
+        result4.coordinates=GetPolarOffsetPoint((u32)negativePositionFrame->unknown2C[0],(u32)negativePositionFrame->byte2B,0xB8U,0x34);
         packedPosition=result4.word;
     } else {
         if (gState0TransferWork.bytes[0x51] != 3) {
@@ -94,7 +94,7 @@ void sub_08037C50(void) {
         positivePhaseFrame = &gFrameObjects[gState0TypedWork.bytes[0x12F]];
         positivePhaseFrame->unknown2C[0] += 1;
         positivePositionFrame = &gFrameObjects[gState0TypedWork.bytes[0x12F]];
-        result8.coordinates=sub_08042BC0((u32)positivePositionFrame->unknown2C[0],(u32)positivePositionFrame->byte2B,0x38U,0x34);
+        result8.coordinates=GetPolarOffsetPoint((u32)positivePositionFrame->unknown2C[0],(u32)positivePositionFrame->byte2B,0x38U,0x34);
         packedPosition=result8.word;
     }
     gFrameObjects[gState0TypedWork.bytes[0x12F]].screenX = (s16) packedPosition;

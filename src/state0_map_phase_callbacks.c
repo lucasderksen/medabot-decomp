@@ -14,7 +14,7 @@ void sub_08012970(void)
             u32 fill = 0x200;
             CpuFastSet(&fill, gRenderWork->objects, CPU_SET_FILL | 256);
         }
-        gState0MapPhaseCallbacks_083AD080[gUnknown_0300137C]();
+        gState0MapPhaseCallbacks_083AD080[gNestedCallbackIndex]();
     }
 }
 
@@ -33,5 +33,5 @@ void sub_080129C8(void)
     sub_0801528C();
     if (work[0x89] != 1)
         sub_08018A18();
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

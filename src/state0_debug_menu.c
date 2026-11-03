@@ -34,7 +34,7 @@ void sub_0800B858(void)
 
 void sub_0800B890(void)
 {
-    gDebugMenuCallbacks_083ACA5C[gUnknown_0300137C]();
+    gDebugMenuCallbacks_083ACA5C[gNestedCallbackIndex]();
 }
 
 void sub_0800B8B0(void)
@@ -57,7 +57,7 @@ void sub_0800B8B0(void)
     dma[1] = 0x050003E0;
     dma[2] = 0x84000008;
     (void)dma[2];
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0800B938(void)
@@ -84,7 +84,7 @@ void sub_0800B938(void)
     }
     cancel = *(u8 *)&gNewKeys & 2;
     if (cancel)
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     else if (*(u8 *)&gNewKeys & 1)
     {
         CopyBytes(gDebugMenuCategoryText_083ACBA0[gState0TypedWork.bytes[0x32]], &gState0TypedWork.bytes[0x9E], 8);
@@ -94,7 +94,7 @@ void sub_0800B938(void)
         gState0TypedWork.bytes[0x35] = cancel;
         gState0TypedWork.bytes[0x36] = cancel;
         gState0TypedWork.bytes[0x37] = cancel;
-        gUnknown_0300137C = 3;
+        gNestedCallbackIndex = 3;
     }
 }
 
@@ -106,7 +106,7 @@ void sub_0800BA74(void)
     dma[2] = 0x84000400;
     (void)dma[2];
     gMainSubstate = gState0TypedWork.bytes[0x30];
-    gUnknown_0300137C = gState0TypedWork.bytes[0x31];
+    gNestedCallbackIndex = gState0TypedWork.bytes[0x31];
 }
 
 void sub_0800BAB8(void)

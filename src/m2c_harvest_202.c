@@ -204,8 +204,8 @@ void sub_0803133C(void){
  gUnknownCallback_030017F0=DummyInterruptHandler;
  work=(void *)&gState0TypedWork;
  work->pending=1;
- if(work->mode!=1){gMainSubstate=6;gUnknown_0300137C=48;}
- else {gMainSubstate=10;gUnknown_0300137C=32;}
+ if(work->mode!=1){gMainSubstate=6;gNestedCallbackIndex=48;}
+ else {gMainSubstate=10;gNestedCallbackIndex=32;}
 }
 
 void sub_08031390(void){
@@ -219,7 +219,7 @@ void sub_08031390(void){
  frames->frame.screenY=(u16)gFrameObjects[work[0x87]*4+0x5D].screenY-4;
  frames->frame.palette=12;frames->frame.priority=0x80;
  frames->frame.frameAndGroup=0x5800;frames->frame.unknown23[0]=zero;
- PlaySoundEffect(0x2A);gUnknown_0300137C++;
+ PlaySoundEffect(0x2A);gNestedCallbackIndex++;
 }
 
 void sub_08031538(void){
@@ -230,7 +230,7 @@ void sub_08031538(void){
  
  sub_0801A4F4(buffer,work[0x87],0x23,gFrameObjects[work[0x87]*4+0x5D].screenX+24,gFrameObjects[work[0x87]*4+0x5D].screenY+4);
  *(u8 *)((u32)buffer-0x6A)=0;
- gUnknown_0300137C++;
+ gNestedCallbackIndex++;
 }
 
 void sub_0803B374(void){

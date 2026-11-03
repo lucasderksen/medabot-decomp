@@ -48,7 +48,7 @@ NONMATCH("asm/non_matching/sub_08064EB4.inc", void sub_08064EB4(void))
     LoadLz77SizedTilemap(gBiosLz77Stream_0879B828, *(volatile u16 *)0x0400000A);
     LoadLz77SizedTilemap(gBiosLz77Stream_0879B980, *(volatile u16 *)0x0400000C);
     LoadLz77SizedTilemap(gBiosLz77Stream_0879BAB0, *(volatile u16 *)0x0400000E);
-    size = sub_08044D0C(gBiosLz77Stream_0879AF8C, gScratch6030C02030000);
+    size = DecompressLz77OrCopy(gBiosLz77Stream_0879AF8C, gScratch6030C02030000);
     CpuSet(gScratch6030C02030000, (void *)0x06004000, (size << 10) >> 11);
     gMenuContext64EB4->tile36 = (size >> 5) - 1;
     CpuFastSet(gUnknownBytes_084C29D8, (void *)(size + 0x06004000), 0x400);
@@ -79,6 +79,6 @@ NONMATCH("asm/non_matching/sub_08064EB4.inc", void sub_08064EB4(void))
     sub_08041164(gDebugMenuTextBuffer, gPostDispatchWord_03002B70);
     } while (0);
     PlaceAlignedTextObjects(gDebugMenuTextBuffer, 0, 0x15, 1, 7, 0xF, 1, 0);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 END_NONMATCH

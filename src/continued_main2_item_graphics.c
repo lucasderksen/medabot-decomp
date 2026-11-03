@@ -38,7 +38,7 @@ void sub_0805CC3C(void)
     LoadLz77SizedTilemap(gMain2Map_0878D694, *bg1);
     LoadLz77SizedTilemap(gMain2Map_0878D7C4, *bg2);
     LoadLz77SizedTilemap(gMain2Map_0878D960, *bg3);
-    length = sub_08044D0C(gMain2Tiles_0878C288, (void *)0x02030000);
+    length = DecompressLz77OrCopy(gMain2Tiles_0878C288, (void *)0x02030000);
     CpuSet((void *)0x02030000, (void *)0x06004000, (length << 10) >> 11);
     {
         const u8 *source = gMain2AdditionalTiles_08785EC0;
@@ -79,5 +79,5 @@ void sub_0805CC3C(void)
         gFrameObjects[index + 85].screenY = index * 16 + 32;
     }
     LeDecompress(objectTiles, (void *)0x06017400);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

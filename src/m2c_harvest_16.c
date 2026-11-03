@@ -233,7 +233,7 @@ void sub_0802DF98(void) {
 void sub_08030FB4(void) {
     if (gFrameObjects[0x21].scaleY == 0x40) {
         gState0TypedWork.widths.word86 = 0;
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
         return;
     }
     gFrameObjects[0x21].scaleY -= 8;
@@ -245,7 +245,7 @@ void sub_08030FEC(void) {
             PlayMusic(0x1CU);
             ClearFrameObjects(0x21U, 1U);
             sub_0803FAA0(1U, 2U, 0U);
-            gUnknown_0300137C += 1;
+            gNestedCallbackIndex += 1;
             return;
         }
         gFrameObjects[0x21].scaleY -= 8;
@@ -259,7 +259,7 @@ void sub_08031048(void) {
         if (gFrameObjects[0x21].scaleY == 8) {
             ClearFrameObjects(0x21U, 1U);
             sub_0803FAA0(1U, 2U, 0U);
-            gUnknown_0300137C += 1;
+            gNestedCallbackIndex += 1;
             return;
         }
         gFrameObjects[0x21].scaleY -= 8;
@@ -270,7 +270,7 @@ void sub_08031048(void) {
 
 void sub_080319E0(void) {
     if (gState0TypedWork.widths.word86 == 8) {
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
         return;
     }
     gState0TypedWork.widths.word86 += 1;
@@ -324,7 +324,7 @@ void sub_0803ADE8(void) {
 void sub_0803D608(void) {
     if (gState0TypedWork.widths.word86 == 8) {
         gState0TypedWork.widths.word86 = 0;
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
         return;
     }
     gState0TypedWork.widths.word86 += 1;
@@ -366,7 +366,7 @@ void sub_080638E8(void) {
     if (sub_08065710(gMainContextPointer_03006F74 + 0x50) != 0) {
         ClearFrameObjects(0U, 0x80U);
         gMainSubstate = 0x14;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         return;
     }
     sub_08062B48((*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x31)), (*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x33)), 0);

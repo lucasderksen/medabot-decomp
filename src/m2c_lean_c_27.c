@@ -62,7 +62,7 @@ void sub_08064A80(void) {
     if (gMainSerialOutgoingWork.words[0][1] == 0xFC0F && gMainSerialOutgoingWork.words[1][1] == gMainSerialOutgoingWork.words[0][1]) {
         if (gLinkContext64A80->flag7A != 0) {
             gMainSubstate = 0x11;
-            gUnknown_0300137C = 0;
+            gNestedCallbackIndex = 0;
             return;
         }
         gUnknownMask_03002B68 = gLinkContext64A80->bits1C;

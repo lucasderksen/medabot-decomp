@@ -114,14 +114,14 @@ void sub_08037E2C(void) {
             gFrameObjects[gState0TypedWork.bytes[0x12F]].angle = (gFrameObjects[gState0TypedWork.bytes[0x12F]].angle - 0x10) & 0x3FF;
         }
         gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown2C[0] -= 1;
-        result4.coordinates=sub_08042BC0(gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown2C[0],gFrameObjects[gState0TypedWork.bytes[0x12F]].byte2B,0xB8U,0x34);
+        result4.coordinates=GetPolarOffsetPoint(gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown2C[0],gFrameObjects[gState0TypedWork.bytes[0x12F]].byte2B,0xB8U,0x34);
         packedPosition=result4.word;
     } else {
         if (gCounter6ED08_03001800.frame51 == 0) {
             gFrameObjects[gState0TypedWork.bytes[0x12F]].angle = (gFrameObjects[gState0TypedWork.bytes[0x12F]].angle + 0x10) & 0x3FF;
         }
         gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown2C[0] += 1;
-        result8.coordinates=sub_08042BC0(gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown2C[0],gFrameObjects[gState0TypedWork.bytes[0x12F]].byte2B,0x38U,0x34);
+        result8.coordinates=GetPolarOffsetPoint(gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown2C[0],gFrameObjects[gState0TypedWork.bytes[0x12F]].byte2B,0x38U,0x34);
         packedPosition=result8.word;
     }
     gFrameObjects[gState0TypedWork.bytes[0x12F]].screenX = (s16) packedPosition;

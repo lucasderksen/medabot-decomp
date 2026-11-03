@@ -24,11 +24,11 @@ void sub_0804EF5C(void)
         }
         break;
     case 1:
-        if (sub_08047C24(0, 0, 0, gQuantityScripts_0847E388[30]))
+        if (InitAndRunDialogue(0, 0, 0, gQuantityScripts_0847E388[30]))
             sub_08050290();
         break;
     case 2:
-        if (sub_08047C24(0, 0, 0, gQuantityScripts_0847E388[work[0xC94] + 31]))
+        if (InitAndRunDialogue(0, 0, 0, gQuantityScripts_0847E388[work[0xC94] + 31]))
             sub_08050290();
         break;
     }
@@ -44,14 +44,14 @@ void sub_0804EFFC(void)
         sub_08049D90(32767, 0.0f, 32.0f, 8.0f);
         goto increment;
     case 1:
-        if (!sub_08049E08(32767))
+        if (!StepPaletteFadeToColor(32767))
             break;
         sub_08049D18(32767, 32.0f, 0.0f, 8.0f);
 increment:
         (*state)++;
         break;
     case 2:
-        if (sub_08049E08(32767))
+        if (StepPaletteFadeToColor(32767))
         {
             work[0xC94]--;
             if (work[0xC94])
@@ -79,12 +79,12 @@ void sub_0804F0A4(void)
     for (; i < 4; i++)
     {
         u32 index = (u8)i;
-        if (sub_0804DBF0(index) != -1)
+        if (GetScriptObjectSlot(index) != -1)
         {
-            s32 entry = sub_0804DBF0(index);
+            s32 entry = GetScriptObjectSlot(index);
             entry += 79;
             if (entries[entry].identifier)
-                progress += sub_0805082C((u8)(sub_0804DBF0(index) + 79));
+                progress += sub_0805082C((u8)(GetScriptObjectSlot(index) + 79));
             else
                 missing++;
         }

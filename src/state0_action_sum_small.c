@@ -31,7 +31,7 @@ void sub_08033F64(void)
     AdvanceActionByteScript();
 }
 
-void sub_08035754(s16 *value, s32 amount)
+void SubtractWithZeroFloor(s16 *value, s32 amount)
 {
     if (*value < amount)
         *value = 0;

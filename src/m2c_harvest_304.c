@@ -30,6 +30,6 @@ void sub_08061860(void) {
     }
     if (sub_08041CA4() != 0) {
         gState0TypedWork.bytes[0x84] = w;
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
 }

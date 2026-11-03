@@ -30,7 +30,7 @@ void sub_0805DB20(void)
     if (RunDialogue(gMain2ScriptSlots_08485678[18]))
     {
         sub_080415E8(1, 22, 7);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -40,9 +40,9 @@ void sub_0805DB4C(void)
     {
         sub_0803FB0C();
         if (!WORK->byte2A)
-            gUnknown_0300137C = 6;
+            gNestedCallbackIndex = 6;
         else
-            gUnknown_0300137C = 9;
+            gNestedCallbackIndex = 9;
     }
 }
 
@@ -54,7 +54,7 @@ void sub_0805DB84(void)
         PlaySoundEffect(0);
         Unknown_0805DEB0();
         CONTEXT_HALFWORDS[1] = 0;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -62,7 +62,7 @@ void sub_0805DC4C(void)
 {
     u8 previous = CONTEXT_HALFWORDS[1]++;
     if (RunDialogue(gMain2ScriptSlots_0848521C[11]) && previous > 60)
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_0805DC88(void)
@@ -70,13 +70,13 @@ void sub_0805DC88(void)
     sub_0803FB0C();
     SnapshotPalettes();
     WORK->phase = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0805DCB0(void)
 {
     if (sub_08041CA4())
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_0805DCCC(void)
@@ -94,7 +94,7 @@ void sub_0805DCCC(void)
         ClearFrameObjects(0, 128);
         gMainState = 0;
         gMainSubstate = 1;
-        gUnknown_0300137C = 16;
+        gNestedCallbackIndex = 16;
     }
 }
 
@@ -102,5 +102,5 @@ void sub_0805DD50(void)
 {
     u8 previous = CONTEXT_HALFWORDS[1]++;
     if (RunDialogue(gMain2ScriptSlots_0848521C[12]) && previous > 60)
-        gUnknown_0300137C = 9;
+        gNestedCallbackIndex = 9;
 }

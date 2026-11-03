@@ -40,7 +40,7 @@ void sub_080611E8(void) {
         ((struct Fade611E8 *)gMainContextPointer_03006F74)->timer = 0;
         ((struct Fade611E8 *)gMainContextPointer_03006F74)->kind = 0;
         ((struct Fade611E8 *)gMainContextPointer_03006F74)->mode = 0U;
-        phase = &gUnknown_0300137C;
+        phase = &gNestedCallbackIndex;
         nextPhase = 9;
         goto store_phase;
     }
@@ -55,7 +55,7 @@ void sub_080611E8(void) {
     sub_0803FAA0(1U, 0U, 0U);
     ((struct Fade611E8 *)gMainContextPointer_03006F74)->timer = 0;
     ((struct Fade611E8 *)gMainContextPointer_03006F74)->kind = 0;
-    phase = &gUnknown_0300137C;
+    phase = &gNestedCallbackIndex;
     nextPhase = (u32)*phase + 1;
 store_phase:
     *phase = nextPhase;

@@ -49,10 +49,10 @@ void sub_08064E18(void) {
     gListContext64E18->count30 = count;
     if (gUnknown_03000584 != 2) {
         gMainSubstate = 6;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
     } else {
-        sub_080415BC();
+        ClearBgScrolls();
         *(volatile u16 *)0x04000000 = 0x60;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }

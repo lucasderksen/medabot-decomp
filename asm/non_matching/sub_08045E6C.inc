@@ -126,7 +126,7 @@
 	beq	.L08045FD0
 	ldr	r4, .L08045FB0
 	adds	r1, r4, #0
-	bl	sub_08044D0C
+	bl	DecompressLz77OrCopy
 	adds	r6, r0, #0
 	cmp	r6, #0
 	beq	.L08045F7C

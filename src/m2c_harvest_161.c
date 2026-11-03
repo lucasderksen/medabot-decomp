@@ -66,7 +66,7 @@ void sub_08060B28(void) {
     CpuFastSet(gState0FrameBackup, (void *)0x06002800, 0x28U);
     if (gMainSubstate == 0xA) {
         gMainSubstate = 4;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         return;
     }
     if ((*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x48)) != 0) {
@@ -196,5 +196,5 @@ void sub_0806B820(void) {
     gFrameObjects[0x13].screenX = 0xB8;
     gFrameObjects[0x13].screenY = 0xC8;
     *(volatile u16 *)0x04000000 |= 0x1E00;
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }

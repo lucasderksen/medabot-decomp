@@ -218,9 +218,9 @@ void sub_08033D30(void) {
         && gWork3D30.recs28[gWork3D30.byte8A].byte3 == 0x33)
         gWork3D30.valueEC += gWork3D30.recs28[gWork3D30.byte8A].byte5;
     sub_08035B9C(gWork3D30.slot87);
-    sub_08035754(&gWork3D30.valueEC, gSetupRecs3D30[gWork3D30.value88].byteD1);
+    SubtractWithZeroFloor(&gWork3D30.valueEC, gSetupRecs3D30[gWork3D30.value88].byteD1);
     if (gWork3D30.byteDE != 0 && gWork3D30.byteDF == 0x1B)
-        sub_08035754(&gWork3D30.valueEC, gSetupRecs3D30[gWork3D30.value88].wordD8);
+        SubtractWithZeroFloor(&gWork3D30.valueEC, gSetupRecs3D30[gWork3D30.value88].wordD8);
     AdvanceActionByteScript();
 }
 

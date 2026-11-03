@@ -30,7 +30,7 @@ void sub_08010DAC(void)
     base[1].unknown23[0] = 0;
     base[1].unknown23[5] = 0;
     PlaySoundEffect(42);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08010E50(void)
@@ -39,7 +39,7 @@ void sub_08010E50(void)
     StepFirstBgAutoScroll();
     sub_080123A0();
     if (sub_08036AC4(1, 0))
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_08010E7C(void)
@@ -64,5 +64,5 @@ void sub_08010E7C(void)
     base[2].palette = 11;
     base[2].priority = 192;
     base[2].frameAndGroup = 0x5A00;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

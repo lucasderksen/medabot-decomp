@@ -10,7 +10,7 @@ void sub_080116C4(void)
     u8 *state;
     u8 *work;
     s32 selector;
-    sub_08043CA8();
+    ClearBgScrolls2();
     ClearFrameObjects(0, 128);
     state = gUnknown_03000440;
     {
@@ -35,7 +35,7 @@ void sub_080116C4(void)
     }
     state[0x3E] = selector;
     gMainSubstate = 5;
-    gUnknown_0300137C = 16;
+    gNestedCallbackIndex = 16;
         break;
     case 0:
         {
@@ -49,7 +49,7 @@ void sub_080116C4(void)
     }
     state[0x3E] = selector;
     gMainSubstate = 5;
-    gUnknown_0300137C = 16;
+    gNestedCallbackIndex = 16;
         break;
     case 1:
         {
@@ -63,7 +63,7 @@ void sub_080116C4(void)
     }
     state[0x3E] = selector;
     gMainSubstate = 5;
-    gUnknown_0300137C = 16;
+    gNestedCallbackIndex = 16;
         break;
     case 3:
         {
@@ -77,7 +77,7 @@ void sub_080116C4(void)
     }
     state[0x3E] = selector;
     gMainSubstate = 5;
-    gUnknown_0300137C = 16;
+    gNestedCallbackIndex = 16;
         break;
     default:
         return;

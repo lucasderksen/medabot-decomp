@@ -24,12 +24,12 @@ void sub_0804C5E4(void)
     do
     {
         u8 selected = index;
-        if (sub_0804DBF0(selected) != -1)
+        if (GetScriptObjectSlot(selected) != -1)
         {
-            s32 entry = sub_0804DBF0(selected);
+            s32 entry = GetScriptObjectSlot(selected);
             entry += 79;
             if (objects[entry].value != 0)
-                sub_08052D90((u8)(sub_0804DBF0(selected) + 79), *argument);
+                sub_08052D90((u8)(GetScriptObjectSlot(selected) + 79), *argument);
         }
         index++;
     } while (index <= 3);

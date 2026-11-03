@@ -32,7 +32,7 @@ void sub_0805C2DC(void)
         if (result < 0)
         {
         gMainSubstate = 9;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         return;
     
         }
@@ -66,6 +66,6 @@ void sub_0805C2DC(void)
     }
     sub_0805BFEC(((struct Main2StateContext *)gMainContextPointer_03006F74)->byte05, gFrameCounter & 31);
     sub_0805BE0C(3);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 

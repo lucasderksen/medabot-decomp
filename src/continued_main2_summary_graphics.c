@@ -43,7 +43,7 @@ void sub_0805D790(void)
     {
         const u8 *source = gMain2StatsTiles_0878DE74;
         scratch = (u8 *)0x02030000;
-        length = sub_08044D0C(source, scratch);
+        length = DecompressLz77OrCopy(source, scratch);
     }
     CpuSet(scratch, (void *)0x06004000, (length << 10) >> 11);
     {
@@ -68,5 +68,5 @@ void sub_0805D790(void)
         gFrameObjects[0].screenX = 208;
         gFrameObjects[0].screenY = 24;
     }
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

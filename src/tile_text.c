@@ -5,7 +5,7 @@ extern const u8 gUnknownBytes_083B83FC[];
 extern const s16 gUnknownSines_083D6A2C[];
 extern const s16 gUnknownSines_083D6C2C[];
 
-void sub_08042678(void *destination, u32 inputLength)
+void FillTextWithHyphens(void *destination, u32 inputLength)
 {
     u8 *out = destination;
     u8 length = inputLength;
@@ -224,7 +224,7 @@ void sub_08042A90(u32 first, u32 second, u32 x, u32 y, u32 separator, u32 contro
     }
 }
 
-void sub_08042B58(u32 record, u32 slot, void *destination)
+void CopyPartMetadataSlot(u32 record, u32 slot, void *destination)
 {
     u8 *out = destination;
     u32 i = 0;
@@ -240,7 +240,7 @@ void sub_08042B58(u32 record, u32 slot, void *destination)
     }
 }
 
-struct TileCoordinates sub_08042BC0(u32 angle, u32 radius, u32 x, u32 y)
+struct TileCoordinates GetPolarOffsetPoint(u32 angle, u32 radius, u32 x, u32 y)
 {
     struct TileCoordinates result;
     x += (u32)((float)gUnknownSines_083D6C2C[angle] * ((float)radius * (1.0f / 256.0f)));

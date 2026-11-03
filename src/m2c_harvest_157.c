@@ -106,7 +106,7 @@ void sub_0806D600(void) {
         *(volatile u16 *)0x04000000 &= 0x80FF;
         gMainState = (u32) gGraphicsTransferCounter.mainState0;
         gMainSubstate = (u32) gGraphicsTransferCounter.substate2;
-        gUnknown_0300137C = (u32) gGraphicsTransferCounter.state4;
+        gNestedCallbackIndex = (u32) gGraphicsTransferCounter.state4;
         *(volatile u16 *)0x04000000 &= 0xFBFF;
         *(volatile u16 *)0x04000200 &= 0xFFFD;
         *(volatile u16 *)0x04000004 &= 0xFFEF;

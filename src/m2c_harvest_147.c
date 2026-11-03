@@ -108,7 +108,7 @@ void sub_080657C4(void) {
         }
         gState0TypedWork.bytes[0x84] = 0;
         gState0TypedWork.bytes[0x1B] = 0;
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
         (*(u8 *)((u8 *)(&gMainFlagsWord_03001784) + 0)) |= 2;
         return;
     }
@@ -154,7 +154,7 @@ block_25:
             }
         } else {
             (*(u32 *)((u8 *)(gMainContextPointer_03006F74) + 8)) = 0U;
-            gUnknown_0300137C += 2;
+            gNestedCallbackIndex += 2;
         }
 block_28:
         sub_0803FB0C();
@@ -180,7 +180,7 @@ block_28:
             }
             PlayMusic((u32) (*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x7F)));
             (*(u32 *)((u8 *)(gMainContextPointer_03006F74) + 8)) = (u32) var_r5;
-            gUnknown_0300137C += 3;
+            gNestedCallbackIndex += 3;
             sub_0803FB0C();
             sub_080020C8();
         }

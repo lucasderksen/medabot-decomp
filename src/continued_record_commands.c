@@ -37,7 +37,7 @@ void sub_0804BB14(void)
     ReadBankedScriptArgs(4);
     gContinuedByte_03002B64 = 0;
     buffer = gContinuedRecordBuffer_030063F0;
-    sub_080497C0(buffer, buffer + 16, 8);
+    CopyBytes2(buffer, buffer + 16, 8);
     ClearBytes(buffer, 8);
     objects = gFrameObjects;
     objects[47].unknown23[5] = 0;
@@ -60,8 +60,8 @@ void sub_0804BC6C(void)
     *flags &= 0x7F;
     if ((s8)(work[*selection * 8 + 0x5E0] * 2) < 0)
     {
-        sub_08048888((u8)(((struct RecordFlagsByte *)(work + *selection * 8 + 0x5E0))->slot + 49));
-        sub_08048888((u8)(((struct RecordFlagsByte *)(work + *selection * 8 + 0x5E0))->slot + 91));
+        ResetFrameObjectSlot((u8)(((struct RecordFlagsByte *)(work + *selection * 8 + 0x5E0))->slot + 49));
+        ResetFrameObjectSlot((u8)(((struct RecordFlagsByte *)(work + *selection * 8 + 0x5E0))->slot + 91));
     }
 }
 

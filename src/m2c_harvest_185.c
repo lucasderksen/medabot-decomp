@@ -60,7 +60,7 @@ void sub_080264E4(void) {
 void sub_0805FC94(void) {
  u32 fill=0;
  CpuFastSet(&fill,(void *)0x06000000,0x01006000U);
- sub_08059E50();sub_080415BC();
+ sub_08059E50();ClearBgScrolls();
  *(volatile u16 *)0x04000040=0xF0;
  *(volatile u16 *)0x04000044=0x80;
  *(volatile u16 *)0x04000048=0x3F3F;
@@ -69,5 +69,5 @@ void sub_0805FC94(void) {
  *(volatile u16 *)0x04000050=0x2BF;
  PlayMusic(0x12U);
  *(volatile u16 *)0x04000054=0x10;
- gUnknown_0300137C++;
+ gNestedCallbackIndex++;
 }

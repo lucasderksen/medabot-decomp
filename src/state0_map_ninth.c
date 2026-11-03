@@ -16,7 +16,7 @@ void sub_08011344(void)
     u8 *state;
     u8 *identifier;
     ClearFrameObjects(0, 128);
-    sub_08043CA8();
+    ClearBgScrolls2();
     FillTilemapRect(32, 32, 0, 0, *(volatile u16 *)0x04000008, 0);
     FillTilemapRect(32, 32, 0, 0, *(volatile u16 *)0x0400000A, 0);
     FillTilemapRect(32, 32, 0, 0, *(volatile u16 *)0x0400000C, 0);
@@ -85,7 +85,7 @@ void sub_08011500(void)
     u8 *work;
     PlayMusic(1);
     ClearFrameObjects(0, 128);
-    sub_08043CA8();
+    ClearBgScrolls2();
     FillTilemapRect(32, 32, 0, 0, *(volatile u16 *)0x04000008, 0);
     FillTilemapRect(32, 32, 0, 0, *(volatile u16 *)0x0400000A, 0);
     FillTilemapRect(32, 32, 0, 0, *(volatile u16 *)0x0400000C, 0);
@@ -106,7 +106,7 @@ void sub_080115B4(void)
     sub_08012468();
     SnapshotPalettes();
     gUnknown_03000440[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_080115E8(void)
@@ -122,7 +122,7 @@ void sub_080115E8(void)
         gUnknown_03000440[0x84]++;
     }
     else
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_08011644(void)
@@ -142,5 +142,5 @@ void sub_08011644(void)
     (void)dma[2];
     StartBlendFade(5, 0x3F, 32);
     gUnknownCallback_030017F0 = DummyInterruptHandler;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

@@ -83,7 +83,7 @@ void sub_08022990(void) {
     u8 *work0;
     work0 = (u8 *) &gState0NextCommands_083B6100;
     RunFrameObjectCommands((*(u8 **)((u8 *)(work0) + 0xF8)), 0x21U);
-    if (sub_080355F0(0x21U) != 0) {
+    if (StepFrameObjectToTarget(0x21U) != 0) {
         gState0TransferWork.bytes[0xAA] += 1;
     }
 }
@@ -238,8 +238,8 @@ void sub_0806BC94(void) {
     if (sub_0806C88C() != 0) {
         work0 = (u8 *) &gBackgroundState_03005310;
         (*(s8 *)((u8 *)(work0) + 0x39)) = 1;
-        sub_080750F0(0x30U);
-        gUnknown_0300137C = 8;
+        FadeOutMusic(0x30U);
+        gNestedCallbackIndex = 8;
     }
 }
 
@@ -251,8 +251,8 @@ void sub_0806BCC4(void) {
     if (sub_0806C958() != 0) {
         work0 = (u8 *) &gBackgroundState_03005310;
         (*(s8 *)((u8 *)(work0) + 0x39)) = 2;
-        sub_080750F0(0x30U);
-        gUnknown_0300137C = 8;
+        FadeOutMusic(0x30U);
+        gNestedCallbackIndex = 8;
     }
 }
 

@@ -98,8 +98,8 @@ NONMATCH("asm/non_matching/sub_08059960.inc", void sub_08059960(void))
     SetupNavigationObject(0x36, -16, -16, 0x3f, 0x19);
     SetupNavigationObject(0x37, 16, -16, 0x4e, 0x1e);
     SetupNavigationObject(0x38, 48, -16, 0x5d, 0x23);
-    sub_08048888(0x39);
-    sub_08048888(0x63);
+    ResetFrameObjectSlot(0x39);
+    ResetFrameObjectSlot(0x63);
     obj = &gFrameObjects[0x39];
     obj->value30 = gNavigationWork9960.half20;
     if (gCopiedBytes_083D2DBD[gNavigationWork9960.half20] == 3)

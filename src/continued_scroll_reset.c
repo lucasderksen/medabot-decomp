@@ -29,7 +29,7 @@ void sub_0804F5DC(void)
     source = gRecordByteTables_08404334[buffer[-18]];
     rows = *(u16 *)(buffer - 14) / 2;
     columns = *(u16 *)(buffer - 16) / 2;
-    sub_080497C0(source, buffer, rows * columns);
+    CopyBytes2(source, buffer, rows * columns);
     buffer += 0x4AA;
     value = 1;
     *buffer = value;

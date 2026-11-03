@@ -15,7 +15,7 @@ void sub_08011078(void)
     if (*selected == 3)
     {
         *selected = 0;
-        gUnknown_0300137C = 71;
+        gNestedCallbackIndex = 71;
     }
     else
     {
@@ -33,7 +33,7 @@ void sub_08011078(void)
                 CopyBytes(names[identifier], gDebugMenuTextBuffer, 11);
             }
             PlayMusic(16);
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
         else
             (*selected)++;
@@ -45,7 +45,7 @@ void sub_080110FC(void)
     sub_08012098();
     StepFirstBgAutoScroll();
     if (RunDialogue(gState0FixedMessages_083C6744[119]))
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_0801112C(void)
@@ -53,7 +53,7 @@ void sub_0801112C(void)
     sub_08012098();
     StepFirstBgAutoScroll();
     gState0TransferWork.bytes[0x186]++;
-    gUnknown_0300137C = 67;
+    gNestedCallbackIndex = 67;
 }
 
 void sub_08011158(void)
@@ -67,7 +67,7 @@ void sub_08011158(void)
     if (*selected == 3)
     {
         *selected = 0;
-        gUnknown_0300137C = 75;
+        gNestedCallbackIndex = 75;
     }
     else
     {
@@ -99,7 +99,7 @@ void sub_08011158(void)
                 CopyBytes(names[parts[scaled]], buffer + 20, 17);
             }
             PlayMusic(16);
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
         else
             (*selected)++;
@@ -111,7 +111,7 @@ void sub_0801120C(void)
     sub_08012098();
     StepFirstBgAutoScroll();
     if (RunDialogue(gState0FixedMessages_083C6744[120]))
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_0801123C(void)
@@ -119,5 +119,5 @@ void sub_0801123C(void)
     sub_08012098();
     StepFirstBgAutoScroll();
     gState0TransferWork.bytes[0x186]++;
-    gUnknown_0300137C = 71;
+    gNestedCallbackIndex = 71;
 }

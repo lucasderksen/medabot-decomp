@@ -36,9 +36,9 @@ void sub_080517F0(void)
     { u8 value = work[0xC5C]; work[0xC28] = value; }
     sub_0805330C();
     x = (u16 *)(work + 0xC52);
-    work[0xC56] = sub_0805273C(*x);
+    work[0xC56] = ConvertXToCellColumn(*x);
     y = (u16 *)(work + 0xC54);
-    work[0xC57] = sub_08052760(*y);
+    work[0xC57] = ConvertYToCellRow(*y);
     flags = 0xC804;
     enabled = 1;
     InitFrameObject(47, flags, 3, 0, enabled);

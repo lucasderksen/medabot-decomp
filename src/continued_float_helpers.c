@@ -20,7 +20,7 @@ float sub_08053380(float value)
     return 1.0f;
 }
 
-float sub_080533A4(float value)
+float AbsFloat(float value)
 {
     if (value < 0.0f)
         value *= -1.0f;

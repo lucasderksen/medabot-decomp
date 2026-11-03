@@ -67,7 +67,7 @@ void sub_08045084(const void *source, s32 shape, s32 size, s32 rows, s32 columns
     tile = (u16)tile;
     if (source != 0)
     {
-        u32 bytes = sub_08044D0C(source, scratch);
+        u32 bytes = DecompressLz77OrCopy(source, scratch);
         u8 *reordered = (u8 *)scratch + bytes;
         sub_08044FB4(reordered, scratch, shape, size, rows, columns, mode);
         if (useCpu != 0)

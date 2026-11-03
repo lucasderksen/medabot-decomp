@@ -32,7 +32,7 @@ void sub_080645A0(void) {
     if (RunDialogue(*(const void *const *)((const u8 *)scripts+var_r1)) != 0) {
         gMainSerialOutgoingWork.word06 = 0xFEFF;
         if ((gMainSerialOutgoingWork.words[0][1] == 0xFEFF) && (gMainSerialOutgoingWork.words[1][1] == gMainSerialOutgoingWork.words[0][1])) {
-            gUnknown_0300137C += 1;
+            gNestedCallbackIndex += 1;
             sub_080656DC((u8 *)gMainContextPointer_03006F74 + 0x50, 0U, 0U, 1U, 0xC0U);
         }
     }

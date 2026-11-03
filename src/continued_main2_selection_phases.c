@@ -26,7 +26,7 @@ void sub_0805CED0(void)
     else
     {
         sub_0803FAA0(1, 2, 0);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -46,5 +46,5 @@ void sub_0805CF58(void)
     else
         identifier = 63;
     if (RunDialogue(gMain2Scripts_08484C60[identifier]))
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }

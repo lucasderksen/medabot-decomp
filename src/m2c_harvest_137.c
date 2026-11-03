@@ -17,7 +17,7 @@ extern const u8 *const gState0NextCommands_083B6100[];
 extern const void *const gUnknown_083CEDF4[];
 extern void sub_0801BFB4(const void *, u32);
 extern void RunFrameObjectCommands(const u8 *, u8);
-extern void sub_0804422C(u32);
+extern void ApplyObjectMotionStep(u32);
 
 void sub_0803C738(void);
 
@@ -57,5 +57,5 @@ void sub_0803C738(void) {
         temp_r0_2->byte2B = temp_r0_3 - 1;
         return;
     }
-    sub_0804422C((u32)*secondSelected);
+    ApplyObjectMotionStep((u32)*secondSelected);
 }

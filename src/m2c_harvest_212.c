@@ -26,7 +26,7 @@ extern const u8 *const gState0NextScripts_083BE564[];
 extern const u8 *const gState0NextScripts_083BEAAC[];
 extern const u8 gUnknown_083AD524[12];
 extern u8 gUnknown_030018A8[0xC0];
-extern void sub_0804422C(u32);
+extern void ApplyObjectMotionStep(u32);
 
 void sub_0800E350(void);
 u32 sub_0801827C(void);
@@ -36,10 +36,10 @@ void sub_0803C5F8(void);
 
 void sub_0800E350(void) {
  const u8 *script;
- sub_0800EBFC();sub_0800F440();sub_0800FD74();
+ ScrollBg3Diagonally3();sub_0800F440();sub_0800FD74();
  if(gState0TypedWork.bytes[0x3E]<=2)script=gState0NextScripts_083BE564[sub_0800F6CC()];
  else script=gState0NextScripts_083BEAAC[sub_0800F6CC()];
- if(RunDialogue(script))gUnknown_0300137C++;
+ if(RunDialogue(script))gNestedCallbackIndex++;
 }
 
 u32 sub_0801827C(void) {
@@ -131,6 +131,6 @@ void sub_0803C5F8(void) {
         temp_r0_2->byte2B = temp_r0_3 - 1;
         return;
     }
-    sub_0804422C((u32) gState0TypedWork.bytes[0x12F]);
+    ApplyObjectMotionStep((u32) gState0TypedWork.bytes[0x12F]);
     }
 }

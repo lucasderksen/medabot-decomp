@@ -31,7 +31,7 @@ void sub_08044CDC(u32 mode)
     }
 }
 
-u32 sub_08044D0C(const void *source, void *destination)
+u32 DecompressLz77OrCopy(const void *source, void *destination)
 {
     u32 header = *(const u32 *)source;
     u32 bytes = header >> 8;
@@ -123,7 +123,7 @@ void sub_08044F54(const void *source, u32 tile, void *scratch, u32 useCpu)
     tile = (u16)tile;
     if (source != 0)
     {
-        u32 bytes = sub_08044D0C(source, scratch);
+        u32 bytes = DecompressLz77OrCopy(source, scratch);
         if (useCpu != 0)
             CpuSet(scratch, (u8 *)0x06010000 + tile * 32, (bytes & 0x7FFFFF) / 4 | CPU_SET_32BIT);
         else
@@ -326,7 +326,7 @@ void sub_08046034(const struct RecordAssetSet *const *sets, struct RecordTileBlo
             u32 command = *commands;
             if (selector == (command << 26 >> 26))
             {
-                s32 bytes = sub_08044D0C(set->entries[command << 18 >> 24].source, (void *)0x02030800);
+                s32 bytes = DecompressLz77OrCopy(set->entries[command << 18 >> 24].source, (void *)0x02030800);
                 if (bytes != 0)
                     CpuSet((void *)0x02030800, (u8 *)0x06010000 + (((u32)record->tile << 22) >> 17), (bytes / 2) & 0x1FFFFF);
                 return;

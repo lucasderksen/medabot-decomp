@@ -106,7 +106,7 @@ finish:
     return start;
 }
 
-void sub_08041370(u8 *output, u32 value)
+void FormatDecimalString(u8 *output, u32 value)
 {
     u8 digits[6];
     volatile u32 remainder;

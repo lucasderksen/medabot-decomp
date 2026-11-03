@@ -194,15 +194,15 @@ void sub_08033840(void) {
         do {
             gUnknown_03001800.again = 0U;
             temp_r0 = sub_08034E94();
-            gUnknown_0300137C = temp_r0;
+            gNestedCallbackIndex = temp_r0;
             if ((s32) temp_r0 > 0x7F) {
                 do {
                     AdvanceActionByteScript();
                     temp_r0_2 = sub_08034E94();
-                    gUnknown_0300137C = temp_r0_2;
+                    gNestedCallbackIndex = temp_r0_2;
                 } while ((s32) temp_r0_2 > 0x7F);
             }
-            gUnknown_083AF180[gUnknown_0300137C]();
+            gUnknown_083AF180[gNestedCallbackIndex]();
         } while (gUnknown_03001800.again != 0);
     }
 }
@@ -234,7 +234,7 @@ void sub_0806E3C4(void) {
  struct ScriptWork6E3C4 *work = &gScriptWork6E3C4;
  if (RunDialogue(table[work->selection]) != 0) {
   work->mode = 5;
-  gUnknown_0300137C = 2;
+  gNestedCallbackIndex = 2;
  }
 }
 

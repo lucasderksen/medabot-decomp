@@ -83,5 +83,5 @@ void sub_0806F114(void) {
     sub_08068460(2, 4, 0);
     *(volatile u16 *)0x04000000 |= 0x1000;
     gGraphicsTransferCounter.phase4 = 0xF;
-    gUnknown_0300137C = 1;
+    gNestedCallbackIndex = 1;
 }

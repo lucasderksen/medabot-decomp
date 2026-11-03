@@ -79,7 +79,7 @@ void sub_08009540(void)
         }
         else
         {
-            sub_08042678(&gState0TypedWork.bytes[0x9E], 9);
+            FillTextWithHyphens(&gState0TypedWork.bytes[0x9E], 9);
             PlaceAlignedTextObjects(&gState0TypedWork.bytes[0x9E], (u8)(position * 10 + 10), 6, position * 2 + 4, 7, 8, 1, 2);
         }
     }
@@ -136,7 +136,7 @@ void sub_080096BC(void)
     }
     else
     {
-        sub_08042678(&work[0x9E], 10);
+        FillTextWithHyphens(&work[0x9E], 10);
         PlaceAlignedTextObjects(&work[0x9E], 70, 19, 3, 10, 9, owned, 2);
     }
 }
@@ -182,19 +182,19 @@ void sub_080097E0(void)
         if (record->byte5 != 100)
         {
             buffer = &work[0x9E];
-            sub_08041370(buffer, *(u16 *)&record->unknown02[0]);
+            FormatDecimalString(buffer, *(u16 *)&record->unknown02[0]);
         }
         else
         {
             buffer = &work[0x9E];
-            sub_08042678(buffer, 5);
+            FillTextWithHyphens(buffer, 5);
         }
         PlaceAlignedTextObjects(buffer, 80, 19, 17, 6, 10, 2, 2);
     }
     else
     {
         buffer = &work[0x9E];
-        sub_08042678(buffer, 5);
+        FillTextWithHyphens(buffer, 5);
         PlaceAlignedTextObjects(buffer, 80, 19, 17, 6, 10, 2, 2);
     }
 }
@@ -435,7 +435,7 @@ void sub_08009DA0(void)
         struct State0Record8 *entry = &entries[record];
         if (entry->byte6 <= 119)
         {
-            sub_08042B58(entry->byte6, 3, &work[0x10E]);
+            CopyPartMetadataSlot(entry->byte6, 3, &work[0x10E]);
             sub_080435B0(work[0x10F] - 100, 27, 17, *(volatile u16 *)0x0400000A, 0x83A0);
         }
         else sub_080435B0(255, 27, 17, *(volatile u16 *)0x0400000A, 0x83A0);

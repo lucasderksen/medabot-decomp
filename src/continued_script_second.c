@@ -42,7 +42,7 @@ void sub_0804D094(void)
     ReadBankedScriptArgs(2);
     work = gUnknown_030057E0;
     {
-        s32 value = sub_0804DBF0(work[0xC94]);
+        s32 value = GetScriptObjectSlot(work[0xC94]);
         action = gLaterBuffer_03006D20;
         value += 79;
         zero = 0;

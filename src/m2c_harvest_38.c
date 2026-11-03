@@ -26,7 +26,7 @@ void sub_08065790(void);
 
 void sub_0803D71C(void) {
     gState0TransferWork.bytes[0x38] = gUnknown_083AFDF8[NextRandomByte() & 0x1F];
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_0803E83C(void) {
@@ -51,5 +51,5 @@ void sub_08065790(void) {
     *field = value;
     sub_0803FAA0(1U, 0U, 0U);
     (*(s32 *)((u8 *)(gMainContextPointer_03006F74) + 8)) = zero;
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }

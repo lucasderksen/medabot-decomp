@@ -178,7 +178,7 @@ selection:
                 {
                 case 0:
                     CONTEXT[0] = 0;
-                    gUnknown_0300137C = 11;
+                    gNestedCallbackIndex = 11;
                     return;
                 case 1:
                     COMMAND_WORK->byteC5C = 3;
@@ -206,7 +206,7 @@ selection:
                     return;
                 }
                 gUnknown_03000440[0x84] = 0;
-                gUnknown_0300137C = 13;
+                gNestedCallbackIndex = 13;
                 return;
             case 2:
             case 3:
@@ -215,7 +215,7 @@ selection:
                 PlaySoundEffect(6);
                 gFrameObjects[81].flags &= 0xBFFF;
                 gFrameObjects[82].flags &= 0xBFFF;
-                gUnknown_0300137C = 9;
+                gNestedCallbackIndex = 9;
                 return;
             case 0:
                 PlaySoundEffect(6);
@@ -231,13 +231,13 @@ leave:
         PlaySoundEffect(5);
         SnapshotPalettes();
         gUnknown_03000440[0x84] = 0;
-        gUnknown_0300137C = 7;
+        gNestedCallbackIndex = 7;
     }
     return;
 changed:
     PlaySoundEffect(2);
     sub_0803FB0C();
     sub_0805B0B0(&gFrameObjects[83]);
-    gUnknown_0300137C = 4;
+    gNestedCallbackIndex = 4;
     sub_0805CB90(gFrameCounter);
 }

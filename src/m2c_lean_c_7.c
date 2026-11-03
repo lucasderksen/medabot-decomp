@@ -63,8 +63,8 @@ void sub_0804FC7C(void) {
     ((struct FixedPoint24 *)(objects + 0xC0C))->whole = value;
     value = *(u16 *)(work + 0xC70);
     ((struct FixedPoint24 *)(objects + 0xC10))->whole = value;
-    sub_080497C0(objects + 0xC00, &gFrameObjects[work[0xC94] + 0x4F], 0x40);
+    CopyBytes2(objects + 0xC00, &gFrameObjects[work[0xC94] + 0x4F], 0x40);
     gLaterEntries55A0[work[0xC94] + 0x4F].first = 0xFFFF;
-    sub_080497C0(objects + 0x1680, &gFrameObjects[work[0xC94] + 0x79], 0x40);
+    CopyBytes2(objects + 0x1680, &gFrameObjects[work[0xC94] + 0x79], 0x40);
     sub_08050290();
 }

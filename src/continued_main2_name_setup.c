@@ -111,5 +111,5 @@ void sub_0805E718(void)
     CpuFastSet(gMain2NameTransfer_080AF988, (void *)0x0202F800, 8);
     CpuFastSet(gMain2NameTransfer_0879461C, (void *)0x0202FA00, 128);
     NAME_PHASE->byte84 = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

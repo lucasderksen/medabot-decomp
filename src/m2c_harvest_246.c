@@ -175,7 +175,7 @@ void sub_0802A440(void) {
             u32 index;
             struct FrameObject *frame;
             selectedCount++;index=i+0x23;frame=(struct FrameObject *)(offset+(u32)frames);frame->angle=(frame->angle+0x20)&0x3FF;
-            if(sub_080355F0(index))completed++;
+            if(StepFrameObjectToTarget(index))completed++;
         }
         offset+=0x40;i++;
     }while(i<=2);
@@ -184,7 +184,7 @@ void sub_0802A440(void) {
 
 void sub_08030860(void) {
 
- if(sub_0803EED8()==0) {sub_0803E780();sub_080195C0();gUnknown_083AECD8[gUnknown_0300137C]();}
+ if(sub_0803EED8()==0) {sub_0803E780();sub_080195C0();gUnknown_083AECD8[gNestedCallbackIndex]();}
 }
 
 void sub_08031A70(void) {
@@ -242,9 +242,9 @@ void LoadActionHalfwordScriptParams(void) {
 void sub_0803D538(void) {
 
  u32 fill;
- if ((u32)(gUnknown_0300137C-16u)<=15u || sub_0803EED8()==0) {
+ if ((u32)(gNestedCallbackIndex-16u)<=15u || sub_0803EED8()==0) {
   if (gRenderMode==2) {fill=0x200;CpuFastSet(&fill,gRenderWork->objects,0x01000100u);}
-  sub_0803E780();gUnknown_083AFC78[gUnknown_0300137C]();
+  sub_0803E780();gUnknown_083AFC78[gNestedCallbackIndex]();
  }
 }
 
@@ -260,13 +260,13 @@ void sub_0806F934(void) {
   sub_08070464();
   sub_08068460(4,4,0x7FFF);
   *brightness=0;
-  work->previous=(u16)gUnknown_0300137C;
-  gUnknown_0300137C=1;
+  work->previous=(u16)gNestedCallbackIndex;
+  gNestedCallbackIndex=1;
  } else if(threshold<work->counter) {
   work->counter=0;
   work->previous=0x12;
   sub_08068684(4,4,0);
-  gUnknown_0300137C=2;
+  gNestedCallbackIndex=2;
   return;
  }
  gWaitWork6F934.counter=(s32)((u32)gWaitWork6F934.counter+1);

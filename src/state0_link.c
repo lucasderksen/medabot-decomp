@@ -5,29 +5,29 @@
 #include "render_work.h"
 #include "serial.h"
 
-extern void sub_08004E74(void);
+extern void ScrollBg3Diagonally2(void);
 extern void sub_08005000(void);
 extern void sub_080054C0(void);
 extern void sub_08007480(void);
-extern void sub_08042B58(u32, u32, void *);
+extern void CopyPartMetadataSlot(u32, u32, void *);
 extern u32 sub_0803E79C(void);
 extern const void *const gUnknownPointers_083CF530[];
 
 
 #define ENTRY_LINK_WORK() do { \
-    sub_08004E74(); \
+    ScrollBg3Diagonally2(); \
     sub_080054C0(); \
     sub_08007480(); \
 } while (0)
 
 void sub_08004764(void)
 {
-    sub_08004E74();
+    ScrollBg3Diagonally2();
     sub_08005000();
     sub_080054C0();
     HideFrameObjects(0, 4);
     gState0TypedWork.widths.word5C = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08004798(void)
@@ -36,12 +36,12 @@ void sub_08004798(void)
     if (gState0TypedWork.widths.word5C > 60)
     {
         if (gState0TypedWork.bytes[0x50] == 1)
-            gUnknown_0300137C = 48;
+            gNestedCallbackIndex = 48;
         else
         {
             SnapshotPalettes();
             gState0TypedWork.bytes[0x84] = 0;
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
     }
 }
@@ -56,7 +56,7 @@ void sub_080047EC(void)
         gState0TypedWork.bytes[0x84]++;
     }
     else
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_08004840(void)
@@ -65,7 +65,7 @@ void sub_08004840(void)
     gState0TypedWork.bytes[0x96] = 0;
     gRenderMode = 0;
     gMainSubstate = 7;
-    gUnknown_0300137C = 0;
+    gNestedCallbackIndex = 0;
 }
 
 void sub_08004874(void)
@@ -73,9 +73,9 @@ void sub_08004874(void)
     ENTRY_LINK_WORK();
     if (gState0TypedWork.widths.word5C > 60)
     {
-        sub_080750F0(8);
+        FadeOutMusic(8);
         StartBlendFade(6, 63, 8);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -83,7 +83,7 @@ void sub_080048B0(void)
 {
     ENTRY_LINK_WORK();
     if (StepBlendFade())
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_080048D8(void)
@@ -94,7 +94,7 @@ void sub_080048D8(void)
     gRenderMode = 0;
     for (i = 0; i <= 2; i++)
     {
-        sub_08042B58(gUnknownRecords_030017A0[gState0TransferWork.indexed.selected[i] & 15].byte6, 3, &gState0TypedWork.bytes[0xEE]);
+        CopyPartMetadataSlot(gUnknownRecords_030017A0[gState0TransferWork.indexed.selected[i] & 15].byte6, 3, &gState0TypedWork.bytes[0xEE]);
         gState0TransferWork.indexed.results[i] = gState0TypedWork.bytes[0xEF] - 100;
         gState0TransferWork.indexed.records[i].byte0 = gUnknownRecords_030017A0[gState0TransferWork.indexed.selected[i] & 15].byte3;
         gState0TransferWork.indexed.records[i].byte1 = gUnknownRecords_030017A0[gState0TransferWork.indexed.selected[i] & 15].byte4;
@@ -103,50 +103,50 @@ void sub_080048D8(void)
     }
     gMainState = 3;
     gMainSubstate = 4;
-    gUnknown_0300137C = 5;
+    gNestedCallbackIndex = 5;
 }
 
 void sub_080049C8(void)
 {
-    sub_08004E74();
+    ScrollBg3Diagonally2();
     sub_080054C0();
     sub_0803FAA0(1, 0, 0);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_080049EC(void)
 {
-    sub_08004E74();
+    ScrollBg3Diagonally2();
     sub_080054C0();
     if (RunDialogue(gUnknownPointers_083CF530[11]))
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_08004A18(void)
 {
-    sub_08004E74();
+    ScrollBg3Diagonally2();
     sub_080054C0();
     sub_08014E7C();
     sub_08014E94();
     sub_08014EC8();
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08004A40(void)
 {
-    sub_08004E74();
+    ScrollBg3Diagonally2();
     sub_080054C0();
     if (sub_0803E79C())
     {
         gMainSerialOutgoingWork.word06 = 0;
         gState0TypedWork.widths.word86 = 0;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
 void sub_08004A78(void)
 {
-    sub_08004E74();
+    ScrollBg3Diagonally2();
     sub_080054C0();
     if (gState0TypedWork.widths.word86 == 24)
     {
@@ -161,7 +161,7 @@ void sub_08004A78(void)
         gState0TransferWork.bytes[0x1AF] = 0;
         gState0TransferWork.bytes[0x1B0] = 1;
         gState0TypedWork.widths.word86 = 0;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     else
         (gState0TypedWork.widths.word86)++;

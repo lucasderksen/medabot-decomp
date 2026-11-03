@@ -111,7 +111,7 @@ void sub_08062484(void) {
         *(volatile u16 *)0x0400000A = 0x1E05;
         *(volatile u16 *)0x0400000C = 0x1D06;
         gMainSubstate = 0xB;
-        gUnknown_0300137C=1;
+        gNestedCallbackIndex=1;
     }
 
 }

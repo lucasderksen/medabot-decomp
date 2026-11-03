@@ -56,20 +56,20 @@ void sub_08061338(void) {
         switch (gMenuContext61338->cursor05) {
         case 0:
             gMenuContext61338->value02 = 0;
-            gUnknown_0300137C = 8;
+            gNestedCallbackIndex = 8;
             gMenuContext61338->flag06 = 0;
             sub_08060BE4(0, 0);
             break;
         case 1:
             gMenuContext61338->value02 = 0;
-            gUnknown_0300137C = 8;
+            gNestedCallbackIndex = 8;
             gMenuContext61338->flag06 = 0;
             sub_08060BE4(0, 0);
             break;
         case 2:
         cancel:
             gState0TypedWork.bytes[0x84] = 0;
-            gUnknown_0300137C = 6;
+            gNestedCallbackIndex = 6;
             break;
         }
     } else if (2 & gFamilyKeyBytes49558_0300058C) {

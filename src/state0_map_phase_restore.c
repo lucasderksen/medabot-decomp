@@ -25,9 +25,9 @@ void sub_08013824(void)
     }
     work[5] = 1;
     work[6] = 2;
-    sub_08043CA8();
+    ClearBgScrolls2();
     gMainSubstate = 4;
-    gUnknown_0300137C = 40;
+    gNestedCallbackIndex = 40;
 }
 
 void sub_0801387C(void)
@@ -42,7 +42,7 @@ void sub_0801387C(void)
         u32 zero = 0;
         *cleared = zero;
         gRenderMode = zero;
-        sub_08043CA8();
+        ClearBgScrolls2();
         sub_08043E54();
         *(volatile u16 *)0x04000000 &= 0xF0FF;
         *(volatile u16 *)0x04000008 = 0x500;
@@ -83,7 +83,7 @@ void sub_0801387C(void)
     case 5:
         CpuFastSet((void *)0x02028000, (void *)0x03002C30, 0x800);
         gUnknownCallback_030017F0 = sub_08044100;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
         gUnknown_03000440[0x139] = 0;
         break;
     }

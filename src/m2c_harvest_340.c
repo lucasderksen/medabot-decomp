@@ -24,7 +24,7 @@ void sub_08024538(void) {
     /* Four frame copies use the transfer bank byte and whole frame-array root. */
     u32 count = 0;
     do {
-        sub_0804422C(count+0x26);
+        ApplyObjectMotionStep(count+0x26);
         count++;
     } while (count <= 3);
     if (gState0TypedWork.bytes[0x84] == 0x10) {

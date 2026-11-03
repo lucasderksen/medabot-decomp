@@ -49,7 +49,7 @@ void sub_0806E7EC(void) {
     LZ77UnCompVram(gCompressed6E7EC_087F39EC, (void *)0x06008000);
     LZ77UnCompVram(gCompressed6E7EC_087F4264, &packedTiles[0]);
     row = 0;
-    sceneState = &gUnknown_0300137C;
+    sceneState = &gNestedCallbackIndex;
     paletteAddress = (u32)&gBackgroundPalette_087F4444;
     workRoot = &gState0TransferWork;
     zeroBase = expandedTiles;

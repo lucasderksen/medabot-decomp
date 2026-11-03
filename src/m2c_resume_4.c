@@ -11,9 +11,9 @@
 
 extern void sub_0807495C(void *channel);
 
-void sub_08074A8C(u32 song, u32 parameter);
+void StartMusicTracks(u32 song, u32 parameter);
 
-void sub_08074A8C(u32 song, u32 parameter) {
+void StartMusicTracks(u32 song, u32 parameter) {
 
     struct SoundRootState *root;
     const struct SoundSongHeader *header;

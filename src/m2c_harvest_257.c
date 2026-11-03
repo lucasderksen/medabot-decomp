@@ -80,7 +80,7 @@ void sub_0806050C(void) {
         *(volatile u16 *)0x04000200 = (u16) (temp_r5 | *(volatile u16 *)0x04000200);
         gMainState = 3;
         gMainSubstate = 2;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         gMain2Byte_03007008 = 1;
     }
 }

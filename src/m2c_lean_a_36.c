@@ -163,7 +163,7 @@ void sub_08008CA0(void) {
     }
     if (result != 0) {
         sub_0803FB0C();
-        gUnknown_0300137C = 0x49;
+        gNestedCallbackIndex = 0x49;
     }
 }
 
@@ -171,7 +171,7 @@ void sub_0800E78C(void) {
 
     u8 result;
 
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800F440();
     switch (gState0TypedWork.bytes[0x3E]) {
     case 0:
@@ -259,7 +259,7 @@ void sub_0800E78C(void) {
     }
     if (result != 0) {
         sub_0803FB0C();
-        gUnknown_0300137C = 0x21;
+        gNestedCallbackIndex = 0x21;
     }
 }
 
@@ -272,7 +272,7 @@ void sub_080173B4(u32 value) {
     HideFrameObjects(0x24, 0xD);
     switch (gCounter6ED08_03001800.buffer64[0x1E]) {
     case 0:
-        sub_08042678(gDebugMenuTextBuffer, 0xD);
+        FillTextWithHyphens(gDebugMenuTextBuffer, 0xD);
         cleared = 1;
         break;
     case 1:

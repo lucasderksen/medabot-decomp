@@ -41,7 +41,7 @@ void sub_080618B4(void) {
     }
     ctx = &gMainContextPointer_03006F74;
     substate = &gMainSubstate;
-    state = &gUnknown_0300137C;
+    state = &gNestedCallbackIndex;
     objs = gFrameObjects;
     mask = 0xBFFF;
     var_r2 = objs + 12;

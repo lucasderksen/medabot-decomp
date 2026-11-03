@@ -9,12 +9,12 @@
 
 void sub_08003374(void)
 {
-    gUnknownCallbacks_083AC454[gUnknown_0300137C]();
+    gUnknownCallbacks_083AC454[gNestedCallbackIndex]();
 }
 
 void sub_08003394(void)
 {
-    sub_080415BC();
+    ClearBgScrolls();
     *(volatile u16 *)0x04000000 &= 0xF1FF;
     *(volatile u16 *)0x0400000A = 0x1805;
     *(volatile u16 *)0x0400000C = 0x1906;
@@ -34,7 +34,7 @@ void sub_08003394(void)
     CopyTilemapRect(4, 4, 5, 9, gUnknownPointers_083B4C60[72], *(volatile u16 *)0x0400000A, 0);
     *(volatile u16 *)0x04000000 |= 0x1F60;
     gUnknown_03000440[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_080034A4(void)
@@ -49,7 +49,7 @@ void sub_080034A4(void)
     else
     {
         sub_0800393C();
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -84,7 +84,7 @@ void sub_08003504(void)
     if (*pressed & KEY_B)
     {
         PlaySoundEffect(5);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     if (*pressed & KEY_A)
     {
@@ -92,7 +92,7 @@ void sub_08003504(void)
         InitFrameObjectCommands(gUnknownPointers_083B6100[1], 0);
         StartBlendFade(6, 63, 32);
         gUnknown_03000440[0x84] = 0;
-        gUnknown_0300137C = 8;
+        gNestedCallbackIndex = 8;
     }
 }
 
@@ -102,8 +102,8 @@ void sub_08003620(void)
     ClearFrameObjects(0, 1);
     SnapshotPalettes();
     gUnknown_03000440[0x84] = 0;
-    sub_080750F0(8);
-    gUnknown_0300137C++;
+    FadeOutMusic(8);
+    gNestedCallbackIndex++;
 }
 
 void sub_08003654(void)
@@ -116,14 +116,14 @@ void sub_08003654(void)
         gUnknown_03000440[0x84]++;
     }
     else
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_080036A8(void)
 {
     PlayMusic(6);
     gMainSubstate = 1;
-    gUnknown_0300137C = 16;
+    gNestedCallbackIndex = 16;
 }
 
 void sub_080036C8(void)
@@ -131,7 +131,7 @@ void sub_080036C8(void)
     sub_080039BC();
     RunFrameObjectCommands(gUnknownPointers_083B6100[1], 0);
     if (StepBlendFade())
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_080036F4(void)
@@ -146,17 +146,17 @@ void sub_080036F4(void)
     case 0:
         FillBytes(gUnknown_03000440 + 0x50, 20, 0);
         gMainSubstate = 3;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     case 1:
         FillBytes(gUnknown_03000440 + 0x3C, 20, 0);
         gMainSubstate = 4;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     default:
         FillBytes(gUnknown_03000440 + 0x3C, 20, 0);
         gMainSubstate = 5;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
 }
@@ -164,7 +164,7 @@ void sub_080036F4(void)
 void sub_08003784(void)
 {
     volatile u32 *dma;
-    sub_080415BC();
+    ClearBgScrolls();
     *(volatile u16 *)0x04000000 &= 0xF0FF;
     *(volatile u16 *)0x0400000A = 0x0500;
     *(volatile u16 *)0x0400000A = 0x1805;
@@ -188,7 +188,7 @@ void sub_08003784(void)
     *(volatile u16 *)0x04000000 |= 0x1F60;
     StartBlendFade(5, 63, 32);
     gUnknown_03000440[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_080038CC(void)
@@ -197,14 +197,14 @@ void sub_080038CC(void)
     if (StepBlendFade())
     {
         sub_0800393C();
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
 void sub_080038F0(void)
 {
     sub_080039BC();
-    gUnknown_0300137C = 2;
+    gNestedCallbackIndex = 2;
 }
 
 void sub_08003904(void)

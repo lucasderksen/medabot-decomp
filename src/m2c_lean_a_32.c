@@ -118,7 +118,7 @@ void sub_0801FBC4(void) {
     case 0:
         gState0TypedWork.bytes[0x96] = 0;
         gRenderMode = 0;
-        sub_08043CA8();
+        ClearBgScrolls2();
         sub_08043E54();
         *(volatile u16 *)0x04000000 &= 0xF0FF;
         *(volatile u16 *)0x04000008 = 0x500;
@@ -168,7 +168,7 @@ void sub_08026678(void) {
     gCounter6ED08_03001800.part119 = gSetup26678[gCounter6ED08_03001800.slot87].parts[gCounter6ED08_03001800.partA7].name[1] - 0x37;
     gCounter6ED08_03001800.value11A = sub_08037578(gCounter6ED08_03001800.part119, gCounter6ED08_03001800.partA7);
     CopyBytes(&gSetup26678[gCounter6ED08_03001800.slot87].parts[gCounter6ED08_03001800.partA7], gCounter6ED08_03001800.partCopy11C, 0x18);
-    sub_08042B58(gCounter6ED08_03001800.value11A, gCounter6ED08_03001800.partA7, gUnknown_0300052E);
+    CopyPartMetadataSlot(gCounter6ED08_03001800.value11A, gCounter6ED08_03001800.partA7, gUnknown_0300052E);
     gSetup26678[gCounter6ED08_03001800.slot87].parts[gCounter6ED08_03001800.partA7].name[0] = gUnknown_0300052E[0];
     gSetup26678[gCounter6ED08_03001800.slot87].parts[gCounter6ED08_03001800.partA7].name[1] = gUnknown_0300052E[1];
     gSetup26678[gCounter6ED08_03001800.slot87].parts[gCounter6ED08_03001800.partA7].name[5] = gUnknown_0300052E[5];

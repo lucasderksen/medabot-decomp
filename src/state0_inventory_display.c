@@ -14,7 +14,7 @@ void sub_08005AD0(void)
         PlaceAlignedTextObjects(gInventoryNames[work[0x97]], 10, 1, 13, 10, 15, 0, 2);
     else
     {
-        sub_08042678(work + 0x9E, 10);
+        FillTextWithHyphens(work + 0x9E, 10);
         PlaceAlignedTextObjects(work + 0x9E, 10, 1, 13, 10, 15, 0, 2);
     }
 }
@@ -50,7 +50,7 @@ void sub_08005C10(void)
     }
     else
     {
-        sub_08042678(work + 0x9E, 9);
+        FillTextWithHyphens(work + 0x9E, 9);
         PlaceAlignedTextObjects(work + 0x9E, 20, 18, 9, 7, 12, 1, 2);
     }
 }
@@ -67,7 +67,7 @@ void sub_08005C9C(void)
     }
     else
     {
-        sub_08042678(work + 0x9E, 13);
+        FillTextWithHyphens(work + 0x9E, 13);
         PlaceAlignedTextObjects(work + 0x9E, 30, 18, 11, 10, 13, 1, 2);
     }
 }
@@ -79,7 +79,7 @@ void sub_08005D1C(void)
     {
         if (work[0x97] <= 29)
         {
-            sub_08042B58(work[0x98], 0, work + 0xEE);
+            CopyPartMetadataSlot(work[0x98], 0, work + 0xEE);
             CopyBytesU8Count(gInventoryMetadata_083B62D8 + gInventoryRecords[work[0x97]].byte1 * 16, work + 0x10E, 16);
             if (work[0xEE] == work[0x10F])
                 FillTilemapRectSequential(2, 2, 16, 11, *(volatile u16 *)0x0400000A, ((u32)work[0x115] * 0x40000 + 0xD3400000) >> 16);
@@ -105,7 +105,7 @@ void sub_08005E00(void)
     }
     else
     {
-        sub_08042678(work + 0x9E, 13);
+        FillTextWithHyphens(work + 0x9E, 13);
         PlaceAlignedTextObjects(work + 0x9E, 44, 18, 13, 10, 13, 1, 2);
     }
 }
@@ -117,7 +117,7 @@ void sub_08005E84(void)
     {
         if (work[0x97] <= 29)
         {
-            sub_08042B58(work[0x99], 1, work + 0xEE);
+            CopyPartMetadataSlot(work[0x99], 1, work + 0xEE);
             CopyBytesU8Count(gInventoryMetadata_083B62D8 + gInventoryRecords[work[0x97]].byte1 * 16, work + 0x10E, 16);
             if (work[0xEE] == work[0x10F])
                 FillTilemapRectSequential(2, 2, 16, 13, *(volatile u16 *)0x0400000A, ((u32)work[0x115] * 0x40000 + 0xD3400000) >> 16);
@@ -143,7 +143,7 @@ void sub_08005F68(void)
     }
     else
     {
-        sub_08042678(work + 0x9E, 13);
+        FillTextWithHyphens(work + 0x9E, 13);
         PlaceAlignedTextObjects(work + 0x9E, 58, 18, 15, 10, 13, 1, 2);
     }
 }
@@ -155,7 +155,7 @@ void sub_08005FEC(void)
     {
         if (work[0x97] <= 29)
         {
-            sub_08042B58(work[0x9a], 2, work + 0xEE);
+            CopyPartMetadataSlot(work[0x9a], 2, work + 0xEE);
             CopyBytesU8Count(gInventoryMetadata_083B62D8 + gInventoryRecords[work[0x97]].byte1 * 16, work + 0x10E, 16);
             if (work[0xEE] == work[0x10F])
                 FillTilemapRectSequential(2, 2, 16, 15, *(volatile u16 *)0x0400000A, ((u32)work[0x115] * 0x40000 + 0xD3400000) >> 16);
@@ -181,7 +181,7 @@ void sub_080060D0(void)
     }
     else
     {
-        sub_08042678(work + 0x9E, 13);
+        FillTextWithHyphens(work + 0x9E, 13);
         PlaceAlignedTextObjects(work + 0x9E, 72, 18, 17, 10, 13, 1, 2);
     }
 }
@@ -193,7 +193,7 @@ void sub_08006154(void)
     {
         if (work[0x97] <= 29)
         {
-            sub_08042B58(work[0x9b], 3, work + 0xEE);
+            CopyPartMetadataSlot(work[0x9b], 3, work + 0xEE);
             CopyBytesU8Count(gInventoryMetadata_083B62D8 + gInventoryRecords[work[0x97]].byte1 * 16, work + 0x10E, 16);
             if (work[0xEE] == work[0x10F])
                 FillTilemapRectSequential(2, 2, 16, 17, *(volatile u16 *)0x0400000A, ((u32)work[0x115] * 0x40000 + 0xD3400000) >> 16);
@@ -294,7 +294,7 @@ void sub_080063B4(void)
 {
     u8 *work = gState0TypedWork.bytes;
     if (work[0x9B] <= 119) {
-        sub_08042B58(work[0x9B], 3, work + 0xEE);
+        CopyPartMetadataSlot(work[0x9B], 3, work + 0xEE);
         sub_080435B0(work[0xEF] - 100, 20, 6, *(volatile u16 *)0x0400000A, 0x8300);
     } else {
         sub_080435B0(255, 20, 6, *(volatile u16 *)0x0400000A, 0x8300);

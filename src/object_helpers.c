@@ -10,7 +10,7 @@
 
 extern u8 gUnknown_03000440[];
 
-void sub_080415BC(void)
+void ClearBgScrolls(void)
 {
     gBgScroll0.x = 0;
     gBgScroll0.y = 0;

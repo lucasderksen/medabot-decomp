@@ -99,7 +99,7 @@ void sub_0803C0CC(void) {
     kind = object->unknown23[2];
     if ((u8)(kind - 1) <= 14) {
         delta = object->screenX;
-        sub_0804422C(gState0TypedWork.bytes[0x12F]);
+        ApplyObjectMotionStep(gState0TypedWork.bytes[0x12F]);
         delta = gFrameObjects[gState0TypedWork.bytes[0x12F]].screenX - delta;
         gFrameObjects[gState0TypedWork.bytes[0x12F]].value30 += delta;
         other = &gFrameObjects[gState0TypedWork.bytes[0x12F]];
@@ -133,7 +133,7 @@ void sub_0803C0CC(void) {
     if ((u8)(kind - 0x11) > 14)
         return;
     delta = object->screenX;
-    sub_0804422C(gState0TypedWork.bytes[0x12F]);
+    ApplyObjectMotionStep(gState0TypedWork.bytes[0x12F]);
     delta = delta - gFrameObjects[gState0TypedWork.bytes[0x12F]].screenX;
     gFrameObjects[gState0TypedWork.bytes[0x12F]].value30 = (gFrameObjects[gState0TypedWork.bytes[0x12F]].value30 - delta) & 0x1FF;
     third = &gFrameObjects[gState0TypedWork.bytes[0x12F]];
@@ -186,7 +186,7 @@ void sub_0803C33C(void) {
     kind = object->unknown23[2];
     if ((u8)(kind - 1) <= 14) {
         delta = object->screenX;
-        sub_0804422C(gState0TypedWork.bytes[0x12F]);
+        ApplyObjectMotionStep(gState0TypedWork.bytes[0x12F]);
         delta = gFrameObjects[gState0TypedWork.bytes[0x12F]].screenX - delta;
         gFrameObjects[gState0TypedWork.bytes[0x12F]].value30 += delta;
         other = &gFrameObjects[gState0TypedWork.bytes[0x12F]];
@@ -224,7 +224,7 @@ void sub_0803C33C(void) {
     if ((u8)(kind - 0x11) > 14)
         return;
     delta = object->screenX;
-    sub_0804422C(gState0TypedWork.bytes[0x12F]);
+    ApplyObjectMotionStep(gState0TypedWork.bytes[0x12F]);
     delta = delta - gFrameObjects[gState0TypedWork.bytes[0x12F]].screenX;
     gFrameObjects[gState0TypedWork.bytes[0x12F]].value30 = (gFrameObjects[gState0TypedWork.bytes[0x12F]].value30 - delta) & 0x1FF;
     third = &gFrameObjects[gState0TypedWork.bytes[0x12F]];

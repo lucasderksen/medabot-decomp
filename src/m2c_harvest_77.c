@@ -188,7 +188,7 @@ void sub_08031BCC(void) {
       {
         u8 *work = gState0TransferWork.bytes;
         work[0x60] = GetOtherSlotGroupStart(work[0x5C]);
-        ((struct SelectionBacking *) work)->selected = sub_08033090(work[0x60]) + 1;
+        ((struct SelectionBacking *) work)->selected = PickRandomGroupSlot(work[0x60]) + 1;
       }
     }
   }
@@ -288,7 +288,7 @@ void sub_08032478(void) {
       {
         u8 *work = gState0TransferWork.bytes;
         work[0x60] = GetSlotGroupStart(work[0x5C]);
-        ((struct SelectionBacking *) work)->selected = sub_08033090(work[0x60]) + 1;
+        ((struct SelectionBacking *) work)->selected = PickRandomGroupSlot(work[0x60]) + 1;
       }
     }
   }
@@ -392,7 +392,7 @@ void sub_080328B8(void) {
       {
         u8 *work = gState0TransferWork.bytes;
         work[0x60] = GetOtherSlotGroupStart(work[0x5C]);
-        ((struct SelectionBacking *) work)->selected = sub_08033090(work[0x60]) + 1;
+        ((struct SelectionBacking *) work)->selected = PickRandomGroupSlot(work[0x60]) + 1;
       }
     }
   }

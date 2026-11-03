@@ -53,6 +53,6 @@ void sub_0805F414(void)
         CONTEXT->byte4B = 0;
         gFrameObjects[0].flags |= 0x4000;
         gFrameObjects[1].flags |= 0x4000;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }

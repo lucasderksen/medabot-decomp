@@ -63,7 +63,7 @@ void sub_08013B8C(void) {
     u8 *part;
     u32 fill;
     u32 index;
-    sub_08043CA8();
+    ClearBgScrolls2();
     display = (volatile u16 *)0x04000000;
     *display &= 0xF0FF;
     bg0 = (volatile u16 *)0x04000008;
@@ -118,7 +118,7 @@ void sub_08013B8C(void) {
     sub_08043240(0, 8);
     FillTilemapRectSequential(2, 2, 11, 2, *bg1, 0x63C0);
     StartBlendFade(5, 63, 32);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08017994(u32 arg0, u32 arg1, u32 arg2) {
@@ -151,115 +151,115 @@ void sub_08047878(u32 first, u32 second) {
         gContinuedWork_030057E0.mode = 1;
         gMainState = 0;
         gMainSubstate = 6;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
     case 0x21: {
         gContinuedWork_030057E0.mode = 0;
         gMainState = 0;
         gMainSubstate = 6;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
     case 0x40: {
         gMainState = 0;
         gMainSubstate = 1;
-        gUnknown_0300137C = 16;
+        gNestedCallbackIndex = 16;
         break;
     }
     case 0x41: {
         gMainState = 1;
         gMainSubstate = 1;
-        gUnknown_0300137C = 24;
+        gNestedCallbackIndex = 24;
         break;
     }
     case 0x42: {
         gMainState = 1;
         gMainSubstate = 1;
-        gUnknown_0300137C = 28;
+        gNestedCallbackIndex = 28;
         break;
     }
     case 0x43: {
         gMainState = 1;
         gMainSubstate = 1;
-        gUnknown_0300137C = 40;
+        gNestedCallbackIndex = 40;
         break;
     }
     case 0x0: {
         gUnknown_03000584 = 0;
         gMainState = 2;
         gMainSubstate = 18;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
     case 0x1: {
         gUnknown_03000584 = 1;
         gMainState = 2;
         gMainSubstate = 18;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
     case 0x2: {
         gUnknown_03000584 = 2;
         gMainState = 2;
         gMainSubstate = 18;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
     case 0x3: {
         gUnknown_03002420 = second;
         gMainState = 2;
         gMainSubstate = 11;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
     case 0x4: {
         gMainState = 2;
         gMainSubstate = 21;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
     case 0x5: {
         gUnknown_03000588 = 0;
         gMainState = 2;
         gMainSubstate = 20;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
     case 0x6: {
         gMainState = 2;
         gMainSubstate = 23;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
     case 0x8: {
         gMainState = 2;
         gMainSubstate = 22;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
     case 0x10: {
         gMainState = 3;
         gMainSubstate = 4;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
     case 0x11: {
         gMainState = 3;
         gMainSubstate = 5;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
     case 0x12: {
         gMainState = 3;
         gMainSubstate = 3;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
     case 0x13: {
         gMainState = 3;
         gMainSubstate = 6;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
     }

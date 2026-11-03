@@ -52,7 +52,7 @@ void sub_080120C8(void) {
 
     for (i = 0; i <= 2; i++) {
         if (gRoster120C8.count > i) {
-            sub_08042B58(gRoster120C8.members[i].id, 3, gUnknown_0300052E);
+            CopyPartMetadataSlot(gRoster120C8.members[i].id, 3, gUnknown_0300052E);
             sub_080435B0(gUnknown_0300052E[1] - 0x64, gUnknown_083AD06A[i][0], gUnknown_083AD06A[i][1], *(volatile u16 *)0x04000008, 0x8300);
         } else {
             sub_080435B0(0xFF, gUnknown_083AD06A[i][0], gUnknown_083AD06A[i][1], *(volatile u16 *)0x04000008, 0x8300);
@@ -83,7 +83,7 @@ void sub_08014B34(void) {
         }
     }
     if (gCounter6ED08_03001800.frame51 == 3) if (gCounter6ED08_03001800.frame53 == 3) {
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
         gState0TypedWork.widths.word86 = 0;
     }
 }

@@ -16,12 +16,12 @@ void sub_08010F08(void)
         ClearFrameObjects(1, 2);
         gRenderMode = 0;
         PlaySoundEffect(13);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     else if ((u8)gNewKeys & 8)
     {
         PlaySoundEffect(4);
-        gUnknown_0300137C = 96;
+        gNestedCallbackIndex = 96;
     }
 }
 
@@ -32,10 +32,10 @@ void sub_08010F6C(void)
     if (gState0TransferWork.bytes[1])
     {
         sub_0803FB0C();
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     else
-        gUnknown_0300137C = 64;
+        gNestedCallbackIndex = 64;
 }
 
 void sub_08010FA4(void)
@@ -45,7 +45,7 @@ void sub_08010FA4(void)
     if (RunDialogue(gState0FixedMessages_083C6744[118]))
     {
         sub_080422B8(50, 1);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -61,7 +61,7 @@ void sub_08010FDC(void)
         sub_08041490(buffer, *(u16 *)(work + offset), 53);
     }
     sub_0803FB0C();
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08011018(void)
@@ -69,7 +69,7 @@ void sub_08011018(void)
     sub_08012098();
     StepFirstBgAutoScroll();
     if (RunDialogue(gState0FixedMessages_083C6744[109]))
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_08011048(void)
@@ -78,5 +78,5 @@ void sub_08011048(void)
     StepFirstBgAutoScroll();
     sub_080127DC();
     gState0TransferWork.bytes[0x186] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

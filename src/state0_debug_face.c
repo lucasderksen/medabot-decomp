@@ -74,17 +74,17 @@ void sub_0800CBC8(void)
         }
     }
     ClearFrameObjects(32, 3);
-    sub_08041370(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x69));
+    FormatDecimalString(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x69));
     PlaceAlignedTextObjects(gDebugMenuTextBuffer, 32, 8, 2, 3, 15, 1, 0);
     ClearFrameObjects(35, 3);
-    sub_08041370(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x68));
+    FormatDecimalString(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x68));
     PlaceAlignedTextObjects(gDebugMenuTextBuffer, 35, 8, 4, 3, 15, 1, 0);
     { u32 cancel = (u8)(*(u8 *)&gNewKeys & 2);
     if (cancel)
     {
         FillTilemapRect(17, 8, 0, 7, *(volatile u16 *)0x04000008, 0);
         ClearFrameObjects(8, 33);
-        gUnknown_0300137C = 1;
+        gNestedCallbackIndex = 1;
     }
     else if (*(u8 *)&gNewKeys & 1)
     {

@@ -18,7 +18,7 @@ s32 sub_080724B0(void *arg0);
 
 void sub_08066574(void) {
     s32 i;
-    gUnknown_0300137C = 0;
+    gNestedCallbackIndex = 0;
     if ((*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x4A)) == 0) {
         i = 0;
         while (i <= 3 && sub_0805DDEC(0) != 0)

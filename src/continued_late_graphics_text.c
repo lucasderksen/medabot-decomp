@@ -11,22 +11,22 @@ void sub_08057B6C(void)
         switch (work[0x70])
         {
         case 0:
-            sub_08047CE4(0, sub_08047BDC(identifier));
+            CopyStringToTextBuffer(0, sub_08047BDC(identifier));
             break;
         case 1:
-            sub_08047CE4(0, sub_08047BEC(0, identifier));
+            CopyStringToTextBuffer(0, sub_08047BEC(0, identifier));
             break;
         case 2:
-            sub_08047CE4(1, sub_08047BEC(1, identifier));
+            CopyStringToTextBuffer(1, sub_08047BEC(1, identifier));
             break;
         case 3:
-            sub_08047CE4(2, sub_08047BEC(2, identifier));
+            CopyStringToTextBuffer(2, sub_08047BEC(2, identifier));
             break;
         case 4:
-            sub_08047CE4(3, sub_08047BEC(3, identifier));
+            CopyStringToTextBuffer(3, sub_08047BEC(3, identifier));
             break;
         case 5:
-            sub_08047CE4(0, sub_08047BDC(identifier));
+            CopyStringToTextBuffer(0, sub_08047BDC(identifier));
             break;
         }
     }
@@ -36,22 +36,22 @@ void sub_08057B6C(void)
         switch (work[0x70])
         {
         case 0:
-            sub_08047CE4(0, sub_08047BDC(identifier));
+            CopyStringToTextBuffer(0, sub_08047BDC(identifier));
             break;
         case 1:
-            sub_08047CE4(0, sub_08047BEC(0, identifier));
+            CopyStringToTextBuffer(0, sub_08047BEC(0, identifier));
             break;
         case 2:
-            sub_08047CE4(1, sub_08047BEC(1, identifier));
+            CopyStringToTextBuffer(1, sub_08047BEC(1, identifier));
             break;
         case 3:
-            sub_08047CE4(2, sub_08047BEC(2, identifier));
+            CopyStringToTextBuffer(2, sub_08047BEC(2, identifier));
             break;
         case 4:
-            sub_08047CE4(3, sub_08047BEC(3, identifier));
+            CopyStringToTextBuffer(3, sub_08047BEC(3, identifier));
             break;
         case 5:
-            sub_08047CE4(0, sub_08047BDC(identifier));
+            CopyStringToTextBuffer(0, sub_08047BDC(identifier));
             break;
         }
     }
@@ -61,22 +61,22 @@ void sub_08057B6C(void)
         switch (work[0x70])
         {
         case 0:
-            sub_08047CE4(0, sub_08047BDC(identifier));
+            CopyStringToTextBuffer(0, sub_08047BDC(identifier));
             break;
         case 1:
-            sub_08047CE4(0, sub_08047BEC(0, identifier));
+            CopyStringToTextBuffer(0, sub_08047BEC(0, identifier));
             break;
         case 2:
-            sub_08047CE4(1, sub_08047BEC(1, identifier));
+            CopyStringToTextBuffer(1, sub_08047BEC(1, identifier));
             break;
         case 3:
-            sub_08047CE4(2, sub_08047BEC(2, identifier));
+            CopyStringToTextBuffer(2, sub_08047BEC(2, identifier));
             break;
         case 4:
-            sub_08047CE4(3, sub_08047BEC(3, identifier));
+            CopyStringToTextBuffer(3, sub_08047BEC(3, identifier));
             break;
         case 5:
-            sub_08047CE4(0, sub_08047BDC(identifier));
+            CopyStringToTextBuffer(0, sub_08047BDC(identifier));
             break;
         }
     }

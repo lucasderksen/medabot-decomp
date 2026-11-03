@@ -73,7 +73,7 @@ void sub_0800508C(void) {
     for (i = 0; i <= 8; i++) {
         if (gUnknownRecords_030017A0[i].unknown00[0] != 0) {
             if (gUnknownRecords_030017A0[i].byte6 <= 0x77) {
-                sub_08042B58(gUnknownRecords_030017A0[i].byte6, 3, gUnknown_0300052E);
+                CopyPartMetadataSlot(gUnknownRecords_030017A0[i].byte6, 3, gUnknown_0300052E);
                 sub_080435B0(gUnknown_0300052E[1] - 0x64, gUnknownBytes_083AC5CD[i * 2], gUnknownBytes_083AC5CD[i * 2 + 1], *(volatile u16 *)0x0400000A, 0x8300);
             } else {
                 sub_080435B0(0xFF, gUnknownBytes_083AC5CD[i * 2], gUnknownBytes_083AC5CD[i * 2 + 1], *(volatile u16 *)0x0400000A, 0x8300);

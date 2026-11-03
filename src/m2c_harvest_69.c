@@ -27,6 +27,6 @@ void sub_08063840(void) {
     }
     if ((gMainSerialOutgoingWork.words[0][1] == 0xFF07) || (gMainSerialOutgoingWork.words[1][1] == 0xFF07)) {
         sub_080656DC(gMainContextPointer_03006F74 + 0x50, 0U, 0U, 1U, 0xC0U);
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
 }

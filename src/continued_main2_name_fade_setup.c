@@ -43,12 +43,12 @@ void sub_0805F144(void)
         u32 fill = 0;
         CpuFastSet(&fill, (void *)0x06000000, 0x01006000);
     }
-    sub_080415BC();
+    ClearBgScrolls();
     ClearFrameObjects(0, 128);
     DISPCNT = 0x60;
     BLDCNT = 0x2FF;
     BLDY = 16;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0805F358(void)
@@ -63,5 +63,5 @@ void sub_0805F358(void)
     sub_08059F58(CONTEXT->half2C, -3, 15, 6, 2, (BG1CNT >> 8) & 31);
     CONTEXT->byte00 = 32;
     BLDY = CONTEXT->byte00 >> 1;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

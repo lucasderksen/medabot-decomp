@@ -17,7 +17,7 @@ void sub_08020EDC(void);
 
 void sub_08020EDC(void) {
 
-    sub_080353CC(0x21U);
+    StepObjectHop(0x21U);
     if (gFrameObjects[0x21].unknown23[4] == 0x20) {
         gFrameObjects[0x21].flags &= 0xFDFF;
         gFrameObjects[0x21].angle = 0;

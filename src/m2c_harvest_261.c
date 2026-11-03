@@ -43,7 +43,7 @@ void sub_08063948(void) {
         sp34 = 0x200;
         CpuFastSet(&sp34, gRenderWork->objects, 0x01000100U);
     }
-    sp0[gUnknown_0300137C]();
+    sp0[gNestedCallbackIndex]();
     if (gFrameCounter & 1) {
         gBgScroll3.x += 1;
         gBgScroll3.y += 1;
@@ -60,7 +60,7 @@ void sub_0806463C(void) {
         sp30 = 0x200;
         CpuFastSet(&sp30, gRenderWork->objects, 0x01000100U);
     }
-    sp0[gUnknown_0300137C]();
+    sp0[gNestedCallbackIndex]();
     if (gFrameCounter & 1) {
         gBgScroll3.x += 1;
         gBgScroll3.y += 1;

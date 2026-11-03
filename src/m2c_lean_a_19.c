@@ -38,7 +38,7 @@ void sub_08022A04(void) {
     InitFrameObjectCommands(gState0NextCommands_083B6100[63], 0x25);
     for (i = 0; i < 4; i++) {
         gFrameObjects[0x21 + i].flags = 0xC604;
-        coords.tile = sub_08042BC0(i << 6, 0x10,
+        coords.tile = GetPolarOffsetPoint(i << 6, 0x10,
                                    gFrameObjects[gWork22A04.setup88 * 4 + 0x5D].screenX,
                                    gFrameObjects[gWork22A04.setup88 * 4 + 0x5D].screenY - 4);
         gFrameObjects[0x21 + i].screenX = coords.packed;

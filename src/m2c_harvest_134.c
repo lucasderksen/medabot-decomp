@@ -193,7 +193,7 @@ void sub_08071304(void) {
         sub_08068684(4, 2, 0);
         work->counter = 0;
         work->previousState = 0xE;
-        gUnknown_0300137C = 2;
+        gNestedCallbackIndex = 2;
         break;
     }
 }

@@ -41,7 +41,7 @@ void sub_08063F08(void) {
         return;
     }
     if ((serial->words[0][1] == 0xFDEF) && (serial->words[1][1] == serial->words[0][1])) {
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
         ((struct PeerWork63F08 *)gMainContextPointer_03006F74)->clear = 0;
         if ((s8) ((struct PeerWork63F08 *)gMainContextPointer_03006F74)->enabled != 0) {
             sub_0803FAA0(1U, 0U, 1U);

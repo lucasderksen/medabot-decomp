@@ -23,5 +23,5 @@ void sub_08010478(void)
                          (u16)(gState0TypedWork.selection.word48 - i + 0xD130));
     }
     if (++gState0TypedWork.selection.word48 > 19)
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }

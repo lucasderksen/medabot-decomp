@@ -5,7 +5,7 @@ extern u32 gMainSubstate;
 extern const MainCallback gMainState0Callbacks[];
 extern const MainCallback gMainState1Callbacks[];
 extern const MainCallback gMainState3Callbacks[];
-extern u32 gUnknown_0300137C;
+extern u32 gNestedCallbackIndex;
 extern const MainCallback gUnknownCallbacks_083AC3C8[];
 
 /* These descriptive table names identify their index in gMainCallbacks.
@@ -18,7 +18,7 @@ void sub_08002534(void)
 
 void sub_08002554(void)
 {
-    gUnknownCallbacks_083AC3C8[gUnknown_0300137C]();
+    gUnknownCallbacks_083AC3C8[gNestedCallbackIndex]();
 }
 
 void sub_0804763C(void)

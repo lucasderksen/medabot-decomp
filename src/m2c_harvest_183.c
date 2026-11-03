@@ -260,5 +260,5 @@ void sub_0806EEA8(void) {
     *(volatile u16 *)0x04000050 = 0x1844;
     *(volatile u16 *)0x04000052 = 0x80B;
     gGraphicsWork6EEA803001800.saved = (u16) gGraphicsWork6EEA803001800.incoming;
-    gUnknown_0300137C = 1;
+    gNestedCallbackIndex = 1;
 }

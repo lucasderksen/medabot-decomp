@@ -45,14 +45,14 @@ void sub_08012F00(void)
         if (work[0x84] == 0)
         {
             if (*selection != 3 && *selection < work[0x5A])
-                gUnknown_0300137C = 4;
+                gNestedCallbackIndex = 4;
             else if (gUnknown_03000440[0x89] != 1)
-                gUnknown_0300137C = 64;
+                gNestedCallbackIndex = 64;
             else
-                gUnknown_0300137C = 144;
+                gNestedCallbackIndex = 144;
         }
         else
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
     }
 }
 
@@ -62,7 +62,7 @@ void sub_08012FF8(void)
     sub_08018900(gState0TransferWork.bytes[0x87]);
     sub_08018AB4(0);
     if (gUnknown_03000440[0x89] != 1)
-        gUnknown_0300137C = 69;
+        gNestedCallbackIndex = 69;
     else
-        gUnknown_0300137C = 160;
+        gNestedCallbackIndex = 160;
 }

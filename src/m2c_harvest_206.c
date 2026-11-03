@@ -108,7 +108,7 @@ void sub_0806113C(void) {
  CpuFastSet(gCopySource6113C08488540,gCopyDest6113C0202F820,8);
  CpuFastSet(gCopySource6113C08797910,gEquipmentPaletteShadow,128);
  ((struct Phase6113C *)&gState0TypedWork)->byte84=0;
- gUnknown_0300137C++;
+ gNestedCallbackIndex++;
 }
 
 void sub_08065A0C(void) {
@@ -125,7 +125,7 @@ void sub_08065A0C(void) {
    struct Phase65A0C *phase=(struct Phase65A0C *)&gState0TypedWork;
    phase->byte84=0;
    phase->byte1B=0;
-   gUnknown_0300137C--;
+   gNestedCallbackIndex--;
    return;
   }
   sub_0803FB0C();
@@ -142,7 +142,7 @@ void sub_0806DC7C(void) {
   work->state=2;
   work->substate=3;
   work->step=0;
-  gUnknown_0300137C=2;
+  gNestedCallbackIndex=2;
   return;
  }
  work->count=count+1;
@@ -160,5 +160,5 @@ void sub_0806F1C0(void) {
  dma->control=0x80000050;
  (void)dma->control;
  gGraphicsWork6F1C003001800.step=gGraphicsWork6F1C003001800.savedStep;
- gUnknown_0300137C=4;
+ gNestedCallbackIndex=4;
 }

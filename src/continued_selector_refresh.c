@@ -198,7 +198,7 @@ void sub_08058C0C(u32 selector)
             const void *const *scripts;
             if(work->half2E==16)scripts=gContinuedScripts_08411AE0;
             else scripts=gStateScriptTables_0847DF24[work->half2E];
-            if(sub_08047C24(0,0,0,scripts[work->half30]))work->byte32=0;
+            if(InitAndRunDialogue(0,0,0,scripts[work->half30]))work->byte32=0;
             break;
         }
         }

@@ -31,17 +31,17 @@ void sub_0804E5F0(u32 first, u32 second)
             for (; i < 4; i++)
             {
                 u32 index = (u8)i;
-                if (sub_0804DBF0(index) != -1)
+                if (GetScriptObjectSlot(index) != -1)
                 {
-                    s32 entry = sub_0804DBF0(index);
+                    s32 entry = GetScriptObjectSlot(index);
                     entry += 79;
                     if (entries[entry].identifier)
                     {
                         if (secondByte == 1)
-                            sub_080500BC((u8)(sub_0804DBF0(index) + 79),
+                            sub_080500BC((u8)(GetScriptObjectSlot(index) + 79),
                                         *argument, firstByte);
                         else
-                            sub_08050124((u8)(sub_0804DBF0(index) + 79),
+                            sub_08050124((u8)(GetScriptObjectSlot(index) + 79),
                                         *argument, firstByte);
                     }
                 }
@@ -57,7 +57,7 @@ void sub_0804E5F0(u32 first, u32 second)
                 (const struct ObjectEntry *)gLaterBuffer_030055A0;
             for (; i < 4; i++)
             {
-                s32 entry = sub_0804DBF0((u8)i);
+                s32 entry = GetScriptObjectSlot((u8)i);
                 if (entry != -1)
                 {
                     entry += 79;

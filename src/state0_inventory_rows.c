@@ -224,7 +224,7 @@ void sub_0800AF64(void)
         struct State0Record8 *entry = &entries[record];
         if (entry->byte6 <= 119)
         {
-            sub_08042B58(entry->byte6, 3, &work[0x10E]);
+            CopyPartMetadataSlot(entry->byte6, 3, &work[0x10E]);
             sub_080435B0(work[0x10F] - 100, 2, 10, *(volatile u16 *)0x0400000A, 0x83A0);
         }
         else sub_080435B0(255, 2, 10, *(volatile u16 *)0x0400000A, 0x83A0);

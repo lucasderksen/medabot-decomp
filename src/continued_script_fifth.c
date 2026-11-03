@@ -29,8 +29,8 @@ void sub_0804CF5C(void)
     case 0:
         {
             u8 *argument = work + 0xC96;
-            if (sub_0804DBF0(*argument) != -1)
-                sub_0804D9F8((u8)(sub_0804DBF0(*argument) + 79));
+            if (GetScriptObjectSlot(*argument) != -1)
+                sub_0804D9F8((u8)(GetScriptObjectSlot(*argument) + 79));
             break;
         }
     case 1:

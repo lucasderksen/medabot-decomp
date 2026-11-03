@@ -80,7 +80,7 @@ NONMATCH("asm/non_matching/sub_080513C8.inc", void sub_080513C8(u32 value))
 
     records = gSelectionRecords_03005DBC;
     ClearBytes(saved, 0x200);
-    sub_080497C0(records, saved, 0x200);
+    CopyBytes2(records, saved, 0x200);
     ClearBytes(records, 0x200);
     count = 0;
     slot = 0;

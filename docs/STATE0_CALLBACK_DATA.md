@@ -8,7 +8,7 @@ The header records each physical bound. Callback entries use function-symbol
 relocations, preserving repeated handlers and reserved dummy-handler slots.
 
 The action dispatchers select with transfer work byte AA and clear byte B5
-before calling. Map dispatchers select with `gUnknown_0300137C`. The phase
+before calling. Map dispatchers select with `gNestedCallbackIndex`. The phase
 dispatcher is gated by `0803EED8`; its alternate render-mode path can clear
 an object buffer. Table reconstruction does not change those dispatchers.
 Three callback bodies remain assembly: `08020B4C`, `08028130` and `0802D8D0`.

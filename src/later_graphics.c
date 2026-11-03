@@ -126,7 +126,7 @@ void sub_08049318(void)
     }
 }
 
-void sub_080497C0(const void *source, void *destination, u32 size)
+void CopyBytes2(const void *source, void *destination, u32 size)
 {
     u32 index;
     for (index = 0; index < size; index++)

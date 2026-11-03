@@ -127,10 +127,10 @@ void sub_080242F8(void) {
    frames->first.angle=(frames->first.angle+0x10)&0x3FF;
   }
  }
- sub_080353CC(gState0TransferWork.bytes[0x88]*4+0x5A);
- sub_080353CC(gState0TransferWork.bytes[0x88]*4+0x5B);
- sub_080353CC(gState0TransferWork.bytes[0x88]*4+0x5C);
- finished=sub_080353CC(gState0TransferWork.bytes[0x88]*4+0x5D);
+ StepObjectHop(gState0TransferWork.bytes[0x88]*4+0x5A);
+ StepObjectHop(gState0TransferWork.bytes[0x88]*4+0x5B);
+ StepObjectHop(gState0TransferWork.bytes[0x88]*4+0x5C);
+ finished=StepObjectHop(gState0TransferWork.bytes[0x88]*4+0x5D);
  if(gFrameObjects[gState0TransferWork.bytes[0x88]*4+0x5D].unknown23[0]==0x10) {
   gFrameObjects[gState0TransferWork.bytes[0x88]*4+0x5A].screenY=(u16)gFrameObjects[gState0TransferWork.bytes[0x88]*4+0x5A].screenY+8;
   gFrameObjects[gState0TransferWork.bytes[0x88]*4+0x5B].screenY=(u16)gFrameObjects[gState0TransferWork.bytes[0x88]*4+0x5B].screenY-8;
@@ -226,7 +226,7 @@ void sub_08031AFC(void){
  if(*(u8 *)(record+0x40)&&sub_08032FD0(*cursor,setup[(*(u8 *)(address+0x5C)<<8)+6]))*(u8 *)(i+(u32)slots)=*cursor+1;
  *cursor+=1;++i;}while(i<=2);}
  if(sub_08032FFC())((struct Continued31AFCWork *)&gState0TransferWork)->selected=sub_0803301C()+1;
- else{u8 *work=gState0TransferWork.bytes;work[0x60]=GetOtherSlotGroupStart(work[0x5C]);((struct Continued31AFCWork *)work)->selected=sub_08033090(work[0x60])+1;}
+ else{u8 *work=gState0TransferWork.bytes;work[0x60]=GetOtherSlotGroupStart(work[0x5C]);((struct Continued31AFCWork *)work)->selected=PickRandomGroupSlot(work[0x60])+1;}
  {u8 *work=gState0TransferWork.bytes;u8 *selected=&((struct Continued31AFCWork *)work)->selected;((struct Continued31AFCWork *)work)->found=sub_080330E8(*selected-1)+1;}
  {u8 *work=gState0TransferWork.bytes;sub_08033154(work[0x5C],work[0x5D]);}
 }
@@ -237,7 +237,7 @@ void sub_080644D8(void) {
  sub_08062ED8();
  if(((struct ChoiceWork644D8 *)gMainContextPointer_03006F74)->timer==0) {
   sub_0803FAA0(1,0,1);
-  gUnknown_0300137C++;
+  gNestedCallbackIndex++;
   mode=((struct ChoiceWork644D8 *)gMainContextPointer_03006F74)->mode;
   sound=5;
   if(mode!=0) sound=14;

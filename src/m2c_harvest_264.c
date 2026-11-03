@@ -59,7 +59,7 @@ void sub_0803D15C(void) {
     temp_r0_3 = &gFrameObjects[gState0TypedWork.bytes[0x12F]];
     temp_r0_3->byte2B += 1;
     temp_r0_4 = &gFrameObjects[gState0TypedWork.bytes[0x12F]];
-    result.coordinates=sub_08042BC0((u32)temp_r0_4->unknown23[3],(u32)temp_r0_4->unknown23[4],(u32)gFrameObjects[0xA].screenX,(s32)gFrameObjects[0xA].screenY);
+    result.coordinates=GetPolarOffsetPoint((u32)temp_r0_4->unknown23[3],(u32)temp_r0_4->unknown23[4],(u32)gFrameObjects[0xA].screenX,(s32)gFrameObjects[0xA].screenY);
     gFrameObjects[gState0TypedWork.bytes[0x12F]].screenX = (s16)result.word;
     gFrameObjects[gState0TypedWork.bytes[0x12F]].screenY = (s16) (result.word >> 0x10);
 }

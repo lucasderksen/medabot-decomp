@@ -16,7 +16,7 @@ zero-fill alignment. Names are address-based; original symbols are unknown.
 | `PlaceAlignedTextObjects` | `40DB8..40EE4` | 300 | Align and place an encoded byte string |
 | `sub_08040EE4` | `40EE4..41020` | 316 | Place a byte string with coordinate offsets |
 | `sub_08041020` | `41020..41164` | 324 | Place bytes using the observed 85FF frame offset |
-| `sub_08041370` | `41370..41490` | 288 | Format decimal digits or a fixed marker |
+| `FormatDecimalString` | `41370..41490` | 288 | Format decimal digits or a fixed marker |
 | `sub_08041490` | `41490..415BC` | 300 | Format digits with a caller-provided base |
 
 The helpers use the same 128 records at `0x03002C30` as the renderer.
@@ -72,7 +72,7 @@ The two matching formatters extract six decimal positions into a byte array.
 They test the **low byte** of `value/100000`. When it is nonzero, they emit
 the fixed byte sequence `05 12 12 0F 12 FE`. Otherwise they suppress leading
 zero positions, always emit the last position, and terminate with `FE`.
-`sub_08041370` adds `35` to each emitted digit. `sub_08041490` adds its
+`FormatDecimalString` adds `35` to each emitted digit. `sub_08041490` adds its
 32-bit `base` argument instead, with each result stored as a byte. These are
 encoded byte strings; no ASCII interpretation is imposed.
 

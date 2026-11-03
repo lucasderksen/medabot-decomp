@@ -30,7 +30,7 @@ void sub_0806E404(void) {
     if ((gState0TransferWork.bytes[0xC] != 0) && (8 & (*(u8 *)&gNewKeys))) {
         gMainState = 3;
         gMainSubstate = 2;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         gMain2Byte_03007008 = 1;
     }
 }

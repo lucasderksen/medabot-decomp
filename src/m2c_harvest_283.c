@@ -81,9 +81,9 @@ void sub_080309C8(void) {
  u32 setupRoot=(u32)gSetupBuffer_03000590;
  struct Work309C8 *work=&gCounter6ED08_03001800;
  u8 *record=(u8 *)(setupRoot+((u32)work->bank<<8));
- if(record[0xBD]&1) {work->mode=4;gUnknown_0300137C=0x20;}
- else if(record[0xDD]==0) gUnknown_0300137C=0x10;
- else gUnknown_0300137C++;
+ if(record[0xBD]&1) {work->mode=4;gNestedCallbackIndex=0x20;}
+ else if(record[0xDD]==0) gNestedCallbackIndex=0x10;
+ else gNestedCallbackIndex++;
 }
 
 void sub_08035410(u32 arg0, u8 *arg1, u8 *arg2) {

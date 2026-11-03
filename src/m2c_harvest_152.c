@@ -46,7 +46,7 @@ void sub_08017268(void) {
             source=gUnknownPointers_083B74B8[scratch[0]];
             scratch-=0x50;
             CopyBytes(source,scratch,17);
-        } else sub_08042678(gDebugMenuTextBuffer,13);
+        } else FillTextWithHyphens(gDebugMenuTextBuffer,13);
         break;
     }
     case 2: {
@@ -57,7 +57,7 @@ void sub_08017268(void) {
             source=gUnknownPointers_083B74B8[scratch[1]];
             scratch-=0x50;
             CopyBytes(source,scratch,17);
-        } else sub_08042678(gDebugMenuTextBuffer,13);
+        } else FillTextWithHyphens(gDebugMenuTextBuffer,13);
         break;
     }
     case 3: {
@@ -68,7 +68,7 @@ void sub_08017268(void) {
             source=gUnknownPointers_083B74B8[scratch[2]];
             scratch-=0x50;
             CopyBytes(source,scratch,17);
-        } else sub_08042678(gDebugMenuTextBuffer,13);
+        } else FillTextWithHyphens(gDebugMenuTextBuffer,13);
         break;
     }
     }

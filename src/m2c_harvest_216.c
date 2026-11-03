@@ -55,7 +55,7 @@ extern u8 gScratch6030C02030000[];
 extern u8 gUnknown_03001988[2];
 extern void sub_0803836C(void);
 extern void AdvanceActionHalfwordScript(void);
-extern void sub_0803E894(void);
+extern void ScrollBg3Diagonally4(void);
 
 void sub_08018A54(void);
 void sub_0802121C(void);
@@ -211,14 +211,14 @@ void sub_0803B884(void) {
 void sub_0803DEB0(void) {
     const void *var_r0;
 
-    sub_0803E894();
+    ScrollBg3Diagonally4();
     if (gState0TypedWork.bytes[0x9C] == 1) {
         var_r0 = gUnknownPointers_083CF530[2];
     } else {
         var_r0 = gUnknownPointers_083CF530[3];
     }
     if (RunDialogue(var_r0) != 0) {
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
 }
 
@@ -274,7 +274,7 @@ void sub_0806030C(void) {
     LoadLz77SizedTilemap(gTilemap6030C087941B8, (u32) *(volatile u16 *)scratch);
     compressed=gAsset6030C08792F7C;
     scratch=gScratch6030C02030000;
-    var_r4 = sub_08044D0C(compressed, scratch);
+    var_r4 = DecompressLz77OrCopy(compressed, scratch);
     CpuSet(scratch, (void *)0x06004000, (u32) ((var_r4 + (var_r4 >> 0x1F)) << 0xA) >> 0xB);
     work=(struct SceneWork6030C *)gMainContextPointer_03006F74;
     if ((s32) var_r4 < 0) {
@@ -291,7 +291,7 @@ void sub_0806030C(void) {
     gFrameObjects->screenX = 0x70;
     gFrameObjects->screenY = 0x18;
     gFrameObjects->unknown1A = 0;
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_0806E1EC(void) {
@@ -331,5 +331,5 @@ void sub_0806E1EC(void) {
     gBgScroll2.y = 0;
     gBgScroll3.x = 0;
     gBgScroll3.y = 0;
-    gUnknown_0300137C = 3;
+    gNestedCallbackIndex = 3;
 }

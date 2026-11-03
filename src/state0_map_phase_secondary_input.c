@@ -57,7 +57,7 @@ void sub_08013E30(void)
             {
                 PlaySoundEffect(5);
                 StartBlendFade(6, 63, 32);
-                gUnknown_0300137C++;
+                gNestedCallbackIndex++;
             }
         }
         break;
@@ -120,6 +120,6 @@ void sub_08013FA8(void)
         CpuFastSet(&palette, (void *)0x05000200, 0x01000080);
         background = zero;
         CpuFastSet(&background, (void *)0x05000000, 0x01000080);
-        gUnknown_0300137C = 60;
+        gNestedCallbackIndex = 60;
     }
 }

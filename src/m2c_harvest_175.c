@@ -315,7 +315,7 @@ void sub_080636FC(void) {
         CpuFastSet(gUnknown_080AFBC4, (void *)0x05000300, 8);
         CpuFastSet(gUnknown_080AFBC4, gUnknown_0202F900, 8);
         ((struct Phase636FC *)&gState0TypedWork)->phase = 0;
-        ++gUnknown_0300137C;
+        ++gNestedCallbackIndex;
         ((struct Context636FC *)gMainContextPointer_03006F74)->timer = 0x280;
     }
     sub_08062B48(((struct Context636FC *)gMainContextPointer_03006F74)->firstX, ((struct Context636FC *)gMainContextPointer_03006F74)->firstY, 0);

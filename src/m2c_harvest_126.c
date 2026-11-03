@@ -60,29 +60,29 @@ void sub_080476E8(u32 mode) {
     case 4:
         gMainState = 1;
         gMainSubstate = 1;
-        gUnknown_0300137C = 16;
+        gNestedCallbackIndex = 16;
         break;
     case 5:
         gMainState = 1;
         gMainSubstate = 1;
-        gUnknown_0300137C = 32;
+        gNestedCallbackIndex = 32;
         break;
     case 6:
         gMainState = 1;
         gMainSubstate = 2;
-        gUnknown_0300137C = 8;
+        gNestedCallbackIndex = 8;
         break;
     case 7:
         gLaterBuffer_03006D20.kind = 7;
         gMainState = 1;
         gMainSubstate = 1;
-        gUnknown_0300137C = 5;
+        gNestedCallbackIndex = 5;
         break;
     case 8:
         gLaterBuffer_03006D20.kind = 8;
         gMainState = 1;
         gMainSubstate = 1;
-        gUnknown_0300137C = 5;
+        gNestedCallbackIndex = 5;
         break;
     case 10:
         sub_08047574();
@@ -90,7 +90,7 @@ void sub_080476E8(u32 mode) {
         gUnknown_03000588 = 1;
         gMainState = 1;
         gMainSubstate = 1;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     case 11: {
         sub_08047574();
@@ -99,7 +99,7 @@ void sub_080476E8(u32 mode) {
         gUnknown_03000588=1;
         gMainState = 1;
         gMainSubstate = 1;
-        gUnknown_0300137C = 10;
+        gNestedCallbackIndex = 10;
         break;
     }
     case 9:
@@ -107,7 +107,7 @@ void sub_080476E8(u32 mode) {
     case 0: case 1: case 2: case 3: case 12:
         gMainState = 1;
         gMainSubstate = 1;
-        gUnknown_0300137C = 5;
+        gNestedCallbackIndex = 5;
         break;
     }
 }

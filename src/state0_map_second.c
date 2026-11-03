@@ -11,7 +11,7 @@ void sub_080108FC(void)
     if (RunDialogue(gUnknownPointers_083B5578[20]))
     {
         sub_080415E8(1, 22, 7);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -26,10 +26,10 @@ void sub_08010930(void)
         if ((result >> 4) == 0)
         {
             sub_0803FB0C();
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
         else
-            gUnknown_0300137C = 32;
+            gNestedCallbackIndex = 32;
     }
 }
 
@@ -39,9 +39,9 @@ void sub_08010968(void)
     StepFirstBgAutoScroll();
     if (RunDialogue(gUnknownPointers_083B5578[21]))
     {
-        sub_080750F0(8);
+        FadeOutMusic(8);
         sub_08042318(50, 1);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -51,7 +51,7 @@ void sub_080109A0(void)
     StepFirstBgAutoScroll();
     SnapshotPalettes();
     gUnknown_03000440[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_080109CC(void)
@@ -65,7 +65,7 @@ void sub_080109CC(void)
         gUnknown_03000440[0x84]++;
     }
     else
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_08010A20(void)
@@ -74,7 +74,7 @@ void sub_08010A20(void)
     FillTilemapRect(32, 32, 0, 0, *(volatile u16 *)0x04000008, 0);
     FillTilemapRect(32, 32, 0, 0, *(volatile u16 *)0x0400000A, 0);
     ClearFrameObjects(0, 128);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08010A7C(void)
@@ -83,5 +83,5 @@ void sub_08010A7C(void)
     sub_08048830();
     sub_080497E0(64, 0x2F00, 5, 16, 16, 16, 12, 10, 0);
     gUnknown_03000440[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

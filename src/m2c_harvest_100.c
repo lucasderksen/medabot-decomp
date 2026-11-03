@@ -31,6 +31,6 @@ void sub_08065590(void) {
     }
     if (waiting == 0 && (*(u8*)&gNewKeys & 3)) {
         sub_0803FB0C();
-        gUnknown_0300137C = 5;
+        gNestedCallbackIndex = 5;
     }
 }

@@ -59,7 +59,7 @@ void sub_080349D8(void)
     {
         u32 next;
         *first = GetOtherSlotGroupStart(*selected);
-        next = sub_08033090(*first);
+        next = PickRandomGroupSlot(*first);
         {
             struct ObservedActionResultRecord *records = (void *)gSetupBuffer_03000590;
             records[*selected].byteE0 = next + 1;

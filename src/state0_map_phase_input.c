@@ -32,7 +32,7 @@ void sub_08012C64(void)
         PlaySoundEffect(4);
         sub_08017914();
         gUnknown_03000440[0x84] = 0;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     else if (keys & 2)
     {
@@ -53,7 +53,7 @@ void sub_08012C64(void)
             ClearFrameObjects(0, 0x46);
             FillTilemapRect(30, 8, 0, 12, *(volatile u16 *)0x04000008, 0);
             FillTilemapRect(30, 8, 0, 12, *(volatile u16 *)0x0400000A, 0);
-            gUnknown_0300137C = 4;
+            gNestedCallbackIndex = 4;
         }
     }
 }

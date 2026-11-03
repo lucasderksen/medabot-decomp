@@ -49,7 +49,7 @@ void sub_0806D8AC(void) {
         ClearFrameObject(1);
         InitFrameObject(0U, 0xC400U, 0x21BU, 4U, 3U);
         *(volatile u16 *)0x04000000 = (u16) (*(volatile u16 *)0x04000000 | 0x300);
-        gUnknown_0300137C = 1;
+        gNestedCallbackIndex = 1;
         return;
     }
     gUnknown_03001800.count = (s32) (gUnknown_03001800.count + 1);

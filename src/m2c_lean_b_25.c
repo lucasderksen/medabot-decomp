@@ -141,7 +141,7 @@ void sub_0803AF2C(void) {
         gFrameObjects[i + 0xB].byte2B = gCounter6ED08_03001800.value102;
         gFrameObjects[i + 0xB].unknown2C[0] = gCounter6ED08_03001800.value10C;
         gFrameObjects[i + 0xB].unknown23[6] = 0x31;
-        c.tile = sub_08042BC0(i << 6, 0x10, gFrameObjects[0xA].screenX, gFrameObjects[0xA].screenY);
+        c.tile = GetPolarOffsetPoint(i << 6, 0x10, gFrameObjects[0xA].screenX, gFrameObjects[0xA].screenY);
         gFrameObjects[i + 0xB].screenX = c.packed;
         gFrameObjects[i + 0xB].screenY = c.packed >> 16;
         gFrameObjects[i + 0xB].unknown23[3] = (i << 6) - 0x20;
@@ -197,7 +197,7 @@ void sub_0803B4F8(void) {
     for (i = 0; i <= 7; i++) {
         gFrameObjects[i + 0xB].flags = 0xC604;
         gFrameObjects[i + 0xB].tableSelector = 0;
-        c.tile = sub_08042BC0(i << 5, (s16)gCounter6ED08_03001800.value108,
+        c.tile = GetPolarOffsetPoint(i << 5, (s16)gCounter6ED08_03001800.value108,
                               gFrameObjects[gCounter6ED08_03001800.value102].screenX,
                               gFrameObjects[gCounter6ED08_03001800.value102].screenY);
         gFrameObjects[i + 0xB].screenX = c.packed;

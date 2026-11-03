@@ -149,7 +149,7 @@ void sub_0803185C(void) {
         sub_0801AEF4();
         sub_0801AEB4();
         ClearFrameObjects(0x21U, 2U);
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
 }
 

@@ -188,7 +188,7 @@ void sub_08030890(void) {
         break;
     case 2:
         CpuFastSet(gUnknown_084E4598,(void *)0x050002C0,8);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
         gState0TypedWork.bytes[0x139]=0;
         break;
     default:break;
@@ -242,7 +242,7 @@ void sub_08032640(void) {
                 gState0TransferWork.bytes[0x5E]=sub_0803301C()+1;
             } else {
                 gState0TransferWork.bytes[0x60] = (u8) GetSlotGroupStart((u32) gState0TransferWork.bytes[0x5C]);
-                gState0TransferWork.bytes[0x5E]=sub_08033090(gState0TransferWork.bytes[0x60])+1;
+                gState0TransferWork.bytes[0x5E]=PickRandomGroupSlot(gState0TransferWork.bytes[0x60])+1;
             }
         }
     }

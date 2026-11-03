@@ -33,7 +33,7 @@ void sub_08067870(void) {
         gState0TypedWork.bytes[0x84]++;
         ((u8 *)gMainContextPointer_03006F74)[5] = 0;
     } else {
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 

@@ -40,13 +40,13 @@ void sub_08013438(void)
         ClearFrameObjects(0, 5);
         ClearFrameObjects(20, 36);
         *counter = zero;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     else if (keys & 1)
     {
         PlaySoundEffect(4);
         *(u16 *)(base + 0x86) = cancel;
-        gUnknown_0300137C = 29;
+        gNestedCallbackIndex = 29;
     }
 }
 

@@ -38,7 +38,7 @@ void sub_08066280(void) {
     if ((0xFF00 & gMainSerialOutgoingWork.words[gUnknown_03000B90 == 0][1]) == 0xEF00) {
         gMenuContext66280->cursor05 = gMainSerialOutgoingWork.words[gUnknown_03000B90 == 0][1];
         gMenuContext66280->flag7A = 1;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
         PlaySoundEffect(4);
         gFrameObjects[0].screenY = gMenuContext66280->cursor05 * 16 + 0x1C;
         return;
@@ -84,7 +84,7 @@ void sub_08066280(void) {
         }
         gMenuContext66280->flag7A = 0;
         gMainSerialOutgoingWork.word06 = gMenuContext66280->cursor05 | 0xEF00;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
         PlaySoundEffect(4);
     }
 }

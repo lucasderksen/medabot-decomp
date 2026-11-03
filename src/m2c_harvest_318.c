@@ -24,7 +24,7 @@ s32 sub_08007440(u32 arg0);
 void sub_0801A5D8(void);
 s32 sub_0801B4C8(s32 arg0);
 void sub_0801BBC4(void);
-u32 sub_080353CC(u32 index);
+u32 StepObjectHop(u32 index);
 void sub_08035844(u32 arg0);
 
 s32 sub_08007440(u32 arg0) {
@@ -128,7 +128,7 @@ void sub_0801BBC4(void) {
     } while (var_r4 <= 5U);
 }
 
-u32 sub_080353CC(u32 index) {
+u32 StepObjectHop(u32 index) {
 
     struct FrameObject *temp_r3;
     struct FrameObject *objs;

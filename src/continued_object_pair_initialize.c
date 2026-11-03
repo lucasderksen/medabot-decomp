@@ -46,7 +46,7 @@ void sub_080503FC(u32 indexWord, u32 selectorWord, u32 xWord, u32 yWord)
     u8 primaryByte = primary;
     u8 frame;
     u8 palette;
-    sub_08048888(primaryByte);
+    ResetFrameObjectSlot(primaryByte);
     frame = sub_080502C8(selector);
     palette = ExtractHighNibble(selector);
     InitFrameObject(primaryByte, 0xC804, frame, palette, 1);

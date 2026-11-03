@@ -32,7 +32,7 @@ void sub_0805DAD4(void)
         sub_0803FB0C();
         if (!WORK->byte2A)
         {
-            u32 *index = &gUnknown_0300137C;
+            u32 *index = &gNestedCallbackIndex;
             u32 flag = MAIN_FLAGS_BYTE & 1;
             u32 selected = 6;
             if (flag)
@@ -40,6 +40,6 @@ void sub_0805DAD4(void)
             *index = selected;
         }
         else
-            gUnknown_0300137C = 9;
+            gNestedCallbackIndex = 9;
     }
 }

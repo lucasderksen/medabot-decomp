@@ -35,7 +35,7 @@ void sub_08044CDC(u32);
 void sub_08007584(void)
 {
     if (!sub_0803EED8())
-        gUnknownCallbacks_083AC86C[gUnknown_0300137C]();
+        gUnknownCallbacks_083AC86C[gNestedCallbackIndex]();
 }
 
 void sub_080075AC(void)
@@ -91,7 +91,7 @@ void sub_080075AC(void)
         PlayMusic(7);
     }
     gState0TypedWork.bytes[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08007834(void)
@@ -99,7 +99,7 @@ void sub_08007834(void)
     ScrollBg3Diagonally();
     sub_0800994C();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 24);
-    if (StepBlendFade()) gUnknown_0300137C++;
+    if (StepBlendFade()) gNestedCallbackIndex++;
 }
 
 void sub_08007868(void)
@@ -117,7 +117,7 @@ void sub_08007868(void)
             PlaySoundEffect(2); work[0x3E] = 0; sub_08009AF8();
             goto done;
         }
-        PlaySoundEffect(5); gUnknown_0300137C++;
+        PlaySoundEffect(5); gNestedCallbackIndex++;
         goto done;
     }
     if (*(u8 *)&gNewKeys & 1)
@@ -130,12 +130,12 @@ void sub_08007868(void)
             PlaySoundEffect(4);
             if (work[0x3C] == 4)
             {
-                gUnknown_0300137C = 96;
+                gNestedCallbackIndex = 96;
                 goto done;
             }
             work[0x42] = cancel;
             StartBlendFade(6, 63, 32);
-            gUnknown_0300137C = 7;
+            gNestedCallbackIndex = 7;
             goto done;
         }
     }
@@ -150,14 +150,14 @@ void sub_08007964(void)
     StartBlendFade(6, 63, 32);
     ScrollBg3Diagonally(); sub_0800994C();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 24);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08007998(void)
 {
     ScrollBg3Diagonally(); sub_0800994C();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 24);
-    if (StepBlendFade()) gUnknown_0300137C++;
+    if (StepBlendFade()) gNestedCallbackIndex++;
 }
 
 void sub_080079CC(void)
@@ -168,7 +168,7 @@ void sub_080079CC(void)
     else
     {
         gMainSubstate = 2;
-        gUnknown_0300137C = 16;
+        gNestedCallbackIndex = 16;
     }
 }
 
@@ -229,27 +229,27 @@ void sub_08007A04(void)
     sub_0800A000(); sub_0800A05C(); sub_0800A0B8(); sub_0800A0FC();
     StartBlendFade(5, 63, 32);
     gState0TypedWork.bytes[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08007BD8(void)
 {
     ScrollBg3Diagonally(); sub_0800A180();
-    if (StepBlendFade()) gUnknown_0300137C++;
+    if (StepBlendFade()) gNestedCallbackIndex++;
 }
 
 void sub_08007BFC(void)
 {
     ScrollBg3Diagonally(); sub_0800A180();
     sub_0803FAA0(1, 2, 0);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08007C20(void)
 {
     ScrollBg3Diagonally(); sub_0800A180();
     if (RunDialogue(gUnknownPointers_083B5578[4]))
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_08007C4C(void)
@@ -261,25 +261,25 @@ void sub_08007C4C(void)
     if (keys[0] & 2)
     {
         PlaySoundEffect(5);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     else if (keys[1] & 2)
     {
         PlaySoundEffect(2);
         gState0TypedWork.bytes[0x42] = (gState0TypedWork.bytes[0x42] - 1) & 3;
-        gUnknown_0300137C = 20;
+        gNestedCallbackIndex = 20;
     }
     else if ((right = keys[1] & 1))
     {
         PlaySoundEffect(2);
         gState0TypedWork.bytes[0x42] = (gState0TypedWork.bytes[0x42] + 1) & 3;
-        gUnknown_0300137C = 20;
+        gNestedCallbackIndex = 20;
     }
     else if (keys[0] & 8)
     {
         PlaySoundEffect(4);
         gState0TypedWork.bytes[0x43] = right;
-        gUnknown_0300137C = 72;
+        gNestedCallbackIndex = 72;
     }
 }
 
@@ -288,7 +288,7 @@ void sub_08007D04(void)
 {
     StartBlendFade(6, 63, 32);
     ScrollBg3Diagonally(); sub_0800A180();
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08007D28(void)
@@ -302,7 +302,7 @@ void sub_08007D28(void)
         u32 selected = work[0x3D];
         work[0x97] = selected;
         gMainSubstate = 3;
-        gUnknown_0300137C = 16;
+        gNestedCallbackIndex = 16;
         break;
     }
     case 2:
@@ -315,11 +315,11 @@ void sub_08007D28(void)
         second = 0;
         CpuFastSet(&second, (void *)0x05000000, CPU_SET_FILL | 0x80);
         gMainSubstate = 7;
-        gUnknown_0300137C = 60;
+        gNestedCallbackIndex = 60;
         break;
     }
     case 0: case 3: case 4:
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
 }
@@ -329,10 +329,10 @@ void sub_08007DDC(void)
     ClearFrameObjects(0, 128);
     switch (gState0TypedWork.bytes[0x42])
     {
-    case 0: gUnknown_0300137C = 8; break;
-    case 1: gUnknown_0300137C = 24; break;
-    case 2: gUnknown_0300137C = 40; break;
-    default: gUnknown_0300137C = 56; break;
+    case 0: gNestedCallbackIndex = 8; break;
+    case 1: gNestedCallbackIndex = 24; break;
+    case 2: gNestedCallbackIndex = 40; break;
+    default: gNestedCallbackIndex = 56; break;
     }
 }
 
@@ -397,14 +397,14 @@ void sub_08007E38(void)
     sub_0800A0FC(); sub_0800A2E8(); sub_0800A594(); sub_0800A854();
     StartBlendFade(5, 63, 32);
     gState0TypedWork.bytes[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0800801C(void)
 {
     ScrollBg3Diagonally(); sub_0800A180();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 8);
-    if (StepBlendFade()) gUnknown_0300137C++;
+    if (StepBlendFade()) gNestedCallbackIndex++;
 }
 
 void sub_08008050(void)
@@ -412,7 +412,7 @@ void sub_08008050(void)
     ScrollBg3Diagonally(); sub_0800A180();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 8);
     sub_0803FAA0(1, 2, 0);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08008084(void)
@@ -421,7 +421,7 @@ void sub_08008084(void)
     ScrollBg3Diagonally(); sub_0800A180();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 8);
     messages = gUnknownPointers_083B7D80;
-    if (RunDialogue(messages[sub_0800A960()])) gUnknown_0300137C++;
+    if (RunDialogue(messages[sub_0800A960()])) gNestedCallbackIndex++;
 }
 
 void sub_080080C8(void)
@@ -432,7 +432,7 @@ void sub_080080C8(void)
     if (sub_0800A8A0())
     {
         sub_0803FB0C();
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     else
     {
@@ -440,7 +440,7 @@ void sub_080080C8(void)
         if (sub_0800A928())
         {
             sub_0803FB0C();
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
         else
         {
@@ -448,25 +448,25 @@ void sub_080080C8(void)
             if (keys[0] & 2)
             {
                 PlaySoundEffect(5);
-                gUnknown_0300137C = 30;
+                gNestedCallbackIndex = 30;
             }
             else if (keys[1] & 2)
             {
                 PlaySoundEffect(2);
                 gState0TypedWork.bytes[0x42] = (gState0TypedWork.bytes[0x42] - 1) & 3;
-                gUnknown_0300137C = 36;
+                gNestedCallbackIndex = 36;
             }
             else if (keys[1] & 1)
             {
                 PlaySoundEffect(2);
                 gState0TypedWork.bytes[0x42] = (gState0TypedWork.bytes[0x42] + 1) & 3;
-                gUnknown_0300137C = 36;
+                gNestedCallbackIndex = 36;
             }
             else if (keys[0] & 8)
             {
                 PlaySoundEffect(4);
                 gState0TypedWork.bytes[0x43] = 1;
-                gUnknown_0300137C = 72;
+                gNestedCallbackIndex = 72;
             }
         }
     }
@@ -478,7 +478,7 @@ void sub_080081BC(void)
     ScrollBg3Diagonally(); sub_0800A180();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 8);
     messages = gUnknownPointers_083B7D80;
-    if (RunDialogue(messages[sub_0800A960()])) gUnknown_0300137C--;
+    if (RunDialogue(messages[sub_0800A960()])) gNestedCallbackIndex--;
 }
 
 void sub_08008200(void)
@@ -486,7 +486,7 @@ void sub_08008200(void)
     StartBlendFade(6, 63, 32);
     ScrollBg3Diagonally(); sub_0800A180();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 8);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 
@@ -554,26 +554,26 @@ void sub_08008234(void)
     sub_0800AB0C(); sub_0800ABA4(); sub_0800AED0(); sub_0800AF0C(); sub_0800AF64();
     StartBlendFade(5, 63, 32);
     gState0TypedWork.bytes[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08008430(void)
 {
     ScrollBg3Diagonally(); sub_0800A180();
-    if (StepBlendFade()) gUnknown_0300137C++;
+    if (StepBlendFade()) gNestedCallbackIndex++;
 }
 
 void sub_08008454(void)
 {
     ScrollBg3Diagonally(); sub_0800A180();
     sub_0803FAA0(1, 2, 0);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08008478(void)
 {
     ScrollBg3Diagonally(); sub_0800A180();
-    if (RunDialogue(gUnknownPointers_083B5578[12])) gUnknown_0300137C++;
+    if (RunDialogue(gUnknownPointers_083B5578[12])) gNestedCallbackIndex++;
 }
 
 void sub_080084A4(void)
@@ -589,30 +589,30 @@ void sub_080084A4(void)
         work = gState0TypedWork.bytes;
         work[0x46] = 0;
         work[0x3F] = 0;
-        gUnknown_0300137C = 48;
+        gNestedCallbackIndex = 48;
     }
     else if (keys[0] & 2)
     {
         PlaySoundEffect(5);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     else if (keys[1] & 2)
     {
         PlaySoundEffect(2);
         gState0TypedWork.bytes[0x42] = (gState0TypedWork.bytes[0x42] - 1) & 3;
-        gUnknown_0300137C = 52;
+        gNestedCallbackIndex = 52;
     }
     else if (keys[1] & 1)
     {
         PlaySoundEffect(2);
         gState0TypedWork.bytes[0x42] = (gState0TypedWork.bytes[0x42] + 1) & 3;
-        gUnknown_0300137C = 52;
+        gNestedCallbackIndex = 52;
     }
     else if (keys[0] & 8)
     {
         PlaySoundEffect(4);
         gState0TypedWork.bytes[0x43] = 2;
-        gUnknown_0300137C = 72;
+        gNestedCallbackIndex = 72;
     }
 }
 
@@ -620,7 +620,7 @@ void sub_08008590(void)
 {
     StartBlendFade(6, 63, 32);
     ScrollBg3Diagonally(); sub_0800A180();
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_080085B4(void)
@@ -629,7 +629,7 @@ void sub_080085B4(void)
     if (!gState0TypedWork.bytes[0x3F]) sub_0800AC2C();
     else sub_0800ACA8();
     sub_0803FB0C();
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_080085E8(void)
@@ -653,7 +653,7 @@ void sub_080085E8(void)
         message = messages[records[index]];
     }
     else message = gUnknownPointers_083B5578[15];
-    if (RunDialogue(message)) gUnknown_0300137C++;
+    if (RunDialogue(message)) gNestedCallbackIndex++;
 }
 
 
@@ -707,12 +707,12 @@ void sub_08008650(void)
         if (sub_0800AD58())
         {
             sub_0800AB0C(); sub_0803FB0C();
-            gUnknown_0300137C--;
+            gNestedCallbackIndex--;
             return;
         }
         if (sub_0800ADE8())
         {
-            sub_0803FB0C(); gUnknown_0300137C--;
+            sub_0803FB0C(); gNestedCallbackIndex--;
             return;
         }
         accept = *(u8 *)&gNewKeys & 1;
@@ -721,7 +721,7 @@ void sub_08008650(void)
             PlaySoundEffect(4); HideFrameObjects(1, 2);
             sub_0800ACA8(); sub_0803FB0C();
             *page = 1;
-            gUnknown_0300137C--;
+            gNestedCallbackIndex--;
             return;
         }
         if (*(u8 *)&gNewKeys & 2)
@@ -729,7 +729,7 @@ void sub_08008650(void)
             PlaySoundEffect(5); HideFrameObjects(1, 2);
             work[0x46] = accept;
             sub_0800A0FC(); sub_0803FB0C();
-            gUnknown_0300137C = 43;
+            gNestedCallbackIndex = 43;
             return;
         }
     }
@@ -750,7 +750,7 @@ void sub_08008650(void)
             PlaySoundEffect(4); HideFrameObjects(3, 1);
             work[0x46] = changed;
             sub_0800A0FC(); sub_0803FB0C();
-            gUnknown_0300137C = 43;
+            gNestedCallbackIndex = 43;
             return;
         }
         if (*(u8 *)&gNewKeys & 2)
@@ -758,7 +758,7 @@ void sub_08008650(void)
             PlaySoundEffect(5); HideFrameObjects(3, 1);
             sub_0800AC2C(); sub_0803FB0C();
             *page = accept;
-            gUnknown_0300137C--;
+            gNestedCallbackIndex--;
             return;
         }
     }
@@ -767,7 +767,7 @@ void sub_08008650(void)
         PlaySoundEffect(4);
         gState0TypedWork.bytes[0x46] |= 128;
         gState0TypedWork.bytes[0x43] = 2;
-        gUnknown_0300137C = 72;
+        gNestedCallbackIndex = 72;
     }
 }
 
@@ -801,13 +801,13 @@ void sub_080087CC(void)
     sub_0800AFF8(); sub_0800B0F8(); sub_0800B174();
     StartBlendFade(5, 63, 32);
     gState0TypedWork.bytes[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08008980(void)
 {
     ScrollBg3Diagonally(); sub_0800A180(); sub_0800B130();
-    if (StepBlendFade()) gUnknown_0300137C++;
+    if (StepBlendFade()) gNestedCallbackIndex++;
 }
 
 void sub_080089A8(void)
@@ -818,19 +818,19 @@ void sub_080089A8(void)
     keys = (u8 *)&gNewKeys;
     if (keys[0] & 2)
     {
-        PlaySoundEffect(5); gUnknown_0300137C++;
+        PlaySoundEffect(5); gNestedCallbackIndex++;
     }
     else if (keys[1] & 2)
     {
         PlaySoundEffect(2);
         gState0TypedWork.bytes[0x42] = (gState0TypedWork.bytes[0x42] - 1) & 3;
-        gUnknown_0300137C = 68;
+        gNestedCallbackIndex = 68;
     }
     else if (keys[1] & 1)
     {
         PlaySoundEffect(2);
         gState0TypedWork.bytes[0x42] = (gState0TypedWork.bytes[0x42] + 1) & 3;
-        gUnknown_0300137C = 68;
+        gNestedCallbackIndex = 68;
     }
 }
 
@@ -838,7 +838,7 @@ void sub_08008A34(void)
 {
     StartBlendFade(6, 63, 32);
     ScrollBg3Diagonally(); sub_0800A180(); sub_0800B130();
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08008B80(void)
@@ -846,13 +846,13 @@ void sub_08008B80(void)
     ScrollBg3Diagonally(); HideFrameObjects(1, 5);
     CpuFastSet((const void *)0x084E4418, (void *)0x050003C0, 8);
     sub_0800AA1C(); sub_0803FB0C();
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08008BB8(void)
 {
     ScrollBg3Diagonally();
-    if (RunDialogue(gUnknownPointers_083B5578[5])) gUnknown_0300137C++;
+    if (RunDialogue(gUnknownPointers_083B5578[5])) gNestedCallbackIndex++;
 }
 
 void sub_08008BE0(void)
@@ -878,11 +878,11 @@ void sub_08008BE0(void)
     else if (*(u8 *)&gNewKeys & 1)
     {
         PlaySoundEffect(4); sub_0800AA1C(); sub_0803FB0C();
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     else if (*(u8 *)&gNewKeys & 10)
     {
-        PlaySoundEffect(5); gUnknown_0300137C = 78;
+        PlaySoundEffect(5); gNestedCallbackIndex = 78;
     }
 }
 
@@ -969,7 +969,7 @@ void sub_08008A5C(void)
     }
     else if (*(u8 *)&gNewKeys & 2)
     {
-        ClearFrameObjects(127, 1); gUnknown_0300137C = 58;
+        ClearFrameObjects(127, 1); gNestedCallbackIndex = 58;
     }
 }
 
@@ -980,20 +980,20 @@ void sub_080090D0(void)
     switch (gState0TypedWork.bytes[0x42])
     {
     case 0:
-        sub_0803FB0C(); sub_0800A0FC(); gUnknown_0300137C = 11;
+        sub_0803FB0C(); sub_0800A0FC(); gNestedCallbackIndex = 11;
         break;
     case 1:
-        sub_0803FB0C(); sub_0800A0FC(); sub_0800A854(); gUnknown_0300137C = 27;
+        sub_0803FB0C(); sub_0800A0FC(); sub_0800A854(); gNestedCallbackIndex = 27;
         break;
     case 2:
         if (gState0TypedWork.bytes[0x46] & 128)
         {
             gState0TypedWork.bytes[0x46] &= 127;
-            gUnknown_0300137C = 48;
+            gNestedCallbackIndex = 48;
         }
         else
         {
-            sub_0803FB0C(); sub_0800A0FC(); gUnknown_0300137C = 43;
+            sub_0803FB0C(); sub_0800A0FC(); gNestedCallbackIndex = 43;
         }
         break;
     }
@@ -1006,7 +1006,7 @@ void sub_08009174(void)
     gFrameObjects[2].flags &= 0xBFFF;
     LoadLeTilemap(18, 12, (const u8 *)0x08488494, *(volatile u16 *)0x04000008, 0x350);
     gState0TypedWork.bytes[0x4A] = 0;
-    sub_0800B668(); gUnknown_0300137C++;
+    sub_0800B668(); gNestedCallbackIndex++;
 }
 
 void sub_080091E0(void)
@@ -1017,13 +1017,13 @@ void sub_080091E0(void)
     if (*(u8 *)&gNewKeys & 1)
     {
         PlaySoundEffect(4);
-        sub_0800B668(); gUnknown_0300137C++;
+        sub_0800B668(); gNestedCallbackIndex++;
     }
     else if (*(u8 *)&gNewKeys & 2)
     {
         PlaySoundEffect(5);
         gState0TypedWork.bytes[0x4A] = 2;
-        sub_0800B668(); gUnknown_0300137C++;
+        sub_0800B668(); gNestedCallbackIndex++;
     }
 }
 
@@ -1032,7 +1032,7 @@ void sub_08009248(void)
     ScrollBg3Diagonally(); sub_08009AF8();
     if (sub_0800B768())
     {
-        HideFrameObjects(7, 1); gUnknown_0300137C++;
+        HideFrameObjects(7, 1); gNestedCallbackIndex++;
     }
 }
 
@@ -1043,10 +1043,10 @@ void sub_08009274(void)
     {
     case 0:
         gState0TypedWork.bytes[0x42] = 0;
-        StartBlendFade(6, 63, 32); gUnknown_0300137C = 7;
+        StartBlendFade(6, 63, 32); gNestedCallbackIndex = 7;
         break;
-    case 1: gUnknown_0300137C++; break;
-    case 2: gUnknown_0300137C = 2; break;
+    case 1: gNestedCallbackIndex++; break;
+    case 2: gNestedCallbackIndex = 2; break;
     }
 }
 
@@ -1064,7 +1064,7 @@ void sub_080092D4(void)
     {
         sub_0803FAA0(1, 2, 0);
         work[0x84] = 9;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     else
     {
@@ -1073,13 +1073,13 @@ void sub_080092D4(void)
         {
             sub_0803FAA0(1, 2, 0);
             work[0x84] = 8;
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
         else
         {
-            ClearFrameObjects(5, 1); sub_080750F0(8);
+            ClearFrameObjects(5, 1); FadeOutMusic(8);
             work[0x3E] = selected;
-            gUnknown_0300137C = 104;
+            gNestedCallbackIndex = 104;
         }
     }
 }
@@ -1089,16 +1089,16 @@ void sub_08009374(void)
     const void *const *messages;
     ScrollBg3Diagonally(); sub_08009AF8();
     messages = gUnknownPointers_083CF530;
-    if (RunDialogue(messages[gState0TypedWork.bytes[0x84]])) gUnknown_0300137C = 2;
+    if (RunDialogue(messages[gState0TypedWork.bytes[0x84]])) gNestedCallbackIndex = 2;
 }
 
 void sub_080093AC(void)
 {
     CopyBytes(&gInventoryRecords[gState0TypedWork.bytes[0x3D]], gObjectSortEntries, 64);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_080093E0(void)
 {
-    ClearFrameObjects(0, 128); sub_08043CA8(); sub_08044CDC(1);
+    ClearFrameObjects(0, 128); ClearBgScrolls2(); sub_08044CDC(1);
 }

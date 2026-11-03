@@ -24,14 +24,14 @@ void sub_0804D9F8(u32 index)
     u16 *x, *y, *storedX, *storedY;
     u8 *part;
     u32 one, value, offset;
-    sub_08048888(48);
-    sub_08048888(90);
+    ResetFrameObjectSlot(48);
+    ResetFrameObjectSlot(90);
     offset = selected * 64;
     objects = (u8 *)gFrameObjects;
-    sub_080497C0(objects + offset, objects + 48 * 64, 64);
+    CopyBytes2(objects + offset, objects + 48 * 64, 64);
     offset = selected * 4;
     entries = gLaterBuffer_030055A0;
-    sub_080497C0(entries + offset, entries + 48 * 4, 4);
+    CopyBytes2(entries + offset, entries + 48 * 4, 4);
     work = gUnknown_030057E0;
     {
         u8 *mode = work + 0xC76;
@@ -52,8 +52,8 @@ void sub_0804D9F8(u32 index)
         storedY = (u16 *)(work + 0xC70);
         *storedY = coordinate;
     }
-    work[0xC72] = sub_0805273C(*storedX);
-    work[0xC73] = sub_08052760(*storedY);
+    work[0xC72] = ConvertXToCellColumn(*storedX);
+    work[0xC73] = ConvertYToCellRow(*storedY);
     part = objects + 48 * 64 + 0x2B;
     value = *part;
     work[0xC84] = value;

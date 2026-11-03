@@ -48,7 +48,7 @@ extern u8 gUnknown_02028000[0x2000];
 extern u8 gUnknown_03007010;
 extern void sub_08036E64(s32,s32,s16,s16);
 extern void ClearFrameObjects(u8,u8);
-extern void sub_08071898(u8,u16,u8);
+extern void StartFrameObjectCycle(u8,u16,u8);
 extern void PlaySoundEffect(u32);
 
 void sub_0801C1C0(void);
@@ -239,7 +239,7 @@ void sub_08030910(void) {
     frames->frame.priority = 0x81;
     InitFrameObjectCommands(gState0NextCommands_083B6100[0x15],3u);
     PlaySoundEffect(7u);
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_08071460(void) {
@@ -298,8 +298,8 @@ void sub_08071460(void) {
     renderZero=0;
     gFrameObjects[0x1C].screenY = 0x38;
     gUnknown_03007010 = 0;
-    sub_08071898(0x18, 0x3F, 0xC);
+    StartFrameObjectCycle(0x18, 0x3F, 0xC);
     gRenderMode = renderZero;
     gGraphicsTransferCounter.phase4 = 0xF;
-    gUnknown_0300137C = 4;
+    gNestedCallbackIndex = 4;
 }

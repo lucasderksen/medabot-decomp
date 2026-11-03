@@ -37,8 +37,8 @@ s32 sub_080192E8(s32);
 s32 sub_0801932C(s32);
 s32 sub_08035F20();
 s32 AdvanceActionHalfwordScript();
-s32 sub_0803E894();
-s32 sub_0803ED6C();
+s32 ScrollBg3Diagonally4();
+s32 FlashSelectedChoiceTiles();
 void sub_08066D8C(void);
 s32 sub_0806E484();
 s32 sub_08072734(s32);
@@ -204,7 +204,7 @@ void sub_08030990(void) {
   {
     new_var2 = 3U;
     ClearFrameObjects(new_var2, 1U);
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
   }
 }
 
@@ -226,7 +226,7 @@ void sub_080310A0(void) {
   new_var = gState0FixedMessages_083C6744;
   if (RunDialogue(*((void **) (((s8 *) new_var) + 8))) != 0)
   {
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
   }
 }
 
@@ -248,7 +248,7 @@ void sub_08031218(void) {
   new_var = (s8 *) gState0FixedMessages_083C6744;
   if (RunDialogue(*((void **) (new_var + 0xC))) != 0)
   {
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
   }
 }
 
@@ -264,7 +264,7 @@ void sub_080315B0(void) {
     ClearFrameObjects(0x21U, 2U);
     new_var = gState0TransferWork.bytes;
     ClearFrameObjects(((u32) ((new_var[0x87] << 0x1A) + 0x23000000)) >> 0x18, 4U);
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
   }
 }
 
@@ -277,7 +277,7 @@ void sub_080318CC(void) {
   new_var = &gState0TransferWork.bytes;
   CopyBytes(new_var3[*((u8 *) (((s8 *) (new_var2 + ((*new_var)[0x87] << 8))) + 0xA8))], gDebugMenuTextBuffer, 0x11U);
   gState0TransferWork.bytes[0xA6] = 0x38;
-  gUnknown_0300137C += 1;
+  gNestedCallbackIndex += 1;
 }
 
 void sub_08031994(void) {
@@ -285,7 +285,7 @@ void sub_08031994(void) {
   new_var = 4;
   if (RunDialogue(*((void **) (((s8 *) (&gUnknownPointers_083CF530)) + new_var))) != 0)
   {
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
   }
 }
 
@@ -319,7 +319,7 @@ void sub_0803D9A0(void) {
   StepFirstBgAutoScroll();
   if (RunDialogue(*((void **) ((new_var2 = (s8 *) gState0MapMessages_083C2D3C) + (new_var = 4)))) != 0)
   {
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
   }
 }
 
@@ -329,19 +329,19 @@ void sub_0803DBB8(void) {
   new_var = gUnknownPointers_083CF530;
   if (RunDialogue(*((void **) (((s8 *) new_var) + 4))) != 0)
   {
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
   }
 }
 
 void sub_0803E1FC(void) {
   s8 *new_var;
-  sub_0803E894();
-  sub_0803ED6C();
+  ScrollBg3Diagonally4();
+  FlashSelectedChoiceTiles();
   gState0TypedWork.widths.word86 += 1;
   new_var = (s8 *) (&gUnknownPointers_083CF530);
   if (RunDialogue(*((void **) (new_var + 4))) != 0)
   {
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
   }
 }
 
@@ -350,7 +350,7 @@ void sub_0803E634(void) {
   new_var = (s8 *) (&gUnknownPointers_083CF530);
   if (RunDialogue(*((void **) (new_var + 0x30))) != 0)
   {
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
   }
 }
 
@@ -369,7 +369,7 @@ void sub_08067B28(void) {
   temp_r0_2 = sub_08075130();
   if (temp_r0_2 == 0)
   {
-    gUnknown_0300137C = temp_r0_2;
+    gNestedCallbackIndex = temp_r0_2;
     sub_080476E8(0xCU);
   }
 }
@@ -382,7 +382,7 @@ void sub_0806E4CC(void) {
     *((s32 *) (new_var + 8)) = 0;
     gMainState = (u32) (*((u16 *) (new_var + 0)));
     gMainSubstate = (u32) (*((u16 *) (new_var + 2)));
-    gUnknown_0300137C = (u32) (*((u16 *) (new_var + 4)));
+    gNestedCallbackIndex = (u32) (*((u16 *) (new_var + 4)));
   }
 }
 

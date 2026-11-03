@@ -31,11 +31,11 @@ void sub_080102C0(void)
     *(volatile u16 *)0x0400000E |= 64;
     PlayMusic(8);
     gState0TypedWork.bytes[0x85] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0801030C(void)
 {
     gState0TypedWork.bytes[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

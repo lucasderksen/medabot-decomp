@@ -70,4 +70,4 @@ void sub_08021774(void) {
 }
 
 void sub_08030CFC(void) {
-u8 *setup=gSetupBuffer_03000590;if(*(u8 *)(((u32)gUnknown_03001800.bank<<8)+(u32)setup+0xC1)==0x50)gUnknown_0300137C++;else{sub_0801AEB4();gUnknown_0300137C=0x14;}}
+u8 *setup=gSetupBuffer_03000590;if(*(u8 *)(((u32)gUnknown_03001800.bank<<8)+(u32)setup+0xC1)==0x50)gNestedCallbackIndex++;else{sub_0801AEB4();gNestedCallbackIndex=0x14;}}

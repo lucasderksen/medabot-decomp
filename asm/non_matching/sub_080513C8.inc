@@ -19,7 +19,7 @@
 	ldr	r0, [sp, #0x218]
 	add	r1, sp, #4
 	adds	r2, r4, #0
-	bl	sub_080497C0
+	bl	CopyBytes2
 	ldr	r0, [sp, #0x218]
 	adds	r1, r4, #0
 	bl	ClearBytes

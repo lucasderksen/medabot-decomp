@@ -110,7 +110,7 @@ void sub_0805C574(void)
             PlaySoundEffect(4);
             MAIN2_CONTEXT->byte05 = 2;
             gFrameObjects[14].flags &= 0xBFFF;
-            gUnknown_0300137C--;
+            gNestedCallbackIndex--;
             sub_0805BD44(3);
             sub_0805BCB0(3, 0);
             sub_0805BE0C(3);

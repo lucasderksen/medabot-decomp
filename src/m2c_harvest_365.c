@@ -61,7 +61,7 @@ void sub_0806412C(void) {
   timer = ++entryWork->timer;
   if (((s32) timer) > 0xF)
   {
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
     if (entryWork->mode == 0)
     {
       gFrameObjects->flags &= 0xBFFF;

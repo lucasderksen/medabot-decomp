@@ -28,7 +28,7 @@ void sub_0806DBFC(void) {
         sub_0806E10C(6, 2);
         PlaySoundEffect(3U);
         gGraphicsTransferCounter.counter = 0;
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
         return;
     }
     if ((s32) gGraphicsTransferCounter.counter > 0x547) {
@@ -38,7 +38,7 @@ void sub_0806DBFC(void) {
         gGraphicsTransferCounter.mode = 3;
         gGraphicsTransferCounter.selection = (s16) temp_r4;
         gGraphicsTransferCounter.status = (s16) temp_r4;
-        gUnknown_0300137C = 2;
+        gNestedCallbackIndex = 2;
         return;
     }
     gGraphicsTransferCounter.counter = (s32) (gGraphicsTransferCounter.counter + 1);

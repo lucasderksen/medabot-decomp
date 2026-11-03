@@ -32,7 +32,7 @@ void sub_080633FC(void) {
     } else {
         ((struct ResetContext*)gMainContextPointer_03006F74)->reset = 0;
         gState0TypedWork.bytes[0x84] = (zero = 0);
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
     sub_08062B48(((u8 *)gMainContextPointer_03006F74)[0x31], ((u8 *)gMainContextPointer_03006F74)[0x33], 0);
     sub_08062B48(((u8 *)gMainContextPointer_03006F74)[0x32], ((u8 *)gMainContextPointer_03006F74)[0x34], 1);

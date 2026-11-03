@@ -119,8 +119,8 @@ void sub_0805830C(u32 mode) {
             gContinuedWork_030057E0.halfC52 -= 0x10;
         if (0x10 & *(u8 *)&gRepeatedKeys)
             gContinuedWork_030057E0.halfC52 += 0x10;
-        gContinuedWork_030057E0.byteC56 = sub_0805273C(gContinuedWork_030057E0.halfC52);
-        gContinuedWork_030057E0.byteC57 = sub_08052760(gContinuedWork_030057E0.halfC54);
+        gContinuedWork_030057E0.byteC56 = ConvertXToCellColumn(gContinuedWork_030057E0.halfC52);
+        gContinuedWork_030057E0.byteC57 = ConvertYToCellRow(gContinuedWork_030057E0.halfC54);
         sub_08052AA4();
         break;
     case 3:
@@ -262,7 +262,7 @@ void sub_0805830C(u32 mode) {
             gContinuedWork_030057E0.byteC28 = gContinuedWork_030057E0.byteC5C;
             sub_0805330C();
         }
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
         break;
     case 4:
         PlaySoundEffect(((struct DebugWork830C *)gContinuedOtherWork_030057A0)->byte00);

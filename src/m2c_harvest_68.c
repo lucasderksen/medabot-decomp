@@ -99,7 +99,7 @@ void sub_0803D74C(void) {
     s32 spC;
     s32 sp10;
 
-    sub_08043CA8();
+    ClearBgScrolls2();
     sp8 = 0;
     CpuFastSet(&sp8, (void *)0x05000200, 0x01000080U);
     spC = 0;
@@ -133,7 +133,7 @@ void sub_0803D74C(void) {
     sub_08043DF8();
     PlayMusic(8U);
     gState0TypedWork.bytes[0x84] = 0;
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_08041A28(void) {
@@ -165,7 +165,7 @@ void sub_0805FADC(void) {
         u16 *context = gMainContextPointer_03006F74;
         u16 count = context[1]++;
         if (count > 0x3C)
-            gUnknown_0300137C = 8;
+            gNestedCallbackIndex = 8;
     }
 }
 
@@ -174,7 +174,7 @@ void sub_0805FB14(void) {
         u16 *context = gMainContextPointer_03006F74;
         u16 count = context[1]++;
         if (count > 0x3C)
-            gUnknown_0300137C = 8;
+            gNestedCallbackIndex = 8;
     }
 }
 
@@ -183,7 +183,7 @@ void sub_08060A1C(void) {
     const void *const *scripts = gUnknown_08484F98;
     index <<= 2;
     if (RunDialogue(*(const void **) (index + (u32) scripts)) != 0)
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     sub_080605A0();
     sub_08060620();
 }

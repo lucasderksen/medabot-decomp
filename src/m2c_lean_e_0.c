@@ -89,7 +89,7 @@ void sub_080639C4(void) {
         PlayMusic(0x18);
     zero = 0;
     CpuFastSet(&zero, (void *)0x06000000, 0x01006000);
-    sub_080415BC();
+    ClearBgScrolls();
     ClearFrameObjects(0, 0x80);
     *(volatile u16 *)0x04000000 = 0x60;
     *(volatile u16 *)0x04000050 = 0x2FF;
@@ -103,7 +103,7 @@ void sub_080639C4(void) {
     LoadLz77SizedTilemap(gBiosLz77Stream_087A1244, *(volatile u16 *)0x0400000E);
     *(volatile u16 *)0x0400000C = 0x1D06;
     LoadLz77SizedTilemap(gBiosLz77Stream_087A10F0, *(volatile u16 *)0x0400000C);
-    length = sub_08044D0C(gBiosLz77Stream_0879F80C, (void *)0x02030000);
+    length = DecompressLz77OrCopy(gBiosLz77Stream_0879F80C, (void *)0x02030000);
     CpuSet((void *)0x02030000, (void *)0x06004000, (length << 10) >> 11);
     LeDecompress(gNativeLeStream_08785EC0, (void *)(length + 0x06004000));
     ((struct Main2MedalContext *)gMainContextPointer_03006F74)->tileBase36 = (length >> 5) + 4;
@@ -177,5 +177,5 @@ void sub_080639C4(void) {
     *(volatile u16 *)0x04000000 |= 0x400;
     *(volatile u16 *)0x04000000 |= 0x800;
     *(volatile u16 *)0x04000000 |= 0x1000;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

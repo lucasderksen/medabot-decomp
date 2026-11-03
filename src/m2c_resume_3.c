@@ -10,9 +10,9 @@
 #include "sound_work.h"
 
 
-void sub_08074D50(u32 song, u32 parameter);
+void StartSoundEffectTracks(u32 song, u32 parameter);
 
-void sub_08074D50(u32 song, u32 parameter) {
+void StartSoundEffectTracks(u32 song, u32 parameter) {
 
     struct SoundRootState *root;
     const struct SoundSongHeader *header;

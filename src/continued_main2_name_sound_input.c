@@ -171,7 +171,7 @@ void sub_0805F488(void)
             PlaySoundEffect(4);
             sub_080415E8(1, 22, 7);
             sub_0803FAA0(1, 2, 0);
-            gUnknown_0300137C = 6;
+            gNestedCallbackIndex = 6;
             break;
         case 3:
             CONTEXT->byte49 = 0;
@@ -184,7 +184,7 @@ void sub_0805F488(void)
 leave:
         PlayMusic(0);
         CONTEXT->byte00 = 0;
-        gUnknown_0300137C = 5;
+        gNestedCallbackIndex = 5;
         gFrameObjects[0].flags &= 0xBFFF;
         gFrameObjects[1].flags &= 0xBFFF;
         gFrameObjects[2].flags &= 0xBFFF;

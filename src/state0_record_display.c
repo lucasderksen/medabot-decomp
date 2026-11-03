@@ -91,7 +91,7 @@ u32 sub_08005588(void)
     {
     PlaySoundEffect(2);
     gState0TypedWork.bytes[0x51] = next[gState0TypedWork.bytes[0x51]];
-    sub_08004EF8(0); sub_08004EF8(1); sub_08004EF8(2); sub_08004EF8(3);
+    StepMarkerOrbitForward(0); StepMarkerOrbitForward(1); StepMarkerOrbitForward(2); StepMarkerOrbitForward(3);
     sub_08005118(); sub_0800519C(); sub_0800522C(); sub_080053C8(); sub_08005000(); sub_08005948();
     return 1;
     }
@@ -100,10 +100,10 @@ u32 sub_08005588(void)
 
 void sub_08005628(void)
 {
-    gFrameObjects[4].flags = 0xC604; gFrameObjects[4].unknown23[0] = 0; sub_080056A4(4);
-    gFrameObjects[5].flags = 0xC604; gFrameObjects[5].unknown23[0] = 16; sub_080056A4(5);
-    gFrameObjects[6].flags = 0xC604; gFrameObjects[6].unknown23[0] = 32; sub_080056A4(6);
-    gFrameObjects[7].flags = 0xC604; gFrameObjects[7].unknown23[0] = 48; sub_080056A4(7);
+    gFrameObjects[4].flags = 0xC604; gFrameObjects[4].unknown23[0] = 0; StepMarkerOrbitReverse(4);
+    gFrameObjects[5].flags = 0xC604; gFrameObjects[5].unknown23[0] = 16; StepMarkerOrbitReverse(5);
+    gFrameObjects[6].flags = 0xC604; gFrameObjects[6].unknown23[0] = 32; StepMarkerOrbitReverse(6);
+    gFrameObjects[7].flags = 0xC604; gFrameObjects[7].unknown23[0] = 48; StepMarkerOrbitReverse(7);
 }
 
 void sub_08005798(void)
@@ -120,7 +120,7 @@ void sub_08005798(void)
             gFrameObjects[4].flags &= 0xBFFF; gFrameObjects[5].flags &= 0xBFFF;
             gFrameObjects[6].flags &= 0xBFFF; gFrameObjects[7].flags &= 0xBFFF;
         }
-        sub_080056A4(4); sub_080056A4(5); sub_080056A4(6); sub_080056A4(7);
+        StepMarkerOrbitReverse(4); StepMarkerOrbitReverse(5); StepMarkerOrbitReverse(6); StepMarkerOrbitReverse(7);
     }
     else
     {

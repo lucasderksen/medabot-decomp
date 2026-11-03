@@ -6,7 +6,7 @@
 #include "frame.h"
 #include "display_helpers.h"
 
-void sub_08004E74(void)
+void ScrollBg3Diagonally2(void)
 {
     if (gFrameCounter & 1)
     {
@@ -19,19 +19,19 @@ void sub_08004E98(void)
 {
     gFrameObjects[0].flags = 0xC604;
     gFrameObjects[0].unknown23[0] = 0;
-    sub_08004EF8(0);
+    StepMarkerOrbitForward(0);
     gFrameObjects[1].flags = 0xC604;
     gFrameObjects[1].unknown23[0] = 16;
-    sub_08004EF8(1);
+    StepMarkerOrbitForward(1);
     gFrameObjects[2].flags = 0xC604;
     gFrameObjects[2].unknown23[0] = 32;
-    sub_08004EF8(2);
+    StepMarkerOrbitForward(2);
     gFrameObjects[3].flags = 0xC604;
     gFrameObjects[3].unknown23[0] = 48;
-    sub_08004EF8(3);
+    StepMarkerOrbitForward(3);
 }
 
-void sub_08004EF8(u32 index)
+void StepMarkerOrbitForward(u32 index)
 {
     union { struct TileCoordinates coordinates; s32 packed; } position;
     s32 copy;
@@ -82,7 +82,7 @@ void sub_08005118(void)
                     50, 1, 13, 10, 13, 0, 2);
     else
     {
-        sub_08042678(gState0TypedWork.bytes + 0x9E, 10);
+        FillTextWithHyphens(gState0TypedWork.bytes + 0x9E, 10);
         PlaceAlignedTextObjects(gState0TypedWork.bytes + 0x9E, 50, 1, 13, 10, 13, 0, 2);
     }
 }
@@ -101,7 +101,7 @@ void sub_0800519C(void)
     }
     else
     {
-        sub_08042678(gState0TypedWork.bytes + 0x9E, 9);
+        FillTextWithHyphens(gState0TypedWork.bytes + 0x9E, 9);
         PlaceAlignedTextObjects(gState0TypedWork.bytes + 0x9E, 60, 4, 16, 7, 14, 1, 2);
     }
 }
@@ -117,7 +117,7 @@ void sub_0800522C(void)
     FillTilemapRectSequential(2, 2, 1, 16, *(volatile u16 *)0x0400000A, 0x6330);
 }
 
-void sub_080056A4(u32 index)
+void StepMarkerOrbitReverse(u32 index)
 {
     union { struct TileCoordinates coordinates; s32 packed; } position;
     s32 copy;

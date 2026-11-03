@@ -10,7 +10,7 @@
 /* Provisional RAM names and observed call interfaces; see docs/STATE0.md. */
 extern u8 gUnknown_03000440[];
 extern u8 gUnknown_03002B70[];
-extern u32 gUnknown_0300137C;
+extern u32 gNestedCallbackIndex;
 extern const void *const gUnknownPointers_083B5578[];
 extern const MainCallback gMainState0Callbacks[64];
 extern const MainCallback gUnknownCallbacks_083AC3C8[15];
@@ -28,7 +28,7 @@ extern void sub_08041164(void *, u32);
 extern void sub_08003300(void);
 extern const void *const gUnknownPointers_083B6100[];
 extern void PlaySoundEffect(u32);
-extern void sub_080750F0(u32);
+extern void FadeOutMusic(u32);
 extern void FillTilemapRect(u32, u32, u32, u32, u32, u32);
 extern u8 gUnknown_03000588;
 extern u32 gMainState;

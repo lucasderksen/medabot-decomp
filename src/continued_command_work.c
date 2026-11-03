@@ -70,7 +70,7 @@ void sub_0804D580(void)
     index = buffer[0x52]++;
     offset = index * 8;
     buffer += 0x12;
-    sub_080497C0(arguments, buffer + offset, 8);
+    CopyBytes2(arguments, buffer + offset, 8);
     value = ReadBankedScriptByte();
     selection = (u8 *)((u32)arguments - 2);
     zero = 0;
@@ -100,7 +100,7 @@ void sub_0804D7AC(void)
     index = buffer[0x52]++;
     offset = index * 8;
     buffer += 0x12;
-    sub_080497C0(arguments, buffer + offset, 8);
+    CopyBytes2(arguments, buffer + offset, 8);
 }
 
 void sub_0804D7F8(void)

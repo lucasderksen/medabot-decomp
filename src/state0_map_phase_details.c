@@ -23,7 +23,7 @@ void sub_0801303C(void)
     sub_0801B76C();
     sub_08044118(12, 4, 9, 21, *(volatile u16 *)0x04000008, (u16 *)0x02020800);
     gUnknown_03000440[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_080130D8(void)
@@ -56,7 +56,7 @@ void sub_080130D8(void)
         sub_08016DCC();
         sub_0801B894();
         *counter = 0;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -77,6 +77,6 @@ void sub_08013228(void)
     if (*counter == 16)
     {
         CpuFastSet(gState0Palette_084E44D8, (void *)0x05000340, 8);
-        gUnknown_0300137C = 11;
+        gNestedCallbackIndex = 11;
     }
 }

@@ -89,5 +89,5 @@ void sub_08062614(void) {
         PlaceAlignedTextObjects(gDebugMenuTextBuffer, 0, 0x15, 1, 7, 15, 1, 0);
         gDebugMenuTextBuffer[-0x1A] = 0;
     }
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

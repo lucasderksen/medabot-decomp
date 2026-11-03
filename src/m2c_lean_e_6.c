@@ -253,7 +253,7 @@ void sub_0805EA44(void) {
                 HideFrameObjects(5, 10);
                 PlaceAlignedTextObjects(((struct NameEntryContext *)gMainContextPointer_03006F74)->name58, 5, 5, 3, 10, 13, 1, 0);
                 PlaySoundEffect(7);
-                gUnknown_0300137C++;
+                gNestedCallbackIndex++;
                 return;
             }
             }

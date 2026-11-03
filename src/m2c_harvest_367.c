@@ -25,9 +25,9 @@ void sub_08067ACC(void) {
  next=(u16)work->row+1U;
  work->row=(s16)next;
  if((s16)next>14){
-  gUnknown_0300137C++;
+  gNestedCallbackIndex++;
   work->timer=0;
-  sub_080750F0(0xC0);
+  FadeOutMusic(0xC0);
  }else{
   u32 screenblock=(*(volatile u16 *)0x04000008>>8)&0x1F;
   s32 row=work->row;

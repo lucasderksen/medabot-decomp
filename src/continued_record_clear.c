@@ -38,8 +38,8 @@ void sub_0804D980(void *record)
     sub_08052E58(first, second, *source);
     if (row->flags.active)
     {
-        sub_08048888((u8)(row->flags.slot + 49));
-        sub_08048888((u8)(row->flags.slot + 91));
+        ResetFrameObjectSlot((u8)(row->flags.slot + 49));
+        ResetFrameObjectSlot((u8)(row->flags.slot + 91));
     }
     ClearBytes(saved, 8);
 }

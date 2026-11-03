@@ -52,5 +52,5 @@ void sub_0806BB64(void) {
             break;
         }
     }
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

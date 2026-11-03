@@ -101,8 +101,8 @@ void sub_08074FE8(const struct SoundAuxBank *bank);
 void sub_080741F4(void *record);
 void sub_0807455C(struct SoundChannelState *channel, void *track);
 void sub_08074A04(void);
-void sub_08074A8C(u32 song, u32 parameter);
-void sub_08074D50(u32 song, u32 parameter);
+void StartMusicTracks(u32 song, u32 parameter);
+void StartSoundEffectTracks(u32 song, u32 parameter);
 struct SoundRootState *sub_08075244(void);
 
 typedef char SoundChannelSize[(sizeof(struct SoundChannelState) == 0x74) ? 1 : -1];

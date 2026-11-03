@@ -98,10 +98,10 @@ void sub_08051988(u32 input)
             u8 *x;
             u8 *y;
             objects[47 * 64 + 0x2A] = value;
-            value = sub_0805273C(*(u16 *)(work + 0xC52));
+            value = ConvertXToCellColumn(*(u16 *)(work + 0xC52));
             x = work + 0xC56;
             *x = value;
-            value = sub_08052760(*(u16 *)(work + 0xC54));
+            value = ConvertYToCellRow(*(u16 *)(work + 0xC54));
             y = work + 0xC57;
             *y = value;
             if (!work[0xC88] && !sub_08052400())

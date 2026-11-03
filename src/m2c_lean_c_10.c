@@ -73,6 +73,6 @@ void sub_08063FB0(void) {
         } else {
             sub_08041FE4(buffer[1]);
         }
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }

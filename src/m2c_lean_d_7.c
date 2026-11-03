@@ -119,7 +119,7 @@ void sub_08065208(void) {
             gFrameObjects[8].screenX = 0xC;
             gMenuContext65208->flag4C = 1;
             gState0TypedWork.bytes[0x1B] = 0;
-            gUnknown_0300137C = 9;
+            gNestedCallbackIndex = 9;
             sub_080415E8(1, 0x16, 7);
             return;
         }
@@ -128,7 +128,7 @@ void sub_08065208(void) {
             gFrameObjects[8].flags &= 0xBFFF;
             gState0TypedWork.bytes[0x1B] = 0;
             gState0TypedWork.bytes[0x84] = 0;
-            gUnknown_0300137C = 7;
+            gNestedCallbackIndex = 7;
         }
         return;
     }

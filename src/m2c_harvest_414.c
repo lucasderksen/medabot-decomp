@@ -54,7 +54,7 @@ s32 sub_0806E074(u8 index) {
             ((struct FrameTimerView *)object)->timer = (NextRandom(0) & 0x1FF) + 0x20;
             object->frameAndGroup = ((struct FrameTimerView *)object)->baseFrame;
             object->unknown1A = 0;
-        } else if (gUnknown_0300137C == 9 && object->commandStopped == 0) {
+        } else if (gNestedCallbackIndex == 9 && object->commandStopped == 0) {
             ((struct FrameTimerView *)object)->timer = -1;
             object->unknown1A = 0;
         } else {

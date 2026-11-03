@@ -67,7 +67,7 @@ void sub_08067974(void) {
                 gCreditsContext67974->width7D = sub_080672F4(*gCreditsContext67974->listAC);
             gCreditsContext67974->listAC++;
         } else {
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
             ctx->timer3A = -1;
         }
     }

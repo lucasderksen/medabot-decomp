@@ -49,7 +49,7 @@
   "gFrameAffineOverride": "0x03005048",
   "gLibgccNanDouble": "0x03000408",
   "gLibgccNanSingle": "0x03000420",
-  "gUnknown_0300137C": "0x0300137C",
+  "gNestedCallbackIndex": "0x0300137C",
   "gUnknown_03002B70": "0x03002B70",
   "gUnknownPointers_083B5578": "0x083B5578",
   "gUnknownPointers_083B4C60": "0x083B4C60",

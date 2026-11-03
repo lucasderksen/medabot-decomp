@@ -84,14 +84,14 @@ void sub_08025E88(void) {
 
 void sub_08030D58(void) {
     if (sub_0801C0BC(0) != 0) {
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
 }
 
 void sub_08030D90(void) {
     sub_0801C2F0(0);
     if (sub_0801C0BC(1) != 0) {
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
 }
 
@@ -103,7 +103,7 @@ void sub_08030E14(void) {
     if ((temp_r5 + sub_0801B0E8(gState0TransferWork.bytes[0x87])) == 2) {
         sub_0801AEF4();
         sub_0801AEB4();
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
 }
 
@@ -127,17 +127,17 @@ void sub_080606A8(void) {
     CpuFastSet((void *)0x06002800, &gState0FrameBackup, 0x28U);
     sp0 = 0;
     CpuFastSet(&sp0, (void *)0x06002800, 0x01000200U);
-    sub_080415BC();
+    ClearBgScrolls();
     sub_08059E50();
     (*(s16 *)((u8 *)((void *)0x04000000) + 0)) = 0x60;
     (*(s16 *)((u8 *)((void *)0x04000000) + 0x50)) = 0x2FF;
     (*(s16 *)((u8 *)(((void *)0x04000000 + 0x50)) + 4)) = 0x10;
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_08068E88(void) {
     if (sub_08068888() != 0) {
-        gUnknown_0300137C = gUnknown_03006F80;
+        gNestedCallbackIndex = gUnknown_03006F80;
     }
 }
 

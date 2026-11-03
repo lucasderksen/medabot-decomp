@@ -30,7 +30,7 @@ void sub_0802F2F4(void) {
     u8 *scaleX;
     s32 delta;
     s32 counter;
-    sub_080353CC(gState0TypedWork.bytes[0x84] + 0x21);
+    StepObjectHop(gState0TypedWork.bytes[0x84] + 0x21);
     frameBase = gFrameObjects;
     index = gState0TypedWork.bytes[0x84] + 0x21;
     frame = &frameBase[index];

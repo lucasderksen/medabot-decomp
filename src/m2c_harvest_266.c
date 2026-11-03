@@ -79,5 +79,5 @@ void sub_0806ED08(void) {
     sub_08068460(2, 1, 0);
     gRenderMode = 0;
     gCounter6ED08_03001800.field4 = (u16) gCounter6ED08_03001800.fieldC;
-    gUnknown_0300137C = 3;
+    gNestedCallbackIndex = 3;
 }

@@ -40,14 +40,14 @@ void sub_08013164(void)
         ClearFrameObjects(20, 38);
         FillTilemapRect(7, 1, 14, 12, *(volatile u16 *)0x04000008, zero);
         *counter = zero;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     else if (keys & 1)
     {
         PlaySoundEffect(4);
         sub_0801BACC();
         *(u16 *)(base + 0x86) = cancel;
-        gUnknown_0300137C = 21;
+        gNestedCallbackIndex = 21;
     }
 }
 

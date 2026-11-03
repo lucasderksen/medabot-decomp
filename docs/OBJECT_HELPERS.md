@@ -6,7 +6,7 @@ ordinary C in `src/object_helpers.c`.
 
 | Range (end exclusive) | Function | Bytes |
 | --- | --- | ---: |
-| 415BC..415E8 | sub_080415BC | 44 |
+| 415BC..415E8 | ClearBgScrolls | 44 |
 | 415E8..41624 | sub_080415E8 | 60 |
 | 41624..41674 | sub_08041624 | 80 |
 | 41674..4169C | sub_08041674 | 40 |
@@ -36,7 +36,7 @@ ordinary C in `src/object_helpers.c`.
 | 4253C..425DC | StartBlendFade | 160 |
 | 425DC..42678 | StepBlendFade | 156 |
 
-`sub_080415BC` clears both halfwords in each of the four background-scroll
+`ClearBgScrolls` clears both halfwords in each of the four background-scroll
 pairs, using the canonical `bg_scroll.h` view. The next two routines clear
 eight bytes at `0x03000468`, then store byte arguments at offsets 2, 4 and 5.
 The three-argument version puts 0x7F at offset 3; the four-argument version

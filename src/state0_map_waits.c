@@ -11,7 +11,7 @@ void sub_080107F0(void)
     sub_08012098();
     StepFirstBgAutoScroll();
     sub_0803FAA0(1, 0, 0);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08010814(void)
@@ -22,7 +22,7 @@ void sub_08010814(void)
         sub_08012098();
         gUnknown_03000440[0x84] = 8;
         gUnknown_03000440[0x85] = 8;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     sub_08012098();
 }
@@ -34,12 +34,12 @@ void sub_08010860(void)
     if ((*(u8 *)&gNewKeys & 8) && sub_08042278(50) && !gUnknown_030057E0[0xC2D])
     {
         PlaySoundEffect(4);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     else if (*(u8 *)&gNewKeys & 1)
     {
         PlaySoundEffect(4);
-        gUnknown_0300137C = 32;
+        gNestedCallbackIndex = 32;
     }
 }
 
@@ -50,6 +50,6 @@ void sub_080108D0(void)
     if (sub_08041CA4())
     {
         sub_0803FAA0(1, 2, 0);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }

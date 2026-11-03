@@ -84,7 +84,7 @@ s32 sub_0800FDD8(void) {
                 break;
             if ((value >> 8) == (low = value & 0xFF))
                 continue;
-            sub_08042B58(gState0TypedWork.bytes[0x3D], gState0TypedWork.bytes[0x3E], &gState0TypedWork.bytes[0x10E]);
+            CopyPartMetadataSlot(gState0TypedWork.bytes[0x3D], gState0TypedWork.bytes[0x3E], &gState0TypedWork.bytes[0x10E]);
             if (gUnknownRecords_030017A0[gState0TypedWork.bytes[0x51]].unknown00[1] == gState0TypedWork.bytes[0x111])
                 break;
         }
@@ -102,14 +102,14 @@ s32 sub_0800FDD8(void) {
                 break;
             if ((value >> 8) == (low = value & 0xFF))
                 continue;
-            sub_08042B58(gState0TypedWork.bytes[0x3D], gState0TypedWork.bytes[0x3E], &gState0TypedWork.bytes[0x10E]);
+            CopyPartMetadataSlot(gState0TypedWork.bytes[0x3D], gState0TypedWork.bytes[0x3E], &gState0TypedWork.bytes[0x10E]);
             if (gUnknownRecords_030017A0[gState0TypedWork.bytes[0x51]].unknown00[1] == gState0TypedWork.bytes[0x111])
                 break;
         }
     }
     if (0x30 & (u8)gRepeatedKeys) {
         PlaySoundEffect(2);
-        sub_08042B58(gState0TypedWork.bytes[0x3D], gState0TypedWork.bytes[0x3E], &gState0TypedWork.bytes[0xEE]);
+        CopyPartMetadataSlot(gState0TypedWork.bytes[0x3D], gState0TypedWork.bytes[0x3E], &gState0TypedWork.bytes[0xEE]);
         sub_0800F6E4();
         sub_0800F77C();
         sub_0800F7D0();

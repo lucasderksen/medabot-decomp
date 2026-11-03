@@ -51,7 +51,7 @@ void sub_0804D5F0(void)
             {
                 u32 index = 15;
                 index &= flags;
-                sub_080487C8((u8)(sub_0804DBF0(index) + 79));
+                sub_080487C8((u8)(GetScriptObjectSlot(index) + 79));
             }
             else
             {

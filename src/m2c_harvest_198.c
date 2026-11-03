@@ -184,7 +184,7 @@ void sub_0805FEC8(void) {
  work->phase=remaining;
  gFrameObjects[1].flags |=0x4000;
  gFrameObjects[1].unknown1A=remaining;
- gUnknown_0300137C++;
+ gNestedCallbackIndex++;
 }
 
 void sub_080609D4(void) {
@@ -199,7 +199,7 @@ void sub_080609D4(void) {
  } else {
   work->phase=remaining;
   sub_0803FAA0(1,2,0);
-  gUnknown_0300137C++;
+  gNestedCallbackIndex++;
  }
  sub_080605A0();sub_08060620();
 }
@@ -211,9 +211,9 @@ void sub_08062754(void) {
             HideFrameObjects(0x61U, 7U);
             HideFrameObjects(0xDU, 0x34U);
             HideFrameObjects(0x45U, 0x1CU);
-            gUnknown_0300137C=5;
+            gNestedCallbackIndex=5;
         } else {
-            gUnknown_0300137C=4;
+            gNestedCallbackIndex=4;
         }
 
     }
@@ -246,7 +246,7 @@ void sub_0806E96C(void) {
   work->counter=0;
   sub_08068684(2,4,0);
   work->field4=10;
-  gUnknown_0300137C=2;
+  gNestedCallbackIndex=2;
   return;
  }
  work->counter++;

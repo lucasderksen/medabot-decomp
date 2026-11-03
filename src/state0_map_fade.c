@@ -17,6 +17,6 @@ void sub_08010794(void)
         gUnknown_03000440[0x84]++;
     }
     else
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 

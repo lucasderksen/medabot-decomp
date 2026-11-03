@@ -64,7 +64,7 @@ void sub_0806C694(void) {
     gFrameObjects[0x1E].commandDelay--;
     sub_0806D3EC();
     if (gFrameObjects[0x1E].commandDelay != 0) {
-        gUnknown_0300137C = 3;
+        gNestedCallbackIndex = 3;
         gFrameObjects[0].commandDelay = 3;
         gFrameObjects[0x1E].commandOffset = 0;
         gFrameObjects[0x1E].frameAndGroup = 0;
@@ -96,6 +96,6 @@ void sub_0806C694(void) {
     }
     PlayMusic(0);
     PlayMusic(0xF);
-    gUnknown_0300137C = 7;
+    gNestedCallbackIndex = 7;
     gBattleView6C694.word08 = 0;
 }

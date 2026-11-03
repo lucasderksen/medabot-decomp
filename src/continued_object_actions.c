@@ -16,8 +16,8 @@ void name(void) \
     work = gUnknown_030057E0; \
     argument = work + 0xC94; \
     index = *argument; \
-    { u32 value = sub_08050710(); sub_0804DBD0(index, (u8)value); } \
-    { s32 value = sub_0804DBF0(*argument); gLaterBuffer_03006D20[10] = value + 79; } \
+    { u32 value = sub_08050710(); SetScriptObjectSlot(index, (u8)value); } \
+    { s32 value = GetScriptObjectSlot(*argument); gLaterBuffer_03006D20[10] = value + 79; } \
     work[0xC89] = 1; \
 }
 
@@ -47,7 +47,7 @@ void name(void) \
     u8 *work; \
     ReadBankedScriptArgs(2); \
     work = gUnknown_030057E0; \
-    { s32 value = sub_0804DBF0(work[0xC94]); gLaterBuffer_03006D20[10] = value + 79; } \
+    { s32 value = GetScriptObjectSlot(work[0xC94]); gLaterBuffer_03006D20[10] = value + 79; } \
     work[0xC89] = 1; \
 }
 

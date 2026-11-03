@@ -1385,7 +1385,7 @@
     "name": "state0_helper_4e74",
     "start": "0x4e74",
     "end": "0x4e98",
-    "input_section": ".text.sub_08004E74",
+    "input_section": ".text.ScrollBg3Diagonally2",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/state0_helpers.c",
@@ -1411,7 +1411,7 @@
     "name": "state0_helper_4ef8",
     "start": "0x4ef8",
     "end": "0x4fd0",
-    "input_section": ".text.sub_08004EF8",
+    "input_section": ".text.StepMarkerOrbitForward",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/state0_helpers.c",
@@ -1567,7 +1567,7 @@
     "name": "state0_helper_56a4",
     "start": "0x56A4",
     "end": "0x5798",
-    "input_section": ".text.sub_080056A4",
+    "input_section": ".text.StepMarkerOrbitReverse",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/state0_helpers.c",
@@ -4558,7 +4558,7 @@
     "name": "state0_helper_ebfc",
     "start": "0xebfc",
     "end": "0xec20",
-    "input_section": ".text.sub_0800EBFC",
+    "input_section": ".text.ScrollBg3Diagonally3",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/state0_next_helpers.c",
@@ -19934,10 +19934,10 @@
     "description": "Independently reproduced complete function; pools and padding included"
   },
   {
-    "name": "sub_08033090",
+    "name": "PickRandomGroupSlot",
     "start": "0x33090",
     "end": "0x330e8",
-    "input_section": ".text.sub_08033090",
+    "input_section": ".text.PickRandomGroupSlot",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/state0_action_shared_queries.c",
@@ -21913,7 +21913,7 @@
     "description": "m2c draft, exact without edits; control-flow-decoded bounds await review"
   },
   {
-    "name": "sub_080353CC",
+    "name": "StepObjectHop",
     "start": "0x0353CC",
     "end": "0x035410",
     "kind": "c",
@@ -21922,7 +21922,7 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_harvest_318.c",
-    "input_section": ".text.sub_080353CC",
+    "input_section": ".text.StepObjectHop",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
@@ -22005,10 +22005,10 @@
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
-    "name": "sub_080355F0",
+    "name": "StepFrameObjectToTarget",
     "start": "0x355f0",
     "end": "0x35658",
-    "input_section": ".text.sub_080355F0",
+    "input_section": ".text.StepFrameObjectToTarget",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/state0_action_motion_target.c",
@@ -22096,10 +22096,10 @@
     "description": "m2c draft, exact without edits; control-flow-decoded bounds await review"
   },
   {
-    "name": "sub_08035754",
+    "name": "SubtractWithZeroFloor",
     "start": "0x35754",
     "end": "0x3576c",
-    "input_section": ".text.sub_08035754",
+    "input_section": ".text.SubtractWithZeroFloor",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/state0_action_sum_small.c",
@@ -25719,7 +25719,7 @@
     "description": "m2c draft, exact without edits; control-flow-decoded bounds await review"
   },
   {
-    "name": "sub_0803E894",
+    "name": "ScrollBg3Diagonally4",
     "start": "0x03E894",
     "end": "0x03E8B8",
     "kind": "c",
@@ -25728,7 +25728,7 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_harvest_0.c",
-    "input_section": ".text.sub_0803E894",
+    "input_section": ".text.ScrollBg3Diagonally4",
     "description": "m2c draft, exact without edits; control-flow-decoded bounds await review"
   },
   {
@@ -25955,7 +25955,7 @@
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
-    "name": "sub_0803ED6C",
+    "name": "FlashSelectedChoiceTiles",
     "start": "0x03ED6C",
     "end": "0x03EE10",
     "kind": "c",
@@ -25964,7 +25964,7 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_harvest_347.c",
-    "input_section": ".text.sub_0803ED6C",
+    "input_section": ".text.FlashSelectedChoiceTiles",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
@@ -26731,7 +26731,7 @@
     "name": "frame_decimal_checked",
     "start": "0x41370",
     "end": "0x41490",
-    "input_section": ".text.sub_08041370",
+    "input_section": ".text.FormatDecimalString",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/frame_objects.c",
@@ -26751,7 +26751,7 @@
     "name": "object_helper_0415bc",
     "start": "0x415bc",
     "end": "0x415e8",
-    "input_section": ".text.sub_080415BC",
+    "input_section": ".text.ClearBgScrolls",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/object_helpers.c",
@@ -27294,10 +27294,10 @@
     ]
   },
   {
-    "name": "sub_08042678",
+    "name": "FillTextWithHyphens",
     "start": "0x42678",
     "end": "0x42698",
-    "input_section": ".text.sub_08042678",
+    "input_section": ".text.FillTextWithHyphens",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/tile_text.c",
@@ -27372,10 +27372,10 @@
     ]
   },
   {
-    "name": "sub_08042B58",
+    "name": "CopyPartMetadataSlot",
     "start": "0x42b58",
     "end": "0x42b80",
-    "input_section": ".text.sub_08042B58",
+    "input_section": ".text.CopyPartMetadataSlot",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/tile_text.c",
@@ -27399,10 +27399,10 @@
     "description": "m2c draft, exact without edits; control-flow-decoded bounds await review"
   },
   {
-    "name": "sub_08042BC0",
+    "name": "GetPolarOffsetPoint",
     "start": "0x42bc0",
     "end": "0x42ca0",
-    "input_section": ".text.sub_08042BC0",
+    "input_section": ".text.GetPolarOffsetPoint",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/tile_text.c",
@@ -27688,7 +27688,7 @@
     "name": "equipment_043ca8",
     "start": "0x43ca8",
     "end": "0x43cd4",
-    "input_section": ".text.sub_08043CA8",
+    "input_section": ".text.ClearBgScrolls2",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/equipment_helpers.c",
@@ -27893,10 +27893,10 @@
     ]
   },
   {
-    "name": "sub_0804422C",
+    "name": "ApplyObjectMotionStep",
     "start": "0x4422c",
     "end": "0x442b4",
-    "input_section": ".text.sub_0804422C",
+    "input_section": ".text.ApplyObjectMotionStep",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/utility_helpers.c",
@@ -28062,10 +28062,10 @@
     ]
   },
   {
-    "name": "sub_08044D0C",
+    "name": "DecompressLz77OrCopy",
     "start": "0x44d0c",
     "end": "0x44d64",
-    "input_section": ".text.sub_08044D0C",
+    "input_section": ".text.DecompressLz77OrCopy",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/record_helpers.c",
@@ -28793,7 +28793,7 @@
     "name": "post_047C24",
     "start": "0x47c24",
     "end": "0x47c84",
-    "input_section": ".text.sub_08047C24",
+    "input_section": ".text.InitAndRunDialogue",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/post_dispatch.c",
@@ -28819,7 +28819,7 @@
     "name": "post_047CE4",
     "start": "0x47ce4",
     "end": "0x47d24",
-    "input_section": ".text.sub_08047CE4",
+    "input_section": ".text.CopyStringToTextBuffer",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/post_dispatch.c",
@@ -29355,7 +29355,7 @@
     "name": "object_48888",
     "start": "0x48888",
     "end": "0x488AC",
-    "input_section": ".text.sub_08048888",
+    "input_section": ".text.ResetFrameObjectSlot",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/object_numeric_helpers.c",
@@ -29786,10 +29786,10 @@
     "description": "Reviewed exact C match; complete ROM verified by tools/build.py"
   },
   {
-    "name": "sub_080497C0",
+    "name": "CopyBytes2",
     "start": "0x497C0",
     "end": "0x497E0",
-    "input_section": ".text.sub_080497C0",
+    "input_section": ".text.CopyBytes2",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/later_graphics.c",
@@ -29878,10 +29878,10 @@
     "description": "Reviewed exact C reconstruction; full-ROM verification follows integration"
   },
   {
-    "name": "sub_08049E08",
+    "name": "StepPaletteFadeToColor",
     "start": "0x49E08",
     "end": "0x49EC0",
-    "input_section": ".text.sub_08049E08",
+    "input_section": ".text.StepPaletteFadeToColor",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/continued_palette_update.c",
@@ -32561,10 +32561,10 @@
     "description": "Reviewed exact argument/slot helper or independently referenced wait callback"
   },
   {
-    "name": "sub_0804DBB4",
+    "name": "ClearScriptObjectSlot",
     "start": "0x4dbb4",
     "end": "0x4dbd0",
-    "input_section": ".text.sub_0804DBB4",
+    "input_section": ".text.ClearScriptObjectSlot",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/continued_command_helpers.c",
@@ -32574,10 +32574,10 @@
     "description": "Reviewed exact argument/slot helper or independently referenced wait callback"
   },
   {
-    "name": "sub_0804DBD0",
+    "name": "SetScriptObjectSlot",
     "start": "0x4dbd0",
     "end": "0x4dbf0",
-    "input_section": ".text.sub_0804DBD0",
+    "input_section": ".text.SetScriptObjectSlot",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/continued_command_helpers.c",
@@ -32587,10 +32587,10 @@
     "description": "Reviewed exact argument/slot helper or independently referenced wait callback"
   },
   {
-    "name": "sub_0804DBF0",
+    "name": "GetScriptObjectSlot",
     "start": "0x4dbf0",
     "end": "0x4dc0c",
-    "input_section": ".text.sub_0804DBF0",
+    "input_section": ".text.GetScriptObjectSlot",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/continued_command_helpers.c",
@@ -34468,10 +34468,10 @@
     "description": "Exact complete directional cell-record query"
   },
   {
-    "name": "sub_0805273C",
+    "name": "ConvertXToCellColumn",
     "start": "0x5273C",
     "end": "0x52760",
-    "input_section": ".text.sub_0805273C",
+    "input_section": ".text.ConvertXToCellColumn",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/continued_coordinate_converters.c",
@@ -34481,10 +34481,10 @@
     "description": "Exact complete scene helper, coordinate conversion or state-zero callback"
   },
   {
-    "name": "sub_08052760",
+    "name": "ConvertYToCellRow",
     "start": "0x52760",
     "end": "0x52784",
-    "input_section": ".text.sub_08052760",
+    "input_section": ".text.ConvertYToCellRow",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/continued_coordinate_converters.c",
@@ -34948,10 +34948,10 @@
     "description": "Exact complete scene numeric or state-zero part window helper"
   },
   {
-    "name": "sub_080533A4",
+    "name": "AbsFloat",
     "start": "0x533a4",
     "end": "0x533cc",
-    "input_section": ".text.sub_080533A4",
+    "input_section": ".text.AbsFloat",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/continued_float_helpers.c",
@@ -42443,7 +42443,7 @@
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
-    "name": "sub_08071898",
+    "name": "StartFrameObjectCycle",
     "start": "0x071898",
     "end": "0x0718D4",
     "kind": "c",
@@ -42452,11 +42452,11 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_harvest_97.c",
-    "input_section": ".text.sub_08071898",
+    "input_section": ".text.StartFrameObjectCycle",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
-    "name": "sub_080718D4",
+    "name": "StopFrameObjectCycle",
     "start": "0x0718D4",
     "end": "0x07190C",
     "kind": "c",
@@ -42465,7 +42465,7 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_harvest_97.c",
-    "input_section": ".text.sub_080718D4",
+    "input_section": ".text.StopFrameObjectCycle",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
@@ -44484,7 +44484,7 @@
     "description": "m2c draft, exact without edits; control-flow-decoded bounds await review"
   },
   {
-    "name": "sub_08074A8C",
+    "name": "StartMusicTracks",
     "start": "0x074A8C",
     "end": "0x074B88",
     "kind": "c",
@@ -44493,7 +44493,7 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_resume_4.c",
-    "input_section": ".text.sub_08074A8C",
+    "input_section": ".text.StartMusicTracks",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
@@ -44593,7 +44593,7 @@
     "description": "m2c draft, exact without edits; control-flow-decoded bounds await review"
   },
   {
-    "name": "sub_08074D50",
+    "name": "StartSoundEffectTracks",
     "start": "0x074D50",
     "end": "0x074DE0",
     "kind": "c",
@@ -44602,7 +44602,7 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_resume_3.c",
-    "input_section": ".text.sub_08074D50",
+    "input_section": ".text.StartSoundEffectTracks",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
@@ -44780,7 +44780,7 @@
     "description": "byte-verified GNU nested function with a genuine captured parent value"
   },
   {
-    "name": "sub_080750F0",
+    "name": "FadeOutMusic",
     "start": "0x0750F0",
     "end": "0x075130",
     "kind": "c",
@@ -44790,7 +44790,7 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_harvest_109.c",
-    "input_section": ".text.sub_080750F0",
+    "input_section": ".text.FadeOutMusic",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {

@@ -154,8 +154,8 @@ void sub_0804A2F0(void) {
     gContinuedWork_030057E0.halfC54 = gContinuedWork_030057E0.halfC4A + 0xD0;
     gContinuedWork_030057E0.byteC67 = 0;
     gContinuedWork_030057E0.byteC34 = 1;
-    gContinuedWork_030057E0.byteC56 = sub_0805273C(gContinuedWork_030057E0.halfC52);
-    gContinuedWork_030057E0.byteC57 = sub_08052760(gContinuedWork_030057E0.halfC54);
+    gContinuedWork_030057E0.byteC56 = ConvertXToCellColumn(gContinuedWork_030057E0.halfC52);
+    gContinuedWork_030057E0.byteC57 = ConvertYToCellRow(gContinuedWork_030057E0.halfC54);
     gContinuedWork_030057E0.byteC5C = 0;
     gContinuedWork_030057E0.byteC5B = 1;
     InitFrameObject(0x2F, 0xC804, 3, 0, 1);

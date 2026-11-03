@@ -36,7 +36,7 @@ void sub_08022B40(void) {
     RunFrameObjectCommands(gState0NextCommands_083B6100[63], 0x25);
     for (i = 0, base = (u32)gFrameObjects; i < 5; i++) {
         if (i < 4) {
-            coords.tile = sub_08042BC0(((struct FrameObject *)(((0x21 + i) << 6) + base))->unknown2C[0], ((struct FrameObject *)(((0x21 + i) << 6) + base))->byte2B,
+            coords.tile = GetPolarOffsetPoint(((struct FrameObject *)(((0x21 + i) << 6) + base))->unknown2C[0], ((struct FrameObject *)(((0x21 + i) << 6) + base))->byte2B,
                                        ((struct FrameObject *)(((gWork22B40.setup88 * 4 + 0x5D) << 6) + base))->screenX,
                                        ((struct FrameObject *)(((gWork22B40.setup88 * 4 + 0x5D) << 6) + base))->screenY - 4);
             ((struct FrameObject *)(((0x21 + i) << 6) + base))->screenX = coords.packed;

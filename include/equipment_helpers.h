@@ -20,7 +20,7 @@ void sub_08043B58(void);
 void sub_08043B7C(u32 index, u32 shadowPalette);
 void sub_08043C08(u32 index, u32 shadowPalette);
 s32 sub_08043C94(void);
-void sub_08043CA8(void);
+void ClearBgScrolls2(void);
 void sub_08043DF8(void);
 void sub_08043E48(void);
 void sub_08043E54(void);

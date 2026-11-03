@@ -46,7 +46,7 @@ void sub_0804ABCC(void)
 
 void sub_0804AD68(void)
 {
-    if (sub_08049E08(0))
+    if (StepPaletteFadeToColor(0))
     {
         u8 *work = gUnknown_030057E0;
         u32 offset;

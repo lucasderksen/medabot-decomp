@@ -76,12 +76,12 @@ void sub_08060A54(void) {
                 }
             }
             (*(s8 *)((u8 *)(gMainContextPointer_03006F74) + 0)) = 0;
-            counter=&gUnknown_0300137C;
+            counter=&gNestedCallbackIndex;
             *counter += 1;
         }
     } else {
         sub_0803FB0C();
-        counter=&gUnknown_0300137C;
+        counter=&gNestedCallbackIndex;
         *counter=4;
     }
 }

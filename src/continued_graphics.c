@@ -3,7 +3,7 @@
 
 #include "continued_blend_work.h"
 #include "continued_graphics.h"
-extern u32 gUnknown_0300137C;
+extern u32 gNestedCallbackIndex;
 
 void sub_08049CC8(void)
 {
@@ -40,5 +40,5 @@ void sub_08049ED4(u32 input, u32 weight, u32 maskInput)
 
 void sub_0804A210(void)
 {
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

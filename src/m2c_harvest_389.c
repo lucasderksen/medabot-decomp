@@ -221,7 +221,7 @@ void sub_0806F23C(void) {
     gState0TransferWork.sceneFrame.count = 0;
     gState0TransferWork.sceneFrame.state = 6;
     gState0TransferWork.sceneFrame.mode = 0xD;
-    gUnknown_0300137C = 2;
+    gNestedCallbackIndex = 2;
   }
 }
 
@@ -411,6 +411,6 @@ void sub_0806F5A0(void) {
   {
     gState0TransferWork.sceneFrame.count = 0;
     gState0TransferWork.sceneFrame.state = 9;
-    gUnknown_0300137C = 2;
+    gNestedCallbackIndex = 2;
   }
 }

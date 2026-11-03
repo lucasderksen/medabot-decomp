@@ -24,7 +24,7 @@ void sub_0800EE34(void)
         offset += i * 2;
         if (parts[offset])
         {
-            sub_08042B58(part + i, group, &work[0xEE]);
+            CopyPartMetadataSlot(part + i, group, &work[0xEE]);
             if (*status)
                 FillTilemapRectSequential(2, 2, 27, row, *control, 0xA354);
             else

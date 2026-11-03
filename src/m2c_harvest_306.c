@@ -47,7 +47,7 @@ void sub_0806BF18(void);
 void sub_0800EA98(void) {
 
     s32 v;
-    sub_0800EBFC();
+    ScrollBg3Diagonally3();
     sub_0800F440();
     SetObjectXWobble(4U, gFrameCounter, 0xA8U);
     sub_080100BC();
@@ -61,14 +61,14 @@ void sub_0800EA98(void) {
         }
         PlaySoundEffect(4U);
         sub_08010040();
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
         return;
     }
     if (2 & gFamilyKeyBytes49558_0300058C) {
         PlaySoundEffect(5U);
         gState0TypedWork.bytes[0x4A] = 2;
         sub_08010040();
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
 }
 
@@ -198,7 +198,7 @@ void sub_08031704(void) {
     InitFrameObjectCommands(*(u8 **)(b + 0x138), 0x22U);
     {struct SetupRec *rec = (struct SetupRec *)gSetupBuffer_03000590; u8 v = rec[g[0x87]].bytes[0xAA];
     g[0x51] = v;}
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 u32 sub_080352EC(u32 index, s32 first, s32 second) {
@@ -261,7 +261,7 @@ void sub_08038650(void) {
     struct FrameObject *o;
     u8 *b;
     u32 x;
-    if (sub_080355F0(gState0TypedWork.bytes[0x12F]) != 0) {
+    if (StepFrameObjectToTarget(gState0TypedWork.bytes[0x12F]) != 0) {
         b = (u8 *)gUnknownPointers_083B6100;
         InitFrameObjectCommands(*(u8 **)(b + 0x1AC), gState0TypedWork.bytes[0x12F]);
         gFrameObjects[gState0TypedWork.bytes[0x12F]].palette = 6;

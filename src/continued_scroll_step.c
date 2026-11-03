@@ -74,8 +74,8 @@ increment:
                 lookup = gFrameByteLookup_083D2A88;
                 value = lookup[work[0xC5C]];
                 objects->unknownBEA = value;
-                work[0xC56] = sub_0805273C(*(u16 *)(work + 0xC52));
-                work[0xC57] = sub_08052760(*(u16 *)(work + 0xC54));
+                work[0xC56] = ConvertXToCellColumn(*(u16 *)(work + 0xC52));
+                work[0xC57] = ConvertYToCellRow(*(u16 *)(work + 0xC54));
                 sub_08052AA4();
                 sub_08052BEC(*flag);
                 sub_08052E0C(*selected);

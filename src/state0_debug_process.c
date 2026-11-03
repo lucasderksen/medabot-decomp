@@ -72,18 +72,18 @@ void sub_0800BAF8(void)
     if (*(u8 *)&gRepeatedKeys & 32)
     { (gState0TypedWork.bytes + 0x35)[gState0TypedWork.bytes[0x34]]--; }
     ClearFrameObjects(32, 3);
-    sub_08041370(gDebugMenuTextBuffer, gDebugProcessStateByte);
+    FormatDecimalString(gDebugMenuTextBuffer, gDebugProcessStateByte);
     PlaceAlignedTextObjects(gDebugMenuTextBuffer, 32, 8, 2, 3, 15, 1, 0);
     ClearFrameObjects(35, 3);
-    sub_08041370(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x68));
+    FormatDecimalString(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x68));
     PlaceAlignedTextObjects(gDebugMenuTextBuffer, 35, 8, 4, 3, 15, 1, 0);
     ClearFrameObjects(38, 3);
-    sub_08041370(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x67));
+    FormatDecimalString(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x67));
     PlaceAlignedTextObjects(gDebugMenuTextBuffer, 38, 8, 6, 3, 15, 1, 0);
     if (*(u8 *)&gNewKeys & 2)
     {
         ClearFrameObjects(8, 33);
-        gUnknown_0300137C = 1;
+        gNestedCallbackIndex = 1;
     }
     else if (*(u8 *)&gNewKeys & 1)
     {
@@ -94,7 +94,7 @@ void sub_0800BAF8(void)
         (void)dma[2];
         gMainState = gDebugProcessStateByte;
         gMainSubstate = *(u8 *)((u32)gDebugMenuTextBuffer - 0x68);
-        gUnknown_0300137C = *(u8 *)((u32)gDebugMenuTextBuffer - 0x67);
+        gNestedCallbackIndex = *(u8 *)((u32)gDebugMenuTextBuffer - 0x67);
     }
 }
 

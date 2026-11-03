@@ -48,7 +48,7 @@ void sub_0805F8E0(void)
         DISPCNT &= 0xFDFF;
         gMainState = 3;
         gMainSubstate = 2;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         gMain2Byte_03007008 = 1;
     }
 }
@@ -56,7 +56,7 @@ void sub_0805F8E0(void)
 void sub_0805F960(void)
 {
     if (RunDialogue(gMain2ScriptSlots_0848521C[3]))
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_0805F984(void)
@@ -66,8 +66,8 @@ void sub_0805F984(void)
         CONTEXT->half02 = 0;
         sub_0803FB0C();
         if (gUnknown_03000440[0x2A] == 0)
-            gUnknown_0300137C = 9;
+            gNestedCallbackIndex = 9;
         else
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
     }
 }

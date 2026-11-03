@@ -55,6 +55,6 @@ void sub_08068EA8(void) {
         (void)dma->control;
         gUnknownCallback_030017F0 = DummyInterruptHandler;
         *(volatile u16 *)0x04000000 &= 0x80FF;
-        gUnknown_0300137C = gUnknown_03006F80;
+        gNestedCallbackIndex = gUnknown_03006F80;
     }
 }

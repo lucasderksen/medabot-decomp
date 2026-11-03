@@ -50,7 +50,7 @@ void sub_080678D4(void) {
             completed = gMainContextPointer_03006F74;
             completed->cursor = commandLists[completed->selection];
             completed->row = 0;
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
             ((struct RevealScriptWork *)gMainContextPointer_03006F74)->commandLength =
                 (s8)sub_080672F4(*completed->cursor);
         }

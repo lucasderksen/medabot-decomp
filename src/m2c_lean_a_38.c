@@ -92,7 +92,7 @@ void sub_0805D860(void) {
     CpuFastSet(gMain2NameTransfer_084E43D8, gCopy6280C0202F9E0, 8);
     CpuFastSet(gUnknown_080AF960, gCopy6280C0202F800, 8);
     gDebugMenuTextBuffer[-0x1A] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0805FB4C(s32 step) {
@@ -189,12 +189,12 @@ void sub_080615D4(void) {
         if (((struct Main2MenuContext *)gMainContextPointer_03006F74)->selection == 4)
         {
         next:
-            gUnknown_0300137C = 0xB;
+            gNestedCallbackIndex = 0xB;
             return;
         }
         gState0TypedWork.bytes[0x84] = 0;
         ((struct Main2MenuContext *)gMainContextPointer_03006F74)->byte48 = 0x2D;
-        gUnknown_0300137C = 0xC;
+        gNestedCallbackIndex = 0xC;
         return;
     }
     if (2 & gFamilyKeyBytes49558_0300058C)

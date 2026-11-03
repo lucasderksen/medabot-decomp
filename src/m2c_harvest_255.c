@@ -39,7 +39,7 @@ void sub_080614DC(void) {
         *(volatile u16 *)0x04000000 &= 0xFDFF;
         gFrameObjects[8].flags &= 0xBFFF;
         sub_0803FB0C();
-        gUnknown_0300137C=(u32)gUnknown_0300137C+1U;
+        gNestedCallbackIndex=(u32)gNestedCallbackIndex+1U;
     }
     (*(s8 *)((u8 *)(gMainContextPointer_03006F74) + 0x19)) = 0;
 }

@@ -69,8 +69,8 @@ s32 rx[4][4] = {
 
 - A label loop with a block and `if (mask) goto loop` can keep the counter in
   a high register and spill the long-lived parameter, where `do/while` chooses
-  the opposite lifetimes. This matched `sub_08074D50`; the same form also
-  matches `sub_08074A8C`. Both dispatchers take full-word arguments; m2c's
+  the opposite lifetimes. This matched `StartSoundEffectTracks`; the same form also
+  matches `StartMusicTracks`. Both dispatchers take full-word arguments; m2c's
   inferred narrow parameters introduced extra truncations.
 - The reference reloads constants each iteration and keeps a separate counter,
   with no strength reduction: write the loop as a label plus `goto`
@@ -142,7 +142,7 @@ s32 rx[4][4] = {
   be a second asm-label alias of the same symbol (near-miss sub_0805B984).
 
 - A returned `struct TileCoordinates` split as `strh r0; asrs r0,#16; strh` (signed high half) came from
-  `union { struct TileCoordinates tile; s32 packed; } c; c.tile = sub_08042BC0(...);` then
+  `union { struct TileCoordinates tile; s32 packed; } c; c.tile = GetPolarOffsetPoint(...);` then
   `x = c.packed; y = c.packed >> 16;` (lean_a: sub_080222A8, sub_08022648, sub_08022A04, sub_08022E14).
 - A spilled loop value whose stack slot sits after the hoisted invariants is
   a strength-reduced giv: write `x + i * 16` in the body instead of a

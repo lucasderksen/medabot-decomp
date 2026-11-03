@@ -36,7 +36,7 @@ void sub_08013288(void)
         FillTilemapRect(30, 8, 0, 12, *(volatile u16 *)0x04000008, zero);
         FillTilemapRect(30, 8, 0, 12, *(volatile u16 *)0x0400000A, zero);
         CpuFastSet(gState0Palette_084E44D8, (void *)0x05000340, 8);
-        gUnknown_0300137C = 13;
+        gNestedCallbackIndex = 13;
     }
 }
 
@@ -54,7 +54,7 @@ void sub_08013330(void)
     sub_08017004();
     sub_08044118(12, 4, 9, 21, *(volatile u16 *)0x04000008, (u16 *)0x02020800);
     gUnknown_03000440[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_080133B8(void)
@@ -84,7 +84,7 @@ void sub_080133B8(void)
         sub_08017268();
         sub_080173B4(0);
         *counter = 0;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -105,7 +105,7 @@ void sub_08013508(void)
     if (*counter == 16)
     {
         CpuFastSet(gState0Palette_084E44D8, (void *)0x05000340, 8);
-        gUnknown_0300137C = 11;
+        gNestedCallbackIndex = 11;
     }
 }
 
@@ -138,6 +138,6 @@ void sub_08013568(void)
         FillTilemapRect(30, 8, 0, 12, *(volatile u16 *)0x04000008, zero);
         FillTilemapRect(30, 8, 0, 12, *(volatile u16 *)0x0400000A, zero);
         CpuFastSet(gState0Palette_084E44D8, (void *)0x05000340, 8);
-        gUnknown_0300137C = 13;
+        gNestedCallbackIndex = 13;
     }
 }

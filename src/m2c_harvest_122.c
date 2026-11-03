@@ -169,7 +169,7 @@ block_6:
         gFrameObjects[2].flags &= 0xFDFF;
         sub_0806E10C(5, 2);
         gGraphicsTransferCounter.counter = 0;
-        gUnknown_0300137C = 8;
+        gNestedCallbackIndex = 8;
         return;
     }
     if (!(7 & gGraphicsTransferCounter.counter)) {

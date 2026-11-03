@@ -53,7 +53,7 @@ void sub_0801D174(void)
 
 void sub_0801D1AC(void)
 {
-    if (sub_080353CC(33) == 0)
+    if (StepObjectHop(33) == 0)
     {
         u8 *work = gUnknown_03000440;
         if ((work[0x84] & 1) == 0)

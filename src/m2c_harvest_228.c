@@ -108,7 +108,7 @@ void sub_080640EC(void) {
         temp_r0 = ((struct TimerWork640EC *)gMainContextPointer_03006F74)->timer - 1;
         ((struct TimerWork640EC *)gMainContextPointer_03006F74)->timer = temp_r0;
         if ((s32) ((u32)temp_r0 << 0x10) < 0) {
-            gUnknown_0300137C += 1;
+            gNestedCallbackIndex += 1;
             ((struct TimerWork640EC *)gMainContextPointer_03006F74)->timer = 0U;
         }
     }

@@ -23,5 +23,5 @@ void sub_080103F4(void)
     gState0TypedWork.bytes[0x3F] = 0;
     gState0TypedWork.selection.word48 = 0;
     gState0TypedWork.bytes[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

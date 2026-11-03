@@ -18,7 +18,7 @@ void sub_08013614(void)
     CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     sub_0803FAA0(1, 2, 0);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08013650(void)
@@ -36,7 +36,7 @@ void sub_08013650(void)
         if (RunDialogue(messages[record[6]]))
         {
             gUnknown_03000440[0x1B] = 0;
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
     }
 }
@@ -50,7 +50,7 @@ void sub_080136B0(void)
     CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     if (sub_08041CA4())
-        gUnknown_0300137C = 11;
+        gNestedCallbackIndex = 11;
 }
 
 void sub_080136E8(void)
@@ -63,7 +63,7 @@ void sub_080136E8(void)
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     SnapshotPalettes();
     gUnknown_03000440[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0801372C(void)
@@ -86,7 +86,7 @@ void sub_0801372C(void)
         (*counter)++;
     }
     else
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_08013798(void)
@@ -98,5 +98,5 @@ void sub_08013798(void)
     CpuFastSet((void *)0x03002C30, (void *)0x02028000, 0x800);
     StartBlendFade(5, 63, 32);
     gUnknownCallback_030017F0 = DummyInterruptHandler;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

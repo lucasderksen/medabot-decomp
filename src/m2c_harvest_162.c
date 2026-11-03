@@ -197,7 +197,7 @@ void sub_08062FB4(void) {
     }
     sp10 = 0;
     CpuFastSet(&sp10, (void *)0x06000000, 0x01006000U);
-    sub_080415BC();
+    ClearBgScrolls();
     ClearFrameObjects(0U, 0x80U);
     *(volatile u16 *)0x04000000 = 0x60U;
     *(volatile u16 *)0x04000050 = 0x2FF;
@@ -210,7 +210,7 @@ void sub_08062FB4(void) {
     LoadLz77SizedTilemap(gUnknown_0879F138, (u32) *(volatile u16 *)0x0400000C);
     LoadLz77SizedTilemap(gUnknown_0879F3D0, (u32) *(volatile u16 *)0x0400000E);
     *(volatile u16 *)0x0400000C = 0x1D06;
-    temp_r0 = sub_08044D0C(gUnknown_0879DA90, gUnknown_02030000);
+    temp_r0 = DecompressLz77OrCopy(gUnknown_0879DA90, gUnknown_02030000);
     CpuSet(gUnknown_02030000, (void *)0x06004000, (u32) (temp_r0 << 0xA) >> 0xB);
     LeDecompress(gMain2AdditionalTiles_08785EC0, (void *)(temp_r0 + 0x06004000));
     ((struct Setup62FB4Work *)gMainContextPointer_03006F74)->tileLast = (s16) ((temp_r0 >> 5) - 1);
@@ -237,7 +237,7 @@ void sub_08062FB4(void) {
     *(volatile u16 *)0x04000000 = (u16) (*(volatile u16 *)0x04000000 | 0x400);
     *(volatile u16 *)0x04000000 = (u16) (*(volatile u16 *)0x04000000 | 0x800);
     *(volatile u16 *)0x04000000 = (u16) (*(volatile u16 *)0x04000000 | 0x1000);
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_080646C4(void) {
@@ -247,11 +247,11 @@ void sub_080646C4(void) {
  u32 firstLength, secondLength;
  struct Setup646C4Work *work;
  ClearFrameObjects(0U, 0x80U);
- sub_080415BC();
+ ClearBgScrolls();
  *(volatile u16 *)0x04000000 = 0x2060;
  *(volatile u16 *)0x0400000C = 0xDB06;
  *(volatile u16 *)0x0400000E = 0x1F07;
- sub_08044D0C(gUnknown_087A9AC0, gUnknown_02030000);
+ DecompressLz77OrCopy(gUnknown_087A9AC0, gUnknown_02030000);
  source = gUnknown_02030000;
  destination = (u8 *)0x0600D800;
  count = 31;
@@ -266,9 +266,9 @@ void sub_080646C4(void) {
  count = 31;
  do { CpuFastSet(source4, destination, 0x10U); destination += 0x40; source4 += 0x80; --count; } while (count >= 0);
  LoadLz77SizedTilemap(gUnknown_087A2278, *(volatile u16 *)0x0400000E);
- firstLength = sub_08044D0C(gUnknown_087AA4C8, gUnknown_02030000);
+ firstLength = DecompressLz77OrCopy(gUnknown_087AA4C8, gUnknown_02030000);
  CpuSet(gUnknown_02030000, (void *)0x06004000, (firstLength >> 1) & 0x1FFFFF);
- secondLength = sub_08044D0C(gUnknown_087A1660, gUnknown_02030000);
+ secondLength = DecompressLz77OrCopy(gUnknown_087A1660, gUnknown_02030000);
  CpuSet(gUnknown_02030000, (void *)(firstLength + 0x06004000), (secondLength >> 1) & 0x1FFFFF);
  sub_0805BAA0(firstLength >> 5, 0, 0x1F);
  CpuFastSet(gUnknown_087A1540, (void *)0x05000000, 0x48U);
@@ -282,7 +282,7 @@ void sub_080646C4(void) {
  work = gMainContextPointer_03006F74;
  work->timer = 0;
  sub_080656DC(work->blend, 0x10U, 0U, -1U, 0xC0U);
- ++gUnknown_0300137C;
+ ++gNestedCallbackIndex;
 }
 
 void sub_0806B764(void) {
@@ -322,5 +322,5 @@ void sub_0806B764(void) {
     gBgScroll2.y = 0;
     gBgScroll3.x = 0;
     gBgScroll3.y = 0;
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }

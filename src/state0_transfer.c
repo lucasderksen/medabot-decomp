@@ -4,7 +4,7 @@
 #include "render_work.h"
 #include "serial.h"
 
-extern void sub_08004E74(void);
+extern void ScrollBg3Diagonally2(void);
 extern void sub_080054C0(void);
 extern void sub_08007540(void);
 extern u8 gUnknown_03000B90;
@@ -13,7 +13,7 @@ extern u8 gTransferReceiveBuffers[3][256];
 
 void sub_08004C58(void)
 {
-    sub_08004E74();
+    ScrollBg3Diagonally2();
     sub_080054C0();
     if (gState0TypedWork.widths.word86 == 16)
     {
@@ -22,7 +22,7 @@ void sub_08004C58(void)
         gState0TransferWork.bytes[0x53] = 0;
         gState0TransferWork.bytes[0x54] = 0;
         gState0TypedWork.widths.word86 = 0;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     else
         gState0TypedWork.widths.word86++;
@@ -30,7 +30,7 @@ void sub_08004C58(void)
 
 void sub_08004CA4(void)
 {
-    sub_08004E74();
+    ScrollBg3Diagonally2();
     sub_080054C0();
     if (gState0TransferWork.bytes[0x51] <= 1)
     {
@@ -63,9 +63,9 @@ void sub_08004CA4(void)
             {
                 if (gState0TransferWork.widths.words1A6[0] == gState0TransferWork.widths.words1A6[3]
                     && gState0TransferWork.widths.words1A6[1] == gState0TransferWork.widths.words1A6[2])
-                    gUnknown_0300137C++;
+                    gNestedCallbackIndex++;
                 else
-                    gUnknown_0300137C = 50;
+                    gNestedCallbackIndex = 50;
             }
         }
     }
@@ -74,17 +74,17 @@ void sub_08004CA4(void)
 void sub_08004DB4(void)
 {
     gMainSerialOutgoingWork.word06 = 0;
-    sub_08004E74();
+    ScrollBg3Diagonally2();
     sub_080054C0();
     sub_08007540();
     SnapshotPalettes();
     gState0TypedWork.bytes[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08004DF0(void)
 {
-    sub_08004E74();
+    ScrollBg3Diagonally2();
     sub_080054C0();
     if (gState0TypedWork.bytes[0x84] <= 32)
     {
@@ -93,7 +93,7 @@ void sub_08004DF0(void)
         gState0TypedWork.bytes[0x84]++;
     }
     else
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_08004E40(void)
@@ -102,5 +102,5 @@ void sub_08004E40(void)
     gState0TypedWork.bytes[0x96] = 0;
     gRenderMode = 0;
     gMainSubstate = 7;
-    gUnknown_0300137C = 0;
+    gNestedCallbackIndex = 0;
 }

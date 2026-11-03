@@ -33,7 +33,7 @@ void sub_08060DD4(void)
     zero = 0;
     vram = 0x06000000;
     CpuFastSet(&zero, (void *)vram, 0x01006000);
-    sub_080415BC();
+    ClearBgScrolls();
     ClearFrameObjects(0, 0x80);
     *(volatile u16 *)0x04000000 = 0x60;
     *(volatile u16 *)0x04000050 = 0xC42;
@@ -63,7 +63,7 @@ void sub_08060DD4(void)
     LoadLz77SizedTilemap((const void *)0x087997FC, *(volatile u16 *)0x0400000A);
     LoadLz77SizedTilemap((const void *)0x08799A18, *(volatile u16 *)0x0400000C);
     LoadLz77SizedTilemap((const void *)0x08799C28, *(volatile u16 *)0x0400000E);
-    size = sub_08044D0C((const void *)0x08797B10, SCRATCH);
+    size = DecompressLz77OrCopy((const void *)0x08797B10, SCRATCH);
     {
         u32 half, chars;
         chars = 0x4000;
@@ -78,7 +78,7 @@ void sub_08060DD4(void)
     block = total >> 5;
     sub_0805BAA0(block, 0, 0x1B);
     sub_0805BAA0(block, 0, 0x1A);
-    size2 = sub_08044D0C((const void *)0x0879A120, SCRATCH);
+    size2 = DecompressLz77OrCopy((const void *)0x0879A120, SCRATCH);
     dest = total + 0x06004000;
     CpuSet(SCRATCH, (void *)dest, (size2 >> 1) & mask);
     CONTEXT->tile36 = ((total + size2) >> 5) - 1;

@@ -42,7 +42,7 @@ void sub_0800E020(void) {
 
     s32 sp4;
 
-    sub_08043CA8();
+    ClearBgScrolls2();
     if ((gState0TypedWork.bytes[0x3C] == 0) || (gState0TypedWork.bytes[0x3C] == 4)) {
         sub_0800F440();
     }
@@ -82,7 +82,7 @@ void sub_0800E020(void) {
     sp4 = 0;
     CpuFastSet(&sp4, gFrameObjects, 0x01000800U);
     *(volatile u16 *)0x04000000 = (u16) (*(volatile u16 *)0x04000000 | 0x1F60);
-    sub_08042B58((u32) gState0TypedWork.bytes[0x3D], (u32) gState0TypedWork.bytes[0x3E], &gState0TypedWork.bytes[0xEE]);
+    CopyPartMetadataSlot((u32) gState0TypedWork.bytes[0x3D], (u32) gState0TypedWork.bytes[0x3E], &gState0TypedWork.bytes[0xEE]);
     sub_0800F6E4();
     sub_0800F77C();
     sub_0800F7D0();
@@ -93,5 +93,5 @@ void sub_0800E020(void) {
     sub_0800FC60();
     sub_0800FCF0();
     gState0TypedWork.bytes[0x42] = 1;
-    gUnknown_0300137C=(u32)gUnknown_0300137C+1U;
+    gNestedCallbackIndex=(u32)gNestedCallbackIndex+1U;
 }

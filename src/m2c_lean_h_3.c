@@ -74,7 +74,7 @@ void sub_0804FD10(void) {
                 switch (((union CommandSlots *)gContinuedCommandWork_030064A0)->p.phase[i]) {
                 case 0: {
                     s32 first = 1, second = 2;
-                    ((union CommandSlots *)gContinuedCommandWork_030064A0)->v.value[i] = sub_0804DBF0(((union CommandSlots *)gContinuedCommandWork_030064A0)->c.cmds[((union CommandSlots *)gContinuedCommandWork_030064A0)->s.state[i] * 4 + (i * 8 + first)]) + 0x4F;
+                    ((union CommandSlots *)gContinuedCommandWork_030064A0)->v.value[i] = GetScriptObjectSlot(((union CommandSlots *)gContinuedCommandWork_030064A0)->c.cmds[((union CommandSlots *)gContinuedCommandWork_030064A0)->s.state[i] * 4 + (i * 8 + first)]) + 0x4F;
                     sub_080500BC(((union CommandSlots *)gContinuedCommandWork_030064A0)->v.value[i], ((union CommandSlots *)gContinuedCommandWork_030064A0)->c.cmds[((union CommandSlots *)gContinuedCommandWork_030064A0)->s.state[i] * 4 + (i * 8 + second)], mode);
                     ((union CommandSlots *)gContinuedCommandWork_030064A0)->p.phase[i]++;
                     break;

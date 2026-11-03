@@ -143,7 +143,7 @@ void sub_080712C8(void) {
     dma->control=0x85000800;
     (void)dma->control;
     gWork080712C8.mode = 0xD;
-    gUnknown_0300137C = 5;
+    gNestedCallbackIndex = 5;
 }
 
 s32 sub_08072234(void) {

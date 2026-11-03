@@ -42,7 +42,7 @@ void sub_0802D8D0(void) {
             else
                 gFrameObjects[i + 0x21].angle = (gFrameObjects[i + 0x21].angle + 0x40) & 0x3FF;
             } while (0);
-            if (sub_080355F0(i + 0x21) != 0)
+            if (StepFrameObjectToTarget(i + 0x21) != 0)
                 done++;
         }
     }

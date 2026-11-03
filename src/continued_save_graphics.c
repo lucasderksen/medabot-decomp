@@ -30,7 +30,7 @@ u32 sub_0805E300(const u8 *source)
 
 void sub_0805E404(void)
 {
-    gMain2SaveCallbacks_084836D8[gUnknown_0300137C]();
+    gMain2SaveCallbacks_084836D8[gNestedCallbackIndex]();
     if (gFrameCounter & 1)
     {
         gBgScroll3.x++;
@@ -42,7 +42,7 @@ void sub_0805E404(void)
 void sub_0805E450(void)
 {
     ClearFrameObjects(0, 128);
-    sub_080415BC();
+    ClearBgScrolls();
     *(volatile u16 *)0x04000000 = 0x60;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

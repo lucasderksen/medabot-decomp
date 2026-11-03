@@ -20,8 +20,8 @@ void sub_0804D224(void)
     argument = work + 0xC94;
     selected = *argument;
     value = (u8)sub_08050710();
-    sub_0804DBD0(selected, value);
-    index = sub_0804DBF0(*argument);
+    SetScriptObjectSlot(selected, value);
+    index = GetScriptObjectSlot(*argument);
     gLaterBuffer_03006D20[10] = index + 79;
     work[0xC89] = 1;
 }
@@ -32,7 +32,7 @@ void sub_0804D270(void)
     u32 index;
     ReadBankedScriptArgs(2);
     work = gUnknown_030057E0;
-    index = sub_0804DBF0(work[0xC94]);
+    index = GetScriptObjectSlot(work[0xC94]);
     gLaterBuffer_03006D20[10] = index + 79;
     work[0xC89] = 1;
 }
@@ -46,8 +46,8 @@ void sub_0804D2A8(void)
     argument = work + 0xC94;
     selected = *argument;
     value = (u8)sub_08050710();
-    sub_0804DBD0(selected, value);
-    index = sub_0804DBF0(*argument);
+    SetScriptObjectSlot(selected, value);
+    index = GetScriptObjectSlot(*argument);
     gLaterBuffer_03006D20[10] = index + 79;
     work[0xC89] = 1;
 }
@@ -58,7 +58,7 @@ void sub_0804D2F4(void)
     u32 index;
     ReadBankedScriptArgs(2);
     work = gUnknown_030057E0;
-    index = sub_0804DBF0(work[0xC94]);
+    index = GetScriptObjectSlot(work[0xC94]);
     gLaterBuffer_03006D20[10] = index + 79;
     work[0xC89] = 1;
 }

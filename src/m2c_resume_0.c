@@ -57,7 +57,7 @@ void sub_08063474(void) {
         sub_08062A10(zero);
         sub_08062A10(1);
         ((struct LinkSwapContext *)gMainContextPointer_03006F74)->timer = zero;
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
         fill = &hiddenOamAttribute;
         *fill = 0x200;
         CpuSet(fill, gRenderWork->objects, 0x01000200U);

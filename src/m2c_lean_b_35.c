@@ -121,7 +121,7 @@ void sub_0806C218(void) {
             }
             PlayMusic(0);
             PlayMusic(0xE);
-            gUnknown_0300137C = 6;
+            gNestedCallbackIndex = 6;
             return;
         }
         gTimeline6C218.count--;

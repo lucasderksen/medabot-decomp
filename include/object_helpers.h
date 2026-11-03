@@ -26,7 +26,7 @@ extern const u8 gUnknownBytes_0848816C[];
 extern const u8 gUnknownBytes_084881B4[];
 extern const u16 gUnknownWords_084E43F8[];
 
-void sub_080415BC(void);
+void ClearBgScrolls(void);
 void sub_080415E8(u8 first, u8 second, u8 third);
 void sub_08041624(u8 first, u8 second, u8 third, u8 fourth);
 u32 sub_08041674(void);

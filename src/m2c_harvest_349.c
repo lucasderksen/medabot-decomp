@@ -22,7 +22,7 @@
 extern void HideFrameObjects(u8, u8);
 extern void PlaceAlignedTextObjects(const u8 *, u32, s32, s32, u32, u32, u32, u32);
 extern void CopyBytesU8Count(const u8 *, u8 *, u8);
-extern void sub_08042678(void *, u32);
+extern void FillTextWithHyphens(void *, u32);
 
 void sub_0800EC44(void);
 
@@ -69,7 +69,7 @@ void sub_0800EC44(void) {
     }
     else
     {
-      sub_08042678(buffer, 0xDU);
+      FillTextWithHyphens(buffer, 0xDU);
       PlaceAlignedTextObjects(buffer, displayPosition >> 0x18, 0xB, y, 0xAU, 0xDU, one, one);
     }
     y += 2;

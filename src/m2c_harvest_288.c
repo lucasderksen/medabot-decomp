@@ -28,7 +28,7 @@ void sub_08016D18(void) {
     work=gState0TransferWork.bytes;
     choice=work[0x82];
     switch(choice) {
-    case 0:sub_08042678(gDebugMenuTextBuffer,0xA);break;
+    case 0:FillTextWithHyphens(gDebugMenuTextBuffer,0xA);break;
     case 1:case 2:case 3:
         labels=gUnknown_083BE868;
         setupRoot=(u32)gSetupBuffer_03000590;

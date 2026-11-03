@@ -54,5 +54,5 @@ void sub_0806E504(void) {
  gBgScroll3.x=zero;gBgScroll3.y=zero;
  gMain2Byte_03007008=byteZero;
  sub_08068460(2,4,0);
- gUnknown_0300137C=4;
+ gNestedCallbackIndex=4;
 }

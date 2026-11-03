@@ -82,7 +82,7 @@ void sub_08061F00(void) {
             goto buzzer;
         PlaySoundEffect(4);
         gState0TypedWork.bytes[0x84] = 0;
-        gUnknown_0300137C = 9;
+        gNestedCallbackIndex = 9;
         return;
     }
     if (((struct Main2PartContext *)gMainContextPointer_03006F74)->byte05 == 0)
@@ -206,7 +206,7 @@ void sub_08061F00(void) {
             gFrameObjects[i + 11].flags &= 0xBFFF;
         sub_080415E8(1, 0x16, 7);
         sub_0803FAA0(1, 0, 0);
-        gUnknown_0300137C = 6;
+        gNestedCallbackIndex = 6;
         return;
     }
     if (!(2 & gFamilyKeyBytes49558_0300058C))
@@ -216,7 +216,7 @@ void sub_08061F00(void) {
     HideFrameObjects(0xD, 0x34);
     HideFrameObjects(0x45, 0x1C);
     gState0TypedWork.bytes[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
     return;
 reposition:
     gFrameObjects[8].screenY = ((struct Main2PartContext *)gMainContextPointer_03006F74)->row1A * 16 + 0x54;

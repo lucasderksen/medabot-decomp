@@ -11,7 +11,7 @@ struct ObservedActionResultWork {
     s16 valueEC;
 };
 
-u32 sub_08033090(u32 first)
+u32 PickRandomGroupSlot(u32 first)
 {
     u32 selected = sub_08033074();
     u32 forward = NextRandomByte() & 1;

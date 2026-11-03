@@ -73,7 +73,7 @@ void sub_080601D4(void) {
  frames=gFrames080AFAE0;
  ((struct FrameWork601D4 *)gFrameObjects)->frame1=frames[(u16)__udivsi3(((struct FrameWork601D4 *)gFrameObjects)->timer1,6)];
  if(*(s16 *)((u8 *)gMainContextPointer_03006F74+0x3A)>0xD){
-  *(s8 *)gMainContextPointer_03006F74=0;gUnknown_0300137C--;
+  *(s8 *)gMainContextPointer_03006F74=0;gNestedCallbackIndex--;
  }
 }
 

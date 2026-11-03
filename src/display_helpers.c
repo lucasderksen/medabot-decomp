@@ -27,7 +27,7 @@ u32 sub_0803EED8(void)
     {
         gMainState = 0;
         gMainSubstate = 10;
-        gUnknown_0300137C = 16;
+        gNestedCallbackIndex = 16;
         return 1;
     }
     return 0;
@@ -45,7 +45,7 @@ void sub_0803EF20(void)
     sub_080020C8();
     gMainState = 3;
     gMainSubstate = 0;
-    gUnknown_0300137C = 0;
+    gNestedCallbackIndex = 0;
     REG_DMA0CNT_H = 0;
     VBlankIntrWait();
     InitAudio((void *)0x03002430);

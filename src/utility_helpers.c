@@ -19,7 +19,7 @@ void sub_08044094(void)
 {
     gMainState = 1;
     gMainSubstate = 1;
-    gUnknown_0300137C = 7;
+    gNestedCallbackIndex = 7;
 }
 
 u32 sub_080440B4(void)
@@ -123,7 +123,7 @@ extern u8 gUnknown_03000BE0[];
 void StepSecondBgAutoScroll(void);
 void sub_08043FEC(u32);
 
-void sub_0804422C(u32 objectIndex)
+void ApplyObjectMotionStep(u32 objectIndex)
 {
     struct FrameObject *base = gFrameObjects;
     struct FrameObject *object = &base[objectIndex];
@@ -324,7 +324,7 @@ extern u8 gUnknown_020260D0[];
 extern u8 gUnknown_020268F0[];
 extern u8 gUnknown_02024000[];
 extern const u8 gUnknownBytes_083D1D78[];
-void sub_08043CA8(void);
+void ClearBgScrolls2(void);
 void StepSecondBgAutoScroll(void);
 void sub_08043FEC(u32);
 
@@ -345,7 +345,7 @@ void sub_080441B8(void)
     gState0TransferWork.bytes[0x43] = 0;
     gMainState = 0;
     gMainSubstate = 3;
-    gUnknown_0300137C = 0;
+    gNestedCallbackIndex = 0;
 }
 
 void sub_080445F4(void)
@@ -371,7 +371,7 @@ void sub_080445F4(void)
 
 void sub_08044BA8(u32 mode, u32 value)
 {
-    sub_08043CA8();
+    ClearBgScrolls2();
     ClearFrameObjects(0, 128);
     gUnknown_03000440[0x96] = 0;
     gUnknown_03000430 = 0;
@@ -395,12 +395,12 @@ void sub_08044BA8(u32 mode, u32 value)
     }
     gMainState = 0;
     gMainSubstate = 5;
-    gUnknown_0300137C = 16;
+    gNestedCallbackIndex = 16;
 }
 
 void sub_08044C38(u32 mode)
 {
-    sub_08043CA8();
+    ClearBgScrolls2();
     FillBytes(gUnknown_0300047C, 20, 0);
     FillBytes(gUnknown_0300047C + 20, 20, 0);
     gUnknown_0300047C[0x4D] = 1;
@@ -411,25 +411,25 @@ void sub_08044C38(u32 mode)
         gUnknown_0300047C[0] = 4;
         gMainState = 0;
         gMainSubstate = 4;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     case 1:
         gUnknown_0300047C[0] = 4;
         gMainState = 0;
         gMainSubstate = 5;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     case 2:
         gUnknown_0300047C[0xFC] = 0;
         gMainState = 0;
         gMainSubstate = 10;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     case 3:
         gUnknown_0300047C[0xFC] = 1;
         gMainState = 0;
         gMainSubstate = 10;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
 }

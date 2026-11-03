@@ -10,7 +10,7 @@ void sub_08044118(u32 width, u32 height, u32 x, u32 y, u32 control, u16 *destina
 void sub_08044160(u32 width, u32 height, u32 x, u32 y, u32 control, const u16 *source);
 void sub_080441A8(const void *source);
 void sub_080441B8(void);
-void sub_0804422C(u32 objectIndex);
+void ApplyObjectMotionStep(u32 objectIndex);
 u32 sub_080442B4(s32 x1, s32 y1, s32 x2, s32 y2);
 void sub_080445F4(void);
 void sub_080446B4(u32,u32,u32,u32,u32,u32,u32,u32,u32,u32,u32,u32);

@@ -71,8 +71,8 @@ void sub_0805203C(u32 modeWord)
             {
                 struct MovementFrameBytes *objects = (struct MovementFrameBytes *)gFrameObjects;
                 objects->secondary = objects->primary;
-                next[0xC72] = sub_0805273C(*(u16 *)(next + 0xC6E));
-                next[0xC73] = sub_08052760(*(u16 *)(next + 0xC70));
+                next[0xC72] = ConvertXToCellColumn(*(u16 *)(next + 0xC6E));
+                next[0xC73] = ConvertYToCellRow(*(u16 *)(next + 0xC70));
             }
         }
     }

@@ -18,9 +18,9 @@ struct ContinueChoiceWork {
 
 extern void FillTilemapRectSequential(u32,u32,u32,u32,u32,u32);
 
-void sub_0803ED6C(void);
+void FlashSelectedChoiceTiles(void);
 
-void sub_0803ED6C(void)
+void FlashSelectedChoiceTiles(void)
 {
   if (gState0TypedWork.widths.word86 & 4)
   {

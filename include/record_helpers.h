@@ -44,7 +44,7 @@ struct RecordAssetSet
 struct RecordTileBlock { u8 unknown00[4]; u16 tile; u8 unknown06[10]; };
 
 void sub_08044CDC(u32 mode);
-u32 sub_08044D0C(const void *source, void *destination);
+u32 DecompressLz77OrCopy(const void *source, void *destination);
 u32 sub_08044D64(u32 *destination, const u32 *source, u32 bytes);
 u32 sub_08044D78(u16 *destination, const u16 *source, u32 bytes);
 void sub_08044D90(u8 *destination, const u8 *source, u32 bytes);

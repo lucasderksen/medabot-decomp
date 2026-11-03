@@ -11,7 +11,7 @@ void sub_080346C4(void)
     u32 next;
     struct ObservedSetupE0 *base, *record;
     work[0x60] = GetOtherSlotGroupStart(*selected);
-    next = sub_08033090(work[0x60]);
+    next = PickRandomGroupSlot(work[0x60]);
     base = (void *)gSetupBuffer_03000590;
     record = &base[*selected];
     record->byteE0 = next + 1;

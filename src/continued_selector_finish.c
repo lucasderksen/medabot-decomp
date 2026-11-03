@@ -17,7 +17,7 @@ struct NumericDma {u32 source,destination,control;};
 void sub_08059560(void)
 {
     s32 index;
-    for(index=0;index<40;index++)sub_08048888((u8)index);
+    for(index=0;index<40;index++)ResetFrameObjectSlot((u8)index);
 }
 
 void sub_08059578(void)
@@ -36,14 +36,14 @@ void sub_08059578(void)
     case 0:
     case 2:
         gBackgroundState_03005310.unknown00[1]=0;
-        gUnknown_0300137C=51;
+        gNestedCallbackIndex=51;
         break;
     case 1:
         gBackgroundState_03005310.unknown00[1]=zero;
-        gUnknown_0300137C=51;
+        gNestedCallbackIndex=51;
         break;
     default:
-        gUnknown_0300137C=5;
+        gNestedCallbackIndex=5;
         break;
     }
 }

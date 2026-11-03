@@ -35,7 +35,7 @@ void sub_08002574(void) {
   new_var2 = 0x5E09;
   *new_var = new_var2;
   gState0TypedWork.bytes[0x85] = 1;
-  gUnknown_0300137C = gUnknown_0300137C + 1;
+  gNestedCallbackIndex = gNestedCallbackIndex + 1;
 }
 
 void sub_080191A4(s32 arg0, s32 arg1) {

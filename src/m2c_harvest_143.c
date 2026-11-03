@@ -27,7 +27,7 @@ extern void sub_08035814(s32);
 extern void sub_08037280(u32,u32);
 extern void FillTilemapRect(u32, u32, u32, u32, u32, u32);
 extern void StartBlendFade(u8, u16, u16);
-extern void sub_08043CA8(void);
+extern void ClearBgScrolls2(void);
 
 void sub_0801BACC(void);
 void sub_08020844(void);
@@ -73,7 +73,7 @@ void sub_08021F90(void) {
     } else {
         gFrameObjects[0x21].angle=(gFrameObjects[0x21].angle+0x40)&0x3FF;
     }
-    if (sub_080355F0(0x21U) != 0) {
+    if (StepFrameObjectToTarget(0x21U) != 0) {
         gFrameObjects[0x21].flags &= 0xFDFF;
         gFrameObjects[0x21].angle = 0;
         gState0TransferWork.bytes[0xAA] = (u8) (gState0TransferWork.bytes[0xAA] + 1);
@@ -113,7 +113,7 @@ void sub_0803E4F4(void) {
     volatile u16 *bg1;
     volatile u16 *bg2;
     volatile u16 *bg3;
-    sub_08043CA8();
+    ClearBgScrolls2();
     display = (volatile u16 *)0x04000000;
     *display &= 0xE0FF;
     bg0 = (volatile u16 *)0x04000008;
@@ -136,5 +136,5 @@ void sub_0803E4F4(void) {
     CpuFastSet(&frameZero, gFrameObjects, 0x01000800);
     *display |= 0x1F60;
     StartBlendFade(5,0x3F,0x20);
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }

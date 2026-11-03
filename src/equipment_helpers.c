@@ -107,7 +107,7 @@ s32 sub_08043C94(void)
     return value * 100 / 255;
 }
 
-void sub_08043CA8(void)
+void ClearBgScrolls2(void)
 {
     gBgScroll0.x = 0; gBgScroll0.y = 0;
     gBgScroll1.x = 0; gBgScroll1.y = 0;

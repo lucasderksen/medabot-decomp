@@ -98,7 +98,7 @@ void sub_08060708(void) {
         break;
     }
     do {
-    length = sub_08044D0C(gBiosLz77Stream_087889D4, (void *)0x02030000);
+    length = DecompressLz77OrCopy(gBiosLz77Stream_087889D4, (void *)0x02030000);
     } while (0);
     CpuFastSet((void *)0x02030000, (void *)(0x06000000 + (block << 14)), (length << 9) >> 11);
     source = gNativeLeStream_08785EC0;
@@ -123,6 +123,6 @@ void sub_08060708(void) {
     gFrameObjects[1].frameAndGroup = 0x10E;
     gFrameObjects[0].screenX = gTable08483854[((struct Main2MapContext *)gMainContextPointer_03006F74)->byte17 * 2] * 8;
     gFrameObjects[0].screenY = gTable08483854[((struct Main2MapContext *)gMainContextPointer_03006F74)->byte17 * 2 + 1] * 8;
-    sub_08044D0C(gBiosLz77Stream_087885B4, (void *)0x020301E0);
-    gUnknown_0300137C++;
+    DecompressLz77OrCopy(gBiosLz77Stream_087885B4, (void *)0x020301E0);
+    gNestedCallbackIndex++;
 }

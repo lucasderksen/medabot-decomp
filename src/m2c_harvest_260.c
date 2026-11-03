@@ -46,9 +46,9 @@ s32 sub_08038F84(void) {
  if(!mask) {
   sub_08035844(*bank);
   *sum=*sum+setup[((u32)*bank<<8)+0xA3];
-  if(!(setup[((u32)*bank<<8)+0xBC]&8u))sub_08035754((s16*)sum,8);
+  if(!(setup[((u32)*bank<<8)+0xBC]&8u))SubtractWithZeroFloor((s16*)sum,8);
   if(sub_08038E9C()!=0)return 1;
-  sub_08035754((s16*)&work->remaining,(s16)*sum);
+  SubtractWithZeroFloor((s16*)&work->remaining,(s16)*sum);
   { u32 remaining=work->remaining;work->copy=remaining;
   {
   remaining<<=16;
@@ -89,7 +89,7 @@ void sub_080617E0(void) {
     }
     *(volatile u16 *)0x04000052 = 0x10;
     sub_0803FB0C();
-    gUnknown_0300137C = 4;
+    gNestedCallbackIndex = 4;
 }
 
 void sub_080627A0(void) {

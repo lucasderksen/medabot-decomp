@@ -41,7 +41,7 @@ void sub_0803D6AC(void) {
     gState0TransferWork.bytes[0x1AF] = 0;
     gState0TransferWork.bytes[0x1B0] = 1;
     gState0TypedWork.widths.word86 = 0;
-    gUnknown_0300137C = 0x50;
+    gNestedCallbackIndex = 0x50;
 }
 
 void sub_0803E870(void) {

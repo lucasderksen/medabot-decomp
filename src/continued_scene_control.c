@@ -14,7 +14,7 @@ extern s32 __divsi3(s32 first, s32 second);
 extern u8 gUnknown_030057E0[];
 extern u8 gLaterBuffer_03006D38[];
 extern u32 gMainSubstate;
-extern u32 gUnknown_0300137C;
+extern u32 gNestedCallbackIndex;
 
 void sub_08050F5C(void)
 {
@@ -108,7 +108,7 @@ void sub_08050F5C(void)
                                 handled = 1;
                             else if (sub_08052624() != (u32)-1)
                             {
-                                gUnknown_0300137C = 8;
+                                gNestedCallbackIndex = 8;
                                 handled = 1;
                             }
                         }
@@ -121,7 +121,7 @@ void sub_08050F5C(void)
                                 sub_08047E4C();
                                 gMainState = 0;
                                 gMainSubstate = 1;
-                                gUnknown_0300137C = 0;
+                                gNestedCallbackIndex = 0;
                                 {
                                     struct TransitionSettings *saved = (void *)&gBackgroundState_03005310;
                                     saved->x[0] = gBgScroll0.x;
@@ -168,7 +168,7 @@ void sub_08050F5C(void)
         }
         break;
     case 3:
-        if (sub_08049E08(0x7FFF))
+        if (StepPaletteFadeToColor(0x7FFF))
             gBackgroundState_03005310.unknown00[1] = 4;
         break;
     case 4:
@@ -176,7 +176,7 @@ void sub_08050F5C(void)
         gBackgroundState_03005310.unknown00[1] = 0;
         gMainState = 1;
         gMainSubstate = 1;
-        gUnknown_0300137C = 1;
+        gNestedCallbackIndex = 1;
         gUnknown_030057E0[0xCBA] = 1;
         break;
     }

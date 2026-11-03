@@ -45,7 +45,7 @@ u32 sub_0803556C(u32 bank) {
 
 void sub_0806E460(void) {
 
- gUnknown_084859D8[gUnknown_0300137C]();
+ gUnknown_084859D8[gNestedCallbackIndex]();
  sub_0806E404();
 }
 

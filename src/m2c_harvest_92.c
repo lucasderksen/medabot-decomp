@@ -41,7 +41,7 @@ void PlayMusic(u32 value) {
         if (old <= 0xFFFE)
             work->counter = old + 1;
     }
-    sub_08074A8C(value, 0);
+    StartMusicTracks(value, 0);
     {
         struct NestedContext *work = *(struct NestedContext **) 0x03007014;
         u32 old = work->counter;

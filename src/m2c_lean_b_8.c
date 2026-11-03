@@ -16,7 +16,7 @@
 #include "tile_text.h"
 
 extern u8 gFamilyKeyBytes49558_0300058C;
-extern void sub_0803E894(void);
+extern void ScrollBg3Diagonally4(void);
 extern void sub_0803EA18(void);
 
 void sub_0803DEF0(void);
@@ -26,7 +26,7 @@ void sub_0803DEF0(void) {
     u8 mode;
     u16 word;
 
-    sub_0803E894();
+    ScrollBg3Diagonally4();
     mode = gState0TypedWork.bytes[0x9C];
     if (mode == 1) {
         sub_0803EA18();
@@ -35,7 +35,7 @@ void sub_0803DEF0(void) {
             PlaySoundEffect(4);
             gMainSerialOutgoingWork.word06 = gCounter6ED08_03001800.value1A0 + 0x8000;
             gState0TypedWork.widths.word86 = 0;
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
     } else {
         word = gMainSerialOutgoingWork.words[1 ^ gUnknown_03000B90][1];
@@ -44,7 +44,7 @@ void sub_0803DEF0(void) {
             gCounter6ED08_03001800.value1A0 = word;
             gState0TypedWork.bytes[0x1B] = 0;
             gState0TypedWork.widths.word86 = 0;
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
     }
 }

@@ -13,7 +13,7 @@ struct UnknownMainCounter
 };
 
 #define gUnknown_03002B8C (*(u32 *)0x03002B8C)
-#define gUnknown_0300137C (*(u32 *)0x0300137C)
+#define gNestedCallbackIndex (*(u32 *)0x0300137C)
 #define gUnknown_03001784 (*(u16 *)0x03001784)
 #define gUnknown_03005030 (*(s8 *)0x03005030)
 #define gUnknown_03002410 (*(u8 *)0x03002410)
@@ -37,7 +37,7 @@ void GameMain(void)
     REG_DISPCNT = 0x60;
     gMainState = 3;
     gUnknown_03002B8C = 0;
-    gUnknown_0300137C = 0;
+    gNestedCallbackIndex = 0;
     sub_080020C8();
     InitAudio((void *)0x03002430);
     gUnknown_03001784 = 0;
@@ -109,7 +109,7 @@ void GameMain(void)
             {
                 gMainState = 0;
                 gUnknown_03002B8C = 10;
-                gUnknown_0300137C = 16;
+                gNestedCallbackIndex = 16;
             }
         }
 

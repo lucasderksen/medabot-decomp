@@ -77,7 +77,7 @@ void sub_0803279C(void) {
     {
       u8 *work = gState0TransferWork.bytes;
       work[0x60] = GetSlotGroupStart(work[0x5C]);
-      ((struct Continued3279CWork *) work)->selected = sub_08033090(work[0x60]) + 1;
+      ((struct Continued3279CWork *) work)->selected = PickRandomGroupSlot(work[0x60]) + 1;
     }
   }
   {

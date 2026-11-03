@@ -62,7 +62,7 @@ void sub_0804B2B0(void) {
     gContinuedWork_030057E0.height806 = sub_080529DC(gContinuedWork_030057E0.map, 1);
     sub_0804B298();
     ClearBytes(gContinuedWork_030057E0.buffer810, 0x400);
-    sub_080497C0(gRecordByteTables_08404334[gContinuedWork_030057E0.map], gContinuedWork_030057E0.buffer810, (gContinuedWork_030057E0.height802 >> 1) * (gContinuedWork_030057E0.width800 >> 1));
+    CopyBytes2(gRecordByteTables_08404334[gContinuedWork_030057E0.map], gContinuedWork_030057E0.buffer810, (gContinuedWork_030057E0.height802 >> 1) * (gContinuedWork_030057E0.width800 >> 1));
     if (gContinuedMapData_083F9080[gContinuedWork_030057E0.map][0] != 0 && gContinuedMapTiles_083F8A80[gContinuedWork_030057E0.map] != 0) {
         LZ77UnCompVram(gContinuedMapTiles_083F8A80[gContinuedWork_030057E0.map], (void *)0x06009000);
         LZ77UnCompVram(gContinuedMapData_083F9080[gContinuedWork_030057E0.map][0], gLaterBuffer_03006D14);

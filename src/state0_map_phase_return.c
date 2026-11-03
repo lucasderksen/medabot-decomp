@@ -30,7 +30,7 @@ void sub_08013A74(void)
         (*counter)++;
     }
     else
-        gUnknown_0300137C = 11;
+        gNestedCallbackIndex = 11;
 }
 
 void sub_08013AE4(void)
@@ -78,5 +78,5 @@ void sub_08013AE4(void)
     control = *(volatile u16 *)0x04000008;
     FillTilemapRect(30, 8, 0, 12, control, zero = 0);
     FillTilemapRect(30, 8, 0, 12, *(volatile u16 *)0x0400000A, zero);
-    gUnknown_0300137C = 13;
+    gNestedCallbackIndex = 13;
 }

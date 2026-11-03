@@ -444,9 +444,9 @@
 	movs	r1, #0x23
 	bl	sub_08049420
 	movs	r0, #0x39
-	bl	sub_08048888
+	bl	ResetFrameObjectSlot
 	movs	r0, #0x63
-	bl	sub_08048888
+	bl	ResetFrameObjectSlot
 	movs	r0, #0xe4
 	lsls	r0, r0, #4
 	adds	r5, r7, r0

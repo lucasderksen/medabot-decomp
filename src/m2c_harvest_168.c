@@ -139,7 +139,7 @@ void sub_08063354(void) {
     work->timer = temp_r0;
     if ((s32) (temp_r0 << 0x10) < 0) {
         ((struct Phase63354 *)&gState0TypedWork)->phase = 0;
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
         sub_08042170(((struct Work63354 *)gMainContextPointer_03006F74)->firstX, ((struct Work63354 *)gMainContextPointer_03006F74)->firstY, 1U);
         sub_0804213C(((struct Work63354 *)gMainContextPointer_03006F74)->secondX, ((struct Work63354 *)gMainContextPointer_03006F74)->secondY, 1U);
         CpuFastSet((void *)0x05000200, gUnknown_0202F800, 0x100U);
@@ -163,12 +163,12 @@ void sub_0806D41C(void) {
         gMain2Byte_03007008 = 0;
         gMainState = 3;
         gMainSubstate = 2;
-        gUnknown_0300137C = 0xA;
+        gNestedCallbackIndex = 0xA;
         return;
     }
     if ((4 & gContinuedByte_03002B64) && (8 & *(u8 *)&gNewKeys)) {
         gMainState = 2;
         gMainSubstate = 7;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
     }
 }

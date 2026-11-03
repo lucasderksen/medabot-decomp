@@ -124,11 +124,11 @@ void sub_0805FA58(void) {
         if (var_r5 == 0) {
             sub_0803FB0C();
             (*(u16 *)((u8 *)(gMainContextPointer_03006F74) + 2)) = var_r5;
-            gUnknown_0300137C += 1;
+            gNestedCallbackIndex += 1;
         } else {
             sub_0803FB0C();
             (*(u16 *)((u8 *)(gMainContextPointer_03006F74) + 2)) = 0U;
-            gUnknown_0300137C = 0xC;
+            gNestedCallbackIndex = 0xC;
         }
     }
 }

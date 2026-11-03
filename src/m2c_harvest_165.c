@@ -57,7 +57,7 @@ extern const u8 gUnknown_0850FF18[32];
 extern const u8 gUnknown_085102D8[32];
 extern struct ContinuedRotatingFrame33Root gUnknown_03002C30;
 extern struct ContinuedTransferPhaseAA gUnknown_03001800;
-extern u32 sub_080353CC(u32);
+extern u32 StepObjectHop(u32);
 extern void ClearFrameObjects(u8,u8);
 
 void sub_0801D45C(void);
@@ -215,7 +215,7 @@ void sub_0802A110(void) {
 
 void sub_0802F13C(void) {
     struct ContinuedRotatingFrame33Root *firstFrames;
-    sub_080353CC(0x21u);
+    StepObjectHop(0x21u);
     firstFrames = &gUnknown_03002C30;
     if (firstFrames->counter867 == 0x20) {
         firstFrames->angle858 = 0;

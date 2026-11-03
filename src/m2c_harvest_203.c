@@ -19,7 +19,7 @@ struct Continued30E78State {u8 prefix[0x9C];u8 choice;};
 extern void sub_0801B274(s32);
 extern void sub_0801BE48(s32);
 extern void PlaySoundEffect(u32);
-extern void sub_080750F0(u32);
+extern void FadeOutMusic(u32);
 
 void sub_08030E78(void);
 
@@ -29,7 +29,7 @@ void sub_08030E78(void){
  work=(void *)gState0TransferWork.bytes;
  sub_0801BE48(work->selected);sub_0801B274(work->selected);
  ((struct Continued30E78State *)&gState0TypedWork)->choice=0;
- if(gSetupBuffer_03000590[0x40]==0){((struct Continued30E78State *)&gState0TypedWork)->choice=2;sub_080750F0(4);PlaySoundEffect(0x6F);gUnknown_0300137C++;}
- else if(gSetupBuffer_03000590[0x340]==0){((struct Continued30E78State *)&gState0TypedWork)->choice=1;sub_080750F0(4);PlaySoundEffect(0x6F);gUnknown_0300137C++;}
- else gUnknown_0300137C=0x48;
+ if(gSetupBuffer_03000590[0x40]==0){((struct Continued30E78State *)&gState0TypedWork)->choice=2;FadeOutMusic(4);PlaySoundEffect(0x6F);gNestedCallbackIndex++;}
+ else if(gSetupBuffer_03000590[0x340]==0){((struct Continued30E78State *)&gState0TypedWork)->choice=1;FadeOutMusic(4);PlaySoundEffect(0x6F);gNestedCallbackIndex++;}
+ else gNestedCallbackIndex=0x48;
 }

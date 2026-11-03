@@ -95,7 +95,7 @@ void sub_080140B0(void)
         {
             ClearFrameObjects(3, 2);
             CpuFastSet((const void *)0x0850F398, (void *)0x050003E0, 8);
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
         break;
     }

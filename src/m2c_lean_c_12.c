@@ -69,11 +69,11 @@ void sub_08066714(void) {
             sub_0803FB0C();
             if (w0 == w1) {
                 sub_080656DC(gScriptContext66714->block50, 0, 0, 1, 0xC0);
-                gUnknown_0300137C = 5;
+                gNestedCallbackIndex = 5;
                 gScriptContext66714->flag4A = w0 != 0xFF00;
                 return;
             }
-            gUnknown_0300137C = 3;
+            gNestedCallbackIndex = 3;
             gScriptContext66714->cursor05 = 6;
         }
     }

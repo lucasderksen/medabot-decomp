@@ -38,7 +38,7 @@ u32 sub_08050CCC(u32 first, u32 second)
             sub_08047878(32, second);
             gLaterBuffer_03006D20[11]++;
         }
-        else if (sub_08049E08(0))
+        else if (StepPaletteFadeToColor(0))
         {
             if (first == 18)
                 sub_0804842C(24, 0);
@@ -105,7 +105,7 @@ u32 sub_08050CCC(u32 first, u32 second)
         work[11]++;
         break;
     case 4:
-        if (first == 8 || sub_08049E08(0))
+        if (first == 8 || StepPaletteFadeToColor(0))
             complete = 1;
         break;
     }

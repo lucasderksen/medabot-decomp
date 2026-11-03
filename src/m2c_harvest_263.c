@@ -100,7 +100,7 @@ void sub_0801E09C(void) {
     temp_r5 = gState0TypedWork.bytes[0x139];
     switch (temp_r5) {                              /* irregular */
     case 0:
-        sub_08043CA8();
+        ClearBgScrolls2();
         *(volatile u16 *)0x04000000 = (u16) (0xE0FF & *(volatile u16 *)0x04000000);
         *(volatile u16 *)0x04000008 = 0x500;
         *(volatile u16 *)0x0400000A = 0x1801;

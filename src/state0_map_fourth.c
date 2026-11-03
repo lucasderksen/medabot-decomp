@@ -15,7 +15,7 @@ void sub_08010C50(void)
     if (low)
     {
         gUnknown_030057E0[0xC2E] = 0;
-        gUnknown_0300137C = 62;
+        gNestedCallbackIndex = 62;
     }
     else
     {
@@ -25,7 +25,7 @@ void sub_08010C50(void)
         else
             gState0TransferWork.bytes[0x16A] = 1;
         sub_0804213C(gState0TransferWork.bytes[0x169], gState0TransferWork.bytes[0x168], 1);
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -46,7 +46,7 @@ void sub_08010CE8(void)
     buffer = gDebugMenuTextBuffer;
     CopyBytes(source, buffer, 14);
     CopyBytes(gPartTextPointers_083BBB4C[work[0x169] * 4 + *selected], buffer + 20, 15);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08010D58(void)
@@ -57,8 +57,8 @@ void sub_08010D58(void)
     if (RunDialogue(gState0FixedMessages_083C6744[107]))
     {
         if (gState0TransferWork.bytes[0x16A])
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         else
-            gUnknown_0300137C = 60;
+            gNestedCallbackIndex = 60;
     }
 }

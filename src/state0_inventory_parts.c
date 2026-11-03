@@ -166,7 +166,7 @@ void sub_0800A2E8(void)
         else
         {
             u8 *buffer = &work[0x9E];
-            sub_08042678(buffer, 13);
+            FillTextWithHyphens(buffer, 13);
             PlaceAlignedTextObjects(buffer, 30, 2, 6, 10, 10, 1, 1);
             FillTilemapRect(2, 2, 12, 6, *(volatile u16 *)0x0400000A, 0);
         }
@@ -191,7 +191,7 @@ void sub_0800A2E8(void)
         else
         {
             u8 *buffer = &work[0x9E];
-            sub_08042678(buffer, 13);
+            FillTextWithHyphens(buffer, 13);
             PlaceAlignedTextObjects(buffer, 50, 2, 8, 10, 10, 1, 1);
             FillTilemapRect(2, 2, 12, 8, *(volatile u16 *)0x0400000A, 0);
         }
@@ -216,7 +216,7 @@ void sub_0800A2E8(void)
         else
         {
             u8 *buffer = &work[0x9E];
-            sub_08042678(buffer, 13);
+            FillTextWithHyphens(buffer, 13);
             PlaceAlignedTextObjects(buffer, 70, 2, 10, 10, 10, 1, 1);
             FillTilemapRect(2, 2, 12, 10, *(volatile u16 *)0x0400000A, 0);
         }
@@ -279,7 +279,7 @@ void sub_0800A594(void)
         else
         {
             u8 *buffer = &work[0x9E];
-            sub_08042678(buffer, 13);
+            FillTextWithHyphens(buffer, 13);
             PlaceAlignedTextObjects(buffer, 90, 19, 7, 10, 11, 1, 1);
             DrawNumberTileRow(0, 25, 10, 2, *(volatile u16 *)0x0400000A, 0xD334);
         }
@@ -306,7 +306,7 @@ void sub_0800A594(void)
         else
         {
             u8 *buffer = &work[0x9E];
-            sub_08042678(buffer, 13);
+            FillTextWithHyphens(buffer, 13);
             PlaceAlignedTextObjects(buffer, 90, 19, 7, 10, 11, selector, selector);
             DrawNumberTileRow(0, 25, 10, 2, *(volatile u16 *)0x0400000A, 0xD334);
         }
@@ -333,7 +333,7 @@ void sub_0800A594(void)
         else
         {
             u8 *buffer = &work[0x9E];
-            sub_08042678(buffer, 13);
+            FillTextWithHyphens(buffer, 13);
             PlaceAlignedTextObjects(buffer, 90, 19, 7, 10, 11, 1, 1);
             DrawNumberTileRow(0, 25, 10, 2, *(volatile u16 *)0x0400000A, 0xD334);
         }

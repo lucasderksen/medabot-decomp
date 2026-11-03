@@ -32,7 +32,7 @@ void sub_0800725C(void)
             goto done;
         }
         if (sub_080440B4()) {
-            PlaySoundEffect(5); gUnknown_0300137C++;
+            PlaySoundEffect(5); gNestedCallbackIndex++;
             goto done;
         }
         break;
@@ -43,7 +43,7 @@ deselect:
     sub_0800712C(); PlaySoundEffect(5);
     goto done;
 failed:
-    PlaySoundEffect(6); gUnknown_0300137C=11;
+    PlaySoundEffect(6); gNestedCallbackIndex=11;
 done:
     return;
 }
@@ -53,7 +53,7 @@ void sub_08007408(void)
     switch (gState0TypedWork.bytes[0x50]) {
     case 1: case 2: {
         if (gState0TransferWork.bytes[0x41]) {
-            PlaySoundEffect(4); gUnknown_0300137C=32;
+            PlaySoundEffect(4); gNestedCallbackIndex=32;
         }
         break;
     }
@@ -104,12 +104,12 @@ void sub_080072EC(void)
                 if(i==2) {
                     switch(work[0x50]) {
                     case 1: case 2: goto confirmed;
-                    default: gUnknown_0300137C=40; goto done;
+                    default: gNestedCallbackIndex=40; goto done;
                     }
                 }
                 if(sub_080440B4()==i+1) goto confirmed;
                 work[0x51]=gState0NextRow_083AC5E8[work[0x51]];
-                sub_08004EF8(0); sub_08004EF8(1); sub_08004EF8(2); sub_08004EF8(3);
+                StepMarkerOrbitForward(0); StepMarkerOrbitForward(1); StepMarkerOrbitForward(2); StepMarkerOrbitForward(3);
                 sub_08005118(); sub_0800519C(); sub_0800522C(); sub_080053C8();
                 sub_08005000(); sub_08005948();
                 goto done;
@@ -123,13 +123,13 @@ failed:
     }
     default:
         if(gUnknownRecords_030017A0[gState0TypedWork.bytes[0x51]].unknown00[0]) {
-            PlaySoundEffect(4); gUnknown_0300137C=8;
+            PlaySoundEffect(4); gNestedCallbackIndex=8;
         } else goto defaultFailed;
         break;
     }
     goto done;
 confirmed:
-    gUnknown_0300137C=32;
+    gNestedCallbackIndex=32;
     goto done;
 defaultFailed:
     PlaySoundEffect(6);

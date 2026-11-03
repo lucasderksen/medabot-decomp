@@ -52,7 +52,7 @@ void sub_0803CFC8(void) {
         temp_r1->byte2B = temp_r0_2 - 1;
         return;
     }
-    output.coordinates=sub_08042BC0((u32) temp_r1->unknown23[3], 0x10U, (u32) (*(s16 *)((u8 *)(frames) + 0x282)), (s32) (*(s16 *)((u8 *)(frames) + 0x284)));
+    output.coordinates=GetPolarOffsetPoint((u32) temp_r1->unknown23[3], 0x10U, (u32) (*(s16 *)((u8 *)(frames) + 0x282)), (s32) (*(s16 *)((u8 *)(frames) + 0x284)));
     frames[gState0TypedWork.bytes[0x12F]].screenX = (s16)output.word;
     frames[gState0TypedWork.bytes[0x12F]].screenY = (s16) ((s32)output.word >> 0x10);
     if (!(2 & gGraphicsTransferCounter.flags)) {

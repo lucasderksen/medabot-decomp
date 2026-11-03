@@ -9,7 +9,7 @@
 extern const void *const gState0NextText_083B4C60[];
 struct KeyBytes { u8 low; u8 high; };
 
-void sub_0800EBFC(void)
+void ScrollBg3Diagonally3(void)
 {
     if (gFrameCounter & 1)
     {

@@ -97,6 +97,6 @@ void sub_08067F64(void) {
     gSetupContext67F64->flags48[2] = 0;
     gSetupContext67F64->flags48[3] = 0;
     gSetupContext67F64->cursor05 = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
     gState0TypedWork.bytes[0x84] = 0;
 }

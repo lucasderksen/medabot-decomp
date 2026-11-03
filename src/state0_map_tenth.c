@@ -17,7 +17,7 @@ void sub_08011A58(void)
         gUnknown_03000440[0x84]++;
     }
     else
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 void sub_08011ABC(void)
@@ -26,7 +26,7 @@ void sub_08011ABC(void)
     StepFirstBgAutoScroll();
     sub_080123A0();
     sub_08012468();
-    gUnknown_0300137C = 61;
+    gNestedCallbackIndex = 61;
 }
 
 void sub_08011ADC(void)
@@ -36,7 +36,7 @@ void sub_08011ADC(void)
     if (RunDialogue(gState0FixedMessages_083C6744[110]))
     {
         gUnknown_03000440[0x1B] = 0;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -49,9 +49,9 @@ void sub_08011B18(void)
         u32 address = (u32)gUnknown_030057E0;
         address += 0xC2F;
         if (*(u8 *)address)
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         else
-            gUnknown_0300137C = 119;
+            gNestedCallbackIndex = 119;
     }
 }
 
@@ -66,5 +66,5 @@ void sub_08011B5C(void)
         gUnknown_03000440[0x84]++;
     }
     else
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }

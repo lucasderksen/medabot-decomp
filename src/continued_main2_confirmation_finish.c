@@ -33,7 +33,7 @@ void sub_0805D4A0(void)
 void sub_0805D4E0(void)
 {
     if (sub_08041CA4())
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 
@@ -52,7 +52,7 @@ void sub_0805D4FC(void)
         ClearFrameObjects(0, 128);
         gMainState = 0;
         gMainSubstate = 1;
-        gUnknown_0300137C = 16;
+        gNestedCallbackIndex = 16;
     }
 }
 
@@ -60,7 +60,7 @@ void sub_0805D4FC(void)
 void sub_0805D580(void)
 {
     if (RunDialogue(gMain2ScriptSlots_0848521C[8]))
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }
 
 
@@ -70,7 +70,7 @@ void sub_0805D5A4(void)
     {
         PlaySoundEffect(2);
         sub_0803FB0C();
-        gUnknown_0300137C = 4;
+        gNestedCallbackIndex = 4;
     }
 }
 
@@ -78,7 +78,7 @@ void sub_0805D5A4(void)
 void sub_0805D5D0(void)
 {
     BLDCNT = 0x02FF;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 
@@ -103,7 +103,7 @@ void sub_0805D5F0(void)
             u32 zero = 0;
             finalContext[6] = 1;
             gMainSubstate = 10;
-            gUnknown_0300137C = zero;
+            gNestedCallbackIndex = zero;
         }
     }
 }

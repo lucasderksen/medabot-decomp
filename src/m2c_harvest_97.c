@@ -46,8 +46,8 @@ s32 sub_0805B5FC(s32 arg0);
 void sub_08062F88(void);
 void sub_08066870(s32 *arg0, s32 *arg1, s32 *arg2, s32 *arg3);
 void sub_08068374(void);
-void sub_08071898(u8 slot, u16 group, u8 value);
-void sub_080718D4(u8 slot, u16 group);
+void StartFrameObjectCycle(u8 slot, u16 group, u8 value);
+void StopFrameObjectCycle(u8 slot, u16 group);
 
 void sub_08039FE4(void) {
  struct SingleFrameBacking *frames;
@@ -98,7 +98,7 @@ void sub_0803DB4C(void) {
         member0 = gState0TypedWork.bytes;
         member0[0x1B] = 0;
         PlaySoundEffect(0xDU);
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
 }
 
@@ -128,7 +128,7 @@ void sub_08062F88(void) {
     context->first = gUnknownMask_03002B68;
     context = gMainContextPointer_03006F74;
     context->second = *((u16 *)&gUnknownMask_03002B68 + 1);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08066870(s32 *arg0, s32 *arg1, s32 *arg2, s32 *arg3) {
@@ -154,11 +154,11 @@ void sub_08068374(void) {
     if ((RunDialogue(table[18]) != 0) && (1 & (*(u8 *)&gNewKeys))) {
         offset0 = gMainContextPointer_03006F74;
         sub_080656DC(offset0 + 0x50, 0U, 0U, 1U, 0xC0U);
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
 }
 
-void sub_08071898(u8 slot, u16 group, u8 value) {
+void StartFrameObjectCycle(u8 slot, u16 group, u8 value) {
     u32 mask;
     u8 *active;
     struct FrameObject *objects;
@@ -173,7 +173,7 @@ void sub_08071898(u8 slot, u16 group, u8 value) {
     frame->frameAndGroup = group;
 }
 
-void sub_080718D4(u8 slot, u16 group) {
+void StopFrameObjectCycle(u8 slot, u16 group) {
     u32 mask;
     u8 *active;
     struct FrameObject *objects;

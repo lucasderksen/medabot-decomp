@@ -47,7 +47,7 @@ void sub_0804DC38(void)
             high = work[0xC95] << 8;
             low = work[0xC96];
             index = high | low;
-            if (sub_08047C24(0, 0, 0, scripts[index]))
+            if (InitAndRunDialogue(0, 0, 0, scripts[index]))
                 sub_08050290();
             break;
         }

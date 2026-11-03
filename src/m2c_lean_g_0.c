@@ -56,7 +56,7 @@ u32 sub_080436AC(volatile u32 column, volatile u32 row, volatile u32 backward, v
             column--;
             if (column == 0x78)
                 column--;
-            sub_08042B58(column, row, &gState0TypedWork.bytes[0x10E]);
+            CopyPartMetadataSlot(column, row, &gState0TypedWork.bytes[0x10E]);
             if (side == gState0TypedWork.bytes[0x111]
                 && gObjectHalfwordBytes[row * 0xF0 + column * 2] != 0
                 && (s32)gObjectHalfwordBytes[row * 0xF0 + column * 2] - gObjectHalfwordBytes[row * 0xF0 + column * 2 + 1] != 0)
@@ -72,7 +72,7 @@ u32 sub_080436AC(volatile u32 column, volatile u32 row, volatile u32 backward, v
                 column = 0;
             if (column == side + 0x78)
                 goto none;
-            sub_08042B58(column, row, &gState0TypedWork.bytes[0x10E]);
+            CopyPartMetadataSlot(column, row, &gState0TypedWork.bytes[0x10E]);
             if (side == gState0TypedWork.bytes[0x111]
                 && gObjectHalfwordBytes[row * 0xF0 + column * 2] != 0
                 && (s32)gObjectHalfwordBytes[row * 0xF0 + column * 2] - gObjectHalfwordBytes[row * 0xF0 + column * 2 + 1] != 0)

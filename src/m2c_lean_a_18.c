@@ -26,7 +26,7 @@ void sub_08022648(void) {
     union { struct TileCoordinates tile; s32 packed; } coords;
 
     for (i = 0; i < 2; i++) {
-        coords.tile = sub_08042BC0(gFrameObjects[0x21 + i].unknown2C[0], gFrameObjects[0x21 + i].byte2B,
+        coords.tile = GetPolarOffsetPoint(gFrameObjects[0x21 + i].unknown2C[0], gFrameObjects[0x21 + i].byte2B,
                                    gFrameObjects[gWork22648.setup87 * 4 + 0x5D].screenX,
                                    gFrameObjects[gWork22648.setup87 * 4 + 0x5D].screenY - 4);
         gFrameObjects[0x21 + i].screenX = coords.packed;

@@ -55,7 +55,7 @@ void sub_08034644(void)
         else
         {
             gMainSubstate = 8;
-            gUnknown_0300137C = 0;
+            gNestedCallbackIndex = 0;
         }
     }
 }

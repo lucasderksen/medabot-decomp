@@ -41,7 +41,7 @@ void sub_0800D710(void)
     if (*(u8 *)&gRepeatedKeys & 32)
         (gState0TypedWork.bytes + 0x35)[gState0TypedWork.bytes[0x34]]--;
     ClearFrameObjects(32, 3);
-    sub_08041370(gDebugMenuTextBuffer,
+    FormatDecimalString(gDebugMenuTextBuffer,
         ((u8 *)((u32)gDebugMenuTextBuffer - 0x69))[
             *(u8 *)((u32)gDebugMenuTextBuffer - 0x6A)]);
     PlaceAlignedTextObjects(gDebugMenuTextBuffer, 32, 8, 2, 3, 15, 1, 0);
@@ -63,7 +63,7 @@ void sub_0800D710(void)
     {
         ClearFrameObjects(8, 33);
         gRenderMode = select;
-        gUnknown_0300137C = 1;
+        gNestedCallbackIndex = 1;
     }
     else if (*(u8 *)&gNewKeys & 1)
         (*(u8 *)((u32)gDebugMenuTextBuffer - 0x6B))++;

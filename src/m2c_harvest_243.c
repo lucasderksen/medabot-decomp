@@ -230,7 +230,7 @@ void sub_0806445C(void) {
  work = gTimerRoot6445C;
  if (--work->timer < 0) {
   work->delay = 0x280;
-  gUnknown_0300137C += 1;
+  gNestedCallbackIndex += 1;
   return;
  }
  if (work->timer <= 7) {

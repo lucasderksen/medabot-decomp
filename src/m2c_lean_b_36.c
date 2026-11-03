@@ -51,14 +51,14 @@ void sub_08065B0C(void) {
     if (gMainSerialOutgoingWork.words[gUnknown_03000B90][1] == (tag | 1)) {
         if (gMainSerialOutgoingWork.words[gUnknown_03000B90 == 0][1] == (tag | 1)) {
             if (gUnknown_03000B90 <= 1) {
-                gUnknown_0300137C++;
+                gNestedCallbackIndex++;
                 gLinkContext65B0C->timer3A = 0;
                 gMainFlag_03005030 = -1;
                 return;
             }
             sub_0803FB0C();
             gLinkContext65B0C->state08 = 1;
-            gUnknown_0300137C--;
+            gNestedCallbackIndex--;
             gMainSerialOutgoingWork.word06 = 0;
         }
     } else if ((gMainSerialOutgoingWork.polledBits & 3) == 3) {
@@ -75,7 +75,7 @@ void sub_08065B0C(void) {
             sub_0803FB0C();
             gLinkContext65B0C->state08 = 1;
         } while (0);
-        gUnknown_0300137C--;
+        gNestedCallbackIndex--;
         gMainSerialOutgoingWork.word06 = 0;
         return;
     }

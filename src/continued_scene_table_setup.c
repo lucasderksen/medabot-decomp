@@ -11,7 +11,7 @@ extern u8 gUnknown_030057E0[];
 void sub_0805330C(void)
 {
     u8 *work = gUnknown_030057E0;
-    sub_080497C0(gSceneEightByteRows_083D2A98 + work[0xC28] * 8,
+    CopyBytes2(gSceneEightByteRows_083D2A98 + work[0xC28] * 8,
                  work + 0xC10, 8);
     {
         struct FrameObject *objects = gFrameObjects;

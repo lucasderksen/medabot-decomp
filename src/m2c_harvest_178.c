@@ -72,7 +72,7 @@ void sub_08031F2C(void) {
                 gState0TransferWork.bytes[0x5E]=sub_0803301C()+1;
             } else {
                 gState0TransferWork.bytes[0x60] = (u8) GetSlotGroupStart((u32) gState0TransferWork.bytes[0x5C]);
-                gState0TransferWork.bytes[0x5E]=sub_08033090(gState0TransferWork.bytes[0x60])+1;
+                gState0TransferWork.bytes[0x5E]=PickRandomGroupSlot(gState0TransferWork.bytes[0x60])+1;
             }
         }
     }

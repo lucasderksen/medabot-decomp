@@ -28,12 +28,12 @@ void sub_0805C128(void)
 {
     u32 fill = 0;
     CpuFastSet(&fill, VRAM, 0x01006000);
-    sub_080415BC();
+    ClearBgScrolls();
     sub_08059E50();
     DISPLAY_CONTROL = 0x60;
     sub_080656DC((u8 *)gMainContextPointer_03006F74 + 0x50,
                   16, 0, (u32)-1, 192);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 
@@ -60,7 +60,7 @@ void sub_0805C17C(void)
     LoadLz77SizedTilemap(gMain2Map_08790F78, *bg1);
     LoadLz77SizedTilemap(gMain2Map_087911BC, *bg2);
     LoadLz77SizedTilemap(gMain2Map_0879131C, *bg3);
-    size = sub_08044D0C(gMain2Tiles_0878F7E8, (void *)0x02030000);
+    size = DecompressLz77OrCopy(gMain2Tiles_0878F7E8, (void *)0x02030000);
     CpuSet((void *)0x02030000, (void *)0x06004000, (size << 10) >> 11);
     zero = 0;
     ((struct Main2SetupContext *)gMainContextPointer_03006F74)->halfword36 = (size >> 5) - 1;
@@ -77,5 +77,5 @@ void sub_0805C17C(void)
     gFrameObjects[14].screenX = 32;
     gFrameObjects[14].screenY = 80;
     ((struct Main2SetupContext *)gMainContextPointer_03006F74)->byte05 = zero;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

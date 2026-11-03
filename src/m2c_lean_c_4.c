@@ -40,14 +40,14 @@ void sub_08050358(u32 first, u32 second, u32 third, u32 fourth) {
 
     if ((flags & 0xF0) && sub_08052C68(c, d) && gFreshWork_03006D38[3])
         sub_08047BA8(gSetupByteLookup_083D2B66[gFreshWork_03006D38[3]]);
-    sub_0804DBD0(index, (u8)sub_08050710());
+    SetScriptObjectSlot(index, (u8)sub_08050710());
     do {
-        sub_080503FC((u8)sub_0804DBF0(index), b, c, d);
+        sub_080503FC((u8)GetScriptObjectSlot(index), b, c, d);
         if (flags & 0x40) {
             u32 root;
             s32 y;
             s32 high;
-            s32 slot = sub_0804DBF0(index);
+            s32 slot = GetScriptObjectSlot(index);
             root = (u32)gFrameObjects;
             object = (struct FrameObject *)(root + ((slot + 0x4F) << 6));
             y = object->positionY;

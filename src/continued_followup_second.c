@@ -45,14 +45,14 @@ void sub_0804C868(void)
     do
     {
         u8 selected = index;
-        if (sub_0804DBF0(selected) != -1)
+        if (GetScriptObjectSlot(selected) != -1)
         {
-            s32 entry = sub_0804DBF0(selected);
+            s32 entry = GetScriptObjectSlot(selected);
             entry += 79;
             if (entries[entry].value != 0)
             {
                 {
-                    s32 frame = sub_0804DBF0(selected);
+                    s32 frame = GetScriptObjectSlot(selected);
                     u8 *object;
                     u32 argumentValue;
                     frame += 79;
@@ -60,9 +60,9 @@ void sub_0804C868(void)
                     argumentValue = *argument;
                     object[0x26] = argumentValue;
                 }
-                { s32 frame = sub_0804DBF0(selected); frame += 79; objects[frame * 64 + 0x27] = zero; }
-                { s32 frame = sub_0804DBF0(selected); frame += 79; objects[frame * 64 + 0x28] = eight; }
-                { s32 frame = sub_0804DBF0(selected); frame += 79; objects[frame * 64 + 0x29] = eight; }
+                { s32 frame = GetScriptObjectSlot(selected); frame += 79; objects[frame * 64 + 0x27] = zero; }
+                { s32 frame = GetScriptObjectSlot(selected); frame += 79; objects[frame * 64 + 0x28] = eight; }
+                { s32 frame = GetScriptObjectSlot(selected); frame += 79; objects[frame * 64 + 0x29] = eight; }
             }
         }
         index++;

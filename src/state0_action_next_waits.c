@@ -76,7 +76,7 @@ void sub_0801D434(void)
 
 void sub_0801D524(void)
 {
-    if (sub_080355F0(9))
+    if (StepFrameObjectToTarget(9))
         gState0TransferWork.bytes[0xAA]++;
 }
 

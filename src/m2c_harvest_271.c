@@ -77,5 +77,5 @@ loop_4:
     CpuFastSet(gUnknown_0879AD8C, gEquipmentPaletteShadow, 0x80U);
     CpuFastSet(gUnknown_080AFC60, gUnknown_0202F940, 8U);
     gState0TypedWork.bytes[0x84] = 0;
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }

@@ -19,7 +19,7 @@ void InitFrameObject(u32 input, u32 flagsInput, u32 frame, u32 palette, u32 sele
     object->tableSelector = selector;
 }
 
-void sub_08048888(u32 input)
+void ResetFrameObjectSlot(u32 input)
 {
     u8 index = input;
     ClearBytes(&gFrameObjects[index], 64);

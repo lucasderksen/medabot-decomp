@@ -2,7 +2,7 @@
 #define GUARD_OBJECT_NUMERIC_HELPERS_H
 #include "global.h"
 void InitFrameObject(u32 index, u32 flags, u32 frame, u32 palette, u32 selector);
-void sub_08048888(u32 index);
+void ResetFrameObjectSlot(u32 index);
 s32 sub_080488AC(s32 value);
 s32 sub_08048B88(s32 numerator, s32 denominator);
 s32 sub_08048BA0(s32 denominator);

@@ -50,7 +50,7 @@ void sub_080337CC(void)
 void sub_080338DC(void)
 {
     gMainSubstate = 8;
-    gUnknown_0300137C = 0x40;
+    gNestedCallbackIndex = 0x40;
 }
 
 void sub_080338F4(void)

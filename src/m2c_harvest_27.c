@@ -119,7 +119,7 @@ void sub_08030DB4(void) {
         gState0TransferWork.bytes[0x51] = 0x28;
     }
     sub_0801B004(gState0TransferWork.bytes[0x87]);
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_0803572C(u8 *arg0, s32 arg1) {

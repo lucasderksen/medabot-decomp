@@ -96,13 +96,13 @@ void sub_08031614(void){
 
  struct Continued31614Record *records;
  sub_0801AEB4();
- if(((struct Continued31614Work*)gState0TransferWork.bytes)->busy){((struct Continued31614Work*)gState0TransferWork.bytes)->action=0x79;gUnknown_0300137C++;}
+ if(((struct Continued31614Work*)gState0TransferWork.bytes)->busy){((struct Continued31614Work*)gState0TransferWork.bytes)->action=0x79;gNestedCallbackIndex++;}
  else {u32 firstPart=((struct Continued31614Work*)gState0TransferWork.bytes)->part;records=(void*)gSetupBuffer_03000590;
- if(firstPart==0 && records[((struct Continued31614Work*)gState0TransferWork.bytes)->bank].level<=9){((struct Continued31614Work*)gState0TransferWork.bytes)->action=0x36;gUnknown_0300137C++;}
- else if(((struct Continued31614Work*)gState0TransferWork.bytes)->part==1 && records[((struct Continued31614Work*)gState0TransferWork.bytes)->bank].level<=0x1D){((struct Continued31614Work*)gState0TransferWork.bytes)->action=0x36;gUnknown_0300137C++;}
- else if(((struct Continued31614Work*)gState0TransferWork.bytes)->part==2 && records[((struct Continued31614Work*)gState0TransferWork.bytes)->bank].level<=0x3B){((struct Continued31614Work*)gState0TransferWork.bytes)->action=0x36;gUnknown_0300137C++;}
- else if(records[((struct Continued31614Work*)gState0TransferWork.bytes)->bank].item!=0x50){((struct Continued31614Work*)gState0TransferWork.bytes)->action=0x37;gUnknown_0300137C++;}
- else gUnknown_0300137C=0x34;
+ if(firstPart==0 && records[((struct Continued31614Work*)gState0TransferWork.bytes)->bank].level<=9){((struct Continued31614Work*)gState0TransferWork.bytes)->action=0x36;gNestedCallbackIndex++;}
+ else if(((struct Continued31614Work*)gState0TransferWork.bytes)->part==1 && records[((struct Continued31614Work*)gState0TransferWork.bytes)->bank].level<=0x1D){((struct Continued31614Work*)gState0TransferWork.bytes)->action=0x36;gNestedCallbackIndex++;}
+ else if(((struct Continued31614Work*)gState0TransferWork.bytes)->part==2 && records[((struct Continued31614Work*)gState0TransferWork.bytes)->bank].level<=0x3B){((struct Continued31614Work*)gState0TransferWork.bytes)->action=0x36;gNestedCallbackIndex++;}
+ else if(records[((struct Continued31614Work*)gState0TransferWork.bytes)->bank].item!=0x50){((struct Continued31614Work*)gState0TransferWork.bytes)->action=0x37;gNestedCallbackIndex++;}
+ else gNestedCallbackIndex=0x34;
  }
 }
 
@@ -145,7 +145,7 @@ void sub_0806280C(void) {
     phase=(struct Phase6280C *)&gState0TypedWork;
     phase->byte84 = zero;
     ((struct Context6280C *)gMainContextPointer_03006F74)->state = 1;
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
     *(volatile u16 *)0x04000000 |= 0x100;
     *(volatile u16 *)0x04000000 |= 0x200;
     *(volatile u16 *)0x04000000 |= 0x400;
@@ -179,7 +179,7 @@ void sub_0806355C(void) {
         var_r4 += 0x20;
         var_r6 -= 1;
     } while (var_r6 >= 0);
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
     ((struct ChoiceContext6355C *)gMainContextPointer_03006F74)->step = 1;
     ClearFrameObjects(0U, 0x80U);
     sub_08062BEC((((struct ChoiceContext6355C *)gMainContextPointer_03006F74)->byte31 * 4) + ((struct ChoiceContext6355C *)gMainContextPointer_03006F74)->byte33, 0);
@@ -197,7 +197,7 @@ void sub_0806BCFC(void) {
   fill=0;
   dma=(volatile struct Dma6BCFC *)0x040000D4;
   dma->source=(u32)&fill;dma->destination=(u32)gFrameObjects;dma->control=0x85000800;(void)dma->control;
-  gUnknown_0300137C++;
+  gNestedCallbackIndex++;
  }
 }
 
@@ -218,5 +218,5 @@ void sub_0806D7A0(void) {
  saved=gSetup6D7A0_saved0300180C;dma->destination=(u32)saved;dma->control=0x8000000E;(void)dma->control;
  sub_08068460(2,1,0);
  ((struct Graphics6D7A0 *)((u32)saved-12))->step=5;
- gUnknown_0300137C=1;
+ gNestedCallbackIndex=1;
 }

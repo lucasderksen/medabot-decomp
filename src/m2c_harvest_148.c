@@ -28,7 +28,7 @@ void sub_08023900(void) {
         struct ContinuedAngleFrame21 *frame=(struct ContinuedAngleFrame21 *)gFrameObjects;
         frame->angle=(frame->angle+0x40)&0x3FF;
     }
-    if (sub_080355F0(0x21)!=0) {
+    if (StepFrameObjectToTarget(0x21)!=0) {
         struct ContinuedAngleFrame21 *frame=(struct ContinuedAngleFrame21 *)gFrameObjects;
         frame->angle=0;
         gState0TransferWork.bytes[0xAA]++;

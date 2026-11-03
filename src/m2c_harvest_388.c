@@ -91,5 +91,5 @@ void sub_0806E2A0(void) {
     sub_0803FAA0(1U,2U,0U);
     *(volatile u16 *)0x04000000 |=0x200;
     work->backgroundSetup.word04=4;
-    gUnknown_0300137C=1;
+    gNestedCallbackIndex=1;
 }

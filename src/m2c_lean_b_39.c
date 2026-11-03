@@ -292,7 +292,7 @@ void sub_08068F50(void) {
     sub_08068460(2, 2, 0);
     *(volatile u16 *)0x04000000 |= 0x1E00;
     gUnknown_03006F80 = 6;
-    gUnknown_0300137C = 1;
+    gNestedCallbackIndex = 1;
 }
 
 void sub_0806D4A4(void) {

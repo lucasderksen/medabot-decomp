@@ -68,5 +68,5 @@ void sub_0806096C(void) {
   work = (struct ContinueBrightnessWork6096C *)gMainContextPointer_03006F74;
   *brightness = (*(workReference = &work))->amount * 2;
   work->delay = zero;
-  gUnknown_0300137C = (s32) (((u32) gUnknown_0300137C) + 1U);
+  gNestedCallbackIndex = (s32) (((u32) gNestedCallbackIndex) + 1U);
 }

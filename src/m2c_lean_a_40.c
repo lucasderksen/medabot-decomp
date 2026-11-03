@@ -170,7 +170,7 @@ void sub_08012A20(void) {
 
     switch (gState0TypedWork.bytes[0x139]) {
     case 0:
-        sub_08043CA8();
+        ClearBgScrolls2();
         sub_08043E54();
         *(volatile u16 *)0x04000000 &= 0xF0FF;
         *(volatile u16 *)0x04000008 = 0x500;
@@ -197,7 +197,7 @@ void sub_08012A20(void) {
         sub_08043F9C();
         sub_080441A8(gEquipmentAssets_083B2628[gCounter6ED08_03001800.shift38 * 5 + 1]);
         gUnknownCallback_030017F0 = sub_08044100;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
         gState0TypedWork.bytes[0x139] = 0;
         break;
     }
@@ -211,7 +211,7 @@ void sub_08017EA8(void) {
     i = 0;
     work = gState0TypedWork.bytes;
     for (; i < 4; i++) {
-        sub_08042B58(gSetup17EA8[gState0TypedWork.bytes[0x3D] + gState0TypedWork.bytes[0x3C] * 3].parts[i].byte17, i,
+        CopyPartMetadataSlot(gSetup17EA8[gState0TypedWork.bytes[0x3D] + gState0TypedWork.bytes[0x3C] * 3].parts[i].byte17, i,
                      &gState0TypedWork.bytes[0xEE]);
         CopyBytesU8Count(&gInventoryMetadata_083B62D8[gSetup17EA8[gState0TypedWork.bytes[0x3D] + gState0TypedWork.bytes[0x3C] * 3].byte01 * 16],
                      &work[0x10E], 16);

@@ -9,7 +9,7 @@
 void sub_0801058C(void)
 {
     volatile u32 *dma;
-    sub_08043CA8();
+    ClearBgScrolls2();
     *(volatile u16 *)0x04000000 &= 0xE0FF;
     *(volatile u16 *)0x04000008 = 0x500;
     *(volatile u16 *)0x0400000A = 0x1801;
@@ -78,5 +78,5 @@ void sub_0801058C(void)
     sub_080121A8();
     sub_08043DF8();
     gUnknown_03000440[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

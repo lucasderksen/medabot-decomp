@@ -26,7 +26,7 @@ void sub_08014920(void)
     }
     PlaySoundEffect(91);
     gUnknown_03000440[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08014994(void)
@@ -67,6 +67,6 @@ void sub_08014994(void)
             objectIndex += 4U << 24;
         }
         gState0TransferWork.bytes[0x55] &= 0xEF;
-        gUnknown_0300137C = 68;
+        gNestedCallbackIndex = 68;
     }
 }

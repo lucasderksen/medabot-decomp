@@ -67,35 +67,35 @@ u32 sub_08074224(const void *record);
 void sub_08074978(struct Link74978 *node);
 
 void sub_0805FC58(void) {
-gUnknown_08483738[gUnknown_0300137C]();if(gFrameCounter&1)gBgScroll3.y += 1;}
+gUnknown_08483738[gNestedCallbackIndex]();if(gFrameCounter&1)gBgScroll3.y += 1;}
 
 void sub_08060280(void) {
-gUnknown_08483758[gUnknown_0300137C]();if(gFrameCounter&1)gBgScroll3.y -= 1;}
+gUnknown_08483758[gNestedCallbackIndex]();if(gFrameCounter&1)gBgScroll3.y -= 1;}
 
 void sub_0806045C(void) {
 u8 *ctx=(u8 *)gMainContextPointer_03006F74;u8 old;u32 packed;
  old=*ctx;packed=(u32)old<<24;
  if(packed!=0){volatile u16 *brightness=(volatile u16 *)0x04000054;*ctx=old+0xFF;*brightness=packed>>25;return;}
- gUnknown_0300137C+=1;
+ gNestedCallbackIndex+=1;
  }
 
 void sub_0806048C(void) {
 
  sub_08060248();
- if(1U & *(u8 *)&gNewKeys){PlaySoundEffect(4U);*(u8 *)gMainContextPointer_03006F74=0;gUnknown_0300137C+=1;}
+ if(1U & *(u8 *)&gNewKeys){PlaySoundEffect(4U);*(u8 *)gMainContextPointer_03006F74=0;gNestedCallbackIndex+=1;}
 }
 
 void sub_080629DC(void) {
-struct Callbacks629DC callbacks=gUnknown_080AFB98;callbacks.fn[gUnknown_0300137C]();}
+struct Callbacks629DC callbacks=gUnknown_080AFB98;callbacks.fn[gNestedCallbackIndex]();}
 
 void sub_08064B90(void) {
 
  struct LocalCallbackPair local=gUnknown_080AFC58;
- local.callbacks[gUnknown_0300137C]();
+ local.callbacks[gNestedCallbackIndex]();
 }
 
 void sub_08065D10(void) {
-struct Callbacks65D10 callbacks=gUnknown_080AFC88;callbacks.fn[gUnknown_0300137C]();}
+struct Callbacks65D10 callbacks=gUnknown_080AFC88;callbacks.fn[gNestedCallbackIndex]();}
 
 s32 sub_080688E0(void) {
 if(gUnknown_0848571C[gUnknown_03000004]()!=0){gUnknown_03000000=0;return 1;}gUnknown_03000000+=1;return 0;}
@@ -103,13 +103,13 @@ if(gUnknown_0848571C[gUnknown_03000004]()!=0){gUnknown_03000000=0;return 1;}gUnk
 void sub_08068DD0(void) {
 
  if(gUnknown_03006F90==0)sub_0806B4A4();
- gUnknown_08485730[gUnknown_0300137C]();
+ gUnknown_08485730[gNestedCallbackIndex]();
 }
 
 void sub_0806D588(void) {
 
  sub_0806D4A4();
- gUnknown_08485964[gUnknown_0300137C]();
+ gUnknown_08485964[gNestedCallbackIndex]();
  sub_0806DE0C();
  sub_0806D41C();
 }
@@ -117,7 +117,7 @@ void sub_0806D588(void) {
 void sub_0806EA98(void) {
 
  sub_0806E9E0();
- gUnknown_08485A08[gUnknown_0300137C]();
+ gUnknown_08485A08[gNestedCallbackIndex]();
  sub_0806EA54();
 }
 
@@ -125,7 +125,7 @@ void sub_080708D8(void) {
 
  if(gCounter708D8.scrollC!=0)sub_08070804();
  if(gCounter708D8.scrollD!=0)sub_08070824();
- gUnknown_08485B68[gUnknown_0300137C]();
+ gUnknown_08485B68[gNestedCallbackIndex]();
 }
 
 u32 sub_08074224(const void *record) {

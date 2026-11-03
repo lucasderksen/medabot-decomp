@@ -98,7 +98,7 @@ void sub_08016AD8(void) {
     HideFrameObjects(0x2D, 0xD);
     switch (gCounter6ED08_03001800.buffer64[0x1E]) {
     case 0:
-        sub_08042678(gDebugMenuTextBuffer, 0xD);
+        FillTextWithHyphens(gDebugMenuTextBuffer, 0xD);
         break;
     case 1:
     case 2:

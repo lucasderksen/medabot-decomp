@@ -137,8 +137,8 @@ void sub_08057F1C(u32 count)
 
 void sub_08057FB4(void)
 {
-    sub_08048888(32);
-    sub_08048888(33);
-    sub_08048888(34);
-    sub_08048888(35);
+    ResetFrameObjectSlot(32);
+    ResetFrameObjectSlot(33);
+    ResetFrameObjectSlot(34);
+    ResetFrameObjectSlot(35);
 }

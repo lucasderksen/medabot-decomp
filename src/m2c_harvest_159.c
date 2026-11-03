@@ -62,5 +62,5 @@ void sub_08070914(void) {
     gBgScroll3.x = 0;
     gBgScroll3.y = 0;
     gUnknown_03007010 = 0;
-    gUnknown_0300137C = 3;
+    gNestedCallbackIndex = 3;
 }

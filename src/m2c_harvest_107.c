@@ -130,7 +130,7 @@ void sub_0803D3C0(void) {
 
     table=gState0NextCommands_083B6100;
     RunFrameObjectCommands(table[gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown23[3]], gState0TypedWork.bytes[0x12F]);
-    if (sub_080353CC((u32) gState0TypedWork.bytes[0x12F]) != 0) {
+    if (StepObjectHop((u32) gState0TypedWork.bytes[0x12F]) != 0) {
         temp_r1 = &gFrameObjects[gState0TypedWork.bytes[0x12F]];
         temp_r1->frameAndGroup = temp_r1->unknown23[5] + 0x6307;
         gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown23[6] = 0;

@@ -44,13 +44,13 @@ void sub_0805DBC4(void)
         {
             sub_0803FB0C();
             CONTEXT_HALFWORDS[1] = result;
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
         else
         {
             sub_0803FB0C();
             CONTEXT_HALFWORDS[1] = 0;
-            gUnknown_0300137C = 12;
+            gNestedCallbackIndex = 12;
         }
     }
 }

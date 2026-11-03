@@ -56,7 +56,7 @@ void sub_0805C7F8(void)
             {
             case 0:
                 MAIN_FLAGS_BYTE |= 1;
-                gUnknown_0300137C = 8;
+                gNestedCallbackIndex = 8;
                 break;
             case 1:
             {
@@ -64,7 +64,7 @@ void sub_0805C7F8(void)
                 s32 mask = -3;
                 mask &= flags;
                 MAIN_FLAGS_BYTE = mask;
-                gUnknown_0300137C = 7;
+                gNestedCallbackIndex = 7;
                 break;
             }
             }
@@ -84,7 +84,7 @@ void sub_0805C8EC(void)
     if (MAIN_FLAGS_BYTE & 1)
     {
         gMainSubstate = 28;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
     }
     else
         sub_080476E8(10);
