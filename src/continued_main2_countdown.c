@@ -45,8 +45,8 @@ void sub_0805C7F8(void)
         {
             u32 component = 31;
             u32 white = (component << 10) | (component << 5) | component;
-            sub_0803F684(white, gUnknown_03000440[0x84] * 4, 0xFFFF);
-            sub_0803F998(white, gUnknown_03000440[0x84] * 4, 0xFFFF);
+            BlendBgPaletteBanksNow(white, gUnknown_03000440[0x84] * 4, 0xFFFF);
+            BlendObjPaletteBanksNow(white, gUnknown_03000440[0x84] * 4, 0xFFFF);
             gUnknown_03000440[0x84]++;
         }
         else
@@ -76,8 +76,8 @@ void sub_0805C7F8(void)
 void sub_0805C8EC(void)
 {
     s8 index;
-    sub_08074B88(0);
-    sub_08074DE0(0);
+    PlayMusic(0);
+    PlaySoundEffect(0);
     Unknown_0805DEB0();
     for (index = 0; index <= 15; index++)
         gUnknown_03002B74[index] = 0xFE;

@@ -82,10 +82,10 @@ void sub_0801D524(void)
 
 void sub_0801D544(void)
 {
-    sub_08040BD8(gUnknownPointers_083B6100[27], 9);
+    RunFrameObjectCommands(gUnknownPointers_083B6100[27], 9);
     if (((struct ObservedActionFrameBacking *)gFrameObjects)->commandStopped262 == 255)
     {
-        sub_08040CD0(9, 1);
+        ClearFrameObjects(9, 1);
         gState0TransferWork.bytes[0xB5] = 1;
     }
 }

@@ -2893,7 +2893,7 @@
     "name": "state0_view_93f8",
     "start": "0x93f8",
     "end": "0x941c",
-    "input_section": ".text.sub_080093F8",
+    "input_section": ".text.ScrollBg3Diagonally",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/state0_inventory_view.c",
@@ -7918,7 +7918,7 @@
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
-    "name": "sub_080164F4",
+    "name": "CycleActionSpriteFrames",
     "start": "0x0164F4",
     "end": "0x016554",
     "kind": "c",
@@ -7927,7 +7927,7 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_harvest_299.c",
-    "input_section": ".text.sub_080164F4",
+    "input_section": ".text.CycleActionSpriteFrames",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
@@ -19855,10 +19855,10 @@
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
-    "name": "sub_08032FB8",
+    "name": "GetOtherSlotGroupStart",
     "start": "0x32FB8",
     "end": "0x32FC4",
-    "input_section": ".text.sub_08032FB8",
+    "input_section": ".text.GetOtherSlotGroupStart",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/state0_action_side_selector.c",
@@ -19868,10 +19868,10 @@
     "description": "Independently reproduced complete function; pools and padding included"
   },
   {
-    "name": "sub_08032FC4",
+    "name": "GetSlotGroupStart",
     "start": "0x32fc4",
     "end": "0x32fd0",
-    "input_section": ".text.sub_08032FC4",
+    "input_section": ".text.GetSlotGroupStart",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/state0_action_checks.c",
@@ -21730,10 +21730,10 @@
     "description": "Independently reproduced complete function; pools and padding included"
   },
   {
-    "name": "sub_08034F08",
+    "name": "AdvanceActionByteScript",
     "start": "0x34f08",
     "end": "0x34f44",
-    "input_section": ".text.sub_08034F08",
+    "input_section": ".text.AdvanceActionByteScript",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/state0_action_script_advance.c",
@@ -22083,7 +22083,7 @@
     "description": "m2c draft, exact without edits; control-flow-decoded bounds await review"
   },
   {
-    "name": "sub_08035740",
+    "name": "AddByteCapped",
     "start": "0x035740",
     "end": "0x035754",
     "kind": "c",
@@ -22092,7 +22092,7 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_harvest_16.c",
-    "input_section": ".text.sub_08035740",
+    "input_section": ".text.AddByteCapped",
     "description": "m2c draft, exact without edits; control-flow-decoded bounds await review"
   },
   {
@@ -22793,7 +22793,7 @@
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
-    "name": "sub_08036E54",
+    "name": "Clamp1To99",
     "start": "0x036E54",
     "end": "0x036E64",
     "kind": "c",
@@ -22802,7 +22802,7 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_harvest_0.c",
-    "input_section": ".text.sub_08036E54",
+    "input_section": ".text.Clamp1To99",
     "description": "m2c draft, exact without edits; control-flow-decoded bounds await review"
   },
   {
@@ -24829,7 +24829,7 @@
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
-    "name": "sub_0803D450",
+    "name": "LoadActionHalfwordScriptParams",
     "start": "0x03D450",
     "end": "0x03D4AC",
     "kind": "c",
@@ -24838,11 +24838,11 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_harvest_246.c",
-    "input_section": ".text.sub_0803D450",
+    "input_section": ".text.LoadActionHalfwordScriptParams",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
-    "name": "sub_0803D4AC",
+    "name": "AdvanceActionHalfwordScript",
     "start": "0x03D4AC",
     "end": "0x03D4EC",
     "kind": "c",
@@ -24851,7 +24851,7 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_harvest_249.c",
-    "input_section": ".text.sub_0803D4AC",
+    "input_section": ".text.AdvanceActionHalfwordScript",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
@@ -26007,10 +26007,10 @@
     ]
   },
   {
-    "name": "sub_0803EF8C",
+    "name": "FillTilemapRect",
     "start": "0x3ef8c",
     "end": "0x3efd8",
-    "input_section": ".text.sub_0803EF8C",
+    "input_section": ".text.FillTilemapRect",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/display_helpers.c",
@@ -26033,10 +26033,10 @@
     ]
   },
   {
-    "name": "sub_0803F15C",
+    "name": "CopyTilemapRect",
     "start": "0x3f15c",
     "end": "0x3f1c8",
-    "input_section": ".text.sub_0803F15C",
+    "input_section": ".text.CopyTilemapRect",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/display_helpers.c",
@@ -26124,10 +26124,10 @@
     ]
   },
   {
-    "name": "sub_0803F624",
+    "name": "FillBytes",
     "start": "0x3f624",
     "end": "0x3f63c",
-    "input_section": ".text.sub_0803F624",
+    "input_section": ".text.FillBytes",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/display_helpers.c",
@@ -26137,10 +26137,10 @@
     ]
   },
   {
-    "name": "sub_0803F63C",
+    "name": "CopyBytes",
     "start": "0x3f63c",
     "end": "0x3f65c",
-    "input_section": ".text.sub_0803F63C",
+    "input_section": ".text.CopyBytes",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/display_helpers.c",
@@ -26150,10 +26150,10 @@
     ]
   },
   {
-    "name": "sub_0803F65C",
+    "name": "SwapBytes",
     "start": "0x3f65c",
     "end": "0x3f684",
-    "input_section": ".text.sub_0803F65C",
+    "input_section": ".text.SwapBytes",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/display_helpers.c",
@@ -26163,7 +26163,7 @@
     ]
   },
   {
-    "name": "sub_0803F684",
+    "name": "BlendBgPaletteBanksNow",
     "start": "0x03F684",
     "end": "0x03F788",
     "kind": "c",
@@ -26172,11 +26172,11 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_lean_b_31.c",
-    "input_section": ".text.sub_0803F684",
+    "input_section": ".text.BlendBgPaletteBanksNow",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
-    "name": "sub_0803F788",
+    "name": "BlendBgPaletteBanks",
     "start": "0x03F788",
     "end": "0x03F890",
     "kind": "c",
@@ -26185,11 +26185,11 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_lean_b_31.c",
-    "input_section": ".text.sub_0803F788",
+    "input_section": ".text.BlendBgPaletteBanks",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
-    "name": "sub_0803F890",
+    "name": "BlendObjPaletteBanks",
     "start": "0x03F890",
     "end": "0x03F998",
     "kind": "c",
@@ -26198,11 +26198,11 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_lean_b_31.c",
-    "input_section": ".text.sub_0803F890",
+    "input_section": ".text.BlendObjPaletteBanks",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
-    "name": "sub_0803F998",
+    "name": "BlendObjPaletteBanksNow",
     "start": "0x03F998",
     "end": "0x03FAA0",
     "kind": "c",
@@ -26211,7 +26211,7 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_lean_b_31.c",
-    "input_section": ".text.sub_0803F998",
+    "input_section": ".text.BlendObjPaletteBanksNow",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
@@ -26238,10 +26238,10 @@
     ]
   },
   {
-    "name": "sub_0803FB3C",
+    "name": "RunDialogue",
     "start": "0x3fb3c",
     "end": "0x3fb6c",
-    "input_section": ".text.sub_0803FB3C",
+    "input_section": ".text.RunDialogue",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/effect_work.c",
@@ -26615,7 +26615,7 @@
     "name": "frame_command_init",
     "start": "0x40B90",
     "end": "0x40BD8",
-    "input_section": ".text.sub_08040B90",
+    "input_section": ".text.InitFrameObjectCommands",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/frame_objects.c",
@@ -26625,7 +26625,7 @@
     "name": "frame_commands",
     "start": "0x40BD8",
     "end": "0x40CD0",
-    "input_section": ".text.sub_08040BD8",
+    "input_section": ".text.RunFrameObjectCommands",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/frame_objects.c",
@@ -26635,7 +26635,7 @@
     "name": "frame_clear",
     "start": "0x40CD0",
     "end": "0x40D0C",
-    "input_section": ".text.sub_08040CD0",
+    "input_section": ".text.ClearFrameObjects",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/frame_objects.c",
@@ -26645,7 +26645,7 @@
     "name": "frame_deactivate",
     "start": "0x40D0C",
     "end": "0x40D44",
-    "input_section": ".text.sub_08040D0C",
+    "input_section": ".text.HideFrameObjects",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/frame_objects.c",
@@ -26655,7 +26655,7 @@
     "name": "frame_activate",
     "start": "0x40D44",
     "end": "0x40D78",
-    "input_section": ".text.sub_08040D44",
+    "input_section": ".text.ShowFrameObjects",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/frame_objects.c",
@@ -26675,7 +26675,7 @@
     "name": "frame_byte_layout",
     "start": "0x40DB8",
     "end": "0x40EE4",
-    "input_section": ".text.sub_08040DB8",
+    "input_section": ".text.PlaceAlignedTextObjects",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/frame_objects.c",
@@ -26946,7 +26946,7 @@
     "name": "object_helper_041c14",
     "start": "0x41c14",
     "end": "0x41c5c",
-    "input_section": ".text.sub_08041C14",
+    "input_section": ".text.SetObjectXWobble",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/object_helpers.c",
@@ -26959,7 +26959,7 @@
     "name": "object_helper_041c5c",
     "start": "0x41c5c",
     "end": "0x41ca4",
-    "input_section": ".text.sub_08041C5C",
+    "input_section": ".text.SetObjectYWobble",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/object_helpers.c",
@@ -26998,7 +26998,7 @@
     "name": "object_helper_041d04",
     "start": "0x41d04",
     "end": "0x41d28",
-    "input_section": ".text.sub_08041D04",
+    "input_section": ".text.CopyBytesU8Count",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/object_helpers.c",
@@ -27255,7 +27255,7 @@
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
-    "name": "sub_080424B8",
+    "name": "NextRandomByte",
     "start": "0x0424B8",
     "end": "0x04253C",
     "kind": "c",
@@ -27264,14 +27264,14 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_lean_f_2.c",
-    "input_section": ".text.sub_080424B8",
+    "input_section": ".text.NextRandomByte",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
     "name": "object_helper_04253c",
     "start": "0x4253c",
     "end": "0x425dc",
-    "input_section": ".text.sub_0804253C",
+    "input_section": ".text.StartBlendFade",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/object_helpers.c",
@@ -27284,7 +27284,7 @@
     "name": "object_helper_0425dc",
     "start": "0x425DC",
     "end": "0x42678",
-    "input_section": ".text.sub_080425DC",
+    "input_section": ".text.StepBlendFade",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/object_helpers.c",
@@ -27307,10 +27307,10 @@
     ]
   },
   {
-    "name": "sub_08042698",
+    "name": "FillTilemapRectSequential",
     "start": "0x42698",
     "end": "0x426f0",
-    "input_section": ".text.sub_08042698",
+    "input_section": ".text.FillTilemapRectSequential",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/tile_text.c",
@@ -27333,10 +27333,10 @@
     ]
   },
   {
-    "name": "sub_08042838",
+    "name": "DrawNumberTileRow",
     "start": "0x42838",
     "end": "0x42950",
-    "input_section": ".text.sub_08042838",
+    "input_section": ".text.DrawNumberTileRow",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/tile_text.c",
@@ -27701,7 +27701,7 @@
     "name": "equipment_043cd4",
     "start": "0x43cd4",
     "end": "0x43df8",
-    "input_section": ".text.sub_08043CD4",
+    "input_section": ".text.StepFirstBgAutoScroll",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/equipment_helpers.c",
@@ -27753,7 +27753,7 @@
     "name": "equipment_043e78",
     "start": "0x43e78",
     "end": "0x43f9c",
-    "input_section": ".text.sub_08043E78",
+    "input_section": ".text.StepSecondBgAutoScroll",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/equipment_helpers.c",
@@ -29341,7 +29341,7 @@
     "name": "object_48864",
     "start": "0x48864",
     "end": "0x48888",
-    "input_section": ".text.sub_08048864",
+    "input_section": ".text.InitFrameObject",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/object_numeric_helpers.c",
@@ -29721,10 +29721,10 @@
     "description": "Reviewed isolated exact match; full-ROM verification required"
   },
   {
-    "name": "sub_08049714",
+    "name": "ClearBytes",
     "start": "0x49714",
     "end": "0x49728",
-    "input_section": ".text.sub_08049714",
+    "input_section": ".text.ClearBytes",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/later_graphics.c",
@@ -32470,10 +32470,10 @@
     "description": "Independently reviewed exact script callback; ordinary C"
   },
   {
-    "name": "sub_0804D83C",
+    "name": "ReadBankedScriptByte",
     "start": "0x4D83C",
     "end": "0x4D8CC",
-    "input_section": ".text.sub_0804D83C",
+    "input_section": ".text.ReadBankedScriptByte",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/continued_command_reader.c",
@@ -32483,10 +32483,10 @@
     "description": "Exact complete command reader or independently referenced display callback"
   },
   {
-    "name": "sub_0804D8CC",
+    "name": "ReadBankedScriptArgs",
     "start": "0x4d8cc",
     "end": "0x4d8f4",
-    "input_section": ".text.sub_0804D8CC",
+    "input_section": ".text.ReadBankedScriptArgs",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/continued_command_helpers.c",
@@ -36177,10 +36177,10 @@
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
-    "name": "sub_0805BA34",
+    "name": "LoadLz77SizedTilemap",
     "start": "0x5BA34",
     "end": "0x5BAA0",
-    "input_section": ".text.sub_0805BA34",
+    "input_section": ".text.LoadLz77SizedTilemap",
     "kind": "c",
     "compiler": "agbcc",
     "source": "src/continued_main2_graphics_helpers.c",
@@ -40673,7 +40673,7 @@
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
-    "name": "sub_0806B718",
+    "name": "ClearFrameObject",
     "start": "0x06B718",
     "end": "0x06B744",
     "kind": "c",
@@ -40682,7 +40682,7 @@
       "-fprologue-bugfix"
     ],
     "source": "src/m2c_harvest_252.c",
-    "input_section": ".text.sub_0806B718",
+    "input_section": ".text.ClearFrameObject",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
@@ -44497,7 +44497,7 @@
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
-    "name": "sub_08074B88",
+    "name": "PlayMusic",
     "start": "0x074B88",
     "end": "0x074BCC",
     "kind": "c",
@@ -44507,7 +44507,7 @@
       "-fno-expensive-optimizations"
     ],
     "source": "src/m2c_harvest_92.c",
-    "input_section": ".text.sub_08074B88",
+    "input_section": ".text.PlayMusic",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
@@ -44606,7 +44606,7 @@
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
-    "name": "sub_08074DE0",
+    "name": "PlaySoundEffect",
     "start": "0x074DE0",
     "end": "0x074E24",
     "kind": "c",
@@ -44616,7 +44616,7 @@
       "-fno-expensive-optimizations"
     ],
     "source": "src/m2c_harvest_94.c",
-    "input_section": ".text.sub_08074DE0",
+    "input_section": ".text.PlaySoundEffect",
     "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {

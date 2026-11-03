@@ -14,8 +14,8 @@
 
 struct MosaicRampWork6FB5C {u8 unknown00[6];u16 rate;u32 counter;};
 
-extern s32 sub_0807CD2C(s32,s32);
-extern s32 sub_0807CDF8(s32,s32);
+extern s32 __divsi3(s32,s32);
+extern s32 __modsi3(s32,s32);
 
 s32 sub_0806FB5C(void);
 
@@ -30,9 +30,9 @@ s32 sub_0806FB5C(void) {
   work = (struct MosaicRampWork6FB5C *)gState0TransferWork.bytes;
   rate = work->rate;
   count = work->counter;
-  if (sub_0807CDF8(count, rate) == 0)
+  if (__modsi3(count, rate) == 0)
   {
-    step = 16U - ((u32) sub_0807CD2C(count, rate));
+    step = 16U - ((u32) __divsi3(count, rate));
     *((volatile u16 *) 0x04000054) = (s16) step;
     mosaic = (volatile u16 *) 0x0400004C;
     nibble = step;

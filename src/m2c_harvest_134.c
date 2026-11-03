@@ -74,7 +74,7 @@ void sub_08020DF8(void) {
     objects->frame.frameAndGroup=0x4100;
     objects->frame.unknown23[0]=byteZero;
     objects->frame.unknown23[4]=byteZero;
-    sub_08074DE0(0x29);
+    PlaySoundEffect(0x29);
     work[0xAA]++;
 }
 
@@ -96,7 +96,7 @@ void sub_08025FC8(void) {
         frame->screenY = 0x58 - count*0x18;
         frame->palette = 7;
         frame->priority = 0xF0;
-        commands=gState0NextCommands_083B6100;sub_08040B90(commands[0x38],frameIndex);
+        commands=gState0NextCommands_083B6100;InitFrameObjectCommands(commands[0x38],frameIndex);
         if (!(1 & gState0TransferWork.bytes[0xF8])) {
             screenX = 0x88;
         } else {
@@ -106,7 +106,7 @@ void sub_08025FC8(void) {
         frame->screenX = screenX;
         count += 1;
     } while (count <= 2U);
-    sub_08074DE0(0x52U);
+    PlaySoundEffect(0x52U);
     gState0TransferWork.bytes[0xAA] = (u8) (gState0TransferWork.bytes[0xAA] + 1);
 }
 
@@ -141,7 +141,7 @@ void sub_0802F058(void) {
     objects->frame.frameAndGroup=0x4100;
     objects->frame.unknown23[0]=byteZero;
     objects->frame.unknown23[4]=byteZero;
-    sub_08074DE0(0x29);
+    PlaySoundEffect(0x29);
     work[0xAA]++;
 }
 
@@ -162,14 +162,14 @@ void sub_08071304(void) {
         gGraphicsTransferCounter.counter += 1;
         break;
     case 1: case 5: case 9: case 13: case 17: case 21:
-        if (sub_0803FB3C(gUnknown_08486D78[(scriptWork->counter >> 2) + 8]) != 0) {
+        if (RunDialogue(gUnknown_08486D78[(scriptWork->counter >> 2) + 8]) != 0) {
             sub_0803FB0C();
-            sub_0803FB3C(gUnknown_08485BB4);
+            RunDialogue(gUnknown_08485BB4);
             scriptWork->counter += 1;
         }
         break;
     case 25:
-        if (sub_0803FB3C(gUnknown_08486D78[(scriptWork->counter >> 2) + 8]) != 0) {
+        if (RunDialogue(gUnknown_08486D78[(scriptWork->counter >> 2) + 8]) != 0) {
             scriptWork->counter += 1;
         }
         break;
@@ -177,7 +177,7 @@ void sub_08071304(void) {
         scriptWork->counter += 1;
         break;
     case 22:
-        sub_08048864(0U, 0xC800U, 0x50FU, 0U, 3U);
+        InitFrameObject(0U, 0xC800U, 0x50FU, 0U, 3U);
         gFrameObjects->screenX = 0x42;
         gFrameObjects->screenY = -8;
         gFrameObjects->priority = 0x40;

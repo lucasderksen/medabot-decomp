@@ -86,9 +86,9 @@ void sub_0800F60C(void)
     u32 fill;
     u8 *work;
     void *objects;
-    sub_0803F624(&gRecordDisplayWork, 0xD0, 0);
-    sub_0803F624(gRecordDisplayData, 0x800, 0);
-    sub_0803F624(gRecordDisplayExtra, 0x60, 0);
+    FillBytes(&gRecordDisplayWork, 0xD0, 0);
+    FillBytes(gRecordDisplayData, 0x800, 0);
+    FillBytes(gRecordDisplayExtra, 0x60, 0);
     gRenderMode = 2;
     gRenderWork = (struct RenderWork *)0x02024000;
     fill = 0;

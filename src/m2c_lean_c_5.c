@@ -63,10 +63,10 @@ struct Work134 {
     u8 commands[4];
 };
 
-extern s32 sub_0807CD2C(s32 value, s32 divisor);
+extern s32 __divsi3(s32 value, s32 divisor);
 extern struct Work134 gWork134 asm("gContinuedWork_030057E0");
-extern u32 sub_0807CEC8(u32 value, u32 divisor);
-extern u32 sub_0807CF40(u32 value, u32 divisor);
+extern u32 __udivsi3(u32 value, u32 divisor);
+extern u32 __umodsi3(u32 value, u32 divisor);
 extern u8 gContinuedByte_03002B64;
 
 void sub_0804DF40(void);
@@ -81,7 +81,7 @@ union TileEntryBCC {
     struct { u32 low:16; } clear;
 };
 
-extern s32 sub_0807CDF8(s32 value, s32 divisor);
+extern s32 __modsi3(s32 value, s32 divisor);
 
 void sub_0805A3A4(s32 number, s32 x, s32 y);
 void sub_0805A444(s32 value, s32 x, s32 y);
@@ -196,7 +196,7 @@ void sub_08059734(u32 value, u32 digits, u32 x, u32 y) {
         ((volatile struct Dma734 *)0x040000D4)->destination = (void *)(gContinuedOtherWork_030057A0[0x13] * 32 + 0x06017A00);
         ((volatile struct Dma734 *)0x040000D4)->control = 0x84000008;
         ((volatile struct Dma734 *)0x040000D4)->control;
-        sub_08048864(gContinuedOtherWork_030057A0[0x13], 0xC004, gContinuedOtherWork_030057A0[0x13] + 0x99, 0xE, 1);
+        InitFrameObject(gContinuedOtherWork_030057A0[0x13], 0xC004, gContinuedOtherWork_030057A0[0x13] + 0x99, 0xE, 1);
         gFrameObjects[gContinuedOtherWork_030057A0[0x13]].screenX = x + i * 16;
         gFrameObjects[gContinuedOtherWork_030057A0[0x13]].screenY = y;
         gContinuedOtherWork_030057A0[0x13]++;
@@ -204,7 +204,7 @@ void sub_08059734(u32 value, u32 digits, u32 x, u32 y) {
         ((volatile struct Dma734 *)0x040000D4)->destination = (void *)(gContinuedOtherWork_030057A0[0x13] * 32 + 0x06017A00);
         ((volatile struct Dma734 *)0x040000D4)->control = 0x84000008;
         ((volatile struct Dma734 *)0x040000D4)->control;
-        sub_08048864(gContinuedOtherWork_030057A0[0x13], 0xC004, gContinuedOtherWork_030057A0[0x13] + 0x99, 0xE, 1);
+        InitFrameObject(gContinuedOtherWork_030057A0[0x13], 0xC004, gContinuedOtherWork_030057A0[0x13] + 0x99, 0xE, 1);
         gFrameObjects[gContinuedOtherWork_030057A0[0x13]].screenX = x + i * 16 + 8;
         gFrameObjects[gContinuedOtherWork_030057A0[0x13]].screenY = y;
         gContinuedOtherWork_030057A0[0x13]++;
@@ -276,7 +276,7 @@ void sub_0804DF40(void) {
             break;
         }
         gFrameObjects[0x2E].screenX = gFrameObjects[0x2F].screenX;
-        if (gFrameObjects[0x2F].unknown23[5] < sub_0807CD2C(0x10, sub_08051940(0x2F)) * 2) {
+        if (gFrameObjects[0x2F].unknown23[5] < __divsi3(0x10, sub_08051940(0x2F)) * 2) {
             gFrameObjects[0x2E].screenY = gFrameObjects[0x2F].screenY
                 - gScrollOscillationSines_083D6A2C[gFrameObjects[0x2F].unknown23[5] * (sub_08051940(0x2F) << 2)] / 16;
             gFrameObjects[0x2F].unknown23[5]++;
@@ -330,7 +330,7 @@ void sub_0804E134(void) {
         gFrameObjects[0x2F].unknown23[5]--;
         if (gFrameObjects[0x2F].unknown23[5] != 0)
             break;
-        gFrameObjects[0x2F].unknown23[5] = sub_0807CD2C(0x10, sub_08051940(0x2F));
+        gFrameObjects[0x2F].unknown23[5] = __divsi3(0x10, sub_08051940(0x2F));
         gFrameObjects[0x2F].unknown23[4]--;
         if (gFrameObjects[0x2F].unknown23[4] != 0)
             break;
@@ -385,41 +385,41 @@ void sub_0805A988(u32 number, s32 x, s32 y) {
         volatile u16 *column = (volatile u16 *)0x0600B000 + x;
         dst = column + (y << 5);
     }
-    digit = sub_0807CEC8(number, 1000000);
+    digit = __udivsi3(number, 1000000);
     if (digit != 0)
         *dst++ = (digit + base) | (palette << 12);
     else
         *dst++;
-    digit = sub_0807CF40(sub_0807CEC8(number, 100000), 10);
-    if (digit != 0 || sub_0807CEC8(number, 1000000) != 0)
+    digit = __umodsi3(__udivsi3(number, 100000), 10);
+    if (digit != 0 || __udivsi3(number, 1000000) != 0)
         *dst++ = (digit + base) | (palette << 12);
     else
         *dst++;
-    digit = sub_0807CF40(sub_0807CEC8(number, 10000), 10);
-    if (digit != 0 || sub_0807CEC8(number, 1000000) != 0 || sub_0807CF40(sub_0807CEC8(number, 100000), 10) != 0)
+    digit = __umodsi3(__udivsi3(number, 10000), 10);
+    if (digit != 0 || __udivsi3(number, 1000000) != 0 || __umodsi3(__udivsi3(number, 100000), 10) != 0)
         *dst++ = (digit + base) | (palette << 12);
     else
         *dst++;
-    digit = sub_0807CF40(sub_0807CEC8(number, 1000), 10);
-    if (digit != 0 || sub_0807CEC8(number, 1000000) != 0 || sub_0807CF40(sub_0807CEC8(number, 100000), 10) != 0
-        || sub_0807CF40(sub_0807CEC8(number, 10000), 10) != 0)
+    digit = __umodsi3(__udivsi3(number, 1000), 10);
+    if (digit != 0 || __udivsi3(number, 1000000) != 0 || __umodsi3(__udivsi3(number, 100000), 10) != 0
+        || __umodsi3(__udivsi3(number, 10000), 10) != 0)
         *dst++ = (digit + base) | (palette << 12);
     else
         *dst++;
-    digit = sub_0807CF40(sub_0807CEC8(number, 100), 10);
-    if (digit != 0 || sub_0807CEC8(number, 1000000) != 0 || sub_0807CF40(sub_0807CEC8(number, 100000), 10) != 0
-        || sub_0807CF40(sub_0807CEC8(number, 10000), 10) != 0 || sub_0807CF40(sub_0807CEC8(number, 1000), 10) != 0)
+    digit = __umodsi3(__udivsi3(number, 100), 10);
+    if (digit != 0 || __udivsi3(number, 1000000) != 0 || __umodsi3(__udivsi3(number, 100000), 10) != 0
+        || __umodsi3(__udivsi3(number, 10000), 10) != 0 || __umodsi3(__udivsi3(number, 1000), 10) != 0)
         *dst++ = (digit + base) | (palette << 12);
     else
         *dst++;
-    digit = sub_0807CF40(sub_0807CEC8(number, 10), 10);
-    if (digit != 0 || sub_0807CEC8(number, 1000000) != 0 || sub_0807CF40(sub_0807CEC8(number, 100000), 10) != 0
-        || sub_0807CEC8(number, 10000) != 0 || sub_0807CF40(sub_0807CEC8(number, 1000), 10) != 0
-        || sub_0807CF40(sub_0807CEC8(number, 100), 10) != 0)
+    digit = __umodsi3(__udivsi3(number, 10), 10);
+    if (digit != 0 || __udivsi3(number, 1000000) != 0 || __umodsi3(__udivsi3(number, 100000), 10) != 0
+        || __udivsi3(number, 10000) != 0 || __umodsi3(__udivsi3(number, 1000), 10) != 0
+        || __umodsi3(__udivsi3(number, 100), 10) != 0)
         *dst++ = (digit + base) | (palette << 12);
     else
         *dst++;
-    *dst = (sub_0807CF40(number, 10) + base) | (palette << 12);
+    *dst = (__umodsi3(number, 10) + base) | (palette << 12);
 }
 
 void sub_0805A3A4(s32 number, s32 x, s32 y) {
@@ -435,18 +435,18 @@ void sub_0805A3A4(s32 number, s32 x, s32 y) {
         volatile u16 *column = (volatile u16 *)0x0600F000 + x;
         dst = column + (y << 5);
     }
-    digit = sub_0807CDF8(sub_0807CD2C(number, 100), 10);
+    digit = __modsi3(__divsi3(number, 100), 10);
     if (digit != 0)
         *dst = (tile + digit) | (palette << 12);
     else
         *dst = digit;
     *dst++;
-    if (sub_0807CDF8(sub_0807CD2C(number, 100), 10) != 0 || sub_0807CDF8(sub_0807CD2C(number, 10), 10) != 0)
-        *dst = (tile + sub_0807CDF8(sub_0807CD2C(number, 10), 10)) | (palette << 12);
+    if (__modsi3(__divsi3(number, 100), 10) != 0 || __modsi3(__divsi3(number, 10), 10) != 0)
+        *dst = (tile + __modsi3(__divsi3(number, 10), 10)) | (palette << 12);
     else
         *dst = 0;
     *dst++;
-    *dst = (tile + sub_0807CDF8(number, 10)) | (palette << 12);
+    *dst = (tile + __modsi3(number, 10)) | (palette << 12);
 }
 
 void sub_0805A444(s32 value, s32 x, s32 y) {
@@ -456,7 +456,7 @@ void sub_0805A444(s32 value, s32 x, s32 y) {
     u32 palette;
     u32 block;
 
-    value = sub_0807CDF8(value, 100);
+    value = __modsi3(value, 100);
     palette = 0xC;
     block = 0x1E;
     tile = ((struct Context444 *)gMainContextPointer_03006F74)->tileBase;
@@ -464,19 +464,19 @@ void sub_0805A444(s32 value, s32 x, s32 y) {
         volatile u16 *column = (volatile u16 *)0x0600F000 + x;
         dst = column + (y << 5);
     }
-    if (sub_0807CDF8(sub_0807CD2C(value, 100), 10) != 0 || sub_0807CDF8(sub_0807CD2C(value, 10), 10) != 0)
-        *dst = (sub_0807CDF8(sub_0807CD2C(value, 10), 10) + (tile + 1)) | (palette << 12);
+    if (__modsi3(__divsi3(value, 100), 10) != 0 || __modsi3(__divsi3(value, 10), 10) != 0)
+        *dst = (__modsi3(__divsi3(value, 10), 10) + (tile + 1)) | (palette << 12);
     else
         *dst = 0;
     *dst++;
-    *dst = (sub_0807CDF8(value, 10) + (tile + 1)) | (palette << 12);
+    *dst = (__modsi3(value, 10) + (tile + 1)) | (palette << 12);
     dst = (volatile u16 *)(block << 11) + (x + 0x03000000) + ((y + 1) << 5);
-    if (sub_0807CDF8(sub_0807CD2C(value, 100), 10) != 0 || sub_0807CDF8(sub_0807CD2C(value, 10), 10) != 0)
-        *dst = (sub_0807CDF8(sub_0807CD2C(value, 10), 10) + (tile + 0xB)) | (palette << 12);
+    if (__modsi3(__divsi3(value, 100), 10) != 0 || __modsi3(__divsi3(value, 10), 10) != 0)
+        *dst = (__modsi3(__divsi3(value, 10), 10) + (tile + 0xB)) | (palette << 12);
     else
         *dst = 0;
     *dst++;
-    *dst = (sub_0807CDF8(value, 10) + (tile + 0xB)) | (palette << 12);
+    *dst = (__modsi3(value, 10) + (tile + 0xB)) | (palette << 12);
 }
 
 void sub_0805ABCC(const u8 *text, u16 row, u16 x, u16 y, u8 count) {

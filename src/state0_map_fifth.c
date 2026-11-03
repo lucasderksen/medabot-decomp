@@ -9,7 +9,7 @@ void sub_08010DAC(void)
     volatile u32 *dma;
     struct FrameObject *base;
     sub_08012098();
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     sub_080123A0();
     LeDecompress((const u8 *)0x084D923C, (void *)0x06012400);
     dma = (volatile u32 *)0x040000D4;
@@ -29,14 +29,14 @@ void sub_08010DAC(void)
     base[1].scaleX = 64;
     base[1].unknown23[0] = 0;
     base[1].unknown23[5] = 0;
-    sub_08074DE0(42);
+    PlaySoundEffect(42);
     gUnknown_0300137C++;
 }
 
 void sub_08010E50(void)
 {
     sub_08012098();
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     sub_080123A0();
     if (sub_08036AC4(1, 0))
         gUnknown_0300137C++;
@@ -47,7 +47,7 @@ void sub_08010E7C(void)
     volatile u32 *dma;
     struct FrameObject *base;
     sub_08012098();
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     sub_080123A0();
     sub_08012468();
     LeDecompress((const u8 *)0x084D9350, (void *)0x06016C00);

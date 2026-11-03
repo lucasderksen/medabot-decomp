@@ -33,14 +33,14 @@ void sub_080345E8(void)
     work[work[0x8A] * 8 + 0x2B] = 0;
     work[work[0x8A] * 8 + 0x2C] = 0;
     work[work[0x8A] * 8 + 0x2D] = 0;
-    sub_08034F08();
+    AdvanceActionByteScript();
 }
 
 void sub_08034628(void)
 {
     sub_08026108();
     if (gState0TransferWork.bytes[0xB5])
-        sub_08034F08();
+        AdvanceActionByteScript();
 }
 
 void sub_08034644(void)
@@ -51,7 +51,7 @@ void sub_08034644(void)
     if (work[0xB5])
     {
         if (work[0xAB] == 1)
-            sub_08034F08();
+            AdvanceActionByteScript();
         else
         {
             gMainSubstate = 8;
@@ -71,7 +71,7 @@ void sub_08034684(void)
     work->byte160 = sub_08036218();
     sub_08026884();
     if (work->completeB5)
-        sub_08034F08();
+        AdvanceActionByteScript();
 }
 
 void sub_08034708(void)
@@ -79,7 +79,7 @@ void sub_08034708(void)
     struct ObservedActionWaitWork *work = (void *)gState0TransferWork.bytes;
     sub_0803769C(work->selected87);
     sub_080376F4(work->selected87);
-    sub_08034F08();
+    AdvanceActionByteScript();
 }
 
 void sub_0803476C(void)
@@ -93,11 +93,11 @@ void sub_0803476C(void)
     work->byte160 = sub_08036218();
     sub_08026CF4();
     if (work->completeB5)
-        sub_08034F08();
+        AdvanceActionByteScript();
 }
 
 void sub_080347AC(void)
 {
     sub_08036270();
-    sub_08034F08();
+    AdvanceActionByteScript();
 }

@@ -23,7 +23,7 @@ void sub_0802F650(void) {
     u32 final_root;
     sub_0803836C();
     work = gState0TransferWork.bytes;
-    work[0x60] = sub_08032FB8(work[0x87]);
+    work[0x60] = GetOtherSlotGroupStart(work[0x87]);
     i = 0;
     setup = gSetupBuffer_03000590;
     root = (u32) work;

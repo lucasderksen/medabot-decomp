@@ -25,7 +25,7 @@ void sub_0803E83C(void);
 void sub_08065790(void);
 
 void sub_0803D71C(void) {
-    gState0TransferWork.bytes[0x38] = gUnknown_083AFDF8[sub_080424B8() & 0x1F];
+    gState0TransferWork.bytes[0x38] = gUnknown_083AFDF8[NextRandomByte() & 0x1F];
     gUnknown_0300137C += 1;
 }
 

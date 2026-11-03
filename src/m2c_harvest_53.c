@@ -31,7 +31,7 @@ void sub_080213E4(void) {
     if (objects->scaleX848 == 8)
     {
         struct ObservedActionWorkBacking *work;
-        sub_08040CD0(33, 1);
+        ClearFrameObjects(33, 1);
         work = (void *)&gState0TransferWork;
         work->stateAA++;
     }

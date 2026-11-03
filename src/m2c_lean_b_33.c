@@ -51,8 +51,8 @@ struct Spark67C04
 extern const u8 gUnknown_0848576D[];
 extern s32 gUnknown_03006FF8[2];
 extern s32 gUnknown_03007000[2];
-extern u32 sub_0807CEC8(u32 value, u32 divisor);
-extern u32 sub_0807CF40(u32 value, u32 divisor);
+extern u32 __udivsi3(u32 value, u32 divisor);
+extern u32 __umodsi3(u32 value, u32 divisor);
 extern u8 gEncounterFrameSlotsView[3][3] asm("gEncounterFrameSlots");
 extern u8 gFamilyKeyBytes49558_0300058C;
 extern u8 gSelectionOrder03006F94[3];
@@ -86,8 +86,8 @@ void sub_08067C04(void) {
       object->screenY = 0x28;
       object->x = object->screenX << 8;
       object->y = object->screenY << 8;
-      object->velocityX = sub_080424B8();
-      object->velocityY = sub_080424B8();
+      object->velocityX = NextRandomByte();
+      object->velocityY = NextRandomByte();
       object->timer = 0x3F;
       object->scaleX = 0;
       object->scaleY = 0;
@@ -119,8 +119,8 @@ void sub_08067C04(void) {
 void sub_08069B38(u8 slot, u8 mode) {
 
     s32 three = 3;
-    u8 row = sub_0807CEC8(slot, 3);
-    u8 column = sub_0807CF40(slot, 3);
+    u8 row = __udivsi3(slot, 3);
+    u8 column = __umodsi3(slot, 3);
     u8 rowY[3];
 
     memcpy(rowY, gEncounterRowY, 3);
@@ -131,8 +131,8 @@ void sub_08069B38(u8 slot, u8 mode) {
 
 void sub_08069BFC(u8 slot, u16 x, u16 y, u8 mode, u8 increment) {
 
-    u8 row = sub_0807CEC8(slot, 3);
-    u8 column = sub_0807CF40(slot, 3);
+    u8 row = __udivsi3(slot, 3);
+    u8 column = __umodsi3(slot, 3);
 
     sub_08042E58(gUnknown_03006FA0[row][0][column], gUnknown_03006FA0[row][1][column], gUnknown_03006FA0[row][2][column],
                  gUnknown_03006FA0[row][3][column], row * 3 + 2 - column, gEncounterFrameSlotsView[row][column] - 3,

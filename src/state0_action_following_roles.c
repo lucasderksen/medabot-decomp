@@ -29,7 +29,7 @@ void sub_0801C988(void)
     {
         struct ObservedActionWorkBacking *work = (void *)&gState0TransferWork;
         if (work->stateAA <= 31)
-            sub_08074DE0(63);
+            PlaySoundEffect(63);
         work->stateAA++;
     }
 }
@@ -40,7 +40,7 @@ void sub_0801CB24(void)
     u8 *work = gState0TransferWork.bytes;
     const void *message = messages[work[0xD0]];
     u8 *scratch = gDebugMenuTextBuffer;
-    sub_0803F63C(message, scratch, 14);
+    CopyBytes(message, scratch, 14);
     scratch += 20;
     sub_08041490(scratch, *(u16 *)&work[0xC8], 53);
     work[0xA6] = 18;
@@ -54,7 +54,7 @@ void sub_0801CBA4(void)
     u32 state;
     if (work[0xD1])
     {
-        sub_08074DE0(59);
+        PlaySoundEffect(59);
         sub_08035194(work[0x87]);
         destination = &work[0xA6];
         *destination = 19;
@@ -99,7 +99,7 @@ void sub_0801CC58(void)
     if (*counter > 29)
     {
         u16 position;
-        sub_08074DE0(63);
+        PlaySoundEffect(63);
         gBgScroll3.y = 0;
         *counter = 0;
         position = ((struct ObservedActionFrameBacking *)gFrameObjects)->screenX842;

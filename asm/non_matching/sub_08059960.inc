@@ -475,7 +475,7 @@
 	movs	r0, #0x39
 	ldr	r1, .L08059DBC
 	adds	r2, r4, #0
-	bl	sub_08048864
+	bl	InitFrameObject
 	movs	r0, #0
 	bl	ExtractHighNibble
 	ldr	r2, .L08059DC0

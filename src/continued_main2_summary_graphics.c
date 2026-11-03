@@ -37,9 +37,9 @@ void sub_0805D790(void)
     bg3 = (volatile u16 *)0x0400000E;
     control = 0x3C07;
     *bg3 = control;
-    sub_0805BA34(gMain2StatsMap_0878F004, *bg1);
-    sub_0805BA34(gMain2StatsMap_0878F1D4, *bg2);
-    sub_0805BA34(gMain2StatsMap_0878F2F8, *bg3);
+    LoadLz77SizedTilemap(gMain2StatsMap_0878F004, *bg1);
+    LoadLz77SizedTilemap(gMain2StatsMap_0878F1D4, *bg2);
+    LoadLz77SizedTilemap(gMain2StatsMap_0878F2F8, *bg3);
     {
         const u8 *source = gMain2StatsTiles_0878DE74;
         scratch = (u8 *)0x02030000;

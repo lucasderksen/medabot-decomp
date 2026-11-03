@@ -21,7 +21,7 @@ void sub_080096BC(void);
 void sub_08009750(void);
 void sub_080097E0(void);
 
-void sub_080093F8(void)
+void ScrollBg3Diagonally(void)
 {
     if (gFrameCounter & 1)
     {
@@ -60,27 +60,27 @@ void sub_08009484(void)
         else
             CpuFastSet((const void *)0x084C38D8, (u8 *)0x06006600 + position * 128, 32);
     }
-    sub_0803F15C(2, 12, 4, 4, gUnknownPointers_083B4C60[80], *(volatile u16 *)0x0400000A, 0x200);
+    CopyTilemapRect(2, 12, 4, 4, gUnknownPointers_083B4C60[80], *(volatile u16 *)0x0400000A, 0x200);
 }
 
 void sub_08009540(void)
 {
     u8 position = 0;
     u8 index;
-    sub_08040D0C(10, 60);
+    HideFrameObjects(10, 60);
     for (index = gState0TypedWork.bytes[0x3F] * 6; index < gState0TypedWork.bytes[0x3F] * 6 + 6; position++, index++)
     {
         struct InventoryRecord *records = gInventoryRecords;
         struct InventoryRecord *record = &records[index];
         if (record->byte0 & 128)
         {
-            sub_0803F63C(gUnknownPointers_083B6590[record->byte1], &gState0TypedWork.bytes[0x9E], 11);
-            sub_08040DB8(&gState0TypedWork.bytes[0x9E], (u8)(position * 10 + 10), 6, position * 2 + 4, 7, 8, 1, 2);
+            CopyBytes(gUnknownPointers_083B6590[record->byte1], &gState0TypedWork.bytes[0x9E], 11);
+            PlaceAlignedTextObjects(&gState0TypedWork.bytes[0x9E], (u8)(position * 10 + 10), 6, position * 2 + 4, 7, 8, 1, 2);
         }
         else
         {
             sub_08042678(&gState0TypedWork.bytes[0x9E], 9);
-            sub_08040DB8(&gState0TypedWork.bytes[0x9E], (u8)(position * 10 + 10), 6, position * 2 + 4, 7, 8, 1, 2);
+            PlaceAlignedTextObjects(&gState0TypedWork.bytes[0x9E], (u8)(position * 10 + 10), 6, position * 2 + 4, 7, 8, 1, 2);
         }
     }
 }
@@ -103,8 +103,8 @@ void sub_08009620(void)
                 sub_080426F0(record->byte5, 14, (u8)row, *control, 0xD314);
             else
             {
-                sub_08042698(1, 2, 14, row, *control, blank);
-                sub_08042698(1, 2, 15, row, *control, blank);
+                FillTilemapRectSequential(1, 2, 14, row, *control, blank);
+                FillTilemapRectSequential(1, 2, 15, row, *control, blank);
             }
             row += 2;
             index++;
@@ -122,7 +122,7 @@ void sub_080096BC(void)
     u32 index = work[0x3F] * 6 + work[0x40];
     selected = &work[0x3D];
     *selected = index;
-    sub_08040D0C(70, 10);
+    HideFrameObjects(70, 10);
     records = gInventoryRecords;
     record = &records[*selected];
     owned = (u8)(record->byte0 & 128);
@@ -132,12 +132,12 @@ void sub_080096BC(void)
         u32 offset = *selected * 64;
         names += 10;
         names += offset;
-        sub_08040DB8(names, 70, 19, 3, 10, 9, 0, 2);
+        PlaceAlignedTextObjects(names, 70, 19, 3, 10, 9, 0, 2);
     }
     else
     {
         sub_08042678(&work[0x9E], 10);
-        sub_08040DB8(&work[0x9E], 70, 19, 3, 10, 9, owned, 2);
+        PlaceAlignedTextObjects(&work[0x9E], 70, 19, 3, 10, 9, owned, 2);
     }
 }
 
@@ -161,7 +161,7 @@ void sub_08009750(void)
         gFrameObjects[0].tableSelector = 0;
         gFrameObjects[0].priority = 64;
     }
-    else sub_08040D0C(0, 1);
+    else HideFrameObjects(0, 1);
 }
 
 void sub_080097E0(void)
@@ -174,7 +174,7 @@ void sub_080097E0(void)
     u32 index = work[0x3F] * 6 + work[0x40];
     selected = &work[0x3D];
     *selected = index;
-    sub_08040D0C(80, 6);
+    HideFrameObjects(80, 6);
     records = gInventoryRecords;
     record = &records[*selected];
     if (record->byte0 & 128)
@@ -189,13 +189,13 @@ void sub_080097E0(void)
             buffer = &work[0x9E];
             sub_08042678(buffer, 5);
         }
-        sub_08040DB8(buffer, 80, 19, 17, 6, 10, 2, 2);
+        PlaceAlignedTextObjects(buffer, 80, 19, 17, 6, 10, 2, 2);
     }
     else
     {
         buffer = &work[0x9E];
         sub_08042678(buffer, 5);
-        sub_08040DB8(buffer, 80, 19, 17, 6, 10, 2, 2);
+        PlaceAlignedTextObjects(buffer, 80, 19, 17, 6, 10, 2, 2);
     }
 }
 
@@ -256,7 +256,7 @@ void sub_080099A4(void)
     }
     if (*(u8 *)&gRepeatedKeys & 192)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         gFrameObjects[3].screenY = gState0TypedWork.bytes[0x40] * 16 + 40;
         sub_080096BC(); sub_08009750(); sub_080097E0();
         sub_08009CDC(); sub_08009D30(); sub_08009DA0();
@@ -279,10 +279,10 @@ void sub_08009A38(void)
     {
         const void *const *assets;
         u32 index;
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         assets = gUnknownPointers_083B4C60;
         index = gState0TypedWork.bytes[0x3F] + 75;
-        sub_0803F15C(10, 2, 5, 2, assets[index], *(volatile u16 *)0x0400000A, 0x200);
+        CopyTilemapRect(10, 2, 5, 2, assets[index], *(volatile u16 *)0x0400000A, 0x200);
         sub_08009484(); sub_08009540(); sub_08009620();
         sub_080096BC(); sub_08009750(); sub_080097E0();
         sub_08009CDC(); sub_08009D30(); sub_08009DA0();
@@ -340,7 +340,7 @@ void sub_08009BC8(void)
         u8 *marked;
         u8 *page;
         u32 current;
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         work = gState0TypedWork.bytes;
         marked = &work[0x3E];
         if (*marked & 128)
@@ -357,10 +357,10 @@ void sub_08009BC8(void)
                 u32 assetIndex;
                 u32 sourceOffset = source * 64;
                 records = gInventoryRecords;
-                sub_0803F65C((u8 *)records + sourceOffset, (u8 *)records + current * 64, 64);
+                SwapBytes((u8 *)records + sourceOffset, (u8 *)records + current * 64, 64);
                 assets = gUnknownPointers_083B4C60;
                 assetIndex = *page + 75;
-                sub_0803F15C(10, 2, 5, 2, assets[assetIndex], *(volatile u16 *)0x0400000A, 0x200);
+                CopyTilemapRect(10, 2, 5, 2, assets[assetIndex], *(volatile u16 *)0x0400000A, 0x200);
                 sub_08009484(); sub_08009540(); sub_08009620();
                 sub_080096BC(); sub_08009750(); sub_080097E0();
                 sub_08009CDC(); sub_08009D30(); sub_08009DA0();
@@ -419,7 +419,7 @@ void sub_08009D30(void)
         struct State0Record8 *entry = &entries[record];
         sub_08042E58(entry->byte3, entry->byte4, entry->byte5, entry->byte6, 2, 100, 224, 120, zero, 2, zero);
     }
-    else sub_08040D0C(100, 4);
+    else HideFrameObjects(100, 4);
 }
 
 void sub_08009DA0(void)
@@ -448,7 +448,7 @@ void sub_08009E4C(void)
     struct InventoryRecord *records = gInventoryRecords;
     struct InventoryRecord *record = &records[gState0TypedWork.bytes[0x3D]];
     CpuFastSet((const u8 *)0x084C29D8 + record->byte1 * 128, (void *)0x06006600, 32);
-    sub_08042698(2, 2, 2, 3, *(volatile u16 *)0x0400000A, 0x6330);
+    FillTilemapRectSequential(2, 2, 2, 3, *(volatile u16 *)0x0400000A, 0x6330);
 }
 
 void sub_08009EA0(void)
@@ -456,7 +456,7 @@ void sub_08009EA0(void)
     struct InventoryRecord *records = gInventoryRecords;
     struct InventoryRecord *record = &records[gState0TypedWork.bytes[0x3D]];
     CpuFastSet((const u8 *)0x084C29D8 + record->byte1 * 128, (void *)0x06007800, 32);
-    sub_08042698(2, 2, 2, 3, *(volatile u16 *)0x0400000A, 0x63C0);
+    FillTilemapRectSequential(2, 2, 2, 3, *(volatile u16 *)0x0400000A, 0x63C0);
 }
 
 void sub_08009EF4(void)
@@ -466,7 +466,7 @@ void sub_08009EF4(void)
     struct InventoryRecord *record;
     u8 *work;
     u8 *buffer;
-    sub_08040D0C(10, 10);
+    HideFrameObjects(10, 10);
     names = gUnknownPointers_083B6590;
     records = gInventoryRecords;
     work = gState0TypedWork.bytes;
@@ -474,15 +474,15 @@ void sub_08009EF4(void)
     {
         const void *name = names[record->byte1];
         buffer = &work[0x9E];
-        sub_0803F63C(name, buffer, 11);
+        CopyBytes(name, buffer, 11);
     }
-    sub_08040DB8(buffer, 10, 4, 3, 7, 13, 1, 1);
+    PlaceAlignedTextObjects(buffer, 10, 4, 3, 7, 13, 1, 1);
 }
 
 void sub_08009F50(void)
 {
-    sub_08040D0C(20, 10);
-    sub_08040DB8(gInventoryNames[gState0TypedWork.bytes[0x3D]], 20, 18, 3, 10, 12, 0, 1);
+    HideFrameObjects(20, 10);
+    PlaceAlignedTextObjects(gInventoryNames[gState0TypedWork.bytes[0x3D]], 20, 18, 3, 10, 12, 0, 1);
 }
 
 void sub_08009F90(void)

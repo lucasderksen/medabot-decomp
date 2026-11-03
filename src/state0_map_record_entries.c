@@ -9,7 +9,7 @@
 
 void sub_08014E7C(void)
 {
-    sub_0803F624(gSetupBuffer_03000590, 0x600, 0);
+    FillBytes(gSetupBuffer_03000590, 0x600, 0);
 }
 
 void sub_08014EC8(void)

@@ -27,7 +27,7 @@ void sub_08065590(void) {
         }
     } else {
         const void *const *scripts = gMain2ScriptSlots_0848521C;
-        if (sub_0803FB3C(scripts[15]) != 0) waiting = 0;
+        if (RunDialogue(scripts[15]) != 0) waiting = 0;
     }
     if (waiting == 0 && (*(u8*)&gNewKeys & 3)) {
         sub_0803FB0C();

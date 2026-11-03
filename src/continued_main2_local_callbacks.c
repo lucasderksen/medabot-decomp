@@ -15,7 +15,7 @@ void sub_0805C9C4(void)
 {
     u32 zero = 0;
     CpuFastSet(&zero, VRAM, 0x01006000);
-    sub_08040CD0(0, 128);
+    ClearFrameObjects(0, 128);
     sub_080415BC();
     DISPLAY_CONTROL = 0x60;
     CpuFastSet((const void *)0x084E43D8, (void *)0x0202F9E0, 8);
@@ -29,7 +29,7 @@ void sub_0805CA3C(void)
 {
     u8 message[83];
     memcpy(message, gMain2LocalMessage_080AF8CD, sizeof(message));
-    if (sub_0803FB3C(message))
+    if (RunDialogue(message))
     {
         sub_080415E8(1, 22, 7);
         gUnknown_0300137C++;

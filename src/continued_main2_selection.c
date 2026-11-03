@@ -26,7 +26,7 @@ void sub_0805C454(void)
     sub_0805BFEC(MAIN2_CONTEXT->byte05, gFrameCounter & 31);
     if (gUnknown_0300058C[0] & 0x40)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         if (MAIN2_CONTEXT->byte05 == MAIN2_CONTEXT->byte04)
             MAIN2_CONTEXT->byte05 = 2;
         else
@@ -34,7 +34,7 @@ void sub_0805C454(void)
     }
     if (gUnknown_0300058C[0] & 0x80)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         if (MAIN2_CONTEXT->byte05 == 2)
             MAIN2_CONTEXT->byte05 = MAIN2_CONTEXT->byte04;
         else
@@ -42,7 +42,7 @@ void sub_0805C454(void)
     }
     if (gUnknown_0300058C[0] & 1)
     {
-        sub_08074DE0(4);
+        PlaySoundEffect(4);
         if (MAIN2_CONTEXT->byte05 == 2)
         {
             MAIN2_CONTEXT->byte05 = 0;

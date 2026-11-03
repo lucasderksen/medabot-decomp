@@ -51,7 +51,7 @@ void sub_08015464(u32 first)
     u8 *base = gSetupBuffer_03000590;
     u8 *condition = base + first * 256;
     condition += 0xC1;
-    if (*condition == 80 && (sub_080424B8() & 1) != 0)
+    if (*condition == 80 && (NextRandomByte() & 1) != 0)
     {
         if (sub_080155A8(first, 0, 1) == 0)
             return;

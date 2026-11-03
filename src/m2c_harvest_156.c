@@ -86,7 +86,7 @@ void sub_08024890(void) {
     frames->screenY=(u16)gFrameObjects[bankIndex+partIndex].screenY;
     frames->palette=7;
     frames->priority=0xF0;
-    sub_08040B90(gState0NextCommands_083B6100[0x22],0x21);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[0x22],0x21);
     work[0xAA]++;
 }
 
@@ -121,15 +121,15 @@ void sub_08041B1C(void) {
 
 void sub_08061468(void) {
     if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
-        sub_0803F684(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
-        sub_0803F998(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
+        BlendBgPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
+        BlendObjPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
         gState0TypedWork.bytes[0x84] += 1;
         return;
     }
     *(volatile u16 *)0x04000000 &= 0xFDFF;
     *(volatile u16 *)0x04000000 &= 0xFBFF;
     *(volatile u16 *)0x04000000 &= 0xF7FF;
-    sub_08040CD0(0U, 0x80U);
+    ClearFrameObjects(0U, 0x80U);
     sub_080476E8(3U);
 }
 
@@ -145,7 +145,7 @@ void sub_08065A94(void) {
     if (phase != 0) {
         var_r1 = 0x14;
     }
-    if (sub_0803FB3C(*(const void *const *)(scripts + var_r1)) != 0) {
+    if (RunDialogue(*(const void *const *)(scripts + var_r1)) != 0) {
         temp_r2 = (*(s32 *)((u8 *)(gMainContextPointer_03006F74) + 8));
         if (temp_r2 == 0) {
             gUnknown_0300137C += 1;
@@ -153,7 +153,7 @@ void sub_08065A94(void) {
             return;
         }
         if (1 & *(u8 *)&gNewKeys) {
-            sub_08074DE0(0xDU);
+            PlaySoundEffect(0xDU);
             gState0TypedWork.bytes[0x84] = 0;
             gState0TypedWork.bytes[0x1B] = 0;
             gUnknown_0300137C -= 2;

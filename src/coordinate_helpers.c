@@ -34,7 +34,7 @@ void sub_08042D94(u32 first, u32 second, u32 third, u32 fourth, u32 graphicsSlot
 
 void sub_08042E58(u32 first, u32 second, u32 third, u32 fourth, u32 tileGroup, u32 firstObject, u32 x, u32 y, u32 flip, u32 flagGroup, u32 priority)
 {
-    sub_08040CD0(firstObject, 4);
+    ClearFrameObjects(firstObject, 4);
     gFrameObjects[firstObject].flags = 0;
     gFrameObjects[firstObject].flags = 0xC004 | (flagGroup << 10);
     if (flip)

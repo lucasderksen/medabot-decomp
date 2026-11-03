@@ -46,7 +46,7 @@ void sub_08052F64(void)
         u16 *x, *y;
         selected += *frame;
         enabled = 1;
-        sub_08048864(48, flags, selected, paletteValue, enabled);
+        InitFrameObject(48, flags, selected, paletteValue, enabled);
         objects = (struct PairArrayView *)gFrameObjects;
         objects->primaryPriority = 0x40;
         objects->primaryByte2B = *palette;
@@ -58,7 +58,7 @@ void sub_08052F64(void)
         work[0xC73] = sub_08052760(*y);
         objects->primaryHalf30 = sub_08048684(objects->primaryByte2B);
         sub_080487C8(48);
-        sub_08048864(90, 0xCC0C, 144, 14, enabled);
+        InitFrameObject(90, 0xCC0C, 144, 14, enabled);
         objects->secondaryX.parts.integer = *x;
         objects->secondaryY.parts.integer = *y - 5;
         objects->secondaryScreenX = objects->primaryScreenX;

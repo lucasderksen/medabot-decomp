@@ -29,7 +29,7 @@ u32 sub_0800AE54(void) {
 
     left = 0x20 & (u8)gRepeatedKeys;
     if (left) {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         if (gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[3] == 0) {
             gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[3] = 7;
         } else {
@@ -38,7 +38,7 @@ u32 sub_0800AE54(void) {
         return 1;
     }
     if (0x10 & (u8)gRepeatedKeys) {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         if (gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[3] == 7) {
             gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[3] = 0;
         } else {
@@ -52,7 +52,7 @@ u32 sub_0800AE54(void) {
 void sub_08024C94(void) {
 
     if (gState0TypedWork.widths.word86 == 0x3C) {
-        sub_08040CD0(0x21, 2);
+        ClearFrameObjects(0x21, 2);
         gCounter6ED08_03001800.counterAA++;
         return;
     }
@@ -70,7 +70,7 @@ void sub_080271C4(void) {
         gFrameObjects[0x21].scaleX -= 8;
         gFrameObjects[0x21].scaleY -= 8;
         if (gFrameObjects[0x21].scaleX == 0x40) {
-            sub_08074DE0(0x30);
+            PlaySoundEffect(0x30);
         }
         return;
     }
@@ -79,7 +79,7 @@ void sub_080271C4(void) {
         gFrameObjects[0x22].scaleX -= 8;
         gFrameObjects[0x22].scaleY -= 8;
         if (gFrameObjects[0x22].scaleX == 0x40) {
-            sub_08074DE0(0x30);
+            PlaySoundEffect(0x30);
         }
         return;
     }

@@ -13,7 +13,7 @@
 void sub_08013824(void)
 {
     u8 *work = (u8 *)0x0300047C;
-    sub_0803F624(work, 20, 0);
+    FillBytes(work, 20, 0);
     work[0] = 2;
     {
         u8 *buffer = gSetupBuffer_03000590;

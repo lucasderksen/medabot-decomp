@@ -49,7 +49,7 @@ void sub_0802B184(void) {
     u32 i;
 
     sub_0803836C();
-    gCounter6ED08_03001800.base60 = sub_08032FB8(gCounter6ED08_03001800.slot87);
+    gCounter6ED08_03001800.base60 = GetOtherSlotGroupStart(gCounter6ED08_03001800.slot87);
     for (i = 0; i <= 2; i++) {
         if (gSetupRecords[gCounter6ED08_03001800.base60 + i].byte40 != 0 && gSetupRecords[gCounter6ED08_03001800.base60 + i].parts[0].byte11 != 0 && sub_080331F8(gCounter6ED08_03001800.base60 + i) != 0) {
             if (gSetupRecords[gCounter6ED08_03001800.slot87].byteA8 == 0x1E) {

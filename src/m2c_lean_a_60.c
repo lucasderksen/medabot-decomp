@@ -74,12 +74,12 @@ void sub_08029A14(void) {
             gFrameObjects[index].screenY = gFrameObjects[(gCounter6ED08_03001800.base60 + i) * 4 + 0x5D].screenY - 4;
             gFrameObjects[index].palette = 7;
             gFrameObjects[index].priority = 0xF0;
-            sub_08040B90(gState0NextCommands_083B6100[0x60], index);
+            InitFrameObjectCommands(gState0NextCommands_083B6100[0x60], index);
             if (1 & gCounter6ED08_03001800.flagsF8)
                 gFrameObjects[index].flags |= 0x1000;
         }
     }
-    sub_08074DE0(0x2A);
+    PlaySoundEffect(0x2A);
     gCounter6ED08_03001800.counterAA++;
 }
 

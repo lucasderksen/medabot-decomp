@@ -35,10 +35,10 @@ extern struct ContinueFrameInput gUnknown_03001800;
 extern struct ContinueFrameUpdate gUnknown_03002C30[128];
 extern struct SoundRoot72734 *gSoundRoot72734;
 extern u32 sub_08073C3C(const void *,s32);
-extern u32 sub_0807CEC8(u32,u32);
+extern u32 __udivsi3(u32,u32);
 extern u8 gUnknown_0300049E;
 extern u8 gUnknown_0300199A[6];
-extern void sub_0803D450(void);extern void sub_0803D4AC(void);
+extern void LoadActionHalfwordScriptParams(void);extern void AdvanceActionHalfwordScript(void);
 
 void sub_08005000(void);
 void sub_0801630C(void);
@@ -68,7 +68,7 @@ void sub_08005000(void) {
         if (temp_r3->unknown00[0] != 0) {
             sub_08042E58((u32) temp_r3->byte3, (u32) temp_r3->byte4, (u32) temp_r3->byte5, (u32) temp_r3->byte6, var_r5, var_r7, (u32) *var_r6, (u32) var_r6[1], (u32) *kind, 1U, (u32) gUnknownBytes_083AC5B2[var_r5]);
         } else {
-            sub_08040D0C((u8) (var_r8 >> 0x18), 4U);
+            HideFrameObjects((u8) (var_r8 >> 0x18), 4U);
         }
         var_r8 += 0x04000000;
         var_r7 += 4;
@@ -97,13 +97,13 @@ void sub_0801630C(void) {
 
 void sub_08039A2C(void) {
 
- struct ContinueFrameUpdate *frames;struct ContinueFrameInput *work;sub_0803D450();frames=gUnknown_03002C30;work=&gUnknown_03001800;
+ struct ContinueFrameUpdate *frames;struct ContinueFrameInput *work;LoadActionHalfwordScriptParams();frames=gUnknown_03002C30;work=&gUnknown_03001800;
  ((struct ContinueFrameUpdate *)(((u32)((s32)work->slot+5)<<6)+(u32)frames))[0].counter=work->counter;((struct ContinueFrameUpdate *)(((u32)((s32)work->slot+5)<<6)+(u32)frames))[0].timer=work->timer;((struct ContinueFrameUpdate *)(((u32)((s32)work->slot+5)<<6)+(u32)frames))[0].enable=0;
- ((struct ContinueFrameUpdate *)(((u32)((s32)work->slot+5)<<6)+(u32)frames))[0].status=work->status;((struct ContinueFrameUpdate *)(((u32)((s32)work->slot+5)<<6)+(u32)frames))[0].phase=work->phase;((struct ContinueFrameUpdate *)(((u32)((s32)work->slot+5)<<6)+(u32)frames))[0].action=0x18;sub_0803D4AC();}
+ ((struct ContinueFrameUpdate *)(((u32)((s32)work->slot+5)<<6)+(u32)frames))[0].status=work->status;((struct ContinueFrameUpdate *)(((u32)((s32)work->slot+5)<<6)+(u32)frames))[0].phase=work->phase;((struct ContinueFrameUpdate *)(((u32)((s32)work->slot+5)<<6)+(u32)frames))[0].action=0x18;AdvanceActionHalfwordScript();}
 
 void sub_0803E8EC(void) {
 u32 index=0;u8 *choices=gUnknown_0300199A;u32 position=2;do{
- sub_08042698(7,2,4,position,*(volatile u16 *)0x0400000A,((u32)*(u8 *)(index+(u32)choices)*0xE0000u+0x33800000u)>>16);
+ FillTilemapRectSequential(7,2,4,position,*(volatile u16 *)0x0400000A,((u32)*(u8 *)(index+(u32)choices)*0xE0000u+0x33800000u)>>16);
  position+=2;index++;}while(index<=5);}
 
 void sub_08062D60(void) {
@@ -195,7 +195,7 @@ void sub_08072734(struct SoundWork72734 *work) {
   *duration=work->duration>>1;
   high=sub_08073C3C(table,work->pitch+2);
   low=sub_08073C3C(table,work->pitch);
-  work->increment=sub_0807CEC8((high-low)* *amount,*duration);
+  work->increment=__udivsi3((high-low)* *amount,*duration);
   work->position=zero;
  }
 }

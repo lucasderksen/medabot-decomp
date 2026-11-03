@@ -41,6 +41,6 @@ void sub_0801E918(void) {
     }
     sub_0801A28C(gUnknown_0300052E, gCounter6ED08_03001800.valueC8, 1);
     sub_080368C4(gUnknown_0300052E, 10, gCounter6ED08_03001800.group8B, (s16)x, (s16)y);
-    sub_08074DE0(0x5B);
+    PlaySoundEffect(0x5B);
     gCounter6ED08_03001800.stepAA++;
 }

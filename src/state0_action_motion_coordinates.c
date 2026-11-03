@@ -53,6 +53,6 @@ void sub_0801CDD4(void)
     }
     objects->palette84A = 7;
     objects->priority84B = 240;
-    sub_08040B90(gUnknownPointers_083B6100[34], 33);
+    InitFrameObjectCommands(gUnknownPointers_083B6100[34], 33);
     work[0xAA]++;
 }

@@ -47,7 +47,7 @@ void sub_08037C50(void) {
     struct FrameObject *statusFrame;
     u32 frameRoot;
 
-    sub_08040BD8(gState0NextCommands_083B6100[gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown2C[2]], gState0TypedWork.bytes[0x12F]);
+    RunFrameObjectCommands(gState0NextCommands_083B6100[gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown2C[2]], gState0TypedWork.bytes[0x12F]);
     statusFrame = &gFrameObjects[gState0TypedWork.bytes[0x12F]];
     if (statusFrame->unknown2C[1] == 0xFF) {
         statusFrame->unknown23[6] += 1;
@@ -56,19 +56,19 @@ void sub_08037C50(void) {
     if ((statusFrame->unknown2C[1]&0x3FU)==0) {
         switch (gState0TransferWork.bytes[0x51]) {
         case 0:
-            sub_08074DE0(0x36U);
+            PlaySoundEffect(0x36U);
             break;
         case 1:
-            sub_08074DE0(0x28U);
+            PlaySoundEffect(0x28U);
             break;
         case 2:
-            sub_08074DE0(0x31U);
+            PlaySoundEffect(0x31U);
             break;
         case 3:
-            sub_08074DE0(0x71U);
+            PlaySoundEffect(0x71U);
             break;
         case 4:
-            sub_08074DE0(0x4FU);
+            PlaySoundEffect(0x4FU);
             break;
         case 5:break;
         }

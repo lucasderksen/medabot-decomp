@@ -47,7 +47,7 @@ void sub_0802CAD4(void) {
     }while(i<=2);
     if(finished){
         struct ContinuedPhaseWork30 *phase;
-        sub_08040CD0(0x21,3);
+        ClearFrameObjects(0x21,3);
         phase=(struct ContinuedPhaseWork30 *)&gState0TransferWork;
         phase->phase++;
     }
@@ -58,7 +58,7 @@ void sub_0802DD98(void) {
     u8 *frames;
     s16 *y;
     u32 old;
-    sub_08040BD8(gState0NextCommands_083B6100[105],0x21);
+    RunFrameObjectCommands(gState0NextCommands_083B6100[105],0x21);
     frames=(u8 *)&gFrameObjects;
     y=(s16 *)(frames+0x844);
     old=*(u16 *)y;

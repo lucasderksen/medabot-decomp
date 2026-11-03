@@ -47,7 +47,7 @@ void sub_08018A18(void)
 }
 
 u32 sub_08037578(u32 kind,u32 selection) {
-u32 value=0;sub_080424B8();switch(kind){
+u32 value=0;NextRandomByte();switch(kind){
 case 0:switch(selection){
 case 0:value=gUnknown_083CEE88[gState0TypedWork.bytes[0x8C]&127u];break;
 case 1:value=gUnknown_083CEF08[gState0TypedWork.bytes[0x8C]&127u];break;

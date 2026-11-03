@@ -12,8 +12,8 @@ void sub_08013DE4(void)
     sub_08018218();
     sub_0801830C();
     counter = *(u8 *)&gFrameCounter;
-    sub_08041C14(8, counter, sub_0801827C());
+    SetObjectXWobble(8, counter, sub_0801827C());
     sub_080182AC();
-    if (sub_080425DC())
+    if (StepBlendFade())
         gUnknown_0300137C++;
 }

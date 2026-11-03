@@ -65,7 +65,7 @@ void sub_080165D0(void) {
         array0 = gFrameObjects;
         temp_r1 = &array0[var_r4];
         if (temp_r1->scaleY == 1) {
-            sub_08040D0C(var_r4, 1U);
+            HideFrameObjects(var_r4, 1U);
         } else {
             temp_r0 = temp_r1->scaleY - 8;
             if (temp_r0 <= 0) {
@@ -85,7 +85,7 @@ void sub_0801C3B0(void) {
     u8 *var_r1;
     u32 var_r0;
 
-    sub_080164F4((u32) gState0TransferWork.bytes[0x87]);
+    CycleActionSpriteFrames((u32) gState0TransferWork.bytes[0x87]);
     sub_08015B3C((u32) gState0TransferWork.bytes[0x87]);
     sub_0801AD10(gState0TransferWork.bytes[0x87]);
     if (gState0TransferWork.bytes[0x9D] == 0) {
@@ -105,7 +105,7 @@ void sub_08020248(void) {
 
     if (gState0TransferWork.bytes[0xB7] == 3) {
         sub_0803713C();
-        sub_08040CD0(0xAU, 1U);
+        ClearFrameObjects(0xAU, 1U);
         gState0TransferWork.bytes[0xAB] = 1;
         var_r1 = &gState0TransferWork.bytes[0xAB] - 1;
         var_r0 = *var_r1 + 1;
@@ -158,7 +158,7 @@ void sub_08028350(void) {
         gFrameObjects[0x21].flags = 0x7FFF & gFrameObjects[0x21].flags;
     }
     if (gFrameObjects[0x21].unknown23[4] == 0x3C) {
-        sub_08040CD0(0x21U, 1U);
+        ClearFrameObjects(0x21U, 1U);
         gState0TransferWork.bytes[0xAA] += 1;
     }
 }

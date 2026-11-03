@@ -13,7 +13,7 @@ void sub_080337CC(void)
     u32 conditionBase;
     u32 offset;
     u32 stride;
-    work[0x60] = sub_08032FC4(work[0x5C]);
+    work[0x60] = GetSlotGroupStart(work[0x5C]);
     outer = 0;
     base = (u32)gSetupBuffer_03000590;
     offset = work[0x60];
@@ -57,7 +57,7 @@ void sub_080338F4(void)
 {
     volatile u8 complete = 0;
     sub_08034EB8();
-    sub_08034F08();
+    AdvanceActionByteScript();
     if (!complete)
     {
         const u8 *const *table = gActionBytePointers_083C6CA8;
@@ -70,11 +70,11 @@ void sub_080338F4(void)
             value += *position;
             if (*selected == *value)
             {
-                sub_08034F08();
+                AdvanceActionByteScript();
                 complete = 1;
             }
             else
-                sub_08034F08();
+                AdvanceActionByteScript();
         } while (!complete);
     }
     gState0TransferWork.bytes[0x163] = 1;
@@ -84,7 +84,7 @@ void sub_08033974(void)
 {
     volatile u8 complete = 0;
     sub_08034EB8();
-    sub_08034F08();
+    AdvanceActionByteScript();
     if (!complete)
     {
         const u8 *const *table = gActionBytePointers_083C6CA8;
@@ -99,11 +99,11 @@ void sub_08033974(void)
             value += *position;
             if (*selected == *value)
             {
-                sub_08034F08();
+                AdvanceActionByteScript();
                 complete = 1;
             }
             else
-                sub_08034F08();
+                AdvanceActionByteScript();
         } while (!complete);
     }
     gState0TransferWork.bytes[0x163] = 1;

@@ -54,7 +54,7 @@ void sub_0805AED0(void) {
         values[i] = pairs[((struct CtxAED0 *)gMainContextPointer_03006F74)->first + i].value;
     }
     for (i = 0; i < count; i++) {
-        sub_08040D0C(i << 4, 0x10);
+        HideFrameObjects(i << 4, 0x10);
         sub_0805B530(0x18, i * 2 + 3, 3);
         sub_0805B530(0x18, i * 2 + 4, 3);
     }
@@ -62,8 +62,8 @@ void sub_0805AED0(void) {
     saved1 = *(u16 *)0x0600F12E;
     for (i = 0; i < count; i++) {
         if (values[i] != 0) {
-            sub_0803F63C(gFreshPointers_08483ED8[names[i]], gDebugMenuTextBuffer, 0x11);
-            sub_08040DB8(gDebugMenuTextBuffer, (u8)(i * 15), 0xC, i * 2 + 3, 7, 8, 1, 2);
+            CopyBytes(gFreshPointers_08483ED8[names[i]], gDebugMenuTextBuffer, 0x11);
+            PlaceAlignedTextObjects(gDebugMenuTextBuffer, (u8)(i * 15), 0xC, i * 2 + 3, 7, 8, 1, 2);
             sub_0805A444(values[i], 0x18, i * 2 + 3);
             *(u16 *)(((i * 2 + 3) << 6) + 0x0600F02E) = saved0;
             *(u16 *)(((i * 2 + 4) << 6) + 0x0600F02E) = saved1;

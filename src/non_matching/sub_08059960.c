@@ -106,7 +106,7 @@ NONMATCH("asm/non_matching/sub_08059960.inc", void sub_08059960(void))
     {
         u8 frame = sub_080502C8(0);
         u8 palette = ExtractHighNibble(0);
-        sub_08048864(0x39, 0xC804, frame, palette, 1);
+        InitFrameObject(0x39, 0xC804, frame, palette, 1);
         gFrameObjects[0x39].byte2B = ExtractHighNibble(0);
         obj->positionX.value = (obj->positionX.value & 0xFF) | ((gUnknown_03006432 - 0x30) << 8);
         obj->positionY = (obj->positionY & 0xFF) | ((gUnknown_03006434 + 0x30) << 8);

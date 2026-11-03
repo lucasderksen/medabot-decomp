@@ -45,7 +45,7 @@ void sub_08023118(void) {
  frames->frame.scaleY = 0x40;
  frames->frame.angle = 0;
  frames->frame.unknown2C[1] = 0;
- sub_08074DE0(0x4C);
+ PlaySoundEffect(0x4C);
  work[0xAA]++;
 }
 
@@ -70,7 +70,7 @@ void sub_08025378(void) {
     frames->first.savedX=(u16)gFrameObjects[work[0x87]*4+0x5D].screenX;
     frames->first.savedY=(u16)gFrameObjects[work[0x87]*4+0x5D].screenY-4;
     frames->first.kind=3;
-    sub_08074DE0(0x6F);
+    PlaySoundEffect(0x6F);
     work[0xAA]++;
 }
 
@@ -78,7 +78,7 @@ void sub_08025974(void) {
  struct Continued25974Frame34 *frames;
  u8 *work;
  u32 zero;
- sub_08040D0C(0x21, 1);
+ HideFrameObjects(0x21, 1);
  frames = (struct Continued25974Frame34 *)&gFrameObjects;
  frames->frame.flags = (zero = 0, 0xC404);
  frames->frame.tableSelector = zero;
@@ -89,6 +89,6 @@ void sub_08025974(void) {
  frames->frame.priority = 0xE0;
  frames->frame.unknown23[0] = zero;
  frames->frame.frameAndGroup = 0x5201;
- sub_08074DE0(0x6A);
+ PlaySoundEffect(0x6A);
  work[0xAA]++;
 }

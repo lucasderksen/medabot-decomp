@@ -59,7 +59,7 @@ void sub_0801BFB4(const u16 *script, u32 index) {
         }
         switch (*(const u8 *)&script[((struct AnimViewBFB4 *)&gState0TypedWork)->recs[index].pos]) {
         case 0xFD:
-            sub_08074DE0(script[((struct AnimViewBFB4 *)&gState0TypedWork)->recs[index].pos + 1]);
+            PlaySoundEffect(script[((struct AnimViewBFB4 *)&gState0TypedWork)->recs[index].pos + 1]);
             ((struct AnimViewBFB4 *)&gState0TypedWork)->recs[index].pos += 2;
             break;
         case 0xFE:

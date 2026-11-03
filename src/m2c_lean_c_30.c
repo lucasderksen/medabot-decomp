@@ -49,7 +49,7 @@ void sub_0802D8D0(void) {
     if (done == active) {
         for (i = 0, root = (u32)gFrameObjects; i <= 2; i++) {
             if (gCounter6ED08_03001800.activeD2[i] != 0) {
-                sub_08040D0C(i + 0x21, 1);
+                HideFrameObjects(i + 0x21, 1);
                 gFrameObjects[i + 0x24].flags = 0xC404;
                 ((struct FrameObject *)(root + ((i + 0x24) << 6)))->tableSelector = 0;
                 dst = &gFrameObjects[i + 0x24];
@@ -72,7 +72,7 @@ void sub_0802D8D0(void) {
                 }
             }
         }
-        sub_08074DE0(0x6A);
+        PlaySoundEffect(0x6A);
         gCounter6ED08_03001800.counterAA++;
     }
 }

@@ -25,7 +25,7 @@ void sub_0806E404(void) {
     temp_r0 = (*(s32 *)((u8 *)(work0) + 0x10)) - 1;
     (*(s32 *)((u8 *)(work0) + 0x10)) = temp_r0;
     if (temp_r0 == 0) {
-        sub_08074B88(3U);
+        PlayMusic(3U);
     }
     if ((gState0TransferWork.bytes[0xC] != 0) && (8 & (*(u8 *)&gNewKeys))) {
         gMainState = 3;

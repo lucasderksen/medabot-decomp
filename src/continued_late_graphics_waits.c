@@ -8,7 +8,7 @@ void sub_08057AD0(void)
 {
     if (sub_08049E08(0))
     {
-        sub_08048864(127, 0xC004, 0x307, 12, 0);
+        InitFrameObject(127, 0xC004, 0x307, 12, 0);
         sub_08057FD4();
         gUnknown_0300137C = 2;
     }

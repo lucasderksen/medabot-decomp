@@ -13,7 +13,7 @@ extern const IntrFunc gUnknownCallbacks_083B2990[1];
 
 /* Observed byte/halfword interfaces; field roles remain provisional. */
 void sub_0803FB0C(void);
-u32 sub_0803FB3C(const void *script);
+u32 RunDialogue(const void *script);
 void sub_0803FB6C(void);
 void sub_0803FB94(void);
 void sub_0803FBDC(void);

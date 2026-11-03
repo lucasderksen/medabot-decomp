@@ -76,10 +76,10 @@ void sub_0802E4C8(void) {
             gFrames2E4C8[i + 0xA].palette = 7;
             gFrames2E4C8[i + 0xA].priority = 0xE0;
             gState0TypedWork.bytes[0x84] = 0x48;
-            sub_08040B90(gState0NextCommands_083B6100[gState0TypedWork.bytes[0x84]], i + 0xA);
+            InitFrameObjectCommands(gState0NextCommands_083B6100[gState0TypedWork.bytes[0x84]], i + 0xA);
         }
     }
-    sub_08074DE0(0x6A);
+    PlaySoundEffect(0x6A);
     gCounter6ED08_03001800.counterAA++;
 }
 
@@ -101,10 +101,10 @@ void sub_0802EC4C(void) {
             gFrameObjects[i + 0x21].palette = 7;
             gFrameObjects[i + 0x21].priority = 0xE0;
             gState0TypedWork.bytes[0x84] = 0x48;
-            sub_08040B90(gState0NextCommands_083B6100[gState0TypedWork.bytes[0x84]], i + 0x21);
+            InitFrameObjectCommands(gState0NextCommands_083B6100[gState0TypedWork.bytes[0x84]], i + 0x21);
         }
     }
-    sub_08074DE0(0x6A);
+    PlaySoundEffect(0x6A);
     gCounter6ED08_03001800.counterAA++;
 }
 

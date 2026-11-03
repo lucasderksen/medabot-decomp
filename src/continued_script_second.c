@@ -14,7 +14,7 @@ void sub_0804CE90(void)
 {
     u8 *work;
     u32 value;
-    sub_0804D8CC(1);
+    ReadBankedScriptArgs(1);
     work = gUnknown_030057E0;
     value = work[0xC94];
     if (value & 0x80)
@@ -39,7 +39,7 @@ void sub_0804D094(void)
     u8 *work;
     u8 *action;
     u32 zero;
-    sub_0804D8CC(2);
+    ReadBankedScriptArgs(2);
     work = gUnknown_030057E0;
     {
         s32 value = sub_0804DBF0(work[0xC94]);

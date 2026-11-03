@@ -36,7 +36,7 @@ void sub_0802E638(void) {
     if (done == active) {
         for (i = 0; i <= 2; i++) {
             if (gCounter6ED08_03001800.activeD2[i] != 0 && gCounter6ED08_03001800.valuesD6[i] != 0)
-                sub_08074DE0(0x51);
+                PlaySoundEffect(0x51);
         }
         gCounter6ED08_03001800.counterAA++;
     }

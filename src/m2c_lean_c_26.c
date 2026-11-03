@@ -28,8 +28,8 @@ s32 sub_0805DEC8(void) {
     value = sub_08074FA4(4);
     if (value != 0)
         return value;
-    sub_08074B88(0);
-    sub_08074DE0(0);
+    PlayMusic(0);
+    PlaySoundEffect(0);
     for (i = 0; i < 16; i++)
         gSaveHeaderView_03002B70.name[i] = value = 0xFE;
     for (i = 0; i <= 3; i++)

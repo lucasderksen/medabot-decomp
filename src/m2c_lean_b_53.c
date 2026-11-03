@@ -61,7 +61,7 @@ void sub_0804B2B0(void) {
     gContinuedWork_030057E0.width804 = sub_080529DC(gContinuedWork_030057E0.map, 0);
     gContinuedWork_030057E0.height806 = sub_080529DC(gContinuedWork_030057E0.map, 1);
     sub_0804B298();
-    sub_08049714(gContinuedWork_030057E0.buffer810, 0x400);
+    ClearBytes(gContinuedWork_030057E0.buffer810, 0x400);
     sub_080497C0(gRecordByteTables_08404334[gContinuedWork_030057E0.map], gContinuedWork_030057E0.buffer810, (gContinuedWork_030057E0.height802 >> 1) * (gContinuedWork_030057E0.width800 >> 1));
     if (gContinuedMapData_083F9080[gContinuedWork_030057E0.map][0] != 0 && gContinuedMapTiles_083F8A80[gContinuedWork_030057E0.map] != 0) {
         LZ77UnCompVram(gContinuedMapTiles_083F8A80[gContinuedWork_030057E0.map], (void *)0x06009000);
@@ -76,7 +76,7 @@ void sub_0804B2B0(void) {
         if (gContinuedMapExtra_083F8D80[gContinuedWork_030057E0.map] != 0)
             LZ77UnCompVram(gContinuedMapExtra_083F8D80[gContinuedWork_030057E0.map], gFreshPointer_030057DC);
     } else {
-        sub_08049714((void *)0x06009000, 0x80);
+        ClearBytes((void *)0x06009000, 0x80);
         dma = (volatile struct Dma2B0 *)0x040000D4;
         dma->source = gUnknown_080AC74C; dma->destination = (void *)0x06009080; dma->control = 0x80000040; dma->control;
         dma->source = gUnknown_080AC7EC; dma->destination = (void *)0x06009100; dma->control = 0x80000040; dma->control;

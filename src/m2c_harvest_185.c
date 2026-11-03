@@ -44,15 +44,15 @@ void sub_080264E4(void) {
  frames->first.y=(u16)gFrameObjects[work[0x87]*4+0x5D].screenY-4;
  frames->first.palette=6;
  frames->first.priority=0xE0;
- sub_08040B90(gState0NextCommands_083B6100[0x4B],0x21);
+ InitFrameObjectCommands(gState0NextCommands_083B6100[0x4B],0x21);
  frames->second.flags=0xC404;
  frames->second.selector=0;
  frames->second.x=(u16)gFrameObjects[work[0x87]*4+0x5D].screenX;
  frames->second.y=(u16)gFrameObjects[work[0x87]*4+0x5D].screenY-6;
  frames->second.palette=7;
  frames->second.priority=0xF0;
- sub_08040B90(gState0NextCommands_083B6100[0x4C],0x22);
- sub_08074DE0(0x5E);
+ InitFrameObjectCommands(gState0NextCommands_083B6100[0x4C],0x22);
+ PlaySoundEffect(0x5E);
  gState0TypedWork.widths.word86=0;
  work[0xAA]++;
 }
@@ -67,7 +67,7 @@ void sub_0805FC94(void) {
  *(volatile u16 *)0x0400004A=0x2F;
  *(volatile u16 *)0x04000000=0x2060;
  *(volatile u16 *)0x04000050=0x2BF;
- sub_08074B88(0x12U);
+ PlayMusic(0x12U);
  *(volatile u16 *)0x04000054=0x10;
  gUnknown_0300137C++;
 }

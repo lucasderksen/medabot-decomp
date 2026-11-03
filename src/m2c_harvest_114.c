@@ -48,7 +48,7 @@ void sub_08029868(void) {
     gFrameObjects[0x21].unknown2C[0] = 0xC0;
     gFrameObjects[0x21].unknown2C[1] = zeroByte;
     table=gState0NextCommands_083B6100;
-    sub_08040B90(table[command], 0x21U);
+    InitFrameObjectCommands(table[command], 0x21U);
     if (1 & gState0TransferWork.bytes[0xF8]) {
         gFrameObjects[0x21].screenX=0xB8;
     } else {
@@ -82,7 +82,7 @@ void sub_08029E34(void) {
     gFrameObjects[0x21].unknown2C[0] = 0xC0;
     gFrameObjects[0x21].unknown2C[1] = zeroByte;
     table=gState0NextCommands_083B6100;
-    sub_08040B90(table[command], 0x21U);
+    InitFrameObjectCommands(table[command], 0x21U);
     if (1 & gState0TransferWork.bytes[0xF8]) {
         gFrameObjects[0x21].screenX=0xB8;
     } else {

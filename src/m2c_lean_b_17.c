@@ -31,6 +31,6 @@ void sub_0802F214(void) {
     gFrameObjects[gState0TypedWork.bytes[0x84] + 0x21].frameAndGroup = 0x4100;
     gFrameObjects[gState0TypedWork.bytes[0x84] + 0x21].unknown23[0] = 0;
     gFrameObjects[gState0TypedWork.bytes[0x84] + 0x21].unknown23[4] = 0;
-    sub_08074DE0(0x29);
+    PlaySoundEffect(0x29);
     gCounter6ED08_03001800.counterAA++;
 }

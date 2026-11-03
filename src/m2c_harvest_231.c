@@ -24,7 +24,7 @@ extern const u8 gUnknown_083AD524[];
 extern struct ContinueAssetWork gUnknown_03001800;extern const u8 *const gUnknown_083AFA0C[];
 extern struct ContinueMotionFrame gUnknown_03002C30[128];extern const u8 gUnknown_083AF390[];
 extern void sub_08017994(u32, u32, u32);
-extern void sub_0803D450(void);extern void sub_0803D4AC(void);
+extern void LoadActionHalfwordScriptParams(void);extern void AdvanceActionHalfwordScript(void);
 
 void sub_08017A14(u32 arg0, s32 arg1);
 u32 sub_0803526C(u32 index,s32 low,s32 high);
@@ -72,4 +72,4 @@ u32 sub_0803526C(u32 index,s32 low,s32 high) {
 s16 lower=low,upper=high;struct ContinueMotionFrame *frame;u8 fraction;u32 next,sum;{u32 selected=index;struct ContinueMotionFrame *frames=gUnknown_03002C30;frame=&frames[selected];}frame->fraction+=gUnknown_083AF390[frame->accumulator];fraction=frame->fraction;frame->fraction=fraction&3;next=((fraction>>2)+(u16)frame->y)&0xFF;frame->y=next;if((s32)next>=lower&&(s32)next<=upper){frame->y=lower;return 1;}{struct ContinueMotionFrame *tail=&gUnknown_03002C30[index];u32 add=tail->increment;sum=tail->accumulator+add;tail->accumulator=sum;sum=(u16)sum;if(sum>0xFF)tail->accumulator=0xFF;}return 0;}
 
 void sub_0803A0E0(void) {
-const u8 *const *table;struct ContinueAssetWork *work;sub_0803D450();table=gUnknown_083AFA0C;work=&gUnknown_03001800;LeDecompress(table[work->index*2],(void *)0x06010000);CpuFastSet(*(const u8 *const *)((((u32)((s32)work->index*2)+1)<<2)+(u32)table),(void *)0x050003C0,8);sub_0803D4AC();}
+const u8 *const *table;struct ContinueAssetWork *work;LoadActionHalfwordScriptParams();table=gUnknown_083AFA0C;work=&gUnknown_03001800;LeDecompress(table[work->index*2],(void *)0x06010000);CpuFastSet(*(const u8 *const *)((((u32)((s32)work->index*2)+1)<<2)+(u32)table),(void *)0x050003C0,8);AdvanceActionHalfwordScript();}

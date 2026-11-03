@@ -12,9 +12,9 @@ union InventoryKeys { u32 raw; struct { u32 low:6; u32 up:1; u32 down:1; u32 hig
 void sub_0800656C(void)
 {
     u32 fill;
-    sub_0803F624(&gRecordDisplayWork, 0xD0, 0);
-    sub_0803F624(gRecordDisplayData, 0x800, 0);
-    sub_0803F624(gRecordDisplayExtra, 0x60, 0);
+    FillBytes(&gRecordDisplayWork, 0xD0, 0);
+    FillBytes(gRecordDisplayData, 0x800, 0);
+    FillBytes(gRecordDisplayExtra, 0x60, 0);
     gRenderMode = 2;
     gRenderWork = (struct RenderWork *)0x02024000;
     fill = 0;
@@ -110,7 +110,7 @@ u32 sub_080068EC(void)
         else gState0TypedWork.bytes[0x5A]++;
     }
     if (((union InventoryKeys *)&gRepeatedKeys)->bits.up | ((union InventoryKeys *)&gRepeatedKeys)->bits.down) {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         sub_08006238(0); sub_08006284(0); sub_080062D0(0); sub_0800631C(0); sub_08006368(0);
         sub_08006494();
         return 1;
@@ -130,7 +130,7 @@ u32 sub_08006980(void)
 unchanged:
     return 0;
 changed:
-    sub_08074DE0(2);
+    PlaySoundEffect(2);
     sub_08005AD0(); sub_08005B44(); sub_08005C10(); sub_08005BB4();
     sub_08005D1C(); sub_08005E84(); sub_08005FEC(); sub_08006154();
     return 1;
@@ -150,7 +150,7 @@ u32 sub_08006A00(void)
 unchanged:
     return 0;
 changed:
-    sub_08074DE0(2); sub_08005C9C(); sub_08005D1C();
+    PlaySoundEffect(2); sub_08005C9C(); sub_08005D1C();
     sub_08006414(); sub_08006444(); sub_0800667C();
     return 1;
 }
@@ -169,7 +169,7 @@ u32 sub_08006A98(void)
 unchanged:
     return 0;
 changed:
-    sub_08074DE0(2); sub_08005E00(); sub_08005E84();
+    PlaySoundEffect(2); sub_08005E00(); sub_08005E84();
     sub_08006414(); sub_08006444(); sub_0800667C();
     return 1;
 }
@@ -188,7 +188,7 @@ u32 sub_08006B30(void)
 unchanged:
     return 0;
 changed:
-    sub_08074DE0(2); sub_08005F68(); sub_08005FEC();
+    PlaySoundEffect(2); sub_08005F68(); sub_08005FEC();
     sub_08006414(); sub_08006444(); sub_0800667C();
     return 1;
 }
@@ -207,7 +207,7 @@ u32 sub_08006BC8(void)
 unchanged:
     return 0;
 changed:
-    sub_08074DE0(2); sub_080060D0(); sub_08006154();
+    PlaySoundEffect(2); sub_080060D0(); sub_08006154();
     sub_080063B4(); sub_08006414(); sub_08006444(); sub_0800667C();
     return 1;
 }

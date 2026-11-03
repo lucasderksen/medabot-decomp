@@ -24,7 +24,7 @@ u32 sub_0800ADE8(void) {
  u8 *part;
  struct ContinuedADE8Work *work;
  if(pressed!=0) {
-  sub_08074DE0(2);
+  PlaySoundEffect(2);
   work=(void*)&gState0TypedWork;part=&work->part;
   value=*part;
   if(value==0)value=7;else value--;
@@ -33,7 +33,7 @@ u32 sub_0800ADE8(void) {
   return 1;
  }
  if(0x10&*(u8*)&gRepeatedKeys) {
-  sub_08074DE0(2);
+  PlaySoundEffect(2);
   work=(void*)&gState0TypedWork;part=&work->part;
   value=*part;
   if(value==7)*part=pressed;else *part=value+1;

@@ -8,14 +8,14 @@
 void sub_08005AD0(void)
 {
     u8 *work;
-    sub_08040D0C(10, 10);
+    HideFrameObjects(10, 10);
     work = gState0TypedWork.bytes;
     if (work[0x97] <= 29)
-        sub_08040DB8(gInventoryNames[work[0x97]], 10, 1, 13, 10, 15, 0, 2);
+        PlaceAlignedTextObjects(gInventoryNames[work[0x97]], 10, 1, 13, 10, 15, 0, 2);
     else
     {
         sub_08042678(work + 0x9E, 10);
-        sub_08040DB8(work + 0x9E, 10, 1, 13, 10, 15, 0, 2);
+        PlaceAlignedTextObjects(work + 0x9E, 10, 1, 13, 10, 15, 0, 2);
     }
 }
 
@@ -26,7 +26,7 @@ void sub_08005B44(void)
         CpuFastSet(gUnknownBytes_084C29D8 + gInventoryRecords[work[0x97]].byte1 * 128, (void *)0x06007800, 32);
     else
         CpuFastSet(gUnknownBytes_084C38D8, (void *)0x06007800, 32);
-    sub_08042698(2, 2, 16, 9, *(volatile u16 *)0x0400000A, 0x63C0);
+    FillTilemapRectSequential(2, 2, 16, 9, *(volatile u16 *)0x0400000A, 0x63C0);
 }
 
 void sub_08005BB4(void)
@@ -41,34 +41,34 @@ void sub_08005BB4(void)
 void sub_08005C10(void)
 {
     u8 *work;
-    sub_08040D0C(20, 10);
+    HideFrameObjects(20, 10);
     work = gState0TypedWork.bytes;
     if (work[0x97] <= 29)
     {
-        sub_0803F63C(gUnknownPointers_083B6590[gInventoryRecords[work[0x97]].byte1], work + 0x9E, 11);
-        sub_08040DB8(work + 0x9E, 20, 18, 9, 7, 12, 1, 2);
+        CopyBytes(gUnknownPointers_083B6590[gInventoryRecords[work[0x97]].byte1], work + 0x9E, 11);
+        PlaceAlignedTextObjects(work + 0x9E, 20, 18, 9, 7, 12, 1, 2);
     }
     else
     {
         sub_08042678(work + 0x9E, 9);
-        sub_08040DB8(work + 0x9E, 20, 18, 9, 7, 12, 1, 2);
+        PlaceAlignedTextObjects(work + 0x9E, 20, 18, 9, 7, 12, 1, 2);
     }
 }
 
 void sub_08005C9C(void)
 {
     u8 *work;
-    sub_08040D0C(30, 14);
+    HideFrameObjects(30, 14);
     work = gState0TypedWork.bytes;
     if (work[0x98] <= 119)
     {
-        sub_08041D04(gPartTextPointers_083BBB4C[work[0x98] * 4 + 0], work + 0x9E, 15);
-        sub_08040DB8(work + 0x9E, 30, 18, 11, 10, 13, 1, 2);
+        CopyBytesU8Count(gPartTextPointers_083BBB4C[work[0x98] * 4 + 0], work + 0x9E, 15);
+        PlaceAlignedTextObjects(work + 0x9E, 30, 18, 11, 10, 13, 1, 2);
     }
     else
     {
         sub_08042678(work + 0x9E, 13);
-        sub_08040DB8(work + 0x9E, 30, 18, 11, 10, 13, 1, 2);
+        PlaceAlignedTextObjects(work + 0x9E, 30, 18, 11, 10, 13, 1, 2);
     }
 }
 
@@ -80,33 +80,33 @@ void sub_08005D1C(void)
         if (work[0x97] <= 29)
         {
             sub_08042B58(work[0x98], 0, work + 0xEE);
-            sub_08041D04(gInventoryMetadata_083B62D8 + gInventoryRecords[work[0x97]].byte1 * 16, work + 0x10E, 16);
+            CopyBytesU8Count(gInventoryMetadata_083B62D8 + gInventoryRecords[work[0x97]].byte1 * 16, work + 0x10E, 16);
             if (work[0xEE] == work[0x10F])
-                sub_08042698(2, 2, 16, 11, *(volatile u16 *)0x0400000A, ((u32)work[0x115] * 0x40000 + 0xD3400000) >> 16);
+                FillTilemapRectSequential(2, 2, 16, 11, *(volatile u16 *)0x0400000A, ((u32)work[0x115] * 0x40000 + 0xD3400000) >> 16);
             else
-                sub_08042698(2, 2, 16, 11, *(volatile u16 *)0x0400000A, 0xD340);
+                FillTilemapRectSequential(2, 2, 16, 11, *(volatile u16 *)0x0400000A, 0xD340);
         }
         else
-            sub_0803EF8C(2, 2, 16, 11, *(volatile u16 *)0x0400000A, 0);
+            FillTilemapRect(2, 2, 16, 11, *(volatile u16 *)0x0400000A, 0);
     }
     else
-        sub_0803EF8C(2, 2, 16, 11, *(volatile u16 *)0x0400000A, 0);
+        FillTilemapRect(2, 2, 16, 11, *(volatile u16 *)0x0400000A, 0);
 }
 
 void sub_08005E00(void)
 {
     u8 *work;
-    sub_08040D0C(44, 14);
+    HideFrameObjects(44, 14);
     work = gState0TypedWork.bytes;
     if (work[0x99] <= 119)
     {
-        sub_08041D04(gPartTextPointers_083BBB4C[work[0x99] * 4 + 1], work + 0x9E, 15);
-        sub_08040DB8(work + 0x9E, 44, 18, 13, 10, 13, 1, 2);
+        CopyBytesU8Count(gPartTextPointers_083BBB4C[work[0x99] * 4 + 1], work + 0x9E, 15);
+        PlaceAlignedTextObjects(work + 0x9E, 44, 18, 13, 10, 13, 1, 2);
     }
     else
     {
         sub_08042678(work + 0x9E, 13);
-        sub_08040DB8(work + 0x9E, 44, 18, 13, 10, 13, 1, 2);
+        PlaceAlignedTextObjects(work + 0x9E, 44, 18, 13, 10, 13, 1, 2);
     }
 }
 
@@ -118,33 +118,33 @@ void sub_08005E84(void)
         if (work[0x97] <= 29)
         {
             sub_08042B58(work[0x99], 1, work + 0xEE);
-            sub_08041D04(gInventoryMetadata_083B62D8 + gInventoryRecords[work[0x97]].byte1 * 16, work + 0x10E, 16);
+            CopyBytesU8Count(gInventoryMetadata_083B62D8 + gInventoryRecords[work[0x97]].byte1 * 16, work + 0x10E, 16);
             if (work[0xEE] == work[0x10F])
-                sub_08042698(2, 2, 16, 13, *(volatile u16 *)0x0400000A, ((u32)work[0x115] * 0x40000 + 0xD3400000) >> 16);
+                FillTilemapRectSequential(2, 2, 16, 13, *(volatile u16 *)0x0400000A, ((u32)work[0x115] * 0x40000 + 0xD3400000) >> 16);
             else
-                sub_08042698(2, 2, 16, 13, *(volatile u16 *)0x0400000A, 0xD340);
+                FillTilemapRectSequential(2, 2, 16, 13, *(volatile u16 *)0x0400000A, 0xD340);
         }
         else
-            sub_0803EF8C(2, 2, 16, 13, *(volatile u16 *)0x0400000A, 0);
+            FillTilemapRect(2, 2, 16, 13, *(volatile u16 *)0x0400000A, 0);
     }
     else
-        sub_0803EF8C(2, 2, 16, 13, *(volatile u16 *)0x0400000A, 0);
+        FillTilemapRect(2, 2, 16, 13, *(volatile u16 *)0x0400000A, 0);
 }
 
 void sub_08005F68(void)
 {
     u8 *work;
-    sub_08040D0C(58, 14);
+    HideFrameObjects(58, 14);
     work = gState0TypedWork.bytes;
     if (work[0x9a] <= 119)
     {
-        sub_08041D04(gPartTextPointers_083BBB4C[work[0x9a] * 4 + 2], work + 0x9E, 15);
-        sub_08040DB8(work + 0x9E, 58, 18, 15, 10, 13, 1, 2);
+        CopyBytesU8Count(gPartTextPointers_083BBB4C[work[0x9a] * 4 + 2], work + 0x9E, 15);
+        PlaceAlignedTextObjects(work + 0x9E, 58, 18, 15, 10, 13, 1, 2);
     }
     else
     {
         sub_08042678(work + 0x9E, 13);
-        sub_08040DB8(work + 0x9E, 58, 18, 15, 10, 13, 1, 2);
+        PlaceAlignedTextObjects(work + 0x9E, 58, 18, 15, 10, 13, 1, 2);
     }
 }
 
@@ -156,33 +156,33 @@ void sub_08005FEC(void)
         if (work[0x97] <= 29)
         {
             sub_08042B58(work[0x9a], 2, work + 0xEE);
-            sub_08041D04(gInventoryMetadata_083B62D8 + gInventoryRecords[work[0x97]].byte1 * 16, work + 0x10E, 16);
+            CopyBytesU8Count(gInventoryMetadata_083B62D8 + gInventoryRecords[work[0x97]].byte1 * 16, work + 0x10E, 16);
             if (work[0xEE] == work[0x10F])
-                sub_08042698(2, 2, 16, 15, *(volatile u16 *)0x0400000A, ((u32)work[0x115] * 0x40000 + 0xD3400000) >> 16);
+                FillTilemapRectSequential(2, 2, 16, 15, *(volatile u16 *)0x0400000A, ((u32)work[0x115] * 0x40000 + 0xD3400000) >> 16);
             else
-                sub_08042698(2, 2, 16, 15, *(volatile u16 *)0x0400000A, 0xD340);
+                FillTilemapRectSequential(2, 2, 16, 15, *(volatile u16 *)0x0400000A, 0xD340);
         }
         else
-            sub_0803EF8C(2, 2, 16, 15, *(volatile u16 *)0x0400000A, 0);
+            FillTilemapRect(2, 2, 16, 15, *(volatile u16 *)0x0400000A, 0);
     }
     else
-        sub_0803EF8C(2, 2, 16, 15, *(volatile u16 *)0x0400000A, 0);
+        FillTilemapRect(2, 2, 16, 15, *(volatile u16 *)0x0400000A, 0);
 }
 
 void sub_080060D0(void)
 {
     u8 *work;
-    sub_08040D0C(72, 14);
+    HideFrameObjects(72, 14);
     work = gState0TypedWork.bytes;
     if (work[0x9b] <= 119)
     {
-        sub_08041D04(gPartTextPointers_083BBB4C[work[0x9b] * 4 + 3], work + 0x9E, 15);
-        sub_08040DB8(work + 0x9E, 72, 18, 17, 10, 13, 1, 2);
+        CopyBytesU8Count(gPartTextPointers_083BBB4C[work[0x9b] * 4 + 3], work + 0x9E, 15);
+        PlaceAlignedTextObjects(work + 0x9E, 72, 18, 17, 10, 13, 1, 2);
     }
     else
     {
         sub_08042678(work + 0x9E, 13);
-        sub_08040DB8(work + 0x9E, 72, 18, 17, 10, 13, 1, 2);
+        PlaceAlignedTextObjects(work + 0x9E, 72, 18, 17, 10, 13, 1, 2);
     }
 }
 
@@ -194,17 +194,17 @@ void sub_08006154(void)
         if (work[0x97] <= 29)
         {
             sub_08042B58(work[0x9b], 3, work + 0xEE);
-            sub_08041D04(gInventoryMetadata_083B62D8 + gInventoryRecords[work[0x97]].byte1 * 16, work + 0x10E, 16);
+            CopyBytesU8Count(gInventoryMetadata_083B62D8 + gInventoryRecords[work[0x97]].byte1 * 16, work + 0x10E, 16);
             if (work[0xEE] == work[0x10F])
-                sub_08042698(2, 2, 16, 17, *(volatile u16 *)0x0400000A, ((u32)work[0x115] * 0x40000 + 0xD3400000) >> 16);
+                FillTilemapRectSequential(2, 2, 16, 17, *(volatile u16 *)0x0400000A, ((u32)work[0x115] * 0x40000 + 0xD3400000) >> 16);
             else
-                sub_08042698(2, 2, 16, 17, *(volatile u16 *)0x0400000A, 0xD340);
+                FillTilemapRectSequential(2, 2, 16, 17, *(volatile u16 *)0x0400000A, 0xD340);
         }
         else
-            sub_0803EF8C(2, 2, 16, 17, *(volatile u16 *)0x0400000A, 0);
+            FillTilemapRect(2, 2, 16, 17, *(volatile u16 *)0x0400000A, 0);
     }
     else
-        sub_0803EF8C(2, 2, 16, 17, *(volatile u16 *)0x0400000A, 0);
+        FillTilemapRect(2, 2, 16, 17, *(volatile u16 *)0x0400000A, 0);
 }
 
 
@@ -253,41 +253,41 @@ void sub_0804305C(u32,u32,u32,u32,u32,u32,u32,u32,u32,u32,u32);
 void sub_08006238(u32 selected)
 {
     if (!selected)
-        sub_08042698(2, 2, 14, 9, *(volatile u16 *)0x0400000A, 0xC370);
+        FillTilemapRectSequential(2, 2, 14, 9, *(volatile u16 *)0x0400000A, 0xC370);
     else
-        sub_08042698(2, 2, 14, 9, *(volatile u16 *)0x0400000A, 0xC384);
+        FillTilemapRectSequential(2, 2, 14, 9, *(volatile u16 *)0x0400000A, 0xC384);
 }
 
 void sub_08006284(u32 selected)
 {
     if (!selected)
-        sub_08042698(2, 2, 14, 11, *(volatile u16 *)0x0400000A, 0xC374);
+        FillTilemapRectSequential(2, 2, 14, 11, *(volatile u16 *)0x0400000A, 0xC374);
     else
-        sub_08042698(2, 2, 14, 11, *(volatile u16 *)0x0400000A, 0xC388);
+        FillTilemapRectSequential(2, 2, 14, 11, *(volatile u16 *)0x0400000A, 0xC388);
 }
 
 void sub_080062D0(u32 selected)
 {
     if (!selected)
-        sub_08042698(2, 2, 14, 13, *(volatile u16 *)0x0400000A, 0xC378);
+        FillTilemapRectSequential(2, 2, 14, 13, *(volatile u16 *)0x0400000A, 0xC378);
     else
-        sub_08042698(2, 2, 14, 13, *(volatile u16 *)0x0400000A, 0xC388);
+        FillTilemapRectSequential(2, 2, 14, 13, *(volatile u16 *)0x0400000A, 0xC388);
 }
 
 void sub_0800631C(u32 selected)
 {
     if (!selected)
-        sub_08042698(2, 2, 14, 15, *(volatile u16 *)0x0400000A, 0xC37C);
+        FillTilemapRectSequential(2, 2, 14, 15, *(volatile u16 *)0x0400000A, 0xC37C);
     else
-        sub_08042698(2, 2, 14, 15, *(volatile u16 *)0x0400000A, 0xC388);
+        FillTilemapRectSequential(2, 2, 14, 15, *(volatile u16 *)0x0400000A, 0xC388);
 }
 
 void sub_08006368(u32 selected)
 {
     if (!selected)
-        sub_08042698(2, 2, 14, 17, *(volatile u16 *)0x0400000A, 0xC380);
+        FillTilemapRectSequential(2, 2, 14, 17, *(volatile u16 *)0x0400000A, 0xC380);
     else
-        sub_08042698(2, 2, 14, 17, *(volatile u16 *)0x0400000A, 0xC388);
+        FillTilemapRectSequential(2, 2, 14, 17, *(volatile u16 *)0x0400000A, 0xC388);
 }
 
 void sub_080063B4(void)

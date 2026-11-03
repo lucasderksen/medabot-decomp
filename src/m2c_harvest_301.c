@@ -49,7 +49,7 @@ void sub_08029D28(void) {
         gState0TypedWork.bytes[0x84] = 0x78;
     }
     if (gState0TypedWork.bytes[0x84] == 0x78) {
-        sub_08040CD0((u8) ((u32) ((gUnknown_03001800[0x60] << 0x1A) + 0x21000000) >> 0x18), 0xCU);
+        ClearFrameObjects((u8) ((u32) ((gUnknown_03001800[0x60] << 0x1A) + 0x21000000) >> 0x18), 0xCU);
         gUnknown_03001800[0xAA] += 1;
     }
 }
@@ -85,7 +85,7 @@ void sub_0802E358(void) {
         gState0TypedWork.bytes[0x84] = 0x78;
     }
     if (gState0TypedWork.bytes[0x84] == 0x78) {
-        sub_08040CD0((u8) ((u32) ((gUnknown_03001800[0x60] << 0x1A) + 0x21000000) >> 0x18), 0xCU);
+        ClearFrameObjects((u8) ((u32) ((gUnknown_03001800[0x60] << 0x1A) + 0x21000000) >> 0x18), 0xCU);
         gUnknown_03001800[0xAA] += 1;
     }
 }

@@ -71,7 +71,7 @@ void sub_080655FC(void) {
    ((struct PurchaseContextView *)gMainContextPointer_03006F74)->active=0;
    sub_0803FAA0(1,0,0);
   }
- }else if(sub_0803FB3C(gMain2ScriptSlots_0848521C[14]))busy=0;
+ }else if(RunDialogue(gMain2ScriptSlots_0848521C[14]))busy=0;
  if(busy==0&&(busy=sub_08041674())!=0){
   high=busy&0xF0;
   if(high){

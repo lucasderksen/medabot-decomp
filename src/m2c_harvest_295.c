@@ -175,6 +175,6 @@ void sub_0802FE78(void) {
  }
  }
  gState0TypedWork.widths.word86=0;
- sub_08074DE0(0x2B);
+ PlaySoundEffect(0x2B);
  gTransferPrefix2FE78.phase++;
 }

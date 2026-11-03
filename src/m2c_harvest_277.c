@@ -39,7 +39,7 @@ u32 sub_0803556C(u32 bank) {
 
  const u8 *table=gUnknown_083AF4B0;
  u32 row=sub_08035590(bank);
- u32 random=sub_080424B8();
+ u32 random=NextRandomByte();
  return *(const u8 *)((row<<3)+(random&7)+(u32)table);
 }
 

@@ -39,7 +39,7 @@ void sub_08060F78(void) {
 
     sp10 = 0;
     CpuFastSet(&sp10, (void *)0x0600DA80, 0x01000080U);
-    sub_08040CD0(0U, 0x80U);
+    ClearFrameObjects(0U, 0x80U);
     gFrameObjects[8].flags = 0x8004;
     gFrameObjects[8].tableSelector = 0;
     gFrameObjects[8].palette = 0xE;
@@ -78,7 +78,7 @@ void sub_08060F78(void) {
     gFrameObjects[0xF].screenX = 0x50;
     gFrameObjects[0xF].screenY = 0x3E;
     sub_08041164(gDebugMenuTextBuffer, gPostDispatchWord_03002B70);
-    sub_08040DB8(gDebugMenuTextBuffer, 0U, 0x15, 1, 7U, 0xFU, 1U, 0U);
+    PlaceAlignedTextObjects(gDebugMenuTextBuffer, 0U, 0x15, 1, 7U, 0xFU, 1U, 0U);
     gUnknown_0300137C += 1;
 }
 
@@ -138,7 +138,7 @@ void sub_08071164(void) {
         gGraphicsTransferCounter.counter++;
         break;
     case 1: case 3: case 5: case 7: case 9: case 11: case 13: case 15: 
-        if(sub_0803FB3C(gUnknown_08486D78[(scriptWork->counter>>1)])) {
+        if(RunDialogue(gUnknown_08486D78[(scriptWork->counter>>1)])) {
             scriptWork->counter++;
         }
         break;
@@ -182,7 +182,7 @@ void sub_08071630(void) {
         gGraphicsTransferCounter.counter++;
         break;
     case 1: case 3: case 5: case 7: 
-        if(sub_0803FB3C(gUnknown_08486D78[(scriptWork->counter>>1)+0xF])) {
+        if(RunDialogue(gUnknown_08486D78[(scriptWork->counter>>1)+0xF])) {
             scriptWork->counter++;
         }
         break;

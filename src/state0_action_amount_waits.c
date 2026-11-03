@@ -47,7 +47,7 @@ void sub_0801D174(void)
 {
     ((struct ObservedActionFrameBacking *)gFrameObjects)->byte863 = 0;
     gUnknown_03000440[0x84] = 0;
-    sub_08074DE0(52);
+    PlaySoundEffect(52);
     gState0TransferWork.bytes[0xAA]++;
 }
 
@@ -70,7 +70,7 @@ void sub_0801D1AC(void)
         struct ObservedActionFrameBacking *objects = (void *)gFrameObjects;
         if (objects->scaleX848 == 8)
         {
-            sub_08040CD0(33, 1);
+            ClearFrameObjects(33, 1);
             gState0TransferWork.bytes[0xAA]++;
         }
         else

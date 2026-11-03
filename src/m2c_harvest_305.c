@@ -75,7 +75,7 @@ void sub_08035528(u32 selected) {
     if (temp_r0 != 0) {
         tbl = gUnknown_083AF4B0;
         temp_r4 = sub_08035590(temp_r0 - 1);
-        rnd = sub_080424B8();
+        rnd = NextRandomByte();
         temp_r4 <<= 3;
         temp_r0 = tbl[temp_r4 + (rnd & 7)] + 1;
         p = temp_r6 + 0xE1;

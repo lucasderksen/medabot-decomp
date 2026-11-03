@@ -38,7 +38,7 @@ void sub_08063254(void) {
     u16 w1;
     u16 mask;
 
-    sub_0803FB3C(gMain2ScriptSlots_08485678[15]);
+    RunDialogue(gMain2ScriptSlots_08485678[15]);
     gMainSerialOutgoingWork.word06 = gSwapContext63254->firstA | (gSwapContext63254->firstB << 8) | 0x4000;
     w0 = gMainSerialOutgoingWork.words[0][1];
     w1 = gMainSerialOutgoingWork.words[1][1];

@@ -4,7 +4,7 @@ extern u8 gUnknown_030057E0[];
 
 void sub_0804B858(void)
 {
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     u8 *work = gUnknown_030057E0;
     s32 steps;
     work[0xC94] = value;
@@ -16,7 +16,7 @@ void sub_0804B858(void)
 }
 void sub_0804B8AC(void)
 {
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     u8 *work = gUnknown_030057E0;
     s32 steps;
     work[0xC94] = value;
@@ -28,7 +28,7 @@ void sub_0804B8AC(void)
 }
 void sub_0804B900(void)
 {
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     u8 *work = gUnknown_030057E0;
     s32 steps;
     work[0xC94] = value;
@@ -40,7 +40,7 @@ void sub_0804B900(void)
 }
 void sub_0804B958(void)
 {
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     u8 *work = gUnknown_030057E0;
     s32 steps;
     work[0xC94] = value;

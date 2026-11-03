@@ -53,14 +53,14 @@ void sub_0801DE44(void) {
  u8 *destination;
  const u8 *label=labels[record[0x4A]];
  destination=gDebugMenuTextBuffer;
- sub_0803F63C(label,destination,14);
+ CopyBytes(label,destination,14);
  labels=gUnknown_083BE868;
  selected=*part*24;
  bankOffset=*bank<<8;
  record=setup+(selected+bankOffset);
  label=labels[record[0x49]];
  destination+=20;
- sub_0803F63C(label,destination,14);
+ CopyBytes(label,destination,14);
  work[0xA6]=0x17;
  work[0xAA]++;
 }
@@ -118,13 +118,13 @@ void sub_08029178(void) {
     do {
         const u8 *commands=*script;
         u32 current=var_r5+0x21;
-        sub_08040BD8(commands, (u8) (var_r6 >> 0x18));
+        RunFrameObjectCommands(commands, (u8) (var_r6 >> 0x18));
         sub_0804422C(current);
         var_r6 += 0x01000000;
         var_r5 += 1;
     } while (var_r5 <= 4U);
     if (gFrameObjects[0x21].commandStopped == 0xFF) {
-        sub_08040CD0(0x21U, 5U);
+        ClearFrameObjects(0x21U, 5U);
         gState0TypedWork.widths.word86 = 0x3C;
         ((struct ContinuedPhaseWork27 *)&gState0TransferWork)->phase = (u8) (((struct ContinuedPhaseWork27 *)&gState0TransferWork)->phase + 1);
     }
@@ -164,7 +164,7 @@ u32 sub_080330F4(s32 arg0) {
     u32 var_r4;
 
     var_r4 = sub_08033074();
-    temp_r2 = sub_080424B8() & 1;
+    temp_r2 = NextRandomByte() & 1;
     var_r3=0;
     base=gSetupBuffer_03000590;
 
@@ -219,13 +219,13 @@ void sub_080696A8(void) {
     sub_080697B4(4, 0xB, 0xE);
     sub_080697B4(4, 0x15, 0xE);
     *(volatile u16 *)0x0400000A = 0x1D0D;
-    sub_08048864(1U, 0xC400U, 0x6FU, 8U, 1U);
+    InitFrameObject(1U, 0xC400U, 0x6FU, 8U, 1U);
     gFrameObjects[1].screenX = 0xF;
     gFrameObjects[1].screenY = 0x7F;
-    sub_08048864(2U, 0xC400U, 0x7BU, 9U, 1U);
+    InitFrameObject(2U, 0xC400U, 0x7BU, 9U, 1U);
     gFrameObjects[2].screenX = 0x5F;
     gFrameObjects[2].screenY = 0x7F;
-    sub_08048864(3U, 0xC400U, 0x87U, 0xAU, 1U);
+    InitFrameObject(3U, 0xC400U, 0x87U, 0xAU, 1U);
     gFrameObjects[3].screenX = 0xAF;
     gFrameObjects[3].screenY = 0x7F;
 }

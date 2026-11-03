@@ -39,7 +39,7 @@ void sub_0802BE44(void) {
  struct ContinuedAngleBacking *frames;
  if(*phase<=2u) {
    timer=(u16 *)(work+0x86);
-   if(*timer==0) {*phase+=1;sub_08074DE0(0x4C);}
+   if(*timer==0) {*phase+=1;PlaySoundEffect(0x4C);}
    next=*timer+1;
    *timer=next;
    table=gUnknown_083AE950;
@@ -50,7 +50,7 @@ void sub_0802BE44(void) {
  angle=((frames->speed<<4)+frames->angle)&0x3FF;
  frames->angle=angle;
  if(frames->speed==5 && angle==0) {
-  sub_08040CD0(0x21,1);
+  ClearFrameObjects(0x21,1);
   gState0TransferWork.bytes[0xAA]++;
  }
 }
@@ -86,7 +86,7 @@ void sub_080476E8(u32 mode) {
         break;
     case 10:
         sub_08047574();
-        sub_08049714(&gContinuedWork_030057E0,0xCC0);
+        ClearBytes(&gContinuedWork_030057E0,0xCC0);
         gUnknown_03000588 = 1;
         gMainState = 1;
         gMainSubstate = 1;

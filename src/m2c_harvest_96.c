@@ -30,7 +30,7 @@ void sub_0803E434(void) {
         commands = gUnknownPointers_083CF530[6];
     else
         commands = gUnknownPointers_083CF530[7];
-    if (sub_0803FB3C(commands) != 0) {
+    if (RunDialogue(commands) != 0) {
         sub_0803FAA0(1, 0, 0);
         gUnknown_0300137C++;
     }

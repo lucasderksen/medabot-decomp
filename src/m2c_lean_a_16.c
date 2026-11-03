@@ -30,13 +30,13 @@ void sub_08021038(void) {
         LeDecompress(gActionKindAsset_084CA61C, (void *)0x06014800);
         CpuFastSet(gActionKindPalette_0850F5F8, (void *)0x050002E0, 8);
         gFrameObjects[0x21].screenY = 0x3C;
-        sub_08040B90(gState0NextCommands_083B6100[25], 0x21);
+        InitFrameObjectCommands(gState0NextCommands_083B6100[25], 0x21);
         break;
     case 1:
         LeDecompress(gActionKindAsset_084CA828, (void *)0x06014800);
         CpuFastSet(gActionKindPalette_0850F618, (void *)0x050002E0, 8);
         gFrameObjects[0x21].screenY = 0x3C;
-        sub_08040B90(gState0NextCommands_083B6100[26], 0x21);
+        InitFrameObjectCommands(gState0NextCommands_083B6100[26], 0x21);
         break;
     case 2:
         LeDecompress(gActionKindAsset_084CABC4, (void *)0x06014800);
@@ -47,7 +47,7 @@ void sub_08021038(void) {
     case 3:
         LeDecompress(gUnknown_084D66DC, (void *)0x06014800);
         CpuFastSet(gUnknown_0850FC18, (void *)0x050002E0, 8);
-        sub_08040B90(gState0NextCommands_083B6100[56], 0x21);
+        InitFrameObjectCommands(gState0NextCommands_083B6100[56], 0x21);
         break;
     }
     gFrameObjects[0x21].flags |= 0x220;

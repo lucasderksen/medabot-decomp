@@ -21,7 +21,7 @@ struct HeldKeys1CB8 {
 };
 extern struct HeldKeys1CB8 gHeldKeys1CB8 asm("gContinuedByte_03002B64");
 extern u8 gWork1CB8[] asm("gContinuedWork_030057E0");
-s32 sub_0807CD2C(s32, s32);
+s32 __divsi3(s32, s32);
 
 NONMATCH("asm/non_matching/sub_08051CB8.inc", void sub_08051CB8(void))
 {
@@ -70,7 +70,7 @@ NONMATCH("asm/non_matching/sub_08051CB8.inc", void sub_08051CB8(void))
             sub_08051EFC(3);
         }
         if (sub_08052CC0(direction) == 0 && sub_080525BC(direction) == 0) {
-            gWork1CB8[0xC58] = sub_0807CD2C(0x10, sub_08051940(0x2F));
+            gWork1CB8[0xC58] = __divsi3(0x10, sub_08051940(0x2F));
             sub_08051988(gWork1CB8[0xC59]);
             sub_08051EFC(3);
             if (gWork1CB8[0xC5C] == 2 || gWork1CB8[0xC5C] == 9)

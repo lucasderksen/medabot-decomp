@@ -34,7 +34,7 @@ void sub_08015F90(u32 frameIndex) {
     u32 heightX;
     u32 selection;
 
-    sub_08040CD0(frameIndex, 1U);
+    ClearFrameObjects(frameIndex, 1U);
     frame = ((frameBase = gFrameObjects), frameBase + frameIndex);
     frame->flags = 0xC604;
     selection = frameIndex - gState0TransferWork.bytes[0x81];
@@ -78,7 +78,7 @@ void sub_08016080(u32 frameIndex) {
     struct FrameObject *frame;
     u32 selection;
 
-    sub_08040CD0(frameIndex, 1U);
+    ClearFrameObjects(frameIndex, 1U);
     frame = ((frameBase = gFrameObjects), frameBase + frameIndex);
     frame->flags = 0xC604;
     selection = frameIndex - gState0TransferWork.bytes[0x81];

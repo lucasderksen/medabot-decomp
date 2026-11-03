@@ -151,11 +151,11 @@
 	asrs	r7, r0, #6
 	mov	r0, sl
 	adds	r1, r7, #0
-	bl	sub_0807CD2C
+	bl	__divsi3
 	mov	sl, r0
 	mov	r0, sb
 	adds	r1, r7, #0
-	bl	sub_0807CD2C
+	bl	__divsi3
 	mov	sb, r0
 	ldr	r0, .L08001684
 	ldr	r0, [r0]
@@ -168,13 +168,13 @@
 	movs	r0, #0x80
 	lsls	r0, r0, #8
 	adds	r1, r7, #0
-	bl	sub_0807CD2C
+	bl	__divsi3
 	strb	r0, [r6, #9]
 	strb	r0, [r6, #8]
 	movs	r0, #0xe0
 	lsls	r0, r0, #0xf
 	adds	r1, r7, #0
-	bl	sub_0807CD2C
+	bl	__divsi3
 	ldr	r4, .L0800168C
 	str	r0, [r4]
 	b	.L080016AE

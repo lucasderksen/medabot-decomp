@@ -51,7 +51,7 @@ void sub_080709D4(void) {
     LZ77UnCompVram(gUnknown_087B2EE0, (void *)0x06010000);
     counter = 0;
     do {
-        sub_08048864((u8) counter, 0xC800U, 0x50EU, 4U, 3U);
+        InitFrameObject((u8) counter, 0xC800U, 0x50EU, 4U, 3U);
         leftFrame = &gFrameObjects[counter];
         horizontalOffset = counter * 8;
         leftFrame->screenX = horizontalOffset + 0x78;
@@ -61,7 +61,7 @@ void sub_080709D4(void) {
         nextCounter = counter + 1;
         leftFrame->commandStopped = nextCounter;
         rightSlot = counter + 0xB;
-        sub_08048864((u8) rightSlot, 0xC800U, 0x50EU, 4U, 3U);
+        InitFrameObject((u8) rightSlot, 0xC800U, 0x50EU, 4U, 3U);
         rightFrame = &gFrameObjects[rightSlot];
         rightFrame->screenX = 0x70 - horizontalOffset;
         rightFrame->screenY = 0;
@@ -74,7 +74,7 @@ void sub_080709D4(void) {
     counter = 0;
     upperFrame = &gFrameObjects[0x16];
     do {
-        sub_08048864((u8)(counter + 0x16), 0xCC00U, 0U, (u8) counter, 1U);
+        InitFrameObject((u8)(counter + 0x16), 0xCC00U, 0U, (u8) counter, 1U);
         upperFrame->screenY = 0x40;
         upperFrame++;
         counter += 1;
@@ -92,7 +92,7 @@ void sub_080709D4(void) {
     destinationX = &gFrameObjects[0x1A].screenX;
     sourceFrame = &gFrameObjects[0x16];
     do {
-        sub_08048864((u8)(counter + 0x1A), 0xCC08U, 0x513U, 0xEU, 3U);
+        InitFrameObject((u8)(counter + 0x1A), 0xCC08U, 0x513U, 0xEU, 3U);
         destinationX[0] = (s16) (u16) sourceFrame->screenX;
         destinationX[1] = 0x40;
         destinationX += 0x20;

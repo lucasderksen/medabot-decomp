@@ -19,7 +19,7 @@ struct DmaRegs72080 { u32 source, destination, control; };
 
 extern u16 *gPalettePointer71FF80300700C;
 extern u16 gUnknown_0202FE00[];
-extern void sub_0806B718(u8);
+extern void ClearFrameObject(u8);
 
 s32 sub_08072080(void);
 
@@ -29,7 +29,7 @@ s32 sub_08072080(void) {
     u8 inv;
     s32 i;
     if (gCounter6ED08_03001800.pad00[0x11] > 0x40) {
-        sub_08074DE0(0xA);
+        PlaySoundEffect(0xA);
         gCounter6ED08_03001800.pad00[0x10]++;
     } else {
         if (gCounter6ED08_03001800.pad00[0x11] <= 0x1F)
@@ -37,9 +37,9 @@ s32 sub_08072080(void) {
         else
             k = gCounter6ED08_03001800.pad00[0x11] - 0x20;
         if (gCounter6ED08_03001800.pad00[0x11] == 0x20)
-            sub_0806B718(0);
+            ClearFrameObject(0);
         if (gCounter6ED08_03001800.pad00[0x11] == 0x14)
-            sub_08074DE0(0x51);
+            PlaySoundEffect(0x51);
         inv = 0x20 - k;
         for (i = 0; i <= 0xFF; ) {
             gUnknown_0202FE00[i] = (((0x1F & gPalettePointer71FF80300700C[i]) * k + 0x1F * inv) >> 5)

@@ -22,7 +22,7 @@ extern struct BackgroundWork692EC gBackgroundWork692EC;
 extern struct RenderPhase72188 gRenderPhase72188;
 extern u8 gUnknown_03006F94;
 extern void sub_08069320(void);
-extern void sub_0806B718(u8);
+extern void ClearFrameObject(u8);
 
 void sub_080692EC(void);
 s32 sub_08072188(void);
@@ -33,7 +33,7 @@ void sub_080692EC(void) {
     struct BackgroundWork692EC *work;
 
     sub_08069320();
-    sub_08074B88(0U);
+    PlayMusic(0U);
     work=&gBackgroundWork692EC;
     key=gUnknown_03006F94;
     var_r1 = 2;
@@ -55,7 +55,7 @@ s32 sub_08072188(void) {
         gFrameObjects[1].screenY=0x42;
     }
     if (gFrameObjects[1].unknown1A++ > 0x1F) {
-        sub_0806B718(1);
+        ClearFrameObject(1);
         sub_080445F4();
         sp20 = 0x200;
         dma=(volatile struct Dma72188 *)0x040000D4;

@@ -32,7 +32,7 @@ extern const u8 gRandomBytes_083F7D80[];
 extern s16 gUnknown_03003474;
 extern s32 gTransferStep03000000;
 extern s32 sub_08068CC8(void);
-extern s32 sub_0807CDF8(s32, s32);
+extern s32 __modsi3(s32, s32);
 extern struct BattleView6C3A0 gBattleView6C3A0 asm("gCounter6ED08_03001800");
 extern struct FrameObject gFrameObjectsB[] asm("gFrameObjects");
 extern u16 *gUnknown_0300002C;
@@ -41,7 +41,7 @@ extern u16 gTransferOffsets03000008[];
 extern u16 gUnknown_03000028;
 extern u8 gTransferDivisor03000005;
 extern u8 gUnknown_03000004;
-extern void sub_0806B718(u8);
+extern void ClearFrameObject(u8);
 
 void sub_08068460(u8 mode, u8 divisor, u16 color);
 void sub_08068684(u8 mode, u8 divisor, u16 color);
@@ -292,11 +292,11 @@ void sub_0806C3A0(void) {
                     gFrameObjects[0x13].commandOffset = 0;
                     gFrameObjects[0x13].screenY = 0xC8;
                     gFrameObjects[0x13].unknown1A = 0;
-                    sub_08048864(0x21, 0xCC08, 0x12, 2, 3);
+                    InitFrameObject(0x21, 0xCC08, 0x12, 2, 3);
                     gFrameObjects[0x21].screenX = gFrameObjects[0x1E].screenX;
                     gFrameObjects[0x21].screenY = gFrameObjects[0x1E].screenY + 0xC;
                 }
-                sub_08074DE0(0x3B);
+                PlaySoundEffect(0x3B);
                 goto next;
             }
             found = gFrameObjects[0x1E].commandOffset;
@@ -308,13 +308,13 @@ void sub_0806C3A0(void) {
             if ((u8)phase == 1)
                 gFrameObjects[0x28 + i].commandOffset = 2 & gBattleView6C3A0.byte0E;
             gFrameObjects[0x28 + i].commandDelay = 2;
-            sub_08048864(0x38, 0xC400, 0x17, 4, 3);
+            InitFrameObject(0x38, 0xC400, 0x17, 4, 3);
             gFrameObjects[0x38].screenX = gFrameObjects[0x28 + i].screenX;
             gFrameObjects[0x38].screenY = gFrameObjects[0x28 + i].screenY - gUnknown_08485924[0x3F & gFrameObjects[0x28 + i].unknown1A];
             gFrameObjects[0x38].commandDelay = delay;
             gFrameObjects[0x38].unknown1A = found;
             gFrameObjects[0x13].commandDelay = 0;
-            sub_08074DE0(0x68);
+            PlaySoundEffect(0x68);
             goto next;
         }
         case 2:
@@ -338,9 +338,9 @@ void sub_0806C3A0(void) {
             break;
         case 3:
             if (gFrameObjects[0x28 + i].unknown1A == 0)
-                sub_08048864(j = i + 0x28, 0xC400, 0x13, 3, delay);
+                InitFrameObject(j = i + 0x28, 0xC400, 0x13, 3, delay);
             else if (gFrameObjects[0x28 + i].unknown1A > 0xF)
-                sub_0806B718(j = i + 0x28);
+                ClearFrameObject(j = i + 0x28);
         next:
             gFrameObjects[0x28 + i].unknown1A++;
             root = gFrameObjectsB;

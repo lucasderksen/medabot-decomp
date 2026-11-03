@@ -134,7 +134,7 @@ void sub_08031174(void);
 void sub_080312CC(void);
 void sub_08031608(void);
 void sub_08036340(s32 arg0);
-u32 sub_08036E54(u32 arg0);
+u32 Clamp1To99(u32 arg0);
 void sub_08039430(void);
 void sub_080396C4(void);
 void sub_0803D5A0(void);
@@ -658,7 +658,7 @@ void sub_08036340(s32 arg0) {
     LoadLeTilemap(var_r1, 0U, &gUnknown_08488450, (u32) *(u16 *)0x0400000A, 0x329U);
 }
 
-u32 sub_08036E54(u32 arg0) {
+u32 Clamp1To99(u32 arg0) {
     u32 var_r0;
 
     var_r0 = arg0;

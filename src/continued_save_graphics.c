@@ -41,7 +41,7 @@ void sub_0805E404(void)
 
 void sub_0805E450(void)
 {
-    sub_08040CD0(0, 128);
+    ClearFrameObjects(0, 128);
     sub_080415BC();
     *(volatile u16 *)0x04000000 = 0x60;
     gUnknown_0300137C++;

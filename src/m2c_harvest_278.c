@@ -43,7 +43,7 @@ void sub_0803CFC8(void) {
         temp_r2->unknown2C[0] = temp_r0 - 1;
     } else {
         temp_r2->flags |= 0x8000;
-        sub_08040BD8(gState0NextCommands_083B6100[firstFrames[gState0TypedWork.bytes[0x12F]].unknown2C[1]], gState0TypedWork.bytes[0x12F]);
+        RunFrameObjectCommands(gState0NextCommands_083B6100[firstFrames[gState0TypedWork.bytes[0x12F]].unknown2C[1]], gState0TypedWork.bytes[0x12F]);
     }
     frames=gFrameObjects;
     temp_r1=&frames[gState0TypedWork.bytes[0x12F]];

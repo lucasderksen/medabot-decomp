@@ -6,7 +6,7 @@ extern u8 gLaterBuffer_03006D38[];
 
 void sub_0804D208(void)
 {
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     u8 *work = gUnknown_030057E0;
     work[0x7FF] = value;
 }
@@ -15,7 +15,7 @@ void sub_0804D224(void)
 {
     u8 *work, *argument;
     u32 selected, value, index;
-    sub_0804D8CC(5);
+    ReadBankedScriptArgs(5);
     work = gUnknown_030057E0;
     argument = work + 0xC94;
     selected = *argument;
@@ -30,7 +30,7 @@ void sub_0804D270(void)
 {
     u8 *work;
     u32 index;
-    sub_0804D8CC(2);
+    ReadBankedScriptArgs(2);
     work = gUnknown_030057E0;
     index = sub_0804DBF0(work[0xC94]);
     gLaterBuffer_03006D20[10] = index + 79;
@@ -41,7 +41,7 @@ void sub_0804D2A8(void)
 {
     u8 *work, *argument;
     u32 selected, value, index;
-    sub_0804D8CC(5);
+    ReadBankedScriptArgs(5);
     work = gUnknown_030057E0;
     argument = work + 0xC94;
     selected = *argument;
@@ -56,7 +56,7 @@ void sub_0804D2F4(void)
 {
     u8 *work;
     u32 index;
-    sub_0804D8CC(2);
+    ReadBankedScriptArgs(2);
     work = gUnknown_030057E0;
     index = sub_0804DBF0(work[0xC94]);
     gLaterBuffer_03006D20[10] = index + 79;
@@ -105,7 +105,7 @@ void sub_0804D398(void)
 
 void sub_0804D400(void)
 {
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     gLaterBuffer_03006D38[1] = value;
     gUnknown_030057E0[0xC89] = 1;
 }
@@ -122,14 +122,14 @@ void sub_0804D48C(void)
 
 void sub_0804D490(void)
 {
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     u8 *work = gUnknown_030057E0;
     work[0xC32] = value;
 }
 
 void sub_0804D4AC(void)
 {
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     u8 *work = gUnknown_030057E0;
     work[0xC94] = value;
     work[0xC89] = 1;
@@ -137,7 +137,7 @@ void sub_0804D4AC(void)
 
 void sub_0804D4D4(void)
 {
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     u8 *work = gUnknown_030057E0;
     work[0xC94] = value;
     work[0xC89] = 1;
@@ -150,7 +150,7 @@ void sub_0804D5DC(void)
 
 void sub_0804D758(void)
 {
-    sub_0804D8CC(1);
+    ReadBankedScriptArgs(1);
     gUnknown_030057E0[0xC89] = 1;
 }
 

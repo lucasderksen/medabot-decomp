@@ -16,7 +16,7 @@
 extern const u8 *const gState0NextCommands_083B6100[];
 extern const void *const gUnknown_083CEDF4[];
 extern void sub_0801BFB4(const void *, u32);
-extern void sub_08040BD8(const u8 *, u8);
+extern void RunFrameObjectCommands(const u8 *, u8);
 extern void sub_0804422C(u32);
 
 void sub_0803C738(void);
@@ -44,7 +44,7 @@ void sub_0803C738(void) {
     } else {
         temp_r2->flags |= 0x8000;
         commands = gState0NextCommands_083B6100;
-        sub_08040BD8(commands[firstFrames[*selected].unknown2C[1]], *selected);
+        RunFrameObjectCommands(commands[firstFrames[*selected].unknown2C[1]], *selected);
         assets = gUnknown_083CEDF4;
         sub_0801BFB4(assets[firstFrames[*selected].unknown2C[2]], 0);
     }

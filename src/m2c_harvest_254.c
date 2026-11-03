@@ -75,7 +75,7 @@ void sub_0803D2A8(void) {
     sub_08036370(frames[gState0TypedWork.bytes[0x12F]].unknown2C[1], *temp_r5);
     sub_080364A8(frames[gState0TypedWork.bytes[0x12F]].unknown2C[1], *temp_r5);
     if (total == 4) {
-        sub_08040CD0(gState0TypedWork.bytes[0x12F], 1U);
+        ClearFrameObjects(gState0TypedWork.bytes[0x12F], 1U);
     }
 }
 

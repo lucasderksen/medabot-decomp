@@ -19,7 +19,7 @@ void sub_08021A14(void) {
     const u8 **table;
     u32 keys;
     table=gState0NextCommands_083B6100;
-    sub_08040BD8(table[59], 0x21U);
+    RunFrameObjectCommands(table[59], 0x21U);
     gState0TypedWork.widths.word86 -= 1;
     if ((gState0TypedWork.bytes[0x89] == 0) && ((keys = *(u8 *)&gRepeatedKeys), ((keys & 1u) & keys))) {
         gState0TypedWork.widths.word86 = (u16) gState0TypedWork.bytes[0x89];

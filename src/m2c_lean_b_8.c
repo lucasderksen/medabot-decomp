@@ -32,7 +32,7 @@ void sub_0803DEF0(void) {
         sub_0803EA18();
         sub_0803EA38();
         if (1 & gFamilyKeyBytes49558_0300058C) {
-            sub_08074DE0(4);
+            PlaySoundEffect(4);
             gMainSerialOutgoingWork.word06 = gCounter6ED08_03001800.value1A0 + 0x8000;
             gState0TypedWork.widths.word86 = 0;
             gUnknown_0300137C++;
@@ -40,7 +40,7 @@ void sub_0803DEF0(void) {
     } else {
         word = gMainSerialOutgoingWork.words[1 ^ gUnknown_03000B90][1];
         if (word & 0x8000) {
-            sub_08074DE0(4);
+            PlaySoundEffect(4);
             gCounter6ED08_03001800.value1A0 = word;
             gState0TypedWork.bytes[0x1B] = 0;
             gState0TypedWork.widths.word86 = 0;

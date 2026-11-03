@@ -42,7 +42,7 @@ extern const u8 gUnknown_083CE374[];
 extern s8 gUnknown_0300056F;
 extern struct WaitWork6F934 gWaitWork6F934;
 extern u32 sub_0803E780(void);
-extern u32 sub_0807CEC8(u32,u32);
+extern u32 __udivsi3(u32,u32);
 extern u8 gUnknown_02016000[0x4000];
 extern u8 gUnknown_03001800[];
 extern u8 gUnknown_030018D2[3];
@@ -69,7 +69,7 @@ void sub_08030860(void);
 void sub_08031A70(void);
 void sub_08031ABC(void);
 void sub_080383E8(void);
-void sub_0803D450(void);
+void LoadActionHalfwordScriptParams(void);
 void sub_0803D538(void);
 void sub_0806F934(void);
 s32 sub_08071C68(u32 index);
@@ -138,7 +138,7 @@ void sub_08026080(void) {
     u32 offset=0x840;
     do{
         struct FrameObject *frames;
-        sub_08040BD8(*commands,(u8)(i+0x21));frames=gFrameObjects;
+        RunFrameObjectCommands(*commands,(u8)(i+0x21));frames=gFrameObjects;
         if(((struct FrameObject *)(offset+(u32)frames))->commandStopped==0xFF)found=1;
         offset+=0x40;i++;
     }while(i<=2);
@@ -156,8 +156,8 @@ void sub_080278B8(void) {
             u32 index=i+0x21;
             u8 shortIndex=index;
             struct FrameObject *frames;
-            sub_08040BD8(command,shortIndex);frames=gFrameObjects;
-            if(((struct FrameObject *)((index<<6)+(u32)frames))->commandStopped==0xFF){sub_08040CD0(shortIndex,1);found=1;}
+            RunFrameObjectCommands(command,shortIndex);frames=gFrameObjects;
+            if(((struct FrameObject *)((index<<6)+(u32)frames))->commandStopped==0xFF){ClearFrameObjects(shortIndex,1);found=1;}
         }
         i++;
     }while(i<=2);
@@ -179,7 +179,7 @@ void sub_0802A440(void) {
         }
         offset+=0x40;i++;
     }while(i<=2);
-    if(selectedCount==completed){sub_08074DE0(0x2B);((struct ContinuedPhase33 *)&gState0TransferWork)->phase++;}
+    if(selectedCount==completed){PlaySoundEffect(0x2B);((struct ContinuedPhase33 *)&gState0TransferWork)->phase++;}
 }
 
 void sub_08030860(void) {
@@ -193,7 +193,7 @@ void sub_08031A70(void) {
  void (*const *callbacks)(void);
  u8 *setup;u32 part,bank;
  sub_08032F64();commands=&gState0TransferWork.bytes[0x61];
- sub_0803F624(commands,3,0);
+ FillBytes(commands,3,0);
  callbacks=gUnknown_083AEEA0;setup=gSetupBuffer_03000590;
  part=commands[-4]*24u;bank=commands[-5];
  callbacks[setup[part+(bank<<8)+0x49]]();
@@ -223,7 +223,7 @@ void sub_080383E8(void) {
  } while(counter<=26u);
 }
 
-void sub_0803D450(void) {
+void LoadActionHalfwordScriptParams(void) {
 
  const s16 *const *tables=gUnknown_083CE164;
  u8 *work=gUnknown_03001800;
@@ -284,7 +284,7 @@ s32 sub_08071C68(u32 index) {
  frame->screenX=x;
  ((struct FrameObject *)((u32)frames+(((u32)slot+4)<<6)))->screenX=x;
  if((*(u16 *)((u8 *)(frame) + 0x34)) <= frame->unknown1A) {
-  quotient=sub_0807CEC8(frame->frameAndGroup,12);
+  quotient=__udivsi3(frame->frameAndGroup,12);
   tile=(u16)((u16)quotient*12)+3;
   (*(u16 *)((u8 *)(frame) + 0x30))=tile;
   frame->frameAndGroup=tile;
@@ -305,7 +305,7 @@ s32 sub_08071CBC(u32 index) {
  frame->screenX=x;
  ((struct FrameObject *)((u32)frames+(((u32)slot+4)<<6)))->screenX=x;
  if((*(u16 *)((u8 *)(frame) + 0x34)) <= frame->unknown1A) {
-  quotient=sub_0807CEC8(frame->frameAndGroup,12);
+  quotient=__udivsi3(frame->frameAndGroup,12);
   tile=(u16)((u16)quotient*12)+3;
   (*(u16 *)((u8 *)(frame) + 0x30))=tile;
   frame->frameAndGroup=tile;

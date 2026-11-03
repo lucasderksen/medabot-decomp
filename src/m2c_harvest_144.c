@@ -83,7 +83,7 @@ void sub_08028E84(void) {
     u16 y;
     commands=gState0NextCommands_083B6100;
     frames=(struct ContinuedDropFrame21 *)gFrameObjects;
-    sub_08040BD8(commands[frames->commandIndex],0x21);
+    RunFrameObjectCommands(commands[frames->commandIndex],0x21);
     y=(u16)frames->screenY;
     if (frames->screenY == 0x40) {
         gState0TypedWork.widths.word86=0x3C;

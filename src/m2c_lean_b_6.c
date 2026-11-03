@@ -42,8 +42,8 @@ struct FrameObjectWords {
     u8 bytes34[0xC];
 };
 extern struct FrameObjectWords gFrameObjectWords[] asm("gFrameObjects");
-extern void sub_0803D450(void);
-extern void sub_0803D4AC(void);
+extern void LoadActionHalfwordScriptParams(void);
+extern void AdvanceActionHalfwordScript(void);
 
 void sub_080397B0(void);
 
@@ -51,7 +51,7 @@ void sub_080397B0(void) {
 
     u8 flag;
 
-    sub_0803D450();
+    LoadActionHalfwordScriptParams();
     gFrameObjectWords[3].byte2B = gCounter6ED08_03001800.value102;
     flag = gCounter6ED08_03001800.flagsF8 & 2;
     if (flag == 0) {
@@ -62,5 +62,5 @@ void sub_080397B0(void) {
         gFrameObjectWords[3].word30 = gCounter6ED08_03001800.pos154[2];
     }
     gFrameObjectWords[3].byte29 = 8;
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }

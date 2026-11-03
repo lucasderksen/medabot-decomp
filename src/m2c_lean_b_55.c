@@ -17,8 +17,8 @@
 #include "sprite_layouts.h"
 #include "tile_text.h"
 
-extern u16 sub_0807CEC8(u32 value, u32 divisor);
-extern u16 sub_0807CF40(u32 value, u32 divisor);
+extern u16 __udivsi3(u32 value, u32 divisor);
+extern u16 __umodsi3(u32 value, u32 divisor);
 
 void sub_0805A6C8(u16 number, u8 x, u8 y);
 
@@ -34,51 +34,51 @@ void sub_0805A6C8(u16 number, u8 x, u8 y) {
     base = 1;
     block = 0x16;
     dst = (volatile u16 *)(block << 11) + (x + 0x03000000) + (y << 5);
-    digit = sub_0807CEC8(number, 10000);
+    digit = __udivsi3(number, 10000);
     if (digit != 0)
         *dst++ = (digit + base) | (palette << 12);
     else
         *dst++;
-    digit = sub_0807CF40(sub_0807CEC8(number, 1000), 10);
-    if (digit != 0 || sub_0807CEC8(number, 10000) != 0)
+    digit = __umodsi3(__udivsi3(number, 1000), 10);
+    if (digit != 0 || __udivsi3(number, 10000) != 0)
         *dst++ = (digit + base) | (palette << 12);
     else
         *dst++;
-    digit = sub_0807CF40(sub_0807CEC8(number, 100), 10);
-    if (digit != 0 || sub_0807CEC8(number, 10000) != 0 || sub_0807CF40(sub_0807CEC8(number, 1000), 10) != 0)
+    digit = __umodsi3(__udivsi3(number, 100), 10);
+    if (digit != 0 || __udivsi3(number, 10000) != 0 || __umodsi3(__udivsi3(number, 1000), 10) != 0)
         *dst++ = (digit + base) | (palette << 12);
     else
         *dst++;
-    digit = sub_0807CF40(sub_0807CEC8(number, 10), 10);
-    if (digit != 0 || sub_0807CEC8(number, 10000) != 0 || sub_0807CF40(sub_0807CEC8(number, 1000), 10) != 0
-        || sub_0807CF40(sub_0807CEC8(number, 100), 10) != 0)
+    digit = __umodsi3(__udivsi3(number, 10), 10);
+    if (digit != 0 || __udivsi3(number, 10000) != 0 || __umodsi3(__udivsi3(number, 1000), 10) != 0
+        || __umodsi3(__udivsi3(number, 100), 10) != 0)
         *dst++ = (digit + base) | (palette << 12);
     else
         *dst++;
-    *dst = (sub_0807CF40(number, 10) + base) | (palette << 12);
+    *dst = (__umodsi3(number, 10) + base) | (palette << 12);
 
     dst = (volatile u16 *)(block << 11) + (x + 0x03000000) + ((y + 1) << 5);
     base = 0xB;
-    digit = sub_0807CEC8(number, 10000);
+    digit = __udivsi3(number, 10000);
     if (digit != 0)
         *dst++ = (digit + base) | (palette << 12);
     else
         *dst++;
-    digit = sub_0807CF40(sub_0807CEC8(number, 1000), 10);
-    if (digit != 0 || sub_0807CEC8(number, 10000) != 0)
+    digit = __umodsi3(__udivsi3(number, 1000), 10);
+    if (digit != 0 || __udivsi3(number, 10000) != 0)
         *dst++ = (digit + base) | (palette << 12);
     else
         *dst++;
-    digit = sub_0807CF40(sub_0807CEC8(number, 100), 10);
-    if (digit != 0 || sub_0807CEC8(number, 10000) != 0 || sub_0807CF40(sub_0807CEC8(number, 1000), 10) != 0)
+    digit = __umodsi3(__udivsi3(number, 100), 10);
+    if (digit != 0 || __udivsi3(number, 10000) != 0 || __umodsi3(__udivsi3(number, 1000), 10) != 0)
         *dst++ = (digit + base) | (palette << 12);
     else
         *dst++;
-    digit = sub_0807CF40(sub_0807CEC8(number, 10), 10);
-    if (digit != 0 || sub_0807CEC8(number, 10000) != 0 || sub_0807CF40(sub_0807CEC8(number, 1000), 10) != 0
-        || sub_0807CF40(sub_0807CEC8(number, 100), 10) != 0)
+    digit = __umodsi3(__udivsi3(number, 10), 10);
+    if (digit != 0 || __udivsi3(number, 10000) != 0 || __umodsi3(__udivsi3(number, 1000), 10) != 0
+        || __umodsi3(__udivsi3(number, 100), 10) != 0)
         *dst++ = (digit + base) | (palette << 12);
     else
         *dst++;
-    *dst = (sub_0807CF40(number, 10) + base) | (palette << 12);
+    *dst = (__umodsi3(number, 10) + base) | (palette << 12);
 }

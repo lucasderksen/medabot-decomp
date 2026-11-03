@@ -11,7 +11,7 @@ void sub_080336DC(void)
     u32 conditionBase;
     u32 offset;
     u32 stride;
-    work[0x60] = sub_08032FB8(work[0x5C]);
+    work[0x60] = GetOtherSlotGroupStart(work[0x5C]);
     outer = 0;
     base = (u32)gSetupBuffer_03000590;
     offset = work[0x60];
@@ -57,7 +57,7 @@ void sub_08033754(void)
     u32 conditionBase;
     u32 offset;
     u32 stride;
-    work[0x60] = sub_08032FB8(work[0x5C]);
+    work[0x60] = GetOtherSlotGroupStart(work[0x5C]);
     outer = 0;
     base = (u32)gSetupBuffer_03000590;
     offset = work[0x60];

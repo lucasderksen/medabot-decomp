@@ -17,7 +17,7 @@ struct ContinuedSetup24D18 {u8 prefix[0xC9];u8 mode,part,firstValue,secondValue;
 struct ContinuedAECCFrame33 { u8 pad00[0x840]; struct FrameObject frame; };
 
 extern const u8 *const gState0NextCommands_083B6100[0x66];
-extern u32 sub_08036E54(u32);
+extern u32 Clamp1To99(u32);
 
 void sub_08024D18(void);
 void sub_0802AECC(void);
@@ -27,8 +27,8 @@ void sub_08024D18(void) {
     u8 *work=gState0TransferWork.bytes;
     u8 *bank=work+0x88;
     setup[*bank].mode=0x2B;
-    setup[*bank].firstValue=sub_08036E54(*(s16 *)(work+0xE8));
-    setup[*bank].secondValue=sub_08036E54(*(s16 *)(work+0xEC));
+    setup[*bank].firstValue=Clamp1To99(*(s16 *)(work+0xE8));
+    setup[*bank].secondValue=Clamp1To99(*(s16 *)(work+0xEC));
     switch(work[0x8B]) {
     case 1:setup[*bank].part=2;break;
     case 2:setup[*bank].part=3;break;
@@ -51,7 +51,7 @@ void sub_0802AECC(void) {
  frames->frame.screenY = (u16)gFrameObjects[*bank * 4 + 0x5D].screenY - 4;
  frames->frame.palette = 7;
  frames->frame.priority = zero;
- sub_08040B90(gState0NextCommands_083B6100[0x65], 0x21);
- sub_08074DE0(0x71);
+ InitFrameObjectCommands(gState0NextCommands_083B6100[0x65], 0x21);
+ PlaySoundEffect(0x71);
  work[0xAA]++;
 }

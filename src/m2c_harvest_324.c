@@ -30,8 +30,8 @@ void sub_080611E8(void) {
     if (((struct Fade611E8 *)gMainContextPointer_03006F74)->mode == 1) {
         sub_08060BE4(((struct Fade611E8 *)gMainContextPointer_03006F74)->selection, 8);
         if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
-            sub_0803F684(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0x7FFEU);
-            sub_0803F998(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0x7FFDU);
+            BlendBgPaletteBanksNow(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0x7FFEU);
+            BlendObjPaletteBanksNow(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0x7FFDU);
             gState0TypedWork.bytes[0x84] += 1;
             return;
         }
@@ -45,8 +45,8 @@ void sub_080611E8(void) {
         goto store_phase;
     }
     if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
-        sub_0803F684(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
-        sub_0803F998(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
+        BlendBgPaletteBanksNow(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
+        BlendObjPaletteBanksNow(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
         gState0TypedWork.bytes[0x84] += 1;
         return;
     }

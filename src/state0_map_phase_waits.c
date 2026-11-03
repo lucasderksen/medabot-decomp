@@ -13,7 +13,7 @@ void sub_08012D98(void)
     sub_080195C0();
     selection = gState0TransferWork.bytes;
     selection += 0x80;
-    sub_080164F4(*selection);
+    CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     sub_08016554();
     base = gUnknown_03000440;
@@ -22,7 +22,7 @@ void sub_08012D98(void)
     (*counter)++;
     if (*counter == 20)
     {
-        sub_08040CD0(30, 11);
+        ClearFrameObjects(30, 11);
         *counter = 0;
         gUnknown_0300137C++;
     }
@@ -35,7 +35,7 @@ void sub_08012DF4(void)
     sub_080195C0();
     selection = gState0TransferWork.bytes;
     selection += 0x80;
-    sub_080164F4(*selection);
+    CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     sub_080165D0();
     sub_08016614();
@@ -53,7 +53,7 @@ void sub_08012E40(void)
     sub_080195C0();
     selection = gState0TransferWork.bytes;
     selection += 0x80;
-    sub_080164F4(*selection);
+    CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     sub_08015AFC();
     sub_08016068();
@@ -69,7 +69,7 @@ void sub_08012EA8(void)
     sub_080195C0();
     selection = gState0TransferWork.bytes;
     selection += 0x80;
-    sub_080164F4(*selection);
+    CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     sub_08016F28();
     sub_08016F64();

@@ -127,7 +127,7 @@
 	bl	sub_08051940
 	adds	r1, r0, #0
 	movs	r0, #0x10
-	bl	sub_0807CD2C
+	bl	__divsi3
 	ldr	r2, .L08051E04
 	adds	r1, r6, r2
 	strb	r0, [r1]

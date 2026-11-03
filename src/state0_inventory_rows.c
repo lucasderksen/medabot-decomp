@@ -48,7 +48,7 @@ u32 sub_0800A8A0(void)
     }
     if (*(u8 *)&gRepeatedKeys & 192)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         gFrameObjects[3].screenY = gState0TypedWork.bytes[0x46] * 16 + 56;
         sub_0800A594();
         return 1;
@@ -80,7 +80,7 @@ u32 sub_0800A960(void)
         {
             const u8 *source = gUnknownBytes_083B7F8C + record->byte1 * 3;
             u8 *part = &work[0xEE];
-            sub_08041D04(source, part, 3);
+            CopyBytesU8Count(source, part, 3);
             return *part;
         }
         return 52;
@@ -91,7 +91,7 @@ u32 sub_0800A960(void)
         struct InventoryRecord *record = &records[work[0x3D]];
         if (record->byte5 > 29)
         {
-            sub_08041D04(gUnknownBytes_083B7F8C + record->byte1 * 3, &work[0xEE], 3);
+            CopyBytesU8Count(gUnknownBytes_083B7F8C + record->byte1 * 3, &work[0xEE], 3);
             return work[0xEF];
         }
         return 52;
@@ -102,7 +102,7 @@ u32 sub_0800A960(void)
         struct InventoryRecord *record = &records[work[0x3D]];
         if (record->byte5 > 59)
         {
-            sub_08041D04(gUnknownBytes_083B7F8C + record->byte1 * 3, &work[0xEE], 3);
+            CopyBytesU8Count(gUnknownBytes_083B7F8C + record->byte1 * 3, &work[0xEE], 3);
             return work[0xF0];
         }
         return 52;
@@ -123,7 +123,7 @@ void sub_0800AA1C(void)
     gFrameObjects[6].palette = 14;
     gFrameObjects[6].tableSelector = 0;
     gFrameObjects[6].priority = 193;
-    sub_08040B90(gUnknownPointers_083B6100[3], 6);
+    InitFrameObjectCommands(gUnknownPointers_083B6100[3], 6);
 }
 
 
@@ -133,7 +133,7 @@ void sub_0800ABA4(void)
     const void *const *assets = gUnknownPointers_083B4C60;
     struct InventoryRecord *records = gInventoryRecords;
     u32 assetIndex = records[gState0TypedWork.bytes[0x3D]].unknown06[3] + 81;
-    sub_0803F15C(16, 2, 6, 10, assets[assetIndex], *(volatile u16 *)0x0400000A, 0x200);
+    CopyTilemapRect(16, 2, 6, 10, assets[assetIndex], *(volatile u16 *)0x0400000A, 0x200);
 }
 
 void sub_0800ABF0(void)
@@ -211,7 +211,7 @@ void sub_0800AF0C(void)
         struct State0Record8 *entry = &entries[record];
         sub_08042E58(entry->byte3, entry->byte4, entry->byte5, entry->byte6, 2, 100, 24, 64, 0, 2, 0);
     }
-    else sub_08040D0C(100, 4);
+    else HideFrameObjects(100, 4);
 }
 
 void sub_0800AF64(void)

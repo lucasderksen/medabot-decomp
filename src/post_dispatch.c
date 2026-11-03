@@ -14,8 +14,8 @@ extern u8 gLaterBuffer_03005310[];
 extern u8 gLaterBuffer_030064A0[];
 extern const void *const gPostDispatchPointers_083BA658[];
 extern u32 gPostDispatchWord_03002B70;
-extern void sub_08074DE0(u32);
-extern void sub_08074B88(u32);
+extern void PlaySoundEffect(u32);
+extern void PlayMusic(u32);
 extern void sub_080750F0(u32);
 extern u32 sub_08041D70(u8);
 extern void sub_080422B8(u32, u32);
@@ -60,9 +60,9 @@ void sub_08047850(s32 mode)
     }
 }
 
-void sub_08047BA8(u32 value) { sub_08074DE0(value); }
+void sub_08047BA8(u32 value) { PlaySoundEffect(value); }
 
-void sub_08047BB4(u32 value) { sub_08074B88(value); }
+void sub_08047BB4(u32 value) { PlayMusic(value); }
 
 void sub_08047BC0(u32 value) { sub_080750F0(value); }
 
@@ -168,7 +168,7 @@ u32 sub_08047C24(u8 first, u8 second, u8 mode, const void *script)
         gLaterBuffer_030064A0[0]++;
         break;
     case 1:
-        if (sub_0803FB3C(script))
+        if (RunDialogue(script))
         {
             work[0] = 0;
             work[1]++;

@@ -73,8 +73,8 @@ extern struct Frame3B9A4 gFrames3B9A4[] asm("gFrameObjects");
 extern struct Frame3BBE0 gFrames3BBE0[] asm("gFrameObjects");
 extern struct SetupRecord3EE10 gSetupRecords3EE10[] asm("gSetupBuffer_03000590");
 extern void sub_08036120(s32);
-extern void sub_0803D450(void);
-extern void sub_0803D4AC(void);
+extern void LoadActionHalfwordScriptParams(void);
+extern void AdvanceActionHalfwordScript(void);
 
 void sub_0803A93C(void);
 void sub_0803AF2C(void);
@@ -91,14 +91,14 @@ void sub_0803A93C(void) {
     u32 root;
     struct Frame3A93C *f;
 
-    sub_0803D450();
+    LoadActionHalfwordScriptParams();
     for (i = 0; i <= 1; i++) {
         if (gFrames3A93C[i + 0xC].byte29 == 0) {
             slot = i + 0xC;
             break;
         }
     }
-    sub_08040CD0(slot, 1);
+    ClearFrameObjects(slot, 1);
     root = (u32)gFrames3A93C;
     f = (struct Frame3A93C *)(root + (slot << 6));
     f->byte2B = gCounter6ED08_03001800.value102;
@@ -110,7 +110,7 @@ void sub_0803A93C(void) {
     f->byte27 = gCounter6ED08_03001800.value10E;
     f->byte28 = 0;
     f->byte29 = 0x22;
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }
 
 void sub_0803AF2C(void) {
@@ -118,7 +118,7 @@ void sub_0803AF2C(void) {
     u32 i;
     union { struct TileCoordinates tile; s32 packed; } c;
 
-    sub_0803D450();
+    LoadActionHalfwordScriptParams();
     gFrameObjects[0xA].byte2B = gCounter6ED08_03001800.value102;
     gFrameObjects[0xA].screenY = gCounter6ED08_03001800.index106;
     gFrameObjects[0xA].unknown23[1] = gCounter6ED08_03001800.value10A;
@@ -137,7 +137,7 @@ void sub_0803AF2C(void) {
         gFrameObjects[i + 0xB].palette = 0xE;
         gFrameObjects[i + 0xB].priority = 0x80;
         gFrameObjects[i + 0xB].unknown2C[1] = gCounter6ED08_03001800.value110;
-        sub_08040B90(gState0NextCommands_083B6100[gFrameObjects[i + 0xB].unknown2C[1]], i + 0xB);
+        InitFrameObjectCommands(gState0NextCommands_083B6100[gFrameObjects[i + 0xB].unknown2C[1]], i + 0xB);
         gFrameObjects[i + 0xB].byte2B = gCounter6ED08_03001800.value102;
         gFrameObjects[i + 0xB].unknown2C[0] = gCounter6ED08_03001800.value10C;
         gFrameObjects[i + 0xB].unknown23[6] = 0x31;
@@ -146,7 +146,7 @@ void sub_0803AF2C(void) {
         gFrameObjects[i + 0xB].screenY = c.packed >> 16;
         gFrameObjects[i + 0xB].unknown23[3] = (i << 6) - 0x20;
     }
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }
 
 void sub_0803B1EC(void) {
@@ -156,14 +156,14 @@ void sub_0803B1EC(void) {
     u32 root;
     struct FrameObject *f;
 
-    sub_0803D450();
+    LoadActionHalfwordScriptParams();
     for (i = 0; i <= 8; i++) {
         if (gFrameObjects[i + 0xA].flags == 0) {
             slot = i + 0xA;
             break;
         }
     }
-    sub_08040CD0(slot, 1);
+    ClearFrameObjects(slot, 1);
     root = (u32)gFrameObjects;
     f = (struct FrameObject *)(root + (slot << 6));
     f->flags = (gCounter6ED08_03001800.value10E << 10) | 0x4004;
@@ -171,7 +171,7 @@ void sub_0803B1EC(void) {
     f->palette = 0xE;
     f->priority = 0x80;
     f->unknown2C[1] = gCounter6ED08_03001800.value110;
-    sub_08040B90(gState0NextCommands_083B6100[f->unknown2C[1]], slot);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[f->unknown2C[1]], slot);
     f->byte2B = gCounter6ED08_03001800.value102;
     f->screenY = gCounter6ED08_03001800.index106;
     f->unknown23[1] = gCounter6ED08_03001800.value10A;
@@ -185,7 +185,7 @@ void sub_0803B1EC(void) {
         f->screenX = 0xF0 - gCounter6ED08_03001800.value104;
         f->unknown23[2] = (0x20 - gCounter6ED08_03001800.value108) & 0x1F;
     }
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }
 
 void sub_0803B4F8(void) {
@@ -193,7 +193,7 @@ void sub_0803B4F8(void) {
     u32 i;
     union { struct TileCoordinates tile; s32 packed; } c;
 
-    sub_0803D450();
+    LoadActionHalfwordScriptParams();
     for (i = 0; i <= 7; i++) {
         gFrameObjects[i + 0xB].flags = 0xC604;
         gFrameObjects[i + 0xB].tableSelector = 0;
@@ -212,9 +212,9 @@ void sub_0803B4F8(void) {
         gFrameObjects[i + 0xB].byte2B = 0;
         gFrameObjects[i + 0xB].unknown23[0] = gCounter6ED08_03001800.value104;
         gFrameObjects[i + 0xB].unknown2C[1] = gCounter6ED08_03001800.index106;
-        sub_08040B90(gState0NextCommands_083B6100[gFrameObjects[i + 0xB].unknown2C[1]], i + 0xB);
+        InitFrameObjectCommands(gState0NextCommands_083B6100[gFrameObjects[i + 0xB].unknown2C[1]], i + 0xB);
     }
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }
 
 void sub_0803B9A4(void) {
@@ -292,7 +292,7 @@ void sub_0803EE10(void) {
         base = 3;
     else
         base = 0;
-    k = gUnknown_083AFE78[sub_080424B8() & 0xF];
+    k = gUnknown_083AFE78[NextRandomByte() & 0xF];
     for (i = 0; i <= 2; i++) {
         if (gSetupRecords3EE10[base + k].activeBA != 0) {
             gCounter6ED08_03001800.result1A4 = gSetupRecords3EE10[base + k].byte47;

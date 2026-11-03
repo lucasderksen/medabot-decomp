@@ -37,7 +37,7 @@ struct Main2SoundContext
 void sub_0805F8E0(void)
 {
     if (CONTEXT->byte00 == 1)
-        sub_08074DE0(CONTEXT->byte49 ? 5 : 4);
+        PlaySoundEffect(CONTEXT->byte49 ? 5 : 4);
     if (CONTEXT->byte00 != 32)
     {
         CONTEXT->byte00++;
@@ -55,7 +55,7 @@ void sub_0805F8E0(void)
 
 void sub_0805F960(void)
 {
-    if (sub_0803FB3C(gMain2ScriptSlots_0848521C[3]))
+    if (RunDialogue(gMain2ScriptSlots_0848521C[3]))
         gUnknown_0300137C++;
 }
 

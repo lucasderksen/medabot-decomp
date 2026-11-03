@@ -44,7 +44,7 @@ void sub_080349D8(void)
     u8 *first;
     u32 result;
     {
-        u32 side = sub_08032FB8(*selected);
+        u32 side = GetOtherSlotGroupStart(*selected);
         first = &work->byte60;
         *first = side;
     }
@@ -58,7 +58,7 @@ void sub_080349D8(void)
     else
     {
         u32 next;
-        *first = sub_08032FB8(*selected);
+        *first = GetOtherSlotGroupStart(*selected);
         next = sub_08033090(*first);
         {
             struct ObservedActionResultRecord *records = (void *)gSetupBuffer_03000590;
@@ -68,5 +68,5 @@ void sub_080349D8(void)
         work->byteB8 = 2;
     }
     sub_080355C4(((struct ObservedActionResultWork *)gState0TransferWork.bytes)->selected87);
-    sub_08034F08();
+    AdvanceActionByteScript();
 }

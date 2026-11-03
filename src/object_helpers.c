@@ -24,7 +24,7 @@ void sub_080415BC(void)
 
 void sub_080415E8(u8 first, u8 second, u8 third)
 {
-    sub_0803F624(gObjectParameterWork, 8, 0);
+    FillBytes(gObjectParameterWork, 8, 0);
     gObjectParameterWork[2] = first;
     gObjectParameterWork[3] = 0x7F;
     gObjectParameterWork[4] = second;
@@ -33,7 +33,7 @@ void sub_080415E8(u8 first, u8 second, u8 third)
 
 void sub_08041624(u8 first, u8 second, u8 third, u8 fourth)
 {
-    sub_0803F624(gObjectParameterWork, 8, 0);
+    FillBytes(gObjectParameterWork, 8, 0);
     gObjectParameterWork[2] = first;
     gObjectParameterWork[3] = fourth;
     gObjectParameterWork[4] = second;
@@ -52,7 +52,7 @@ void sub_08041BF4(void)
     gUnknown_03000440[0x29]++;
 }
 
-void sub_08041C14(u8 index, u8 operation, u16 value)
+void SetObjectXWobble(u8 index, u8 operation, u16 value)
 {
     switch ((operation & 0xC) >> 2)
     {
@@ -62,7 +62,7 @@ void sub_08041C14(u8 index, u8 operation, u16 value)
     }
 }
 
-void sub_08041C5C(u8 index, u8 operation, u16 value)
+void SetObjectYWobble(u8 index, u8 operation, u16 value)
 {
     switch ((operation & 0xC) >> 2)
     {
@@ -90,7 +90,7 @@ u32 sub_08041CD4(void)
     return 0;
 }
 
-void sub_08041D04(const u8 *source, u8 *destination, u8 size)
+void CopyBytesU8Count(const u8 *source, u8 *destination, u8 size)
 {
     u32 i;
     for (i = 0; i < size; i++)
@@ -123,7 +123,7 @@ void sub_08041FE4(u8 identifier)
         if ((gInventoryRecords[i].byte0 & 0x80) && gInventoryRecords[i].byte1 == identifier)
         {
             u8 flags = gInventoryRecords[i].byte0 & 0x1F;
-            sub_0803F624(&gInventoryRecords[i], 64, 0);
+            FillBytes(&gInventoryRecords[i], 64, 0);
             gInventoryRecords[i].byte0 = flags;
             return;
         }
@@ -193,8 +193,8 @@ void sub_0804169C(void)
 
 void sub_0804172C(void)
 {
-    sub_0803EF8C(8, 6, gUnknown_03000440[0x2C], gUnknown_03000440[0x2D], (*(volatile u16 *)0x04000008), 0);
-    sub_0803EF8C(8, 6, 0, 21, (*(volatile u16 *)0x04000008), 0);
+    FillTilemapRect(8, 6, gUnknown_03000440[0x2C], gUnknown_03000440[0x2D], (*(volatile u16 *)0x04000008), 0);
+    FillTilemapRect(8, 6, 0, 21, (*(volatile u16 *)0x04000008), 0);
     gUnknown_03000440[0x29]++;
 }
 
@@ -204,7 +204,7 @@ void sub_08041BA4(void)
     gFrameObjects[gUnknown_03000440[0x2B]].scaleY -= 8;
     if (gFrameObjects[gUnknown_03000440[0x2B]].scaleX == 0)
     {
-        sub_08040CD0(gUnknown_03000440[0x2B], 1);
+        ClearFrameObjects(gUnknown_03000440[0x2B], 1);
         gUnknown_03000440[0x29]++;
     }
 }
@@ -344,7 +344,7 @@ void sub_080419CC(void)
     gUnknown_03000440[0x84] = 0;
 }
 
-void sub_0804253C(u8 mode, u16 control, u16 duration)
+void StartBlendFade(u8 mode, u16 control, u16 duration)
 {
     u32 effect;
     u32 first;
@@ -370,7 +370,7 @@ void sub_0804253C(u8 mode, u16 control, u16 duration)
 
 /* The matching caller initializes mode to 1..6. The original default path
  * consumes uninitialized coefficient registers; it has no defined C value. */
-u32 sub_080425DC(void)
+u32 StepBlendFade(void)
 {
     u8 *base = gUnknown_03000440;
     u8 *work;

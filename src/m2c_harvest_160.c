@@ -11,7 +11,7 @@
 struct LocalMotionTransferWork { u8 pad00[8]; s32 counter8; u8 pad0C[4]; u8 phase10; };
 
 extern struct LocalMotionTransferWork gGraphicsTransferCounter;
-extern void sub_0806B718(u8);
+extern void ClearFrameObject(u8);
 
 s32 sub_08071E0C(void);
 
@@ -38,8 +38,8 @@ s32 sub_08071E0C(void) {
     }
     var_r1 = (u16)gFrameObjects[2].screenX;
     if ((s32) gFrameObjects[2].screenX <= 0x40) {
-        sub_0806B718(6);
-        sub_08074DE0(0x54U);
+        ClearFrameObject(6);
+        PlaySoundEffect(0x54U);
         gFrameObjects[2].unknown1A = 0;
         gGraphicsTransferCounter.phase10 += 1;
         return 1;

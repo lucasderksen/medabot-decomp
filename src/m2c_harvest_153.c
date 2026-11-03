@@ -87,13 +87,13 @@ void sub_08028CC8(void) {
     frames->frame.scaleY=0x40;
     frames->frame.angle=0;
     frames->frame.priority=0xF0;
-    sub_08040B90(gState0NextCommands_083B6100[frames->frame.unknown2C[2]],0x21);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[frames->frame.unknown2C[2]],0x21);
     if(1&gState0TransferWork.bytes[0xF8])frames->frame.screenX=0xB8;
     else {
         frames->frame.flags|=0x1000;
         frames->frame.screenX=0x38;
     }
-    sub_08074DE0(0x61);
+    PlaySoundEffect(0x61);
     gState0TransferWork.bytes[0xAA]++;
 }
 
@@ -115,7 +115,7 @@ void sub_0802ACF4(void) {
     frames->first.byte2B = 0x1C;
     frames->first.unknown2C[0] = 0;
     frames->first.unknown2C[1] = 0;
-    commands=gState0NextCommands_083B6100;sub_08040B90(commands[0x64],0x21);
+    commands=gState0NextCommands_083B6100;InitFrameObjectCommands(commands[0x64],0x21);
     frames->second.flags = -0x39DC;
     frames->second.tableSelector = 0;
     frames->second.screenX = (u16)gFrameObjects[*selection*4+0x5D].screenX + 0x20;
@@ -128,7 +128,7 @@ void sub_0802ACF4(void) {
     frames->second.byte2B = 0x1C;
     frames->second.unknown2C[0] = 0x80;
     frames->second.unknown2C[1] = 0;
-    sub_08074DE0(0x33U);
+    PlaySoundEffect(0x33U);
     work[0xAA]++;
 }
 

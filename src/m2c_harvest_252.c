@@ -24,11 +24,11 @@ struct Work74FFC{u8 pad0[0x3C];s32 duration;u16 current,target; s16 step;};
 extern const s16 *const gUnknown_083CE164[];
 extern const u8 gUnknown_080AF864[4];
 extern const void *const gUnknown_083CEDF4[];
-extern s32 sub_0807CD2C(s32,s32);
+extern s32 __divsi3(s32,s32);
 extern void sub_0801BCE4(u32,s32,s32);
 extern void sub_0801BD1C(const void*,s32,s32);
-extern void sub_0803D450(void);
-extern void sub_0803D4AC(void);
+extern void LoadActionHalfwordScriptParams(void);
+extern void AdvanceActionHalfwordScript(void);
 extern void sub_080723F8(void *);
 extern void sub_0807258C(void *);
 
@@ -37,7 +37,7 @@ void sub_08028A00(void);
 void sub_08039CF8(void);
 s32 sub_0803D424(void);
 void sub_0805BB0C(void);
-void sub_0806B718(u8 slot);
+void ClearFrameObject(u8 slot);
 void sub_08072414(struct Work72414 *work);
 void sub_08072CB0(struct Work72CB0 *work);
 void sub_08074FFC(struct Work74FFC *work,s32 target,s32 duration);
@@ -65,7 +65,7 @@ void sub_08028A00(void) {
 void sub_08039CF8(void) {
 
  u8 *work;struct FamilyFrame4Q26 *frames;
- sub_0803D450();work=gState0TransferWork.bytes;
+ LoadActionHalfwordScriptParams();work=gState0TransferWork.bytes;
  sub_0801BCE4(0x3C,*(s16*)(work+0x10A),9);
  frames=(void*)&gFrameObjects;
  frames->field2=*(u16*)(work+0x102);frames->field3=*(u16*)(work+0x104);
@@ -74,7 +74,7 @@ void sub_08039CF8(void) {
  frames->y=*(u16*)(work+0x108);
  if(!(2&work[0xF8])) {frames->x=*(u16*)(work+0x106);frames->tileX=*(u16*)(work+0x110);}
  else {u32 half=(u8)frames->field2>>1;frames->x=(30-half)-(*(u16*)(work+0x106)+half);frames->tileX=*(u16*)(work+0x110)+2;}
- gFrameObjects[4].unknown2C[1]=0;sub_0803D4AC();
+ gFrameObjects[4].unknown2C[1]=0;AdvanceActionHalfwordScript();
 }
 
 s32 sub_0803D424(void) {
@@ -92,7 +92,7 @@ void sub_0805BB0C(void) {
  gUnknown_03000B90=(*(volatile u32 *)0x04000128<<26)>>30;
 }
 
-void sub_0806B718(u8 slot) {
+void ClearFrameObject(u8 slot) {
 
  u32 zero=0;
  volatile u32 *dma=(volatile u32 *)0x040000D4;
@@ -118,6 +118,6 @@ void sub_08072CB0(struct Work72CB0 *work) {
 
 void sub_08074FFC(struct Work74FFC *work,s32 target,s32 duration) {
 
- s32 step=sub_0807CD2C((s32)((u32)target-work->current),duration);
+ s32 step=__divsi3((s32)((u32)target-work->current),duration);
  if(step){work->target=target;work->step=step;work->duration=duration;}
 }

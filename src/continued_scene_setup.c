@@ -48,8 +48,8 @@ u32 sub_08050CCC(u32 first, u32 second)
         }
         break;
     case 2:
-        sub_08049714(gFrameObjects, 8192);
-        sub_08049714(gLaterBuffer_030055A0, 512);
+        ClearBytes(gFrameObjects, 8192);
+        ClearBytes(gLaterBuffer_030055A0, 512);
         {
             u32 fill = 0;
             volatile struct TransitionDmaRegisters *dma = (void *)0x040000D4;

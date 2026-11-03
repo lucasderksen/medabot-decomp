@@ -15,7 +15,7 @@ void sub_08042678(void *destination, u32 inputLength)
     *out = 0xFE;
 }
 
-void sub_08042698(u32 width, u32 height, u32 x, u32 y, u32 control, u32 inputEntry)
+void FillTilemapRectSequential(u32 width, u32 height, u32 x, u32 y, u32 control, u32 inputEntry)
 {
     u16 entry = inputEntry;
     u32 screenOffset = ((control >> 8) & 31) << 11;
@@ -41,8 +41,8 @@ void sub_080426F0(u32 inputValue, u32 inputX, u32 inputY, u32 control, u32 input
     u8 remainder;
     if (value == 255)
     {
-        sub_08042698(1, 2, x, y, control, (u16)(entry + 24));
-        sub_08042698(1, 2, x + 1, y, control, (u16)(entry + 24));
+        FillTilemapRectSequential(1, 2, x, y, control, (u16)(entry + 24));
+        FillTilemapRectSequential(1, 2, x + 1, y, control, (u16)(entry + 24));
     }
     else
     {
@@ -52,23 +52,23 @@ void sub_080426F0(u32 inputValue, u32 inputX, u32 inputY, u32 control, u32 input
         digits[2] = remainder - (u8)(remainder / 10) * 10;
         if (digits[0] != 0)
         {
-            sub_08042698(1, 2, x, y, control, (u16)(entry + 20));
-            sub_08042698(1, 2, x + 1, y, control, (u16)(entry + 22));
+            FillTilemapRectSequential(1, 2, x, y, control, (u16)(entry + 20));
+            FillTilemapRectSequential(1, 2, x + 1, y, control, (u16)(entry + 22));
         }
         else if (digits[1] != 0)
         {
-            sub_08042698(1, 2, x, y, control, (u16)(entry + digits[1] * 2));
-            sub_08042698(1, 2, x + 1, y, control, (u16)(entry + digits[2] * 2));
+            FillTilemapRectSequential(1, 2, x, y, control, (u16)(entry + digits[1] * 2));
+            FillTilemapRectSequential(1, 2, x + 1, y, control, (u16)(entry + digits[2] * 2));
         }
         else
         {
-            sub_0803EF8C(1, 2, x, y, control, 0);
-            sub_08042698(1, 2, x + 1, y, control, (u16)(entry + digits[2] * 2));
+            FillTilemapRect(1, 2, x, y, control, 0);
+            FillTilemapRectSequential(1, 2, x + 1, y, control, (u16)(entry + digits[2] * 2));
         }
     }
 }
 
-void sub_08042838(u32 value, u32 x, u32 y, u32 inputColumns, u32 control, u32 inputEntry)
+void DrawNumberTileRow(u32 value, u32 x, u32 y, u32 inputColumns, u32 control, u32 inputEntry)
 {
     u8 columns = inputColumns;
     u16 entry = inputEntry;

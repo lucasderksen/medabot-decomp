@@ -98,7 +98,7 @@ u32 sub_08006C64(void)
         u8 *part1;
         u8 *part2;
         struct State0Record8 *base;
-        sub_08074DE0(4);
+        PlaySoundEffect(4);
         category = 0;
         if (gState0TypedWork.bytes[0x5A]) category = gState0TypedWork.bytes[0x5A] - 1;
         switch (category) {

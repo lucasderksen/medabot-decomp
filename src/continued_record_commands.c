@@ -34,11 +34,11 @@ void sub_0804BB14(void)
     u8 *buffer;
     u8 *data;
     struct FrameObject *objects;
-    sub_0804D8CC(4);
+    ReadBankedScriptArgs(4);
     gContinuedByte_03002B64 = 0;
     buffer = gContinuedRecordBuffer_030063F0;
     sub_080497C0(buffer, buffer + 16, 8);
-    sub_08049714(buffer, 8);
+    ClearBytes(buffer, 8);
     objects = gFrameObjects;
     objects[47].unknown23[5] = 0;
     objects[47].unknown23[3] = 0;
@@ -71,7 +71,7 @@ void sub_0804BD70(void)
     u32 value, part;
     u16 *destination;
     u32 zero;
-    sub_0804D8CC(2);
+    ReadBankedScriptArgs(2);
     work = gUnknown_030057E0;
     high = work + 0xC94;
     part = *high << 8;
@@ -118,7 +118,7 @@ void sub_0804BF34(void)
 
 void sub_0804BFB4(void)
 {
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     u8 *work = gUnknown_030057E0;
     u8 *row;
     work[0xC94] = value;

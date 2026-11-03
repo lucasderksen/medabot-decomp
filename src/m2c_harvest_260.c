@@ -23,7 +23,7 @@
 struct FamilyWork38F84 {u8 pad[0x87];u8 first,second;u8 gap89[0x1E];u8 part;u8 gapA8[0x40];u16 remaining;u8 gapEA[4];u16 sum;u8 gapF0[2];u16 copy;};
 
 extern s32 sub_08038E9C(void);
-extern s32 sub_0807CD2C(s32, s32);
+extern s32 __divsi3(s32, s32);
 extern struct FamilyWork38F84 gUnknown_03001800;
 extern u8 gUnknown_02023078;
 extern void sub_08035844(u32 index);
@@ -96,8 +96,8 @@ void sub_080627A0(void) {
 
  u32 inventoryRoot;
     if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
-        sub_0803F684(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
-        sub_0803F998(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
+        BlendBgPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
+        BlendObjPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
         gState0TypedWork.bytes[0x84] += 1;
         return;
     }
@@ -120,7 +120,7 @@ void sub_08067314(s32 arg0, s32 arg1) {
         temp_r7 = *(u16 *)0x0600DD3E;
         var_r4 = 0;
         if (var_r4 < arg0) {
-            temp_r0 = sub_0807CD2C(arg1 * 0x1D, 0xD);
+            temp_r0 = __divsi3(arg1 * 0x1D, 0xD);
             var_r1=(u16 *)(((u32)temp_r0<<1)+(u32)sp0);
             do {
                 if ((s32) (temp_r0 - var_r4) >= 0) {

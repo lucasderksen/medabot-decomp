@@ -32,7 +32,7 @@ struct SnapshotMetadata
 void sub_080505FC(void)
 {
     s32 i;
-    sub_08049714(gUnknown_030057E0 + 0x7DC, 0x20);
+    ClearBytes(gUnknown_030057E0 + 0x7DC, 0x20);
     for (i = 0; i <= 5; i++)
     {
         struct SnapshotMetadata *metadata = (struct SnapshotMetadata *)gLaterBuffer_030055A0;

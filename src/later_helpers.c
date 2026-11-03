@@ -29,25 +29,25 @@ extern u8 gLaterBuffer_03005590[];
 extern u8 gLaterBuffer_03005350[];
 extern u8 gLaterBuffer_03006D30[];
 extern u8 gLaterBuffer_030064A0[];
-extern void sub_08049714(void *destination, u32 length);
+extern void ClearBytes(void *destination, u32 length);
 
 void sub_08047574(void)
 {
-    sub_08049714(gLaterBuffer_03005310, 60);
-    sub_08049714(gLaterBuffer_030057A0, 56);
-    sub_08049714(gLaterBuffer_03006D14, 4);
-    sub_08049714(gLaterBuffer_030057DC, 4);
-    sub_08049714(gLaterBuffer_0300534C, 4);
-    sub_08049714(gLaterBuffer_030055A0, 512);
-    sub_08049714(gLaterBuffer_03006D40, 512);
-    sub_08049714(gLaterBuffer_03006F40, 52);
-    sub_08049714(gLaterBuffer_03006D38, 8);
-    sub_08049714(gLaterBuffer_03006D20, 16);
-    sub_08049714(gLaterBuffer_030057D8, 4);
-    sub_08049714(gLaterBuffer_03005590, 4);
-    sub_08049714(gLaterBuffer_03005350, 576);
-    sub_08049714(gLaterBuffer_03006D30, 4);
-    sub_08049714(gLaterBuffer_030064A0, 0x874);
+    ClearBytes(gLaterBuffer_03005310, 60);
+    ClearBytes(gLaterBuffer_030057A0, 56);
+    ClearBytes(gLaterBuffer_03006D14, 4);
+    ClearBytes(gLaterBuffer_030057DC, 4);
+    ClearBytes(gLaterBuffer_0300534C, 4);
+    ClearBytes(gLaterBuffer_030055A0, 512);
+    ClearBytes(gLaterBuffer_03006D40, 512);
+    ClearBytes(gLaterBuffer_03006F40, 52);
+    ClearBytes(gLaterBuffer_03006D38, 8);
+    ClearBytes(gLaterBuffer_03006D20, 16);
+    ClearBytes(gLaterBuffer_030057D8, 4);
+    ClearBytes(gLaterBuffer_03005590, 4);
+    ClearBytes(gLaterBuffer_03005350, 576);
+    ClearBytes(gLaterBuffer_03006D30, 4);
+    ClearBytes(gLaterBuffer_030064A0, 0x874);
 }
 
 

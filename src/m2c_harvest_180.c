@@ -53,7 +53,7 @@ extern void sub_0801BB7C(void);
 extern void sub_08033154(u32, u32);
 extern void sub_08036CCC(u32,u32,s32);
 extern void sub_0803836C(void);
-extern void sub_0806B718(u8);
+extern void ClearFrameObject(u8);
 
 u32 sub_0801B700(s32 excluded);
 void sub_0801FADC(void);
@@ -66,7 +66,7 @@ s32 sub_0806B3D8(u32 inputIndex);
 s32 sub_0806BD70(void);
 
 u32 sub_0801B700(s32 excluded) {
-    s32 index=sub_080424B8()&0x1F;
+    s32 index=NextRandomByte()&0x1F;
     u32 attempts=0;
     u8 selected;
     u8 mode=gUnknown_030004C9;
@@ -101,8 +101,8 @@ void sub_0801FADC(void) {
  firstLine = *counter;
  table = (const struct ContinuedFADCText *)gState0NextText_083B4C60;
  text = &table->entries[0x69];
- sub_0803F15C(0x1E, 1, 0, firstLine, *text, *(volatile u16 *)0x04000008, zero);
- sub_0803F15C(0x1E, 1, 0, 0x13 - *counter, *text, *(volatile u16 *)0x04000008, zero);
+ CopyTilemapRect(0x1E, 1, 0, firstLine, *text, *(volatile u16 *)0x04000008, zero);
+ CopyTilemapRect(0x1E, 1, 0, 0x13 - *counter, *text, *(volatile u16 *)0x04000008, zero);
  if (*counter == 9) {
   u32 clear = 0x200;
   CpuFastSet(&clear, gRenderWork->objects, 0x01000100u);
@@ -160,7 +160,7 @@ void sub_08029600(void) {
     struct ContinuedSetup29600 *row;
     u32 i;
     sub_0803836C();
-    gState0TransferWork.bytes[0x60]=sub_08032FC4(gState0TransferWork.bytes[0x87]);
+    gState0TransferWork.bytes[0x60]=GetSlotGroupStart(gState0TransferWork.bytes[0x87]);
     i=0;
     setup=(struct ContinuedSetup29600 *)gSetupBuffer_03000590;
     do {
@@ -201,7 +201,7 @@ void sub_08032640(void) {
     struct ContinuedSetup32DA0 *finalSetup;
     u32 var_r6,finalScanValue;
 
-    gState0TransferWork.bytes[0x60] = (u8) sub_08032FC4((u32) gState0TransferWork.bytes[0x5C]);
+    gState0TransferWork.bytes[0x60] = (u8) GetSlotGroupStart((u32) gState0TransferWork.bytes[0x5C]);
     var_r6 = 0;
     setup=(struct ContinuedSetup32DA0 *)gSetupBuffer_03000590;
     do {
@@ -214,7 +214,7 @@ void sub_08032640(void) {
     if (sub_08032FFC() != 0) {
         gState0TransferWork.bytes[0x5E]=sub_0803301C()+1;
     } else {
-        gState0TransferWork.bytes[0x60] = (u8) sub_08032FC4((u32) gState0TransferWork.bytes[0x5C]);
+        gState0TransferWork.bytes[0x60] = (u8) GetSlotGroupStart((u32) gState0TransferWork.bytes[0x5C]);
         var_r6 = 0;
     secondSetup=(struct ContinuedSetup32DA0 *)gSetupBuffer_03000590;
         do {
@@ -227,7 +227,7 @@ void sub_08032640(void) {
         if (sub_08032FFC() != 0) {
             gState0TransferWork.bytes[0x5E]=sub_0803301C()+1;
         } else {
-            gState0TransferWork.bytes[0x60] = (u8) sub_08032FC4((u32) gState0TransferWork.bytes[0x5C]);
+            gState0TransferWork.bytes[0x60] = (u8) GetSlotGroupStart((u32) gState0TransferWork.bytes[0x5C]);
             var_r6 = 0;
             do {
                 finalScanValue=gState0TransferWork.bytes[0x60];
@@ -241,7 +241,7 @@ void sub_08032640(void) {
             if (sub_08032FFC() != 0) {
                 gState0TransferWork.bytes[0x5E]=sub_0803301C()+1;
             } else {
-                gState0TransferWork.bytes[0x60] = (u8) sub_08032FC4((u32) gState0TransferWork.bytes[0x5C]);
+                gState0TransferWork.bytes[0x60] = (u8) GetSlotGroupStart((u32) gState0TransferWork.bytes[0x5C]);
                 gState0TransferWork.bytes[0x5E]=sub_08033090(gState0TransferWork.bytes[0x60])+1;
             }
         }
@@ -288,7 +288,7 @@ s32 sub_0806BD70(void) {
     u16 elapsed;
     switch ((u32)gFrameObjects[0].commandDelay) {
     case 0:
-        sub_08048864(0, 0xCA00, 0x2E, 10, 3);
+        InitFrameObject(0, 0xCA00, 0x2E, 10, 3);
         gFrameObjects[0].screenX = 120;
         gFrameObjects[0].screenY = 80;
         gFrameObjects[0].unknown1A = 0;
@@ -320,7 +320,7 @@ s32 sub_0806BD70(void) {
         break;
     case 3:
         if (gGraphicsCounter6BD7003001800.first == (s8)gGraphicsCounter6BD7003001800.progress) {
-            sub_08048864(0,0xCA08,0x2F,11,3);
+            InitFrameObject(0,0xCA08,0x2F,11,3);
             gFrameObjects[0].screenX = 120;
             gFrameObjects[0].screenY = 80;
             gFrameObjects[0].scaleX = 0;
@@ -337,7 +337,7 @@ s32 sub_0806BD70(void) {
     case 5:
     case 6:
         if (gFrameObjects[0].unknown1A == 0)
-            sub_08074DE0(24);
+            PlaySoundEffect(24);
         next = gFrameObjects[0].unknown1A + 1;
         gFrameObjects[0].unknown1A = next;
         if ((u16)next > 60) {
@@ -348,11 +348,11 @@ s32 sub_0806BD70(void) {
         break;
     case 7:
         if (gFrameObjects[0].unknown1A == 0)
-            sub_08074DE0(7);
+            PlaySoundEffect(7);
         next = gFrameObjects[0].unknown1A + 1;
         gFrameObjects[0].unknown1A = next;
         if ((u16)next > 30) {
-            sub_0806B718(0);
+            ClearFrameObject(0);
             gGraphicsCounter6BD7003001800.transferCount = 0;
             gGraphicsCounter6BD7003001800.total = gGraphicsCounter6BD7003001800.first + gGraphicsCounter6BD7003001800.second;
             *(volatile u16 *)0x04000050 = 0x840;

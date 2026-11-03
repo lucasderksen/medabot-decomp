@@ -51,7 +51,7 @@ void sub_0802A4C4(void) {
   while (index <= 2U);
   if (finished != 0)
   {
-    sub_08040CD0(0x24U, 3U);
+    ClearFrameObjects(0x24U, 3U);
     ((struct ContinuedPhaseWork28 *) (&gState0TransferWork))->phase = (u8) (((struct ContinuedPhaseWork28 *) (&gState0TransferWork))->phase + 1);
   }
 }

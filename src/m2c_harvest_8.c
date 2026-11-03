@@ -96,7 +96,7 @@ s32 sub_0801C2F0(s32);
 s32 sub_08031A70();
 s32 sub_08031ABC();
 s32 sub_0803572C(void *, s16);
-s32 sub_08035740(void *, s16, s32);
+s32 AddByteCapped(void *, s16, s32);
 s32 sub_08035C70();
 s32 sub_08035F20();
 s32 sub_08036120(s32);
@@ -114,8 +114,8 @@ s32 sub_080385F8();
 s32 sub_0803884C();
 s32 sub_080393EC();
 s32 sub_0803B8C8();
-s32 sub_0803D450();
-s32 sub_0803D4AC();
+s32 LoadActionHalfwordScriptParams();
+s32 AdvanceActionHalfwordScript();
 s32 sub_0803E79C();
 s32 sub_0803E894();
 s32 sub_0803E8B8();
@@ -164,7 +164,7 @@ s32 sub_0806ADB0();
 s32 sub_0806B01C();
 s32 sub_0806B0D4();
 s32 sub_0806B4C8();
-s32 sub_0806B718(s32);
+s32 ClearFrameObject(s32);
 s32 sub_0806BD70();
 s32 sub_0806BF18();
 s32 sub_0806BFEC();
@@ -204,9 +204,9 @@ s32 sub_08073E1C(void *);
 void sub_0807462C(s32);
 s32 sub_0807495C(void *);
 s32 sub_08074A04();
-s32 sub_0807CD2C(s32, s32);
-s32 sub_0807CF40(u8, s32);
-u8 sub_0807CEC8(u8, s32);
+s32 __divsi3(s32, s32);
+s32 __umodsi3(u8, s32);
+u8 __udivsi3(u8, s32);
 
 void sub_0800AFF8(void);
 void sub_0800F218(void);
@@ -427,23 +427,23 @@ void sub_080748B8(void);
 void sub_080748E8(void);
 
 void sub_0800AFF8(void) {
-    sub_08042838((u32) gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[0x1A], 0xBU, 9U, 3U, (u32) *(u16 *)0x0400000A, 0xC3C4U);
-    sub_08042838((u32) gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[0x1B], 0xBU, 0xCU, 3U, (u32) *(u16 *)0x0400000A, 0xC3C4U);
-    sub_08042838((u32) gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[0x1C], 0x19U, 9U, 3U, (u32) *(u16 *)0x0400000A, 0xC3C4U);
-    sub_08042838((u32) gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[0x1D], 0x19U, 0xCU, 3U, (u32) *(u16 *)0x0400000A, 0xC3C4U);
-    sub_08042838((u32) gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[0x1E], 0xBU, 0xFU, 3U, (u32) *(u16 *)0x0400000A, 0xC3C4U);
-    sub_08042838((u32) gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[0x1F], 0xBU, 0x12U, 3U, (u32) *(u16 *)0x0400000A, 0xC3C4U);
-    sub_08042838((u32) gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[0x20], 0x19U, 0xFU, 3U, (u32) *(u16 *)0x0400000A, 0xC3C4U);
-    sub_08042838((u32) gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[0x21], 0x19U, 0x12U, 3U, (u32) *(u16 *)0x0400000A, 0xC3C4U);
+    DrawNumberTileRow((u32) gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[0x1A], 0xBU, 9U, 3U, (u32) *(u16 *)0x0400000A, 0xC3C4U);
+    DrawNumberTileRow((u32) gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[0x1B], 0xBU, 0xCU, 3U, (u32) *(u16 *)0x0400000A, 0xC3C4U);
+    DrawNumberTileRow((u32) gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[0x1C], 0x19U, 9U, 3U, (u32) *(u16 *)0x0400000A, 0xC3C4U);
+    DrawNumberTileRow((u32) gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[0x1D], 0x19U, 0xCU, 3U, (u32) *(u16 *)0x0400000A, 0xC3C4U);
+    DrawNumberTileRow((u32) gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[0x1E], 0xBU, 0xFU, 3U, (u32) *(u16 *)0x0400000A, 0xC3C4U);
+    DrawNumberTileRow((u32) gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[0x1F], 0xBU, 0x12U, 3U, (u32) *(u16 *)0x0400000A, 0xC3C4U);
+    DrawNumberTileRow((u32) gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[0x20], 0x19U, 0xFU, 3U, (u32) *(u16 *)0x0400000A, 0xC3C4U);
+    DrawNumberTileRow((u32) gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[0x21], 0x19U, 0x12U, 3U, (u32) *(u16 *)0x0400000A, 0xC3C4U);
 }
 
 void sub_0800F218(void) {
     s32 sp14;
 
     gState0TypedWork.bytes[0x3D] = (gState0TypedWork.bytes[0x3F] * 4) + gState0TypedWork.bytes[0x40];
-    sub_0803F624(&gRecordDisplayWork, 0xD0U, 0U);
-    sub_0803F624(gRecordDisplayData, 0x800U, 0U);
-    sub_0803F624(gRecordDisplayExtra, 0x60U, 0U);
+    FillBytes(&gRecordDisplayWork, 0xD0U, 0U);
+    FillBytes(gRecordDisplayData, 0x800U, 0U);
+    FillBytes(gRecordDisplayExtra, 0x60U, 0U);
     gRenderMode = 2;
     gRenderWork = &gUnknown_02024000;
     sp14 = 0;
@@ -536,9 +536,9 @@ void sub_08017948(void) {
 void sub_08018098(void) {
     s32 sp20;
 
-    sub_0803F624(&gRecordDisplayWork, 0xD0U, 0U);
-    sub_0803F624(gRecordDisplayData, 0x800U, 0U);
-    sub_0803F624(gRecordDisplayExtra, 0x60U, 0U);
+    FillBytes(&gRecordDisplayWork, 0xD0U, 0U);
+    FillBytes(gRecordDisplayData, 0x800U, 0U);
+    FillBytes(gRecordDisplayExtra, 0x60U, 0U);
     gState0TypedWork.bytes[0x96] = 1;
     gRenderMode = 2;
     gRenderWork = &gUnknown_02024000;
@@ -590,13 +590,13 @@ void sub_0801ABF8(void) {
 }
 
 void sub_0801AEF4(void) {
-    sub_0803EF8C(0xCU, 7U, 0U, 0xDU, (u32) *(u16 *)0x0400000A, 0U);
-    sub_0803EF8C(0xCU, 7U, 0x12U, 0xDU, (u32) *(u16 *)0x0400000A, 0U);
-    sub_0803EF8C(0xCU, 7U, 0U, 0xDU, (u32) *(u16 *)0x04000008, 0U);
-    sub_0803EF8C(0xCU, 7U, 0x12U, 0xDU, (u32) *(u16 *)0x04000008, 0U);
-    sub_08040CD0(0x3CU, 0xAU);
-    sub_08040CD0(0x78U, 8U);
-    sub_08040CD0(0xAU, 0x17U);
+    FillTilemapRect(0xCU, 7U, 0U, 0xDU, (u32) *(u16 *)0x0400000A, 0U);
+    FillTilemapRect(0xCU, 7U, 0x12U, 0xDU, (u32) *(u16 *)0x0400000A, 0U);
+    FillTilemapRect(0xCU, 7U, 0U, 0xDU, (u32) *(u16 *)0x04000008, 0U);
+    FillTilemapRect(0xCU, 7U, 0x12U, 0xDU, (u32) *(u16 *)0x04000008, 0U);
+    ClearFrameObjects(0x3CU, 0xAU);
+    ClearFrameObjects(0x78U, 8U);
+    ClearFrameObjects(0xAU, 0x17U);
 }
 
 void sub_0801C110(void) {
@@ -624,31 +624,31 @@ void sub_0801C360(void) {
 }
 
 void sub_0801C388(void) {
-    sub_080164F4((u32) gState0TransferWork.bytes[0x87]);
+    CycleActionSpriteFrames((u32) gState0TransferWork.bytes[0x87]);
     sub_0801AC98(gState0TransferWork.bytes[0x87]);
     gState0TransferWork.bytes[0x9C] += 1;
 }
 
 void sub_0801C3F8(void) {
-    sub_080164F4((u32) gState0TransferWork.bytes[0x87]);
+    CycleActionSpriteFrames((u32) gState0TransferWork.bytes[0x87]);
 }
 
 void sub_0801C40C(void) {
     CpuFastSet(&gUnknown_084E44B8, (void *)0x05000320, 8U);
-    sub_080164F4((u32) gState0TransferWork.bytes[0x87]);
+    CycleActionSpriteFrames((u32) gState0TransferWork.bytes[0x87]);
     sub_0801AD48(gState0TransferWork.bytes[0x87]);
     gState0TransferWork.bytes[0x9C] += 1;
 }
 
 void sub_0801C444(void) {
-    sub_080164F4((u32) gState0TransferWork.bytes[0x87]);
+    CycleActionSpriteFrames((u32) gState0TransferWork.bytes[0x87]);
     if (sub_0801ADE8(gState0TransferWork.bytes[0x87]) != 0) {
         gState0TransferWork.bytes[0x9C] += 1;
     }
 }
 
 void sub_0801C470(void) {
-    sub_080164F4((u32) gState0TransferWork.bytes[0x87]);
+    CycleActionSpriteFrames((u32) gState0TransferWork.bytes[0x87]);
     sub_0801AE70(gState0TransferWork.bytes[0x87]);
     sub_0801AC98(gState0TransferWork.bytes[0x88]);
     gState0TransferWork.bytes[0x9C] += 1;
@@ -657,7 +657,7 @@ void sub_0801C470(void) {
 void sub_0801C4A4(void) {
     u8 *temp_r1;
 
-    sub_080164F4((u32) gState0TransferWork.bytes[0x87]);
+    CycleActionSpriteFrames((u32) gState0TransferWork.bytes[0x87]);
     sub_0801AE70(gState0TransferWork.bytes[0x87]);
     sub_08015B3C((u32) gState0TransferWork.bytes[0x88]);
     sub_0801AD10(gState0TransferWork.bytes[0x88]);
@@ -667,7 +667,7 @@ void sub_0801C4A4(void) {
 }
 
 void sub_0801C4E0(void) {
-    sub_080164F4((u32) gState0TransferWork.bytes[0x87]);
+    CycleActionSpriteFrames((u32) gState0TransferWork.bytes[0x87]);
     sub_0801AE70(gState0TransferWork.bytes[0x87]);
 }
 
@@ -687,8 +687,8 @@ void sub_0801E248(void) {
     sub_08035DE8();
     sub_080361C4();
     sub_08036218();
-    sub_0803EF8C(0x1EU, 1U, 0U, 9 - gState0TypedWork.bytes[0x84], (u32) *(u16 *)0x04000008, 0U);
-    sub_0803EF8C(0x1EU, 1U, 0U, gState0TypedWork.bytes[0x84] + 0xA, (u32) *(u16 *)0x04000008, 0U);
+    FillTilemapRect(0x1EU, 1U, 0U, 9 - gState0TypedWork.bytes[0x84], (u32) *(u16 *)0x04000008, 0U);
+    FillTilemapRect(0x1EU, 1U, 0U, gState0TypedWork.bytes[0x84] + 0xA, (u32) *(u16 *)0x04000008, 0U);
     if (gState0TypedWork.bytes[0x84] == 9) {
         gState0TransferWork.bytes[0xAA] += 1;
         return;
@@ -726,7 +726,7 @@ void sub_0801E8DC(void) {
 }
 
 void sub_0801E9E0(void) {
-    sub_08074DE0(0x2FU);
+    PlaySoundEffect(0x2FU);
     gState0TransferWork.bytes[0xAA] += 1;
 }
 
@@ -737,14 +737,14 @@ void sub_0801EBD4(void) {
 }
 
 void sub_0801F374(void) {
-    sub_08074DE0(0x2EU);
+    PlaySoundEffect(0x2EU);
     gState0TransferWork.bytes[0xAA] += 1;
 }
 
 void sub_0801F9B0(void) {
     sub_08036DE8(0xA, 0);
     if (sub_08036DE8(0xB, 1) != 0) {
-        sub_08074DE0(0x2AU);
+        PlaySoundEffect(0x2AU);
         gState0TypedWork.widths.word86 = 0x5A;
         gState0TransferWork.bytes[0xAA] += 1;
     }
@@ -766,8 +766,8 @@ void sub_0801FA68(void) {
 }
 
 void sub_0801FD88(void) {
-    sub_0803EF8C(0x1EU, 1U, 0U, 9 - gState0TypedWork.bytes[0x84], (u32) *(u16 *)0x04000008, 0U);
-    sub_0803EF8C(0x1EU, 1U, 0U, gState0TypedWork.bytes[0x84] + 0xA, (u32) *(u16 *)0x04000008, 0U);
+    FillTilemapRect(0x1EU, 1U, 0U, 9 - gState0TypedWork.bytes[0x84], (u32) *(u16 *)0x04000008, 0U);
+    FillTilemapRect(0x1EU, 1U, 0U, gState0TypedWork.bytes[0x84] + 0xA, (u32) *(u16 *)0x04000008, 0U);
     if (gState0TypedWork.bytes[0x84] == 9) {
         gState0TransferWork.bytes[0xAA] += 1;
         return;
@@ -786,7 +786,7 @@ void sub_08020288(void) {
     CpuFastSet(&gUnknown_0850F718, (void *)0x050003C0, 8U);
     gFrameObjects[0xA].byte2B = 0;
     gFrameObjects[0xA].unknown2C[0] = 0;
-    sub_08074DE0(0x2FU);
+    PlaySoundEffect(0x2FU);
     gState0TransferWork.bytes[0xAA] += 1;
 }
 
@@ -807,20 +807,20 @@ void sub_08020728(void) {
 }
 
 void sub_08020768(void) {
-    sub_0803F63C(gState0PartMessages_083C6F68[gState0TransferWork.bytes[0xA7]], gDebugMenuTextBuffer, 0xEU);
+    CopyBytes(gState0PartMessages_083C6F68[gState0TransferWork.bytes[0xA7]], gDebugMenuTextBuffer, 0xEU);
     gState0TransferWork.bytes[0xA6] = 0x18;
     gState0TransferWork.bytes[0xAA] += 1;
 }
 
 void sub_080208E8(void) {
-    sub_08040CD0(0U, 0x80U);
+    ClearFrameObjects(0U, 0x80U);
     gState0TransferWork.bytes[0xD0] = gState0TransferWork.bytes[0x8B];
     sub_08036CCC(gState0TransferWork.bytes[0x88], gState0TransferWork.bytes[0xD0], (*(s16 *)((u8 *)(&gState0TransferWork) + 0xEC)));
     gState0TransferWork.bytes[0xAA] += 1;
 }
 
 void sub_08020A90(void) {
-    sub_08040CD0(0U, 0x80U);
+    ClearFrameObjects(0U, 0x80U);
     gState0TransferWork.bytes[0xD0] = gState0TransferWork.bytes[0x8B];
     sub_080372D4(gState0TransferWork.bytes[0x88], gState0TransferWork.bytes[0xD0], (*(s16 *)((u8 *)(&gState0TransferWork) + 0xEC)));
     gState0TransferWork.bytes[0xAA] += 1;
@@ -830,13 +830,13 @@ void sub_080215C8(void) {
     gFrameObjects[0x21].unknown23[1] = 4;
     gFrameObjects[0x21].unknown23[2] = 0;
     (*(s16 *)((u8 *)(gFrameObjects) + 0x870)) = 0;
-    sub_08074DE0(0x40U);
+    PlaySoundEffect(0x40U);
     gState0TransferWork.bytes[0xAA] += 1;
 }
 
 void sub_08021608(void) {
     if (sub_080352EC(0x21U, -0x40, -0x30) != 0) {
-        sub_08040CD0(0x21U, 1U);
+        ClearFrameObjects(0x21U, 1U);
         gState0TransferWork.bytes[0xAA] += 1;
     }
 }
@@ -860,7 +860,7 @@ void sub_08021734(void) {
 
 void sub_080231D4(void) {
     if (gFrameObjects[0x21].unknown2C[1] == 0x40) {
-        sub_08040CD0(0x21U, 2U);
+        ClearFrameObjects(0x21U, 2U);
         gState0TransferWork.bytes[0xAA] += 1;
         return;
     }
@@ -869,7 +869,7 @@ void sub_080231D4(void) {
 }
 
 void sub_080233E0(void) {
-    sub_08035740((gState0TransferWork.bytes[0x89] * 8) + &gState0TransferWork.bytes[0x28], (*(s16 *)((u8 *)(&gState0TransferWork) + 0xEC)), 0xA0);
+    AddByteCapped((gState0TransferWork.bytes[0x89] * 8) + &gState0TransferWork.bytes[0x28], (*(s16 *)((u8 *)(&gState0TransferWork) + 0xEC)), 0xA0);
     gState0TransferWork.bytes[0xAA] += 1;
 }
 
@@ -893,7 +893,7 @@ void sub_08024BCC(void) {
 }
 
 void sub_08024BF8(void) {
-    sub_08040D44(0x21U, 1U);
+    ShowFrameObjects(0x21U, 1U);
     gFrameObjects[0x21].flags |= 0x220;
     gFrameObjects[0x21].scaleX = 0x80;
     gFrameObjects[0x21].scaleY = 0x80;
@@ -901,7 +901,7 @@ void sub_08024BF8(void) {
 }
 
 void sub_08024F90(void) {
-    sub_08074DE0(0x33U);
+    PlaySoundEffect(0x33U);
     gFrameObjects[0x21].flags |= 0x220;
     gState0TransferWork.bytes[0xAA] += 1;
 }
@@ -917,7 +917,7 @@ void sub_08025500(void) {
     if (sub_080355F0(0x21U) != 0) {
         gFrameObjects[0x22].screenX = (s16) (u16) gFrameObjects[0x21].screenX;
         gFrameObjects[0x22].screenY = (s16) (u16) gFrameObjects[0x21].screenY;
-        sub_08074DE0(0x2BU);
+        PlaySoundEffect(0x2BU);
         gState0TransferWork.bytes[0xAA] += 1;
     }
     sub_08037424(0x21);
@@ -934,7 +934,7 @@ void sub_08025674(void) {
     temp_r5 = gUnknown_0300052E + 0x20;
     sub_0801A28C(temp_r5, (u32) gState0TransferWork.bytes[0x52], 0U);
     sub_0801A418(temp_r5, gState0TransferWork.bytes[0x87], 0x21);
-    sub_08074DE0(0x5BU);
+    PlaySoundEffect(0x5BU);
     *(gUnknown_0300052E - 0x6A) = 0;
     gState0TransferWork.bytes[0xAA] += 1;
 }
@@ -953,19 +953,19 @@ void sub_08025D2C(void) {
 
 void sub_08025D4C(void) {
     sub_0801C2F0(0);
-    sub_08074DE0(0x51U);
+    PlaySoundEffect(0x51U);
     gState0TransferWork.bytes[0xAA] += 1;
 }
 
 void sub_080260EC(void) {
-    sub_08040CD0(0x21U, 3U);
+    ClearFrameObjects(0x21U, 3U);
     gState0TransferWork.bytes[0xAA] += 1;
 }
 
 void sub_08026810(void) {
-    sub_08040CD0(0x21U, 2U);
-    sub_08041D04((u8 *) gPartTextPointers_083BBB4C[(gState0TransferWork.bytes[0x133] * 4) + gState0TransferWork.bytes[0xA7]], gDebugMenuTextBuffer, 0xFU);
-    sub_08041D04((u8 *) gPartTextPointers_083BBB4C[(gState0TransferWork.bytes[0x11A] * 4) + gState0TransferWork.bytes[0xA7]], gDebugMenuTextBuffer + 0x14, 0xFU);
+    ClearFrameObjects(0x21U, 2U);
+    CopyBytesU8Count((u8 *) gPartTextPointers_083BBB4C[(gState0TransferWork.bytes[0x133] * 4) + gState0TransferWork.bytes[0xA7]], gDebugMenuTextBuffer, 0xFU);
+    CopyBytesU8Count((u8 *) gPartTextPointers_083BBB4C[(gState0TransferWork.bytes[0x11A] * 4) + gState0TransferWork.bytes[0xA7]], gDebugMenuTextBuffer + 0x14, 0xFU);
     gState0TransferWork.bytes[0xA6] = 0x2F;
     gState0TransferWork.bytes[0xAA] += 1;
 }
@@ -985,7 +985,7 @@ void sub_080268D4(void) {
 }
 
 void sub_08026F34(void) {
-    sub_08040CD0(0U, 0x80U);
+    ClearFrameObjects(0U, 0x80U);
     sub_08036CCC(gState0TransferWork.bytes[0x87], gState0TransferWork.bytes[0xD0], (*(s16 *)((u8 *)(&gState0TransferWork) + 0xEC)));
     gState0TransferWork.bytes[0xAA] += 1;
 }
@@ -1004,8 +1004,8 @@ void sub_08027378(void) {
     gState0TypedWork.widths.word86 += 1;
     sub_080378A8();
     if ((u32) gState0TypedWork.bytes[0x84] <= 4U) {
-        sub_0803F684(0x7FFFU, gState0TypedWork.bytes[0x84] * 8, 0xFFFFU);
-        sub_0803F998(0x7FFFU, gState0TypedWork.bytes[0x84] * 8, 0xFFFFU);
+        BlendBgPaletteBanksNow(0x7FFFU, gState0TypedWork.bytes[0x84] * 8, 0xFFFFU);
+        BlendObjPaletteBanksNow(0x7FFFU, gState0TypedWork.bytes[0x84] * 8, 0xFFFFU);
         gState0TypedWork.bytes[0x84] += 1;
         return;
     }
@@ -1017,8 +1017,8 @@ void sub_080273DC(void) {
     gState0TypedWork.widths.word86 += 1;
     sub_080378A8();
     if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
-        sub_0803F684(0x7FFFU, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
-        sub_0803F998(0x7FFFU, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
+        BlendBgPaletteBanksNow(0x7FFFU, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
+        BlendObjPaletteBanksNow(0x7FFFU, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
         gState0TypedWork.bytes[0x84] += 1;
         return;
     }
@@ -1029,7 +1029,7 @@ void sub_08027444(void) {
     gState0TypedWork.widths.word86 += 1;
     sub_080378A8();
     if ((u32) gState0TypedWork.widths.word86 > 0x23U) {
-        sub_08040CD0(0x21U, 1U);
+        ClearFrameObjects(0x21U, 1U);
         gState0TransferWork.bytes[0xAA] += 1;
     }
 }
@@ -1042,7 +1042,7 @@ void sub_080287C0(void) {
 
 void sub_0802A2D4(void) {
     if (gFrameObjects[0x21].screenY == 0x20) {
-        sub_08074DE0(0x42U);
+        PlaySoundEffect(0x42U);
         gState0TransferWork.bytes[0xAA] += 1;
         return;
     }
@@ -1051,7 +1051,7 @@ void sub_0802A2D4(void) {
 }
 
 void sub_0802C24C(void) {
-    sub_08035740((gState0TransferWork.bytes[0x89] * 8) + &gState0TransferWork.bytes[0x28], (*(s16 *)((u8 *)(&gState0TransferWork) + 0xEC)), 0xA0);
+    AddByteCapped((gState0TransferWork.bytes[0x89] * 8) + &gState0TransferWork.bytes[0x28], (*(s16 *)((u8 *)(&gState0TransferWork) + 0xEC)), 0xA0);
     sub_0803572C((gState0TransferWork.bytes[0x8A] * 8) + &gState0TransferWork.bytes[0x28], (*(s16 *)((u8 *)(&gState0TransferWork) + 0xEC)));
     gState0TransferWork.bytes[0xAA] += 1;
 }
@@ -1068,7 +1068,7 @@ void sub_0802C66C(void) {
     gFrameObjects[0x21].palette = 7;
     gFrameObjects[0x21].priority = 0xF0;
     gFrameObjects[0x21].frameAndGroup = 0x7D00;
-    sub_08074DE0(0x6EU);
+    PlaySoundEffect(0x6EU);
     gState0TransferWork.bytes[0xAA] += 1;
 }
 
@@ -1084,18 +1084,18 @@ void sub_0802D6B0(void) {
     gFrameObjects[0x21].palette = 7;
     gFrameObjects[0x21].priority = 0xF0;
     gFrameObjects[0x21].frameAndGroup = 0x7E00;
-    sub_08074DE0(0x6EU);
+    PlaySoundEffect(0x6EU);
     gState0TransferWork.bytes[0xAA] += 1;
 }
 
 void sub_0802DF18(void) {
     gFrameObjects[0x21].frameAndGroup = 0x7F02;
-    sub_08074DE0(0x38U);
+    PlaySoundEffect(0x38U);
     gState0TransferWork.bytes[0xAA] += 1;
 }
 
 void sub_0802E1A4(void) {
-    sub_08040CD0(0x21U, 3U);
+    ClearFrameObjects(0x21U, 3U);
     gState0TransferWork.bytes[0xA6] = 0x43;
     gState0TransferWork.bytes[0xAA] += 1;
 }
@@ -1108,13 +1108,13 @@ void sub_0802EAA4(void) {
 
 void sub_0802F468(void) {
     if (sub_080355F0(0x21U) != 0) {
-        sub_08074DE0(0x2BU);
+        PlaySoundEffect(0x2BU);
         gState0TransferWork.bytes[0xAA] += 1;
     }
 }
 
 void sub_0802F864(void) {
-    sub_08074DE0(0x22U);
+    PlaySoundEffect(0x22U);
     gState0TransferWork.bytes[0xAA] += 1;
 }
 
@@ -1156,8 +1156,8 @@ void sub_08030E54(void) {
 
 void sub_080312F0(void) {
     if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
-        sub_0803F684(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
-        sub_0803F998(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
+        BlendBgPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
+        BlendObjPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
         gState0TypedWork.bytes[0x84] += 1;
         return;
     }
@@ -1248,10 +1248,10 @@ void sub_080362C4(s32 arg0) {
     if (arg0 == 0) {
         var_r5 = 0x10;
     }
-    sub_08042698(2U, 2U, var_r5, 1U, (u32) *(u16 *)0x0400000A, 0xB340U);
-    sub_08042698(2U, 2U, var_r5, 4U, (u32) *(u16 *)0x0400000A, 0xB344U);
-    sub_08042698(2U, 2U, var_r5, 7U, (u32) *(u16 *)0x0400000A, 0xB348U);
-    sub_08042698(2U, 2U, var_r5, 0xAU, (u32) *(u16 *)0x0400000A, 0xB34CU);
+    FillTilemapRectSequential(2U, 2U, var_r5, 1U, (u32) *(u16 *)0x0400000A, 0xB340U);
+    FillTilemapRectSequential(2U, 2U, var_r5, 4U, (u32) *(u16 *)0x0400000A, 0xB344U);
+    FillTilemapRectSequential(2U, 2U, var_r5, 7U, (u32) *(u16 *)0x0400000A, 0xB348U);
+    FillTilemapRectSequential(2U, 2U, var_r5, 0xAU, (u32) *(u16 *)0x0400000A, 0xB34CU);
 }
 
 void sub_08036BF4(s32 arg0) {
@@ -1261,11 +1261,11 @@ void sub_08036BF4(s32 arg0) {
     if (arg0 == 0) {
         var_r2 = 0x10;
     }
-    sub_0803EF8C(0xCU, 0xDU, var_r2, 0U, (u32) *(u16 *)0x0400000A, 0U);
+    FillTilemapRect(0xCU, 0xDU, var_r2, 0U, (u32) *(u16 *)0x0400000A, 0U);
 }
 
 void sub_0803809C(void) {
-    sub_08040CD0(gState0TypedWork.bytes[0x12F], 1U);
+    ClearFrameObjects(gState0TypedWork.bytes[0x12F], 1U);
 }
 
 void sub_080393BC(void) {
@@ -1280,33 +1280,33 @@ void sub_080393BC(void) {
 
 void sub_0803A0B8(void) {
     if (gFrameObjects[0x1E].unknown23[6] == 0) {
-        sub_0803D4AC();
+        AdvanceActionHalfwordScript();
     }
     gFrameObjects->unknown23[7] = 1;
 }
 
 void sub_0803A264(void) {
-    sub_0803D450();
+    LoadActionHalfwordScriptParams();
     if (!(2 & gState0TransferWork.bytes[0xF8])) {
         if ((s32) gFrameObjects[(*(s16 *)((u8 *)(&gState0TransferWork) + 0x104))].screenX >= (s32) (*(s16 *)((u8 *)(&gState0TransferWork) + 0x102))) {
-            sub_0803D4AC();
+            AdvanceActionHalfwordScript();
         }
     } else if ((s32) gFrameObjects[(*(s16 *)((u8 *)(&gState0TransferWork) + 0x104))].screenX <= (s32) (0xF0 - (*(s16 *)((u8 *)(&gState0TransferWork) + 0x102)))) {
-        sub_0803D4AC();
+        AdvanceActionHalfwordScript();
     }
     gFrameObjects->unknown23[7] = 1;
 }
 
 void sub_0803A2E8(void) {
-    sub_0803D450();
-    sub_08040CD0(gState0TransferWork.bytes[0x102], gState0TransferWork.bytes[0x104]);
-    sub_0803D4AC();
+    LoadActionHalfwordScriptParams();
+    ClearFrameObjects(gState0TransferWork.bytes[0x102], gState0TransferWork.bytes[0x104]);
+    AdvanceActionHalfwordScript();
 }
 
 void sub_0803A444(void) {
     *(u16 *)0x04000008 = 0x4500;
     sub_0803EFD8(0x40U, 0x20U, 0U, 0U, (u32) *(u16 *)0x04000008, 0U);
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }
 
 void sub_0803A6FC(void) {
@@ -1315,14 +1315,14 @@ void sub_0803A6FC(void) {
     *(u16 *)0x04000008 = 0x500;
     gBgScroll0.x = 0;
     gBgScroll1.x = 0;
-    sub_08040CD0(4U, 1U);
-    sub_08040CD0(0x23U, 1U);
-    sub_0803D4AC();
+    ClearFrameObjects(4U, 1U);
+    ClearFrameObjects(0x23U, 1U);
+    AdvanceActionHalfwordScript();
 }
 
 void sub_0803A920(void) {
     gFrameObjects[0x23].unknown23[4] = 1;
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }
 
 void sub_0803AB9C(void) {
@@ -1337,22 +1337,22 @@ void sub_0803AB9C(void) {
         CpuFastSet((void *)0x050002C0, &gUnknown_0202F8C0, 8U);
         CpuFastSet((void *)0x050002E0, &gUnknown_0202F8E0, 8U);
     }
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }
 
 void sub_0803B6D8(void) {
     if (gFrameObjects[9].unknown23[6] == 0) {
-        sub_0803D4AC();
+        AdvanceActionHalfwordScript();
     }
     gFrameObjects->unknown23[7] = 1;
 }
 
 void sub_0803B700(void) {
-    sub_0803EF8C(0x20U, 0x20U, 0U, 0U, (u32) *(u16 *)0x04000008, 0U);
-    sub_0803EF8C(0x20U, 0x20U, 0U, 0U, (u32) *(u16 *)0x0400000A, 0U);
-    sub_08040CD0(4U, 1U);
-    sub_08040CD0(0x23U, 1U);
-    sub_0803D4AC();
+    FillTilemapRect(0x20U, 0x20U, 0U, 0U, (u32) *(u16 *)0x04000008, 0U);
+    FillTilemapRect(0x20U, 0x20U, 0U, 0U, (u32) *(u16 *)0x0400000A, 0U);
+    ClearFrameObjects(4U, 1U);
+    ClearFrameObjects(0x23U, 1U);
+    AdvanceActionHalfwordScript();
 }
 
 void sub_0803D5E0(void) {
@@ -1363,10 +1363,10 @@ void sub_0803D5E0(void) {
 }
 
 void sub_0803D928(void) {
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
-        sub_0803F684(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
-        sub_0803F998(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
+        BlendBgPaletteBanksNow(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
+        BlendObjPaletteBanksNow(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
         gState0TypedWork.bytes[0x84] += 1;
         return;
     }
@@ -1374,23 +1374,23 @@ void sub_0803D928(void) {
 }
 
 void sub_0803D980(void) {
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     sub_0803FAA0(1U, 0U, 0U);
     gUnknown_0300137C += 1;
 }
 
 void sub_0803D9C8(void) {
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     SnapshotPalettes();
     gState0TypedWork.bytes[0x84] = 0;
     gUnknown_0300137C += 1;
 }
 
 void sub_0803D9F0(void) {
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
-        sub_0803F684(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
-        sub_0803F998(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
+        BlendBgPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
+        BlendObjPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
         gState0TypedWork.bytes[0x84] += 1;
         return;
     }
@@ -1398,10 +1398,10 @@ void sub_0803D9F0(void) {
 }
 
 void sub_0803DA40(void) {
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
-        sub_0803F684(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
-        sub_0803F998(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
+        BlendBgPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
+        BlendObjPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
         gState0TypedWork.bytes[0x84] += 1;
         return;
     }
@@ -1409,24 +1409,24 @@ void sub_0803DA40(void) {
 }
 
 void sub_0803DA90(void) {
-    sub_0804253C(0U, 0U, 0U);
-    sub_0803EF8C(0x20U, 0x20U, 0U, 0U, (u32) *(u16 *)0x04000008, 0U);
-    sub_0803EF8C(0x20U, 0x20U, 0U, 0U, (u32) *(u16 *)0x0400000A, 0U);
-    sub_08040CD0(0U, 0x80U);
+    StartBlendFade(0U, 0U, 0U);
+    FillTilemapRect(0x20U, 0x20U, 0U, 0U, (u32) *(u16 *)0x04000008, 0U);
+    FillTilemapRect(0x20U, 0x20U, 0U, 0U, (u32) *(u16 *)0x0400000A, 0U);
+    ClearFrameObjects(0U, 0x80U);
     gUnknown_0300137C += 1;
 }
 
 void sub_0803DB1C(void) {
     if (gState0TypedWork.bytes[0x9C] == 1) {
-        sub_08074B88(0xEU);
+        PlayMusic(0xEU);
     } else {
-        sub_08074B88(0xFU);
+        PlayMusic(0xFU);
     }
     gUnknown_0300137C += 1;
 }
 
 void sub_0803DB94(void) {
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     if (sub_08041CD4() != 0) {
         sub_0803FB0C();
         gUnknown_0300137C += 1;
@@ -1434,7 +1434,7 @@ void sub_0803DB94(void) {
 }
 
 void sub_0803DBE0(void) {
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     if (sub_0803E79C() != 0) {
         gState0TypedWork.widths.word86 = 0;
         gUnknown_0300137C += 1;
@@ -1442,7 +1442,7 @@ void sub_0803DBE0(void) {
 }
 
 void sub_0803DC0C(void) {
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     if (gState0TypedWork.widths.word86 == 8) {
         gState0TypedWork.widths.word86 = 0;
         gUnknown_0300137C += 1;
@@ -1452,7 +1452,7 @@ void sub_0803DC0C(void) {
 }
 
 void sub_0803DC3C(void) {
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     sub_080750F0(8U);
     gUnknown_0300137C += 1;
 }
@@ -1461,13 +1461,13 @@ void sub_0803DC8C(void) {
     s32 sp0;
     s32 sp4;
 
-    sub_08040CD0(0U, 0x80U);
+    ClearFrameObjects(0U, 0x80U);
     sub_08043CA8();
     sp0 = 0;
     CpuFastSet(&sp0, (void *)0x05000200, 0x01000080U);
     sp4 = 0;
     CpuFastSet(&sp4, (void *)0x05000000, 0x01000080U);
-    sub_0804253C(5U, 0x3FU, 0x20U);
+    StartBlendFade(5U, 0x3FU, 0x20U);
     sub_08044CDC(3U);
 }
 
@@ -1475,7 +1475,7 @@ void sub_0803DCDC(void) {
     s32 sp4;
 
     sub_08043CA8();
-    sub_0804253C(5U, 0x3FU, 0x20U);
+    StartBlendFade(5U, 0x3FU, 0x20U);
     *(u16 *)0x04000000 &= 0xE0FF;
     *(u16 *)0x04000008 = 0x500;
     *(u16 *)0x0400000A = 0x1801;
@@ -1501,13 +1501,13 @@ void sub_0803DCDC(void) {
     sub_0803E978();
     sub_0803E9BC();
     gState0TransferWork.bytes[0x1A0] = 0;
-    sub_08074B88(0x14U);
+    PlayMusic(0x14U);
     gUnknown_0300137C += 1;
 }
 
 void sub_0803DE70(void) {
     sub_0803E894();
-    if (sub_080425DC() != 0) {
+    if (StepBlendFade() != 0) {
         gUnknown_0300137C += 1;
     }
 }
@@ -1538,7 +1538,7 @@ void sub_0803E098(void) {
 void sub_0803E0C0(void) {
     sub_0803E894();
     if (sub_0803ED28() != 0) {
-        sub_08074DE0(0x2AU);
+        PlaySoundEffect(0x2AU);
         gState0TypedWork.widths.word86 = 0;
         gUnknown_0300137C += 1;
     }
@@ -1606,8 +1606,8 @@ void sub_0803E314(void) {
     sub_0803ED6C();
     gState0TypedWork.widths.word86 += 1;
     if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
-        sub_0803F684(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
-        sub_0803F998(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
+        BlendBgPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
+        BlendObjPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
         gState0TypedWork.bytes[0x84] += 1;
         return;
     }
@@ -1624,7 +1624,7 @@ void sub_0803E374(void) {
     } else {
         sub_080421B4((u32) gState0TransferWork.bytes[0x1A4], (u32) (&gState0TransferWork.bytes[0x19A])[gState0TransferWork.bytes[0x1A2]]);
     }
-    sub_08041D04((u8 *) gPartTextPointers_083BBB4C[(gState0TransferWork.bytes[0x1A5] * 4) + (&gState0TransferWork.bytes[0x19A])[gState0TransferWork.bytes[0x1A2]]], gDebugMenuTextBuffer, 0xFU);
+    CopyBytesU8Count((u8 *) gPartTextPointers_083BBB4C[(gState0TransferWork.bytes[0x1A5] * 4) + (&gState0TransferWork.bytes[0x19A])[gState0TransferWork.bytes[0x1A2]]], gDebugMenuTextBuffer, 0xFU);
     gUnknown_0300137C += 1;
 }
 
@@ -1637,12 +1637,12 @@ void sub_0803E48C(void) {
 
 void sub_0803E4B4(void) {
     sub_080750F0(8U);
-    sub_0804253C(6U, 0x3FU, 0x20U);
+    StartBlendFade(6U, 0x3FU, 0x20U);
     gUnknown_0300137C += 1;
 }
 
 void sub_0803E4D8(void) {
-    if (sub_080425DC() != 0) {
+    if (StepBlendFade() != 0) {
         gUnknown_0300137C += 1;
     }
 }
@@ -1657,8 +1657,8 @@ void sub_0803E7C0(void) {
 }
 
 void sub_0803E7F0(void) {
-    sub_0803F63C(gState0MapPartLabels_083BEB68[gState0TransferWork.bytes[0x38]], gDebugMenuTextBuffer, 0xBU);
-    sub_08040DB8(gDebugMenuTextBuffer, 0x1EU, 1, 3, 8U, 0xCU, 0U, 1U);
+    CopyBytes(gState0MapPartLabels_083BEB68[gState0TransferWork.bytes[0x38]], gDebugMenuTextBuffer, 0xBU);
+    PlaceAlignedTextObjects(gDebugMenuTextBuffer, 0x1EU, 1, 3, 8U, 0xCU, 0U, 1U);
 }
 
 void sub_0803EAD8(void) {
@@ -1666,23 +1666,23 @@ void sub_0803EAD8(void) {
 
     var_r4 = 0;
     do {
-        sub_08042698(1U, 1U, var_r4 + 7, 0x12U, (u32) *(u16 *)0x0400000A, 0x53D0U);
+        FillTilemapRectSequential(1U, 1U, var_r4 + 7, 0x12U, (u32) *(u16 *)0x0400000A, 0x53D0U);
         var_r4 += 1;
     } while (var_r4 <= 0xBU);
 }
 
 void sub_0805B0B0(struct FrameObject *object) {
     object->screenX = 0x54;
-    object->screenY = ((u32) (sub_0807CF40((*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0xC)), 5) << 0x18) >> 0x14) + 0x1C;
+    object->screenY = ((u32) (__umodsi3((*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0xC)), 5) << 0x18) >> 0x14) + 0x1C;
 }
 
 void sub_0805B558(void) {
-    sub_0805A3A4(sub_0807CEC8((*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0xC)), 5) + 1, 2, 3);
-    sub_0805A3A4(sub_0807CD2C((*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x10)) - 1, 5) + 1, 5, 3);
+    sub_0805A3A4(__udivsi3((*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0xC)), 5) + 1, 2, 3);
+    sub_0805A3A4(__divsi3((*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x10)) - 1, 5) + 1, 5, 3);
 }
 
 void sub_0805B594(void) {
-    sub_0803F65C(gObjectCountPairs[(*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x13))], gObjectCountPairs[(*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0xC))], 2U);
+    SwapBytes(gObjectCountPairs[(*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x13))], gObjectCountPairs[(*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0xC))], 2U);
 }
 
 void sub_0805FA00(void) {
@@ -1697,7 +1697,7 @@ void sub_080602BC(void) {
     sp0 = 0;
     CpuFastSet(&sp0, (void *)0x06000000, 0x01006000U);
     sub_080415BC();
-    sub_08040CD0(0U, 0x80U);
+    ClearFrameObjects(0U, 0x80U);
     (*(s16 *)((u8 *)((void *)0x04000000) + 0)) = 0x60;
     (*(s16 *)((u8 *)((void *)0x04000000) + 0x50)) = 0x2FF;
     (*(s16 *)((u8 *)(((void *)0x04000000 + 0x50)) + 4)) = 0x10;
@@ -1719,7 +1719,7 @@ void sub_080612E8(void) {
 
     temp_r4 = gMainContextPointer_03006F74 + 0x270;
     sub_08060D28(temp_r4, &gUnknown_08484FC0);
-    if (sub_0803FB3C(temp_r4) != 0) {
+    if (RunDialogue(temp_r4) != 0) {
         gFrameObjects[8].flags |= 0x4000;
         gUnknown_0300137C += 1;
     }
@@ -1739,8 +1739,8 @@ void sub_08061998(void) {
 
 void sub_08061E98(void) {
     if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
-        sub_0803F684(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFEU);
-        sub_0803F998(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0x7FFDU);
+        BlendBgPaletteBanksNow(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFEU);
+        BlendObjPaletteBanksNow(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0x7FFDU);
         gState0TypedWork.bytes[0x84] += 1;
         return;
     }
@@ -1751,8 +1751,8 @@ void sub_08061E98(void) {
 
 void sub_08062970(void) {
     if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
-        sub_0803F684(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
-        sub_0803F998(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
+        BlendBgPaletteBanksNow(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
+        BlendObjPaletteBanksNow(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
         gState0TypedWork.bytes[0x84] += 1;
         return;
     }
@@ -1766,10 +1766,10 @@ void sub_08062A10(u32 arg0) {
     u32 sp14;
 
     if (arg0 == 0) {
-        sub_0803F624(&gRecordDisplayWork, 0xD0U, 0U);
-        sub_0803F624(gRecordDisplayData, 0x820U, 0U);
-        sub_0803F624(&gUnknown_020264E0, 0x820U, 0U);
-        sub_0803F624(&gUnknown_020268F0, 0x60U, 0U);
+        FillBytes(&gRecordDisplayWork, 0xD0U, 0U);
+        FillBytes(gRecordDisplayData, 0x820U, 0U);
+        FillBytes(&gUnknown_020264E0, 0x820U, 0U);
+        FillBytes(&gUnknown_020268F0, 0x60U, 0U);
         gRenderMode = 2;
         gRenderWork = &gUnknown_02024000;
         sp14 = arg0;
@@ -1810,8 +1810,8 @@ void sub_08064610(void) {
 
 void sub_08065198(void) {
     if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
-        sub_0803F684(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
-        sub_0803F998(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
+        BlendBgPaletteBanksNow(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
+        BlendObjPaletteBanksNow(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
         gState0TypedWork.bytes[0x84] += 1;
         return;
     }
@@ -1824,8 +1824,8 @@ void sub_08065198(void) {
 void sub_080654C0(void) {
     if (sub_08041CA4() != 0) {
         if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
-            sub_0803F684(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
-            sub_0803F998(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
+            BlendBgPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
+            BlendObjPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
             gState0TypedWork.bytes[0x84] += 1;
             return;
         }
@@ -1838,13 +1838,13 @@ void sub_080654C0(void) {
 void sub_0806552C(void) {
     if (sub_08041CA4() != 0) {
         if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
-            sub_0803F684(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
-            sub_0803F998(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
+            BlendBgPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
+            BlendObjPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
             gState0TypedWork.bytes[0x84] += 1;
             return;
         }
         *(u16 *)0x04000000 &= 0xFDFF;
-        sub_08040CD0(0U, 0x80U);
+        ClearFrameObjects(0U, 0x80U);
         sub_080476E8(2U);
     }
 }
@@ -1890,8 +1890,8 @@ void sub_08066240(void) {
 
 void sub_08066534(void) {
     if ((sub_08065710(gMainContextPointer_03006F74 + 0x50) != 0) && (sub_08074FA4(4U) == 0)) {
-        sub_08074B88(0U);
-        sub_08074DE0(0U);
+        PlayMusic(0U);
+        PlaySoundEffect(0U);
         Unknown_0805DEB0();
         gUnknown_0300137C += 2;
     }
@@ -1918,8 +1918,8 @@ void sub_080666F4(void) {
 void sub_08068238(void) {
     sub_08067C04();
     if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
-        sub_0803F684(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
-        sub_0803F998(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
+        BlendBgPaletteBanksNow(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
+        BlendObjPaletteBanksNow(0U, 0x20 - (gState0TypedWork.bytes[0x84] * 4), 0xFFFFU);
         gState0TypedWork.bytes[0x84] += 1;
         return;
     }
@@ -1937,13 +1937,13 @@ void sub_080683C8(void) {
 
 void sub_08068E00(void) {
     sub_08069320();
-    sub_08074B88(0U);
+    PlayMusic(0U);
     gUnknown_03006FDC = gFreshWork_03006D38;
     sub_0806A024();
     sub_08069A08();
     sub_08069910();
     sub_08069490();
-    sub_08074B88(0x13U);
+    PlayMusic(0x13U);
     sub_08068460(4, 1, 0);
     *(u16 *)0x04000000 |= 0x1E00;
     gUnknown_03006F88 = 0;
@@ -1983,9 +1983,9 @@ void sub_08069194(void) {
     sub_08069530();
     sub_08069CC0();
     sub_080696A8();
-    sub_08074B88(0U);
+    PlayMusic(0U);
     sub_08068460(4, 1, 0);
-    sub_08074B88(0x17U);
+    PlayMusic(0x17U);
     *(u16 *)0x04000000 |= 0x1E00;
     gUnknown_03006F80 = 8;
     gUnknown_0300137C = 1;
@@ -2021,9 +2021,9 @@ void sub_08069258(void) {
     sub_08069A08();
     sub_0806938C();
     sub_08069910();
-    sub_08074B88(0U);
+    PlayMusic(0U);
     sub_08068460(2, 2, 0);
-    sub_08074B88(0x13U);
+    PlayMusic(0x13U);
     *(u16 *)0x04000000 |= 0x1A00;
     gUnknown_03006F80 = 0xB;
     gUnknown_0300137C = 1;
@@ -2041,13 +2041,13 @@ void sub_080692A8(void) {
 }
 
 void sub_08069DF0(void) {
-    sub_08048864(0U, 0xC004U, 0x33U, 0U, 1U);
+    InitFrameObject(0U, 0xC004U, 0x33U, 0U, 1U);
     gFrameObjects->screenX = -0x10;
 }
 
 void sub_0806BB24(void) {
     if (sub_08068888() != 0) {
-        sub_08074B88(0x14U);
+        PlayMusic(0x14U);
         gUnknown_0300137C += 1;
     }
 }
@@ -2081,7 +2081,7 @@ void sub_0806BD3C(void) {
     (*(s16 *)((u8 *)((void *)0x04000050) + 0)) = 0xFF;
     (*(s16 *)((u8 *)((void *)0x04000050) + 4)) = 0x10;
     *(u16 *)0x04000000 &= 0x80FF;
-    sub_08074B88(0U);
+    PlayMusic(0U);
     sub_08047850(1);
 }
 
@@ -2114,7 +2114,7 @@ void sub_0806EAF4(void) {
 }
 
 void sub_08071030(void) {
-    sub_08074B88(4U);
+    PlayMusic(4U);
     sub_08071DB8(1, 0, 0);
     sub_08071DB8(2, 0xB, 0);
     gUnknown_0300137C += 1;
@@ -2170,8 +2170,8 @@ s32 sub_08071E8C(void) {
         goto block_9;
     }
     if ((s32) gFrameObjects[3].screenX > 0x37) {
-        sub_0806B718(7);
-        sub_08074DE0(0x54U);
+        ClearFrameObject(7);
+        PlaySoundEffect(0x54U);
         gFrameObjects[3].unknown1A = 0;
         gState0TransferWork.bytes[0x10] += 1;
         return 1;
@@ -2195,8 +2195,8 @@ s32 sub_08071EFC(void) {
         goto block_9;
     }
     if ((s32) gFrameObjects[4].screenX <= 0x44) {
-        sub_0806B718(8);
-        sub_08074DE0(0x54U);
+        ClearFrameObject(8);
+        PlaySoundEffect(0x54U);
         gFrameObjects[4].unknown1A = 0;
         gState0TransferWork.bytes[0x10] += 1;
         return 1;
@@ -2220,8 +2220,8 @@ s32 sub_08071F74(void) {
         goto block_9;
     }
     if ((s32) gFrameObjects[5].screenX <= 0x40) {
-        sub_0806B718(9);
-        sub_08074DE0(0x54U);
+        ClearFrameObject(9);
+        PlaySoundEffect(0x54U);
         gFrameObjects[5].priority = 0x21;
         gFrameObjects[5].unknown1A = 0;
         gState0TransferWork.bytes[0x10] += 1;

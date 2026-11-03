@@ -42,8 +42,8 @@ void sub_080221C8(void) {
         gFrameObjects[0x21 + i].byte2B = 0;
         gFrameObjects[0x21 + i].unknown2C[0] = i << 6;
         gFrameObjects[0x21 + i].unknown2C[1] = 0;
-        sub_08040B90(gState0NextCommands_083B6100[61], i + 0x21);
+        InitFrameObjectCommands(gState0NextCommands_083B6100[61], i + 0x21);
     }
-    sub_08074DE0(0x5C);
+    PlaySoundEffect(0x5C);
     gCounter221C8.counter++;
 }

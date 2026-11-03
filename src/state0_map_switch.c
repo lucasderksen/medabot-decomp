@@ -11,7 +11,7 @@ void sub_080116C4(void)
     u8 *work;
     s32 selector;
     sub_08043CA8();
-    sub_08040CD0(0, 128);
+    ClearFrameObjects(0, 128);
     state = gUnknown_03000440;
     {
         u8 *counter = state + 0x96;
@@ -26,7 +26,7 @@ void sub_080116C4(void)
     case 2:
         {
             u8 *buffer = state + 0x3C;
-            sub_0803F624(buffer, 20, 0);
+            FillBytes(buffer, 20, 0);
             *buffer = selector;
         }
     {
@@ -40,7 +40,7 @@ void sub_080116C4(void)
     case 0:
         {
             u8 *buffer = state + 0x3C;
-            sub_0803F624(buffer, 20, 0);
+            FillBytes(buffer, 20, 0);
             *buffer = 2;
         }
     {
@@ -54,7 +54,7 @@ void sub_080116C4(void)
     case 1:
         {
             u8 *buffer = state + 0x3C;
-            sub_0803F624(buffer, 20, 0);
+            FillBytes(buffer, 20, 0);
             *buffer = 2;
         }
     {
@@ -68,7 +68,7 @@ void sub_080116C4(void)
     case 3:
         {
             u8 *buffer = state + 0x3C;
-            sub_0803F624(buffer, 20, 0);
+            FillBytes(buffer, 20, 0);
             *buffer = 2;
         }
     {

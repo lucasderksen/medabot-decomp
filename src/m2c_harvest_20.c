@@ -14,7 +14,7 @@
 s32 sub_08015BF4(u8);
 void sub_08019184(u32, u32);
 s32 sub_080191A4(s32, u8);
-u8 sub_0807CEC8(u8, s32);
+u8 __udivsi3(u8, s32);
 
 void sub_08016DA4(void);
 void sub_08017914(void);
@@ -57,7 +57,7 @@ void sub_080191C0(s32 arg0) {
 
 void sub_0801928C(s32 arg0) {
     u8 *base0 = (u8 *) gSetupBuffer_03000590;
-    sub_080191A4(arg0, sub_0807CEC8((*(u8 *)((u8 *)((base0 + (arg0 << 8))) + 0xA2)), 0x14));
+    sub_080191A4(arg0, __udivsi3((*(u8 *)((u8 *)((base0 + (arg0 << 8))) + 0xA2)), 0x14));
 }
 
 void sub_0801C298(void) {
@@ -72,7 +72,7 @@ void sub_0801C298(void) {
   new_var2 = gState0TransferWork.bytes[0x9D];
   if (new_var2 == 0x3C)
   {
-    sub_08040CD0(new_var, 1U);
+    ClearFrameObjects(new_var, 1U);
     gState0TransferWork.bytes[0x9C] += 1;
   }
 }

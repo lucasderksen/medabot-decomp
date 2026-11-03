@@ -38,13 +38,13 @@ struct Main2NextContext
 
 void sub_0805F144(void)
 {
-    sub_08074B88(0);
+    PlayMusic(0);
     {
         u32 fill = 0;
         CpuFastSet(&fill, (void *)0x06000000, 0x01006000);
     }
     sub_080415BC();
-    sub_08040CD0(0, 128);
+    ClearFrameObjects(0, 128);
     DISPCNT = 0x60;
     BLDCNT = 0x2FF;
     BLDY = 16;

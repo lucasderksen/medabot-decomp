@@ -52,7 +52,7 @@ extern struct Work6D41C gGraphicsTransferCounter;
 extern u8 gContinuedByte_03002B64;
 extern u8 gUnknown_0202F800[1024];
 extern u8 gUnknown_03006FDC;
-extern void sub_08040CD0(u8, u8);
+extern void ClearFrameObjects(u8, u8);
 extern void sub_08062B48(u8, u8, u32);
 
 void sub_080279E4(void);
@@ -77,19 +77,19 @@ void sub_080279E4(void) {
     case 1:
         LeDecompress(gUnknown_084DD24C, (void *)0x06014C00);
         CpuFastSet(gUnknown_085100F8, (void *)0x050002E0, 8U);
-        sub_08074DE0(0x27U);
+        PlaySoundEffect(0x27U);
         break;
     case 2:
     case 3:
         LeDecompress(gUnknown_084DD2AC, (void *)0x06014C00);
         CpuFastSet(gUnknown_08510118, (void *)0x050002E0, 8U);
-        sub_08074DE0(0x45U);
+        PlaySoundEffect(0x45U);
         break;
     case 4:
     default:
         LeDecompress(gUnknown_084DD300, (void *)0x06014C00);
         CpuFastSet(gUnknown_08510138, (void *)0x050002E0, 8U);
-        sub_08074DE0(0x33U);
+        PlaySoundEffect(0x33U);
         break;
     }
     frames=(struct ContinuedWholeFrame21 *)gFrameObjects;
@@ -114,7 +114,7 @@ void sub_080279E4(void) {
 }
 
 void sub_08028BA8(void) {
- sub_08040CD0(0x21, 3);
+ ClearFrameObjects(0x21, 3);
  switch (gUnknown_03001800.selection51) {
  case 0: gUnknown_03001800.commandA6 = 0x46; break;
  case 1: gUnknown_03001800.commandA6 = 0x49; break;
@@ -130,7 +130,7 @@ void sub_08063354(void) {
     u32 temp_r0;
     struct Work63354 *work;
 
-    sub_0803FB3C(gMain2ScriptSlots_08485678[19]);
+    RunDialogue(gMain2ScriptSlots_08485678[19]);
     sub_08062C98();
     sub_08062B48(((struct Work63354 *)gMainContextPointer_03006F74)->firstX, ((struct Work63354 *)gMainContextPointer_03006F74)->firstY, 0);
     sub_08062B48(((struct Work63354 *)gMainContextPointer_03006F74)->secondX, ((struct Work63354 *)gMainContextPointer_03006F74)->secondY, 1);
@@ -143,7 +143,7 @@ void sub_08063354(void) {
         sub_08042170(((struct Work63354 *)gMainContextPointer_03006F74)->firstX, ((struct Work63354 *)gMainContextPointer_03006F74)->firstY, 1U);
         sub_0804213C(((struct Work63354 *)gMainContextPointer_03006F74)->secondX, ((struct Work63354 *)gMainContextPointer_03006F74)->secondY, 1U);
         CpuFastSet((void *)0x05000200, gUnknown_0202F800, 0x100U);
-        sub_08074DE0(0x4BU);
+        PlaySoundEffect(0x4BU);
     }
 }
 

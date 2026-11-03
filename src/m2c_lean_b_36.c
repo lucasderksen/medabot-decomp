@@ -25,8 +25,8 @@ struct LinkContext65B0C { u8 pad00[8]; s32 state08; u8 pad0C[0x2E]; u16 timer3A;
 struct DmaRegs68CC8 { u32 source, destination, control; };
 
 extern s32 gTransferStep03000000;
-extern s32 sub_0807CD2C(s32, s32);
-extern s32 sub_0807CDF8(s32, s32);
+extern s32 __divsi3(s32, s32);
+extern s32 __modsi3(s32, s32);
 extern struct LinkContext65B0C *gLinkContext65B0C asm("gMainContextPointer_03006F74");
 extern u16 *gUnknown_0300002C;
 extern u16 gUnknown_0202FC00[];
@@ -98,8 +98,8 @@ s32 sub_08068CC8(void) {
         return 1;
     step = gTransferStep03000000;
     div = gTransferDivisor03000005;
-    if (sub_0807CDF8(step, div) == 0) {
-        w = sub_0807CD2C(step, div);
+    if (__modsi3(step, div) == 0) {
+        w = __divsi3(step, div);
         inv = 0x20 - w;
         if (w <= 0) {
             volatile struct DmaRegs68CC8 *dma = (void *)0x040000D4;

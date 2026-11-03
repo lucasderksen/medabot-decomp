@@ -31,7 +31,7 @@ void sub_08003394(void)
         dma[2] = 0x84000060;
         (void)dma[2];
     }
-    sub_0803F15C(4, 4, 5, 9, gUnknownPointers_083B4C60[72], *(volatile u16 *)0x0400000A, 0);
+    CopyTilemapRect(4, 4, 5, 9, gUnknownPointers_083B4C60[72], *(volatile u16 *)0x0400000A, 0);
     *(volatile u16 *)0x04000000 |= 0x1F60;
     gUnknown_03000440[0x84] = 0;
     gUnknown_0300137C++;
@@ -42,8 +42,8 @@ void sub_080034A4(void)
     sub_080039BC();
     if (gUnknown_03000440[0x84] <= 8)
     {
-        sub_0803F684(0, 32 - gUnknown_03000440[0x84] * 4, 0x1FFF);
-        sub_0803F998(0, 32 - gUnknown_03000440[0x84] * 4, 0xFFFF);
+        BlendBgPaletteBanksNow(0, 32 - gUnknown_03000440[0x84] * 4, 0x1FFF);
+        BlendObjPaletteBanksNow(0, 32 - gUnknown_03000440[0x84] * 4, 0xFFFF);
         gUnknown_03000440[0x84]++;
     }
     else
@@ -57,14 +57,14 @@ void sub_08003504(void)
 {
     const u8 *pressed;
     sub_080039BC();
-    sub_08040BD8(gUnknownPointers_083B6100[0], 0);
+    RunFrameObjectCommands(gUnknownPointers_083B6100[0], 0);
     if (*(const u8 *)&gRepeatedKeys & KEY_UP)
     {
         if (gUnknown_03000440[0x8F] == 0)
             gUnknown_03000440[0x8F] = 2;
         else
             gUnknown_03000440[0x8F]--;
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         sub_08003904();
         gFrameObjects[0].screenX = 136 - gUnknown_03000440[0x8F] * 8;
         gFrameObjects[0].screenY = gUnknown_03000440[0x8F] * 24 + 32;
@@ -75,7 +75,7 @@ void sub_08003504(void)
             gUnknown_03000440[0x8F] = 0;
         else
             gUnknown_03000440[0x8F]++;
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         sub_08003904();
         gFrameObjects[0].screenX = 136 - gUnknown_03000440[0x8F] * 8;
         gFrameObjects[0].screenY = gUnknown_03000440[0x8F] * 24 + 32;
@@ -83,14 +83,14 @@ void sub_08003504(void)
     pressed = (const u8 *)&gNewKeys;
     if (*pressed & KEY_B)
     {
-        sub_08074DE0(5);
+        PlaySoundEffect(5);
         gUnknown_0300137C++;
     }
     if (*pressed & KEY_A)
     {
-        sub_08074DE0(4);
-        sub_08040B90(gUnknownPointers_083B6100[1], 0);
-        sub_0804253C(6, 63, 32);
+        PlaySoundEffect(4);
+        InitFrameObjectCommands(gUnknownPointers_083B6100[1], 0);
+        StartBlendFade(6, 63, 32);
         gUnknown_03000440[0x84] = 0;
         gUnknown_0300137C = 8;
     }
@@ -99,7 +99,7 @@ void sub_08003504(void)
 void sub_08003620(void)
 {
     sub_080039BC();
-    sub_08040CD0(0, 1);
+    ClearFrameObjects(0, 1);
     SnapshotPalettes();
     gUnknown_03000440[0x84] = 0;
     sub_080750F0(8);
@@ -111,8 +111,8 @@ void sub_08003654(void)
     sub_080039BC();
     if (gUnknown_03000440[0x84] <= 8)
     {
-        sub_0803F684(0, gUnknown_03000440[0x84] * 4, 0x1FFF);
-        sub_0803F998(0, gUnknown_03000440[0x84] * 4, 0xFFFF);
+        BlendBgPaletteBanksNow(0, gUnknown_03000440[0x84] * 4, 0x1FFF);
+        BlendObjPaletteBanksNow(0, gUnknown_03000440[0x84] * 4, 0xFFFF);
         gUnknown_03000440[0x84]++;
     }
     else
@@ -121,7 +121,7 @@ void sub_08003654(void)
 
 void sub_080036A8(void)
 {
-    sub_08074B88(6);
+    PlayMusic(6);
     gMainSubstate = 1;
     gUnknown_0300137C = 16;
 }
@@ -129,8 +129,8 @@ void sub_080036A8(void)
 void sub_080036C8(void)
 {
     sub_080039BC();
-    sub_08040BD8(gUnknownPointers_083B6100[1], 0);
-    if (sub_080425DC())
+    RunFrameObjectCommands(gUnknownPointers_083B6100[1], 0);
+    if (StepBlendFade())
         gUnknown_0300137C++;
 }
 
@@ -144,17 +144,17 @@ void sub_080036F4(void)
     switch (gUnknown_03000440[0x8F])
     {
     case 0:
-        sub_0803F624(gUnknown_03000440 + 0x50, 20, 0);
+        FillBytes(gUnknown_03000440 + 0x50, 20, 0);
         gMainSubstate = 3;
         gUnknown_0300137C = 0;
         break;
     case 1:
-        sub_0803F624(gUnknown_03000440 + 0x3C, 20, 0);
+        FillBytes(gUnknown_03000440 + 0x3C, 20, 0);
         gMainSubstate = 4;
         gUnknown_0300137C = 0;
         break;
     default:
-        sub_0803F624(gUnknown_03000440 + 0x3C, 20, 0);
+        FillBytes(gUnknown_03000440 + 0x3C, 20, 0);
         gMainSubstate = 5;
         gUnknown_0300137C = 0;
         break;
@@ -184,9 +184,9 @@ void sub_08003784(void)
     dma[1] = 0x05000000;
     dma[2] = 0x84000060;
     (void)dma[2];
-    sub_0803F15C(4, 4, 5, 9, gUnknownPointers_083B4C60[72], *(volatile u16 *)0x0400000A, 0);
+    CopyTilemapRect(4, 4, 5, 9, gUnknownPointers_083B4C60[72], *(volatile u16 *)0x0400000A, 0);
     *(volatile u16 *)0x04000000 |= 0x1F60;
-    sub_0804253C(5, 63, 32);
+    StartBlendFade(5, 63, 32);
     gUnknown_03000440[0x84] = 0;
     gUnknown_0300137C++;
 }
@@ -194,7 +194,7 @@ void sub_08003784(void)
 void sub_080038CC(void)
 {
     sub_080039BC();
-    if (sub_080425DC())
+    if (StepBlendFade())
     {
         sub_0800393C();
         gUnknown_0300137C++;
@@ -241,7 +241,7 @@ void sub_0800393C(void)
     gFrameObjects[0].palette = 14;
     gFrameObjects[0].tableSelector = 0;
     gFrameObjects[0].priority = 255;
-    sub_08040B90(gUnknownPointers_083B6100[0], 0);
+    InitFrameObjectCommands(gUnknownPointers_083B6100[0], 0);
 }
 
 void sub_080039BC(void)

@@ -30,7 +30,7 @@ void sub_0802ED90(void) {
             const u8 *command=commands[*choice];
             u32 index=i+0x21;
             struct FrameObject *frames;
-            sub_08040BD8(command,index);
+            RunFrameObjectCommands(command,index);
             frames=gFrameObjects;
             if(((struct FrameObject *)((index<<6)+(u32)frames))->commandStopped==0xFF)found=1;
         }

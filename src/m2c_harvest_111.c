@@ -63,15 +63,15 @@ void sub_08060A54(void) {
     if (sub_0805B8EC() == 0) {
         if ((keys=*(u8 *)&gNewKeys), (3 & keys)) {
             if (gMainSubstate == 0xA) {
-                sub_08074DE0(5U);
+                PlaySoundEffect(5U);
                 (*(s8 *)((u8 *)(gMainContextPointer_03006F74) + 0x48)) = 1;
             } else {
                 temp_r4 = 1 & keys;
                 if (temp_r4 != 0) {
-                    sub_08074DE0(4U);
+                    PlaySoundEffect(4U);
                     (*(s8 *)((u8 *)(gMainContextPointer_03006F74) + 0x48)) = 1;
                 } else {
-                    sub_08074DE0(5U);
+                    PlaySoundEffect(5U);
                     (*(s8 *)((u8 *)(gMainContextPointer_03006F74) + 0x48)) = temp_r4;
                 }
             }

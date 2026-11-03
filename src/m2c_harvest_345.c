@@ -64,6 +64,6 @@ void sub_0802CC74(void) {
   }
   current++;kind+=64;i++;
  }while(i<=2);
- sub_08074DE0(0x61);
+ PlaySoundEffect(0x61);
  gState0TransferWork.bytes[0xAA]++;
 }

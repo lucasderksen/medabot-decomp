@@ -25,9 +25,9 @@ void sub_0805DA14(void)
     {
         u32 scaledPhase = PHASE_WORK->phase * 4;
         u32 weight = 32;
-        sub_0803F684(0, weight - scaledPhase, 0x3FFF);
+        BlendBgPaletteBanksNow(0, weight - scaledPhase, 0x3FFF);
         weight -= PHASE_WORK->phase * 4;
-        sub_0803F998(0, weight, 0xFFFF);
+        BlendObjPaletteBanksNow(0, weight, 0xFFFF);
         PHASE_WORK->phase++;
         if (PHASE_WORK->phase == 1)
         {

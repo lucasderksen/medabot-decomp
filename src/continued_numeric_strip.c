@@ -24,7 +24,7 @@ void sub_080598C0(const void *source,u32 count,u32 x,u32 y)
             dma->destination=0x06017A00+work->byte13*32;
             dma->control=0x84000008;
             dma->control;
-            sub_08048864(work->byte13,0xC004,work->byte13+0x99,14,1);
+            InitFrameObject(work->byte13,0xC004,work->byte13+0x99,14,1);
             objects[work->byte13].screenX=x;
             objects[work->byte13].screenY=y;
             x+=8;

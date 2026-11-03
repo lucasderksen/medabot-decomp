@@ -21,7 +21,7 @@ void sub_080287DC(void) {
   u8 *initial;
   sub_0803836C();
   initial=gState0TransferWork.bytes;
-  initial[0x60]=sub_08032FB8(initial[0x87]);
+  initial[0x60]=GetOtherSlotGroupStart(initial[0x87]);
   for(i=0;i<3;i++) {
     u8 *setup=gSetupBuffer_03000590;
     u8 *work=gState0TransferWork.bytes;

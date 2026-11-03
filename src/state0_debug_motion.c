@@ -30,21 +30,21 @@ void sub_0800D710(void)
                   gState0TypedWork.bytes[0x39], gState0TypedWork.bytes[0x39],
                   184, 48, 0, 8, 1, 1, 1, 40);
     hidden = gFrameCounter & 4;
-    if (hidden) sub_08040CD0(8, 8);
+    if (hidden) ClearFrameObjects(8, 8);
     else
     {
-        sub_0803F63C(gDebugMotionLabels_083ACCD0[0], gState0TypedWork.bytes + 0x9E, 8);
-        sub_08040DB8(gState0TypedWork.bytes + 0x9E, 8, 2, 2, 8, 15, 1, hidden);
+        CopyBytes(gDebugMotionLabels_083ACCD0[0], gState0TypedWork.bytes + 0x9E, 8);
+        PlaceAlignedTextObjects(gState0TypedWork.bytes + 0x9E, 8, 2, 2, 8, 15, 1, hidden);
     }
     if (*(u8 *)&gRepeatedKeys & 16)
         (gState0TypedWork.bytes + 0x35)[gState0TypedWork.bytes[0x34]]++;
     if (*(u8 *)&gRepeatedKeys & 32)
         (gState0TypedWork.bytes + 0x35)[gState0TypedWork.bytes[0x34]]--;
-    sub_08040CD0(32, 3);
+    ClearFrameObjects(32, 3);
     sub_08041370(gDebugMenuTextBuffer,
         ((u8 *)((u32)gDebugMenuTextBuffer - 0x69))[
             *(u8 *)((u32)gDebugMenuTextBuffer - 0x6A)]);
-    sub_08040DB8(gDebugMenuTextBuffer, 32, 8, 2, 3, 15, 1, 0);
+    PlaceAlignedTextObjects(gDebugMenuTextBuffer, 32, 8, 2, 3, 15, 1, 0);
     if (*(u8 *)&gRepeatedKeys & 8)
     {
         u8 *index = (u8 *)((u32)gDebugMenuTextBuffer - 0x65);
@@ -61,7 +61,7 @@ void sub_0800D710(void)
     }
     else if (*(u8 *)&gNewKeys & 2)
     {
-        sub_08040CD0(8, 33);
+        ClearFrameObjects(8, 33);
         gRenderMode = select;
         gUnknown_0300137C = 1;
     }

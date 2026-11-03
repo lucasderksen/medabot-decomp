@@ -13,12 +13,12 @@ void sub_0801303C(void)
     sub_080195C0();
     selection = gState0TransferWork.bytes;
     selection += 0x80;
-    sub_080164F4(*selection);
+    CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     CpuFastSet(gState0Palette_084E44F8, (void *)0x05000340, 8);
     CpuFastSet(gState0Palette_084E45D8, (void *)0x050002C0, 8);
-    sub_08040CD0(0, 6);
-    sub_08040CD0(30, 11);
+    ClearFrameObjects(0, 6);
+    ClearFrameObjects(30, 11);
     sub_080166AC();
     sub_0801B76C();
     sub_08044118(12, 4, 9, 21, *(volatile u16 *)0x04000008, (u16 *)0x02020800);
@@ -34,7 +34,7 @@ void sub_080130D8(void)
     sub_080195C0();
     selection = gState0TransferWork.bytes;
     selection += 0x80;
-    sub_080164F4(*selection);
+    CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     sub_080166F0();
     sub_0801672C();
@@ -67,7 +67,7 @@ void sub_08013228(void)
     sub_080195C0();
     selection = gState0TransferWork.bytes;
     selection += 0x80;
-    sub_080164F4(*selection);
+    CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     sub_08016EDC();
     sub_08016E90();

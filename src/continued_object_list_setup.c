@@ -41,13 +41,13 @@ void sub_080517F0(void)
     work[0xC57] = sub_08052760(*y);
     flags = 0xC804;
     enabled = 1;
-    sub_08048864(47, flags, 3, 0, enabled);
+    InitFrameObject(47, flags, 3, 0, enabled);
     sub_08052E0C(work[0xC67]);
     sub_08051EFC(3);
     objects = (struct SetupArrayView *)gFrameObjects;
     objects->primaryPriority = 0x40;
     LZ77UnCompVram(gSetupCompressed_085FB6A4, (void *)0x06017FC0);
-    sub_08048864(89, 0xCC0C, 144, 14, enabled);
+    InitFrameObject(89, 0xCC0C, 144, 14, enabled);
     objects->secondaryX.parts.integer = *x;
     objects->secondaryY.parts.integer = *y - 5;
     objects->secondaryScreenX = objects->primaryScreenX;

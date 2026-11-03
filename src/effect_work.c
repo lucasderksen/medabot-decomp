@@ -8,7 +8,7 @@
 
 /* Character bytes are unchecked in the reference, including empty inserts.
  * Form mapped ROM addresses before glyph offsets can leave a stored bank. */
-extern void sub_08074DE0(u32);
+extern void PlaySoundEffect(u32);
 
 extern u8 gUnknown_03000440[];
 extern const void *const gUnknownPointers_083B4C60[];
@@ -79,7 +79,7 @@ void sub_0803FB0C(void)
     work->font = 0;
 }
 
-u32 sub_0803FB3C(const void *script)
+u32 RunDialogue(const void *script)
 {
     struct EffectWork *work = WORK;
     work->script = script;
@@ -106,8 +106,8 @@ void sub_0803FB94(void)
 {
     u32 color = 0x1B2;
     struct EffectWork *work = WORK;
-    sub_0803F684(color, work->blend * 2, 0x1FFF);
-    sub_0803F998(color, work->blend * 2, 0x3FFF);
+    BlendBgPaletteBanksNow(color, work->blend * 2, 0x1FFF);
+    BlendObjPaletteBanksNow(color, work->blend * 2, 0x3FFF);
     if (work->blend > 8)
         work->state++;
     else
@@ -170,7 +170,7 @@ void sub_0803FCC8(void)
         CpuFastSet((const void *)0x084BFC64, (void *)destination, 16);
         destination += 64;
     }
-    sub_0803F15C(26, 4, 2, 14, gUnknownPointers_083B4C60[18], *(volatile u16 *)0x04000008, 0);
+    CopyTilemapRect(26, 4, 2, 14, gUnknownPointers_083B4C60[18], *(volatile u16 *)0x04000008, 0);
     WORK->state++;
     sub_0803FD28();
 }
@@ -190,7 +190,7 @@ void sub_08040A40(void)
         WORK->transition--;
         break;
     case 1:
-        sub_0803EF8C(30, 6, 0, 13, *(volatile u16 *)0x04000008, 0);
+        FillTilemapRect(30, 6, 0, 13, *(volatile u16 *)0x04000008, 0);
         WORK->transition--;
         break;
     default:
@@ -343,7 +343,7 @@ void sub_0803FEB8(void)
             if (WORK->mapBank == mapBank && WORK->graphicsBank == bank)
             {
                 if (bank == 0xFF)
-                    sub_0803EF8C(8, 8, x, 5, *(volatile u16 *)0x04000008, 0);
+                    FillTilemapRect(8, 8, x, 5, *(volatile u16 *)0x04000008, 0);
                 else
                     sub_0803F480(bank, frame, x, 5, mapBank);
                 WORK->mapBank = mapBank;
@@ -363,7 +363,7 @@ void sub_0803FEB8(void)
                 }
                 else
                 {
-                    sub_0803EF8C(8, 8, x, 5, *(volatile u16 *)0x04000008, 0);
+                    FillTilemapRect(8, 8, x, 5, *(volatile u16 *)0x04000008, 0);
                     WORK->frame = 0;
                     WORK->graphicsActive = 0;
                 }
@@ -548,22 +548,22 @@ u32 sub_080405D0(void)
                (u8 *)0x06000280 + tile * 64 + WORK->line * 13 * 128, 32);
     }
     if ((u8)(WORK->unknown25 & 8))
-        sub_0803F15C(2, 1, 14, 18, gUnknownPointers_083B4C60[73], *(volatile u16 *)0x04000008, 0);
+        CopyTilemapRect(2, 1, 14, 18, gUnknownPointers_083B4C60[73], *(volatile u16 *)0x04000008, 0);
     else
-        sub_0803F15C(2, 1, 14, 18, gUnknownPointers_083B4C60[74], *(volatile u16 *)0x04000008, 0);
+        CopyTilemapRect(2, 1, 14, 18, gUnknownPointers_083B4C60[74], *(volatile u16 *)0x04000008, 0);
     WORK->unknown25++;
     WORK->wait = 1;
     if (*(u8 *)&gRepeatedKeys & 3)
     {
         u8 i;
-        sub_08074DE0(13);
+        PlaySoundEffect(13);
         WORK->x = 0;
         WORK->bits = 0;
         WORK->inWord = 0;
         WORK->wrap = 0;
         WORK->line = 0;
         WORK->unknown25 = 0;
-        sub_0803F15C(2, 1, 14, 18, gUnknownPointers_083B4C60[73], *(volatile u16 *)0x04000008, 0);
+        CopyTilemapRect(2, 1, 14, 18, gUnknownPointers_083B4C60[73], *(volatile u16 *)0x04000008, 0);
         for (i = 0; i < 52; i++)
             CpuSet((const void *)0x084BFC64, (u8 *)0x06000280 + i * 64, 32);
         WORK->wait = 0;
@@ -593,7 +593,7 @@ void sub_08040994(void)
         }
         else
         {
-            sub_0803EF8C(8, 8, x, 5, *(volatile u16 *)0x04000008, 0);
+            FillTilemapRect(8, 8, x, 5, *(volatile u16 *)0x04000008, 0);
             work->frame = 0;
             work->graphicsActive = 0;
             work->substate++;
@@ -649,7 +649,7 @@ void sub_08040820(void)
     case 3:
         if (*(u8 *)&gRepeatedKeys & 3)
         {
-            sub_08074DE0(13);
+            PlaySoundEffect(13);
             WORK->state++;
         }
         break;
@@ -693,7 +693,7 @@ void sub_08040A00(void)
     struct EffectWork *work = WORK;
     if (work->mode == 1)
     {
-        sub_0803EF8C(30, 6, 0, 13, *(volatile u16 *)0x04000008, 0);
+        FillTilemapRect(30, 6, 0, 13, *(volatile u16 *)0x04000008, 0);
         work->substate += 2;
     }
     else
@@ -713,8 +713,8 @@ void sub_08040B0C(void)
 {
     u32 color = 0x1B2;
     struct EffectWork *work = WORK;
-    sub_0803F684(color, work->blend * 2, 0x1FFF);
-    sub_0803F998(color, work->blend * 2, 0x1FFF);
+    BlendBgPaletteBanksNow(color, work->blend * 2, 0x1FFF);
+    BlendObjPaletteBanksNow(color, work->blend * 2, 0x1FFF);
     if (work->blend == 0)
         work->substate++;
     else

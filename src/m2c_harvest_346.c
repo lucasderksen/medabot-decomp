@@ -36,7 +36,7 @@ void sub_08026FF8(void) {
     while (i <= 2);
   }
   work = gState0TransferWork.bytes;
-  work[0x60] = sub_08032FB8(work[0x87]);
+  work[0x60] = GetOtherSlotGroupStart(work[0x87]);
   i = 0;
   {
     u8 *setup = gSetupBuffer_03000590;

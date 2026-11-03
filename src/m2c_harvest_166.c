@@ -39,7 +39,7 @@ extern const u8 *const gState0NextCommands_083B6100[];
 extern const u8 gUnknown_084E1028[];
 extern const u8 gUnknown_08510358[64];
 extern struct LocalInitializationWork71460 gGraphicsTransferCounter;
-extern u32 sub_08036E54(u32);
+extern u32 Clamp1To99(u32);
 extern u8 gState0FrameBackup[0x800];
 extern u8 gUnknown_02021000[0x800];
 extern u8 gUnknown_02021800[0x800];
@@ -47,9 +47,9 @@ extern u8 gUnknown_02022000[0x800];
 extern u8 gUnknown_02028000[0x2000];
 extern u8 gUnknown_03007010;
 extern void sub_08036E64(s32,s32,s16,s16);
-extern void sub_08040CD0(u8,u8);
+extern void ClearFrameObjects(u8,u8);
 extern void sub_08071898(u8,u16,u8);
-extern void sub_08074DE0(u32);
+extern void PlaySoundEffect(u32);
 
 void sub_0801C1C0(void);
 void sub_0801DFE0(void);
@@ -71,7 +71,7 @@ void sub_0801C1C0(void) {
     frames->frame.palette = 6;
     frames->frame.frameAndGroup = 0xA11;
     frames->frame.priority = 0x81;
-    sub_08074DE0(0x2Fu);
+    PlaySoundEffect(0x2Fu);
     work[0x9C] += 1;
 }
 
@@ -94,7 +94,7 @@ void sub_0801DFE0(void) {
         return;
     case 2:
         gUnknownCallback_030017F0 = DummyInterruptHandler;
-        sub_08040CD0(0,0x80u);
+        ClearFrameObjects(0,0x80u);
         *phase = 0;
         gState0TransferWork.bytes[0xAA] += 1;
         return;
@@ -104,7 +104,7 @@ void sub_0801DFE0(void) {
 void sub_0802724C(void) {
     struct ContinuedFrame21BlinkInit *frames;
     u8 *work;
-    sub_08040CD0(0x21u,2u);
+    ClearFrameObjects(0x21u,2u);
     frames = (struct ContinuedFrame21BlinkInit *)gFrameObjects;
     frames->frame.flags = 0xC404;
     work = gState0TransferWork.bytes;
@@ -114,7 +114,7 @@ void sub_0802724C(void) {
     frames->frame.screenY = 0x40;
     frames->frame.palette = 7;
     frames->frame.priority = 0xF0;
-    sub_08040B90(gState0NextCommands_083B6100[0x5A],0x21u);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[0x5A],0x21u);
     work[0xAA] += 1;
 }
 
@@ -150,13 +150,13 @@ void sub_0802B028(void) {
     } else {
         frames->second.frameAndGroup = 0x7A02;
     }
-    sub_08074DE0(0x4CU);
+    PlaySoundEffect(0x4CU);
     gState0TransferWork.bytes[0xAA] = (u8) (gState0TransferWork.bytes[0xAA] + 1);
 }
 
 void sub_0802B5AC(void) {
     u32 i;
-    sub_08040CD0(0x21,3);
+    ClearFrameObjects(0x21,3);
     for(i=0;i<3;i++) {
         struct ContinuedWorkB5AC *work=(struct ContinuedWorkB5AC *)gState0TransferWork.bytes;
         if(work->results[i]==0)continue;
@@ -186,8 +186,8 @@ void sub_0802B5AC(void) {
             u8 *caseWork=gState0TransferWork.bytes;
             u8 *bank=caseWork+0x60;
             setup[*bank+i].kind=0x2B;
-            setup[*bank+i].first=sub_08036E54(*(s16 *)(caseWork+0xE8));
-            setup[*bank+i].second=sub_08036E54(*(s16 *)(caseWork+0xEC));
+            setup[*bank+i].first=Clamp1To99(*(s16 *)(caseWork+0xE8));
+            setup[*bank+i].second=Clamp1To99(*(s16 *)(caseWork+0xEC));
             setup[*bank+i].variant=1;
             break;
         }
@@ -197,8 +197,8 @@ void sub_0802B5AC(void) {
             u8 *bank=caseWork+0x60;
             setup[*bank+i].kind=0x2C;
             setup[*bank+i].variant=0;
-            setup[*bank+i].first=sub_08036E54(*(s16 *)(caseWork+0xE8));
-            setup[*bank+i].second=sub_08036E54(*(s16 *)(caseWork+0xEC));
+            setup[*bank+i].first=Clamp1To99(*(s16 *)(caseWork+0xE8));
+            setup[*bank+i].second=Clamp1To99(*(s16 *)(caseWork+0xEC));
             break;
         }
         case 6: {
@@ -207,8 +207,8 @@ void sub_0802B5AC(void) {
             u8 *bank=caseWork+0x60;
             setup[*bank+i].kind=0x2E;
             setup[*bank+i].variant=0;
-            setup[*bank+i].first=sub_08036E54(*(s16 *)(caseWork+0xE8));
-            setup[*bank+i].second=sub_08036E54(*(s16 *)(caseWork+0xEC));
+            setup[*bank+i].first=Clamp1To99(*(s16 *)(caseWork+0xE8));
+            setup[*bank+i].second=Clamp1To99(*(s16 *)(caseWork+0xEC));
             break;
         }
         case 7: {
@@ -217,8 +217,8 @@ void sub_0802B5AC(void) {
             u8 *bank=caseWork+0x60;
             setup[*bank+i].kind=0x2F;
             setup[*bank+i].variant=0;
-            setup[*bank+i].first=sub_08036E54(*(s16 *)(caseWork+0xE8));
-            setup[*bank+i].second=sub_08036E54(*(s16 *)(caseWork+0xEC));
+            setup[*bank+i].first=Clamp1To99(*(s16 *)(caseWork+0xE8));
+            setup[*bank+i].second=Clamp1To99(*(s16 *)(caseWork+0xEC));
             break;
         }
         }
@@ -237,8 +237,8 @@ void sub_08030910(void) {
     frames->frame.screenY = (u16)gFrameObjects[work[0x87]*4+0x5D].screenY - 4;
     frames->frame.palette = 6;
     frames->frame.priority = 0x81;
-    sub_08040B90(gState0NextCommands_083B6100[0x15],3u);
-    sub_08074DE0(7u);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[0x15],3u);
+    PlaySoundEffect(7u);
     gUnknown_0300137C += 1;
 }
 
@@ -257,12 +257,12 @@ void sub_08071460(void) {
     dma[1]=(u32)gFrameObjects;
     dma[2]=0x85000800;
     (void)dma[2];
-    sub_08048864(0U, 0xCC00U, 0x50EU, 4U, 3U);
+    InitFrameObject(0U, 0xCC00U, 0x50EU, 4U, 3U);
     gFrameObjects->screenX = 0xD4;
     gFrameObjects->screenY = 0;
     gFrameObjects->priority = 0x4A;
     gFrameObjects[0xA].commandStopped = 0xFF;
-    sub_08048864(0xBU, 0xCC00U, 0x50EU, 4U, 3U);
+    InitFrameObject(0xBU, 0xCC00U, 0x50EU, 4U, 3U);
     gFrameObjects[0xB].screenX = 0x14;
     gFrameObjects[0xB].screenY = 0;
     gFrameObjects[0xB].priority = 0x4A;
@@ -270,7 +270,7 @@ void sub_08071460(void) {
     var_r4=0;
     var_r7=0x580;
     do {
-        sub_08048864((u8)(var_r4+0x16),0xCC00U,(u16)(var_r4*12+0x27),(u8)var_r4,1U);
+        InitFrameObject((u8)(var_r4+0x16),0xCC00U,(u16)(var_r4*12+0x27),(u8)var_r4,1U);
         ((struct FrameObject *)((u8 *)gFrameObjects+var_r7))->screenY=0x48;
         var_r7+=0x40;
         ++var_r4;
@@ -288,7 +288,7 @@ void sub_08071460(void) {
     var_r5_2=(u8 *)gFrameObjects+0x682;
     var_r7_2=&gFrameObjects[0x16];
     do {
-        sub_08048864((u8)(var_r4+0x1A),0xCC08U,0x513U,0xEU,3U);
+        InitFrameObject((u8)(var_r4+0x1A),0xCC08U,0x513U,0xEU,3U);
         *(s16 *)var_r5_2=(u16)var_r7_2->screenX;
         *(s16 *)(var_r5_2+2)=0x48;
         var_r5_2+=0x40;

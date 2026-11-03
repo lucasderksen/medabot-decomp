@@ -18,8 +18,8 @@
 extern s32 gState0NextCommands_083B6100;
 s32 sub_0803E894();
 s32 sub_0803ED6C();
-u8 sub_0807CEC8(u8, s32);
-u8 sub_0807CF40(u8, s32);
+u8 __udivsi3(u8, s32);
+u8 __umodsi3(u8, s32);
 
 void sub_08018C78(void);
 void sub_080201DC(void);
@@ -31,8 +31,8 @@ void sub_0803E120(void);
 void sub_08018C78(void) {
     __typeof__(gFrameObjects[0]) *array0;
     array0 = gFrameObjects;
-    array0[1].frameAndGroup = sub_0807CEC8(gState0TransferWork.bytes[0x57], 0xA) + 0x624;
-    array0[2].frameAndGroup = sub_0807CF40(gState0TransferWork.bytes[0x57], 0xA) + 0x624;
+    array0[1].frameAndGroup = __udivsi3(gState0TransferWork.bytes[0x57], 0xA) + 0x624;
+    array0[2].frameAndGroup = __umodsi3(gState0TransferWork.bytes[0x57], 0xA) + 0x624;
 }
 
 void sub_080201DC(void) {
@@ -40,9 +40,9 @@ void sub_080201DC(void) {
     u32 temp_r1;
 
     work0 = (u8 *) &gState0NextCommands_083B6100;
-    sub_08040BD8((*(u8 **)((u8 *)(work0) + 0xDC)), 0xBU);
+    RunFrameObjectCommands((*(u8 **)((u8 *)(work0) + 0xDC)), 0xBU);
     if (gFrameObjects[0xA].byte2B == 0x28) {
-        sub_08040CD0(0xBU, 1U);
+        ClearFrameObjects(0xBU, 1U);
         gState0TransferWork.bytes[0xAA] += 1;
         return;
     }
@@ -90,7 +90,7 @@ void sub_0803CF7C(void) {
 void sub_0803DC58(void) {
     u32 var_r0;
 
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     if (gState0TypedWork.bytes[0x138] == 0) {
         gUnknown_0300137C = gUnknown_0300137C + 1;
     } else {

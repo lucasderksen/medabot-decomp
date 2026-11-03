@@ -8,7 +8,7 @@ void sub_08011268(void)
     u8 *work;
     u8 *selected;
     sub_08012098();
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     work = gState0TransferWork.bytes;
     selected = work + 0x186;
     if (*selected == 3)
@@ -31,7 +31,7 @@ void sub_08011268(void)
 void sub_080112C4(void)
 {
     sub_08012098();
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     SnapshotPalettes();
     gUnknown_03000440[0x84] = 0;
     gUnknown_0300137C++;
@@ -40,11 +40,11 @@ void sub_080112C4(void)
 void sub_080112F0(void)
 {
     sub_08012098();
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     if (gUnknown_03000440[0x84] <= 8)
     {
-        sub_0803F684(0, gUnknown_03000440[0x84] * 4, 0xFFFF);
-        sub_0803F998(0, gUnknown_03000440[0x84] * 4, 0xFFFF);
+        BlendBgPaletteBanksNow(0, gUnknown_03000440[0x84] * 4, 0xFFFF);
+        BlendObjPaletteBanksNow(0, gUnknown_03000440[0x84] * 4, 0xFFFF);
         gUnknown_03000440[0x84]++;
     }
     else
@@ -75,7 +75,7 @@ void sub_08011490(void)
 void sub_080114E0(void)
 {
     sub_08012098();
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     sub_080750F0(8);
     gUnknown_0300137C++;
 }

@@ -22,7 +22,7 @@ void sub_0803FAA0(u32 inputFirst, u32 inputSecond, u32 inputMode)
     u8 second = inputSecond;
     u8 mode = inputMode;
     struct EffectWorkPrefix *work = (struct EffectWorkPrefix *)gUnknown_03000440;
-    sub_0803F624(gUnknown_03000440, 0x28, 0);
+    FillBytes(gUnknown_03000440, 0x28, 0);
     work->first = first;
     work->second = second;
     work->mode = mode;

@@ -42,7 +42,7 @@ struct Dma6CFEC { u32 source, destination, control; };
 
 extern const s8 gUnknown_08485924[];
 extern const u32 gUnknown_087B4CE4[];
-extern s32 sub_0807CD2C(s32, s32);
+extern s32 __divsi3(s32, s32);
 extern struct Timeline6C218 gTimeline6C218 asm("gCounter6ED08_03001800");
 extern u32 sub_08074224(const void *record);
 extern void sub_0806D398(void);
@@ -119,26 +119,26 @@ void sub_0806C218(void) {
                 if (gFrameObjects[0x28 + i].commandDelay != 0)
                     return;
             }
-            sub_08074B88(0);
-            sub_08074B88(0xE);
+            PlayMusic(0);
+            PlayMusic(0xE);
             gUnknown_0300137C = 6;
             return;
         }
         gTimeline6C218.count--;
         sub_0806D398();
-        gTimeline6C218.target += sub_0807CD2C(gTimeline6C218.count * gTimeline6C218.count, 0x32) + gTimeline6C218.offset;
+        gTimeline6C218.target += __divsi3(gTimeline6C218.count * gTimeline6C218.count, 0x32) + gTimeline6C218.offset;
         for (i = 0; i <= 7; i++) {
             if (gFrameObjects[0x28 + i].commandDelay == 0) {
-                sub_08048864(i + 0x28, 0xC800, 0x10, 2, 3);
+                InitFrameObject(i + 0x28, 0xC800, 0x10, 2, 3);
                 gFrameObjects[0x28 + i].screenX = gFrameObjects[0x20].screenX;
                 gFrameObjects[0x28 + i].screenY = 0xC;
                 gFrameObjects[0x28 + i].unknown1A = 0;
                 gFrameObjects[0x28 + i].commandDelay = 1;
                 gFrameObjects[0x28 + i].commandOffset = gTimeline6C218.lanes[gTimeline6C218.count];
-                sub_08048864(i + 0x30, 0xCC08, 0x12, 2, 3);
+                InitFrameObject(i + 0x30, 0xCC08, 0x12, 2, 3);
                 gFrameObjects[i + 0x30].screenX = gFrameObjects[0x28 + i].screenX;
                 gFrameObjects[i + 0x30].screenY = 0x10;
-                sub_08074DE0(0x61);
+                PlaySoundEffect(0x61);
                 gFrameObjects[0x1F].screenY = 0xC8;
                 break;
             }

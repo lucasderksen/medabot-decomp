@@ -102,7 +102,7 @@ void sub_0804FD10(void) {
     }
     if (done == ((union CommandSlots *)gContinuedCommandWork_030064A0)->n.count) {
         ((union CommandSlots *)gContinuedCommandWork_030064A0)->n.count = 0;
-        sub_08049714(((union CommandSlots *)gContinuedCommandWork_030064A0)->c.cmds, 0x40);
+        ClearBytes(((union CommandSlots *)gContinuedCommandWork_030064A0)->c.cmds, 0x40);
         sub_08050290();
     }
 }

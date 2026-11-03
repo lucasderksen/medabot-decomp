@@ -5,7 +5,7 @@
 u32 sub_08037830(u32 first, u32 second)
 {
     u32 selected = sub_08033074();
-    u32 forward = sub_080424B8() & 1;
+    u32 forward = NextRandomByte() & 1;
     u32 tested = 0;
     u8 *entries = gSetupBuffer_03000590;
     u8 *comparison = entries + second * 256 + 0x91;

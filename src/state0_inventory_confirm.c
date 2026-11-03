@@ -26,7 +26,7 @@ void sub_0800B4EC(void)
                 if (record->byte5 != 100)
                 {
                     record->byte5++;
-                    sub_08041D04(gInventoryMetadata_083B62D8 + records[*selected].byte1 * 16, &work[0xEE], 16);
+                    CopyBytesU8Count(gInventoryMetadata_083B62D8 + records[*selected].byte1 * 16, &work[0xEE], 16);
                     records[*selected].unknown06[2] = sub_080420C4(records[*selected].byte5, work[0xF1], work[0xF2], work[0xF3], work[0xF4]);
                     sub_08009750();
                     sub_08009620();
@@ -88,7 +88,7 @@ void sub_0800B6E8(void)
     }
     if (*(u8 *)&gRepeatedKeys & 192)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         gFrameObjects[7].screenY = gState0TypedWork.bytes[0x4A] * 16 + 112;
     }
 }

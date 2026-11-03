@@ -79,9 +79,9 @@ void sub_0805E478(void) {
   bg3 = (volatile u16 *) 0x0400000E;
   control = 0x1D07;
   *bg3 = control;
-  sub_0805BA34(gBiosLz77Stream_08796060, *bg1);
-  sub_0805BA34(gBiosLz77Stream_08796340, *bg2);
-  sub_0805BA34(gBiosLz77Stream_0879660C, *bg3);
+  LoadLz77SizedTilemap(gBiosLz77Stream_08796060, *bg1);
+  LoadLz77SizedTilemap(gBiosLz77Stream_08796340, *bg2);
+  LoadLz77SizedTilemap(gBiosLz77Stream_0879660C, *bg3);
   length = sub_08044D0C(gBiosLz77Stream_0879481C, (void *) 0x02030000);
   CpuSet((void *) 0x02030000, (void *) 0x06004000, (length << 10) >> 11);
   ((struct Main2CursorContext *) gMainContextPointer_03006F74)->halfword36 = (length >> 5) - 1;

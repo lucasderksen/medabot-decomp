@@ -53,7 +53,7 @@ void sub_08019B40(u32 arg0) {
     if (8 & record[0xBD]) {
         do {
         if (gSetupParts19B40[arg0].parts[record[0xDE] - 1].byte11 == 0) {
-            sub_08040D0C(arg0 * 3 + 0x48, 1);
+            HideFrameObjects(arg0 * 3 + 0x48, 1);
             return;
         }
         } while (0);
@@ -63,55 +63,55 @@ void sub_08019B40(u32 arg0) {
         if (object->flags != 0 && object->unknown23[0] == record[0xDF]) {
             switch (record[0xDF]) {
             case 0x1B:
-                sub_08040BD8(gState0NextCommands_083B6100[12], slot);
+                RunFrameObjectCommands(gState0NextCommands_083B6100[12], slot);
                 break;
             case 0x1C:
-                sub_08040BD8(gState0NextCommands_083B6100[13], slot);
+                RunFrameObjectCommands(gState0NextCommands_083B6100[13], slot);
                 break;
             case 0x1D:
-                sub_08040BD8(gState0NextCommands_083B6100[14], slot);
+                RunFrameObjectCommands(gState0NextCommands_083B6100[14], slot);
                 break;
             default:
-                sub_08040BD8(gState0NextCommands_083B6100[11], arg0 * 3 + 0x48);
+                RunFrameObjectCommands(gState0NextCommands_083B6100[11], arg0 * 3 + 0x48);
                 break;
             }
         } else {
             switch (gSetup19B40[arg0].kindDF) {
             case 0x1B:
                 do {
-                sub_08040B90(gState0NextCommands_083B6100[12], arg0 * 3 + 0x48);
+                InitFrameObjectCommands(gState0NextCommands_083B6100[12], arg0 * 3 + 0x48);
                 break;
             case 0x1D:
-                sub_08040B90(gState0NextCommands_083B6100[14], arg0 * 3 + 0x48);
+                InitFrameObjectCommands(gState0NextCommands_083B6100[14], arg0 * 3 + 0x48);
                 break;
             case 0x1C:
-                sub_08040B90(gState0NextCommands_083B6100[13], arg0 * 3 + 0x48);
+                InitFrameObjectCommands(gState0NextCommands_083B6100[13], arg0 * 3 + 0x48);
                 } while (0);
                 break;
             default:
-                sub_08040B90(gState0NextCommands_083B6100[11], arg0 * 3 + 0x48);
+                InitFrameObjectCommands(gState0NextCommands_083B6100[11], arg0 * 3 + 0x48);
                 break;
             }
         }
         switch (gSetup19B40[arg0].kindDF) {
         case 0x1B:
-            sub_08041D04(gUnknown_083C4DFC, gUnknown_0300052E, 4);
+            CopyBytesU8Count(gUnknown_083C4DFC, gUnknown_0300052E, 4);
             break;
         case 0x1C:
-            sub_08041D04(gUnknown_083C4E00, gUnknown_0300052E, 4);
+            CopyBytesU8Count(gUnknown_083C4E00, gUnknown_0300052E, 4);
             break;
         case 0x1D:
-            sub_08041D04(gUnknown_083C4E04, gUnknown_0300052E, 4);
+            CopyBytesU8Count(gUnknown_083C4E04, gUnknown_0300052E, 4);
             break;
         default:
-            sub_08041D04(gUnknown_083C4DF8, gUnknown_0300052E, 4);
+            CopyBytesU8Count(gUnknown_083C4DF8, gUnknown_0300052E, 4);
             break;
         }
         sub_08019D9C(arg0, 2, 2, gFrameObjects[0x5D + arg0 * 4].priority + 4);
     } else if (0x10 & record[0xBD]) {
         do {
         if (gSetupParts19B40[arg0].parts[record[0xDE] - 1].byte11 == 0) {
-            sub_08040D0C(arg0 * 3 + 0x48, 1);
+            HideFrameObjects(arg0 * 3 + 0x48, 1);
             return;
         }
         } while (0);
@@ -119,10 +119,10 @@ void sub_08019B40(u32 arg0) {
         slot = arg0 * 3 + 0x48;
         object = (struct FrameObject *)(root + (slot << 6));
         if (object->flags != 0 && object->unknown23[0] == record[0xDF])
-            sub_08040BD8(gState0NextCommands_083B6100[20], slot);
+            RunFrameObjectCommands(gState0NextCommands_083B6100[20], slot);
         else
-            sub_08040B90(gState0NextCommands_083B6100[20], arg0 * 3 + 0x48);
-        sub_08041D04(gUnknown_083C4E20, gUnknown_0300052E, 4);
+            InitFrameObjectCommands(gState0NextCommands_083B6100[20], arg0 * 3 + 0x48);
+        CopyBytesU8Count(gUnknown_083C4E20, gUnknown_0300052E, 4);
         sub_08019D9C(arg0, 2, 2, gFrameObjects[0x5D + arg0 * 4].priority + 4);
     }
 }
@@ -132,7 +132,7 @@ void sub_08036784(s32 start, s32 path, u16 x, u16 y) {
     u32 i;
     u32 k;
 
-    sub_08040CD0(start, 4);
+    ClearFrameObjects(start, 4);
     for (i = 0; i <= 3; i++) {
         gFrameObjects[start + i].flags = 0x4404;
         gFrameObjects[start + i].tableSelector = 0;
@@ -141,6 +141,6 @@ void sub_08036784(s32 start, s32 path, u16 x, u16 y) {
         gFrameObjects[start + i].unknown2C[0] = i * 8;
         { s32 t = gUnknown_083AF600[k = path * 2]; t += (s16)x; gFrameObjects[start + i].screenX = (gUnknown_083AF610[i * 2] + t) & 0x1FF; }
         { s32 t = (s16)y; t += gUnknown_083AF600[k + 1]; gFrameObjects[start + i].screenY = (gUnknown_083AF610[i * 2 + 1] + t) & 0xFF; }
-        sub_08040B90(gState0NextCommands_083B6100[29], start + i);
+        InitFrameObjectCommands(gState0NextCommands_083B6100[29], start + i);
     }
 }

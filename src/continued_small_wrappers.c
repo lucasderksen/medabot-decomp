@@ -8,18 +8,18 @@ void sub_0804C928(void) {}
 
 void sub_0804C92C(void)
 {
-    sub_0804D8CC(2);
+    ReadBankedScriptArgs(2);
     gUnknown_030057E0[0xC89] = 1;
 }
 
 void sub_0804C94C(void)
 {
-    sub_08047BA8((u8)sub_0804D83C());
+    sub_08047BA8((u8)ReadBankedScriptByte());
 }
 
 void sub_0804C960(void)
 {
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     u8 *work = gUnknown_030057E0;
     work[0xC94] = value;
     sub_0804842C(1, work[0xC94]);
@@ -37,7 +37,7 @@ void sub_0804C994(void)
 
 void sub_0804C9A0(void)
 {
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     u8 *work = gUnknown_030057E0;
     work[0xC94] = value;
     sub_0804842C(3, work[0xC94]);

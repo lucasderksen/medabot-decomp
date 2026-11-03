@@ -18,7 +18,7 @@ void sub_0804D100(void)
     struct Record8 *base;
     u32 selector;
     u32 match, requested;
-    sub_0804D8CC(2);
+    ReadBankedScriptArgs(2);
     work = gUnknown_030057E0;
     selector = work[0xCB4] * 8;
     base = (struct Record8 *)(work + 0x5DC);

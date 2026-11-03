@@ -25,8 +25,8 @@ void sub_0805D674(void)
 {
     if (PHASE_WORK->phase <= 8)
     {
-        sub_0803F684(0, PHASE_WORK->phase * 4, 0xFFFF);
-        sub_0803F998(0, PHASE_WORK->phase * 4, 0xFFFF);
+        BlendBgPaletteBanksNow(0, PHASE_WORK->phase * 4, 0xFFFF);
+        BlendObjPaletteBanksNow(0, PHASE_WORK->phase * 4, 0xFFFF);
         PHASE_WORK->phase++;
     }
     else
@@ -68,6 +68,6 @@ void sub_0805D750(void)
 
 void sub_0805DAB0(void)
 {
-    if (sub_0803FB3C(gMain2ScriptSlots_0848521C[9]))
+    if (RunDialogue(gMain2ScriptSlots_0848521C[9]))
         gUnknown_0300137C++;
 }

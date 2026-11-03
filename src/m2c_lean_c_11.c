@@ -39,19 +39,19 @@ void sub_08066280(void) {
         gMenuContext66280->cursor05 = gMainSerialOutgoingWork.words[gUnknown_03000B90 == 0][1];
         gMenuContext66280->flag7A = 1;
         gUnknown_0300137C++;
-        sub_08074DE0(4);
+        PlaySoundEffect(4);
         gFrameObjects[0].screenY = gMenuContext66280->cursor05 * 16 + 0x1C;
         return;
     }
-    sub_08041C14(0, gFrameCounter, 0xC);
+    SetObjectXWobble(0, gFrameCounter, 0xC);
     if (gMenuContext66280->cursor05 == 6)
-        sub_0803FB3C(gUnknown_080AFCA8);
+        RunDialogue(gUnknown_080AFCA8);
     else {
         u32 slots = (u32)gMain2ScriptSlots_08485678;
         u32 base = (u32)gUnknown_080AFCB7;
         u32 offset = gMenuContext66280->cursor05;
         u32 index = *(const u8 *)(base + offset);
-        sub_0803FB3C(*(const void *const *)(slots + (index << 2)));
+        RunDialogue(*(const void *const *)(slots + (index << 2)));
     }
     if (gMenuContext66280->cursor05 > 4) {
         if (0xC1 & (u8)gRepeatedKeys) {
@@ -63,28 +63,28 @@ void sub_08066280(void) {
     if (0x40 & (u8)gRepeatedKeys) {
         gMenuContext66280->cursor05 = gMenuContext66280->cursor05 != 0 ? gMenuContext66280->cursor05 - 1 : 4;
         sub_0803FB0C();
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
     }
     if (0x80 & (u8)gRepeatedKeys) {
         gMenuContext66280->cursor05 = gMenuContext66280->cursor05 < 4 ? gMenuContext66280->cursor05 + 1 : 0;
         sub_0803FB0C();
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
     }
     gFrameObjects[0].screenY = gMenuContext66280->cursor05 * 16 + 0x1C;
     if (1 & (u8)gRepeatedKeys) {
         if (gMenuContext66280->cursor05 == 1 && gMenuContext66280->flag7B == 0) {
             gMenuContext66280->cursor05 = 5;
             sub_0803FB0C();
-            sub_08074DE0(6);
+            PlaySoundEffect(6);
             return;
         }
         if (gMenuContext66280->cursor05 == 2 && gMenuContext66280->flag7C == 0) {
-            sub_08074DE0(6);
+            PlaySoundEffect(6);
             return;
         }
         gMenuContext66280->flag7A = 0;
         gMainSerialOutgoingWork.word06 = gMenuContext66280->cursor05 | 0xEF00;
         gUnknown_0300137C++;
-        sub_08074DE0(4);
+        PlaySoundEffect(4);
     }
 }

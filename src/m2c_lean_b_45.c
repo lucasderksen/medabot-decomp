@@ -13,7 +13,7 @@
 struct BattleView6D138 { u8 pad00[0xE]; s8 byte0E; };
 
 extern const s8 gUnknown_08485924[];
-extern s32 sub_0807CD2C(s32, s32);
+extern s32 __divsi3(s32, s32);
 extern struct BattleView6D138 gBattleView6D138 asm("gCounter6ED08_03001800");
 
 void sub_0806D138(void);

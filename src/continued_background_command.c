@@ -24,7 +24,7 @@ void sub_0804CB94(void)
     u16 snapshot = *current;
     u16 *previous = (u16 *)(work + 0xC8C);
     *previous = snapshot;
-    sub_0804D8CC(1);
+    ReadBankedScriptArgs(1);
     if (((struct BackgroundCommandView *)&gBackgroundState_03005310)->unknown39 == 2)
         *current = *previous + work[0xC94];
 }

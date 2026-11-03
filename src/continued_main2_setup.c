@@ -56,10 +56,10 @@ void sub_0805C17C(void)
     bg3 = (volatile u16 *)0x0400000E;
     control -= 255;
     *bg3 = control;
-    sub_0805BA34(gMain2Map_08790DA8, *bg0);
-    sub_0805BA34(gMain2Map_08790F78, *bg1);
-    sub_0805BA34(gMain2Map_087911BC, *bg2);
-    sub_0805BA34(gMain2Map_0879131C, *bg3);
+    LoadLz77SizedTilemap(gMain2Map_08790DA8, *bg0);
+    LoadLz77SizedTilemap(gMain2Map_08790F78, *bg1);
+    LoadLz77SizedTilemap(gMain2Map_087911BC, *bg2);
+    LoadLz77SizedTilemap(gMain2Map_0879131C, *bg3);
     size = sub_08044D0C(gMain2Tiles_0878F7E8, (void *)0x02030000);
     CpuSet((void *)0x02030000, (void *)0x06004000, (size << 10) >> 11);
     zero = 0;

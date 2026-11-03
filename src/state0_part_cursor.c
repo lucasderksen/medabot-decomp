@@ -18,7 +18,7 @@ void sub_0800FF50(void)
     gFrameObjects[6].palette = 14;
     gFrameObjects[6].tableSelector = 0;
     gFrameObjects[6].priority = 193;
-    sub_08040B90(gUnknownPointers_083B6100[3], 6);
+    InitFrameObjectCommands(gUnknownPointers_083B6100[3], 6);
 }
 
 void sub_0800FFF4(void)

@@ -12,7 +12,7 @@
 #include "state0_work.h"
 
 extern const u8 gUnknown_080B0108[];
-extern s32 sub_0807CDF8(s32, s32);
+extern s32 __modsi3(s32, s32);
 extern u8 gUnknown_03007010;
 
 void sub_08071804(void);
@@ -32,7 +32,7 @@ loop:
         if (gUnknown_03007010 & bit) {
             u32 root = (u32)gFrameObjects;
             struct FrameObject *object = (struct FrameObject *)((index << 6) + root);
-            s32 r = sub_0807CDF8((u16)object->value32, object->unknown23[0]);
+            s32 r = __modsi3((u16)object->value32, object->unknown23[0]);
             s32 k = index;
             u32 base = root;
             do {

@@ -59,9 +59,9 @@ void sub_0805FD10(void) {
   bg3 = (volatile u16 *) 0x0400000E;
   control = 0x3C07;
   *bg3 = control;
-  sub_0805BA34(gUnknown_087974DC, *bg0);
-  sub_0805BA34(gUnknown_08797668, *bg2);
-  sub_0805BA34(gUnknown_0879778C, *bg3);
+  LoadLz77SizedTilemap(gUnknown_087974DC, *bg0);
+  LoadLz77SizedTilemap(gUnknown_08797668, *bg2);
+  LoadLz77SizedTilemap(gUnknown_0879778C, *bg3);
   length = sub_08044D0C(gUnknown_08796990, gUnknown_02030000);
   CpuSet(gUnknown_02030000, (void *) 0x06004000, (length << 10) >> 11);
   additionalTiles = gMain2AdditionalTiles_08785EC0;

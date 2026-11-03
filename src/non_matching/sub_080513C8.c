@@ -79,9 +79,9 @@ NONMATCH("asm/non_matching/sub_080513C8.inc", void sub_080513C8(u32 value))
     s32 i;
 
     records = gSelectionRecords_03005DBC;
-    sub_08049714(saved, 0x200);
+    ClearBytes(saved, 0x200);
     sub_080497C0(records, saved, 0x200);
-    sub_08049714(records, 0x200);
+    ClearBytes(records, 0x200);
     count = 0;
     slot = 0;
     k = 0;
@@ -154,13 +154,13 @@ NONMATCH("asm/non_matching/sub_080513C8.inc", void sub_080513C8(u32 value))
                         case 4:
                         case 6:
                             objIndex = count + 0x31;
-                            sub_08048864((u8)objIndex, 0xC804, hi * 12, hi, 1);
+                            InitFrameObject((u8)objIndex, 0xC804, hi * 12, hi, 1);
                             gSelectionWork13C8.records[slot].flags.bits.auxiliary = 1;
                             gFrameObjects[objIndex].value30 = sub_08048684(hi);
                             sub_080487C8((u8)objIndex);
                             shadowIndex = count + 0x5B;
                             if (gObjectAuxiliaryLookup_083D2D0D[(u16)gFrameObjects[objIndex].value30] != 0)
-                                sub_08048864((u8)shadowIndex, 0xCC0C, 0x90, 0xE, 1);
+                                InitFrameObject((u8)shadowIndex, 0xCC0C, 0x90, 0xE, 1);
                             do {
                             break;
                             } while (0);

@@ -42,7 +42,7 @@ void sub_08021EA0(void) {
     frames->savedX = (u16) (u16)gFrameObjects[work[0x88]*4+0x5D].screenX;
     frames->savedY = (s16) ((u16)gFrameObjects[work[0x88]*4+0x5D].screenY - 4);
     frames->kind = 6;
-    sub_08040B90(gState0NextCommands_083B6100[0x3C],0x21);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[0x3C],0x21);
     gState0TypedWork.widths.word86 = 0x3C;
     work[0xAA]++;
 }

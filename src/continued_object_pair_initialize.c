@@ -49,7 +49,7 @@ void sub_080503FC(u32 indexWord, u32 selectorWord, u32 xWord, u32 yWord)
     sub_08048888(primaryByte);
     frame = sub_080502C8(selector);
     palette = ExtractHighNibble(selector);
-    sub_08048864(primaryByte, 0xC804, frame, palette, 1);
+    InitFrameObject(primaryByte, 0xC804, frame, palette, 1);
     {
         u32 tag = ExtractHighNibble(selector);
         struct InitialFrameView *objects = (struct InitialFrameView *)gFrameObjects;
@@ -75,7 +75,7 @@ void sub_080503FC(u32 indexWord, u32 selectorWord, u32 xWord, u32 yWord)
         {
             u32 secondary = index + 121;
             struct InitialFrameView *secondaryObject;
-            sub_08048864((u8)secondary, 0xCC0C, 144, 14, 1);
+            InitFrameObject((u8)secondary, 0xCC0C, 144, 14, 1);
             secondaryObject = &objects[secondary];
             secondaryObject->x.parts.integer = object->x.parts.integer;
             secondaryObject->y.parts.integer = object->y.parts.integer - 5;

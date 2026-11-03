@@ -7,7 +7,7 @@ extern u8 gLaterBuffer_030055A0[];
 void sub_0804C7DC(void)
 {
     u8 *work;
-    sub_0804D8CC(2);
+    ReadBankedScriptArgs(2);
     work = gUnknown_030057E0;
     if (work[0xC94] == 0)
     {
@@ -26,7 +26,7 @@ void sub_0804C7DC(void)
 void sub_0804C868(void)
 {
     struct ObjectEntry { u16 value; u16 unknown; };
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     u8 *work = gUnknown_030057E0;
     u8 *initial = work + 0xC94;
     s32 index;

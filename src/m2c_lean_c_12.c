@@ -58,7 +58,7 @@ void sub_08066714(void) {
     dst[i] = src[i];
     i++;
     dst[i] = src[i];
-    if (sub_0803FB3C(gScriptContext66714->script270) != 0) {
+    if (RunDialogue(gScriptContext66714->script270) != 0) {
         if (gState0TypedWork.bytes[0x2A] == 0)
             gMainSerialOutgoingWork.word06 = 0xFF00;
         else

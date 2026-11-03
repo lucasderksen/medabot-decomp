@@ -67,8 +67,8 @@ extern struct SetupRecord30A24 gSetupRecords30A24[] asm("gSetupBuffer_03000590")
 extern struct Words395E8 gWords395E8 asm("gCounter6ED08_03001800");
 extern void sub_0801B67C(u32);
 extern void sub_0801B69C(u32);
-extern void sub_0803D450(void);
-extern void sub_0803D4AC(void);
+extern void LoadActionHalfwordScriptParams(void);
+extern void AdvanceActionHalfwordScript(void);
 
 void sub_08030A24(void);
 void sub_08038700(void);
@@ -162,18 +162,18 @@ void sub_08038700(void) {
         gFrameObjects[row * 4 + 0x5D].screenY = gCounter6ED08_03001800.pos13C[row].y + 4;
     }
     sub_080350E0(gCounter6ED08_03001800.base60 + (gState0TypedWork.bytes[0x12F] - 0x21));
-    sub_08040BD8(gState0NextCommands_083B6100[107], gState0TypedWork.bytes[0x12F]);
+    RunFrameObjectCommands(gState0NextCommands_083B6100[107], gState0TypedWork.bytes[0x12F]);
     if (gFrameObjects[gState0TypedWork.bytes[0x12F]].commandStopped == 0xFF) {
         gFrameObjects[(gCounter6ED08_03001800.base60 + (gState0TypedWork.bytes[0x12F] - 0x21)) * 4 + 0x5D].screenY = gCounter6ED08_03001800.pos13C[(gCounter6ED08_03001800.base60 + (gState0TypedWork.bytes[0x12F] - 0x21))].y + 4;
         sub_080350E0(gCounter6ED08_03001800.base60 + (gState0TypedWork.bytes[0x12F] - 0x21));
-        sub_08040CD0(gState0TypedWork.bytes[0x12F], 1);
+        ClearFrameObjects(gState0TypedWork.bytes[0x12F], 1);
     }
 }
 
 void sub_080395E8(void) {
 
 
-    sub_0803D450();
+    LoadActionHalfwordScriptParams();
     if (!(2 & gCounter6ED08_03001800.flagsF8)) {
         gFrames395E8[1].byte2B = 1;
         if (2 & gCounter6ED08_03001800.flagsF6)
@@ -191,5 +191,5 @@ void sub_080395E8(void) {
         gFrames395E8[2].word30 = gWords395E8.words[0];
         gFrames395E8[2].byte2D = 0;
     }
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }

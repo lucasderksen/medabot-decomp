@@ -31,8 +31,8 @@ struct Main2TimerContext
 
 extern const s8 gUnknown_080AFAD2[];
 extern const u16 gUnknown_080AFABA[];
-extern s32 sub_0807CD2C(s32, s32);
-extern s32 sub_0807CEC8(s32, s32);
+extern s32 __divsi3(s32, s32);
+extern s32 __udivsi3(s32, s32);
 extern u8 gFamilyKeyBytes49558_0300058C;
 extern void sub_0805FB4C(s32);
 
@@ -53,7 +53,7 @@ void sub_0805FFF8(void) {
         {
             *(volatile u16 *)0x04000000 &= 0xFEFF;
             *(volatile u16 *)0x04000000 |= 0x200;
-            sub_08074DE0(0x17);
+            PlaySoundEffect(0x17);
         }
         if (((struct Main2TimerContext *)gMainContextPointer_03006F74)->timer3A <= 3)
             gFrameObjects[1].screenY--;
@@ -69,7 +69,7 @@ void sub_0805FFF8(void) {
             gFrameObjects[0].flags |= 0x4000;
         if (step < 20)
         {
-            scale = sub_0807CD2C(step << 6, 20);
+            scale = __divsi3(step << 6, 20);
             y = scale - 0x20;
             gFrameObjects[0].scaleX = -0x80 - scale;
             gFrameObjects[0].scaleY = -0x80 - scale;
@@ -101,7 +101,7 @@ void sub_0805FFF8(void) {
     if (++gFrameObjects[1].unknown1A > 0x47)
         gFrameObjects[1].unknown1A = 0;
     table = gUnknown_080AFABA;
-    gFrameObjects[1].frameAndGroup = table[(u16)sub_0807CEC8(gFrameObjects[1].unknown1A, 6)];
+    gFrameObjects[1].frameAndGroup = table[(u16)__udivsi3(gFrameObjects[1].unknown1A, 6)];
     if ((1 & gFamilyKeyBytes49558_0300058C) && done != 0)
     {
         gFrameObjects[1].flags = 0xCA20;

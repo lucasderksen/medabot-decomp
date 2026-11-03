@@ -63,8 +63,8 @@ extern const s16 gAffineSineTable_080AE8F4[];
 extern const u8 gUnknownBytes_083B83FC[];
 extern s32 gTransferStep03000000;
 extern s32 gUnknown_03006F80;
-extern s32 sub_0807CD2C(s32, s32);
-extern s32 sub_0807CDF8(s32, s32);
+extern s32 __divsi3(s32, s32);
+extern s32 __modsi3(s32, s32);
 extern struct Ctx66D8C *gCtx66D8C asm("gMainContextPointer_03006F74");
 extern u16 *gUnknown_0300002C;
 extern u16 gUnknown_0202FC00[];
@@ -98,9 +98,9 @@ void sub_08066D8C(void) {
     u32 angle;
     u16 c;
 
-    sub_080424B8();
+    NextRandomByte();
     if (gCtx66D8C->timer48 == 0) {
-        gCtx66D8C->timer48 = sub_080424B8();
+        gCtx66D8C->timer48 = NextRandomByte();
         if (gCtx66D8C->timer48 == 0)
             gCtx66D8C->timer48++;
         gCtx66D8C->half49 = gCtx66D8C->timer48 >> 1;
@@ -138,14 +138,14 @@ void sub_08066D8C(void) {
     sub_08066A14();
     gCtx66D8C->counter3C = c = gCtx66D8C->counter3C + 1;
     if ((c & 0xFF) == 0) {
-        angle = sub_080424B8() & 0xFF;
+        angle = NextRandomByte() & 0xFF;
         gCtx66D8C->bytesA2[0] = (gAffineSineTable_080AE8F4[angle] * 5) >> 5;
         gCtx66D8C->bytesA7[0] = (gAffineSineTable_080AE8F4[angle + 0x40] * 5) >> 5;
         gCtx66D8C->bytesA2[0] += 0x78;
         gCtx66D8C->bytesA7[0] += 0x50;
     }
     if (!(0x3F & gCtx66D8C->counter3C))
-        gCtx66D8C->mode7E = sub_080424B8() & 3;
+        gCtx66D8C->mode7E = NextRandomByte() & 3;
     switch (3 & gCtx66D8C->mode7E) {
     case 0:
         gCtx66D8C->velocity86[0] += 2;
@@ -188,13 +188,13 @@ void sub_08066D8C(void) {
         struct Ctx66D8C *ctx;
         struct FrameObject *object;
 
-        j = sub_0807CDF8(i, 0x12);
+        j = __modsi3(i, 0x12);
         if (j == 0) {
             struct Ctx66D8C *c;
             s32 d;
             sub_08066A14();
             c = gCtx66D8C;
-            d = sub_0807CD2C(i, 0x12);
+            d = __divsi3(i, 0x12);
             sub_08066B4C((c->chain8A[0][d] >> 4) & 0xFF, (c->chain8A[1][d] >> 4) & 0xFF, (c->chain8A[2][d] >> 4) & 0xFF);
         }
         ctx = gCtx66D8C;
@@ -208,7 +208,7 @@ void sub_08066D8C(void) {
         root = (u32)gFrameObjects;
         k = i + 1;
         object = (struct FrameObject *)(root + (k << 6));
-        q = sub_0807CD2C(i, 0x12) + 1;
+        q = __divsi3(i, 0x12) + 1;
         object->screenX = ctx->bytesA2[q] + x;
         object->screenY = ctx->bytesA7[q] + y;
     }
@@ -225,8 +225,8 @@ s32 sub_08068A84(void) {
         return 1;
     step = gTransferStep03000000;
     div = gTransferDivisor03000005;
-    if (sub_0807CDF8(step, div) == 0) {
-        w = sub_0807CD2C(step, div);
+    if (__modsi3(step, div) == 0) {
+        w = __divsi3(step, div);
         inv = 0x20 - w;
         source = &gUnknown_0300002C;
         for (i = 0; i <= 0x1FF; i++) {
@@ -254,7 +254,7 @@ void sub_08068F50(void) {
     sub_08069A08();
     sub_0806938C();
     sub_08069910();
-    sub_08074B88(0);
+    PlayMusic(0);
     for (i = 0; i <= 2; i++) {
         gUnknown_03006FD0[0][i] = gCounter6ED08_03001800.pad8C[i];
         gUnknown_03006FA0[0][0][i] = ((u8 (*)[4])&gCounter6ED08_03001800.pad8C[3])[i][0];
@@ -288,7 +288,7 @@ void sub_08068F50(void) {
         sub_08042D94(gUnknown_03006FA0[2][0][i], gUnknown_03006FA0[2][1][i], gUnknown_03006FA0[2][2][i],
                      gUnknown_03006FA0[2][3][i], 8 - i);
     }
-    sub_08074B88(0x13);
+    PlayMusic(0x13);
     sub_08068460(2, 2, 0);
     *(volatile u16 *)0x04000000 |= 0x1E00;
     gUnknown_03006F80 = 6;

@@ -52,7 +52,7 @@ void sub_0803EF20(void)
     VBlankIntrWait();
 }
 
-void sub_0803EF8C(u32 width, u32 height, u32 x, u32 y, u32 control, u32 entry)
+void FillTilemapRect(u32 width, u32 height, u32 x, u32 y, u32 control, u32 entry)
 {
     u16 value = entry;
     u32 screenOffset = ((control >> 8) & 31) << 11;
@@ -155,7 +155,7 @@ void sub_0803EFD8(u32 width, u32 height, u32 x, u32 y, u32 control, u32 entry)
     }
 }
 
-void sub_0803F15C(u32 width, u32 height, u32 x, u32 y, const void *source, u32 control, u32 entryOffset)
+void CopyTilemapRect(u32 width, u32 height, u32 x, u32 y, const void *source, u32 control, u32 entryOffset)
 {
     u32 screenOffset;
     u32 xAddress;
@@ -204,7 +204,7 @@ void sub_0803F480(u32 bank, u32 frame, u32 x, u32 y, u32 mapBank)
     REG_BG0CNT = 0x500;
     LeDecompress(gUnknownPointers_083AFE88[bank * 9 + frame], (void *)0x06000F80);
     CpuFastSet(gUnknownPointers_083B1748[bank], (void *)0x050001A0, 8);
-    sub_0803F15C(8, 8, x, y, gUnknownPointers_083B4C60[mapBank * 9 + 8], REG_BG0CNT, 0);
+    CopyTilemapRect(8, 8, x, y, gUnknownPointers_083B4C60[mapBank * 9 + 8], REG_BG0CNT, 0);
 }
 
 u32 sub_0803F51C(u32 bank, u32 frame, u32 x, u32 y, u32 mapBank, u32 reverse)
@@ -221,7 +221,7 @@ u32 sub_0803F51C(u32 bank, u32 frame, u32 x, u32 y, u32 mapBank, u32 reverse)
         CpuFastSet(gUnknownPointers_083B1748[bank], (void *)0x050001A0, 8);
     }
     if (!reverse)
-        sub_0803F15C(8, 8, x, y, gUnknownPointers_083B4C60[mapBank * 9 + gUnknown_03000440[0xE]], REG_BG0CNT, 0);
+        CopyTilemapRect(8, 8, x, y, gUnknownPointers_083B4C60[mapBank * 9 + gUnknown_03000440[0xE]], REG_BG0CNT, 0);
     else
     {
         u32 table = (u32)gUnknownPointers_083B4C60;
@@ -229,7 +229,7 @@ u32 sub_0803F51C(u32 bank, u32 frame, u32 x, u32 y, u32 mapBank, u32 reverse)
         u32 current = gUnknown_03000440[0xE];
         current -= 8;
         index -= current;
-        sub_0803F15C(8, 8, x, y, *(const void **)(table + index * 4), REG_BG0CNT, 0);
+        CopyTilemapRect(8, 8, x, y, *(const void **)(table + index * 4), REG_BG0CNT, 0);
     }
     gUnknown_03000440[0xE]++;
     if (gUnknown_03000440[0xE] == 9)
@@ -237,7 +237,7 @@ u32 sub_0803F51C(u32 bank, u32 frame, u32 x, u32 y, u32 mapBank, u32 reverse)
     return 0;
 }
 
-void sub_0803F624(void *destination, u32 size, u32 inputValue)
+void FillBytes(void *destination, u32 size, u32 inputValue)
 {
     u8 *out = destination;
     u8 value = inputValue;
@@ -246,7 +246,7 @@ void sub_0803F624(void *destination, u32 size, u32 inputValue)
         *out++ = value;
 }
 
-void sub_0803F63C(const void *source, void *destination, u32 size)
+void CopyBytes(const void *source, void *destination, u32 size)
 {
     u32 i;
     for (i = 0; i < size; i++)
@@ -257,7 +257,7 @@ void sub_0803F63C(const void *source, void *destination, u32 size)
     }
 }
 
-void sub_0803F65C(void *first, void *second, u32 size)
+void SwapBytes(void *first, void *second, u32 size)
 {
     u32 i;
     for (i = 0; i < size; i++)

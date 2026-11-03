@@ -27,7 +27,7 @@ void sub_0802C790(void) {
  do {
  sub_0803836C();
  work=gState0TransferWork.bytes;
- work[0x60]=sub_08032FC4(work[0x87]);
+ work[0x60]=GetSlotGroupStart(work[0x87]);
  } while(0);
  i=0;setup=gSetupBuffer_03000590;flags=work+0xD2;
  do {

@@ -44,9 +44,9 @@ extern const u8 gUnknown_085101F8[];
 extern struct Frame3A760 gFrames3A760[] asm("gFrameObjects");
 extern struct SetupRecord33C20 gSetupRecords33C20[] asm("gSetupBuffer_03000590");
 extern struct Words3A760 gWords3A760 asm("gCounter6ED08_03001800");
-extern void sub_08034F08(void);
-extern void sub_0803D450(void);
-extern void sub_0803D4AC(void);
+extern void AdvanceActionByteScript(void);
+extern void LoadActionHalfwordScriptParams(void);
+extern void AdvanceActionHalfwordScript(void);
 
 void sub_0802B3CC(void);
 void sub_0802C0DC(void);
@@ -63,7 +63,7 @@ void sub_0802B3CC(void) {
         if (gCounter6ED08_03001800.activeD2[i] != 0) {
             gFrameObjects[i + 0x21].palette = 7;
             gFrameObjects[i + 0x21].flags &= 0xEFFF;
-            sub_08040B90(gState0NextCommands_083B6100[0x66], i + 0x21);
+            InitFrameObjectCommands(gState0NextCommands_083B6100[0x66], i + 0x21);
         }
     }
     gCounter6ED08_03001800.counterAA++;
@@ -73,12 +73,12 @@ void sub_0802C0DC(void) {
 
     u32 i;
 
-    gCounter6ED08_03001800.base60 = sub_08032FC4(gCounter6ED08_03001800.slot87);
+    gCounter6ED08_03001800.base60 = GetSlotGroupStart(gCounter6ED08_03001800.slot87);
     for (i = 0; i <= 2; i++) {
         if (gCounter6ED08_03001800.activeD2[i] != 0 && !(1 & gState0TypedWork.bytes[0x84]))
             gFrameObjects[i + 0x21].screenY--;
     }
-    gCounter6ED08_03001800.base60 = sub_08032FB8(gCounter6ED08_03001800.slot87);
+    gCounter6ED08_03001800.base60 = GetOtherSlotGroupStart(gCounter6ED08_03001800.slot87);
     for (i = 0; i <= 2; i++) {
         if (gCounter6ED08_03001800.valuesD6[i] != 0 && !(1 & gState0TypedWork.bytes[0x84]))
             gFrameObjects[i + 0x24].screenY++;
@@ -111,13 +111,13 @@ void sub_08033C20(void) {
         gSetupRecords33C20[gCounter6ED08_03001800.value88].flagsBC |= 4;
     if (2 & gSetupRecords33C20[gCounter6ED08_03001800.value88].flagsBC)
         gSetupRecords33C20[gCounter6ED08_03001800.value88].flagsBC |= 8;
-    sub_08034F08();
+    AdvanceActionByteScript();
 }
 
 void sub_0803A760(void) {
 
 
-    sub_0803D450();
+    LoadActionHalfwordScriptParams();
     if (!(2 & gCounter6ED08_03001800.flagsF8)) {
         gFrames3A760[1].byte2B = 1;
         if (2 & gCounter6ED08_03001800.flagsF6)
@@ -135,5 +135,5 @@ void sub_0803A760(void) {
         gFrames3A760[2].word30 = gWords3A760.words[0];
         gFrames3A760[2].byte2D = 1;
     }
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }

@@ -24,7 +24,7 @@
 extern s32 gState0NextCommands_083B6100;
 extern s32 gUnknown_0300198A;
 extern void *gUnknown_03007014;
-s16 sub_0807CD2C(s16, s32);
+s16 __divsi3(s16, s32);
 s32 sub_080158D0(u8);
 s32 sub_08019108(s32);
 s32 sub_080191C0(s32);
@@ -36,7 +36,7 @@ s32 sub_080192B8(s32);
 s32 sub_080192E8(s32);
 s32 sub_0801932C(s32);
 s32 sub_08035F20();
-s32 sub_0803D4AC();
+s32 AdvanceActionHalfwordScript();
 s32 sub_0803E894();
 s32 sub_0803ED6C();
 void sub_08066D8C(void);
@@ -48,7 +48,7 @@ s32 sub_08073D70(void *, s32);
 s32 sub_08073DB8(void *, s32, s32, s32, s32, s32, s32, s32);
 s32 sub_08073DF4();
 s32 sub_08074540();
-s32 sub_0807CEC8(s32, s32);
+s32 __udivsi3(s32, s32);
 u32 sub_08075130();
 
 void sub_080190B8(s32 arg0);
@@ -146,10 +146,10 @@ void sub_0801EB5C(void) {
   s32 *new_var3;
   new_var = 0xFF;
   new_var3 = &gState0NextCommands_083B6100;
-  sub_08040BD8(*((u8 **) (((s8 *) new_var3) + 0x78)), 0xAU);
+  RunFrameObjectCommands(*((u8 **) (((s8 *) new_var3) + 0x78)), 0xAU);
   if (gFrameObjects[0xA].commandStopped == new_var)
   {
-    sub_08040CD0(0xAU, 1U);
+    ClearFrameObjects(0xAU, 1U);
     gState0TransferWork.bytes[0xAA] += 1;
   }
   new_var2 = (void *) &gState0TypedWork.widths;
@@ -163,10 +163,10 @@ void sub_0801EB5C(void) {
 void sub_080206E8(void) {
   int new_var;
   new_var = 0x88;
-  sub_08040BD8(*((u8 **) (((s8 *) (&gState0NextCommands_083B6100)) + new_var)), 0x21U);
+  RunFrameObjectCommands(*((u8 **) (((s8 *) (&gState0NextCommands_083B6100)) + new_var)), 0x21U);
   if (gFrameObjects[0x21].commandStopped == 0xFF)
   {
-    sub_08040CD0(0x21U, 1U);
+    ClearFrameObjects(0x21U, 1U);
     gState0TransferWork.bytes[0xAA] += 1;
   }
 }
@@ -174,7 +174,7 @@ void sub_080206E8(void) {
 void sub_08021000(void) {
   s8 *new_var;
   new_var = (s8 *) (&gState0NextCommands_083B6100);
-  sub_08040BD8(*((u8 **) (new_var + 0x8C)), 0x21U);
+  RunFrameObjectCommands(*((u8 **) (new_var + 0x8C)), 0x21U);
   if (gFrameObjects[0x21].commandStopped == 0xFF)
   {
     gState0TransferWork.bytes[0xAA] += 1;
@@ -184,10 +184,10 @@ void sub_08021000(void) {
 void sub_0802494C(void) {
   s32 *new_var;
   new_var = &gState0NextCommands_083B6100;
-  sub_08040BD8(*((u8 **) (((s8 *) new_var) + 0x88)), 0x21U);
+  RunFrameObjectCommands(*((u8 **) (((s8 *) new_var) + 0x88)), 0x21U);
   if (gFrameObjects[0x21].commandStopped == 0xFF)
   {
-    sub_08040CD0(0x21U, 1U);
+    ClearFrameObjects(0x21U, 1U);
     sub_080158D0(gState0TransferWork.bytes[0x88]);
     gState0TransferWork.bytes[0xAA] += 1;
   }
@@ -199,11 +199,11 @@ void sub_08030990(void) {
   s32 *new_var3;
   new_var3 = &gState0NextCommands_083B6100;
   new_var = (u8 **) (((s8 *) new_var3) + 0x54);
-  sub_08040BD8(*new_var, 3U);
+  RunFrameObjectCommands(*new_var, 3U);
   if (0xFF == gFrameObjects[3].commandStopped)
   {
     new_var2 = 3U;
-    sub_08040CD0(new_var2, 1U);
+    ClearFrameObjects(new_var2, 1U);
     gUnknown_0300137C += 1;
   }
 }
@@ -212,19 +212,19 @@ void sub_080310A0(void) {
   const void * const *new_var;
   if (gState0TypedWork.bytes[0x9C] == 1)
   {
-    sub_0803F63C(gUnknown_03002B74, &gState0TypedWork.bytes[0x9E], 0xEU);
+    CopyBytes(gUnknown_03002B74, &gState0TypedWork.bytes[0x9E], 0xEU);
   }
   else
     if (gState0TypedWork.bytes[0x89] != 1)
   {
-    sub_0803F63C(gState0EncounterLabels_083C40B8[gState0TransferWork.bytes[0]], &gState0TypedWork.bytes[0x9E], 0x12U);
+    CopyBytes(gState0EncounterLabels_083C40B8[gState0TransferWork.bytes[0]], &gState0TypedWork.bytes[0x9E], 0x12U);
   }
   else
   {
-    sub_0803F63C(&gUnknown_0300198A, &gState0TypedWork.bytes[0x9E], 0x12U);
+    CopyBytes(&gUnknown_0300198A, &gState0TypedWork.bytes[0x9E], 0x12U);
   }
   new_var = gState0FixedMessages_083C6744;
-  if (sub_0803FB3C(*((void **) (((s8 *) new_var) + 8))) != 0)
+  if (RunDialogue(*((void **) (((s8 *) new_var) + 8))) != 0)
   {
     gUnknown_0300137C += 1;
   }
@@ -234,19 +234,19 @@ void sub_08031218(void) {
   s8 *new_var;
   if (gState0TypedWork.bytes[0x9C] == 1)
   {
-    sub_0803F63C(gUnknown_03002B74, &gState0TypedWork.bytes[0x9E], 0xEU);
+    CopyBytes(gUnknown_03002B74, &gState0TypedWork.bytes[0x9E], 0xEU);
   }
   else
     if (gState0TypedWork.bytes[0x89] != 1)
   {
-    sub_0803F63C(gState0EncounterLabels_083C40B8[gState0TransferWork.bytes[0]], &gState0TypedWork.bytes[0x9E], 0x12U);
+    CopyBytes(gState0EncounterLabels_083C40B8[gState0TransferWork.bytes[0]], &gState0TypedWork.bytes[0x9E], 0x12U);
   }
   else
   {
-    sub_0803F63C(&gUnknown_0300198A, &gState0TypedWork.bytes[0x9E], 0x12U);
+    CopyBytes(&gUnknown_0300198A, &gState0TypedWork.bytes[0x9E], 0x12U);
   }
   new_var = (s8 *) gState0FixedMessages_083C6744;
-  if (sub_0803FB3C(*((void **) (new_var + 0xC))) != 0)
+  if (RunDialogue(*((void **) (new_var + 0xC))) != 0)
   {
     gUnknown_0300137C += 1;
   }
@@ -261,9 +261,9 @@ void sub_080315B0(void) {
   temp_r0 = (*temp_r4 = (*temp_r4) + 1);
   if (temp_r0 == 0x78)
   {
-    sub_08040CD0(0x21U, 2U);
+    ClearFrameObjects(0x21U, 2U);
     new_var = gState0TransferWork.bytes;
-    sub_08040CD0(((u32) ((new_var[0x87] << 0x1A) + 0x23000000)) >> 0x18, 4U);
+    ClearFrameObjects(((u32) ((new_var[0x87] << 0x1A) + 0x23000000)) >> 0x18, 4U);
     gUnknown_0300137C += 1;
   }
 }
@@ -275,7 +275,7 @@ void sub_080318CC(void) {
   new_var3 = gUnknownPointers_083B74B8;
   new_var2 = gSetupBuffer_03000590;
   new_var = &gState0TransferWork.bytes;
-  sub_0803F63C(new_var3[*((u8 *) (((s8 *) (new_var2 + ((*new_var)[0x87] << 8))) + 0xA8))], gDebugMenuTextBuffer, 0x11U);
+  CopyBytes(new_var3[*((u8 *) (((s8 *) (new_var2 + ((*new_var)[0x87] << 8))) + 0xA8))], gDebugMenuTextBuffer, 0x11U);
   gState0TransferWork.bytes[0xA6] = 0x38;
   gUnknown_0300137C += 1;
 }
@@ -283,7 +283,7 @@ void sub_080318CC(void) {
 void sub_08031994(void) {
   int new_var;
   new_var = 4;
-  if (sub_0803FB3C(*((void **) (((s8 *) (&gUnknownPointers_083CF530)) + new_var))) != 0)
+  if (RunDialogue(*((void **) (((s8 *) (&gUnknownPointers_083CF530)) + new_var))) != 0)
   {
     gUnknown_0300137C += 1;
   }
@@ -310,14 +310,14 @@ void sub_08036370(s32 arg0, s32 arg1) {
 
 void sub_08039540(void) {
   int new_var;
- do { if (gState0TransferWork.bytes[0xB7] == 1) { new_var = 0xB7; gState0TransferWork.bytes[0xFD] = gState0TransferWork.bytes[new_var]; } else { gState0TransferWork.bytes[0xFD] = 0; } sub_0803D4AC(); } while (0);
+ do { if (gState0TransferWork.bytes[0xB7] == 1) { new_var = 0xB7; gState0TransferWork.bytes[0xFD] = gState0TransferWork.bytes[new_var]; } else { gState0TransferWork.bytes[0xFD] = 0; } AdvanceActionHalfwordScript(); } while (0);
 }
 
 void sub_0803D9A0(void) {
   s8 *new_var2;
   int new_var;
-  sub_08043CD4();
-  if (sub_0803FB3C(*((void **) ((new_var2 = (s8 *) gState0MapMessages_083C2D3C) + (new_var = 4)))) != 0)
+  StepFirstBgAutoScroll();
+  if (RunDialogue(*((void **) ((new_var2 = (s8 *) gState0MapMessages_083C2D3C) + (new_var = 4)))) != 0)
   {
     gUnknown_0300137C += 1;
   }
@@ -325,9 +325,9 @@ void sub_0803D9A0(void) {
 
 void sub_0803DBB8(void) {
   const void *const *new_var;
-  sub_08043CD4();
+  StepFirstBgAutoScroll();
   new_var = gUnknownPointers_083CF530;
-  if (sub_0803FB3C(*((void **) (((s8 *) new_var) + 4))) != 0)
+  if (RunDialogue(*((void **) (((s8 *) new_var) + 4))) != 0)
   {
     gUnknown_0300137C += 1;
   }
@@ -339,7 +339,7 @@ void sub_0803E1FC(void) {
   sub_0803ED6C();
   gState0TypedWork.widths.word86 += 1;
   new_var = (s8 *) (&gUnknownPointers_083CF530);
-  if (sub_0803FB3C(*((void **) (new_var + 4))) != 0)
+  if (RunDialogue(*((void **) (new_var + 4))) != 0)
   {
     gUnknown_0300137C += 1;
   }
@@ -348,7 +348,7 @@ void sub_0803E1FC(void) {
 void sub_0803E634(void) {
   s8 *new_var;
   new_var = (s8 *) (&gUnknownPointers_083CF530);
-  if (sub_0803FB3C(*((void **) (new_var + 0x30))) != 0)
+  if (RunDialogue(*((void **) (new_var + 0x30))) != 0)
   {
     gUnknown_0300137C += 1;
   }
@@ -361,8 +361,8 @@ void sub_08067B28(void) {
   ;
   if (((s32) (*((s16 *) (((s8 *) gMainContextPointer_03006F74) + 0x3E)))) <= 0xC0)
   {
-    sub_0803F684(0U, (u32) sub_0807CD2C(*((s16 *) (((s8 *) gMainContextPointer_03006F74) + 0x3E)), 6), 0xFFFFU);
-    sub_0803F998(0U, (u32) sub_0807CD2C(*((s16 *) (((s8 *) gMainContextPointer_03006F74) + 0x3E)), 6), 0xFFFFU);
+    BlendBgPaletteBanksNow(0U, (u32) __divsi3(*((s16 *) (((s8 *) gMainContextPointer_03006F74) + 0x3E)), 6), 0xFFFFU);
+    BlendObjPaletteBanksNow(0U, (u32) __divsi3(*((s16 *) (((s8 *) gMainContextPointer_03006F74) + 0x3E)), 6), 0xFFFFU);
     *((s16 *) (((s8 *) gMainContextPointer_03006F74) + 0x3E)) = (s16) (((u16) (*((s16 *) (((s8 *) gMainContextPointer_03006F74) + 0x3E)))) + 1);
     return;
   }
@@ -392,7 +392,7 @@ void sub_08073E24(void *arg0) {
   sub_08073DB8(arg0, *((s32 *) (((s8 *) arg0) + 0x1C)), 0x20, *((s32 *) (((s8 *) arg0) + 0x24)), *((s32 *) (((s8 *) arg0) + 0x28)), *((s32 *) (((s8 *) arg0) + 0x2C)), (s32) (*((u8 *) (((s8 *) arg0) + 0x30))), (s32) (*((u8 *) (((s8 *) arg0) + 0x31))));
   sub_08073C3C(arg0, *((s32 *) (((s8 *) arg0) + 0x24)));
   new_var = *((s32 *) (((s8 *) arg0) + 4));
-  *((s32 *) (((s8 *) arg0) + 0x10)) = (s32) ((0x10000 - sub_0807CEC8(0x01000000, new_var)) | 0x800000);
+  *((s32 *) (((s8 *) arg0) + 0x10)) = (s32) ((0x10000 - __udivsi3(0x01000000, new_var)) | 0x800000);
   sub_08073D70(arg0, 0);
   sub_08072734(*((s32 *) (((s8 *) arg0) + 0x18)));
 }

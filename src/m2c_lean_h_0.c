@@ -12,8 +12,8 @@
 #include "graphics.h"
 #include "state0_work.h"
 
-extern u8 sub_0807CEC8(u8 numerator, s32 denominator);
-extern u8 sub_0807CF40(u8 numerator, s32 denominator);
+extern u8 __udivsi3(u8 numerator, s32 denominator);
+extern u8 __umodsi3(u8 numerator, s32 denominator);
 
 void sub_0805E334(u8 *name);
 
@@ -38,8 +38,8 @@ void sub_0805E334(u8 *name) {
         {
             code--;
             block = (*(volatile u16 *)0x0400000A >> 8) & 0x1F;
-            column = sub_0807CF40(code, 26);
-            row = sub_0807CEC8(code, 26);
+            column = __umodsi3(code, 26);
+            row = __udivsi3(code, 26);
             block <<= 11;
             block += column * 2;
             block += row * 0xC0;

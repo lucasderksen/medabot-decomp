@@ -39,7 +39,7 @@ void sub_0805DBC4(void)
                 break;
             attempt = (u8)(attempt + 1);
         }
-        sub_08074B88(6);
+        PlayMusic(6);
         if (!result)
         {
             sub_0803FB0C();

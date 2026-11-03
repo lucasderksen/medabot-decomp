@@ -66,7 +66,7 @@ void sub_0806AAA4(void) {
                         for (k = 0; k <= 15; k++) {
                             u8 frame = gRandomBytes_083F7D80[(gFrameCounter + k) & 0xFF];
                             frame &= 3;
-                            sub_08048864(k + 4, 0xC400, frame + 0x10C, 0xB, 3);
+                            InitFrameObject(k + 4, 0xC400, frame + 0x10C, 0xB, 3);
                             gView6AAA4[k + 4].priority = 0x64;
                             sub_0806B530(k + 4, 8, frame, (k * 16) & 0x7F);
                         }
@@ -75,10 +75,10 @@ void sub_0806AAA4(void) {
                     } else if (gSelectionOrder03006F94[2] == 0) {
                         gSelectionOrder03006F94[2] = i + 1;
                     }
-                    sub_08074DE0(0x43);
+                    PlaySoundEffect(0x43);
                     continue;
                 }
-                sub_08074DE0(0x44);
+                PlaySoundEffect(0x44);
                 gView6AAA4[gEncounterFrameSlotsView[i][gUnknown_03006F8C[i]]].timer = 0;
                 gUnknown_03006FEC[i] = 0x20;
                 gUnknown_03006FF0[i] = 0;

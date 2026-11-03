@@ -49,7 +49,7 @@ void sub_08070914(void) {
     dma->destination = &gGraphicsTransferCounter;
     dma->control = 0x85000005;
     (void)dma->control;
-    sub_08074B88(0U);
+    PlayMusic(0U);
     *(volatile u16 *)0x04000000 = 0x60;
     gGraphicsTransferCounter.mode0 = 3;
     gGraphicsTransferCounter.selection2 = 6;

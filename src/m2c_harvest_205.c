@@ -46,8 +46,8 @@ void sub_08064524(void) {
  u16 *wordA;
  u32 rowOffset;
  if(mode) offset=0x68;
- if(sub_0803FB3C(*(const void *const *)((u32)scripts+offset))) {
-  if(*(u8 *)&gRepeatedKeys &1) {sub_08074DE0(13);gUnknown_0300137C++;}
+ if(RunDialogue(*(const void *const *)((u32)scripts+offset))) {
+  if(*(u8 *)&gRepeatedKeys &1) {PlaySoundEffect(13);gUnknown_0300137C++;}
   else {
    serial=(struct SerialView64524 *)&gMainSerialOutgoingWork;
    connected=*(u8 *)&gUnknown_03000B90;

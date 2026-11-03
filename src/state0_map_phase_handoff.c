@@ -12,7 +12,7 @@ void sub_08014A44(void)
 
 void sub_08014A60(void)
 {
-    if (sub_0803FB3C(gUnknownPointers_083CF530[1]))
+    if (RunDialogue(gUnknownPointers_083CF530[1]))
         gUnknown_0300137C++;
 }
 

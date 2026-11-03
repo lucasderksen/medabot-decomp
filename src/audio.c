@@ -4,7 +4,7 @@
 
 /* Install the reviewed music, effect, PCM and auxiliary-command banks. */
 extern void sub_080723AC(void *context);
-extern void sub_08074B88(u32 value);
+extern void PlayMusic(u32 value);
 extern void sub_08074090(void);
 extern void sub_080740D4(void);
 
@@ -18,7 +18,7 @@ void InitAudio(void *context)
     sub_08074FE8(&gSoundAuxBank);
     sub_08073C5C(gSoundPcmInstruments);
     sub_08073C70(gSoundPcmDrums);
-    sub_08074B88(0);
+    PlayMusic(0);
 }
 
 /* 0x0800099C; installed in the DMA1 slot of the game's interrupt table. */

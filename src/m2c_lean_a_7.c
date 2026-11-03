@@ -14,7 +14,7 @@
 struct LeanSetupSide { u8 bytes[0x100]; };
 struct LeanCounterE8 { u8 unknown00[0x87]; u8 byte87; u8 byte88; u8 unknown89[0x21]; u8 stepAA; u8 unknownAB[0x3D]; s16 valueE8; u8 unknownEA[2]; s16 valueEC; };
 
-extern s32 sub_08036E54(s32 value);
+extern s32 Clamp1To99(s32 value);
 extern struct LeanCounterE8 gCounter6ED08_03001800;
 
 void sub_08023FB8(void);
@@ -25,11 +25,11 @@ void sub_08023FB8(void) {
 
     sides[gCounter6ED08_03001800.byte88].bytes[0xC9] = 0x29;
     sides[gCounter6ED08_03001800.byte88].bytes[0xCA] = 0;
-    sides[gCounter6ED08_03001800.byte88].bytes[0xCB] = sub_08036E54(gCounter6ED08_03001800.valueE8);
-    sides[gCounter6ED08_03001800.byte88].bytes[0xCC] = sub_08036E54(gCounter6ED08_03001800.valueEC);
+    sides[gCounter6ED08_03001800.byte88].bytes[0xCB] = Clamp1To99(gCounter6ED08_03001800.valueE8);
+    sides[gCounter6ED08_03001800.byte88].bytes[0xCC] = Clamp1To99(gCounter6ED08_03001800.valueEC);
     sides[gCounter6ED08_03001800.byte87].bytes[0xC4] = 0x29;
     sides[gCounter6ED08_03001800.byte87].bytes[0xC5] = 0;
-    sides[gCounter6ED08_03001800.byte87].bytes[0xC6] = sub_08036E54(gCounter6ED08_03001800.valueE8);
-    sides[gCounter6ED08_03001800.byte87].bytes[0xC7] = sub_08036E54(gCounter6ED08_03001800.valueEC);
+    sides[gCounter6ED08_03001800.byte87].bytes[0xC6] = Clamp1To99(gCounter6ED08_03001800.valueE8);
+    sides[gCounter6ED08_03001800.byte87].bytes[0xC7] = Clamp1To99(gCounter6ED08_03001800.valueEC);
     gCounter6ED08_03001800.stepAA++;
 }

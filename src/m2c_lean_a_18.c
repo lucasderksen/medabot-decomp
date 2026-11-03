@@ -16,7 +16,7 @@
 struct Work22648 { u8 pad[0x87]; u8 setup87; u8 pad88[0x22]; u8 counterAA; };
 
 extern struct Work22648 gWork22648 asm("gCounter6ED08_03001800");
-extern void sub_08074DE0(u32);
+extern void PlaySoundEffect(u32);
 
 void sub_08022648(void);
 
@@ -41,8 +41,8 @@ void sub_08022648(void) {
         }
     }
     if (gFrameObjects[0x21].byte2B == 0) {
-        sub_08074DE0(0x30);
-        sub_08040CD0(0x22, 1);
+        PlaySoundEffect(0x30);
+        ClearFrameObjects(0x22, 1);
         gWork22648.counterAA++;
     }
 }

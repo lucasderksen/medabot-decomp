@@ -61,7 +61,7 @@ void sub_0804D9F8(u32 index)
     value = (u8)(*part * 4 + objects[48 * 64 + 0x21]);
     value = sub_08050300(48, value);
     sub_08049420(48, (u8)value);
-    sub_08048864(90, 0xCC0C, 0x90, 14, one);
+    InitFrameObject(90, 0xCC0C, 0x90, 14, one);
     {
         u16 coordinate = *x;
         *(u16 *)(objects + 90 * 64 + 2) = coordinate;

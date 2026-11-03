@@ -74,16 +74,16 @@ void sub_08005118(void)
 {
     struct State0Record8 *record;
     struct State0Record8 *base;
-    sub_08040D0C(50, 10);
+    HideFrameObjects(50, 10);
     base = gUnknownRecords_030017A0;
     record = &base[gState0TypedWork.bytes[0x51]];
     if (record->unknown00[0] > 1)
-        sub_08040DB8(gUnknown_03000BAA + sub_08041D3C(record->unknown00[2]) * 64,
+        PlaceAlignedTextObjects(gUnknown_03000BAA + sub_08041D3C(record->unknown00[2]) * 64,
                     50, 1, 13, 10, 13, 0, 2);
     else
     {
         sub_08042678(gState0TypedWork.bytes + 0x9E, 10);
-        sub_08040DB8(gState0TypedWork.bytes + 0x9E, 50, 1, 13, 10, 13, 0, 2);
+        PlaceAlignedTextObjects(gState0TypedWork.bytes + 0x9E, 50, 1, 13, 10, 13, 0, 2);
     }
 }
 
@@ -91,18 +91,18 @@ void sub_0800519C(void)
 {
     struct State0Record8 *record;
     struct State0Record8 *base;
-    sub_08040D0C(60, 10);
+    HideFrameObjects(60, 10);
     base = gUnknownRecords_030017A0;
     record = &base[gState0TypedWork.bytes[0x51]];
     if (record->unknown00[0] > 1)
     {
-        sub_0803F63C(gUnknownPointers_083B6590[record->unknown00[2]], gState0TypedWork.bytes + 0x9E, 11);
-        sub_08040DB8(gState0TypedWork.bytes + 0x9E, 60, 4, 16, 7, 14, 1, 2);
+        CopyBytes(gUnknownPointers_083B6590[record->unknown00[2]], gState0TypedWork.bytes + 0x9E, 11);
+        PlaceAlignedTextObjects(gState0TypedWork.bytes + 0x9E, 60, 4, 16, 7, 14, 1, 2);
     }
     else
     {
         sub_08042678(gState0TypedWork.bytes + 0x9E, 9);
-        sub_08040DB8(gState0TypedWork.bytes + 0x9E, 60, 4, 16, 7, 14, 1, 2);
+        PlaceAlignedTextObjects(gState0TypedWork.bytes + 0x9E, 60, 4, 16, 7, 14, 1, 2);
     }
 }
 
@@ -114,7 +114,7 @@ void sub_0800522C(void)
         CpuFastSet(gUnknownBytes_084C29D8 + record->unknown00[2] * 128, (void *)0x06006600, 32);
     else
         CpuFastSet(gUnknownBytes_084C38D8, (void *)0x06006600, 32);
-    sub_08042698(2, 2, 1, 16, *(volatile u16 *)0x0400000A, 0x6330);
+    FillTilemapRectSequential(2, 2, 1, 16, *(volatile u16 *)0x0400000A, 0x6330);
 }
 
 void sub_080056A4(u32 index)

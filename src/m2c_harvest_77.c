@@ -47,7 +47,7 @@ struct FrameCounterBacking {
     u8 count;
 };
 
-extern __typeof__(sub_08032FC4) sub_08032FB8;
+extern __typeof__(GetSlotGroupStart) GetOtherSlotGroupStart;
 extern s32 sub_08032FD0(u32, u32);
 extern s32 sub_08032FFC(void);
 extern s32 sub_0803301C(void);
@@ -108,7 +108,7 @@ void sub_08031BCC(void) {
     u32 address;
     u8 *cursor;
     u8 *slots;
-    work[0x60] = sub_08032FB8(work[0x5C]);
+    work[0x60] = GetOtherSlotGroupStart(work[0x5C]);
     i = 0;
     setup = gSetupBuffer_03000590;
     address = (u32) work;
@@ -136,7 +136,7 @@ void sub_08031BCC(void) {
       u32 address;
       u8 *cursor;
       u8 *slots;
-      work[0x60] = sub_08032FB8(work[0x5C]);
+      work[0x60] = GetOtherSlotGroupStart(work[0x5C]);
       i = 0;
       setup = gSetupBuffer_03000590;
       address = (u32) work;
@@ -164,7 +164,7 @@ void sub_08031BCC(void) {
         u32 address;
         u8 *cursor;
         u8 *slots;
-        work[0x60] = sub_08032FB8(work[0x5C]);
+        work[0x60] = GetOtherSlotGroupStart(work[0x5C]);
         i = 0;
         setup = gSetupBuffer_03000590;
         address = (u32) work;
@@ -187,7 +187,7 @@ void sub_08031BCC(void) {
       else
       {
         u8 *work = gState0TransferWork.bytes;
-        work[0x60] = sub_08032FB8(work[0x5C]);
+        work[0x60] = GetOtherSlotGroupStart(work[0x5C]);
         ((struct SelectionBacking *) work)->selected = sub_08033090(work[0x60]) + 1;
       }
     }
@@ -211,7 +211,7 @@ void sub_08032478(void) {
     u32 address;
     u8 *cursor;
     u8 *slots;
-    work[0x60] = sub_08032FC4(work[0x5C]);
+    work[0x60] = GetSlotGroupStart(work[0x5C]);
     i = 0;
     setup = gSetupBuffer_03000590;
     address = (u32) work;
@@ -238,7 +238,7 @@ void sub_08032478(void) {
       u32 address;
       u8 *cursor;
       u8 *slots;
-      work[0x60] = sub_08032FC4(work[0x5C]);
+      work[0x60] = GetSlotGroupStart(work[0x5C]);
       i = 0;
       setup = gSetupBuffer_03000590;
       address = (u32) work;
@@ -265,7 +265,7 @@ void sub_08032478(void) {
         u32 address;
         u8 *cursor;
         u8 *slots;
-        work[0x60] = sub_08032FC4(work[0x5C]);
+        work[0x60] = GetSlotGroupStart(work[0x5C]);
         i = 0;
         setup = gSetupBuffer_03000590;
         address = (u32) work;
@@ -287,7 +287,7 @@ void sub_08032478(void) {
       else
       {
         u8 *work = gState0TransferWork.bytes;
-        work[0x60] = sub_08032FC4(work[0x5C]);
+        work[0x60] = GetSlotGroupStart(work[0x5C]);
         ((struct SelectionBacking *) work)->selected = sub_08033090(work[0x60]) + 1;
       }
     }
@@ -315,7 +315,7 @@ void sub_080328B8(void) {
     u32 address;
     u8 *cursor;
     u8 *slots;
-    work[0x60] = sub_08032FB8(work[0x5C]);
+    work[0x60] = GetOtherSlotGroupStart(work[0x5C]);
     i = 0;
     setup = gSetupBuffer_03000590;
     address = (u32) work;
@@ -342,7 +342,7 @@ void sub_080328B8(void) {
       u32 address;
       u8 *cursor;
       u8 *slots;
-      work[0x60] = sub_08032FB8(work[0x5C]);
+      work[0x60] = GetOtherSlotGroupStart(work[0x5C]);
       i = 0;
       setup = gSetupBuffer_03000590;
       address = (u32) work;
@@ -369,7 +369,7 @@ void sub_080328B8(void) {
         u32 address;
         u8 *cursor;
         u8 *slots;
-        work[0x60] = sub_08032FB8(work[0x5C]);
+        work[0x60] = GetOtherSlotGroupStart(work[0x5C]);
         i = 0;
         setup = gSetupBuffer_03000590;
         address = (u32) work;
@@ -391,7 +391,7 @@ void sub_080328B8(void) {
       else
       {
         u8 *work = gState0TransferWork.bytes;
-        work[0x60] = sub_08032FB8(work[0x5C]);
+        work[0x60] = GetOtherSlotGroupStart(work[0x5C]);
         ((struct SelectionBacking *) work)->selected = sub_08033090(work[0x60]) + 1;
       }
     }

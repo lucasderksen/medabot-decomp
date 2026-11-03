@@ -39,7 +39,7 @@ u32 sub_0800AD58(void) {
     up = 0x40 & (u8)gRepeatedKeys;
     if (up) {
         u32 root;
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         root = (u32)gInventoryRecords;
         value = (u8 *)((gState0TypedWork.bytes[0x46] + (gState0TypedWork.bytes[0x3D] << 6)) + 0x18 + root);
         if (*value == 0) {
@@ -51,7 +51,7 @@ u32 sub_0800AD58(void) {
     }
     if (0x80 & (u8)gRepeatedKeys) {
         u32 root;
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         root = (u32)gInventoryRecords;
         value = (u8 *)((gState0TypedWork.bytes[0x46] + (gState0TypedWork.bytes[0x3D] << 6)) + 0x18 + root);
         if (*value == 7) {
@@ -108,7 +108,7 @@ s32 sub_0800FDD8(void) {
         }
     }
     if (0x30 & (u8)gRepeatedKeys) {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         sub_08042B58(gState0TypedWork.bytes[0x3D], gState0TypedWork.bytes[0x3E], &gState0TypedWork.bytes[0xEE]);
         sub_0800F6E4();
         sub_0800F77C();

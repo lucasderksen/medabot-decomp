@@ -84,9 +84,9 @@ void sub_08062614(void) {
                 *slot -= ((u8 *)0x02023000)[i];
             }
         }
-        sub_08040D0C(0, 7);
+        HideFrameObjects(0, 7);
         sub_08041164(gDebugMenuTextBuffer, gPostDispatchWord_03002B70);
-        sub_08040DB8(gDebugMenuTextBuffer, 0, 0x15, 1, 7, 15, 1, 0);
+        PlaceAlignedTextObjects(gDebugMenuTextBuffer, 0, 0x15, 1, 7, 15, 1, 0);
         gDebugMenuTextBuffer[-0x1A] = 0;
     }
     gUnknown_0300137C++;

@@ -27,7 +27,7 @@ struct Main2ReturnWork
 
 void sub_0805DB20(void)
 {
-    if (sub_0803FB3C(gMain2ScriptSlots_08485678[18]))
+    if (RunDialogue(gMain2ScriptSlots_08485678[18]))
     {
         sub_080415E8(1, 22, 7);
         gUnknown_0300137C++;
@@ -48,10 +48,10 @@ void sub_0805DB4C(void)
 
 void sub_0805DB84(void)
 {
-    if (sub_0803FB3C(gMain2ScriptSlots_0848521C[10]))
+    if (RunDialogue(gMain2ScriptSlots_0848521C[10]))
     {
-        sub_08074B88(0);
-        sub_08074DE0(0);
+        PlayMusic(0);
+        PlaySoundEffect(0);
         Unknown_0805DEB0();
         CONTEXT_HALFWORDS[1] = 0;
         gUnknown_0300137C++;
@@ -61,7 +61,7 @@ void sub_0805DB84(void)
 void sub_0805DC4C(void)
 {
     u8 previous = CONTEXT_HALFWORDS[1]++;
-    if (sub_0803FB3C(gMain2ScriptSlots_0848521C[11]) && previous > 60)
+    if (RunDialogue(gMain2ScriptSlots_0848521C[11]) && previous > 60)
         gUnknown_0300137C++;
 }
 
@@ -83,15 +83,15 @@ void sub_0805DCCC(void)
 {
     if (WORK->phase <= 8)
     {
-        sub_0803F684(0, WORK->phase * 4, 0x3FFF);
-        sub_0803F998(0, WORK->phase * 4, 0xFFFF);
+        BlendBgPaletteBanksNow(0, WORK->phase * 4, 0x3FFF);
+        BlendObjPaletteBanksNow(0, WORK->phase * 4, 0xFFFF);
         WORK->phase++;
     }
     else
     {
         DISPCNT &= 0xFDFF;
         DISPCNT &= 0xFBFF;
-        sub_08040CD0(0, 128);
+        ClearFrameObjects(0, 128);
         gMainState = 0;
         gMainSubstate = 1;
         gUnknown_0300137C = 16;
@@ -101,6 +101,6 @@ void sub_0805DCCC(void)
 void sub_0805DD50(void)
 {
     u8 previous = CONTEXT_HALFWORDS[1]++;
-    if (sub_0803FB3C(gMain2ScriptSlots_0848521C[12]) && previous > 60)
+    if (RunDialogue(gMain2ScriptSlots_0848521C[12]) && previous > 60)
         gUnknown_0300137C = 9;
 }

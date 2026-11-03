@@ -34,8 +34,8 @@ void sub_0804A764(void)
     u8 *work;
     struct SetupBackgroundView *settings;
     ResetSpritesAndVram();
-    sub_08049714(gFrameObjects, 8192);
-    sub_08049714(gLaterBuffer_030055A0, 512);
+    ClearBytes(gFrameObjects, 8192);
+    ClearBytes(gLaterBuffer_030055A0, 512);
     zero = 0;
     fill = zero;
     dma = (volatile struct SetupDma *)0x040000D4;
@@ -44,8 +44,8 @@ void sub_0804A764(void)
     control = 0x85000100;
     dma->control = control;
     dma->control;
-    sub_08049714(gUnknown_03000440, 316);
-    sub_08049714(gSetupBuffer_03000590, 1536);
+    ClearBytes(gUnknown_03000440, 316);
+    ClearBytes(gSetupBuffer_03000590, 1536);
     work = gUnknown_030057E0;
     work[0xC88] = zero;
     work[0xC89] = zero;
@@ -56,7 +56,7 @@ void sub_0804A764(void)
     work[0xC60] = 0;
     settings = (struct SetupBackgroundView *)&gBackgroundState_03005310;
     settings->byte38 = 0;
-    sub_08049714(gLaterBuffer_03006D20, 16);
+    ClearBytes(gLaterBuffer_03006D20, 16);
     sub_0804B248();
     settings->bytes[1] = 0;
     sub_080506BC();
@@ -65,8 +65,8 @@ void sub_0804A764(void)
     gSetupPointer_03006D30 = (void *)0x02039000;
     gSetupPointer_03006D14 = (void *)0x02030000;
     gSetupPointer_030057DC = (void *)0x02038000;
-    sub_08049714(gFrameObjects, 8192);
-    sub_08049714(gLaterBuffer_030055A0, 512);
+    ClearBytes(gFrameObjects, 8192);
+    ClearBytes(gLaterBuffer_030055A0, 512);
     fill = zero;
     dma->source = (u32)&fill;
     dma->destination = 0x07000000;

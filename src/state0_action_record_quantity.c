@@ -47,5 +47,5 @@ void sub_08034A68(void)
     offset += work[0x88] * 256;
     value = setup[offset + 0x59];
     ((struct ObservedActionResultWork *)work)->halfEC = value;
-    sub_08034F08();
+    AdvanceActionByteScript();
 }

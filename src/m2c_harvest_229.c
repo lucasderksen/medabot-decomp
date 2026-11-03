@@ -63,7 +63,7 @@ void sub_08021774(void) {
         ((struct ContinuedPhaseWork30 *)work)->phase++;
     }else{
         struct ContinuedPhaseWork30 *phase;
-        sub_08074DE0(0x3E);
+        PlaySoundEffect(0x3E);
         phase=(struct ContinuedPhaseWork30 *)&gState0TransferWork;
         phase->phase=0x25;
     }

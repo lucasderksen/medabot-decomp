@@ -87,18 +87,18 @@ void sub_0804A2F0(void) {
     volatile struct SetupDma2F0 *dma;
 
     do {
-        sub_08049714(&gPostDispatchWord_03002B70, 0x1C);
-        sub_08049714(gInventoryRecords, 0x780);
-        sub_08049714(gObjectHalfwordBytes, 0x3C0);
-        sub_08049714(gUnknownRecords_030017A0, 0x48);
-        sub_08049714(gObjectCountPairs, 0x80);
-        sub_08049714(&gContinuedWork_030057E0, 0xCC0);
+        ClearBytes(&gPostDispatchWord_03002B70, 0x1C);
+        ClearBytes(gInventoryRecords, 0x780);
+        ClearBytes(gObjectHalfwordBytes, 0x3C0);
+        ClearBytes(gUnknownRecords_030017A0, 0x48);
+        ClearBytes(gObjectCountPairs, 0x80);
+        ClearBytes(&gContinuedWork_030057E0, 0xCC0);
     } while (0);
-    sub_08049714(&gState0TypedWork, 0x13C);
-    sub_08049714(gSetupBuffer_03000590, 0x600);
+    ClearBytes(&gState0TypedWork, 0x13C);
+    ClearBytes(gSetupBuffer_03000590, 0x600);
     ResetSpritesAndVram();
-    sub_08049714(gFrameObjects, 0x2000);
-    sub_08049714(gLaterBuffer_030055A0, 0x200);
+    ClearBytes(gFrameObjects, 0x2000);
+    ClearBytes(gLaterBuffer_030055A0, 0x200);
     zero = 0;
     fill = zero;
     dma = (volatile struct SetupDma2F0 *)0x040000D4;
@@ -120,8 +120,8 @@ void sub_0804A2F0(void) {
     gLaterBuffer_03006D30 = (void *)0x02039000;
     gLaterBuffer_03006D14 = (void *)0x02030000;
     gFreshPointer_030057DC = (void *)0x02038000;
-    sub_08049714(gFrameObjects, 0x2000);
-    sub_08049714(gLaterBuffer_030055A0, 0x200);
+    ClearBytes(gFrameObjects, 0x2000);
+    ClearBytes(gLaterBuffer_030055A0, 0x200);
     fill = zero;
     dma->source = (u32)&fill;
     dma->destination = 0x07000000;
@@ -145,7 +145,7 @@ void sub_0804A2F0(void) {
     gBgScroll2.y = zero;
     gBgScroll3.x = zero;
     gBgScroll3.y = zero;
-    sub_08049714(&gContinuedWork_030057E0.byte7FC, 0x454);
+    ClearBytes(&gContinuedWork_030057E0.byte7FC, 0x454);
     gContinuedWork_030057E0.byteCBA = 0;
     gContinuedWork_030057E0.byte7FE = 0x17;
     gContinuedWork_030057E0.byte7FC = 0xE;
@@ -158,10 +158,10 @@ void sub_0804A2F0(void) {
     gContinuedWork_030057E0.byteC57 = sub_08052760(gContinuedWork_030057E0.halfC54);
     gContinuedWork_030057E0.byteC5C = 0;
     gContinuedWork_030057E0.byteC5B = 1;
-    sub_08048864(0x2F, 0xC804, 3, 0, 1);
+    InitFrameObject(0x2F, 0xC804, 3, 0, 1);
     sub_08052B70();
     if (gContinuedWork_030057E0.byteC76 != 0) {
-        sub_08048864(0x30, 0xC804, gContinuedWork_030057E0.byteC84 * 12 + gContinuedWork_030057E0.byteC83, gContinuedWork_030057E0.byteC84, 1);
+        InitFrameObject(0x30, 0xC804, gContinuedWork_030057E0.byteC84 * 12 + gContinuedWork_030057E0.byteC83, gContinuedWork_030057E0.byteC84, 1);
         gContinuedWork_030057E0.halfC6E = 0x50 - gSetupCoordinate_03006428;
         gContinuedWork_030057E0.halfC70 = 0x60 - gContinuedWork_030057E0.halfC4A;
     }

@@ -67,8 +67,8 @@ extern struct SetupRecord39AC8 gSetupRecords39AC8[] asm("gSetupBuffer_03000590")
 extern void sub_08035944(u32, u32);
 extern void sub_08036120(s32);
 extern void sub_08037A94(u32);
-extern void sub_0803D450(void);
-extern void sub_0803D4AC(void);
+extern void LoadActionHalfwordScriptParams(void);
+extern void AdvanceActionHalfwordScript(void);
 
 void sub_08037E2C(void);
 void sub_080388A4(void);
@@ -87,7 +87,7 @@ void sub_08037E2C(void) {
     struct FrameObject *statusFrame;
     u32 frameRoot;
 
-    sub_08040BD8(gState0NextCommands_083B6100[gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown2C[2]], gState0TypedWork.bytes[0x12F]);
+    RunFrameObjectCommands(gState0NextCommands_083B6100[gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown2C[2]], gState0TypedWork.bytes[0x12F]);
     statusFrame = &gFrameObjects[gState0TypedWork.bytes[0x12F]];
     if (statusFrame->unknown2C[1] == 0xFF) {
         statusFrame->unknown23[6] += 1;
@@ -96,13 +96,13 @@ void sub_08037E2C(void) {
     if ((statusFrame->unknown2C[1]&0x3FU)==0) {
         switch (gCounter6ED08_03001800.frame51) {
         case 0:
-            sub_08074DE0(0x5DU);
+            PlaySoundEffect(0x5DU);
             break;
         case 1:
-            sub_08074DE0(0x2EU);
+            PlaySoundEffect(0x2EU);
             break;
         case 2:
-            sub_08074DE0(0x4BU);
+            PlaySoundEffect(0x4BU);
             break;
         }
     }
@@ -132,13 +132,13 @@ void sub_08037E2C(void) {
 
 void sub_080388A4(void) {
 
-    sub_08040BD8(gState0NextCommands_083B6100[109], gState0TypedWork.bytes[0x12F]);
+    RunFrameObjectCommands(gState0NextCommands_083B6100[109], gState0TypedWork.bytes[0x12F]);
     if (!(1 & gCounter6ED08_03001800.flagsF8)) {
         gFrameObjects[gState0TypedWork.bytes[0x12F]].screenX = (gFrameObjects[gState0TypedWork.bytes[0x12F]].screenX + 4) & 0x1FF;
         if (gFrameObjects[gState0TypedWork.bytes[0x12F]].screenX > gFrameObjects[(gCounter6ED08_03001800.base60 + (gState0TypedWork.bytes[0x12F] - 0x21)) * 4 + 0x5D].screenX
             && gCounter6ED08_03001800.valuesD6[gState0TypedWork.bytes[0x12F] - 0x21] != 0
             && gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown23[5] == 0) {
-            sub_08074DE0(0x54);
+            PlaySoundEffect(0x54);
             gFrameObjects[gState0TypedWork.bytes[0x12F] + 3].flags = 0xC404;
             gFrameObjects[gState0TypedWork.bytes[0x12F] + 3].tableSelector = 0;
             gFrameObjects[gState0TypedWork.bytes[0x12F] + 3].screenX = gFrameObjects[(gCounter6ED08_03001800.base60 + (gState0TypedWork.bytes[0x12F] - 0x21)) * 4 + 0x5D].screenX;
@@ -147,7 +147,7 @@ void sub_080388A4(void) {
             gFrameObjects[gState0TypedWork.bytes[0x12F] + 3].priority = 0xF1;
             gFrameObjects[gState0TypedWork.bytes[0x12F] + 3].unknown23[6] = 2;
             gFrameObjects[gState0TypedWork.bytes[0x12F] + 3].unknown23[5] = 0;
-            sub_08040B90(gState0NextCommands_083B6100[110], gState0TypedWork.bytes[0x12F] + 3);
+            InitFrameObjectCommands(gState0NextCommands_083B6100[110], gState0TypedWork.bytes[0x12F] + 3);
             gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown23[5] = 1;
         }
     } else {
@@ -155,7 +155,7 @@ void sub_080388A4(void) {
         if (gFrameObjects[gState0TypedWork.bytes[0x12F]].screenX < gFrameObjects[(gCounter6ED08_03001800.base60 + (gState0TypedWork.bytes[0x12F] - 0x21)) * 4 + 0x5D].screenX
             && gCounter6ED08_03001800.valuesD6[gState0TypedWork.bytes[0x12F] - 0x21] != 0
             && gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown23[5] == 0) {
-            sub_08074DE0(0x54);
+            PlaySoundEffect(0x54);
             gFrameObjects[gState0TypedWork.bytes[0x12F] + 3].flags = 0xD404;
             gFrameObjects[gState0TypedWork.bytes[0x12F] + 3].tableSelector = 0;
             gFrameObjects[gState0TypedWork.bytes[0x12F] + 3].screenX = gFrameObjects[(gCounter6ED08_03001800.base60 + (gState0TypedWork.bytes[0x12F] - 0x21)) * 4 + 0x5D].screenX;
@@ -164,12 +164,12 @@ void sub_080388A4(void) {
             gFrameObjects[gState0TypedWork.bytes[0x12F] + 3].priority = 0xF1;
             gFrameObjects[gState0TypedWork.bytes[0x12F] + 3].unknown23[6] = 2;
             gFrameObjects[gState0TypedWork.bytes[0x12F] + 3].unknown23[5] = 0;
-            sub_08040B90(gState0NextCommands_083B6100[110], gState0TypedWork.bytes[0x12F] + 3);
+            InitFrameObjectCommands(gState0NextCommands_083B6100[110], gState0TypedWork.bytes[0x12F] + 3);
             gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown23[5] = 1;
         }
     }
     if (gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown23[4] > 0x28)
-        sub_08040CD0(gState0TypedWork.bytes[0x12F], 1);
+        ClearFrameObjects(gState0TypedWork.bytes[0x12F], 1);
     else
         gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown23[4]++;
 }
@@ -187,11 +187,11 @@ void sub_08038AC0(void) {
         gFrameObjects[row * 4 + 0x5D].screenX = gCounter6ED08_03001800.pos13C[row].x - 2;
     }
     sub_080350E0(gCounter6ED08_03001800.base60 + (gState0TypedWork.bytes[0x12F] - 0x24));
-    sub_08040BD8(gState0NextCommands_083B6100[110], gState0TypedWork.bytes[0x12F]);
+    RunFrameObjectCommands(gState0NextCommands_083B6100[110], gState0TypedWork.bytes[0x12F]);
     if (gFrameObjects[gState0TypedWork.bytes[0x12F]].commandStopped == 0xFF) {
         gFrameObjects[(gCounter6ED08_03001800.base60 + (gState0TypedWork.bytes[0x12F] - 0x24)) * 4 + 0x5D].screenX = gCounter6ED08_03001800.pos13C[(gCounter6ED08_03001800.base60 + (gState0TypedWork.bytes[0x12F] - 0x24))].x;
         sub_080350E0(gCounter6ED08_03001800.base60 + (gState0TypedWork.bytes[0x12F] - 0x24));
-        sub_08040CD0(gState0TypedWork.bytes[0x12F], 1);
+        ClearFrameObjects(gState0TypedWork.bytes[0x12F], 1);
     }
 }
 
@@ -203,7 +203,7 @@ void sub_08038D30(void) {
         gSetupRecords38D30[gCounter6ED08_03001800.value88].flagsBC |= 0xC;
         gCounter6ED08_03001800.valueF2 = gCounter6ED08_03001800.valueE8;
         gCounter6ED08_03001800.flagAB = 1;
-        if ((1 & gSetupRecords38D30[gCounter6ED08_03001800.value88].flagsC0) && (sub_080424B8() & 1)) {
+        if ((1 & gSetupRecords38D30[gCounter6ED08_03001800.value88].flagsC0) && (NextRandomByte() & 1)) {
             gCounter6ED08_03001800.flagsF6 = 1;
             gCounter6ED08_03001800.byteB7 = 3;
         }
@@ -229,7 +229,7 @@ void sub_08039AC8(void) {
     u32 rowSlots;
     u32 rowOffset;
 
-    sub_0803D450();
+    LoadActionHalfwordScriptParams();
     gFrames39AC8[gCounter6ED08_03001800.value102 + 5].word30 = gCounter6ED08_03001800.value104;
     gFrames39AC8[gCounter6ED08_03001800.value102 + 5].byte2C = 0;
     gFrames39AC8[gCounter6ED08_03001800.value102 + 5].byte2D = gCounter6ED08_03001800.value108;
@@ -251,7 +251,7 @@ void sub_08039AC8(void) {
     rowOffset = (u32)gCounter6ED08_03001800.index106 << 2;
     row = *(const u8 *const *)(rowSlots + rowOffset);
     gFrames39AC8[gCounter6ED08_03001800.value102 + 5].byte2B = row[column];
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }
 
 void sub_08039E00(void) {
@@ -280,5 +280,5 @@ void sub_08039E00(void) {
         gCounter6ED08_03001800.sideCommand112[1] = 0x29;
         sub_08044A3C(1, 0x29, gCounter6ED08_03001800.buffer64[3]);
     }
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }

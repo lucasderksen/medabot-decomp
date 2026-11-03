@@ -35,7 +35,7 @@ void sub_0803CAB0(void) {
     firstTable = gUnknown_083CEDF4;
     sub_0801BD58(firstTable[temp_r2->byte2B], 0);
     if (gState0TypedWork.bytes[0x66] == 0xFF) {
-        sub_08040CD0(gState0TypedWork.bytes[0x12F], 1U);
+        ClearFrameObjects(gState0TypedWork.bytes[0x12F], 1U);
         return;
     }
     temp_r4 = &frames[gState0TypedWork.bytes[0x12F]];

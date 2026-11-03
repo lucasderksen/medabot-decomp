@@ -1,6 +1,6 @@
 """Try wrapping brace-balanced statement ranges in `do { } while (0)` (register-allocation lever).
 
-    python tools/try_wraps.py sub_0803F684 build/m2c/work.c -fprologue-bugfix 10
+    python tools/try_wraps.py BlendBgPaletteBanksNow build/m2c/work.c -fprologue-bugfix 10
 
 Besides statement ranges it tries moving each `for` loop's increment into the
 body, plain and as `do { inc; } while (0);` (loops containing `continue` are

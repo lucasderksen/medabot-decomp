@@ -9,8 +9,8 @@
 
 struct CV { u8 pad[0xF8]; u8 bF8; u8 padF9[0x102 - 0xF9]; s16 h102; };
 
-extern s32 sub_0803D450();
-extern s32 sub_0803D4AC();
+extern s32 LoadActionHalfwordScriptParams();
+extern s32 AdvanceActionHalfwordScript();
 extern struct CV gCounter6ED08_03001800;
 
 void sub_0803981C(void);
@@ -20,7 +20,7 @@ void sub_0803981C(void) {
     u8 *p;
     u8 *c;
 
-    sub_0803D450();
+    LoadActionHalfwordScriptParams();
     c = (u8 *)&gCounter6ED08_03001800;
     switch (gCounter6ED08_03001800.h102) {
     case 0:
@@ -30,7 +30,7 @@ void sub_0803981C(void) {
             p = c + 0x15F;
         }
         if (*p != 0) {
-            sub_0803D4AC();
+            AdvanceActionHalfwordScript();
         }
         break;
     case 1:
@@ -40,12 +40,12 @@ void sub_0803981C(void) {
             p = c + 0x160;
         }
         if (*p != 0) {
-            sub_0803D4AC();
+            AdvanceActionHalfwordScript();
         }
         break;
     default:
         if ((c[0x15F] != 0) && (c[0x160] != 0)) {
-            sub_0803D4AC();
+            AdvanceActionHalfwordScript();
         }
         break;
     }

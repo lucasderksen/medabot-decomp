@@ -48,7 +48,7 @@ void sub_0806C694(void) {
                     gFrameObjects[0x28 + i].screenY = 0x90;
                     gFrameObjects[0x28 + i].unknown1A = 0;
                     if (gFrameObjects[0x1E].unknown1A % 16 == 0)
-                        sub_08074DE0(0x3B);
+                        PlaySoundEffect(0x3B);
                     break;
                 }
             }
@@ -94,8 +94,8 @@ void sub_0806C694(void) {
         gBattleView6C694.word08 = 0;
         return;
     }
-    sub_08074B88(0);
-    sub_08074B88(0xF);
+    PlayMusic(0);
+    PlayMusic(0xF);
     gUnknown_0300137C = 7;
     gBattleView6C694.word08 = 0;
 }

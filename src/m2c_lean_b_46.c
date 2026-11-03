@@ -39,7 +39,7 @@ u32 sub_08041D70(u8 kind) {
 
     u32 i;
 
-    sub_08041D04(gInventoryMetadata_083B62D8 + kind * 16, &gState0TypedWork.bytes[0xEE], 16);
+    CopyBytesU8Count(gInventoryMetadata_083B62D8 + kind * 16, &gState0TypedWork.bytes[0xEE], 16);
     for (i = 0; i <= 0x1D; i++) {
         if (!(0x80 & gInventory41D70[i].flags)) {
             gInventory41D70[i].flags |= 0x80;

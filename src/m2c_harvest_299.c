@@ -58,7 +58,7 @@ extern u8 gUnknown_08485014[];
 extern u8 gUnknown_084CE3E8;
 s32 sub_08068888();
 
-void sub_080164F4(u32 value);
+void CycleActionSpriteFrames(u32 value);
 void sub_08021BD8(void);
 void sub_080306B8(void);
 void sub_0803496C(void);
@@ -77,7 +77,7 @@ s32 sub_080705E0(u8 arg0);
 void sub_08073CDC(u8 *arg0);
 void sub_08073DB8(struct T73 *o, s32 arg1, s32 arg2, s8 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7);
 
-void sub_080164F4(u32 value) {
+void CycleActionSpriteFrames(u32 value) {
 
     s32 var_r5;
     u16 *p;
@@ -117,10 +117,10 @@ void sub_08021BD8(void) {
     LeDecompress(&gUnknown_084CE3E8, (void *)0x06014800);
     CpuFastSet(gUnknown_0850F8F8, (void *)0x050002E0, 8U);
     b = (u8 *)gUnknownPointers_083B6100;
-    sub_08040B90(*(u8 **)(b + 0x8C), 0x21U);
-    sub_08040B90(*(u8 **)(b + 0x8C), 0x22U);
-    sub_08040B90(*(u8 **)(b + 0x8C), 0x23U);
-    sub_08040D44(0x21U, 3U);
+    InitFrameObjectCommands(*(u8 **)(b + 0x8C), 0x21U);
+    InitFrameObjectCommands(*(u8 **)(b + 0x8C), 0x22U);
+    InitFrameObjectCommands(*(u8 **)(b + 0x8C), 0x23U);
+    ShowFrameObjects(0x21U, 3U);
     for (i = 0; i <= 5; i++) {
         if (gSetupBuffer_03000590[(i << 8) + 0x40] != 0) {
             gFrameObjects[0x5A + i * 4].unknown23[0] = 0;
@@ -140,7 +140,7 @@ void sub_080306B8(void) {
         i = 0;
         do {
             if (gFrameObjects[i + 10].flags & 0x8000) {
-                sub_08040CD0(i + 10, 1U);
+                ClearFrameObjects(i + 10, 1U);
             }
             i += 1;
         } while (i <= 0x13U);
@@ -153,7 +153,7 @@ void sub_080306B8(void) {
     i = 0;
     do {
         if (gFrameObjects[i + 10].flags & 0x8000) {
-            sub_08040CD0(i + 10, 1U);
+            ClearFrameObjects(i + 10, 1U);
         }
         i += 1;
     } while (i <= 0x13U);
@@ -166,7 +166,7 @@ void sub_0803496C(void) {
     u32 j;
     struct SetupRec *rec;
     u8 *q;
-    gUnknown_03001800[0x60] = sub_08032FC4(gUnknown_03001800[0x87]);
+    gUnknown_03001800[0x60] = GetSlotGroupStart(gUnknown_03001800[0x87]);
     i = 0;
     rec = (struct SetupRec *)gSetupBuffer_03000590;
     for (; i <= 2; i++) {
@@ -179,7 +179,7 @@ void sub_0803496C(void) {
             }
         }
     }
-    sub_08034F08();
+    AdvanceActionByteScript();
 }
 
 void sub_08042028(void *arg0) {
@@ -199,7 +199,7 @@ void sub_08042028(void *arg0) {
         temp_r2 = var_r5->byte0;
         if (!(m & temp_r2)) {
             low = 0x1F & temp_r2;
-            sub_0803F63C(arg0, var_r1, 0x40U);
+            CopyBytes(arg0, var_r1, 0x40U);
             var_r5->byte0 = (m & var_r5->byte0) | low;
             return;
         }
@@ -268,7 +268,7 @@ void sub_08061594(void) {
     u8 *p;
     if (((u8 *)gMainContextPointer_03006F74)[5] == 0) p = gUnknown_08484FE5; else p = gUnknown_08485014;
     sub_08060D28(buf, p);
-    if (sub_0803FB3C(buf) != 0) {
+    if (RunDialogue(buf) != 0) {
         gUnknown_0300137C += 1;
     }
 }
@@ -285,7 +285,7 @@ void sub_08063644(void) {
     (*(u16 *)((u8 *)(ctx) + 0x3C)) = (u16) (temp_r0 + 1);
     temp_r4 = (s16) temp_r0;
     if ((s32) temp_r4 <= 0x10) {
-        sub_0803F998(0x7FFFU, 0x20U, 0xFFU);
+        BlendObjPaletteBanksNow(0x7FFFU, 0x20U, 0xFFU);
         (*(s16 *)((u8 *)((void *)0x04000050) + 0)) = 0xE50;
         (*(s16 *)((u8 *)((void *)0x04000050) + 2)) = (s16) (((0x10 - temp_r4) << 8) | temp_r4);
         (*(s16 *)((u8 *)(((void *)0x04000050 + 2)) + 2)) = 8;

@@ -38,8 +38,8 @@ extern u32 sub_0801B4C8(s32);
 extern s32 sub_0801B4F8(u32);
 extern void sub_0801BCE4(u32,s32,s32);
 extern void sub_0801BD1C(const void *,s32,s32);
-extern void sub_0803D450(void);
-extern void sub_0803D4AC(void);
+extern void LoadActionHalfwordScriptParams(void);
+extern void AdvanceActionHalfwordScript(void);
 
 void sub_0801B53C(void);
 void sub_0801FEE8(void);
@@ -69,17 +69,17 @@ void sub_0801B53C(void) {
  state = (struct ContinuedTieState*)gUnknown_03000440;
  mode = state->mode89;
  if (mode != 1) {
-  if (sub_080424B8() & 1) {
+  if (NextRandomByte() & 1) {
    state->decision9C = 1;
    return;
   }
   goto late_two;
  }
  if (gUnknown_03000B90 == 0) {
-  if (sub_080424B8() & mode) goto late_one;
+  if (NextRandomByte() & mode) goto late_one;
   goto late_two;
  }
- if (sub_080424B8() & mode) {
+ if (NextRandomByte() & mode) {
  late_two:
   state->decision9C = 2;
   return;
@@ -102,14 +102,14 @@ void sub_0801FEE8(void) {
  frames->frame.screenY = (u16)gFrameObjects[work[0x51] * 4 + 0x5D].screenY - 4;
  frames->frame.palette = 7;
  frames->frame.priority = 0xF0;
- sub_08040B90(gState0NextCommands_083B6100[0x22], 0x21);
+ InitFrameObjectCommands(gState0NextCommands_083B6100[0x22], 0x21);
  work[0xAA]++;
 }
 
 void sub_0803B754(void) {
  u8 *setup,*work,*initialWork;struct ContinuedFrame4Mirror *frames;
  s32 offset;u32 value,halfWidth;void *record;
- sub_0803D450();
+ LoadActionHalfwordScriptParams();
  setup=gSetupBuffer_03000590;initialWork=gState0TransferWork.bytes;
  offset=initialWork[0x87]<<8;record=setup+offset;
  if(*(u8*)(record+0xDD)<=3U)
@@ -131,5 +131,5 @@ void sub_0803B754(void) {
   frames->x=(0x1E - halfWidth)-(*(u16*)(work+0x106)+halfWidth);
  }
  ((struct ContinuedFrame4Mirror*)gFrameObjects)->clear=0;
- sub_0803D4AC();
+ AdvanceActionHalfwordScript();
 }

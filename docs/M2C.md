@@ -69,7 +69,7 @@ python tools/m2c_candidate.py 0x0801D5A8 --end 0x0801D61C --cflags "-fprologue-b
   a new function. The unresolved `sub_08060D28` interface is explicitly
   excluded. At checkpoint `49fd28e`, 979 eligible signatures supplement the
   headers. A fresh `08025A18` smoke draft retains the real
-  `extern u32 sub_08036E54(u32);` and compiles under production `-Werror`
+  `extern u32 Clamp1To99(u32);` and compiles under production `-Werror`
   without extra sections; it still mismatches, so this is a context/compile
   validation, not a measured improvement in match rate.
 - **Optional pointer strides.** `--fix-pointer-strides` uses the local

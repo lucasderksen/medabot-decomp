@@ -985,7 +985,7 @@ loop:
                 dma->control = 0x84000008;
                 (void)dma->control;
             }
-            sub_08048864(gScriptActors[j].objects[index], (u16)flags, (u16)frame, 13, 1);
+            InitFrameObject(gScriptActors[j].objects[index], (u16)flags, (u16)frame, 13, 1);
             gFrameObjects[gScriptActors[j].objects[index]].flags |= extra;
             gFrameObjects[gScriptActors[j].objects[index]].affineIndex = j * 4 + index;
         }
@@ -1243,8 +1243,8 @@ loop:
     case 0x84:
         gScriptScene.pc++;
         sub_080505FC();
-        sub_08049714(gFrameObjects, 0x2000);
-        sub_08049714(gLaterBuffer_030055A0, 0x200);
+        ClearBytes(gFrameObjects, 0x2000);
+        ClearBytes(gLaterBuffer_030055A0, 0x200);
         zero = 0;
         {
             volatile struct ScriptDma *dma = (void *)0x040000D4;

@@ -26,9 +26,9 @@ void sub_08015760(void) {
         u8 *setup=gSetupBuffer_03000590;
         u8 *record=(u8 *)((index<<8)+(u32)setup);
         if (record[0x40])
-            sub_08042698(2,2,2,leftY,*leftControl,(((u32)record[0x91] << 18) + 0x80840000U) >> 16);
+            FillTilemapRectSequential(2,2,2,leftY,*leftControl,(((u32)record[0x91] << 18) + 0x80840000U) >> 16);
         else
-            sub_08042698(2,2,2,leftY,*leftControl,0x8230);
+            FillTilemapRectSequential(2,2,2,leftY,*leftControl,0x8230);
         leftY += 3;
         index++;
     } while (index <= 2);
@@ -39,9 +39,9 @@ void sub_08015760(void) {
         u8 *setup=gSetupBuffer_03000590;
         u8 *record=(u8 *)(((index+3)<<8)+(u32)setup);
         if (record[0x40])
-            sub_08042698(2,2,0x1A,rightY,*rightControl,(((u32)record[0x91] << 18) + 0x80840000U) >> 16);
+            FillTilemapRectSequential(2,2,0x1A,rightY,*rightControl,(((u32)record[0x91] << 18) + 0x80840000U) >> 16);
         else
-            sub_08042698(2,2,0x1A,rightY,*rightControl,0x8230);
+            FillTilemapRectSequential(2,2,0x1A,rightY,*rightControl,0x8230);
         rightY += 3;
         index++;
     } while (index <= 2);

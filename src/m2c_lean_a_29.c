@@ -30,10 +30,10 @@ u32 sub_08012234(void) {
     u32 slot;
     u32 j;
 
-    record = gUnknown_083AD070[sub_080424B8() & 0xF];
+    record = gUnknown_083AD070[NextRandomByte() & 0xF];
     for (tries = 0; tries < 3; tries++) {
         if (gSetup12234[record + 3].activeBA != 0) {
-            slot = sub_080424B8() & 3;
+            slot = NextRandomByte() & 3;
             for (j = 0; j < 4; j++) {
                 if (sub_08042114(gSetup12234[record + 3].parts[slot].byte17, slot) == 0) {
                     gWork12234.slot168 = slot;

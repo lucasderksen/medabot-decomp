@@ -42,7 +42,7 @@ void sub_0802BB24(void) {
         }
     }
     gState0TypedWork.widths.word86 = 0;
-    sub_08074DE0(0x2E);
+    PlaySoundEffect(0x2E);
     gCounter6ED08_03001800.counterAA++;
 }
 

@@ -32,7 +32,7 @@ void sub_08031F2C(void) {
     struct ContinuedSetup32DA0 *setup;
     u32 var_r6;
 
-    gState0TransferWork.bytes[0x60] = (u8) sub_08032FC4((u32) gState0TransferWork.bytes[0x5C]);
+    gState0TransferWork.bytes[0x60] = (u8) GetSlotGroupStart((u32) gState0TransferWork.bytes[0x5C]);
     var_r6 = 0;
     setup=(struct ContinuedSetup32DA0 *)gSetupBuffer_03000590;
     do {
@@ -45,7 +45,7 @@ void sub_08031F2C(void) {
     if (sub_08032FFC() != 0) {
         gState0TransferWork.bytes[0x5E]=sub_0803301C()+1;
     } else {
-        gState0TransferWork.bytes[0x60] = (u8) sub_08032FC4((u32) gState0TransferWork.bytes[0x5C]);
+        gState0TransferWork.bytes[0x60] = (u8) GetSlotGroupStart((u32) gState0TransferWork.bytes[0x5C]);
         var_r6 = 0;
     setup=(struct ContinuedSetup32DA0 *)gSetupBuffer_03000590;
         do {
@@ -58,7 +58,7 @@ void sub_08031F2C(void) {
         if (sub_08032FFC() != 0) {
             gState0TransferWork.bytes[0x5E]=sub_0803301C()+1;
         } else {
-            gState0TransferWork.bytes[0x60] = (u8) sub_08032FC4((u32) gState0TransferWork.bytes[0x5C]);
+            gState0TransferWork.bytes[0x60] = (u8) GetSlotGroupStart((u32) gState0TransferWork.bytes[0x5C]);
             var_r6 = 0;
     setup=(struct ContinuedSetup32DA0 *)gSetupBuffer_03000590;
             do {
@@ -71,7 +71,7 @@ void sub_08031F2C(void) {
             if (sub_08032FFC() != 0) {
                 gState0TransferWork.bytes[0x5E]=sub_0803301C()+1;
             } else {
-                gState0TransferWork.bytes[0x60] = (u8) sub_08032FC4((u32) gState0TransferWork.bytes[0x5C]);
+                gState0TransferWork.bytes[0x60] = (u8) GetSlotGroupStart((u32) gState0TransferWork.bytes[0x5C]);
                 gState0TransferWork.bytes[0x5E]=sub_08033090(gState0TransferWork.bytes[0x60])+1;
             }
         }

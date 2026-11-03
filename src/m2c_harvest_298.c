@@ -112,7 +112,7 @@ void sub_080665FC(void) {
     *p = 0xFFU;
     p[1] = 4;
     p = (u8 *)gMainContextPointer_03006F74 + 0x270;
-    if (sub_0803FB3C(p) != 0) {
+    if (RunDialogue(p) != 0) {
         sub_0803FB0C();
         sub_080415E8(1U, 0x16U, 7U);
         gUnknown_0300137C += 1;

@@ -68,7 +68,7 @@ void sub_08018900(u32 value) {
       {
         return;
       }
-        sub_08041D04(&gUnknownBytes_083B7F8C[root[off + 1] * 3], text = &gState0TypedWork.bytes[0xEE], 3);
+        CopyBytesU8Count(&gUnknownBytes_083B7F8C[root[off + 1] * 3], text = &gState0TypedWork.bytes[0xEE], 3);
         kind = text[0];
         break;
 
@@ -77,7 +77,7 @@ void sub_08018900(u32 value) {
       {
         return;
       }
-        sub_08041D04(&gUnknownBytes_083B7F8C[root[off + 1] * 3], text = &gState0TypedWork.bytes[0xEE], 3);
+        CopyBytesU8Count(&gUnknownBytes_083B7F8C[root[off + 1] * 3], text = &gState0TypedWork.bytes[0xEE], 3);
         kind = text[1];
         break;
 
@@ -86,7 +86,7 @@ void sub_08018900(u32 value) {
       {
         return;
       }
-        sub_08041D04(&gUnknownBytes_083B7F8C[root[off + 1] * 3], text = &gState0TypedWork.bytes[0xEE], 3);
+        CopyBytesU8Count(&gUnknownBytes_083B7F8C[root[off + 1] * 3], text = &gState0TypedWork.bytes[0xEE], 3);
         kind = text[2];
         break;
 
@@ -95,7 +95,7 @@ void sub_08018900(u32 value) {
 
     }
 
-    sub_08041D04(&gUnknownBytes_083B7E54[kind * 6], text + 0x20, 6);
+    CopyBytesU8Count(&gUnknownBytes_083B7E54[kind * 6], text + 0x20, 6);
     text += 0x21;
     slot = *text;
   }

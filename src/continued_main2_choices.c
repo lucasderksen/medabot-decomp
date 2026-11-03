@@ -23,33 +23,33 @@ void sub_0805C574(void)
 {
     u32 keys;
     MAIN2_CONTEXT->halfword3A = sub_0805BC5C(MAIN2_CONTEXT->halfword3A);
-    sub_08041C14(14, *(u8 *)&gFrameCounter, 32);
+    SetObjectXWobble(14, *(u8 *)&gFrameCounter, 32);
     sub_0805BF14(gFrameCounter & 31);
     sub_0805BCB0(MAIN2_CONTEXT->byte05, (u8)(20 - *(u8 *)&MAIN2_CONTEXT->halfword02));
     if (MAIN2_CONTEXT->halfword02)
         MAIN2_CONTEXT->halfword02--;
     if (gUnknown_0300058C[0] & 0x40)
     {
-        sub_08074B88(1);
-        sub_08074DE0(2);
+        PlayMusic(1);
+        PlaySoundEffect(2);
         if (MAIN2_CONTEXT->byte05 == 0)
             MAIN2_CONTEXT->byte05 = 2;
         else
             MAIN2_CONTEXT->byte05--;
     if (MAIN2_CONTEXT->byte05 == 2)
-        sub_08074B88(gMain2SoundChoices_080AF8CA[gMainByte_03000B94]);
+        PlayMusic(gMain2SoundChoices_080AF8CA[gMainByte_03000B94]);
     MAIN2_CONTEXT->halfword02 = 20;
     }
     else if (gUnknown_0300058C[0] & 0x80)
     {
-        sub_08074B88(1);
-        sub_08074DE0(2);
+        PlayMusic(1);
+        PlaySoundEffect(2);
         if (MAIN2_CONTEXT->byte05 == 2)
             MAIN2_CONTEXT->byte05 = 0;
         else
             MAIN2_CONTEXT->byte05++;
     if (MAIN2_CONTEXT->byte05 == 2)
-        sub_08074B88(gMain2SoundChoices_080AF8CA[gMainByte_03000B94]);
+        PlayMusic(gMain2SoundChoices_080AF8CA[gMainByte_03000B94]);
     MAIN2_CONTEXT->halfword02 = 20;
     }
     else
@@ -59,7 +59,7 @@ void sub_0805C574(void)
         case 0:
             if (gUnknown_0300058C[0] & 0x20)
             {
-                sub_08074DE0(2);
+                PlaySoundEffect(2);
                 if (gMainByte_03001788 == 0)
                     gMainByte_03001788 = 2;
                 else
@@ -67,7 +67,7 @@ void sub_0805C574(void)
             }
             if (gUnknown_0300058C[0] & 0x10)
             {
-                sub_08074DE0(2);
+                PlaySoundEffect(2);
                 if (gMainByte_03001788 == 2)
                     gMainByte_03001788 = 0;
                 else
@@ -78,7 +78,7 @@ void sub_0805C574(void)
             keys = *(u32 *)gUnknown_0300058C;
             if (((keys << 26) >> 31) | ((keys << 27) >> 31))
             {
-                sub_08074DE0(2);
+                PlaySoundEffect(2);
                 gMainByte_03001360 ^= 1;
             }
             break;
@@ -89,7 +89,7 @@ void sub_0805C574(void)
                     gMainByte_03000B94 = 2;
                 else
                     gMainByte_03000B94--;
-                sub_08074B88(gMain2SoundChoices_080AF8CA[gMainByte_03000B94]);
+                PlayMusic(gMain2SoundChoices_080AF8CA[gMainByte_03000B94]);
             }
             if (gUnknown_0300058C[0] & 0x10)
             {
@@ -97,7 +97,7 @@ void sub_0805C574(void)
                     gMainByte_03000B94 = 0;
                 else
                     gMainByte_03000B94++;
-                sub_08074B88(gMain2SoundChoices_080AF8CA[gMainByte_03000B94]);
+                PlayMusic(gMain2SoundChoices_080AF8CA[gMainByte_03000B94]);
             }
             break;
         }
@@ -106,8 +106,8 @@ void sub_0805C574(void)
         keys = *(u32 *)gUnknown_0300058C;
         if (((keys << 31) >> 31) | ((keys << 30) >> 31))
         {
-            sub_08074B88(1);
-            sub_08074DE0(4);
+            PlayMusic(1);
+            PlaySoundEffect(4);
             MAIN2_CONTEXT->byte05 = 2;
             gFrameObjects[14].flags &= 0xBFFF;
             gUnknown_0300137C--;

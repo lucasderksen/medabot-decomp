@@ -21,17 +21,17 @@ void sub_08022FB4(void);
 void sub_0801DD74(void) {
     u8 *work0;
     work0 = (u8 *) &gState0NextCommands_083B6100;
-    sub_08040BD8((*(u8 **)((u8 *)(work0) + 0x70)), 0x21U);
+    RunFrameObjectCommands((*(u8 **)((u8 *)(work0) + 0x70)), 0x21U);
     if (gFrameObjects[0x21].commandStopped == 0xFF) {
-        sub_0803F63C((gState0TransferWork.bytes[0xDE] << 8) + (u8 *)&gUnknown_0300049A, gDebugMenuTextBuffer, 0xEU);
+        CopyBytes((gState0TransferWork.bytes[0xDE] << 8) + (u8 *)&gUnknown_0300049A, gDebugMenuTextBuffer, 0xEU);
         gState0TransferWork.bytes[0xA6] = 0x16;
-        sub_08040CD0(0x21U, 1U);
+        ClearFrameObjects(0x21U, 1U);
         gState0TransferWork.bytes[0xAA] += 1;
     }
 }
 
 void sub_08022FB4(void) {
-    sub_0803F63C((gState0TransferWork.bytes[0x88] << 8) + (u8 *)&gUnknown_0300059A, gDebugMenuTextBuffer, 0xEU);
+    CopyBytes((gState0TransferWork.bytes[0x88] << 8) + (u8 *)&gUnknown_0300059A, gDebugMenuTextBuffer, 0xEU);
     gState0TransferWork.bytes[0xA6] = 0x28;
     gState0TransferWork.bytes[0xAA] += 1;
 }

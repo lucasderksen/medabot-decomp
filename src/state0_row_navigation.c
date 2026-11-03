@@ -22,7 +22,7 @@ void sub_080100BC(void)
     }
     if (*(u8 *)&gRepeatedKeys & 192)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         gFrameObjects[4].screenY = gState0TypedWork.bytes[0x4A] * 16 + 56;
     }
 }

@@ -34,7 +34,7 @@ void sub_0805E718(void)
     DISPLAY_CONTROL |= 0x1000;
     for (index = 0; index <= 15; index++)
         NAME_CONTEXT->bytes58[index] = 0xFE;
-    sub_08040D0C(5, 10);
+    HideFrameObjects(5, 10);
     switch (*(u8 *)0x03000584)
     {
     case 0:
@@ -83,7 +83,7 @@ void sub_0805E718(void)
     CpuSet(NAME_CONTEXT->bytes58, NAME_CONTEXT->bytes68, 8);
     gFrameObjects[4].screenX = sub_0805E300(NAME_CONTEXT->bytes58) + 40;
     gFrameObjects[4].screenY = 27;
-    sub_08040DB8(NAME_CONTEXT->bytes58, 5, 5, 3, 10, 13, 1, 0);
+    PlaceAlignedTextObjects(NAME_CONTEXT->bytes58, 5, 5, 3, 10, 13, 1, 0);
     x = gFrameObjects[4].screenX + 2;
     index = NAME_CONTEXT->byte0F;
     if (index <= 9)

@@ -72,7 +72,7 @@ void sub_08023B44(void) {
     view->kind = 6;
     typed = gState0TypedWork.bytes;
     typed[0x84]=(command=0x45);
-    sub_08040B90(gState0NextCommands_083B6100[command],0x21);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[command],0x21);
     *(u16 *)(typed+0x86)=0x3C;
     transfer[0xAA]++;
 }
@@ -105,7 +105,7 @@ void sub_08023D44(void) {
     view->kind = 6;
     typed = gState0TypedWork.bytes;
     typed[0x84]=(command=0x42);
-    sub_08040B90(gState0NextCommands_083B6100[command],0x21);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[command],0x21);
     *(u16 *)(typed+0x86)=0x3C;
     transfer[0xAA]++;
 }

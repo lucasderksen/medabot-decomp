@@ -265,7 +265,7 @@ void sub_0805830C(u32 mode) {
         gUnknown_0300137C++;
         break;
     case 4:
-        sub_08074DE0(((struct DebugWork830C *)gContinuedOtherWork_030057A0)->byte00);
+        PlaySoundEffect(((struct DebugWork830C *)gContinuedOtherWork_030057A0)->byte00);
         break;
     case 6:
         if (((struct DebugWork830C *)gContinuedOtherWork_030057A0)->byte32 == 0)

@@ -37,7 +37,7 @@ void sub_08064E18(void) {
 
     zero = 0;
     CpuFastSet(&zero, (void *)0x06000000, 0x01006000);
-    sub_08040CD0(0, 0x80);
+    ClearFrameObjects(0, 0x80);
     *(volatile u16 *)0x05000000 = 0;
     count = 0;
     for (i = 0; i <= 0x1D; i++) {

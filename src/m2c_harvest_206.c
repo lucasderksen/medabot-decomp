@@ -40,7 +40,7 @@ extern struct GraphicsWork6F1C0 gGraphicsWork6F1C003001800;
 extern u32 gCopyDest6113C0202F800[8],gCopyDest6113C0202F9E0[8],gCopyDest6113C0202F9C0[8],gCopyDest6113C0202F820[8];
 extern void sub_0803628C(void);
 extern void sub_08068684(u8,u8,u16);
-extern void sub_0806B718(u8);
+extern void ClearFrameObject(u8);
 extern void sub_0807028C(void);
 
 u32 sub_08016E5C(u32 bank,u32 part);
@@ -117,8 +117,8 @@ void sub_08065A0C(void) {
  s32 value=(*context)->count;
  u32 offset=0x18;
  if(value)offset=0x1C;
- if(sub_0803FB3C(*(const void *const *)((u32)scripts+offset)) && (*(u8 *)&gNewKeys&1)) {
-  sub_08074DE0(13);
+ if(RunDialogue(*(const void *const *)((u32)scripts+offset)) && (*(u8 *)&gNewKeys&1)) {
+  PlaySoundEffect(13);
   value=(*context)->count+1;
   (*context)->count=value;
   if(value>1) {
@@ -137,7 +137,7 @@ void sub_0806DC7C(void) {
  s32 count=work->count;
  if(count>40) {
   work->count=0;
-  sub_0806B718(2);
+  ClearFrameObject(2);
   sub_08068684(4,1,0);
   work->state=2;
   work->substate=3;

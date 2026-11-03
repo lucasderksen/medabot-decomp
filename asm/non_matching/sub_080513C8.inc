@@ -15,14 +15,14 @@
 	lsls	r4, r4, #2
 	add	r0, sp, #4
 	adds	r1, r4, #0
-	bl	sub_08049714
+	bl	ClearBytes
 	ldr	r0, [sp, #0x218]
 	add	r1, sp, #4
 	adds	r2, r4, #0
 	bl	sub_080497C0
 	ldr	r0, [sp, #0x218]
 	adds	r1, r4, #0
-	bl	sub_08049714
+	bl	ClearBytes
 	movs	r1, #0
 	str	r1, [sp, #0x210]
 	movs	r5, #0
@@ -286,7 +286,7 @@
 	adds	r0, r5, #0
 	ldr	r1, .L08051794
 	adds	r3, r4, #0
-	bl	sub_08048864
+	bl	InitFrameObject
 	ldr	r3, [sp, #0x224]
 	ldr	r0, .L08051798
 	adds	r2, r3, r0
@@ -322,7 +322,7 @@
 	ldr	r1, .L080517A4
 	movs	r2, #0x90
 	movs	r3, #0xe
-	bl	sub_08048864
+	bl	InitFrameObject
 .L08051634:
 	ldr	r0, [sp, #0x224]
 	ldr	r1, .L08051798

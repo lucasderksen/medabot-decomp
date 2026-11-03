@@ -719,18 +719,6 @@
   "gUnknown_084F4F40": "0x084F4F40",
   "gUnknown_085104F8": "0x085104F8",
   "gUnknown_0300198A": "0x0300198A",
-  "sub_0807CF40": {
-    "address": "0x0807CF41",
-    "kind": "thumb_function"
-  },
-  "sub_0807CD2C": {
-    "address": "0x0807CD2D",
-    "kind": "thumb_function"
-  },
-  "sub_0807CEC8": {
-    "address": "0x0807CEC9",
-    "kind": "thumb_function"
-  },
   "gUnknown_08484FC0": "0x08484FC0",
   "gUnknown_020264E0": "0x020264E0",
   "gUnknown_03006F80": "0x03006F80",
@@ -738,10 +726,6 @@
   "gUnknown_03006FDC": "0x03006FDC",
   "gUnknown_030018E8": "0x030018E8",
   "gUnknown_0202F800": "0x0202F800",
-  "sub_0807CDF8": {
-    "address": "0x0807CDF9",
-    "kind": "thumb_function"
-  },
   "gUnknown_03006F84": "0x03006F84",
   "gUnknown_03006F90": "0x03006F90",
   "gUnknown_084CE3E8": "0x084CE3E8",

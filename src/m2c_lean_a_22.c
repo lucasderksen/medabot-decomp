@@ -30,8 +30,8 @@ void sub_080256EC(void) {
     if (gState0TypedWork.bytes[0x89] == 0 && (*(u8 *)&gRepeatedKeys & 1) && (u8)count > 0x32)
         gState0TypedWork.bytes[0x84] = 0x78;
     if (gState0TypedWork.bytes[0x84] == 0x78) {
-        sub_08040CD0(gWork256EC.setup88 * 4 + 0x21, 4);
-        sub_08040CD0(gWork256EC.setup87 * 4 + 0x21, 4);
+        ClearFrameObjects(gWork256EC.setup88 * 4 + 0x21, 4);
+        ClearFrameObjects(gWork256EC.setup87 * 4 + 0x21, 4);
         gWork256EC.counterAA++;
     }
 }

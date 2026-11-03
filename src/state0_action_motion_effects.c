@@ -18,12 +18,12 @@ void sub_080356CC(u32 first, u32 second)
     if ((u32)firstY > 159 ||
         firstY + 8 <= (secondObject = &objects[second])->screenY - 32)
     {
-        sub_08040D0C(second, 1);
+        HideFrameObjects(second, 1);
     }
     else
     {
         s32 adjustedY;
-        sub_08040D44(second, 1);
+        ShowFrameObjects(second, 1);
         adjustedY = ((u8 *)secondObject)[4] - 8;
         secondObject->scaleX = 64 - (adjustedY - ((u8 *)firstObject)[4]) * 2;
         secondObject->scaleY = 64 - (adjustedY - ((u8 *)firstObject)[4]) * 2;

@@ -20,26 +20,26 @@ void sub_0800CE90(void)
     switch (work[0x34])
     {
     case 0:
-        if (gFrameCounter & 4) sub_08040CD0(8, 8);
+        if (gFrameCounter & 4) ClearFrameObjects(8, 8);
         else
         {
-            sub_0803F63C(gDebugFaceLabels_083ACC78[0], work + 0x9E, 8);
-            sub_08040DB8(work + 0x9E, 8, 2, 2, 8, 15, 1, 0);
+            CopyBytes(gDebugFaceLabels_083ACC78[0], work + 0x9E, 8);
+            PlaceAlignedTextObjects(work + 0x9E, 8, 2, 2, 8, 15, 1, 0);
         }
-        sub_0803F63C(gDebugFaceLabels_083ACC78[1], gDebugMenuTextBuffer, 8);
-        sub_08040DB8(gDebugMenuTextBuffer, 16, 2, 4, 8, 15, 1, 0);
+        CopyBytes(gDebugFaceLabels_083ACC78[1], gDebugMenuTextBuffer, 8);
+        PlaceAlignedTextObjects(gDebugMenuTextBuffer, 16, 2, 4, 8, 15, 1, 0);
         break;
     case 1:
         { u32 hidden = gFrameCounter & 4;
-        if (hidden) sub_08040CD0(16, 8);
+        if (hidden) ClearFrameObjects(16, 8);
         else
         {
-            sub_0803F63C(gDebugFaceLabels_083ACC78[1], work + 0x9E, 8);
-            sub_08040DB8(work + 0x9E, 16, 2, 4, 8, 15, 1, hidden);
+            CopyBytes(gDebugFaceLabels_083ACC78[1], work + 0x9E, 8);
+            PlaceAlignedTextObjects(work + 0x9E, 16, 2, 4, 8, 15, 1, hidden);
         }
         }
-        sub_0803F63C(gDebugFaceLabels_083ACC78[0], gDebugMenuTextBuffer, 8);
-        sub_08040DB8(gDebugMenuTextBuffer, 8, 2, 2, 8, 15, 1, 0);
+        CopyBytes(gDebugFaceLabels_083ACC78[0], gDebugMenuTextBuffer, 8);
+        PlaceAlignedTextObjects(gDebugMenuTextBuffer, 8, 2, 2, 8, 15, 1, 0);
         break;
     }
     }
@@ -73,16 +73,16 @@ void sub_0800CE90(void)
             else (*value)--;
         }
     }
-    sub_08040CD0(32, 3);
+    ClearFrameObjects(32, 3);
     sub_08041370(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x69));
-    sub_08040DB8(gDebugMenuTextBuffer, 32, 8, 2, 3, 15, 1, 0);
-    sub_08040CD0(35, 3);
+    PlaceAlignedTextObjects(gDebugMenuTextBuffer, 32, 8, 2, 3, 15, 1, 0);
+    ClearFrameObjects(35, 3);
     sub_08041370(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x68));
-    sub_08040DB8(gDebugMenuTextBuffer, 35, 8, 4, 3, 15, 1, 0);
+    PlaceAlignedTextObjects(gDebugMenuTextBuffer, 35, 8, 4, 3, 15, 1, 0);
     if (*(u8 *)&gNewKeys & 2)
     {
-        sub_08040CD0(0, 1);
-        sub_08040CD0(8, 33);
+        ClearFrameObjects(0, 1);
+        ClearFrameObjects(8, 33);
         gUnknown_0300137C = 1;
     }
     else if (*(u8 *)&gNewKeys & 1)

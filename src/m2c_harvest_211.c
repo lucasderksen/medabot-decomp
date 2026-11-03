@@ -27,7 +27,7 @@ void sub_08063F08(void) {
     u8 *selected;
 
     if ((s8) ((struct PeerWork63F08 *)gMainContextPointer_03006F74)->enabled != 0) {
-        sub_0803FB3C(((const struct ScriptBank63F08 *)gMain2ScriptSlots_08485678)->message);
+        RunDialogue(((const struct ScriptBank63F08 *)gMain2ScriptSlots_08485678)->message);
     }
     role=gUnknown_03000B90;
     var_r1 = 0;

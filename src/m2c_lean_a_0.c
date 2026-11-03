@@ -77,11 +77,11 @@ void sub_08016FB4(void) {
 
 void sub_08017BD0(void) {
 
-    sub_08040D0C(9, 13);
+    HideFrameObjects(9, 13);
     if (gState0TypedWork.bytes[0x3C] == 0)
-        sub_08040DB8(gUnknown_0300059A + ((gState0TypedWork.bytes[0x3D] + gState0TypedWork.bytes[0x3C] * 3) << 8), 9, 0x11, 0xE, 10, 15, 0, 0);
+        PlaceAlignedTextObjects(gUnknown_0300059A + ((gState0TypedWork.bytes[0x3D] + gState0TypedWork.bytes[0x3C] * 3) << 8), 9, 0x11, 0xE, 10, 15, 0, 0);
     else
-        sub_08040DB8(gUnknown_0300059A + ((gState0TypedWork.bytes[0x3D] + gState0TypedWork.bytes[0x3C] * 3) << 8), 9, 3, 0xE, 10, 15, 0, 0);
+        PlaceAlignedTextObjects(gUnknown_0300059A + ((gState0TypedWork.bytes[0x3D] + gState0TypedWork.bytes[0x3C] * 3) << 8), 9, 3, 0xE, 10, 15, 0, 0);
 }
 
 u32 sub_08018F6C(u32 side) {
@@ -124,7 +124,7 @@ void sub_0801BC04(u32 selected) {
 void sub_08023274(void) {
 
     u32 i;
-    u32 first = sub_08032FC4(gCounter6ED08_03001800[0x87]);
+    u32 first = GetSlotGroupStart(gCounter6ED08_03001800[0x87]);
 
     for (i = 0; i <= 2; i++) {
         if (gSetupBuffer_03000590[((first + i) << 8) + 0x40]) {
@@ -140,7 +140,7 @@ void sub_08023274(void) {
         }
     }
     gState0TypedWork.widths.word86 = 0;
-    sub_08074DE0(0x2E);
+    PlaySoundEffect(0x2E);
     gCounter6ED08_03001800[0xAA]++;
 }
 
@@ -155,7 +155,7 @@ void sub_08023384(void) {
         }
     }
     if (gFrameObjects[0x21].scaleX == 8) {
-        sub_08040CD0(0x21, 3);
+        ClearFrameObjects(0x21, 3);
         gCounter6ED08_03001800[0xAA]++;
     }
 }

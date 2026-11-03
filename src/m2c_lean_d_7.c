@@ -54,12 +54,12 @@ void sub_08065208(void) {
             gMenuContext65208->flag4C = 0;
             sub_0803FAA0(1, 0, 0);
         }
-    } else if (sub_0803FB3C(gMain2ScriptSlots_0848521C[13]) != 0) {
+    } else if (RunDialogue(gMain2ScriptSlots_0848521C[13]) != 0) {
         done = 0;
     }
     if (done != 0)
         return;
-    sub_08041C14(8, gFrameCounter, 0xC);
+    SetObjectXWobble(8, gFrameCounter, 0xC);
     gFrameObjects[8].flags |= 0x4000;
     sound = 0;
     if (gMenuContext65208->count30 > 4) {
@@ -89,7 +89,7 @@ void sub_08065208(void) {
         else
             goto upRefresh;
         if (sound != 0)
-            sub_08074DE0(sound);
+            PlaySoundEffect(sound);
     upRefresh:
         sub_08064C6C(gMenuContext65208->scroll2F);
     } else if (0x80 & (u8)gRepeatedKeys) {
@@ -108,12 +108,12 @@ void sub_08065208(void) {
             gMenuContext65208->cursor2E++;
         }
         if (sound != 0)
-            sub_08074DE0(sound);
+            PlaySoundEffect(sound);
     downRefresh:
         sub_08064C6C(gMenuContext65208->scroll2F);
     } else {
         if (1 & gFamilyKeyBytes49558_0300058C) {
-            sub_08074DE0(4);
+            PlaySoundEffect(4);
             gFrameObjects[10].flags &= 0xBFFF;
             gFrameObjects[11].flags &= 0xBFFF;
             gFrameObjects[8].screenX = 0xC;
@@ -124,7 +124,7 @@ void sub_08065208(void) {
             return;
         }
         if (2 & gFamilyKeyBytes49558_0300058C) {
-            sub_08074DE0(5);
+            PlaySoundEffect(5);
             gFrameObjects[8].flags &= 0xBFFF;
             gState0TypedWork.bytes[0x1B] = 0;
             gState0TypedWork.bytes[0x84] = 0;

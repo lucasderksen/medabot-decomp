@@ -24,7 +24,7 @@ void sub_0802E010(void) {
 
     var_r5 = 0;
     sub_0803836C();
-    gCounter6ED08_03001800.b60 = (u8) sub_08032FB8((u32) gCounter6ED08_03001800.b87);
+    gCounter6ED08_03001800.b60 = (u8) GetOtherSlotGroupStart((u32) gCounter6ED08_03001800.b87);
     var_r2 = 0;
     setup = gSetupBuffer_03000590;
     do {

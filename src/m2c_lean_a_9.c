@@ -60,12 +60,12 @@ void sub_0801ED50(void) {
         LeDecompress(gUnknown_084CDD68, (void *)0x06010000);
         CpuFastSet(gUnknown_0850F8B8, (void *)0x050003C0, 8);
         gFrameObjects[0xA].frameAndGroup = 0x2100;
-        sub_08074DE0(0x54);
+        PlaySoundEffect(0x54);
     } else {
         LeDecompress(gUnknown_084CBBBC, (void *)0x06010000);
         CpuFastSet(gUnknown_0850F738, (void *)0x050003C0, 8);
         gFrameObjects[0xA].frameAndGroup = 0x1500;
-        sub_08074DE0(0x2A);
+        PlaySoundEffect(0x2A);
     }
     gFrameObjects[0xA].flags = 0xC404;
     gFrameObjects[0xA].tableSelector = 0;

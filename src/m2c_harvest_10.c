@@ -67,7 +67,7 @@ void sub_08025E88(void) {
     if (0x8000 & gFrameObjects[0x21].flags) {
         gFrameObjects[0x21].flags |= 0x220;
         if (gFrameObjects[0x21].scaleX == 1) {
-            sub_08040CD0(0x21U, 1U);
+            ClearFrameObjects(0x21U, 1U);
         } else {
             gFrameObjects[0x21].scaleX -= 1;
             gFrameObjects[0x21].scaleY -= 1;
@@ -117,7 +117,7 @@ void sub_0803EB0C(void) {
 
 void sub_0803ECF0(void) {
     if (gState0TransferWork.bytes[0x1A0] == 0x60) {
-        sub_08074DE0(7U);
+        PlaySoundEffect(7U);
     }
 }
 

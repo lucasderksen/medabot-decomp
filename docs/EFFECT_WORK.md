@@ -9,7 +9,7 @@ The assigned interval `0x0803FB0C..0x08040B50` contains 28 routines. Boundaries 
 | Routine | Range | Bytes | Observed behavior |
 | --- | --- | ---: | --- |
 | sub_0803FB0C | 3FB0C..3FB3C | 48 | Sets stage 4, clears script position and layout/wait fields. |
-| sub_0803FB3C | 3FB3C..3FB6C | 48 | Stores script pointer, calls stage callback, returns whether stage exceeds 7. |
+| RunDialogue | 3FB3C..3FB6C | 48 | Stores script pointer, calls stage callback, returns whether stage exceeds 7. |
 | sub_0803FB6C | 3FB6C..3FB94 | 40 | Snapshots palettes and starts the fade when byte 0 is zero; otherwise selects stage 2. |
 | sub_0803FB94 | 3FB94..3FBDC | 72 | Blends selected BG/OBJ palette banks toward color 0x1B2 with twice the counter; advances after counter 8. |
 | sub_0803FEA8 | 3FEA8..3FEB8 | 16 | Advances script position by one. |

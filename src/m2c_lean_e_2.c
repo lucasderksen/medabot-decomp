@@ -61,10 +61,10 @@ void sub_08019720(u32 arg0) {
         u32 slot = arg0 * 3 + 0x47;
         struct FrameObject *object = &objects[slot];
         if (object->flags != 0 && object->unknown23[0] == gSetup19720[arg0].kindC9)
-            sub_08040BD8(gCommands19720[6], slot);
+            RunFrameObjectCommands(gCommands19720[6], slot);
         else
-            sub_08040B90(gCommands19720[6], arg0 * 3 + 0x47);
-        sub_08041D04(gUnknown_083C4DE0, gUnknown_0300052E, 4);
+            InitFrameObjectCommands(gCommands19720[6], arg0 * 3 + 0x47);
+        CopyBytesU8Count(gUnknown_083C4DE0, gUnknown_0300052E, 4);
         sub_08019D9C(arg0, 1, 1, gFrameObjects[0x5D + arg0 * 4].priority + 4);
     }
     else if (gSetup19720[arg0].kindC9 == 0x11 || gSetup19720[arg0].kindC9 == 0x12 || gSetup19720[arg0].kindC9 == 0x29)
@@ -73,10 +73,10 @@ void sub_08019720(u32 arg0) {
         u32 slot = arg0 * 3 + 0x47;
         struct FrameObject *object = &objects[slot];
         if (object->flags != 0 && object->unknown23[0] == gSetup19720[arg0].kindC9)
-            sub_08040BD8(gCommands19720[8], slot);
+            RunFrameObjectCommands(gCommands19720[8], slot);
         else
-            sub_08040B90(gCommands19720[8], arg0 * 3 + 0x47);
-        sub_08041D04(gUnknown_083C4DEC, gUnknown_0300052E, 4);
+            InitFrameObjectCommands(gCommands19720[8], arg0 * 3 + 0x47);
+        CopyBytesU8Count(gUnknown_083C4DEC, gUnknown_0300052E, 4);
         sub_08019D9C(arg0, 1, 1, gFrameObjects[0x5D + arg0 * 4].priority + 4);
     }
     else if (gSetup19720[arg0].kindC9 == 0x13 || gSetup19720[arg0].kindC9 == 0x14)
@@ -87,21 +87,21 @@ void sub_08019720(u32 arg0) {
         if (object->flags != 0 && object->unknown23[0] == gSetup19720[arg0].kindC9)
         {
             if (gSetup19720[arg0].kindC9 == 0x13)
-                sub_08040BD8(gCommands19720[9], slot);
+                RunFrameObjectCommands(gCommands19720[9], slot);
             else
-                sub_08040BD8(gCommands19720[10], slot);
+                RunFrameObjectCommands(gCommands19720[10], slot);
         }
         else
         {
             if (gSetup19720[arg0].kindC9 == 0x13)
-                sub_08040B90(gCommands19720[9], arg0 * 3 + 0x47);
+                InitFrameObjectCommands(gCommands19720[9], arg0 * 3 + 0x47);
             else
-                sub_08040B90(gCommands19720[10], arg0 * 3 + 0x47);
+                InitFrameObjectCommands(gCommands19720[10], arg0 * 3 + 0x47);
         }
         if (gSetup19720[arg0].kindC9 == 0x13)
-            sub_08041D04(gUnknown_083C4DF0, gUnknown_0300052E, 4);
+            CopyBytesU8Count(gUnknown_083C4DF0, gUnknown_0300052E, 4);
         else
-            sub_08041D04(gUnknown_083C4DF4, gUnknown_0300052E, 4);
+            CopyBytesU8Count(gUnknown_083C4DF4, gUnknown_0300052E, 4);
         sub_08019D9C(arg0, 1, 1, gFrameObjects[0x5D + arg0 * 4].priority - 2);
     }
     else if (gSetup19720[arg0].kindC9 == 0xF || gSetup19720[arg0].kindC9 == 0x10)
@@ -110,13 +110,13 @@ void sub_08019720(u32 arg0) {
         u32 slot = arg0 * 3 + 0x47;
         struct FrameObject *object = &objects[slot];
         if (object->flags != 0 && object->unknown23[0] == gSetup19720[arg0].kindC9)
-            sub_08040BD8(gCommands19720[7], slot);
+            RunFrameObjectCommands(gCommands19720[7], slot);
         else
-            sub_08040B90(gCommands19720[7], arg0 * 3 + 0x47);
+            InitFrameObjectCommands(gCommands19720[7], arg0 * 3 + 0x47);
         if (gSetup19720[arg0].kindC9 == 0xF)
-            sub_08041D04(gUnknown_083C4DE4, gUnknown_0300052E, 4);
+            CopyBytesU8Count(gUnknown_083C4DE4, gUnknown_0300052E, 4);
         else
-            sub_08041D04(gUnknown_083C4DE8, gUnknown_0300052E, 4);
+            CopyBytesU8Count(gUnknown_083C4DE8, gUnknown_0300052E, 4);
         sub_08019D9C(arg0, 1, 1, gFrameObjects[0x5D + arg0 * 4].priority + 4);
     }
     else if (gSetup19720[arg0].kindC9 == 0x2B)
@@ -125,10 +125,10 @@ void sub_08019720(u32 arg0) {
         u32 slot = arg0 * 3 + 0x47;
         struct FrameObject *object = &objects[slot];
         if (object->flags != 0 && object->unknown23[0] == gSetup19720[arg0].kindC9)
-            sub_08040BD8(gCommands19720[16], slot);
+            RunFrameObjectCommands(gCommands19720[16], slot);
         else
-            sub_08040B90(gCommands19720[16], arg0 * 3 + 0x47);
-        sub_08041D04(gUnknown_083C4E10, gUnknown_0300052E, 4);
+            InitFrameObjectCommands(gCommands19720[16], arg0 * 3 + 0x47);
+        CopyBytesU8Count(gUnknown_083C4E10, gUnknown_0300052E, 4);
         sub_08019D9C(arg0, 1, 1, gFrameObjects[0x5D + arg0 * 4].priority + 4);
     }
     else if (gSetup19720[arg0].kindC9 == 0x2C)
@@ -137,10 +137,10 @@ void sub_08019720(u32 arg0) {
         u32 slot = arg0 * 3 + 0x47;
         struct FrameObject *object = &objects[slot];
         if (object->flags != 0 && object->unknown23[0] == gSetup19720[arg0].kindC9)
-            sub_08040BD8(gCommands19720[17], slot);
+            RunFrameObjectCommands(gCommands19720[17], slot);
         else
-            sub_08040B90(gCommands19720[17], arg0 * 3 + 0x47);
-        sub_08041D04(gUnknown_083C4E14, gUnknown_0300052E, 4);
+            InitFrameObjectCommands(gCommands19720[17], arg0 * 3 + 0x47);
+        CopyBytesU8Count(gUnknown_083C4E14, gUnknown_0300052E, 4);
         sub_08019D9C(arg0, 1, 1, gFrameObjects[0x5D + arg0 * 4].priority + 4);
     }
     else if (gSetup19720[arg0].kindC9 == 0x2E)
@@ -149,10 +149,10 @@ void sub_08019720(u32 arg0) {
         u32 slot = arg0 * 3 + 0x47;
         struct FrameObject *object = &objects[slot];
         if (object->flags != 0 && object->unknown23[0] == gSetup19720[arg0].kindC9)
-            sub_08040BD8(gCommands19720[18], slot);
+            RunFrameObjectCommands(gCommands19720[18], slot);
         else
-            sub_08040B90(gCommands19720[18], arg0 * 3 + 0x47);
-        sub_08041D04(gUnknown_083C4E18, gUnknown_0300052E, 4);
+            InitFrameObjectCommands(gCommands19720[18], arg0 * 3 + 0x47);
+        CopyBytesU8Count(gUnknown_083C4E18, gUnknown_0300052E, 4);
         sub_08019D9C(arg0, 1, 1, gFrameObjects[0x5D + arg0 * 4].priority + 4);
     }
     else if (gSetup19720[arg0].kindC9 == 0x2F)
@@ -161,10 +161,10 @@ void sub_08019720(u32 arg0) {
         u32 slot = arg0 * 3 + 0x47;
         struct FrameObject *object = &objects[slot];
         if (object->flags != 0 && object->unknown23[0] == gSetup19720[arg0].kindC9)
-            sub_08040BD8(gCommands19720[19], slot);
+            RunFrameObjectCommands(gCommands19720[19], slot);
         else
-            sub_08040B90(gCommands19720[19], arg0 * 3 + 0x47);
-        sub_08041D04(gUnknown_083C4E1C, gUnknown_0300052E, 4);
+            InitFrameObjectCommands(gCommands19720[19], arg0 * 3 + 0x47);
+        CopyBytesU8Count(gUnknown_083C4E1C, gUnknown_0300052E, 4);
         sub_08019D9C(arg0, 1, 1, gFrameObjects[0x5D + arg0 * 4].priority + 4);
     }
 }

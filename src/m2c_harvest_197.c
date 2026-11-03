@@ -48,7 +48,7 @@ s32 sub_0806A3C4(void) {
  case 0:
         sub_0803FAA0(1U, 2U, 0U);
         sub_08069DF0();
-        sub_08074DE0(0x15U);
+        PlaySoundEffect(0x15U);
         if(gSelectionOrder03006F94[0]==1) {
             sub_0806B530(0, 1, 0x18, 0x58);
             sub_0806A078(gDebugMenuTextBuffer, gUnknown_03002B74);
@@ -79,11 +79,11 @@ s32 sub_0806A3C4(void) {
  }
  sub_0806941C((u8)(gUnknown_03006F88-6));
  default:
- sub_0803FB3C(gScriptTable08485F88[30]);
+ RunDialogue(gScriptTable08485F88[30]);
  gUnknown_03006F88++;
  break;
  case 0x96:
-        sub_08074DE0(0x16U);
+        PlaySoundEffect(0x16U);
         *(volatile u16 *)0x04000050 = 0x7F;
         sub_08069EDC();
         sub_0806B530(1, 6, 0, 0);
@@ -92,7 +92,7 @@ s32 sub_0806A3C4(void) {
  gUnknown_03006F88++;
  break;
  case 0x97:
-        if ((sub_0803FB3C(gScriptTable08485F88[7]) != 0) && (gFrameObjects[1].commandDelay == 0)) {
+        if ((RunDialogue(gScriptTable08485F88[7]) != 0) && (gFrameObjects[1].commandDelay == 0)) {
             sub_0803FB0C();
             if (gSelectionOrder03006F94[0] == 1) {
 gUnknown_03006F88 += 1;
@@ -107,7 +107,7 @@ gUnknown_03006F88 += 1;
  case 0x99:
  script=gScriptTable08485F88[9];
  waitScript:
- if(sub_0803FB3C(script)) return 1;
+ if(RunDialogue(script)) return 1;
  break;
  }
  sub_0806B0D4();

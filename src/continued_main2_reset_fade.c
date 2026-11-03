@@ -10,8 +10,8 @@
 void sub_0805C950(void)
 {
     u32 zero = 0;
-    sub_08074B88(0);
-    sub_08074DE0(0);
+    PlayMusic(0);
+    PlaySoundEffect(0);
     gMainState = 1;
     gMainSubstate = 1;
     gUnknown_0300137C = zero;

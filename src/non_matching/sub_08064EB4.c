@@ -45,9 +45,9 @@ NONMATCH("asm/non_matching/sub_08064EB4.inc", void sub_08064EB4(void))
         *(volatile u16 *)0x0400000C = v = 0x1E06;
         *(volatile u16 *)0x0400000E = v = 0x1D07;
     }
-    sub_0805BA34(gBiosLz77Stream_0879B828, *(volatile u16 *)0x0400000A);
-    sub_0805BA34(gBiosLz77Stream_0879B980, *(volatile u16 *)0x0400000C);
-    sub_0805BA34(gBiosLz77Stream_0879BAB0, *(volatile u16 *)0x0400000E);
+    LoadLz77SizedTilemap(gBiosLz77Stream_0879B828, *(volatile u16 *)0x0400000A);
+    LoadLz77SizedTilemap(gBiosLz77Stream_0879B980, *(volatile u16 *)0x0400000C);
+    LoadLz77SizedTilemap(gBiosLz77Stream_0879BAB0, *(volatile u16 *)0x0400000E);
     size = sub_08044D0C(gBiosLz77Stream_0879AF8C, gScratch6030C02030000);
     CpuSet(gScratch6030C02030000, (void *)0x06004000, (size << 10) >> 11);
     gMenuContext64EB4->tile36 = (size >> 5) - 1;
@@ -78,7 +78,7 @@ NONMATCH("asm/non_matching/sub_08064EB4.inc", void sub_08064EB4(void))
     gFrameObjects[7].screenY = 0;
     sub_08041164(gDebugMenuTextBuffer, gPostDispatchWord_03002B70);
     } while (0);
-    sub_08040DB8(gDebugMenuTextBuffer, 0, 0x15, 1, 7, 0xF, 1, 0);
+    PlaceAlignedTextObjects(gDebugMenuTextBuffer, 0, 0x15, 1, 7, 0xF, 1, 0);
     gUnknown_0300137C++;
 }
 END_NONMATCH

@@ -87,6 +87,11 @@ score-0 result.
   it as it is. `tools/m2c_integrate.py` replaces the NONMATCH entry once the
   function matches. Unmatched code that is still an `.incbin` gap gets one with
   `python tools/nonmatch.py <name>`.
+- Name a function only when its body establishes what it does (CamelCase
+  verb + object, e.g. `FillTilemapRect`); otherwise keep the address name.
+  Rename with `python tools/rename.py OLD=NEW` (or `--file`), which updates
+  sources, headers, assembly, config, docs and tools together, then rebuild.
+  libgcc address aliases go to their real names with `--alias`.
 - Only document findings that help many functions (compiler idioms in
   [docs/IDIOMS.md](docs/IDIOMS.md), struct
   layouts); put struct knowledge in `include/` headers rather than prose.

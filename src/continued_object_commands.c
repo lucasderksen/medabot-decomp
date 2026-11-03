@@ -33,8 +33,8 @@ void sub_0804B7C8(void)
     gLaterBuffer_03006D38[6] = byteZero;
     settings = (struct CommandBackgroundView *)&gBackgroundState_03005310;
     settings->byte38 = byteZero;
-    sub_08049714(work + 0xCA4, 16);
-    sub_08049714(gLaterBuffer_03006D20, 16);
+    ClearBytes(work + 0xCA4, 16);
+    ClearBytes(gLaterBuffer_03006D20, 16);
     objects = (u8 *)gFrameObjects;
     objects[47 * 64 + 0x25] = 1;
     sub_0805196C();
@@ -57,14 +57,14 @@ void sub_0804B9E8(void)
     u8 *work;
     u8 *objects;
     {
-        u32 value = sub_0804D83C();
+        u32 value = ReadBankedScriptByte();
         work = gUnknown_030057E0;
         work[0x7FE] = value;
     }
-    { u32 value = sub_0804D83C(); work[0x7FC] = value; }
-    { u32 value = sub_0804D83C(); work[0x7FD] = value; }
-    { u32 value = sub_0804D83C(); work[0xC56] = value; }
-    { u32 value = sub_0804D83C(); work[0xC57] = value; }
+    { u32 value = ReadBankedScriptByte(); work[0x7FC] = value; }
+    { u32 value = ReadBankedScriptByte(); work[0x7FD] = value; }
+    { u32 value = ReadBankedScriptByte(); work[0xC56] = value; }
+    { u32 value = ReadBankedScriptByte(); work[0xC57] = value; }
     objects = (u8 *)gFrameObjects;
     { u32 value = objects[47 * 64 + 0x20]; work[0xC67] = value; }
     work[0xC89] = 1;
@@ -72,7 +72,7 @@ void sub_0804B9E8(void)
 
 void sub_0804BA5C(void)
 {
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     u8 *work = gUnknown_030057E0;
     u8 *argument = work + 0xC94;
     u8 *objects;

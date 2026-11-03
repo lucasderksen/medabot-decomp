@@ -10,9 +10,9 @@
 void sub_0800529C(void)
 {
     u32 fill;
-    sub_0803F624(&gRecordDisplayWork, 0xD0, 0);
-    sub_0803F624(gRecordDisplayData, 0x800, 0);
-    sub_0803F624(gRecordDisplayExtra, 0x60, 0);
+    FillBytes(&gRecordDisplayWork, 0xD0, 0);
+    FillBytes(gRecordDisplayData, 0x800, 0);
+    FillBytes(gRecordDisplayExtra, 0x60, 0);
     gRenderMode = 2;
     gRenderWork = (struct RenderWork *)0x02024000;
     fill = 0;
@@ -89,7 +89,7 @@ u32 sub_08005588(void)
     if ((u8)gRepeatedKeys & 0x10) { next = gUnknownPointers_083AC604[3]; changed = 1; }
     if (changed)
     {
-    sub_08074DE0(2);
+    PlaySoundEffect(2);
     gState0TypedWork.bytes[0x51] = next[gState0TypedWork.bytes[0x51]];
     sub_08004EF8(0); sub_08004EF8(1); sub_08004EF8(2); sub_08004EF8(3);
     sub_08005118(); sub_0800519C(); sub_0800522C(); sub_080053C8(); sub_08005000(); sub_08005948();
@@ -133,13 +133,13 @@ u32 sub_080058A4(void)
 {
     if (!gState0TypedWork.bytes[0x50] && ((u8)gNewKeys & 4))
     {
-    sub_08074DE0(2);
+    PlaySoundEffect(2);
     if (gState0TypedWork.bytes[0x52] & 0x80)
     {
         gState0TypedWork.bytes[0x52] &= 0x7F;
         if (gState0TypedWork.bytes[0x52] != gState0TypedWork.bytes[0x51])
         {
-            sub_0803F65C(&gUnknownRecords_030017A0[gState0TypedWork.bytes[0x52]],
+            SwapBytes(&gUnknownRecords_030017A0[gState0TypedWork.bytes[0x52]],
                         &gUnknownRecords_030017A0[gState0TypedWork.bytes[0x51]], 8);
             sub_08004FD0(); sub_08005000(); sub_0800508C(); sub_08005118(); sub_0800519C();
             sub_0800522C(); sub_080053C8(); sub_08005948();

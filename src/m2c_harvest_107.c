@@ -42,10 +42,10 @@ void sub_0803D3C0(void);
 
 void sub_08015F24(void) {
     const u8 **table;
-    sub_08040D0C(0x1EU, 0xBU);
+    HideFrameObjects(0x1EU, 0xBU);
     table=gUnknown_083C47EC;
-    sub_08041D04(table[gState0TransferWork.bytes[0x81]], gDebugMenuTextBuffer, 0xCU);
-    sub_08040DB8(gDebugMenuTextBuffer, 0x1EU, 0x15, 0x11, 8U, 0xEU, 0U, 1U);
+    CopyBytesU8Count(table[gState0TransferWork.bytes[0x81]], gDebugMenuTextBuffer, 0xCU);
+    PlaceAlignedTextObjects(gDebugMenuTextBuffer, 0x1EU, 0x15, 0x11, 8U, 0xEU, 0U, 1U);
 }
 
 void sub_08025D6C(void) {
@@ -55,7 +55,7 @@ void sub_08025D6C(void) {
     sub_0801C2F0(0);
     var_r4 = sub_0801AFB8(gState0TransferWork.bytes[0x87]);
     table=gState0NextCommands_083B6100;
-    sub_08040BD8(table[gState0TypedWork.bytes[0x84]], 0x21U);
+    RunFrameObjectCommands(table[gState0TypedWork.bytes[0x84]], 0x21U);
     if (gFrameObjects[0x21].commandStopped == 0xFF) {
         var_r4 += 1;
     }
@@ -69,7 +69,7 @@ void sub_08025D6C(void) {
 void sub_0803A5CC(void) {
  u8 *setup,*work,*initialWork;struct Frame4Backing *frames;
  s32 offset;u32 value;void *record;
- sub_0803D450();
+ LoadActionHalfwordScriptParams();
  setup=gSetupBuffer_03000590;initialWork=gState0TransferWork.bytes;
  offset=initialWork[0x87]<<8;record=setup+offset;
  if(*(u8*)(record+0xDD)<=3U)
@@ -92,13 +92,13 @@ void sub_0803A5CC(void) {
   frames->tileX=work[0x110]+2;
  }
  ((struct Frame4Backing*)gFrameObjects)->clear=0;
- sub_0803D4AC();
+ AdvanceActionHalfwordScript();
 }
 
 void sub_0803ADFC(void) {
  u8 *setup,*work,*initialWork;struct Frame4Backing *frames;
  s32 offset;u32 value;void *record;
- sub_0803D450();
+ LoadActionHalfwordScriptParams();
  setup=gSetupBuffer_03000590;initialWork=gState0TransferWork.bytes;
  offset=initialWork[0x87]<<8;record=setup+offset;
  if(*(u8*)(record+0xDD)<=3U)
@@ -121,7 +121,7 @@ void sub_0803ADFC(void) {
   frames->tileX=work[0x110]+2;
  }
  ((struct Frame4Backing*)gFrameObjects)->clear=0;
- sub_0803D4AC();
+ AdvanceActionHalfwordScript();
 }
 
 void sub_0803D3C0(void) {
@@ -129,7 +129,7 @@ void sub_0803D3C0(void) {
     struct FrameObject *temp_r1;
 
     table=gState0NextCommands_083B6100;
-    sub_08040BD8(table[gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown23[3]], gState0TypedWork.bytes[0x12F]);
+    RunFrameObjectCommands(table[gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown23[3]], gState0TypedWork.bytes[0x12F]);
     if (sub_080353CC((u32) gState0TypedWork.bytes[0x12F]) != 0) {
         temp_r1 = &gFrameObjects[gState0TypedWork.bytes[0x12F]];
         temp_r1->frameAndGroup = temp_r1->unknown23[5] + 0x6307;

@@ -31,7 +31,7 @@ struct SetupRecord {
     u8 byteCC;
     u8 padCD[0x33];
 };
-extern s8 sub_08036E54(s16);
+extern s8 Clamp1To99(s16);
 extern struct SetupRecord gSetupRecords[] asm("gSetupBuffer_03000590");
 
 void sub_0802DBD8(void);
@@ -43,8 +43,8 @@ void sub_0802DBD8(void) {
     for (i = 0; i <= 2; i++) {
         if (gCounter6ED08_03001800.activeD2[i] != 0) {
             gSetupRecords[gCounter6ED08_03001800.base60 + i].kindC9 = 0x2B;
-            gSetupRecords[gCounter6ED08_03001800.base60 + i].byteCB = sub_08036E54(gCounter6ED08_03001800.valueE8);
-            gSetupRecords[gCounter6ED08_03001800.base60 + i].byteCC = sub_08036E54(gCounter6ED08_03001800.valueEC);
+            gSetupRecords[gCounter6ED08_03001800.base60 + i].byteCB = Clamp1To99(gCounter6ED08_03001800.valueE8);
+            gSetupRecords[gCounter6ED08_03001800.base60 + i].byteCC = Clamp1To99(gCounter6ED08_03001800.valueEC);
             switch (gCounter6ED08_03001800.activeD2[i] & 0x7F) {
             case 1:
                 gSetupRecords[gCounter6ED08_03001800.base60 + i].byteCA = 2;

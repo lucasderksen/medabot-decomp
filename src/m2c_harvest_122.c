@@ -26,7 +26,7 @@ struct SpecialFrameView { u8 pad[0x82]; s16 screenX; s16 screenY; u16 frameAndGr
 
 extern const u8 *gState0NextCommands_083B6100[];
 extern s16 gUnknown_03000030[160];
-extern s32 sub_0807CEC8(s32 numerator, s32 denominator);
+extern s32 __udivsi3(s32 numerator, s32 denominator);
 extern struct LocalTransferCounter gGraphicsTransferCounter;
 extern u16 gUnknown_083AF6A0[8];
 extern u8 gUnknown_084DEBE8;
@@ -63,7 +63,7 @@ void sub_080294DC(void) {
     gFrameObjects[0x21].unknown2C[0] = 0xC0;
     gFrameObjects[0x21].unknown2C[1] = zeroByte;
     table=gState0NextCommands_083B6100;
-    sub_08040B90(table[command], 0x21U);
+    InitFrameObjectCommands(table[command], 0x21U);
     if (1 & gState0TransferWork.bytes[0xF8]) {
         gFrameObjects[0x21].screenX=0xB8;
     } else {
@@ -102,13 +102,13 @@ block_5:
     temp_r7 = &frames[arg0];
     if (!(temp_r7->unknown2C[1] & var_r2)) {
         temp_r0 = sub_08040D78((u8) (arg0 + 1), 0x14U);
-        sub_08040CD0(temp_r0, 1U);
+        ClearFrameObjects(temp_r0, 1U);
         temp_r6 = &frames[temp_r0];
         zero = 0;
         temp_r6->flags = 0xC604;
         temp_r6->tableSelector = zero;
-        temp_r6->screenX = ((u16)temp_r7->screenX + gUnknown_083AF6A0[(sub_080424B8() & 3) * 2]) & 0x1FF;
-        temp_r6->screenY = ((u16)temp_r7->screenY + gUnknown_083AF6A0[(sub_080424B8() & 3) * 2 + 1]) & 0xFF;
+        temp_r6->screenX = ((u16)temp_r7->screenX + gUnknown_083AF6A0[(NextRandomByte() & 3) * 2]) & 0x1FF;
+        temp_r6->screenY = ((u16)temp_r7->screenY + gUnknown_083AF6A0[(NextRandomByte() & 3) * 2 + 1]) & 0xFF;
         temp_r6->scaleX = 0x40;
         temp_r6->scaleY = 0x40;
         temp_r6->palette = 6;
@@ -138,7 +138,7 @@ void sub_0806DAA4(void) {
     s32 var_r4;
 
     if (gGraphicsTransferCounter.counter == 0) {
-        sub_08074B88(2U);
+        PlayMusic(2U);
         *(volatile s16 *)0x04000050 = 0x244;
         *(volatile s16 *)0x04000052 = 0x1000;
         *(volatile u16 *)0x04000000 |= 0x400;
@@ -156,7 +156,7 @@ void sub_0806DAA4(void) {
             if (var_r4 > 0x7F) {
                 var_r0 = (0x9F - var_r4) * 4;
 block_6:
-                *var_r5 = sub_0807CEC8(0x10000, baseScale - var_r0);
+                *var_r5 = __udivsi3(0x10000, baseScale - var_r0);
             } else {
                 *var_r5 = baseScale;
             }
@@ -180,7 +180,7 @@ block_6:
     }
 block_15:
     if (gGraphicsTransferCounter.counter == 0x39) {
-        sub_08048864(2U, 0xC600U, 0x212U, 2U, 3U);
+        InitFrameObject(2U, 0xC600U, 0x212U, 2U, 3U);
         frames = (struct SpecialFrameView *)gFrameObjects;
         frames->screenX = 0x78;
         frames->screenY = 0x73;

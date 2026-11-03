@@ -50,7 +50,7 @@ struct SetupRec9158 {
 extern const u8 *gState0NextCommands_083B6100[];
 extern s16 gUnknown_083AF6A0[];
 extern s32 sub_08035DD4(s32 arg0);
-extern s8 sub_08036E54(s32);
+extern s8 Clamp1To99(s32);
 extern struct SetupRec6E64 gSetupRecs6E64[] asm("gSetupBuffer_03000590");
 extern struct SetupRec9158 gSetupRecs9158[] asm("gSetupBuffer_03000590");
 extern void sub_08036120(s32 arg0);
@@ -128,28 +128,28 @@ void sub_08036E64(s32 slot, u32 kind, u32 a, u32 b) {
     if (kind == 0xD || kind == 0xE) {
         gSetupRecs6E64[slot].kindC9 = kind;
         gSetupRecs6E64[slot].byteCA = gCounter6ED08_03001800.group8B + 1;
-        gSetupRecs6E64[slot].byteCB = sub_08036E54(a);
-        gSetupRecs6E64[slot].byteCC = sub_08036E54(b * 2);
+        gSetupRecs6E64[slot].byteCB = Clamp1To99(a);
+        gSetupRecs6E64[slot].byteCC = Clamp1To99(b * 2);
     } else if (kind == 0xF || kind == 0x10) {
         gSetupRecs6E64[slot].kindC9 = kind;
         gSetupRecs6E64[slot].byteCA = gCounter6ED08_03001800.group8B + 1;
-        gSetupRecs6E64[slot].byteCB = sub_08036E54(b / 8);
+        gSetupRecs6E64[slot].byteCB = Clamp1To99(b / 8);
         gSetupRecs6E64[slot].byteCC = 0;
     } else if (kind == 0x11 || kind == 0x12) {
         gSetupRecs6E64[slot].kindC9 = kind;
         gSetupRecs6E64[slot].byteCA = gCounter6ED08_03001800.group8B + 1;
-        gSetupRecs6E64[slot].byteCB = sub_08036E54(a);
-        gSetupRecs6E64[slot].byteCC = sub_08036E54(b / 4);
+        gSetupRecs6E64[slot].byteCB = Clamp1To99(a);
+        gSetupRecs6E64[slot].byteCC = Clamp1To99(b / 4);
     } else if (kind == 0x13 || kind == 0x14) {
         gSetupRecs6E64[slot].kindC9 = kind;
         gSetupRecs6E64[slot].byteCA = gCounter6ED08_03001800.group8B + 1;
-        gSetupRecs6E64[slot].byteCB = sub_08036E54(a);
-        gSetupRecs6E64[slot].byteCC = sub_08036E54(b / 2);
+        gSetupRecs6E64[slot].byteCB = Clamp1To99(a);
+        gSetupRecs6E64[slot].byteCC = Clamp1To99(b / 2);
     } else {
         gSetupRecs6E64[slot].kindC9 = kind;
         gSetupRecs6E64[slot].byteCA = gCounter6ED08_03001800.group8B;
-        gSetupRecs6E64[slot].byteCB = sub_08036E54(a);
-        gSetupRecs6E64[slot].byteCC = sub_08036E54(b);
+        gSetupRecs6E64[slot].byteCB = Clamp1To99(a);
+        gSetupRecs6E64[slot].byteCC = Clamp1To99(b);
     }
 }
 
@@ -181,18 +181,18 @@ void sub_080378F0(s32 index) {
     if (gFrameObjects[index].unknown2C[1] & mask)
         return;
     obj = sub_08040D78(index + 1, 0x14);
-    sub_08040CD0(obj, 1);
+    ClearFrameObjects(obj, 1);
     gFrameObjects[obj].flags = 0xC604;
     gFrameObjects[obj].tableSelector = 0;
-    gFrameObjects[obj].screenX = (gFrameObjects[index].screenX + gUnknown_083AF6A0[(sub_080424B8() & 3) * 2]) & 0x1FF;
-    gFrameObjects[obj].screenY = (gFrameObjects[index].screenY + gUnknown_083AF6A0[(sub_080424B8() & 3) * 2 + 1]) & 0xFF;
+    gFrameObjects[obj].screenX = (gFrameObjects[index].screenX + gUnknown_083AF6A0[(NextRandomByte() & 3) * 2]) & 0x1FF;
+    gFrameObjects[obj].screenY = (gFrameObjects[index].screenY + gUnknown_083AF6A0[(NextRandomByte() & 3) * 2 + 1]) & 0xFF;
     gFrameObjects[obj].scaleX = 0x40;
     gFrameObjects[obj].scaleY = 0x40;
     gFrameObjects[obj].palette = 6;
     gFrameObjects[obj].priority = 0xE0;
     switch (gCounter6ED08_03001800.frame51) {
     case 0:
-        gFrameObjects[obj].frameAndGroup = (sub_080424B8() & 3) + 0x6B01;
+        gFrameObjects[obj].frameAndGroup = (NextRandomByte() & 3) + 0x6B01;
         gFrameObjects[obj].unknown23[6] = 0x10;
         break;
     case 1:
@@ -204,7 +204,7 @@ void sub_080378F0(s32 index) {
         gFrameObjects[obj].unknown23[6] = 0x18;
         break;
     case 3:
-        sub_08040B90(gState0NextCommands_083B6100[0x5E], obj);
+        InitFrameObjectCommands(gState0NextCommands_083B6100[0x5E], obj);
         gFrameObjects[obj].unknown23[6] = 0x1C;
         break;
     case 4:

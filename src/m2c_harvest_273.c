@@ -82,7 +82,7 @@ u8 *ctx=(u8 *)gMainContextPointer_03006F74;u8 old;u32 packed;
 void sub_0806048C(void) {
 
  sub_08060248();
- if(1U & *(u8 *)&gNewKeys){sub_08074DE0(4U);*(u8 *)gMainContextPointer_03006F74=0;gUnknown_0300137C+=1;}
+ if(1U & *(u8 *)&gNewKeys){PlaySoundEffect(4U);*(u8 *)gMainContextPointer_03006F74=0;gUnknown_0300137C+=1;}
 }
 
 void sub_080629DC(void) {

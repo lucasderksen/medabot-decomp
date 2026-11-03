@@ -11,7 +11,7 @@ void sub_0804D158(void)
     u8 *current;
     u8 *argument;
     u32 requested;
-    sub_0804D8CC(2);
+    ReadBankedScriptArgs(2);
     work = gUnknown_030057E0;
     argument = work + 0xC94;
     current = work + 0xC5B;

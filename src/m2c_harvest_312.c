@@ -30,7 +30,7 @@ void sub_0803579C(u32 arg0, s32 arg1) {
   temp_r4 = setup + t;
   *score = (u16) (*score + temp_r4[0x4D]);
   *score = (u16) ((*score) + sub_0803576C(arg0));
-  *score = (u16) ((sub_080424B8() & 7) + (*score));
+  *score = (u16) ((NextRandomByte() & 7) + (*score));
   idx = temp_r4[0x4A] + temp_r6;
   p20 = setup + 0x20;
   *score = (u16) (*score + p20[idx]);

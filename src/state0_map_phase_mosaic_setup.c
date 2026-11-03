@@ -20,7 +20,7 @@ void sub_08014050(void)
     LeDecompress((const void *)0x084C9A84, (void *)0x06014800);
     CpuFastSet((const void *)0x084E4578, (void *)0x050003E0, 8);
     sub_080750F0(8);
-    sub_08074DE0(110);
+    PlaySoundEffect(110);
     state = gUnknown_03000440;
     state += 0x84;
     *state = zero;

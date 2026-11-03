@@ -51,14 +51,14 @@ void sub_0802A6D4(void) {
     frames->frame.scaleX = 4;
     frames->frame.scaleY = 4;
     frames->frame.angle = 0;
-    sub_08040B90(gState0NextCommands_083B6100[0x62], 0x21U);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[0x62], 0x21U);
     if (!(1 & gState0TransferWork.bytes[0xF8])) {
         frames->frame.screenX = 0x70;
     } else {
         frames->frame.flags |= 0x1000;
         frames->frame.screenX = 0x80;
     }
-    sub_08074DE0(0x6AU);
+    PlaySoundEffect(0x6AU);
     gState0TransferWork.bytes[0xAA] = (u8) (gState0TransferWork.bytes[0xAA] + 1);
 }
 

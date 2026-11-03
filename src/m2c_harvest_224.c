@@ -20,7 +20,7 @@ struct ContinuePaletteWork {u8 pad[0x102];s16 mode,index;};
 extern struct ContinuePaletteWork gUnknown_03001800;
 extern struct ContinueResetRow gUnknown_03000590[];
 extern u8 gUnknown_0202F800[];
-extern void sub_0803D450(void);extern void sub_0803D4AC(void);
+extern void LoadActionHalfwordScriptParams(void);extern void AdvanceActionHalfwordScript(void);
 
 void sub_08036FA0(u32 bank);
 void sub_0803AC4C(void);
@@ -31,14 +31,14 @@ void sub_08036FA0(u32 bank) {
  u8 *out=(u8 *)root+0x40;u32 zero=0;u8 *flags,*clear,*first;
  *out=zero;out+=0x19;*out=zero;out+=0x60;*out=zero;
  root->status=2;flags=(u8 *)root+0xBA;clear=&root->clear;*clear=zero;flags+=3;*flags=0xE4u&*flags;*clear=zero;
- first=setup+0xC4;sub_0803F624((u8 *)(shift+(u32)first),0xC,zero);
- setup+=0xDC;sub_0803F624((u8 *)(shift+(u32)setup),8,0);
+ first=setup+0xC4;FillBytes((u8 *)(shift+(u32)first),0xC,zero);
+ setup+=0xDC;FillBytes((u8 *)(shift+(u32)setup),8,0);
 }
 
 void sub_0803AC4C(void) {
 
- sub_0803D450();
+ LoadActionHalfwordScriptParams();
  if(gUnknown_03001800.mode==0){u32 offset=(u32)(s32)gUnknown_03001800.index<<5;CpuFastSet((void *)(offset+0x05000000),(void *)(offset+(u32)gEquipmentPaletteShadow),8);}
  else{u32 offset=(u32)(s32)gUnknown_03001800.index<<5;CpuFastSet((void *)(offset+0x05000200),(void *)(offset+(u32)gUnknown_0202F800),8);}
- sub_0803D4AC();
+ AdvanceActionHalfwordScript();
 }

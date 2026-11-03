@@ -61,10 +61,10 @@ void sub_0805B22C(u32 halve) {
     }
     for (i = 0; i < count; i++)
     {
-        sub_08040D0C(i * 14 + 13, 14);
+        HideFrameObjects(i * 14 + 13, 14);
         sub_0805B530(12, i * 2 + 10, 3);
         sub_0805B530(12, i * 2 + 11, 3);
-        sub_08040D0C(i * 7 + 0x45, 7);
+        HideFrameObjects(i * 7 + 0x45, 7);
     }
     for (i = 0; i < count; i++)
     {
@@ -72,30 +72,30 @@ void sub_0805B22C(u32 halve) {
         {
             if (((struct ContextB22C *)gMainContextPointer_03006F74)->count <= i)
                 goto done;
-            sub_08040DB8(gPartTextPointers_083BBB4C[parts[i] * 4 + part], (u8)(i * 14 + 13), 2, i * 2 + 10, 14, 13, 1, 1);
+            PlaceAlignedTextObjects(gPartTextPointers_083BBB4C[parts[i] * 4 + part], (u8)(i * 14 + 13), 2, i * 2 + 10, 14, 13, 1, 1);
             sub_0805A0CC(amounts[i], 2, 13, i * 2 + 10, 5, (*(volatile u16 *)0x0400000A >> 8) & 0x1F);
             gFrameObjects[0x6A + i].flags |= 0x4000;
             gFrameObjects[0x6A + i].frameAndGroup = frames[i] + 0x1B;
             gFrameObjects[0x6E + i].flags |= 0x4000;
             sub_0805B188(parts[i], part, i);
             sub_08041164(gDebugMenuTextBuffer, values[i]);
-            sub_08040DB8(gDebugMenuTextBuffer, (u8)(i * 7 + 0x45), 18, i * 2 + 10, 7, 13, 2, 1);
+            PlaceAlignedTextObjects(gDebugMenuTextBuffer, (u8)(i * 7 + 0x45), 18, i * 2 + 10, 7, 13, 2, 1);
         }
         else
         {
             if (amounts[i] == 0)
                 goto done;
-            sub_08040DB8(gPartTextPointers_083BBB4C[parts[i] * 4 + part], (u8)(i * 14 + 13), 2, i * 2 + 10, 14, 13, 1, 1);
+            PlaceAlignedTextObjects(gPartTextPointers_083BBB4C[parts[i] * 4 + part], (u8)(i * 14 + 13), 2, i * 2 + 10, 14, 13, 1, 1);
             sub_0805A0CC(amounts[i], 2, 13, i * 2 + 10, 5, (*(volatile u16 *)0x0400000A >> 8) & 0x1F);
             gFrameObjects[0x6A + i].flags |= 0x4000;
             gFrameObjects[0x6A + i].frameAndGroup = frames[i] + 0x1B;
             gFrameObjects[0x6E + i].flags |= 0x4000;
             sub_0805B188(parts[i], part, i);
             sub_08041164(gDebugMenuTextBuffer, values[i]);
-            sub_08040DB8(gDebugMenuTextBuffer, (u8)(i * 7 + 0x45), 18, i * 2 + 10, 7, 13, 2, 1);
+            PlaceAlignedTextObjects(gDebugMenuTextBuffer, (u8)(i * 7 + 0x45), 18, i * 2 + 10, 7, 13, 2, 1);
         }
     }
 done:
     sub_08041164(gDebugMenuTextBuffer, ((struct ContextB22C *)gMainContextPointer_03006F74)->total);
-    sub_08040DB8(gDebugMenuTextBuffer, 0x61, 19, 5, 7, 12, 2, 0);
+    PlaceAlignedTextObjects(gDebugMenuTextBuffer, 0x61, 19, 5, 7, 12, 2, 0);
 }

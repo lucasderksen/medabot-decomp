@@ -33,7 +33,7 @@ struct EffectFrameView {
 };
 
 extern const u8 gRandomBytes_083F7D80[];
-extern void sub_0806B718(u8);
+extern void ClearFrameObject(u8);
 
 s32 sub_0806C958(void);
 
@@ -55,7 +55,7 @@ s32 sub_0806C958(void) {
   switch (phase)
   {
     case 0:
-      sub_08048864(0U, 0xC000U, 0x34U, 0xDU, 3U);
+      InitFrameObject(0U, 0xC000U, 0x34U, 0xDU, 3U);
       (*((struct EffectFrameView *) gFrameObjects)).x0 = 0x78;
       (*((struct EffectFrameView *) gFrameObjects)).y0 = -0x10;
       (*((struct EffectFrameView *) gFrameObjects)).timer1A = phase;
@@ -64,14 +64,14 @@ s32 sub_0806C958(void) {
       selection = (s8) gState0TransferWork.bytes[0xE];
       if (selection > 0x23)
     {
-      sub_08048864(0x2EU, 0xC800U, 0x10U, 2U, 3U);
-      sub_08048864(0x36U, 0xCC08U, 0x12U, 2U, 3U);
+      InitFrameObject(0x2EU, 0xC800U, 0x10U, 2U, 3U);
+      InitFrameObject(0x36U, 0xCC08U, 0x12U, 2U, 3U);
       (*((struct EffectFrameView *) gFrameObjects)).y54 = 0x1E;
     }
     else
       if (selection > 0)
     {
-      sub_08048864(0x21U, 0xCC08U, 0x12U, 2U, 3U);
+      InitFrameObject(0x21U, 0xCC08U, 0x12U, 2U, 3U);
       (*((struct EffectFrameView *) gFrameObjects)).x33 = (u16) (*((struct EffectFrameView *) gFrameObjects)).x32;
       (*((struct EffectFrameView *) gFrameObjects)).y33 = ((u16) (*((struct EffectFrameView *) gFrameObjects)).y32) + 8;
     }
@@ -101,7 +101,7 @@ s32 sub_0806C958(void) {
           gateTimer=timerWork->timer1A;
           if(!(gateTimer&15U))
           {
-            sub_08074DE0(0x3DU);
+            PlaySoundEffect(0x3DU);
           }
           break;
         }
@@ -120,16 +120,16 @@ s32 sub_0806C958(void) {
       timer = (*((struct EffectFrameView *) gFrameObjects)).timer1A;
       if ((timer > 0xEBU) || (9 & ((u8) gNewKeys)))
     {
-      sub_0806B718(0);
-      sub_0806B718(0x39);
+      ClearFrameObject(0);
+      ClearFrameObject(0x39);
       return 1;
     }
       updatedTimer=timer+1;
       (*((struct EffectFrameView *) gFrameObjects)).timer1A=updatedTimer;
       if (((u16)updatedTimer)==0x20)
     {
-      sub_08048864(0x2FU, 0xC800U, 0x10U, 2U, 3U);
-      sub_08048864(0x37U, 0xCC08U, 0x12U, 2U, 3U);
+      InitFrameObject(0x2FU, 0xC800U, 0x10U, 2U, 3U);
+      InitFrameObject(0x37U, 0xCC08U, 0x12U, 2U, 3U);
       (*((struct EffectFrameView *) gFrameObjects)).y55 = 0x1E;
     }
       break;

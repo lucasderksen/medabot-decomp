@@ -6,7 +6,7 @@
 
 #include "global.h"
 
-extern u32 sub_0807CEC8(u32,u32);
+extern u32 __udivsi3(u32,u32);
 extern void sub_08073AB8(u32, void *);
 extern void sub_08073B2C(s32);
 extern void sub_08073CDC(void *);
@@ -55,7 +55,7 @@ block_9:
         }
         if ((*(s32 *)((u8 *)(arg0) + 0xC)) & 2) {
             denominator = (u32)(*(s32 *)((u8 *)(arg0) + 4))+(u32)(*(s32 *)((u8 *)(arg0) + 0x14));
- temp_r1_2 = (0x10000 - sub_0807CEC8(0x01000000, denominator)) | 0x800000;
+ temp_r1_2 = (0x10000 - __udivsi3(0x01000000, denominator)) | 0x800000;
             (*(s32 *)((u8 *)(arg0) + 0x10)) = temp_r1_2;
             *gUnknown_08486E5C[(u32)(*(u8 *)((u8 *)(arg0) + 0x3A))-1U] = temp_r1_2;
             (*(s32 *)((u8 *)(arg0) + 0xC)) = (s32) ((*(s32 *)((u8 *)(arg0) + 0xC)) & ~2);

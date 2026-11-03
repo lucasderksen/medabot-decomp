@@ -19,7 +19,7 @@ void sub_08011DB0(void)
 
 void sub_08011DE4(void)
 {
-    sub_08041D04((const u8 *)((u32)gEquipmentTable_083BEC10 + gUnknown_030057E0[0x7FE] * 8),
+    CopyBytesU8Count((const u8 *)((u32)gEquipmentTable_083BEC10 + gUnknown_030057E0[0x7FE] * 8),
                 gUnknown_0300052E, 2);
     gState0TransferWork.bytes[0x38] = gUnknown_0300052E[1];
 }
@@ -34,7 +34,7 @@ void sub_08011E20(void)
         u32 value;
         const u8 *source = (const u8 *)((u32)gState0EquipmentChoices_083BF210 + work[0x7FE] * 4);
         u8 *choices = gUnknown_0300052E;
-        sub_08041D04(source, choices, 4);
+        CopyBytesU8Count(source, choices, 4);
         random = (u32)sub_08043C94();
         if (random <= 39)
             value = choices[0];
@@ -46,7 +46,7 @@ void sub_08011E20(void)
             value = choices[3];
         work[0xC2A] = value;
     }
-    sub_08041D04(gState0EncounterRecords_083C1B80[work[0xC2A]],
+    CopyBytesU8Count(gState0EncounterRecords_083C1B80[work[0xC2A]],
                 gState0TransferWork.bytes, 40);
     if (gState0TransferWork.bytes[3] == 0)
     {

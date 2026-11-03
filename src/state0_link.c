@@ -25,7 +25,7 @@ void sub_08004764(void)
     sub_08004E74();
     sub_08005000();
     sub_080054C0();
-    sub_08040D0C(0, 4);
+    HideFrameObjects(0, 4);
     gState0TypedWork.widths.word5C = 0;
     gUnknown_0300137C++;
 }
@@ -51,8 +51,8 @@ void sub_080047EC(void)
     ENTRY_LINK_WORK();
     if (gState0TypedWork.bytes[0x84] <= 32)
     {
-        sub_0803F684(0, gState0TypedWork.bytes[0x84], 0xFFFF);
-        sub_0803F998(0, gState0TypedWork.bytes[0x84], 0xFFFF);
+        BlendBgPaletteBanksNow(0, gState0TypedWork.bytes[0x84], 0xFFFF);
+        BlendObjPaletteBanksNow(0, gState0TypedWork.bytes[0x84], 0xFFFF);
         gState0TypedWork.bytes[0x84]++;
     }
     else
@@ -61,7 +61,7 @@ void sub_080047EC(void)
 
 void sub_08004840(void)
 {
-    sub_08040CD0(0, 128);
+    ClearFrameObjects(0, 128);
     gState0TypedWork.bytes[0x96] = 0;
     gRenderMode = 0;
     gMainSubstate = 7;
@@ -74,7 +74,7 @@ void sub_08004874(void)
     if (gState0TypedWork.widths.word5C > 60)
     {
         sub_080750F0(8);
-        sub_0804253C(6, 63, 8);
+        StartBlendFade(6, 63, 8);
         gUnknown_0300137C++;
     }
 }
@@ -82,14 +82,14 @@ void sub_08004874(void)
 void sub_080048B0(void)
 {
     ENTRY_LINK_WORK();
-    if (sub_080425DC())
+    if (StepBlendFade())
         gUnknown_0300137C++;
 }
 
 void sub_080048D8(void)
 {
     s32 i;
-    sub_08040CD0(0, 128);
+    ClearFrameObjects(0, 128);
     gState0TypedWork.bytes[0x96] = 0;
     gRenderMode = 0;
     for (i = 0; i <= 2; i++)
@@ -118,7 +118,7 @@ void sub_080049EC(void)
 {
     sub_08004E74();
     sub_080054C0();
-    if (sub_0803FB3C(gUnknownPointers_083CF530[11]))
+    if (RunDialogue(gUnknownPointers_083CF530[11]))
         gUnknown_0300137C++;
 }
 

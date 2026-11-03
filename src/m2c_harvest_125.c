@@ -97,7 +97,7 @@ void sub_08013B8C(void) {
     CpuFastSet(&fill, gFrameObjects, 0x01000800);
     *display |= 0x1F40;
     record = (u8 *)0x0300047C;
-    sub_0803F624(record, 20, 0);
+    FillBytes(record, 20, 0);
     record[10] = 1;
     sub_08017A14(0, 0);
     sub_08017B24();
@@ -116,8 +116,8 @@ void sub_08013B8C(void) {
     sub_08018098();
     sub_0801830C();
     sub_08043240(0, 8);
-    sub_08042698(2, 2, 11, 2, *bg1, 0x63C0);
-    sub_0804253C(5, 63, 32);
+    FillTilemapRectSequential(2, 2, 11, 2, *bg1, 0x63C0);
+    StartBlendFade(5, 63, 32);
     gUnknown_0300137C++;
 }
 

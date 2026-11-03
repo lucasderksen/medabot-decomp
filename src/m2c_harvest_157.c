@@ -26,7 +26,7 @@ extern u8 gUnknown_030018D2[3];
 extern void sub_0803579C(u32, u32);
 extern void sub_08035814(s32);
 extern void sub_08036270(void);
-extern void sub_08074DE0(u32);
+extern void PlaySoundEffect(u32);
 s32 sub_080688E0(void);
 
 void sub_080218E4(void);
@@ -86,7 +86,7 @@ void sub_0802DAD0(void) {
         var_r2 += 1;
     } while (var_r2 <= 2U);
     if (var_r4 == var_r3) {
-        sub_08074DE0(0x3CU);
+        PlaySoundEffect(0x3CU);
         gState0TypedWork.widths.word86 = 0;
         gState0TransferWork.bytes[0xAA] = (u8) (gState0TransferWork.bytes[0xAA] + 1);
     }
@@ -111,6 +111,6 @@ void sub_0806D600(void) {
         *(volatile u16 *)0x04000200 &= 0xFFFD;
         *(volatile u16 *)0x04000004 &= 0xFFEF;
         gUnknownCallback_03002C20 = DummyInterruptHandler;
-        sub_08074B88(0U);
+        PlayMusic(0U);
     }
 }

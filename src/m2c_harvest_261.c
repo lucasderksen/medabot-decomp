@@ -27,7 +27,7 @@ typedef s32 (*FrameCommand7178C)(u32);
 extern Callback63948 const gUnknown_080AFBE4[13];
 extern Callback6463C const gUnknown_080AFC18[12];
 extern FrameCommand7178C const gUnknown_08485BB8[];
-extern void sub_0806B718(u8);
+extern void ClearFrameObject(u8);
 
 void sub_08063948(void);
 void sub_0806463C(void);
@@ -84,7 +84,7 @@ void sub_0807178C(void) {
             switch(temp_r0){
             case 0:temp_r4->commandDelay=0;temp_r4->commandOffset=0;break;
             case 1:break;
-            case 0xFF:sub_0806B718(var_r6);break;
+            case 0xFF:ClearFrameObject(var_r6);break;
             }
         }
         var_r6 += 1;

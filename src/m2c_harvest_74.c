@@ -96,7 +96,7 @@ void sub_0803E934(void) {
     s16 *coordinate;
     u8 *parameter;
     u32 zero;
-    sub_08040CD0(2, 1);
+    ClearFrameObjects(2, 1);
     objects = (void *) gFrameObjects;
     objects->flags = (zero = 0, 0xC400);
     coordinate = &objects->x;

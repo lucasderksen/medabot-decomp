@@ -29,7 +29,7 @@ void sub_080533E4(u32 index, u32 x, u32 y, u32 mode)
     for (i = 0; i <= 31; i++)
         sub_08049374((u8)i);
     base = gLaterBuffer_03005350;
-    sub_08049714(base, 0x240);
+    ClearBytes(base, 0x240);
     *(u32 *)(base + 0x1D4) = index;
     if (index & 0x40)
     {

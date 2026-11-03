@@ -23,7 +23,7 @@ void sub_08030624(void) {
         gState0TypedWork.widths.word86 -= 1;
         return;
     }
-    sub_08040CD0(0xAU, 1U);
+    ClearFrameObjects(0xAU, 1U);
     gState0TransferWork.bytes[0xAA] += 1;
 }
 

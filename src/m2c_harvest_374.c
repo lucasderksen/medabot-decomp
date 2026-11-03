@@ -63,9 +63,9 @@ void sub_08021C94(void) {
     } while (recordIndex <= 5U);
     commandSlot=gState0NextCommands_083B6100;
     commandSlot+=0x23;
-    sub_08040BD8(*commandSlot, 0x21U);
-    sub_08040BD8(*commandSlot, 0x22U);
-    sub_08040BD8(*commandSlot, 0x23U);
+    RunFrameObjectCommands(*commandSlot, 0x21U);
+    RunFrameObjectCommands(*commandSlot, 0x22U);
+    RunFrameObjectCommands(*commandSlot, 0x23U);
     if (gFrameObjects[0x21].commandStopped == 0xFF) {
         recordIndex = 0;
         scroll3=&gBgScroll3;
@@ -93,7 +93,7 @@ void sub_08021C94(void) {
             recordIndex += 1;
         } while (recordIndex <= 5U);
         scroll3->y = 0;
-        sub_08040CD0(0x21U, 3U);
+        ClearFrameObjects(0x21U, 3U);
         gState0TransferWork.bytes[0xAA] = (u8) (gState0TransferWork.bytes[0xAA] + 1);
     }
 }

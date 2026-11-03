@@ -77,7 +77,7 @@ void sub_0800E020(void) {
         CpuFastSet(gUnknownWords_084E43F8, (void *)0x050003C0, 8U);
         sub_0800F60C();
         sub_0800F300();
-        sub_0804253C(5U, 0x3FU, 0x20U);
+        StartBlendFade(5U, 0x3FU, 0x20U);
     }
     sp4 = 0;
     CpuFastSet(&sp4, gFrameObjects, 0x01000800U);

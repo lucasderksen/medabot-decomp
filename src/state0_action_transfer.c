@@ -26,7 +26,7 @@ void sub_08033ACC(void)
             row *= 256;
             base = (u32)buffer;
             base += 0xE40;
-            sub_0803F63C(first, (void *)(row + base), 0x40);
+            CopyBytes(first, (void *)(row + base), 0x40);
         }
         {
             u8 *first = buffer + 0x40;
@@ -36,7 +36,7 @@ void sub_08033ACC(void)
             row *= 256;
             base = (u32)buffer;
             base += 0xE80;
-            sub_0803F63C(first, (void *)(row + base), 0x40);
+            CopyBytes(first, (void *)(row + base), 0x40);
         }
         {
             u8 *first = buffer + 0x80;
@@ -46,7 +46,7 @@ void sub_08033ACC(void)
             row *= 256;
             base = (u32)buffer;
             base += 0xEC0;
-            sub_0803F63C(first, (void *)(row + base), 0x40);
+            CopyBytes(first, (void *)(row + base), 0x40);
         }
         {
             u8 *first = buffer + 0xC0;
@@ -56,14 +56,14 @@ void sub_08033ACC(void)
             row *= 256;
             base = (u32)buffer;
             base += 0xF00;
-            sub_0803F63C(first, (void *)(row + base), 0x40);
+            CopyBytes(first, (void *)(row + base), 0x40);
         }
-        sub_08040CD0(0x21, 4);
-        sub_08040D44(work->selectedDE * 4 + 0x56, 4);
+        ClearFrameObjects(0x21, 4);
+        ShowFrameObjects(work->selectedDE * 4 + 0x56, 4);
         sub_0801BC04(work->selectedDE - 1);
         work->selectedDE = 0;
         sub_080158F8();
         sub_0801A0D0();
     }
-    sub_08034F08();
+    AdvanceActionByteScript();
 }

@@ -87,7 +87,7 @@ void sub_080143A0(void)
     sub_08015414(*selected);
     if (sub_0801A6B0())
     {
-        sub_0803F624(work + 0x45, 12, 0);
+        FillBytes(work + 0x45, 12, 0);
         gUnknown_0300137C = 76;
     }
     else

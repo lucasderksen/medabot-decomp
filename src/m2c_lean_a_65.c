@@ -42,7 +42,7 @@ void sub_0800712C(void) {
                 gFrameObjects[i + 4].tableSelector = 0;
                 gFrameObjects[i + 4].priority = 0xC0;
             } else {
-                sub_08040D0C(i + 4, 1);
+                HideFrameObjects(i + 4, 1);
             }
         }
         break;
@@ -57,7 +57,7 @@ void sub_0800712C(void) {
                 gFrameObjects[i + 4].tableSelector = 0;
                 gFrameObjects[i + 4].priority = 0xC0;
             } else {
-                sub_08040D0C(i + 4, 1);
+                HideFrameObjects(i + 4, 1);
             }
         }
         break;

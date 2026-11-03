@@ -12,7 +12,7 @@
 extern const void *const gState0NextCommands_083B6100[];
 extern s32 gUnknown_03000648;
 extern s32 gUnknown_03000660;
-extern s32 sub_08035740(void *, s16, s32);
+extern s32 AddByteCapped(void *, s16, s32);
 
 void sub_0802AC7C(void);
 void sub_0803081C(void);
@@ -25,13 +25,13 @@ void sub_0802AC7C(void) {
     u8 *base = (u8 *) &gUnknown_03000660;
     u8 *record = (u8 *) (index + (u32) base);
     record++;
-    sub_08035740(record, *(s16 *) (work + 0xEC), 0xFF);
+    AddByteCapped(record, *(s16 *) (work + 0xEC), 0xFF);
     work[0xAA]++;
 }
 
 void sub_0803081C(void) {
     const void *const *commands = gState0NextCommands_083B6100;
-    sub_08040BD8(commands[gState0TypedWork.bytes[0x84]], 0x21);
+    RunFrameObjectCommands(commands[gState0TypedWork.bytes[0x84]], 0x21);
     if (gFrameObjects[0x21].commandStopped == 0xFF)
         gState0TransferWork.bytes[0xAA]++;
 }

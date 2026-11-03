@@ -22,7 +22,7 @@ struct ContinuedSetupBank31 {
 };
 struct ContinuedPhase31 {u8 before[0xAA];u8 phase;};
 
-extern void sub_08035740(u8 *,s32,u32);
+extern void AddByteCapped(u8 *,s32,u32);
 
 void sub_08022748(void);
 
@@ -43,6 +43,6 @@ void sub_08022748(void) {
   kind = *((u8 *) ((((work[0xA7] * 24) + offset) + ((u32) setup)) + 0x49));
   record->kind = kind;
   setup[*bank].amount = zero;
-  sub_08035740((u8 *)((u32)setup - (0U - (*bank << 8)) + 0xD8), *((s16 *) (work + 0xEC)), 0xFF);
+  AddByteCapped((u8 *)((u32)setup - (0U - (*bank << 8)) + 0xD8), *((s16 *) (work + 0xEC)), 0xFF);
   ((struct ContinuedPhase31 *) work)->phase++;
 }

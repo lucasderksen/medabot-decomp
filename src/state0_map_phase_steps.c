@@ -13,8 +13,8 @@ void sub_08012B40(void)
     counter += 0x84;
     if (*counter <= 8)
     {
-        sub_0803F684(0, 32 - *counter * 4, 0xFFFF);
-        sub_0803F998(0, 32 - *counter * 4, 0xFFFF);
+        BlendBgPaletteBanksNow(0, 32 - *counter * 4, 0xFFFF);
+        BlendObjPaletteBanksNow(0, 32 - *counter * 4, 0xFFFF);
         (*counter)++;
     }
     else
@@ -49,7 +49,7 @@ void sub_08012C0C(void)
     sub_080195C0();
     selection = gState0TransferWork.bytes;
     selection += 0x80;
-    sub_080164F4(*selection);
+    CycleActionSpriteFrames(*selection);
     sub_08015A90();
     sub_08015B3C(*selection);
     sub_08015BA8(*selection);

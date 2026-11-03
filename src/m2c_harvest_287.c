@@ -53,8 +53,8 @@ void sub_08062484(void) {
     u8 temp_r1_7;
 
     if ((u32) ((struct StatePrefix62484 *)&gState0TypedWork)->step84 <= 8U) {
-        sub_0803F684(0U, ((struct StatePrefix62484 *)&gState0TypedWork)->step84 * 4, 0xFFFEU);
-        sub_0803F998(0U, ((struct StatePrefix62484 *)&gState0TypedWork)->step84 * 4, 0x7FFDU);
+        BlendBgPaletteBanksNow(0U, ((struct StatePrefix62484 *)&gState0TypedWork)->step84 * 4, 0xFFFEU);
+        BlendObjPaletteBanksNow(0U, ((struct StatePrefix62484 *)&gState0TypedWork)->step84 * 4, 0x7FFDU);
         ((struct StatePrefix62484 *)&gState0TypedWork)->step84 += 1;
         return;
     }

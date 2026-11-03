@@ -17,7 +17,7 @@ void sub_0804D5F0(void)
 {
     u8 *work;
     u32 flags;
-    sub_0804D8CC(2);
+    ReadBankedScriptArgs(2);
     work = gUnknown_030057E0;
     flags = work[0xC94];
     if (flags & 0x10)

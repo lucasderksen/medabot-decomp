@@ -65,7 +65,7 @@ void sub_0805EA44(void) {
 
     {
         struct FrameObject *objects = gFrameObjects;
-        u16 frame = (sub_0807CEC8(gFrameCounter, 6) & 3) + 0x26;
+        u16 frame = (__udivsi3(gFrameCounter, 6) & 3) + 0x26;
         *(u16 *)((u32)objects + 0x106) = frame;
     }
     {
@@ -97,7 +97,7 @@ void sub_0805EA44(void) {
     }
     if (0x10 & (u8)gRepeatedKeys)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         {
             u8 column = ((struct NameEntryContext *)gMainContextPointer_03006F74)->column0D;
             if (((struct NameEntryContext *)gMainContextPointer_03006F74)->row0E == 3 ? column == 2 : column == 25)
@@ -108,7 +108,7 @@ void sub_0805EA44(void) {
     }
     if (0x20 & (u8)gRepeatedKeys)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         if (((struct NameEntryContext *)gMainContextPointer_03006F74)->column0D == 0)
         {
             ((struct NameEntryContext *)gMainContextPointer_03006F74)->column0D = ((struct NameEntryContext *)gMainContextPointer_03006F74)->row0E == 3 ? 2 : 25;
@@ -118,7 +118,7 @@ void sub_0805EA44(void) {
     }
     if (0x40 & (u8)gRepeatedKeys)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         if (((struct NameEntryContext *)gMainContextPointer_03006F74)->row0E == 0)
         {
             ((struct NameEntryContext *)gMainContextPointer_03006F74)->row0E = 3;
@@ -142,7 +142,7 @@ void sub_0805EA44(void) {
     }
     if (0x80 & (u8)gRepeatedKeys)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         if (((struct NameEntryContext *)gMainContextPointer_03006F74)->row0E == 3)
         {
             ((struct NameEntryContext *)gMainContextPointer_03006F74)->row0E = 0;
@@ -200,7 +200,7 @@ void sub_0805EA44(void) {
     if (8 & ((u8 *)&gNewKeys)[0])
     {
     start:
-        sub_08074DE0(4);
+        PlaySoundEffect(4);
         ((struct NameEntryContext *)gMainContextPointer_03006F74)->row0E = 3;
         ((struct NameEntryContext *)gMainContextPointer_03006F74)->column0D = 2;
     }
@@ -209,19 +209,19 @@ void sub_0805EA44(void) {
     space:
         if (((struct NameEntryContext *)gMainContextPointer_03006F74)->length0F <= 9)
         {
-            sub_08074DE0(4);
+            PlaySoundEffect(4);
             ((struct NameEntryContext *)gMainContextPointer_03006F74)->name58[((struct NameEntryContext *)gMainContextPointer_03006F74)->length0F] = 0;
             ((struct NameEntryContext *)gMainContextPointer_03006F74)->length0F++;
             if (((struct NameEntryContext *)gMainContextPointer_03006F74)->length0F == 10)
             {
                 gFrameObjects[4].flags &= 0xBFFF;
-                sub_08040D0C(5, 10);
-                sub_08040DB8(((struct NameEntryContext *)gMainContextPointer_03006F74)->name58, 5, 5, 3, 10, 13, 1, 0);
+                HideFrameObjects(5, 10);
+                PlaceAlignedTextObjects(((struct NameEntryContext *)gMainContextPointer_03006F74)->name58, 5, 5, 3, 10, 13, 1, 0);
                 goto start;
             }
             goto redraw;
         }
-        sub_08074DE0(6);
+        PlaySoundEffect(6);
         goto redraw;
     }
     else if (1 & ((u8 *)&gNewKeys)[0])
@@ -250,9 +250,9 @@ void sub_0805EA44(void) {
                 }
                 if (blank)
                     CpuSet(((struct NameEntryContext *)gMainContextPointer_03006F74)->defaultName68, ((struct NameEntryContext *)gMainContextPointer_03006F74)->name58, 8);
-                sub_08040D0C(5, 10);
-                sub_08040DB8(((struct NameEntryContext *)gMainContextPointer_03006F74)->name58, 5, 5, 3, 10, 13, 1, 0);
-                sub_08074DE0(7);
+                HideFrameObjects(5, 10);
+                PlaceAlignedTextObjects(((struct NameEntryContext *)gMainContextPointer_03006F74)->name58, 5, 5, 3, 10, 13, 1, 0);
+                PlaySoundEffect(7);
                 gUnknown_0300137C++;
                 return;
             }
@@ -260,27 +260,27 @@ void sub_0805EA44(void) {
         }
         if (((struct NameEntryContext *)gMainContextPointer_03006F74)->length0F <= 9)
         {
-            sub_08074DE0(4);
+            PlaySoundEffect(4);
             ((struct NameEntryContext *)gMainContextPointer_03006F74)->name58[((struct NameEntryContext *)gMainContextPointer_03006F74)->length0F] = ((struct NameEntryContext *)gMainContextPointer_03006F74)->row0E * 26 + ((struct NameEntryContext *)gMainContextPointer_03006F74)->column0D + 1;
             ((struct NameEntryContext *)gMainContextPointer_03006F74)->length0F++;
             if (((struct NameEntryContext *)gMainContextPointer_03006F74)->length0F == 10)
             {
                 gFrameObjects[4].flags &= 0xBFFF;
-                sub_08040D0C(5, 10);
-                sub_08040DB8(((struct NameEntryContext *)gMainContextPointer_03006F74)->name58, 5, 5, 3, 10, 13, 1, 0);
+                HideFrameObjects(5, 10);
+                PlaceAlignedTextObjects(((struct NameEntryContext *)gMainContextPointer_03006F74)->name58, 5, 5, 3, 10, 13, 1, 0);
                 goto start;
             }
             goto redraw;
         }
-        sub_08074DE0(6);
+        PlaySoundEffect(6);
     redraw:
-        sub_08040D0C(5, 10);
-        sub_08040DB8(((struct NameEntryContext *)gMainContextPointer_03006F74)->name58, 5, 5, 3, 10, 13, 1, 0);
+        HideFrameObjects(5, 10);
+        PlaceAlignedTextObjects(((struct NameEntryContext *)gMainContextPointer_03006F74)->name58, 5, 5, 3, 10, 13, 1, 0);
     }
     else if (gNewKeys & 0x202)
     {
     erase:
-        sub_08074DE0(5);
+        PlaySoundEffect(5);
         if (((struct NameEntryContext *)gMainContextPointer_03006F74)->length0F != 0)
         {
             ((struct NameEntryContext *)gMainContextPointer_03006F74)->length0F--;
@@ -291,8 +291,8 @@ void sub_0805EA44(void) {
             ((struct NameEntryContext *)gMainContextPointer_03006F74)->length0F = 0;
             ((struct NameEntryContext *)gMainContextPointer_03006F74)->name58[((struct NameEntryContext *)gMainContextPointer_03006F74)->length0F] = 0xFE;
         }
-        sub_08040D0C(5, 10);
-        sub_08040DB8(((struct NameEntryContext *)gMainContextPointer_03006F74)->name58, 5, 5, 3, 10, 13, 1, 0);
+        HideFrameObjects(5, 10);
+        PlaceAlignedTextObjects(((struct NameEntryContext *)gMainContextPointer_03006F74)->name58, 5, 5, 3, 10, 13, 1, 0);
         gFrameObjects[4].flags |= 0x4000;
     }
     else

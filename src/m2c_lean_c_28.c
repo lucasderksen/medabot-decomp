@@ -59,7 +59,7 @@ void sub_08064C6C(u8 first) {
             if (gListContext64C6C->name58[k] == 0xFE)
                 break;
         }
-        sub_08040DB8(gListContext64C6C->name58, (u8)(i * 10 + 12), 6, i * 2 + 3, 10, 13, 1, 1);
+        PlaceAlignedTextObjects(gListContext64C6C->name58, (u8)(i * 10 + 12), 6, i * 2 + 3, 10, 13, 1, 1);
         tile = gListContext64C6C->tile36 + (gInventoryView64C6C[gListContext64C6C->list_b0[i + first]].byte1 * 4 + 1);
         tile |= 0x6000;
         dst = (u16 *)(((*(volatile u16 *)0x0400000A >> 8) & 0x1F) << 11) + (((i * 2 + 3) << 5) + 0x03000003);

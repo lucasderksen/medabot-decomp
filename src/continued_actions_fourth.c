@@ -11,7 +11,7 @@ extern u32 sub_080532D4(u32 value);
 void sub_0804C5E4(void)
 {
     struct ObjectEntry { u16 value; u16 unknown; };
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     u8 *work = gUnknown_030057E0;
     u8 *initial = work + 0xC94;
     u8 *argument;

@@ -16,8 +16,8 @@ void sub_08011764(void)
     *(volatile u16 *)0x0400000A = 0x1801;
     *(volatile u16 *)0x0400000C = 0x590A;
     *(volatile u16 *)0x0400000E = 0x5B0B;
-    sub_0803EF8C(32, 32, 0, 0, *(volatile u16 *)0x04000008, 0);
-    sub_0803EF8C(32, 32, 0, 0, *(volatile u16 *)0x0400000A, 0);
+    FillTilemapRect(32, 32, 0, 0, *(volatile u16 *)0x04000008, 0);
+    FillTilemapRect(32, 32, 0, 0, *(volatile u16 *)0x0400000A, 0);
     LeDecompress((const u8 *)0x084E823C, (void *)0x06004000);
     LeDecompress((const u8 *)0x084C50D0, (void *)0x06006000);
     LeDecompress((const u8 *)0x084C5250, (void *)0x06006200);
@@ -107,8 +107,8 @@ void sub_08011764(void)
         u8 *selected = work + 0x168;
         const void *message = messages[*selected];
         u8 *buffer = gDebugMenuTextBuffer;
-        sub_0803F63C(message, buffer, 14);
-        sub_0803F63C(gPartTextPointers_083BBB4C[work[0x169] * 4 + *selected], buffer + 20, 15);
+        CopyBytes(message, buffer, 14);
+        CopyBytes(gPartTextPointers_083BBB4C[work[0x169] * 4 + *selected], buffer + 20, 15);
         {
             /* Observed state byte at030004C4 precedes text at030004DE. */
             u32 stateByteAddress = (u32)buffer - 0x1A;

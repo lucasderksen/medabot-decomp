@@ -24,7 +24,7 @@
 s32 sub_08035AAC(u8, u8, u8);
 s32 sub_08035AFC(u8, u8, u8);
 s32 sub_08035B4C(u8, u8, u8);
-s32 sub_0803D4AC();
+s32 AdvanceActionHalfwordScript();
 s32 sub_08062B48(u8, u8, s32);
 s32 sub_080724B0();
 s32 sub_0807266C(s32);
@@ -48,7 +48,7 @@ void sub_08030FB4(void);
 void sub_08030FEC(void);
 void sub_08031048(void);
 void sub_080319E0(void);
-void sub_08035740(u8 *arg0, s32 arg1, u32 arg2);
+void AddByteCapped(u8 *arg0, s32 arg1, u32 arg2);
 void sub_080392D8(void);
 void sub_08039568(void);
 void sub_0803ADE8(void);
@@ -162,7 +162,7 @@ u32 sub_0801AC24(s32 arg0) {
     u32 temp_r0;
 
     if ((gMainByte_03001360 == 0) || (gState0TypedWork.bytes[0x89] == 1)) {
-        temp_r0 = sub_0803FB3C(gState0FixedMessages_083C6744[arg0]);
+        temp_r0 = RunDialogue(gState0FixedMessages_083C6744[arg0]);
         if (temp_r0 != 0) {
             gState0TypedWork.bytes[0x1B] = 0;
         }
@@ -191,8 +191,8 @@ void sub_080202E0(void) {
 }
 
 void sub_080230C8(void) {
-    sub_0803F684(0x1084U, (u32) gState0TypedWork.bytes[0x84], 0xFFFFU);
-    sub_0803F998(0x1084U, (u32) gState0TypedWork.bytes[0x84], 0xFF00U);
+    BlendBgPaletteBanksNow(0x1084U, (u32) gState0TypedWork.bytes[0x84], 0xFFFFU);
+    BlendObjPaletteBanksNow(0x1084U, (u32) gState0TypedWork.bytes[0x84], 0xFF00U);
     if (gState0TypedWork.bytes[0x84] == 0x10) {
         gState0TransferWork.bytes[0xAA] += 1;
         return;
@@ -201,8 +201,8 @@ void sub_080230C8(void) {
 }
 
 void sub_08023224(void) {
-    sub_0803F684(0x1084U, (u32) gState0TypedWork.bytes[0x84], 0xFFFFU);
-    sub_0803F998(0x1084U, (u32) gState0TypedWork.bytes[0x84], 0xFF00U);
+    BlendBgPaletteBanksNow(0x1084U, (u32) gState0TypedWork.bytes[0x84], 0xFFFFU);
+    BlendObjPaletteBanksNow(0x1084U, (u32) gState0TypedWork.bytes[0x84], 0xFF00U);
     if (gState0TypedWork.bytes[0x84] == 0) {
         gState0TransferWork.bytes[0xAA] += 1;
         return;
@@ -211,8 +211,8 @@ void sub_08023224(void) {
 }
 
 void sub_0802DF48(void) {
-    sub_0803F684(0x7FFFU, (u32) gState0TypedWork.bytes[0x84], 0xFFFFU);
-    sub_0803F998(0x7FFFU, (u32) gState0TypedWork.bytes[0x84], 0xFF00U);
+    BlendBgPaletteBanksNow(0x7FFFU, (u32) gState0TypedWork.bytes[0x84], 0xFFFFU);
+    BlendObjPaletteBanksNow(0x7FFFU, (u32) gState0TypedWork.bytes[0x84], 0xFF00U);
     if (gState0TypedWork.bytes[0x84] == 0x20) {
         gState0TransferWork.bytes[0xAA] += 1;
         return;
@@ -221,8 +221,8 @@ void sub_0802DF48(void) {
 }
 
 void sub_0802DF98(void) {
-    sub_0803F684(0x1084U, (u32) gState0TypedWork.bytes[0x84], 0xFFFFU);
-    sub_0803F998(0x1084U, (u32) gState0TypedWork.bytes[0x84], 0xFF00U);
+    BlendBgPaletteBanksNow(0x1084U, (u32) gState0TypedWork.bytes[0x84], 0xFFFFU);
+    BlendObjPaletteBanksNow(0x1084U, (u32) gState0TypedWork.bytes[0x84], 0xFF00U);
     if (gState0TypedWork.bytes[0x84] == 0x10) {
         gState0TransferWork.bytes[0xAA] += 1;
         return;
@@ -242,8 +242,8 @@ void sub_08030FB4(void) {
 void sub_08030FEC(void) {
     if (gState0TypedWork.widths.word86 == 0x5A) {
         if (gFrameObjects[0x21].scaleY == 8) {
-            sub_08074B88(0x1CU);
-            sub_08040CD0(0x21U, 1U);
+            PlayMusic(0x1CU);
+            ClearFrameObjects(0x21U, 1U);
             sub_0803FAA0(1U, 2U, 0U);
             gUnknown_0300137C += 1;
             return;
@@ -257,7 +257,7 @@ void sub_08030FEC(void) {
 void sub_08031048(void) {
     if (gState0TypedWork.widths.word86 == 0x5A) {
         if (gFrameObjects[0x21].scaleY == 8) {
-            sub_08040CD0(0x21U, 1U);
+            ClearFrameObjects(0x21U, 1U);
             sub_0803FAA0(1U, 2U, 0U);
             gUnknown_0300137C += 1;
             return;
@@ -276,7 +276,7 @@ void sub_080319E0(void) {
     gState0TypedWork.widths.word86 += 1;
 }
 
-void sub_08035740(u8 *arg0, s32 arg1, u32 arg2) {
+void AddByteCapped(u8 *arg0, s32 arg1, u32 arg2) {
     u32 temp_r0;
 
     temp_r0 = *arg0 + arg1;
@@ -313,12 +313,12 @@ void sub_08039568(void) {
     } else {
         gState0TransferWork.bytes[0xFD] = temp_r1;
     }
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }
 
 void sub_0803ADE8(void) {
-    sub_08040CD0(0xCU, 2U);
-    sub_0803D4AC();
+    ClearFrameObjects(0xCU, 2U);
+    AdvanceActionHalfwordScript();
 }
 
 void sub_0803D608(void) {
@@ -364,7 +364,7 @@ void sub_08057D7C(void) {
 
 void sub_080638E8(void) {
     if (sub_08065710(gMainContextPointer_03006F74 + 0x50) != 0) {
-        sub_08040CD0(0U, 0x80U);
+        ClearFrameObjects(0U, 0x80U);
         gMainSubstate = 0x14;
         gUnknown_0300137C = 0;
         return;
@@ -391,7 +391,7 @@ s32 sub_080672F4(u8 *arg0) {
 }
 
 void sub_08071778(void) {
-    sub_08074B88(0U);
+    PlayMusic(0U);
     sub_08047850(3);
 }
 

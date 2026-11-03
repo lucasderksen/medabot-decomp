@@ -12,7 +12,7 @@
 extern const u8 gUnknownBytes_083B2AF0[];
 extern u8 gUnknown_030057E0[];
 extern u8 gUnknown_03000BE0[];
-void sub_08043E78(void);
+void StepSecondBgAutoScroll(void);
 void sub_08043FEC(u32);
 
 void sub_08044094(void)
@@ -43,7 +43,7 @@ u32 sub_080440D4(void)
 
 void sub_08044100(void)
 {
-    sub_08043E78();
+    StepSecondBgAutoScroll();
     sub_08043FEC(gState0TransferWork.bytes[0x38]);
 }
 
@@ -120,7 +120,7 @@ void sub_08044B58(void)
 extern const u8 gUnknownBytes_083B2AF0[];
 extern u8 gUnknown_030057E0[];
 extern u8 gUnknown_03000BE0[];
-void sub_08043E78(void);
+void StepSecondBgAutoScroll(void);
 void sub_08043FEC(u32);
 
 void sub_0804422C(u32 objectIndex)
@@ -325,7 +325,7 @@ extern u8 gUnknown_020268F0[];
 extern u8 gUnknown_02024000[];
 extern const u8 gUnknownBytes_083D1D78[];
 void sub_08043CA8(void);
-void sub_08043E78(void);
+void StepSecondBgAutoScroll(void);
 void sub_08043FEC(u32);
 
 void sub_080441B8(void)
@@ -338,7 +338,7 @@ void sub_080441B8(void)
         u32 zero = 0;
         CpuFastSet(&zero, (void *)0x05000000, CPU_SET_FILL | 0x80);
     }
-    sub_0803F624(gUnknown_03000490, 20, 0);
+    FillBytes(gUnknown_03000490, 20, 0);
     gUnknown_03000490[0] = 3;
     gState0TransferWork.bytes[0x41] = 0;
     gState0TransferWork.bytes[0x42] = 0;
@@ -350,9 +350,9 @@ void sub_080441B8(void)
 
 void sub_080445F4(void)
 {
-    sub_0803F624(gUnknown_02026000, 0xD0, 0);
-    sub_0803F624(gUnknown_020260D0, 0x820, 0);
-    sub_0803F624(gUnknown_020268F0, 0x60, 0);
+    FillBytes(gUnknown_02026000, 0xD0, 0);
+    FillBytes(gUnknown_020260D0, 0x820, 0);
+    FillBytes(gUnknown_020268F0, 0x60, 0);
     gUnknown_03000430 = 2;
     gUnknownPointer_03002414 = gUnknown_02024000;
     {
@@ -372,10 +372,10 @@ void sub_080445F4(void)
 void sub_08044BA8(u32 mode, u32 value)
 {
     sub_08043CA8();
-    sub_08040CD0(0, 128);
+    ClearFrameObjects(0, 128);
     gUnknown_03000440[0x96] = 0;
     gUnknown_03000430 = 0;
-    sub_0803F624(gUnknown_03000440 + 0x3C, 20, 0);
+    FillBytes(gUnknown_03000440 + 0x3C, 20, 0);
     gUnknown_03000440[0x3C] = 3;
     gUnknown_03000440[0x3D] = value;
     switch (mode)
@@ -401,8 +401,8 @@ void sub_08044BA8(u32 mode, u32 value)
 void sub_08044C38(u32 mode)
 {
     sub_08043CA8();
-    sub_0803F624(gUnknown_0300047C, 20, 0);
-    sub_0803F624(gUnknown_0300047C + 20, 20, 0);
+    FillBytes(gUnknown_0300047C, 20, 0);
+    FillBytes(gUnknown_0300047C + 20, 20, 0);
     gUnknown_0300047C[0x4D] = 1;
     gUnknown_0300047C[0x51] = 0;
     switch (mode)

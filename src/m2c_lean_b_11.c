@@ -34,7 +34,7 @@ void sub_0802E820(void) {
         }
     }
     if (done == active) {
-        sub_08074DE0(0x2B);
+        PlaySoundEffect(0x2B);
         gCounter6ED08_03001800.counterAA++;
     }
 }

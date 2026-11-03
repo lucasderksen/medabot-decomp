@@ -67,7 +67,7 @@ void sub_08014EE8(void) {
   countOrSize = ((u32)gSetupBuffer_03000590);
   sourceOrDestination = sourceOrDestination + countOrSize;
   countOrSize = 0x40U;
-  sub_0803F63C((const void *) (*valueSlot), (void *) sourceOrDestination, (u32) countOrSize);
+  CopyBytes((const void *) (*valueSlot), (void *) sourceOrDestination, (u32) countOrSize);
   index = index + 0x1U;
   value = (u32) (*((const u8 *) countAddress));
   if (index < (*valueSlot))

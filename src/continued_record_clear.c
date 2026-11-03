@@ -41,5 +41,5 @@ void sub_0804D980(void *record)
         sub_08048888((u8)(row->flags.slot + 49));
         sub_08048888((u8)(row->flags.slot + 91));
     }
-    sub_08049714(saved, 8);
+    ClearBytes(saved, 8);
 }

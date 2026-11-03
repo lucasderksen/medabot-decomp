@@ -29,7 +29,7 @@ void sub_080645A0(void) {
     if (mode != 0) {
         var_r1 = 0x68;
     }
-    if (sub_0803FB3C(*(const void *const *)((const u8 *)scripts+var_r1)) != 0) {
+    if (RunDialogue(*(const void *const *)((const u8 *)scripts+var_r1)) != 0) {
         gMainSerialOutgoingWork.word06 = 0xFEFF;
         if ((gMainSerialOutgoingWork.words[0][1] == 0xFEFF) && (gMainSerialOutgoingWork.words[1][1] == gMainSerialOutgoingWork.words[0][1])) {
             gUnknown_0300137C += 1;

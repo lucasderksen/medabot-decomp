@@ -48,7 +48,7 @@ void sub_08014634(void) {
     frame->scaleY+=4;scale=frame->scaleX-4;frame->scaleX=scale;
     if((u8)scale==4) {
      *flags&=0xFD;*kind&=0xFE;
-     sub_08040CD0((u8)(selected>>24),1);
+     ClearFrameObjects((u8)(selected>>24),1);
     }
    }
   }
@@ -78,7 +78,7 @@ void sub_08014754(void) {
     frame->scaleY+=4;scale=frame->scaleX-4;frame->scaleX=scale;
     if((u8)scale==4) {
      *flags&=0xFB;*kind&=0xFD;
-     sub_08040CD0((u8)(selected>>24),1);
+     ClearFrameObjects((u8)(selected>>24),1);
     }
    }
   }
@@ -98,7 +98,7 @@ void sub_0803E1A4(void) {
         commands = gUnknownPointers_083CF530[4];
     else
         commands = gUnknownPointers_083CF530[5];
-    if (sub_0803FB3C(commands) != 0) {
+    if (RunDialogue(commands) != 0) {
         sub_0803FAA0(1, 0, 0);
         gUnknown_0300137C++;
     }

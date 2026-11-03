@@ -30,7 +30,7 @@ void sub_08038178(void) {
   value2 = 0x12F;
   selectionAddress = value1 + value2;
   value1 = (u32) (*((u8 *)selectionAddress));
-  sub_08040BD8((const u8 *) value0, (u8) value1);
+  RunFrameObjectCommands((const u8 *) value0, (u8) value1);
   framesAddress = (u32) gFrameObjects;
   value0 = (u32) (*((u8 *)selectionAddress));
   value0 <<= 6;

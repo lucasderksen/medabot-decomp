@@ -35,8 +35,8 @@ void sub_08049198(u32 indexInput, const void *source)
 void sub_08049344(u32 indexInput)
 {
     u8 index = indexInput;
-    sub_08049714((void *)(0x030055A0 + index * 4), 4);
-    sub_08049714((void *)(0x03002C30 + index * 64), 64);
+    ClearBytes((void *)(0x030055A0 + index * 4), 4);
+    ClearBytes((void *)(0x03002C30 + index * 64), 64);
 }
 
 void sub_080496EC(void)
@@ -53,7 +53,7 @@ void sub_080496F0(u32 indexInput, const void *source)
     dma->control;
 }
 
-void sub_08049714(void *destination, u32 size)
+void ClearBytes(void *destination, u32 size)
 {
     u8 *cursor = destination;
     u32 index;

@@ -20,8 +20,8 @@ void sub_0801058C(void)
     LeDecompress((const u8 *)0x084C5250, (void *)0x06006200);
     LeDecompress((const u8 *)0x084C92B0, (void *)0x06012800);
     LeDecompress((const u8 *)0x084C8034, (void *)0x06017400);
-    sub_0803EF8C(32, 32, 0, 0, *(volatile u16 *)0x04000008, 0);
-    sub_0803EF8C(32, 32, 0, 0, *(volatile u16 *)0x0400000A, 0);
+    FillTilemapRect(32, 32, 0, 0, *(volatile u16 *)0x04000008, 0);
+    FillTilemapRect(32, 32, 0, 0, *(volatile u16 *)0x0400000A, 0);
     LoadLeTilemap(0, 0, (const u8 *)0x084F0FD4, *(volatile u16 *)0x0400000A, 512);
     dma = (volatile u32 *)0x040000D4;
     dma[0] = 0x084F3F80;

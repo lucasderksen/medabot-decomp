@@ -46,14 +46,14 @@ void sub_080246C0(void) {
     if (gUnknown_03000440[0x84] == 120)
     {
         u8 *work = gState0TransferWork.bytes;
-        sub_08040CD0(work[0x88] * 4 + 33, 4);
+        ClearFrameObjects(work[0x88] * 4 + 33, 4);
         work[0xAA]++;
     }
 }
 
 void sub_080262FC(void) {
     if (gFrameObjects[0x21].scaleX == 0x40) {
-        sub_08074DE0(0x53);
+        PlaySoundEffect(0x53);
         gState0TransferWork.bytes[0xAA]++;
     } else {
         gFrameObjects[0x21].scaleX -= 8;
@@ -63,7 +63,7 @@ void sub_080262FC(void) {
 
 void sub_0802FD08(void) {
     if (gFrameObjects[0x21].scaleX == 0x40) {
-        sub_08074DE0(0x54);
+        PlaySoundEffect(0x54);
         gState0TransferWork.bytes[0xAA]++;
     } else {
         gFrameObjects[0x21].scaleX -= 8;

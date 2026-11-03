@@ -12,7 +12,7 @@ void sub_08012F00(void)
         sub_080195C0();
         work = gState0TransferWork.bytes;
         selection = work + 0x80;
-        sub_080164F4(*selection);
+        CycleActionSpriteFrames(*selection);
         sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
         switch (work[0x81])
         {

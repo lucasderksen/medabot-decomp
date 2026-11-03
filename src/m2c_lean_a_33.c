@@ -132,7 +132,7 @@ void sub_080277DC(void) {
             gFrameObjects[0x21 + i].screenY = gFrameObjects[(gCounter6ED08_03001800.base60 + i) * 4 + (u8)((0x7F & gCounter6ED08_03001800.activeD2[i]) + 0x5A)].screenY;
             gFrameObjects[0x21 + i].palette = 7;
             gFrameObjects[0x21 + i].priority = 0xF0;
-            sub_08040B90(gState0NextCommands_083B6100[34], i + 0x21);
+            InitFrameObjectCommands(gState0NextCommands_083B6100[34], i + 0x21);
         }
     }
     gCounter6ED08_03001800.counterAA++;
@@ -143,11 +143,11 @@ void sub_0802A360(void) {
     u32 i;
 
     sub_0803836C();
-    gCounter6ED08_03001800.base60 = sub_08032FC4(gCounter6ED08_03001800.slot87);
+    gCounter6ED08_03001800.base60 = GetSlotGroupStart(gCounter6ED08_03001800.slot87);
     for (i = 0; i <= 2; i++) {
         if (gSetup2A360[gCounter6ED08_03001800.base60 + i].active40 != 0
             && gSetup2A360[gCounter6ED08_03001800.base60 + i].parts[0].data11[0] != 0) {
-            sub_0803F63C(&gFrameObjects[0x22], &gFrameObjects[0x23 + i], 0x40);
+            CopyBytes(&gFrameObjects[0x22], &gFrameObjects[0x23 + i], 0x40);
             gFrameObjects[0x23 + i].value30 = gFrameObjects[0x5D + (gCounter6ED08_03001800.base60 + i) * 4].screenX;
             gFrameObjects[0x23 + i].value32 = gFrameObjects[0x5D + (gCounter6ED08_03001800.base60 + i) * 4].screenY - 4;
             gFrameObjects[0x23 + i].unknown23[1] = 3;
@@ -155,6 +155,6 @@ void sub_0802A360(void) {
             gCounter6ED08_03001800.activeD2[i] = 1;
         }
     }
-    sub_08040CD0(0x22, 1);
+    ClearFrameObjects(0x22, 1);
     gCounter6ED08_03001800.counterAA++;
 }

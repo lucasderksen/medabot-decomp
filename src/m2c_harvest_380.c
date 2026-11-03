@@ -6,7 +6,7 @@
 
 #include "continued_numeric.h"
 
-extern s32 sub_0807CD2C(s32, s32);
+extern s32 __divsi3(s32, s32);
 
 u8 sub_080669AC(u32 target, u32 current, u32 divisor) {
     u8 targetByte, currentByte;
@@ -20,7 +20,7 @@ u8 sub_080669AC(u32 target, u32 current, u32 divisor) {
     currentByte = current;
     currentWord = currentByte;
     divisorByte = divisor;
-    step = sub_0807CD2C((s32)targetByte - currentByte, divisorByte);
+    step = __divsi3((s32)targetByte - currentByte, divisorByte);
     if (step != 0) {
         output = currentByte + step;
         goto finish;

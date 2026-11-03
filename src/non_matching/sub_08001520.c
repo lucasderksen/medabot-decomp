@@ -38,7 +38,7 @@ extern struct BgScroll gUnknown_03002C24;
 extern s32 gUnknown_03005040;
 extern s32 gUnknown_03005044;
 extern s32 gUnknown_0300504C;
-extern s32 sub_0807CD2C(s32, s32);
+extern s32 __divsi3(s32, s32);
 extern const struct SpriteFrameHeader *const *const gSpriteFrameGroups_Default[];
 extern const struct SpriteFrameHeader *const *const gSpriteFrameGroups_083AC208[];
 extern const struct SpriteFrameHeader *const *const gSpriteFrameGroups_083AC248[];
@@ -111,14 +111,14 @@ NONMATCH("asm/non_matching/sub_08001520.inc", void sub_08001520(void))
             screenY = ((object->positionY >> 8) + gUnknown_03005044) * 4;
             depth = object->positionZ >> 8;
             depth = (depth + 0x3000) / 64;
-            screenX = sub_0807CD2C(screenX, depth);
-            screenY = sub_0807CD2C(screenY, depth);
+            screenX = __divsi3(screenX, depth);
+            screenY = __divsi3(screenY, depth);
             object->screenX = gUnknown_03005040 + screenX;
             object->screenY = gUnknown_0300504C + screenY;
-            scale = sub_0807CD2C(0x8000, depth);
+            scale = __divsi3(0x8000, depth);
             object->scaleY = scale;
             object->scaleX = scale;
-            gFrameAffineOverride = sub_0807CD2C(0x700000, depth);
+            gFrameAffineOverride = __divsi3(0x700000, depth);
             break;
         case 0x40:
             object->screenX = (object->positionX.value >> 16) - gUnknown_03002C24.x;

@@ -22,7 +22,7 @@ struct ScriptStatusByte
 void sub_0804CF5C(void)
 {
     u8 *work;
-    sub_0804D8CC(3);
+    ReadBankedScriptArgs(3);
     work = gUnknown_030057E0;
     switch (work[0xC94])
     {

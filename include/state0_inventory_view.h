@@ -4,7 +4,7 @@
 #include "global.h"
 
 /* Address-based names; observed inventory display roles remain provisional. */
-void sub_080093F8(void);
+void ScrollBg3Diagonally(void);
 void sub_0800941C(void);
 void sub_0800944C(void);
 void sub_08009484(void);

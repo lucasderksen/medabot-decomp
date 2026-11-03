@@ -121,6 +121,7 @@ The main tools:
 - `tools/permute.py <name>` runs
   [decomp-permuter](https://github.com/simonlindholm/decomp-permuter) on a
   near-miss and byte-verifies any score-0 result.
+- `tools/rename.py OLD=NEW` renames a function everywhere it is referenced.
 - `tools/le_codec.py` unpacks the game's custom `Le` graphics compression
   ([docs/COMPRESSION.md](docs/COMPRESSION.md)).
 - `tools/emulator.py` runs optional mGBA traces ([docs/EMULATION.md](docs/EMULATION.md)).

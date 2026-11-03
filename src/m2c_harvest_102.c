@@ -65,7 +65,7 @@ void sub_08029004(void) {
     gFrameObjects[0x21].angle = 0;
     gFrameObjects[0x21].priority = 0xF0;
     commands = gState0NextCommands_083B6100;
-    sub_08040B90(commands[35],0x21);
+    InitFrameObjectCommands(commands[35],0x21);
     CpuSet(&gFrameObjects[0x21], &gFrameObjects[0x22], 0x20U);
     CpuSet(&gFrameObjects[0x21], &gFrameObjects[0x23], 0x20U);
     CpuSet(&gFrameObjects[0x21], (u8*)gFrameObjects + 0x900, 0x20U);

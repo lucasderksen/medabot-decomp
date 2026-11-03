@@ -44,10 +44,10 @@ struct Main2MenuContext
 extern const u8 gUnknown_080AF960[];
 extern const u8 gUnknown_0850F298[];
 extern const u8 gUnknown_0878DC74[];
-extern s32 sub_0807CEC8(s32, s32);
+extern s32 __udivsi3(s32, s32);
 extern struct SaveHeaderView gSaveHeaderView_03002B70 asm("gPostDispatchWord_03002B70");
-extern u32 sub_0807CD2C(u32, u32);
-extern u32 sub_0807CDF8(u32, u32);
+extern u32 __divsi3(u32, u32);
+extern u32 __modsi3(u32, u32);
 extern u8 gCopy6280C0202F800[];
 extern u8 gCopy6280C0202F9E0[];
 extern u8 gFamilyKeyBytes49558_0300058C;
@@ -78,14 +78,14 @@ void sub_0805D860(void) {
         bytes += 2;
     }
     sub_08059F58(count, 3, 9, 6, 11, (*(volatile u16 *)0x0400000A >> 8) & 0x1F);
-    count = sub_0807CEC8(gSaveHeaderView_03002B70.time18, 0xE10);
-    sub_08059F58(sub_0807CD2C(count, 60), 2, 7, 8, 12, (*(volatile u16 *)0x0400000A >> 8) & 0x1F);
-    sub_08059F58(sub_0807CDF8(count, 60), -2, 10, 8, 12, (*(volatile u16 *)0x0400000A >> 8) & 0x1F);
+    count = __udivsi3(gSaveHeaderView_03002B70.time18, 0xE10);
+    sub_08059F58(__divsi3(count, 60), 2, 7, 8, 12, (*(volatile u16 *)0x0400000A >> 8) & 0x1F);
+    sub_08059F58(__modsi3(count, 60), -2, 10, 8, 12, (*(volatile u16 *)0x0400000A >> 8) & 0x1F);
     sub_08059F58(gSaveHeaderView_03002B70.half16, 4, 3, 11, 13, (*(volatile u16 *)0x0400000A >> 8) & 0x1F);
     sub_08059F58(gSaveHeaderView_03002B70.half14, 0, 8, 11, 13, (*(volatile u16 *)0x0400000A >> 8) & 0x1F);
     sub_08041164(gDebugMenuTextBuffer, gSaveHeaderView_03002B70.money);
-    sub_08040DB8(gDebugMenuTextBuffer, 1, 15, 9, 7, 15, 1, 0);
-    sub_08040DB8(gSaveHeaderView_03002B70.name, 13, 14, 4, 10, 13, 0, 0);
+    PlaceAlignedTextObjects(gDebugMenuTextBuffer, 1, 15, 9, 7, 15, 1, 0);
+    PlaceAlignedTextObjects(gSaveHeaderView_03002B70.name, 13, 14, 4, 10, 13, 0, 0);
     sub_080415E8(1, 0x16, 7);
     CpuFastSet(gUnknown_0878DC74, gEquipmentPaletteShadow, 0x80);
     CpuFastSet(gUnknown_0850F298, gUnknown_0202F9A0, 8);
@@ -157,25 +157,25 @@ void sub_080615D4(void) {
     }
     if (0x40 & gFamilyKeyBytes49558_0300058C)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         ((struct Main2MenuContext *)gMainContextPointer_03006F74)->selection = 0;
         sub_08060BE4(0, gFrameCounter);
     }
     if (0x80 & gFamilyKeyBytes49558_0300058C)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         ((struct Main2MenuContext *)gMainContextPointer_03006F74)->selection = 3;
         sub_08060BE4(3, gFrameCounter);
     }
     if (0x20 & gFamilyKeyBytes49558_0300058C)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         ((struct Main2MenuContext *)gMainContextPointer_03006F74)->selection = 1;
         sub_08060BE4(1, gFrameCounter);
     }
     if (0x10 & gFamilyKeyBytes49558_0300058C)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         ((struct Main2MenuContext *)gMainContextPointer_03006F74)->selection = 2;
         sub_08060BE4(2, gFrameCounter);
     }
@@ -183,7 +183,7 @@ void sub_080615D4(void) {
         sub_08060BE4(((struct Main2MenuContext *)gMainContextPointer_03006F74)->selection, gFrameCounter);
     if (1 & gFamilyKeyBytes49558_0300058C)
     {
-        sub_08074DE0(4);
+        PlaySoundEffect(4);
         for (i = 0; i <= 3; i++)
             gFrameObjects[i + 12].flags |= 0x4000;
         if (((struct Main2MenuContext *)gMainContextPointer_03006F74)->selection == 4)
@@ -199,7 +199,7 @@ void sub_080615D4(void) {
     }
     if (2 & gFamilyKeyBytes49558_0300058C)
     {
-        sub_08074DE0(5);
+        PlaySoundEffect(5);
         for (i = 0; i <= 3; i++)
             gFrameObjects[i + 12].flags &= 0xBFFF;
         *(volatile u16 *)0x04000000 |= 0x200;

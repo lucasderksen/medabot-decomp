@@ -20,7 +20,7 @@ void sub_08057440(void)
     }
     else
     {
-        sub_08048864(127, 0xC004, 0x307, 12, zero);
+        InitFrameObject(127, 0xC004, 0x307, 12, zero);
         sub_08057FD4();
         work[0x65] = zero;
         sub_08047C00();

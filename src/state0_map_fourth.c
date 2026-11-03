@@ -10,7 +10,7 @@ void sub_08010C50(void)
 {
     u32 low;
     sub_08012098();
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     low = gUnknown_030057E0[0xC2E] & 15;
     if (low)
     {
@@ -37,24 +37,24 @@ void sub_08010CE8(void)
     u8 *selected;
     u8 *buffer;
     sub_08012098();
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     sub_080124B8();
     messages = gState0PartMessages_083C6F68;
     work = gState0TransferWork.bytes;
     selected = &work[0x168];
     source = messages[*selected];
     buffer = gDebugMenuTextBuffer;
-    sub_0803F63C(source, buffer, 14);
-    sub_0803F63C(gPartTextPointers_083BBB4C[work[0x169] * 4 + *selected], buffer + 20, 15);
+    CopyBytes(source, buffer, 14);
+    CopyBytes(gPartTextPointers_083BBB4C[work[0x169] * 4 + *selected], buffer + 20, 15);
     gUnknown_0300137C++;
 }
 
 void sub_08010D58(void)
 {
     sub_08012098();
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
     sub_080123A0();
-    if (sub_0803FB3C(gState0FixedMessages_083C6744[107]))
+    if (RunDialogue(gState0FixedMessages_083C6744[107]))
     {
         if (gState0TransferWork.bytes[0x16A])
             gUnknown_0300137C++;

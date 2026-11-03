@@ -28,11 +28,11 @@ void sub_0800725C(void)
     }
     default:
         if (gState0TypedWork.bytes[0x52]&0x80) {
-            sub_08074DE0(2); gState0TypedWork.bytes[0x52]=0; sub_08005798();
+            PlaySoundEffect(2); gState0TypedWork.bytes[0x52]=0; sub_08005798();
             goto done;
         }
         if (sub_080440B4()) {
-            sub_08074DE0(5); gUnknown_0300137C++;
+            PlaySoundEffect(5); gUnknown_0300137C++;
             goto done;
         }
         break;
@@ -40,10 +40,10 @@ void sub_0800725C(void)
     goto failed;
 deselect:
     *slot=0;
-    sub_0800712C(); sub_08074DE0(5);
+    sub_0800712C(); PlaySoundEffect(5);
     goto done;
 failed:
-    sub_08074DE0(6); gUnknown_0300137C=11;
+    PlaySoundEffect(6); gUnknown_0300137C=11;
 done:
     return;
 }
@@ -53,7 +53,7 @@ void sub_08007408(void)
     switch (gState0TypedWork.bytes[0x50]) {
     case 1: case 2: {
         if (gState0TransferWork.bytes[0x41]) {
-            sub_08074DE0(4); gUnknown_0300137C=32;
+            PlaySoundEffect(4); gUnknown_0300137C=32;
         }
         break;
     }
@@ -63,7 +63,7 @@ void sub_08007408(void)
 void sub_0800750C(void)
 {
     if (gState0TypedWork.bytes[0x50])
-        sub_0803EF8C(16,4,13,16,*(volatile u16 *)0x0400000C,0);
+        FillTilemapRect(16,4,13,16,*(volatile u16 *)0x0400000C,0);
 }
 
 void sub_08007540(void)
@@ -98,7 +98,7 @@ void sub_080072EC(void)
                 base=gUnknownRecords_030017A0;
                 work=gState0TypedWork.bytes;
                 if (base[work[0x51]].unknown00[0]!=3) goto failed;
-                sub_08074DE0(4);
+                PlaySoundEffect(4);
                 *slot=work[0x51]+16;
                 sub_0800712C();
                 if(i==2) {
@@ -114,16 +114,16 @@ void sub_080072EC(void)
                 sub_08005000(); sub_08005948();
                 goto done;
 failed:
-                sub_08074DE0(6);
+                PlaySoundEffect(6);
                 goto done;
             }
-            sub_08074DE0(6);
+            PlaySoundEffect(6);
         }
         break;
     }
     default:
         if(gUnknownRecords_030017A0[gState0TypedWork.bytes[0x51]].unknown00[0]) {
-            sub_08074DE0(4); gUnknown_0300137C=8;
+            PlaySoundEffect(4); gUnknown_0300137C=8;
         } else goto defaultFailed;
         break;
     }
@@ -132,7 +132,7 @@ confirmed:
     gUnknown_0300137C=32;
     goto done;
 defaultFailed:
-    sub_08074DE0(6);
+    PlaySoundEffect(6);
 done:
     return;
 }

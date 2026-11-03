@@ -16,7 +16,7 @@ struct NestedContext { u8 prefix[0x730]; u16 counter; };
 extern void sub_08074118(void *);
 
 void sub_08074090(void);
-void sub_08074B88(u32 value);
+void PlayMusic(u32 value);
 
 void sub_08074090(void) {
     {
@@ -34,7 +34,7 @@ void sub_08074090(void) {
     }
 }
 
-void sub_08074B88(u32 value) {
+void PlayMusic(u32 value) {
     {
         struct NestedContext *work = *(struct NestedContext **) 0x03007014;
         u32 old = work->counter;

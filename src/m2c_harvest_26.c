@@ -9,7 +9,7 @@
 #include "state0_next_helpers.h"
 #include "state0_work.h"
 
-s32 sub_0803D4AC();
+s32 AdvanceActionHalfwordScript();
 
 void sub_080182D0(void);
 void sub_08039598(void);
@@ -43,7 +43,7 @@ void sub_08039598(void) {
     } else {
         gState0TransferWork.bytes[0xFD] = 0;
     }
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }
 
 void sub_080395C0(void) {
@@ -54,7 +54,7 @@ void sub_080395C0(void) {
     } else {
         gState0TransferWork.bytes[0xFD] = 0;
     }
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }
 
 void sub_0803EA18(void) {

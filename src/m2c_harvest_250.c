@@ -18,7 +18,7 @@
 #include "tile_text.h"
 
 extern s32 gUnknown_03000000; extern u8 gUnknown_03000005;
-extern s32 sub_0807CD2C(s32,s32); s32 sub_0807CDF8(s32,s32);
+extern s32 __divsi3(s32,s32); s32 __modsi3(s32,s32);
 
 void sub_08062BEC(u16 index,u8 row);
 void sub_080669EC(s32 *destination,const s32 *source);
@@ -57,9 +57,9 @@ s32 sub_08068924(void) {
 
  s32 *counter=&gUnknown_03000000; u8 *duration=&gUnknown_03000005;
  s32 period=*duration,value=*counter;
- if(sub_0807CDF8(value,period)==0){
+ if(__modsi3(value,period)==0){
   volatile u16 *brightness=(volatile u16 *)0x04000054;
-  *brightness=16U-(u32)sub_0807CD2C(value,period);
+  *brightness=16U-(u32)__divsi3(value,period);
  }
  if(*counter==*duration*16)return 1;
  return 0;
@@ -69,9 +69,9 @@ s32 sub_08068B74(void) {
 
  s32 *counter=&gUnknown_03000000; u8 *duration=&gUnknown_03000005;
  s32 period=*duration,value=*counter;
- if(sub_0807CDF8(value,period)==0){
+ if(__modsi3(value,period)==0){
   volatile u16 *brightness=(volatile u16 *)0x04000054;
-  *brightness=sub_0807CD2C(value,period);
+  *brightness=__divsi3(value,period);
  }
  if(*counter==*duration*16)return 1;
  return 0;

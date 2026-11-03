@@ -9,7 +9,7 @@ void sub_08011F50(void)
 {
     const u8 *source = gState0EncounterLabels_083C40B8[gState0TransferWork.bytes[0]];
     u8 *buffer = gDebugMenuTextBuffer;
-    sub_0803F63C(source, buffer, 18);
+    CopyBytes(source, buffer, 18);
     sub_08040EE4(buffer, 10, 18, 3, 10, 13, 0, 1, 0, -4);
 }
 
@@ -17,8 +17,8 @@ void sub_08011FA0(void)
 {
     const u8 *source = gState0MapPartLabels_083BEB68[gState0TransferWork.bytes[0x38]];
     u8 *buffer = gDebugMenuTextBuffer;
-    sub_0803F63C(source, buffer, 11);
-    sub_08040DB8(buffer, 30, 1, 3, 8, 12, 0, 1);
+    CopyBytes(source, buffer, 11);
+    PlaceAlignedTextObjects(buffer, 30, 1, 3, 8, 12, 0, 1);
 }
 
 void sub_08011FEC(void)

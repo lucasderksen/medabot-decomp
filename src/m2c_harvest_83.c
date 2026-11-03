@@ -31,7 +31,7 @@ void sub_08029984(void) {
     do {
     sub_0803836C();
     work = gState0TransferWork.bytes;
-    work[0x60] = sub_08032FC4(work[0x87]);
+    work[0x60] = GetSlotGroupStart(work[0x87]);
     } while (0);
     i = 0;
     setup = gSetupBuffer_03000590;
@@ -61,7 +61,7 @@ void sub_08029B04(void) {
     u32 slot = 0x21000000;
     do {
         if (*(u8 *) (i + (u32) flags) != 0) {
-            sub_08040BD8(*commands, slot >> 24);
+            RunFrameObjectCommands(*commands, slot >> 24);
             if (*stopped == 0xFF)
                 found = 1;
         }
@@ -70,7 +70,7 @@ void sub_08029B04(void) {
         i++;
     } while (i <= 2);
     if (found != 0) {
-        sub_08040CD0(0x21, 3);
+        ClearFrameObjects(0x21, 3);
         gState0TransferWork.bytes[0xAA]++;
     }
 }

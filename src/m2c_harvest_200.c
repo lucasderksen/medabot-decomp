@@ -9,7 +9,7 @@
 #include "state0_next_helpers.h"
 #include "state0_work.h"
 
-extern s32 sub_0807CD2C(s32,s32);
+extern s32 __divsi3(s32,s32);
 
 void sub_0801A640(void);
 
@@ -19,7 +19,7 @@ void sub_0801A640(void) {
  s32 selection;
  selection=work[0x45]-1;
  work[0x87]=selection;
- result=sub_0807CD2C(work[0x45]-1,3);
+ result=__divsi3(work[0x45]-1,3);
  work[0x89]=result;
  result=result^1;
  work[0x8A]=result;

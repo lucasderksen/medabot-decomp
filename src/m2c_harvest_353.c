@@ -37,10 +37,10 @@ void sub_0803CE18(void) {
         return;
     }
     highBits = (initialFrame->unknown2C[2] << 0xA) | (initialFrame->unknown2C[1] << 5);
-    sub_0803F684((u16)(initialFrame->unknown2C[0] | highBits), (u32) initialFrame->unknown2C[3], 0xFDFFU);
+    BlendBgPaletteBanksNow((u16)(initialFrame->unknown2C[0] | highBits), (u32) initialFrame->unknown2C[3], 0xFDFFU);
     blendFrame = &frames[*selected];
     highBits = (blendFrame->unknown2C[2] << 0xA) | (blendFrame->unknown2C[1] << 5);
-    sub_0803F998((u16)(blendFrame->unknown2C[0] | highBits), (u32) blendFrame->unknown2C[3], 0xB00FU);
+    BlendObjPaletteBanksNow((u16)(blendFrame->unknown2C[0] | highBits), (u32) blendFrame->unknown2C[3], 0xB00FU);
     frame = &frames[*selected];
     weight = frame->unknown2C[3];
     if (weight == 0x10) {

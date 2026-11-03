@@ -26,7 +26,7 @@ void sub_0802BEEC(void) {
     struct SelectionWork2BEEC *c2;
     u8 *setup;
     sub_0803836C();
-    gCounter6ED08_03001800.b60 = (u8) sub_08032FC4((u32) gCounter6ED08_03001800.b87);
+    gCounter6ED08_03001800.b60 = (u8) GetSlotGroupStart((u32) gCounter6ED08_03001800.b87);
     firstSlot = 0;
     do {
         setup = gSetupBuffer_03000590;
@@ -36,7 +36,7 @@ void sub_0802BEEC(void) {
         }
         firstSlot += 1;
     } while (firstSlot <= 2U);
-    gCounter6ED08_03001800.b60 = (u8) sub_08032FB8((u32) gCounter6ED08_03001800.b87);
+    gCounter6ED08_03001800.b60 = (u8) GetOtherSlotGroupStart((u32) gCounter6ED08_03001800.b87);
     secondSlot = 0;
     setup = gSetupBuffer_03000590;
     setupAddress = (u32)setup;

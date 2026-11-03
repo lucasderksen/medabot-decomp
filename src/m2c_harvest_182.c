@@ -73,7 +73,7 @@ void sub_080237C8(void) {
     frames->first.kind=6;
     typed=&gState0TypedWork;
     typed->bytes[0x84]=0x42;
-    sub_08040B90(gState0NextCommands_083B6100[0x42],0x21);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[0x42],0x21);
     typed->widths.word86=0x3C;
     work[0xAA]++;
 }
@@ -81,7 +81,7 @@ void sub_080237C8(void) {
 void sub_08024AF4(void) {
     struct ContinuedPartnerFrames25378 *frames;
     u8 *work;
-    sub_08040D0C(0x21,1);
+    HideFrameObjects(0x21,1);
     frames=(struct ContinuedPartnerFrames25378 *)gFrameObjects;
     frames->second.flags=0xC404;
     frames->second.selector=0;
@@ -96,7 +96,7 @@ void sub_08024AF4(void) {
     case 2:frames->second.group=0x4E03;break;
     default:frames->second.group=0x4E01;break;
     }
-    sub_08074DE0(0x6A);
+    PlaySoundEffect(0x6A);
     gState0TransferWork.bytes[0xAA]++;
 }
 
@@ -109,7 +109,7 @@ s32 sub_0806A654(void) {
         break;
     case 1:
         if (gFrameObjects[0].unknown1A == 180) {
-            sub_08074DE0(0x42);
+            PlaySoundEffect(0x42);
             sub_08043240(0x26,12);
             sub_08043240(0x32,12);
             sub_08043240(0x3E,12);

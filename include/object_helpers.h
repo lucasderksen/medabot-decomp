@@ -39,11 +39,11 @@ void sub_08041920(void);
 void sub_080419CC(void);
 void sub_08041BA4(void);
 void sub_08041BF4(void);
-void sub_08041C14(u8 index, u8 operation, u16 value);
-void sub_08041C5C(u8 index, u8 operation, u16 value);
+void SetObjectXWobble(u8 index, u8 operation, u16 value);
+void SetObjectYWobble(u8 index, u8 operation, u16 value);
 u32 sub_08041CA4(void);
 u32 sub_08041CD4(void);
-void sub_08041D04(const u8 *source, u8 *destination, u8 size);
+void CopyBytesU8Count(const u8 *source, u8 *destination, u8 size);
 void sub_08041D28(void);
 u32 sub_08041D3C(u8 identifier);
 void sub_08041FE4(u8 identifier);
@@ -56,9 +56,9 @@ void sub_080421A0(void);
 u32 sub_08042218(void);
 u32 sub_08042278(u8 input);
 void sub_0804242C(u8 count);
-void sub_0804253C(u8 mode, u16 control, u16 duration);
-/* Requires a mode of 1..6 previously configured by sub_0804253C. */
-u32 sub_080425DC(void);
+void StartBlendFade(u8 mode, u16 control, u16 duration);
+/* Requires a mode of 1..6 previously configured by StartBlendFade. */
+u32 StepBlendFade(void);
 
 void sub_08042318(u8 kind, u8 amount);
 #endif

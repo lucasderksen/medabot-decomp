@@ -27,8 +27,8 @@ void sub_0805E9E0(void)
 {
     if (NAME_PHASE->byte84 <= 8)
     {
-        sub_0803F684(0, 32 - NAME_PHASE->byte84 * 4, 0xFFFF);
-        sub_0803F998(0, 32 - NAME_PHASE->byte84 * 4, 0xFFFF);
+        BlendBgPaletteBanksNow(0, 32 - NAME_PHASE->byte84 * 4, 0xFFFF);
+        BlendObjPaletteBanksNow(0, 32 - NAME_PHASE->byte84 * 4, 0xFFFF);
         NAME_PHASE->byte84++;
     }
     else
@@ -53,8 +53,8 @@ void sub_0805EFFC(void)
 {
     if (NAME_PHASE->byte84 <= 8)
     {
-        sub_0803F684(0, NAME_PHASE->byte84 * 4, 0xFFFF);
-        sub_0803F998(0, NAME_PHASE->byte84 * 4, 0xFFFF);
+        BlendBgPaletteBanksNow(0, NAME_PHASE->byte84 * 4, 0xFFFF);
+        BlendObjPaletteBanksNow(0, NAME_PHASE->byte84 * 4, 0xFFFF);
         NAME_PHASE->byte84++;
     }
     else

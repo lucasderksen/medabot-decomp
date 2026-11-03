@@ -49,7 +49,7 @@ extern u32 gCopy6280C0202F800[8],gCopy6280C0202F9E0[8],gCopy6280C0202F9C0[8],gCo
 extern u32 gPostDispatchWord_03002B70;
 extern u8 gSwap6355C0202F800[128],gSwap6355C0202F880[128];
 extern void sub_0801AEB4(void);
-extern void sub_0803D450(void);extern void sub_0803D4AC(void);
+extern void LoadActionHalfwordScriptParams(void);extern void AdvanceActionHalfwordScript(void);
 extern void sub_08060BE4(u32,u32);
 extern void sub_08062BEC(u16,u8);
 extern void sub_08062C98(void);
@@ -108,13 +108,13 @@ void sub_08031614(void){
 
 void sub_0803B0C0(void){
  u32 i;struct Continued3B0C0Work *work;u8 *mirror;const struct Continued3B0C0Pair *pair;
- sub_0803D450();i=0;work=(void*)gState0TransferWork.bytes;mirror=&work->flags;pair=gUnknown_083AFACC;
+ LoadActionHalfwordScriptParams();i=0;work=(void*)gState0TransferWork.bytes;mirror=&work->flags;pair=gUnknown_083AFACC;
  do{struct FrameObject *root=gFrameObjects;u32 current=i+10;struct FrameObject *frame=&root[current];u32 zero=0;
  frame->flags=0xC004;frame->tableSelector=zero;frame->screenY=pair->y;frame->palette=14;frame->priority=0x80;
  frame->unknown2C[0]=work->delay;frame->byte2B=work->delay;frame->unknown23[2]=work->mode;frame->unknown23[1]=work->arg;frame->unknown23[6]=11;frame->unknown2C[1]=work->command;
- sub_08040B90(gState0NextCommands_083B6100[frame->unknown2C[1]],(u8)current);
+ InitFrameObjectCommands(gState0NextCommands_083B6100[frame->unknown2C[1]],(u8)current);
  if(!(*mirror&2))frame->screenX=pair->x;else frame->screenX=(0xF6-pair->x)&0x1FF;
- ++pair;++i;}while(i<=3);sub_0803D4AC();
+ ++pair;++i;}while(i<=3);AdvanceActionHalfwordScript();
 }
 
 void sub_0806280C(void) {
@@ -126,7 +126,7 @@ void sub_0806280C(void) {
     u32 mask,zero;
 
     sub_08060BE4(((struct Context6280C *)gMainContextPointer_03006F74)->selection, 8);
-    sub_08040CD0(0U, 0x80U);
+    ClearFrameObjects(0U, 0x80U);
     frames=gFrameObjects;
     mask=0xBFFF;
     var_r2 = (struct FrameObject *)((u32)frames+0x300);
@@ -159,7 +159,7 @@ void sub_0806280C(void) {
     root->x = 0x98;
     root->y = zero;
     sub_08041164(phase->text9E, gPostDispatchWord_03002B70);
-    sub_08040DB8(phase->text9E, 0U, 0x15, 1, 7U, 0xFU, 1U, zero);
+    PlaceAlignedTextObjects(phase->text9E, 0U, 0x15, 1, 7U, 0xFU, 1U, zero);
 }
 
 void sub_0806355C(void) {
@@ -181,12 +181,12 @@ void sub_0806355C(void) {
     } while (var_r6 >= 0);
     gUnknown_0300137C += 1;
     ((struct ChoiceContext6355C *)gMainContextPointer_03006F74)->step = 1;
-    sub_08040CD0(0U, 0x80U);
+    ClearFrameObjects(0U, 0x80U);
     sub_08062BEC((((struct ChoiceContext6355C *)gMainContextPointer_03006F74)->byte31 * 4) + ((struct ChoiceContext6355C *)gMainContextPointer_03006F74)->byte33, 0);
     sub_08062BEC((((struct ChoiceContext6355C *)gMainContextPointer_03006F74)->byte32 * 4) + ((struct ChoiceContext6355C *)gMainContextPointer_03006F74)->byte34, 1);
     sub_08041020(gDebugMenuTextBuffer, 0U, 0, 0xA, 0x10U, 0xDU, 0U, 1U);
     sub_08041020(gDebugMenuTextBuffer + 0x14, 0x10U, 0xE, 0xA, 0x10U, 0xDU, 0U, 1U);
-    sub_08074DE0(0x2AU);
+    PlaySoundEffect(0x2AU);
     sub_08062C98();
 }
 

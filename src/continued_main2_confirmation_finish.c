@@ -41,15 +41,15 @@ void sub_0805D4FC(void)
 {
     if (PHASE_WORK->phase <= 8)
     {
-        sub_0803F684(0, PHASE_WORK->phase * 4, 0x3FFF);
-        sub_0803F998(0, PHASE_WORK->phase * 4, 0xFFFF);
+        BlendBgPaletteBanksNow(0, PHASE_WORK->phase * 4, 0x3FFF);
+        BlendObjPaletteBanksNow(0, PHASE_WORK->phase * 4, 0xFFFF);
         PHASE_WORK->phase++;
     }
     else
     {
         DISPCNT &= 0xFDFF;
         DISPCNT &= 0xFBFF;
-        sub_08040CD0(0, 128);
+        ClearFrameObjects(0, 128);
         gMainState = 0;
         gMainSubstate = 1;
         gUnknown_0300137C = 16;
@@ -59,7 +59,7 @@ void sub_0805D4FC(void)
 
 void sub_0805D580(void)
 {
-    if (sub_0803FB3C(gMain2ScriptSlots_0848521C[8]))
+    if (RunDialogue(gMain2ScriptSlots_0848521C[8]))
         gUnknown_0300137C++;
 }
 
@@ -68,7 +68,7 @@ void sub_0805D5A4(void)
 {
     if (gUnknown_0300058C[0] & 3)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         sub_0803FB0C();
         gUnknown_0300137C = 4;
     }
@@ -97,7 +97,7 @@ void sub_0805D5F0(void)
     {
         DISPCNT &= 0xFDFF;
         DISPCNT &= 0xFBFF;
-        sub_08040CD0(0, 128);
+        ClearFrameObjects(0, 128);
         {
             u8 *finalContext = CONTEXT;
             u32 zero = 0;

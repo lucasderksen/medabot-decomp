@@ -64,18 +64,18 @@ void sub_08067D00(void) {
     u16 bgcnt;
 
     item = gQuantityResult_030017EC;
-    sub_08074B88(0x19);
+    PlayMusic(0x19);
     fill = 0;
     CpuFastSet(&fill, (void *)0x06000000, 0x01006000);
-    sub_08040CD0(0, 0x80);
+    ClearFrameObjects(0, 0x80);
     sub_080415BC();
     *(volatile u16 *)0x04000000 = 0x60;
     *(volatile u16 *)0x0400000A = 0x1E05;
     *(volatile u16 *)0x0400000C = 0x3D06;
     *(volatile u16 *)0x0400000E = 0x1C07;
-    sub_0805BA34(gBiosLz77Stream_087A918C, *(volatile u16 *)0x0400000A);
-    sub_0805BA34(gBiosLz77Stream_087A92DC, *(volatile u16 *)0x0400000C);
-    sub_0805BA34(gBiosLz77Stream_087A9518, *(volatile u16 *)0x0400000E);
+    LoadLz77SizedTilemap(gBiosLz77Stream_087A918C, *(volatile u16 *)0x0400000A);
+    LoadLz77SizedTilemap(gBiosLz77Stream_087A92DC, *(volatile u16 *)0x0400000C);
+    LoadLz77SizedTilemap(gBiosLz77Stream_087A9518, *(volatile u16 *)0x0400000E);
     size = sub_08044D0C(gBiosLz77Stream_087A58EC, gScratch6030C02030000);
     CpuFastSet(gScratch6030C02030000, (void *)0x06004000, (size << 9) >> 11);
     size = 0x1800;

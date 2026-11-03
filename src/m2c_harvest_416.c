@@ -123,7 +123,7 @@ s32 sub_080722B0(void) {
         }
         break;
     case 1:
-        sub_08074DE0(script[gCounter6ED08_03001800.position + 1]);
+        PlaySoundEffect(script[gCounter6ED08_03001800.position + 1]);
         gCounter6ED08_03001800.position += 2;
         gCounter6ED08_03001800.wait = 0;
         break;

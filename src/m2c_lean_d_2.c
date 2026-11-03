@@ -57,14 +57,14 @@ s32 sub_0806FF2C(u8 index) {
             u32 twice = gBridge6FF2C.step * 2;
             u32 base = gBridge6FF2C.column + 0xE;
             object = twice + base;
-            sub_08048864(object, 0xC400, 0x303, 0, 3);
+            InitFrameObject(object, 0xC400, 0x303, 0, 3);
             gFrameObjects[object].screenX = (gBridgeSteps_08485AEC[gBridge6FF2C.step * 4 + index * 12] + gBridge6FF2C.column) * 8;
             gFrameObjects[object].screenY = (gBridgeSteps_08485AEC[gBridge6FF2C.step * 4 + index * 12 + 1] - gBridge6FF2C.column) * 8 - 4;
         } else if (y + gBridge6FF2C.column < row) {
             u32 twice = gBridge6FF2C.step * 2;
             u32 base = gBridge6FF2C.column + 0xE;
             object = twice + base;
-            sub_08048864(object, 0xE400, 0x303, 0, 3);
+            InitFrameObject(object, 0xE400, 0x303, 0, 3);
             gFrameObjects[object].screenX = (gBridgeSteps_08485AEC[gBridge6FF2C.step * 4 + index * 12] + gBridge6FF2C.column) * 8;
             gFrameObjects[object].screenY = (gBridgeSteps_08485AEC[gBridge6FF2C.step * 4 + index * 12 + 1] + gBridge6FF2C.column) * 8 + 0xC;
         } else {

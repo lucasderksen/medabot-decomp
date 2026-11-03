@@ -81,7 +81,7 @@ u32 sub_0800EFFC(void)
     }
     if (*(u8 *)&gRepeatedKeys & 192)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         gState0TypedWork.bytes[0x3D] = gState0TypedWork.bytes[0x3F] * 4 + gState0TypedWork.bytes[0x40];
         sub_0800EFB0();
         sub_0800F300();
@@ -104,7 +104,7 @@ u32 sub_0800F08C(void)
     }
     if (*(u8 *)&gRepeatedKeys & 48)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         gState0TypedWork.bytes[0x3D] = gState0TypedWork.bytes[0x3F] * 4 + gState0TypedWork.bytes[0x40];
         sub_08042950(gState0TypedWork.bytes[0x3F] + 1, 11, 2, 2, *(volatile u16 *)0x0400000A, 0x7360);
         sub_0800EC44();
@@ -131,9 +131,9 @@ u32 sub_0800F148(void)
     }
     if (((struct KeyBytes *)&gNewKeys)->high & 3)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         gState0TypedWork.bytes[0x3D] = gState0TypedWork.bytes[0x3F] * 4 + gState0TypedWork.bytes[0x40];
-        sub_0803F15C(10, 2, 16, 0, gState0NextText_083B4C60[gState0TypedWork.bytes[0x3E] + 89], *(volatile u16 *)0x04000008, 512);
+        CopyTilemapRect(10, 2, 16, 0, gState0NextText_083B4C60[gState0TypedWork.bytes[0x3E] + 89], *(volatile u16 *)0x04000008, 512);
         sub_0800EC44();
         sub_0800ED10();
         sub_0800EDA0();

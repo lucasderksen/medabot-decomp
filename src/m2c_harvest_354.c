@@ -37,14 +37,14 @@ void sub_080363E8(s32 x, u32 y, u32 numerator, u32 denominator, u32 scale) {
   drawn = startCount;
   while (drawn < blocks)
   {
-    sub_08042698(1U, 1U, x + column, y, (u32) (*((volatile u16 *) 0x0400000A)), 0xA328U);
+    FillTilemapRectSequential(1U, 1U, x + column, y, (u32) (*((volatile u16 *) 0x0400000A)), 0xA328U);
     column += 1;
     drawn += 1;
   }
 
   if (remainder != 0)
   {
-    sub_08042698(1U, 1U, x + column, y, (u32) (*((volatile u16 *) 0x0400000A)), ((remainder + 0xA320u) << 16) >> 16);
+    FillTilemapRectSequential(1U, 1U, x + column, y, (u32) (*((volatile u16 *) 0x0400000A)), ((remainder + 0xA320u) << 16) >> 16);
     column += 1;
   }
   padding = column;
@@ -52,7 +52,7 @@ void sub_080363E8(s32 x, u32 y, u32 numerator, u32 denominator, u32 scale) {
   {
     do
     {
-      sub_08042698(1U, 1U, x + column, y, (u32) (*((volatile u16 *) 0x0400000A)), 0xA320U);
+      FillTilemapRectSequential(1U, 1U, x + column, y, (u32) (*((volatile u16 *) 0x0400000A)), 0xA320U);
       column += 1;
       padding += 1;
     }

@@ -34,7 +34,7 @@ void sub_08060DD4(void)
     vram = 0x06000000;
     CpuFastSet(&zero, (void *)vram, 0x01006000);
     sub_080415BC();
-    sub_08040CD0(0, 0x80);
+    ClearFrameObjects(0, 0x80);
     *(volatile u16 *)0x04000000 = 0x60;
     *(volatile u16 *)0x04000050 = 0xC42;
     *(volatile u16 *)0x04000052 = 0x10;
@@ -45,7 +45,7 @@ void sub_08060DD4(void)
         v = 0x1B05;
         *bg = v;
     }
-    sub_0805BA34((const void *)0x0879AA2C, *(volatile u16 *)0x0400000A);
+    LoadLz77SizedTilemap((const void *)0x0879AA2C, *(volatile u16 *)0x0400000A);
     {
         volatile u16 *bg;
         s32 v;
@@ -53,16 +53,16 @@ void sub_08060DD4(void)
         v = 0x1A06;
         *bg = v;
     }
-    sub_0805BA34((const void *)0x0879ABE0, *(volatile u16 *)0x0400000C);
+    LoadLz77SizedTilemap((const void *)0x0879ABE0, *(volatile u16 *)0x0400000C);
     {
         s32 v;
         *(volatile u16 *)0x0400000A = v = 0x1E05;
         *(volatile u16 *)0x0400000C = v = 0x1D06;
         *(volatile u16 *)0x0400000E = v = 0x1C07;
     }
-    sub_0805BA34((const void *)0x087997FC, *(volatile u16 *)0x0400000A);
-    sub_0805BA34((const void *)0x08799A18, *(volatile u16 *)0x0400000C);
-    sub_0805BA34((const void *)0x08799C28, *(volatile u16 *)0x0400000E);
+    LoadLz77SizedTilemap((const void *)0x087997FC, *(volatile u16 *)0x0400000A);
+    LoadLz77SizedTilemap((const void *)0x08799A18, *(volatile u16 *)0x0400000C);
+    LoadLz77SizedTilemap((const void *)0x08799C28, *(volatile u16 *)0x0400000E);
     size = sub_08044D0C((const void *)0x08797B10, SCRATCH);
     {
         u32 half, chars;

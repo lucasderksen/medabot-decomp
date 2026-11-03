@@ -67,9 +67,9 @@ void sub_08060708(void) {
     bg3 = (volatile u16 *)0x0400000E;
     control = 0x1C07;
     *bg3 = control;
-    sub_0805BA34(gBiosLz77Stream_0878BA54, *bg1);
-    sub_0805BA34(gBiosLz77Stream_0878BB28, *bg2);
-    sub_0805BA34(gBiosLz77Stream_0878BC1C, *bg3);
+    LoadLz77SizedTilemap(gBiosLz77Stream_0878BA54, *bg1);
+    LoadLz77SizedTilemap(gBiosLz77Stream_0878BB28, *bg2);
+    LoadLz77SizedTilemap(gBiosLz77Stream_0878BC1C, *bg3);
     if (gMainSubstate == 0x17)
     {
         FORCE_REGISTER(u8 one, r0) = 1; /* FAKE MATCH: a fresh 1 as in the reference; cse otherwise stores block's register and the arms do not cross-jump */

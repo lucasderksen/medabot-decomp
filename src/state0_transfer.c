@@ -88,8 +88,8 @@ void sub_08004DF0(void)
     sub_080054C0();
     if (gState0TypedWork.bytes[0x84] <= 32)
     {
-        sub_0803F684(0, gState0TypedWork.bytes[0x84], 0xFFFF);
-        sub_0803F998(0, gState0TypedWork.bytes[0x84], 0xFFFF);
+        BlendBgPaletteBanksNow(0, gState0TypedWork.bytes[0x84], 0xFFFF);
+        BlendObjPaletteBanksNow(0, gState0TypedWork.bytes[0x84], 0xFFFF);
         gState0TypedWork.bytes[0x84]++;
     }
     else
@@ -98,7 +98,7 @@ void sub_08004DF0(void)
 
 void sub_08004E40(void)
 {
-    sub_08040CD0(0, 128);
+    ClearFrameObjects(0, 128);
     gState0TypedWork.bytes[0x96] = 0;
     gRenderMode = 0;
     gMainSubstate = 7;

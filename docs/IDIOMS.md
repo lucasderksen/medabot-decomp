@@ -136,8 +136,8 @@ s32 rx[4][4] = {
   integer types use `python tools/try_decls.py <name> <draft.c> -fprologue-bugfix`.
 - `digits[k] = rest / 1000;` with the `/` operator (libcall `__udivsi3`) evaluates the stack
   array address before the call (`mov r6, sp; bl; strb r0,[r6]`); an explicit
-  `__udivsi3`/`sub_0807CEC8(...)` call or a temporary computes it after the call (sub_08041164).
-- A constant used once at the end, held in an initialized local declared at entry (`void *palette = (void *)0x05000000; ... CpuFastSet(buf, palette, 0x80);`, `IntrFunc callback = Fn; ... gCallback = callback;`), fixed call-argument load order and loop register allocation (lean_b: sub_0803F684, sub_0803F788, sub_0803F890; first found by tools/permute.py).
+  `__udivsi3`/`__udivsi3(...)` call or a temporary computes it after the call (sub_08041164).
+- A constant used once at the end, held in an initialized local declared at entry (`void *palette = (void *)0x05000000; ... CpuFastSet(buf, palette, 0x80);`, `IntrFunc callback = Fn; ... gCallback = callback;`), fixed call-argument load order and loop register allocation (lean_b: BlendBgPaletteBanksNow, BlendBgPaletteBanks, BlendObjPaletteBanks; first found by tools/permute.py).
 - A global read twice with a reloaded literal although nothing clobbers it can
   be a second asm-label alias of the same symbol (near-miss sub_0805B984).
 
@@ -372,7 +372,7 @@ from them. Drafts: build/lc4/ in the lean_c worktree.
 - A u16 sum zero-extended in place (`lsls r2,r2,#16; lsrs r2,r2,#16`) followed by `lsrs r3,r2,#8`
   needed an `s32 full = seed;` copy and `u8 high = full >> 8`; with u32 temps combine folds the
   extension into `lsls #16; lsrs #24`. A `u16 shifted = low << 8;` temp placed before `high`
-  reproduced the reference order (sub_080424B8, 10 -> 2 rows).
+  reproduced the reference order (NextRandomByte, 10 -> 2 rows).
 - A fresh literal for a pointer the reference reuses after a loop (`ldr r2,=gFrameObjects` inside
   the loop while addresses use the hoisted base) is not reproduced by `root = (u32)gFrameObjects`
   (CSE copies the hoisted register). An asm-label alias gives identical code but a second
@@ -399,7 +399,7 @@ from them. Drafts: build/lc4/ in the lean_c worktree.
 - sub_08030780 (8 -> 7 rows): `u16 *word = &gState0TypedWork.widths.word86;` after the busy
   read gives the reference base copy (`adds r2, r0, #0`); the reference still adds 0x86 at the
   use.
-- sub_080424B8 stays at 2 rows. `u32 low = full & 0xFF` gives the reference `movs #0xff; ands`,
+- NextRandomByte stays at 2 rows. `u32 low = full & 0xFF` gives the reference `movs #0xff; ands`,
   but `high ^ low` then overwrites the dying `low` instead of copying `high`. About 200 type and
   expression variants did not change this.
 ## Late-range batch (lean_b round 7)
@@ -527,7 +527,7 @@ rows), sub_080465B8 (1,192 B) and sub_08046D1C (1,256 B); drafts in docs/drafts/
 
 ## Division libcalls and constant arguments (lean_b round 8)
 
-- `sub_0807CD2C`, `sub_0807CDF8`, `sub_0807CEC8` and `sub_0807CF40` are
+- `__divsi3`, `__modsi3`, `__udivsi3` and `__umodsi3` are
   `__divsi3`, `__modsi3`, `__udivsi3` and `__umodsi3`. Drafts call them as
   functions; the `/` and `%` operators instead emit const libcalls
   (`call_insn/u`), which neither clobber memory for CSE/GCSE nor force
@@ -634,7 +634,7 @@ rows), sub_080465B8 (1,192 B) and sub_08046D1C (1,256 B); drafts in docs/drafts/
   (`slot = extra[index].slot;`) and kept using the copy for indexing (sub_08046D1C,
   132 -> 72 rows; the sub_080460B0/sub_08046A60 `struct LaterCmd` loops without
   `if`/`do`-wrappers then matched exactly).
-- Explicit `sub_0807CD2C(x, divisor)` calls replaced by `x / divisor` with a local
+- Explicit `__divsi3(x, divisor)` calls replaced by `x / divisor` with a local
   `divisor = 0x400` (expanded before constant propagation, so it stays a `__divsi3`
   libcall with the divisor in a callee-saved register): the const libcall lets GCSE keep
   `gSineTable` and `&gMainContextPointer_03006F74` in sb/sl, inserted as copies right
@@ -1045,7 +1045,7 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
   (sub_08042318, sub_080422B8). A fresh `u8 key = kind & 0x3F` local always won r7.
 - regmove skips a two-address fix-up when the source is a "remote constant"
   (`reg_is_remote_constant_p`): set once, the setter not in the insn's LOG_LINKS, and *any*
-  REG_EQUAL note on the setter. That is why the u8-`low` draft of sub_080424B8 kept the
+  REG_EQUAL note on the setter. That is why the u8-`low` draft of NextRandomByte kept the
   reference's `adds r0, r3, #0; eors r0, r1` (the lsl/lsr zero-extension carries a REG_EQUAL),
   while `u32 low = full & 0xFF` tied the xor to `low`. The full match used a `u32 mask = 0xFF`
   local inside a u16 store, `seed = ((full & mask) << 8) | ((high = full >> 8) ^ (full & mask))`:

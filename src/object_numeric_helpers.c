@@ -6,7 +6,7 @@
 #include "object_numeric_helpers.h"
 #include "later_graphics.h"
 
-void sub_08048864(u32 input, u32 flagsInput, u32 frame, u32 palette, u32 selector)
+void InitFrameObject(u32 input, u32 flagsInput, u32 frame, u32 palette, u32 selector)
 {
     u8 index = input;
     u16 flags = flagsInput;
@@ -22,7 +22,7 @@ void sub_08048864(u32 input, u32 flagsInput, u32 frame, u32 palette, u32 selecto
 void sub_08048888(u32 input)
 {
     u8 index = input;
-    sub_08049714(&gFrameObjects[index], 64);
+    ClearBytes(&gFrameObjects[index], 64);
     sub_08049344(index);
 }
 

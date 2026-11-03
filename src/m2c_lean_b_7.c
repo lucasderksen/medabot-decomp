@@ -33,6 +33,6 @@ void sub_0803C044(void) {
             gCounter6ED08_03001800.pos154[3] = gFrameObjects[gState0TypedWork.bytes[0x12F]].screenY;
         }
     } else {
-        sub_08040CD0(gState0TypedWork.bytes[0x12F], 1);
+        ClearFrameObjects(gState0TypedWork.bytes[0x12F], 1);
     }
 }

@@ -14,13 +14,13 @@
 	strh	r0, [r5]
 	ldr	r0, .L0806502C
 	ldrh	r1, [r1]
-	bl	sub_0805BA34
+	bl	LoadLz77SizedTilemap
 	ldr	r0, .L08065030
 	ldrh	r1, [r4]
-	bl	sub_0805BA34
+	bl	LoadLz77SizedTilemap
 	ldr	r0, .L08065034
 	ldrh	r1, [r5]
-	bl	sub_0805BA34
+	bl	LoadLz77SizedTilemap
 	ldr	r0, .L08065038
 	ldr	r5, .L0806503C
 	adds	r1, r5, #0
@@ -162,7 +162,7 @@
 	movs	r1, #0
 	movs	r2, #0x15
 	movs	r3, #1
-	bl	sub_08040DB8
+	bl	PlaceAlignedTextObjects
 	ldr	r1, .L08065070
 	ldr	r0, [r1]
 	adds	r0, #1

@@ -26,19 +26,19 @@ void sub_0803CC40(void);
 
 void sub_08015BA8(u32 value) {
     if (value <= 2) {
-        sub_08042698(3, 1, 1, 0x12, *(u16 *) 0x0400000A, 0xD20A);
+        FillTilemapRectSequential(3, 1, 1, 0x12, *(u16 *) 0x0400000A, 0xD20A);
         return;
     }
-    sub_08042698(3, 1, 0x15, 0x12, *(u16 *) 0x0400000A, 0xD20A);
+    FillTilemapRectSequential(3, 1, 0x15, 0x12, *(u16 *) 0x0400000A, 0xD20A);
 }
 
 void sub_0803CC40(void) {
     const u8 **commands = gState0NextCommands_083B6100;
     struct FrameObject *objects = gFrameObjects;
     u8 *work = gState0TypedWork.bytes;
-    sub_08040BD8(commands[objects[work[0x12F]].unknown2C[1]], work[0x12F]);
+    RunFrameObjectCommands(commands[objects[work[0x12F]].unknown2C[1]], work[0x12F]);
     if (objects[work[0x12F]].commandStopped == 0xFF)
-        sub_08040CD0(work[0x12F], 1);
+        ClearFrameObjects(work[0x12F], 1);
 }
 
 void sub_08073E88(struct SoundChannelState *owner, struct SoundVoiceState *voice,

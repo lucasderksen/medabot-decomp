@@ -53,22 +53,22 @@ void sub_08058070(u32 mode) {
     u32 palette;
 
     palette = sub_08057D80(0) == 0 ? 12 : 13;
-    sub_08048864(0x20, 0xC004, 0x91, palette, 1);
+    InitFrameObject(0x20, 0xC004, 0x91, palette, 1);
     gFrameObjects[0x20].screenX = (16 - gContinuedCommandWork_030064A0[0x6F]) * 8 + (mode * 8 + 0x90);
     gFrameObjects[0x20].screenY = 0x18;
     gFrameObjects[0x20].priority = 0xFF;
     palette = sub_08057D80(1) == 0 ? 12 : 13;
-    sub_08048864(0x21, 0xC004, 0x92, palette, 1);
+    InitFrameObject(0x21, 0xC004, 0x92, palette, 1);
     gFrameObjects[0x21].screenX = (16 - gContinuedCommandWork_030064A0[0x6F]) * 8 + (mode * 8 + 0x90);
     gFrameObjects[0x21].screenY = 0x28;
     gFrameObjects[0x21].priority |= 0xFF;
     palette = sub_08057D80(2) == 0 ? 12 : 13;
-    sub_08048864(0x22, 0xC004, 0x93, palette, 1);
+    InitFrameObject(0x22, 0xC004, 0x93, palette, 1);
     gFrameObjects[0x22].screenX = (16 - gContinuedCommandWork_030064A0[0x6F]) * 8 + (mode * 8 + 0x90);
     gFrameObjects[0x22].screenY = 0x38;
     gFrameObjects[0x22].priority |= 0xFF;
     palette = sub_08057D80(3) == 0 ? 12 : 13;
-    sub_08048864(0x23, 0xC004, 0x94, palette, 1);
+    InitFrameObject(0x23, 0xC004, 0x94, palette, 1);
     gFrameObjects[0x23].screenX = (16 - gContinuedCommandWork_030064A0[0x6F]) * 8 + (mode * 8 + 0x90);
     gFrameObjects[0x23].screenY = 0x48;
     gFrameObjects[0x23].priority |= 0xFF;

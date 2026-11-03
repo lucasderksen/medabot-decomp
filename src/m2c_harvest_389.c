@@ -58,7 +58,7 @@ void sub_0806F23C(void) {
     switch ((u32) phase)
     {
       case 0:
-        sub_08048864(1, 0xCA00, 0x309, 3, 3);
+        InitFrameObject(1, 0xCA00, 0x309, 3, 3);
         gFrameObjects[1].screenX = 0x50;
         gFrameObjects[1].screenY = 0x38;
         gFrameObjects[1].scaleX = 2;
@@ -73,7 +73,7 @@ void sub_0806F23C(void) {
         goto shared_first_frame_delay;
 
       case 2:
-        sub_08048864(2, 0xC600, 0x306, 2, 3);
+        InitFrameObject(2, 0xC600, 0x306, 2, 3);
         gFrameObjects[2].screenX = 0xB8;
         gFrameObjects[2].screenY = 0x70;
         gFrameObjects[2].scaleX = 2;
@@ -249,7 +249,7 @@ void sub_0806F5A0(void) {
     switch ((u32) phase)
     {
       case 0:
-        sub_08048864(1, 0xCA00, 0x30B, 3, 3);
+        InitFrameObject(1, 0xCA00, 0x30B, 3, 3);
         gFrameObjects[1].screenX = 0x50;
         gFrameObjects[1].screenY = 0x38;
         gFrameObjects[1].scaleX = 2;
@@ -264,7 +264,7 @@ void sub_0806F5A0(void) {
         goto shared_first_frame_delay;
 
       case 2:
-        sub_08048864(2, 0xC600, 0x306, 2, 3);
+        InitFrameObject(2, 0xC600, 0x306, 2, 3);
         gFrameObjects[2].screenX = 0xB8;
         gFrameObjects[2].screenY = 0x70;
         gFrameObjects[2].scaleX = 2;

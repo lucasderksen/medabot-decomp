@@ -17,7 +17,7 @@ void sub_08033F04(void)
             work[0xBE] = 1;
         }
     }
-    sub_08034F08();
+    AdvanceActionByteScript();
 }
 
 void sub_08033F64(void)
@@ -28,7 +28,7 @@ void sub_08033F64(void)
         work[0xB8] = 2;
         work[0xBE] = 5;
     }
-    sub_08034F08();
+    AdvanceActionByteScript();
 }
 
 void sub_08035754(s16 *value, s32 amount)

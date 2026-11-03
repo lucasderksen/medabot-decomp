@@ -56,7 +56,7 @@ void sub_0801DC74(void) {
         gState0TypedWork.bytes[0x84]++;
         return;
     }
-    sub_08040CD0(0x21,1);
+    ClearFrameObjects(0x21,1);
     frames=(struct ContinuedScaleFrame21 *)gFrameObjects;
     frames->flags=(zero=0,0xC624);
     frames->tableSelector=zero;
@@ -67,7 +67,7 @@ void sub_0801DC74(void) {
     frames->scaleX=0x80;
     frames->scaleY=0x80;
     frames->priority=0xF0;
-    sub_08040B90(gState0NextCommands_083B6100[0x1C],0x21);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[0x1C],0x21);
     work[0xAA]++;
 }
 
@@ -94,13 +94,13 @@ void sub_080657C4(void) {
             u32 base = (u32)gUnknown_080AFC80;
             u32 offset = context->phase;
             u32 index = *(const u8 *)(base + offset);
-            if (sub_0803FB3C(*(const void *const *)(slots + (index << 2))) == 0)
+            if (RunDialogue(*(const void *const *)(slots + (index << 2))) == 0)
                 return;
         }
         if (!(1 & (u8)gNewKeys)) {
             return;
         }
-        sub_08074DE0(0xDU);
+        PlaySoundEffect(0xDU);
         temp_r0_2 = (*(u32 *)((u8 *)(gMainContextPointer_03006F74) + 8)) + 1;
         (*(u32 *)((u8 *)(gMainContextPointer_03006F74) + 8)) = temp_r0_2;
         if (temp_r0_2 <= 2U) {
@@ -115,13 +115,13 @@ void sub_080657C4(void) {
     temp_r0_3 = context->phase;
     switch (temp_r0_3) {                            /* irregular */
     case 0:
-        if (sub_0803FB3C(gMain2ScriptSlots_08485678[gUnknown_080AFC83[(*(u32 *)((u8 *)(gMainContextPointer_03006F74) + 8))]]) == 0) {
+        if (RunDialogue(gMain2ScriptSlots_08485678[gUnknown_080AFC83[(*(u32 *)((u8 *)(gMainContextPointer_03006F74) + 8))]]) == 0) {
             return;
         }
         if (!(1 & (u8)gNewKeys)) {
             return;
         }
-        sub_08074DE0(0xDU);
+        PlaySoundEffect(0xDU);
         (*(u32 *)((u8 *)(gMainContextPointer_03006F74) + 8)) = (u32) ((*(u32 *)((u8 *)(gMainContextPointer_03006F74) + 8)) + 1);
         sub_0803FB0C();
         sub_080415E8(1U, 0U, 7U);
@@ -129,7 +129,7 @@ void sub_080657C4(void) {
     case 1:
     case 2:
     case 3:
-        if (sub_0803FB3C(gMain2ScriptSlots_08485678[gUnknown_080AFC83[(*(u32 *)((u8 *)(gMainContextPointer_03006F74) + 8))]]) == 0) {
+        if (RunDialogue(gMain2ScriptSlots_08485678[gUnknown_080AFC83[(*(u32 *)((u8 *)(gMainContextPointer_03006F74) + 8))]]) == 0) {
             return;
         }
         if (sub_08041674() == 0) {
@@ -160,9 +160,9 @@ block_28:
         sub_0803FB0C();
         return;
     case 4:
-        if (sub_0803FB3C(gMain2ScriptSlots_08485678[gUnknown_080AFC83[(*(u32 *)((u8 *)(gMainContextPointer_03006F74) + 8))]]) != 0) {
-            sub_08074B88(0U);
-            sub_08074DE0(0U);
+        if (RunDialogue(gMain2ScriptSlots_08485678[gUnknown_080AFC83[(*(u32 *)((u8 *)(gMainContextPointer_03006F74) + 8))]]) != 0) {
+            PlayMusic(0U);
+            PlaySoundEffect(0U);
             Unknown_0805DEB0();
             {
             struct LocalScriptMenuContext *resetContext = gMainContextPointer_03006F74;
@@ -178,7 +178,7 @@ block_28:
                 var_r5 = (u16)sub_0805DDEC(0);
                 if (var_r5 == 0) break;
             }
-            sub_08074B88((u32) (*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x7F)));
+            PlayMusic((u32) (*(u8 *)((u8 *)(gMainContextPointer_03006F74) + 0x7F)));
             (*(u32 *)((u8 *)(gMainContextPointer_03006F74) + 8)) = (u32) var_r5;
             gUnknown_0300137C += 3;
             sub_0803FB0C();
@@ -200,12 +200,12 @@ s32 sub_0806A114(void) {
     case 6: case 7: case 8: case 9: case 10: case 11: case 12: case 13:
         sub_0806941C((u8)(gUnknown_03006F88-6));
     case 1: case 2: case 3: case 4: case 5:
-        sub_0803FB3C(gUnknown_08485F88[1]);
+        RunDialogue(gUnknown_08485F88[1]);
         gUnknown_03006F88++;
         break;
 
     case 14:
-        if (sub_0803FB3C(gUnknown_08485F88[1])) {
+        if (RunDialogue(gUnknown_08485F88[1])) {
             sub_0803FB0C();
             sub_08069E1C();
             sub_0806B530(1,4,0,0);
@@ -213,7 +213,7 @@ s32 sub_0806A114(void) {
         }
         break;
     case 15:
-        if (sub_0803FB3C(gUnknown_08485F88[2])) {
+        if (RunDialogue(gUnknown_08485F88[2])) {
             sub_0803FB0C();
             gUnknown_03006F88++;
         }
@@ -222,7 +222,7 @@ s32 sub_0806A114(void) {
         if (gFrameObjects[0].commandDelay==0) gUnknown_03006F88++;
         break;
     case 17:
-        if (sub_0803FB3C(gUnknown_08485F88[5])) {
+        if (RunDialogue(gUnknown_08485F88[5])) {
             const u8 *record;
             sub_0803FB0C();
             record=gState0EncounterRecords_083C1B80[gUnknown_08485C00[gUnknown_03006FDC].firstRecord];
@@ -233,13 +233,13 @@ s32 sub_0806A114(void) {
         }
         break;
     case 18:
-        if (sub_0803FB3C(gUnknown_08485F88[3]) && gFrameObjects[0].commandDelay==0) {
+        if (RunDialogue(gUnknown_08485F88[3]) && gFrameObjects[0].commandDelay==0) {
             sub_0803FB0C();
             gUnknown_03006F88++;
         }
         break;
     case 19:
-        if (sub_0803FB3C(gUnknown_08485F88[gUnknown_08485C00[gUnknown_03006FDC].command])) {
+        if (RunDialogue(gUnknown_08485F88[gUnknown_08485C00[gUnknown_03006FDC].command])) {
             const u8 *record;
             sub_0803FB0C();
             record=gState0EncounterRecords_083C1B80[gUnknown_08485C00[gUnknown_03006FDC].secondRecord];
@@ -250,19 +250,19 @@ s32 sub_0806A114(void) {
         }
         break;
     case 20:
-        if (sub_0803FB3C(gUnknown_08485F88[4]) && gFrameObjects[0].commandDelay==0) {
+        if (RunDialogue(gUnknown_08485F88[4]) && gFrameObjects[0].commandDelay==0) {
             sub_0803FB0C();
             gUnknown_03006F88++;
         }
         break;
     case 21:
-        if (sub_0803FB3C(gUnknown_08485F88[gUnknown_08485C00[gUnknown_03006FDC].command+1])) {
+        if (RunDialogue(gUnknown_08485F88[gUnknown_08485C00[gUnknown_03006FDC].command+1])) {
             sub_0803FB0C();
             gUnknown_03006F88++;
         }
         break;
     case 22:
-        if (sub_0803FB3C(gUnknown_08485F88[6])) return 1;
+        if (RunDialogue(gUnknown_08485F88[6])) return 1;
         break;
     }
     sub_0806B0D4();

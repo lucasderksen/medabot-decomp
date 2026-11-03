@@ -33,7 +33,7 @@ void sub_0803D15C(void) {
     u32 frameRoot;
     u32 var_r0;
 
-    sub_08040BD8(gUnknown_083B6100[gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown2C[1]], gState0TypedWork.bytes[0x12F]);
+    RunFrameObjectCommands(gUnknown_083B6100[gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown2C[1]], gState0TypedWork.bytes[0x12F]);
     temp_r1 = &gFrameObjects[gState0TypedWork.bytes[0x12F]];
     if ((u32) temp_r1->byte2B <= 6U) {
         temp_r1->scaleX += 8;
@@ -44,7 +44,7 @@ void sub_0803D15C(void) {
     if ((u32) temp_r1_3->byte2B > 0x3CU) {
         temp_r0 = temp_r1_3->scaleX;
         if (temp_r0 == 8) {
-            sub_08040CD0(gState0TypedWork.bytes[0x12F], 1U);
+            ClearFrameObjects(gState0TypedWork.bytes[0x12F], 1U);
         } else {
             temp_r1_3->scaleX = temp_r0 - 4;
             temp_r1_4 = &gFrameObjects[gState0TypedWork.bytes[0x12F]];

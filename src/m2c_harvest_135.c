@@ -12,8 +12,8 @@
 #include "state0_work.h"
 
 extern const u8 *const gState0NextCommands_083B6100[];
-extern void sub_08040B90(const u8 *, u8);
-extern void sub_08040CD0(u8, u8);
+extern void InitFrameObjectCommands(const u8 *, u8);
+extern void ClearFrameObjects(u8, u8);
 
 void sub_0803CBD0(void);
 
@@ -41,6 +41,6 @@ void sub_0803CBD0(void) {
     temp_r2->unknown2C[1] = frames[*selected].unknown2C[1];
     temp_r2->unknown23[6] = 0x21;
     commands = gState0NextCommands_083B6100;
-    sub_08040B90(commands[temp_r2->unknown2C[1]], temp_r1);
-    sub_08040CD0(*selected, 1U);
+    InitFrameObjectCommands(commands[temp_r2->unknown2C[1]], temp_r1);
+    ClearFrameObjects(*selected, 1U);
 }

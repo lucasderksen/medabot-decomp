@@ -33,7 +33,7 @@ void sub_080145BC(void) {
   }
   frame+=3;kind+=0x100;active+=0x100;i++;
  }while(i<=5);
- sub_08074DE0(0x37);gUnknown_0300137C++;
+ PlaySoundEffect(0x37);gUnknown_0300137C++;
 }
 
 void sub_080146DC(void) {
@@ -50,5 +50,5 @@ void sub_080146DC(void) {
   }
   frame+=3;kind+=0x100;active+=0x100;i++;
  }while(i<=5);
- sub_08074DE0(0x37);gUnknown_0300137C++;
+ PlaySoundEffect(0x37);gUnknown_0300137C++;
 }

@@ -54,8 +54,8 @@ void sub_0802036C(void) {
  objects->table=zero;
  objects->x=x;objects->y=y;
  objects->palette=0xE;objects->priority=0x80;
- {u32 commands=(u32)&gState0NextCommands_083B6100;sub_08040B90(*(u8**)(commands+0x94),0xA);}
- sub_08074DE0(0x37);
+ {u32 commands=(u32)&gState0NextCommands_083B6100;InitFrameObjectCommands(*(u8**)(commands+0x94),0xA);}
+ PlaySoundEffect(0x37);
  gState0TransferWork.bytes[0xAA]++;
 }
 
@@ -75,7 +75,7 @@ void sub_08020474(void) {
  objects->table=zero;
  objects->x=x;objects->y=y;
  objects->palette=0xE;objects->priority=0x80;
- {u32 commands=(u32)&gState0NextCommands_083B6100;sub_08040B90(*(u8**)(commands+0x98),0xA);}
- sub_08074DE0(0x2B);
+ {u32 commands=(u32)&gState0NextCommands_083B6100;InitFrameObjectCommands(*(u8**)(commands+0x98),0xA);}
+ PlaySoundEffect(0x2B);
  gState0TransferWork.bytes[0xAA]++;
 }

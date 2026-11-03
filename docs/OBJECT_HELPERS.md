@@ -19,11 +19,11 @@ ordinary C in `src/object_helpers.c`.
 | 419CC..41A28 | sub_080419CC | 92 |
 | 41BA4..41BF4 | sub_08041BA4 | 80 |
 | 41BF4..41C14 | sub_08041BF4 | 32 |
-| 41C14..41C5C | sub_08041C14 | 72 |
-| 41C5C..41CA4 | sub_08041C5C | 72 |
+| 41C14..41C5C | SetObjectXWobble | 72 |
+| 41C5C..41CA4 | SetObjectYWobble | 72 |
 | 41CA4..41CD4 | sub_08041CA4 | 48 |
 | 41CD4..41D04 | sub_08041CD4 | 48 |
-| 41D04..41D28 | sub_08041D04 | 36 |
+| 41D04..41D28 | CopyBytesU8Count | 36 |
 | 41D28..41D3C | sub_08041D28 | 20 |
 | 41D3C..41D70 | sub_08041D3C | 52 |
 | 41FE4..42028 | sub_08041FE4 | 68 |
@@ -33,8 +33,8 @@ ordinary C in `src/object_helpers.c`.
 | 42170..421A0 | sub_08042170 | 48 |
 | 421A0..421B4 | sub_080421A0 | 20 |
 | 42218..42238 | sub_08042218 | 32 |
-| 4253C..425DC | sub_0804253C | 160 |
-| 425DC..42678 | sub_080425DC | 156 |
+| 4253C..425DC | StartBlendFade | 160 |
+| 425DC..42678 | StepBlendFade | 156 |
 
 `sub_080415BC` clears both halfwords in each of the four background-scroll
 pairs, using the canonical `bg_scroll.h` view. The next two routines clear

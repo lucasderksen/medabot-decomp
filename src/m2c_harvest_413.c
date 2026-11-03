@@ -28,8 +28,8 @@ void sub_08067870(void) {
 
     sub_08066D8C();
     if (gState0TypedWork.bytes[0x84] < 0x41) {
-        sub_0803F684(0, 0x20 - gState0TypedWork.bytes[0x84] / 2, 0xFFFF);
-        sub_0803F998(0, 0x20 - gState0TypedWork.bytes[0x84] / 2, 0xFFFF);
+        BlendBgPaletteBanksNow(0, 0x20 - gState0TypedWork.bytes[0x84] / 2, 0xFFFF);
+        BlendObjPaletteBanksNow(0, 0x20 - gState0TypedWork.bytes[0x84] / 2, 0xFFFF);
         gState0TypedWork.bytes[0x84]++;
         ((u8 *)gMainContextPointer_03006F74)[5] = 0;
     } else {

@@ -10,12 +10,12 @@ extern u8 gUnknown_0300058C[];
 extern void (*const gContinuedStateCallbacks_083D2630[])(void);
 extern void sub_0804DDCC(void);
 
-void sub_0804D8CC(u32 count)
+void ReadBankedScriptArgs(u32 count)
 {
     s32 i;
     u8 limit = count;
     for (i = 0; i < limit; i++)
-        gContinuedArguments_03006474[i] = sub_0804D83C();
+        gContinuedArguments_03006474[i] = ReadBankedScriptByte();
 }
 
 void sub_0804DB80(void)

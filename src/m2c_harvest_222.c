@@ -16,8 +16,8 @@ struct ContinueFrameSetup { u8 pad[0x102];s16 slot;u16 counter;u16 command;u16 f
 
 extern const u8 *const gState0NextCommands_083B6100[];
 extern struct ContinueFrameSetup gUnknown_03001800;
-extern void sub_0803D450(void);
-extern void sub_0803D4AC(void);
+extern void LoadActionHalfwordScriptParams(void);
+extern void AdvanceActionHalfwordScript(void);
 
 void sub_0803B428(void);
 
@@ -25,7 +25,7 @@ void sub_0803B428(void) {
     struct FrameObject *frames;
     struct FrameObject *temp_r1;
 
-    sub_0803D450();
+    LoadActionHalfwordScriptParams();
     frames=gFrameObjects;
     temp_r1 = &frames[gUnknown_03001800.slot];
     temp_r1->flags |= 0x200;
@@ -36,6 +36,6 @@ void sub_0803B428(void) {
     frames[gUnknown_03001800.slot].unknown2C[1] = (u8) gUnknown_03001800.command;
     frames[gUnknown_03001800.slot].unknown23[0] = (u8) gUnknown_03001800.counter;
     frames[gUnknown_03001800.slot].unknown23[6] = 0x34;
-    sub_08040B90(gState0NextCommands_083B6100[frames[gUnknown_03001800.slot].unknown2C[1]], (u8) gUnknown_03001800.slot);
-    sub_0803D4AC();
+    InitFrameObjectCommands(gState0NextCommands_083B6100[frames[gUnknown_03001800.slot].unknown2C[1]], (u8) gUnknown_03001800.slot);
+    AdvanceActionHalfwordScript();
 }
