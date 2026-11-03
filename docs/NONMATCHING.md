@@ -30,23 +30,23 @@ assembly. Detailed notes from earlier attempts are in
 
 ## Nonmatching functions
 
-Rows are the differing instruction rows from `tools/asm_diff.py`.
+Rows are the differing instruction rows from `tools/try_draft.py` for the saved attempt (measured 3 Nov).
 
 | Function | File | Flags | Size, best attempt | Problem |
 | --- | --- | --- | --- | --- |
-| `sub_08001520` | [sub_08001520.c](../src/non_matching/sub_08001520.c) | `-fprologue-bugfix` | 1,932 B; 1,908 B, 195 rows | OAM builder: the reference strength-reduces two OAM pointers (sp+0x234 and r8, both `+= 8` per part); depth in r7 (ours r4) |
+| `sub_08001520` | [sub_08001520.c](../src/non_matching/sub_08001520.c) | `-fprologue-bugfix` | 1,932 B; 1,920 B, 192 rows | OAM builder: the reference strength-reduces two OAM pointers (sp+0x234 and r8, both `+= 8` per part); depth in r7 (ours r4) |
 | `sub_08020B4C` | [sub_08020B4C.c](../src/non_matching/sub_08020B4C.c) | `-fprologue-bugfix` | 416 B; 416 B, 38 rows | The `pos154[0]` address loses its high register; local-alloc gives sl/sb to CSE'd byte-address pseudos |
 | `sub_0804538C` | [sub_0804538C.c](../src/non_matching/sub_0804538C.c) | `-fprologue-bugfix` | 208 B; 196 B, 59 rows | gcse PRE hoists `y + height` to the outer loop; the reference only hoists `row + 1` and reloads 0xFFFFFE00 per iteration |
-| `sub_08045E6C` | [sub_08045E6C.c](../src/non_matching/sub_08045E6C.c) | `-fprologue-bugfix` | 456 B; 452 B, 45 rows | Index arithmetic one register lower than the reference; `visible = 0` store merge |
+| `sub_08045E6C` | [sub_08045E6C.c](../src/non_matching/sub_08045E6C.c) | `-fprologue-bugfix` | 456 B; 456 B, 16 rows | Index arithmetic one register lower than the reference; `visible = 0` store merge |
 | `sub_080465B8` | [sub_080465B8.c](../src/non_matching/sub_080465B8.c) | `-fprologue-bugfix` | 1,192 B; 1,192 B, 49 rows | Register allocation in the visible block (&matrix/k/0x1095 in r5/r3/r6, reference r6/r5/r3) |
 | `sub_0804842C` | [sub_0804842C.c](../src/non_matching/sub_0804842C.c) | `-fprologue-bugfix` | 600 B; 600 B, 82 rows | The reference keeps r6 as a reload register for the 0xC30 constant in several cases |
 | `sub_08048BE0` | [sub_08048BE0.c](../src/non_matching/sub_08048BE0.c) | `-fprologue-bugfix` | 200 B; 200 B, 6 rows | Constant copy `ldr r3,=0xFFFF; adds r1,r3,#0`: cse folds the constant straight into r1 |
 | `sub_080513C8` | [sub_080513C8.c](../src/non_matching/sub_080513C8.c) | `-fprologue-bugfix` | 1,064 B; 1,064 B, 238 rows | Unsigned `bhi` instead of signed range checks; the value==0 arm keeps its own load |
-| `sub_08051CB8` | [sub_08051CB8.c](../src/non_matching/sub_08051CB8.c) | `-fprologue-bugfix -fno-regmove` | 384 B; 384 B, 7 rows | Register swap: direction r8 and work base r7 (reference r4 and r8); global-alloc priority |
+| `sub_08051CB8` | [sub_08051CB8.c](../src/non_matching/sub_08051CB8.c) | `-fprologue-bugfix -fno-regmove` | 384 B; 384 B, 6 rows | Register swap: direction r8 and work base r7 (reference r4 and r8); global-alloc priority |
 | `sub_08052784` | [sub_08052784.c](../src/non_matching/sub_08052784.c) | `-fprologue-bugfix` | 372 B; 364 B, 38 rows | Loop counters i and k allocated the other way round |
-| `sub_08059960` | [sub_08059960.c](../src/non_matching/sub_08059960.c) | `-O1 -fprologue-bugfix` | 1,264 B; 1,264 B, 187 rows | cse's 1,000-insn hash flush lands in block 8; the reference's source expands to more RTL per object, so it lands in block 5 |
+| `sub_08059960` | [sub_08059960.c](../src/non_matching/sub_08059960.c) | `-O1 -fprologue-bugfix` | 1,264 B; 1,280 B, 360 rows (saved attempt; the 187-row draft described in docs/drafts/README.md was not kept) | cse's 1,000-insn hash flush lands in block 8; the reference's source expands to more RTL per object, so it lands in block 5 |
 | `sub_08064EB4` | [sub_08064EB4.c](../src/non_matching/sub_08064EB4.c) | `-fprologue-bugfix -fno-expensive-optimizations` | 448 B; 448 B, 0 rows, not integrable | Byte-exact under `-fno-expensive-optimizations`, but that profile also emits 26 unreferenced constant-pool words (`.LC*` in `.rodata`, one per global-symbol constant) that the ROM does not contain, so the original was not built that way. Default profile: 34 rows (`0x06004000` kept in r6 across `CpuSet`; the reference reloads it) |
-| `sub_080697B4` | [sub_080697B4.c](../src/non_matching/sub_080697B4.c) | `-fprologue-bugfix` | 348 B; 348 B, 61 rows | Stack tables and indexed DMA reads; permuter got no closer |
+| `sub_080697B4` | [sub_080697B4.c](../src/non_matching/sub_080697B4.c) | `-fprologue-bugfix` | 348 B; 332 B, 98 rows (saved attempt; the 61-row draft was not kept) | Stack tables and indexed DMA reads; permuter got no closer |
 
 ## Fake-matching functions
 
