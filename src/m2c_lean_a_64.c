@@ -16,9 +16,9 @@
 #include "state0_work.h"
 
 
-void sub_0800A1E4(void);
+void CycleOwnedInventoryOnLeftRight(void);
 
-void sub_0800A1E4(void) {
+void CycleOwnedInventoryOnLeftRight(void) {
 
     s32 found;
 

@@ -47,7 +47,7 @@ extern void sub_080701A8(void);
 
 void sub_080381E0(void);
 void sub_080382F4(void);
-void sub_0806B530(u8 index,u8 state,u8 first,u8 second);
+void SetObjectAnimationState(u8 index,u8 state,u8 first,u8 second);
 void sub_0806EEA8(void);
 
 void sub_080381E0(void) {
@@ -118,7 +118,7 @@ void sub_080382F4(void) {
     temp_r0->unknown2C[1] += 1;
 }
 
-void sub_0806B530(u8 index,u8 state,u8 first,u8 second) {
+void SetObjectAnimationState(u8 index,u8 state,u8 first,u8 second) {
 
  if(state==0){
   struct CommandFrame6B530 *f;

@@ -21,7 +21,7 @@ struct Dma6EBA4 {const void *volatile source;void *volatile destination;volatile
 extern s32 sub_080688E0(void);
 extern struct Graphics6EBA4 gGraphicsWork6EBA403001800;
 extern void sub_0806FE44(void);
-extern void sub_08070550(void);
+extern void RunIntervalObjectCallbacks2(void);
 
 void sub_0806EBA4(void);
 
@@ -35,7 +35,7 @@ void sub_0806EBA4(void) {
  gGraphicsWork6EBA403001800.timer=next;
  gGraphicsWork6EBA403001800.angle+=0x6F;
  sub_0806FE44();
- sub_08070550();
+ RunIntervalObjectCallbacks2();
  if(sub_080688E0()!=0){
   fill=zero;
   dma=(struct Dma6EBA4 *)0x040000D4;

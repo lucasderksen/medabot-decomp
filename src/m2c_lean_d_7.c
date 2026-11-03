@@ -52,7 +52,7 @@ void sub_08065208(void) {
     if (gMenuContext65208->flag4C != 0) {
         if (RunDialogueClose() != 0) {
             gMenuContext65208->flag4C = 0;
-            sub_0803FAA0(1, 0, 0);
+            InitDialogue(1, 0, 0);
         }
     } else if (RunDialogue(gMain2ScriptSlots_0848521C[13]) != 0) {
         done = 0;

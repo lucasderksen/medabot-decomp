@@ -32,7 +32,7 @@ void sub_0806B0D4(void) {
       else
         if (*command)
       {
-        sub_0806B530(frame, 0, 0, 0);
+        SetObjectAnimationState(frame, 0, 0, 0);
       }
     }
     frame++;

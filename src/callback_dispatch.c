@@ -16,7 +16,7 @@ void DispatchMainState0(void)
     gMainState0Callbacks[gMainSubstate]();
 }
 
-void sub_08002554(void)
+void DispatchMainState0Substate0(void)
 {
     gUnknownCallbacks_083AC3C8[gNestedCallbackIndex]();
 }

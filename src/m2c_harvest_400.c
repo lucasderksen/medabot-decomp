@@ -20,10 +20,10 @@
 
 extern const u8 gUnknown_083AD4F0[];
 
-void sub_08015F90(u32 frameIndex);
-void sub_08016080(u32 frameIndex);
+void InitRingObjectScaled(u32 frameIndex);
+void InitRingObjectCollapsed(u32 frameIndex);
 
-void sub_08015F90(u32 frameIndex) {
+void InitRingObjectScaled(u32 frameIndex) {
 
     union { struct TileCoordinates coordinates; s32 word; } result;
     s16 y;
@@ -69,7 +69,7 @@ void sub_08015F90(u32 frameIndex) {
     updatedFrame->commandStopped = 0;
 }
 
-void sub_08016080(u32 frameIndex) {
+void InitRingObjectCollapsed(u32 frameIndex) {
 
     union { struct TileCoordinates coordinates; s32 word; } result;
     s16 y;

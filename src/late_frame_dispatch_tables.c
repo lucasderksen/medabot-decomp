@@ -8,7 +8,7 @@ extern s32 sub_0806E038(u8);
 extern s32 sub_0806E074(u8);
 extern s32 sub_080705E0(u8);
 extern s32 sub_08070648(u8);
-extern s32 sub_080706A4(u8);
+extern s32 BobObjectVertically(u8);
 extern s32 sub_08070734(u8);
 extern s32 sub_08070778(u8);
 extern s32 sub_0807190C(u8);
@@ -34,7 +34,7 @@ s32 (*const gTimedFrameCallbacks_08485994[8])(u8) = {
 s32 (*const gTimedFrameCallbacks_08485B4C[5])(u8) = {
     sub_080705E0,
     sub_08070648,
-    sub_080706A4,
+    BobObjectVertically,
     sub_08070734,
     sub_08070778,
 };

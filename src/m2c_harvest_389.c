@@ -21,10 +21,10 @@
 #include "state0_next_helpers.h"
 #include "state0_work.h"
 
-extern void sub_08070550(void);
+extern void RunIntervalObjectCallbacks2(void);
 s32 sub_0806FCCC(u8);
 s32 sub_0806FDA4(s32);
-s32 sub_0806FF2C(s32);
+s32 StepBridgeSegmentDraw(s32);
 u32 sub_080700C8(void);
 u32 sub_08070108(void);
 void sub_0806FE44(void);
@@ -189,7 +189,7 @@ void sub_0806F23C(void) {
       case 4:
         var_r0_2 = 1;
         test_ff:
-      if (sub_0806FF2C(var_r0_2) != 0)
+      if (StepBridgeSegmentDraw(var_r0_2) != 0)
       {
         increment:
         gState0TransferWork.sceneFrame.count = (s32) (((u32) gState0TransferWork.sceneFrame.count) + 1u);
@@ -215,7 +215,7 @@ void sub_0806F23C(void) {
 
   }
   sub_0806FE44();
-  sub_08070550();
+  RunIntervalObjectCallbacks2();
   if ((phaseDuration * 2) <= gState0TransferWork.sceneFrame.count)
   {
     gState0TransferWork.sceneFrame.count = 0;
@@ -380,7 +380,7 @@ void sub_0806F5A0(void) {
       case 4:
         var_r0_2 = 3;
         test_ff:
-      if (sub_0806FF2C(var_r0_2) != 0)
+      if (StepBridgeSegmentDraw(var_r0_2) != 0)
       {
         increment:
         gState0TransferWork.sceneFrame.count = (s32) (((u32) gState0TransferWork.sceneFrame.count) + 1u);
@@ -406,7 +406,7 @@ void sub_0806F5A0(void) {
 
   }
   sub_0806FE44();
-  sub_08070550();
+  RunIntervalObjectCallbacks2();
   if ((phaseDuration * 2) <= gState0TransferWork.sceneFrame.count)
   {
     gState0TransferWork.sceneFrame.count = 0;

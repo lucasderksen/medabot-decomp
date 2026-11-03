@@ -23,7 +23,7 @@ void sub_0800AED0(void);
 void sub_0800AF0C(void);
 void sub_0800AF64(void);
 
-void sub_0800A854(void)
+void InitObject3RowCursor(void)
 {
     gFrameObjects[3].flags = 0xC804;
     gFrameObjects[3].screenX = 8;

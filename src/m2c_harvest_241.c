@@ -60,7 +60,7 @@ void sub_080220A0(void);
 void sub_0802BBA8(void);
 void sub_0802BC1C(void);
 void sub_08033840(void);
-void sub_0806B4C8(void);
+void StepSceneFrameAnimations(void);
 void sub_0806E3C4(void);
 u32 sub_080700C8(void);
 u32 sub_08070170(void);
@@ -207,7 +207,7 @@ void sub_08033840(void) {
     }
 }
 
-void sub_0806B4C8(void) {
+void StepSceneFrameAnimations(void) {
 
  struct FrameObject *frame;
  const struct AnimationRecord6B4C8 *records;

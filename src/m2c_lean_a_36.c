@@ -52,12 +52,12 @@ extern void sub_08017E00(void);
 extern void sub_08017EA8(void);
 extern void sub_08017F9C(void);
 
-void sub_08008CA0(void);
+void RunInventoryRecordDialogue(void);
 void sub_0800E78C(void);
 void sub_080173B4(u32 value);
 void sub_080183A4(void);
 
-void sub_08008CA0(void) {
+void RunInventoryRecordDialogue(void) {
 
     u8 result;
 
@@ -172,7 +172,7 @@ void sub_0800E78C(void) {
     u8 result;
 
     ScrollBg3Diagonally3();
-    sub_0800F440();
+    UpdateSelectedPartPreview();
     switch (gState0TypedWork.bytes[0x3E]) {
     case 0:
         switch (gState0TypedWork.bytes[0x44]) {

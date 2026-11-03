@@ -36,13 +36,13 @@ extern const u8 gUnknown_080AFC80[];
 extern const u8 gUnknown_080AFC83[];
 extern s32 gUnknown_03006F88;
 extern s32 sub_0806B0D4(void);
-extern s32 sub_0806B4C8(void);
+extern s32 StepSceneFrameAnimations(void);
 extern u8 gUnknown_03006FDC;
 extern void sub_0806941C(u8);
 extern void sub_08069DF0(void);
 extern void sub_08069E1C(void);
 extern void sub_0806A078(u8 *,u8 *);
-extern void sub_0806B530(u8,u8,u8,u8);
+extern void SetObjectAnimationState(u8,u8,u8,u8);
 
 void sub_0801DC74(void);
 void sub_080657C4(void);
@@ -191,9 +191,9 @@ block_28:
 s32 sub_0806A114(void) {
     switch ((u32)gUnknown_03006F88) {
     case 0:
-        sub_0803FAA0(1,2,0);
+        InitDialogue(1,2,0);
         sub_08069DF0();
-        sub_0806B530(0,1,0x18,0x58);
+        SetObjectAnimationState(0,1,0x18,0x58);
         *(volatile u16 *)0x04000000 |= 0x400;
         gUnknown_03006F88++;
         return 0;
@@ -208,7 +208,7 @@ s32 sub_0806A114(void) {
         if (RunDialogue(gUnknown_08485F88[1])) {
             RestartDialogueText();
             sub_08069E1C();
-            sub_0806B530(1,4,0,0);
+            SetObjectAnimationState(1,4,0,0);
             gUnknown_03006F88++;
         }
         break;
@@ -227,7 +227,7 @@ s32 sub_0806A114(void) {
             RestartDialogueText();
             record=gState0EncounterRecords_083C1B80[gUnknown_08485C00[gUnknown_03006FDC].firstRecord];
             sub_0806A078(gDebugMenuTextBuffer,(u8 *)gState0EncounterLabels_083C40B8[*record]);
-            sub_0806B530(0,2,0x40,0);
+            SetObjectAnimationState(0,2,0x40,0);
             gFrameObjects[1].screenX=0x68;
             gUnknown_03006F88++;
         }
@@ -244,7 +244,7 @@ s32 sub_0806A114(void) {
             RestartDialogueText();
             record=gState0EncounterRecords_083C1B80[gUnknown_08485C00[gUnknown_03006FDC].secondRecord];
             sub_0806A078(gDebugMenuTextBuffer,(u8 *)gState0EncounterLabels_083C40B8[*record]);
-            sub_0806B530(0,2,0x40,0);
+            SetObjectAnimationState(0,2,0x40,0);
             gFrameObjects[1].screenX=0xA8;
             gUnknown_03006F88++;
         }
@@ -266,6 +266,6 @@ s32 sub_0806A114(void) {
         break;
     }
     sub_0806B0D4();
-    sub_0806B4C8();
+    StepSceneFrameAnimations();
     return 0;
 }

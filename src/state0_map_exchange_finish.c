@@ -24,7 +24,7 @@ void sub_08014C84(void)
     {
         u32 selected = index + 3;
         if (records[index + 3].byteDD > 3)
-            sub_08015668(selected, records[index + 3].byteDD - 4);
+            CopySetupSelectionRecord(selected, records[index + 3].byteDD - 4);
         index++;
     } while (index <= 2);
     gNestedCallbackIndex++;

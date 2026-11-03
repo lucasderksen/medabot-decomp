@@ -3,7 +3,7 @@
 #include "state0_next_helpers.h"
 #include "state0_next_helpers.h"
 
-void sub_08015668(u32 first, u32 second)
+void CopySetupSelectionRecord(u32 first, u32 second)
 {
     u8 *base = gSetupBuffer_03000590;
     u32 offset = first * 256;

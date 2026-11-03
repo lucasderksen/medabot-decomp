@@ -45,7 +45,7 @@ extern void sub_08060248(void);
 extern void sub_0806B4A4(void);
 extern void sub_0806D41C(void);
 extern void sub_0806D4A4(void);
-extern void sub_0806DE0C(void);
+extern void RunIntervalObjectCallbacks(void);
 extern void sub_0806E9E0(void);
 extern void sub_0806EA54(void);
 extern void sub_08070804(void);
@@ -110,7 +110,7 @@ void sub_0806D588(void) {
 
  sub_0806D4A4();
  gUnknown_08485964[gNestedCallbackIndex]();
- sub_0806DE0C();
+ RunIntervalObjectCallbacks();
  sub_0806D41C();
 }
 

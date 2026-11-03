@@ -28,15 +28,15 @@ extern const u8 gUnknown_083AD524[12];
 extern u8 gUnknown_030018A8[0xC0];
 extern void ApplyObjectMotionStep(u32);
 
-void sub_0800E350(void);
+void RunPartOrTerrainDialogue(void);
 u32 sub_0801827C(void);
 void sub_0801B5FC(u32 arg0);
 s32 sub_0803325C(u32 arg0);
 void sub_0803C5F8(void);
 
-void sub_0800E350(void) {
+void RunPartOrTerrainDialogue(void) {
  const u8 *script;
- ScrollBg3Diagonally3();sub_0800F440();sub_0800FD74();
+ ScrollBg3Diagonally3();UpdateSelectedPartPreview();BlinkPartDetailMarkerPair();
  if(gState0TypedWork.bytes[0x3E]<=2)script=gState0NextScripts_083BE564[sub_0800F6CC()];
  else script=gState0NextScripts_083BEAAC[sub_0800F6CC()];
  if(RunDialogue(script))gNestedCallbackIndex++;

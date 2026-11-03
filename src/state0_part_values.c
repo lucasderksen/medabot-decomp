@@ -3,7 +3,7 @@
 #include "state0_callbacks.h"
 #include "tile_text.h"
 
-void sub_0800FA7C(void)
+void DrawPartCategoryValueRows(void)
 {
     u8 *work = gState0TypedWork.bytes;
     switch (work[0x3E])

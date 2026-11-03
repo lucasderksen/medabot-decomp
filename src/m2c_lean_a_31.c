@@ -82,7 +82,7 @@ extern struct Setup16C0C gSetup16C0C[] asm("gSetupBuffer_03000590");
 extern struct Setup18D0C gSetup18D0C[] asm("gSetupBuffer_03000590");
 extern struct Setup18DF4 gSetup18DF4[] asm("gSetupBuffer_03000590");
 extern u32 gUnknown_084E45F8[];
-extern u32 sub_08018EE0(u32 bank);
+extern u32 FindMismatchedSetupEntry(u32 bank);
 extern u32 sub_08018F0C(u32 bank, u32 part, u32 amount);
 extern u32 sub_08018F6C(u32 side);
 
@@ -184,7 +184,7 @@ void sub_08018D0C(u32 bank) {
         found = 0;
         count = 0;
         do {
-            part = sub_08018EE0(bank);
+            part = FindMismatchedSetupEntry(bank);
             if (part == 0) {
                 goto done;
             }

@@ -46,7 +46,7 @@ s32 sub_080373D4(u8);
 s32 sub_0803E7C0();
 s32 sub_0803E7F0();
 s32 sub_0803E83C();
-s32 sub_0803E870();
+s32 LoadScrollControlRecord2();
 
 void sub_08023658(void);
 void sub_08026A24(void);
@@ -129,7 +129,7 @@ void sub_0803D74C(void) {
     sub_0803E7C0();
     sub_0803E7F0();
     sub_0803E83C();
-    sub_0803E870();
+    LoadScrollControlRecord2();
     sub_08043DF8();
     PlayMusic(8U);
     gState0TypedWork.bytes[0x84] = 0;

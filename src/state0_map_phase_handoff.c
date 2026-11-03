@@ -6,7 +6,7 @@ extern const void *const gUnknownPointers_083CF530[];
 
 void sub_08014A44(void)
 {
-    sub_0803FAA0(1, 0, 0);
+    InitDialogue(1, 0, 0);
     gNestedCallbackIndex++;
 }
 

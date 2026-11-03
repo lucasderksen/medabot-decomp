@@ -294,7 +294,7 @@ void sub_08063208(void) {
   {
     gNestedCallbackIndex += 1;
     *((s16 *) (((s8 *) gMainContextPointer_03006F74) + 0x3C)) = new_var;
-    sub_0803FAA0(1U, 0U, 1U);
+    InitDialogue(1U, 0U, 1U);
   }
   sub_08062B48(*((u8 *) (((s8 *) gMainContextPointer_03006F74) + 0x31)), *((u8 *) (((s8 *) gMainContextPointer_03006F74) + 0x33)), 0);
 }
@@ -310,7 +310,7 @@ void sub_08063EBC(void) {
     new_var3 = (new_var2 = ((s8 *) gMainContextPointer_03006F74) + 0x3C);
     new_var = 0x258;
     *((s16 *) new_var3) = new_var;
-    sub_0803FAA0(1U, 0U, 1U);
+    InitDialogue(1U, 0U, 1U);
   }
 }
 

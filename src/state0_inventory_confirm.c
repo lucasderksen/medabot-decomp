@@ -14,7 +14,7 @@ extern const u16 gState0CursorCoordinates_083ACA2C[];
 extern const MainCallback gState0ConfirmCallbacks_083ACA4C[];
 
 
-void sub_0800B4EC(void)
+void IncrementInventoryByte5OnStartL(void)
 {
     struct InventoryRecord *records = gInventoryRecords;
     u8 *work = gState0TypedWork.bytes;
@@ -28,7 +28,7 @@ void sub_0800B4EC(void)
                     record->byte5++;
                     CopyBytesU8Count(gInventoryMetadata_083B62D8 + records[*selected].byte1 * 16, &work[0xEE], 16);
                     records[*selected].unknown06[2] = sub_080420C4(records[*selected].byte5, work[0xF1], work[0xF2], work[0xF3], work[0xF4]);
-                    sub_08009750();
+                    ShowInventoryRecordSprite();
                     sub_08009620();
                 }
 }

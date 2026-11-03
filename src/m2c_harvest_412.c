@@ -19,7 +19,7 @@ struct Counter6ED08 {
 extern struct Counter6ED08 gCounter6ED08_03001800;
 extern u8 gUnknown_02031000[];
 extern u8 gUnknown_03007010;
-extern void sub_0807178C(void);
+extern void RunPerFrameObjectCallbacks(void);
 extern void sub_08071804(void);
 
 void sub_08066A48(s32 (*out)[4], s32 (*a)[4], s32 (*b)[4]);
@@ -62,7 +62,7 @@ void sub_08070824(void) {
             dma[2];
         }
     }
-    sub_0807178C();
+    RunPerFrameObjectCallbacks();
     if (gUnknown_03007010 != 0)
         sub_08071804();
 }

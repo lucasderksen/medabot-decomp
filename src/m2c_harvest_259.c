@@ -36,15 +36,15 @@ extern u8 gCopy6280C0202F9C0[];
 extern u8 gUnknown_0202F980[32];
 extern u8 gUnknown_0202F9A0[32];
 
-void sub_0800E020(void);
+void LoadPartDetailDisplay(void);
 
-void sub_0800E020(void) {
+void LoadPartDetailDisplay(void) {
 
     s32 sp4;
 
     ClearBgScrolls2();
     if ((gState0TypedWork.bytes[0x3C] == 0) || (gState0TypedWork.bytes[0x3C] == 4)) {
-        sub_0800F440();
+        UpdateSelectedPartPreview();
     }
     *(volatile u16 *)0x04000000 &= 0xF0FF;
     *(volatile u16 *)0x04000008 = 0x500;
@@ -75,8 +75,8 @@ void sub_0800E020(void) {
         CpuFastSet(gUnknown_0850F378, (void *)0x05000380, 8U);
         CpuFastSet((const u8 *)((u32)gUnknown_0850F378 - 0x60U), (void *)0x050003A0, 8U);
         CpuFastSet(gUnknownWords_084E43F8, (void *)0x050003C0, 8U);
-        sub_0800F60C();
-        sub_0800F300();
+        InitPartDetailPreview();
+        RefreshSelectedPartPreview();
         StartBlendFade(5U, 0x3FU, 0x20U);
     }
     sp4 = 0;
@@ -86,12 +86,12 @@ void sub_0800E020(void) {
     sub_0800F6E4();
     sub_0800F77C();
     sub_0800F7D0();
-    sub_0800F844();
+    DrawSelectedPartText();
     sub_0800F8A0();
-    sub_0800F8D8();
-    sub_0800FA7C();
-    sub_0800FC60();
-    sub_0800FCF0();
+    DrawPartCategoryLabelRows();
+    DrawPartCategoryValueRows();
+    CountSelectablePartsInCategory();
+    InitPartDetailMarkerPair();
     gState0TypedWork.bytes[0x42] = 1;
     gNestedCallbackIndex=(u32)gNestedCallbackIndex+1U;
 }

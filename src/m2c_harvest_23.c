@@ -16,7 +16,7 @@
 extern s32 gContinuedWork_030057E0;
 extern s32 gState0NextCommands_083B6100;
 s32 sub_08015960(u32, s32, s32);
-u32 sub_08016154(u32, s32);
+u32 StepRingObjectRotation(u32, s32);
 s32 sub_0801AEB4();
 s32 sub_0801AEF4();
 s32 sub_0801AFB8(u8);
@@ -66,7 +66,7 @@ u32 sub_08016138(s32 arg0) {
   var_r4 = 0;
   do
   {
-    result = sub_08016154(var_r4, arg0);
+    result = StepRingObjectRotation(var_r4, arg0);
     var_r4 += 1;
   }
   while (var_r4 <= 5U);

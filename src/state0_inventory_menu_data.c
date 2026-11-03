@@ -39,7 +39,7 @@ void sub_08008A5C(void);
 void sub_08008B80(void);
 void sub_08008BB8(void);
 void sub_08008BE0(void);
-void sub_08008CA0(void);
+void RunInventoryRecordDialogue(void);
 void sub_080090D0(void);
 void sub_08009174(void);
 void sub_080091E0(void);
@@ -126,7 +126,7 @@ const MainCallback gUnknownCallbacks_083AC86C[112] = {
     sub_08008B80,
     sub_08008BB8,
     sub_08008BE0,
-    sub_08008CA0,
+    RunInventoryRecordDialogue,
     DummyInterruptHandler,
     DummyInterruptHandler,
     sub_080090D0,

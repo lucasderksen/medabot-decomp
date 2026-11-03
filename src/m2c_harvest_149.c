@@ -89,7 +89,7 @@ void sub_08071164(void) {
     scriptWork=work;
     switch(phase) {
     case 0:
-        sub_0803FAA0(1,0,0);
+        InitDialogue(1,0,0);
         StartFrameObjectCycle(0x19,0x4B,8);
         gGraphicsTransferCounter.counter++;
         break;
@@ -158,7 +158,7 @@ void sub_08071630(void) {
     scriptWork=work;
     switch(phase) {
     case 0:
-        sub_0803FAA0(1,0,0);
+        InitDialogue(1,0,0);
         StartFrameObjectCycle(0x19,0x4B,8);
         gGraphicsTransferCounter.counter++;
         break;

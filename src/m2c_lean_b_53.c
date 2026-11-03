@@ -45,9 +45,9 @@ extern struct ContinuedWork2B0 gContinuedWork_030057E0;
 extern u8 *gLaterBuffer_03006D14;
 extern void *gFreshPointer_030057DC;
 
-void sub_0804B2B0(void);
+void LoadMapBgLayers(void);
 
-void sub_0804B2B0(void) {
+void LoadMapBgLayers(void) {
 
     s32 i;
     volatile struct Dma2B0 *dma;

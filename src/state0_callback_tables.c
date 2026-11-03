@@ -5,42 +5,42 @@
 
 /* Adjacent independently referenced table starts establish these intervals.
  * Names/slot roles remain provisional; see docs/STATE0.md. */
-extern void sub_08002554(void);
+extern void DispatchMainState0Substate0(void);
 extern void sub_08002574(void);
-extern void sub_080025B4(void);
-extern void sub_080026A4(void);
-extern void sub_080026E0(void);
-extern void sub_08002730(void);
-extern void sub_0800275C(void);
-extern void sub_0800277C(void);
-extern void sub_080027BC(void);
-extern void sub_080027DC(void);
-extern void sub_080028AC(void);
-extern void sub_08002A2C(void);
-extern void sub_08002AF8(void);
-extern void sub_08002C34(void);
-extern void sub_08002D48(void);
-extern void sub_08002DF4(void);
-extern void sub_08002EC4(void);
+extern void HandleBg1ScrollAndButtons(void);
+extern void AnimatePortraitUntilDone(void);
+extern void WriteTextBufferAndRunDialogue(void);
+extern void RunDialogueThenStartChoiceBox(void);
+extern void WaitChoiceBoxThenRestartDialogue(void);
+extern void RunChoiceResultDialogue(void);
+extern void DispatchMainState0Substate1(void);
+extern void LoadFourRowSelectionGraphics(void);
+extern void AnimateFourRowsIn(void);
+extern void HandleFourRowSelectionInput(void);
+extern void AnimateFourRowsOut(void);
+extern void ClearUnselectedRows(void);
+extern void MoveSelectedRowToTop(void);
+extern void SlideSelectedRowLeft(void);
+extern void SwitchStateForSelectedRow(void);
 extern void sub_08002F70(void);
-extern void sub_08003018(void);
-extern void sub_08003104(void);
-extern void sub_08003374(void);
-extern void sub_08003394(void);
-extern void sub_080034A4(void);
-extern void sub_08003504(void);
-extern void sub_08003620(void);
-extern void sub_08003654(void);
-extern void sub_080036A8(void);
-extern void sub_080036C8(void);
+extern void SlideSelectedRowRight(void);
+extern void LowerSelectedRowAndRedrawRows(void);
+extern void DispatchMainState0Substate2(void);
+extern void LoadThreeOptionGraphics(void);
+extern void FadeInThenInitThreeOptionCursor(void);
+extern void HandleThreeOptionInput(void);
+extern void BeginThreeOptionFadeOut(void);
+extern void StepThreeOptionFadeOut(void);
+extern void ReturnToFourRowSelection(void);
+extern void WaitThreeOptionBlendFade(void);
 extern void sub_080036F4(void);
-extern void sub_08003784(void);
-extern void sub_080038CC(void);
-extern void sub_080038F0(void);
-extern void sub_080039E0(void);
-extern void sub_08007584(void);
-extern void sub_0800B890(void);
-extern void sub_0800D9DC(void);
+extern void RestoreThreeOptionGraphics(void);
+extern void WaitFadeThenInitThreeOptionCursor(void);
+extern void ResumeThreeOptionInput(void);
+extern void DispatchMainState0Substate3(void);
+extern void DispatchInventoryCallbacks(void);
+extern void DispatchDebugMenu(void);
+extern void DispatchPartListCallbacks(void);
 extern void sub_08012970(void);
 extern void sub_08030860(void);
 extern void sub_08033840(void);
@@ -48,12 +48,12 @@ extern void sub_0803D538(void);
 
 const MainCallback gMainState0Callbacks[64] =
 {
-    sub_08002554,
-    sub_080027BC,
-    sub_08003374,
-    sub_080039E0,
-    sub_08007584,
-    sub_0800D9DC,
+    DispatchMainState0Substate0,
+    DispatchMainState0Substate1,
+    DispatchMainState0Substate2,
+    DispatchMainState0Substate3,
+    DispatchInventoryCallbacks,
+    DispatchPartListCallbacks,
     sub_08010264,
     sub_08012970,
     sub_08030860,
@@ -111,18 +111,18 @@ const MainCallback gMainState0Callbacks[64] =
     DummyInterruptHandler,
     DummyInterruptHandler,
     DummyInterruptHandler,
-    sub_0800B890,
+    DispatchDebugMenu,
 };
 
 const MainCallback gUnknownCallbacks_083AC3C8[15] =
 {
     sub_08002574,
-    sub_080025B4,
-    sub_080026A4,
-    sub_080026E0,
-    sub_08002730,
-    sub_0800275C,
-    sub_0800277C,
+    HandleBg1ScrollAndButtons,
+    AnimatePortraitUntilDone,
+    WriteTextBufferAndRunDialogue,
+    RunDialogueThenStartChoiceBox,
+    WaitChoiceBoxThenRestartDialogue,
+    RunChoiceResultDialogue,
     DummyInterruptHandler,
     DummyInterruptHandler,
     DummyInterruptHandler,
@@ -135,16 +135,16 @@ const MainCallback gUnknownCallbacks_083AC3C8[15] =
 
 const MainCallback gUnknownCallbacks_083AC404[20] =
 {
-    sub_080027DC,
-    sub_080028AC,
-    sub_08002A2C,
-    sub_08002AF8,
+    LoadFourRowSelectionGraphics,
+    AnimateFourRowsIn,
+    HandleFourRowSelectionInput,
+    AnimateFourRowsOut,
     DummyInterruptHandler,
     DummyInterruptHandler,
-    sub_08002C34,
-    sub_08002D48,
-    sub_08002DF4,
-    sub_08002EC4,
+    ClearUnselectedRows,
+    MoveSelectedRowToTop,
+    SlideSelectedRowLeft,
+    SwitchStateForSelectedRow,
     DummyInterruptHandler,
     DummyInterruptHandler,
     DummyInterruptHandler,
@@ -152,22 +152,22 @@ const MainCallback gUnknownCallbacks_083AC404[20] =
     DummyInterruptHandler,
     DummyInterruptHandler,
     sub_08002F70,
-    sub_08003018,
-    sub_08003104,
+    SlideSelectedRowRight,
+    LowerSelectedRowAndRedrawRows,
     DummyInterruptHandler,
 };
 
 const MainCallback gUnknownCallbacks_083AC454[19] =
 {
-    sub_08003394,
-    sub_080034A4,
-    sub_08003504,
-    sub_08003620,
-    sub_08003654,
-    sub_080036A8,
+    LoadThreeOptionGraphics,
+    FadeInThenInitThreeOptionCursor,
+    HandleThreeOptionInput,
+    BeginThreeOptionFadeOut,
+    StepThreeOptionFadeOut,
+    ReturnToFourRowSelection,
     DummyInterruptHandler,
     DummyInterruptHandler,
-    sub_080036C8,
+    WaitThreeOptionBlendFade,
     sub_080036F4,
     DummyInterruptHandler,
     DummyInterruptHandler,
@@ -175,77 +175,77 @@ const MainCallback gUnknownCallbacks_083AC454[19] =
     DummyInterruptHandler,
     DummyInterruptHandler,
     DummyInterruptHandler,
-    sub_08003784,
-    sub_080038CC,
-    sub_080038F0,
+    RestoreThreeOptionGraphics,
+    WaitFadeThenInitThreeOptionCursor,
+    ResumeThreeOptionInput,
 };
 
 
 extern void sub_08003A38(void);
-extern void sub_08003D4C(void);
-extern void sub_08003DE0(void);
-extern void sub_08003E54(void);
+extern void FadeInRecordSelection(void);
+extern void HandleRecordSelectionInput(void);
+extern void StartRecordSelectionExitFade(void);
 extern void sub_08003EA0(void);
-extern void sub_08003EE0(void);
-extern void sub_08003F28(void);
+extern void ReturnToThreeOptionSelection(void);
+extern void SnapshotRecordSelectionPalettes(void);
 extern void sub_08003F74(void);
-extern void sub_08003FE8(void);
+extern void InitRecordSelectionDialogue(void);
 extern void sub_08004028(void);
 extern void sub_0800406C(void);
-extern void sub_080043A8(void);
-extern void sub_0800442C(void);
-extern void sub_080044F8(void);
+extern void FadeInInventoryDisplay(void);
+extern void HandleInventoryDisplayInput(void);
+extern void BeginInventoryReturnFade(void);
 extern void sub_0800454C(void);
-extern void sub_080045C4(void);
-extern void sub_080045DC(void);
+extern void CommitPartsAndReturnToRecords(void);
+extern void StartInventoryExitFade(void);
 extern void sub_08004610(void);
 extern void sub_08004644(void);
-extern void sub_08004764(void);
+extern void HideMarkersAndResetDelay(void);
 extern void sub_08004798(void);
 extern void sub_080047EC(void);
-extern void sub_08004840(void);
-extern void sub_08004874(void);
+extern void ExitToSubstate7(void);
+extern void DelayThenStartExitFade(void);
 extern void sub_080048B0(void);
-extern void sub_080048D8(void);
-extern void sub_080049C8(void);
+extern void CopySelectedRecordsAndEnterState3(void);
+extern void InitDialogueBeforeTransfer(void);
 extern void sub_080049EC(void);
-extern void sub_08004A18(void);
-extern void sub_08004A40(void);
-extern void sub_08004A78(void);
-extern void sub_08004AF8(void);
-extern void sub_08004C58(void);
-extern void sub_08004CA4(void);
+extern void PrepareSerialSendBuffer(void);
+extern void WaitSerialSyncAndClearOutput(void);
+extern void DelayThenInitSerialTransfer(void);
+extern void ExchangeTransferBuffersOverSerial(void);
+extern void DelayThenResetTransferCounters(void);
+extern void VerifyTransferChecksums(void);
 extern void sub_08004DB4(void);
-extern void sub_08004DF0(void);
-extern void sub_08004E40(void);
+extern void FadeToBlackAfterTransfer(void);
+extern void ExitToSubstate7AfterTransfer(void);
 
 const MainCallback gUnknownCallbacks_083AC4A0[64] =
 {
     sub_08003A38,
-    sub_08003D4C,
-    sub_08003DE0,
-    sub_08003E54,
+    FadeInRecordSelection,
+    HandleRecordSelectionInput,
+    StartRecordSelectionExitFade,
     sub_08003EA0,
-    sub_08003EE0,
+    ReturnToThreeOptionSelection,
     DummyInterruptHandler,
     DummyInterruptHandler,
-    sub_08003F28,
+    SnapshotRecordSelectionPalettes,
     sub_08003F74,
     DummyInterruptHandler,
-    sub_08003FE8,
+    InitRecordSelectionDialogue,
     sub_08004028,
     DummyInterruptHandler,
     DummyInterruptHandler,
     DummyInterruptHandler,
     sub_0800406C,
-    sub_080043A8,
-    sub_0800442C,
-    sub_080044F8,
+    FadeInInventoryDisplay,
+    HandleInventoryDisplayInput,
+    BeginInventoryReturnFade,
     sub_0800454C,
-    sub_080045C4,
+    CommitPartsAndReturnToRecords,
     DummyInterruptHandler,
     DummyInterruptHandler,
-    sub_080045DC,
+    StartInventoryExitFade,
     sub_08004610,
     sub_08004644,
     DummyInterruptHandler,
@@ -253,35 +253,35 @@ const MainCallback gUnknownCallbacks_083AC4A0[64] =
     DummyInterruptHandler,
     DummyInterruptHandler,
     DummyInterruptHandler,
-    sub_08004764,
+    HideMarkersAndResetDelay,
     sub_08004798,
     sub_080047EC,
-    sub_08004840,
+    ExitToSubstate7,
     DummyInterruptHandler,
     DummyInterruptHandler,
     DummyInterruptHandler,
     DummyInterruptHandler,
-    sub_08004764,
-    sub_08004874,
+    HideMarkersAndResetDelay,
+    DelayThenStartExitFade,
     sub_080048B0,
-    sub_080048D8,
+    CopySelectedRecordsAndEnterState3,
     DummyInterruptHandler,
     DummyInterruptHandler,
     DummyInterruptHandler,
     DummyInterruptHandler,
-    sub_080049C8,
+    InitDialogueBeforeTransfer,
     sub_080049EC,
-    sub_08004A18,
-    sub_08004A40,
-    sub_08004A78,
-    sub_08004AF8,
-    sub_08004C58,
-    sub_08004A40,
-    sub_08004C58,
-    sub_08004CA4,
+    PrepareSerialSendBuffer,
+    WaitSerialSyncAndClearOutput,
+    DelayThenInitSerialTransfer,
+    ExchangeTransferBuffersOverSerial,
+    DelayThenResetTransferCounters,
+    WaitSerialSyncAndClearOutput,
+    DelayThenResetTransferCounters,
+    VerifyTransferChecksums,
     sub_08004DB4,
-    sub_08004DF0,
-    sub_08004E40,
+    FadeToBlackAfterTransfer,
+    ExitToSubstate7AfterTransfer,
     DummyInterruptHandler,
     DummyInterruptHandler,
     DummyInterruptHandler,

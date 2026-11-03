@@ -48,9 +48,9 @@ void sub_0800EA98(void) {
 
     s32 v;
     ScrollBg3Diagonally3();
-    sub_0800F440();
+    UpdateSelectedPartPreview();
     SetObjectXWobble(4U, gFrameCounter, 0xA8U);
-    sub_080100BC();
+    MoveObject4RowCursorUpDown();
     if (1 & gFamilyKeyBytes49558_0300058C) {
         if (gState0TypedWork.bytes[0x4A] == 1) {
             v = (u16) sub_08042114(gState0TypedWork.bytes[0x3D], gState0TypedWork.bytes[0x3E]);
@@ -60,14 +60,14 @@ void sub_0800EA98(void) {
             }
         }
         PlaySoundEffect(4U);
-        sub_08010040();
+        InitObject4RowCursor();
         gNestedCallbackIndex += 1;
         return;
     }
     if (2 & gFamilyKeyBytes49558_0300058C) {
         PlaySoundEffect(5U);
         gState0TypedWork.bytes[0x4A] = 2;
-        sub_08010040();
+        InitObject4RowCursor();
         gNestedCallbackIndex += 1;
     }
 }

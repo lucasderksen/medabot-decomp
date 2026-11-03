@@ -14,8 +14,8 @@ extern u8 gInventoryNames[30][64]; /* Aliases the record base plus ten bytes. */
 extern const void *const gPartTextPointers_083BBB4C[480];
 extern const u8 gInventoryMetadata_083B62D8[];
 
-void sub_080059D0(void);
-void sub_08005AD0(void);
+void PrepareSelectedRecordParts(void);
+void DrawCurrentInventoryNameText(void);
 void sub_08005B44(void);
 void sub_08005BB4(void);
 void sub_08005C10(void);
@@ -28,7 +28,7 @@ void sub_08005FEC(void);
 void sub_080060D0(void);
 void sub_08006154(void);
 
-void sub_08006238(u32);
+void DrawFirstRowHighlightTiles(u32);
 void sub_08006284(u32);
 void sub_080062D0(u32);
 void sub_0800631C(u32);
@@ -38,22 +38,22 @@ void sub_08006414(void);
 void sub_08006444(void);
 void sub_08006494(void);
 void sub_08006514(void);
-void sub_0800656C(void);
+void InitEditedPartsPreview(void);
 void sub_0800667C(void);
 void sub_08006764(void);
-void sub_08006824(void);
-u32 sub_080068EC(void);
-u32 sub_08006980(void);
+void BlinkFiveRowHighlight(void);
+u32 MoveFiveRowSelectionUpDown(void);
+u32 CycleUnassignedInventoryOnLeftRight(void);
 u32 sub_08006A00(void);
 u32 sub_08006A98(void);
 u32 sub_08006B30(void);
 u32 sub_08006BC8(void);
 
-u32 sub_08006C64(void);
-u32 sub_08006E08(u32 part);
+u32 CycleMatchingPartSetOnStart(void);
+u32 DecrementPartIndexWrapped(u32 part);
 void sub_08006E44(void);
 void sub_08006F14(void);
-void sub_08006FB0(void);
+void CommitPartsToSelectedRecord(void);
 void sub_080070F0(void);
 
 /* Call-site interfaces; these implementations remain copied. */

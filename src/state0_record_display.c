@@ -7,7 +7,7 @@
 #include "render_work.h"
 #include "display_helpers.h"
 
-void sub_0800529C(void)
+void InitSelectedRecordPreview(void)
 {
     u32 fill;
     FillBytes(&gRecordDisplayWork, 0xD0, 0);
@@ -79,7 +79,7 @@ void sub_080054C0(void)
     }
 }
 
-u32 sub_08005588(void)
+u32 MoveRecordSelectionByDirection(void)
 {
     u32 changed = 0;
     const u8 *next;
@@ -92,7 +92,7 @@ u32 sub_08005588(void)
     PlaySoundEffect(2);
     gState0TypedWork.bytes[0x51] = next[gState0TypedWork.bytes[0x51]];
     StepMarkerOrbitForward(0); StepMarkerOrbitForward(1); StepMarkerOrbitForward(2); StepMarkerOrbitForward(3);
-    sub_08005118(); sub_0800519C(); sub_0800522C(); sub_080053C8(); sub_08005000(); sub_08005948();
+    DrawSelectedRecordNameText(); sub_0800519C(); LoadSelectedRecordTileGraphic(); sub_080053C8(); PlaceNineRecordObjectGroups(); sub_08005948();
     return 1;
     }
     else return 0;
@@ -106,7 +106,7 @@ void sub_08005628(void)
     gFrameObjects[7].flags = 0xC604; gFrameObjects[7].unknown23[0] = 48; StepMarkerOrbitReverse(7);
 }
 
-void sub_08005798(void)
+void BlinkSwapMarkerObjects(void)
 {
     if (gState0TypedWork.bytes[0x52] & 0x80)
     {
@@ -141,8 +141,8 @@ u32 sub_080058A4(void)
         {
             SwapBytes(&gUnknownRecords_030017A0[gState0TypedWork.bytes[0x52]],
                         &gUnknownRecords_030017A0[gState0TypedWork.bytes[0x51]], 8);
-            sub_08004FD0(); sub_08005000(); sub_0800508C(); sub_08005118(); sub_0800519C();
-            sub_0800522C(); sub_080053C8(); sub_08005948();
+            LoadActiveRecordObjGraphics(); PlaceNineRecordObjectGroups(); sub_0800508C(); DrawSelectedRecordNameText(); sub_0800519C();
+            LoadSelectedRecordTileGraphic(); sub_080053C8(); sub_08005948();
         }
         gState0TypedWork.bytes[0x52] = 0;
     }
@@ -151,7 +151,7 @@ u32 sub_080058A4(void)
         gState0TypedWork.bytes[0x52] = gState0TypedWork.bytes[0x51] + 0x80;
         sub_08005628();
     }
-    sub_08005798();
+    BlinkSwapMarkerObjects();
     return 1;
     }
     return 0;

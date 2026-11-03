@@ -6,7 +6,7 @@
 #include "object_helpers.h"
 #include "tile_text.h"
 
-void sub_0800EE34(void)
+void DrawPartPageStatusTiles(void)
 {
     u32 i = 0;
     u8 *parts = gObjectHalfwordBytes;

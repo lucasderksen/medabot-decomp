@@ -69,7 +69,7 @@ void sub_080655FC(void) {
  if(((struct PurchaseContextView *)gMainContextPointer_03006F74)->active){
   if(RunDialogueClose()){
    ((struct PurchaseContextView *)gMainContextPointer_03006F74)->active=0;
-   sub_0803FAA0(1,0,0);
+   InitDialogue(1,0,0);
   }
  }else if(RunDialogue(gMain2ScriptSlots_0848521C[14]))busy=0;
  if(busy==0&&(busy=RunChoiceBox())!=0){

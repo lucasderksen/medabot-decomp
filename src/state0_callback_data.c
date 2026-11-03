@@ -1,13 +1,13 @@
 #include "state0_callback_data.h"
 
 extern void DummyInterruptHandler(void);
-extern void sub_080102C0(void);
+extern void EnableBgMosaicAndPlayMusic(void);
 extern void sub_0801030C(void);
-extern void sub_08010328(void);
+extern void StepMosaicSizeUp(void);
 extern void sub_08010358(void);
 extern void sub_08010374(void);
-extern void sub_080103A4(void);
-extern void sub_080103F4(void);
+extern void AlternateMosaicPulses(void);
+extern void LoadBg0ImageAndPalette(void);
 extern void sub_08010478(void);
 extern void sub_0801053C(void);
 extern void sub_0801058C(void);
@@ -726,13 +726,13 @@ extern void sub_0803080C(void);
 extern void sub_0803081C(void);
 
 const State0StoredCallback gState0MapCallbacks_083ACE24[144] = {
-    sub_080102C0,
+    EnableBgMosaicAndPlayMusic,
     sub_0801030C,
-    sub_08010328,
+    StepMosaicSizeUp,
     sub_08010358,
     sub_08010374,
-    sub_080103A4,
-    sub_080103F4,
+    AlternateMosaicPulses,
+    LoadBg0ImageAndPalette,
     sub_08010478,
     sub_0801053C,
     sub_0801058C,

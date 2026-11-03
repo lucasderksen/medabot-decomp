@@ -4,7 +4,7 @@
 extern u32 sub_0803EED8(void);
 extern const MainCallback gUnknownCallbacks_083AC4A0[];
 
-void sub_080039E0(void)
+void DispatchMainState0Substate3(void)
 {
     if (!sub_0803EED8())
     {
@@ -25,16 +25,16 @@ void sub_080039E0(void)
 
 extern void ClearBgScrolls2(void);
 extern void sub_080054C0(void);
-extern void sub_08004FD0(void);
-extern void sub_08005000(void);
-extern void sub_08004E98(void);
+extern void LoadActiveRecordObjGraphics(void);
+extern void PlaceNineRecordObjectGroups(void);
+extern void InitMarkerOrbitObjects(void);
 extern void sub_0800508C(void);
-extern void sub_08005118(void);
+extern void DrawSelectedRecordNameText(void);
 extern void sub_0800519C(void);
-extern void sub_0800522C(void);
+extern void LoadSelectedRecordTileGraphic(void);
 extern void sub_08005948(void);
 extern void sub_0800750C(void);
-extern void sub_0800529C(void);
+extern void InitSelectedRecordPreview(void);
 extern void sub_08005628(void);
 extern const u8 gUnknownPalette_0850F2B8[];
 
@@ -97,18 +97,18 @@ void sub_08003A38(void)
         if (gUnknown_03000440[0x56] == 1)
             sub_080054C0();
         gUnknown_03000440[0x96] = 1;
-        sub_08004FD0();
-        sub_08005000();
-        sub_08004E98();
+        LoadActiveRecordObjGraphics();
+        PlaceNineRecordObjectGroups();
+        InitMarkerOrbitObjects();
         sub_0800508C();
-        sub_08005118();
+        DrawSelectedRecordNameText();
         sub_0800519C();
-        sub_0800522C();
+        LoadSelectedRecordTileGraphic();
         sub_08005948();
         sub_0800750C();
         if (gUnknown_03000440[0x56] == 0)
         {
-            sub_0800529C();
+            InitSelectedRecordPreview();
             if (gUnknown_03000440[0x50] == 3)
                 PlayMusic(7);
         }
@@ -129,11 +129,11 @@ void sub_08003A38(void)
 extern void ScrollBg3Diagonally2(void);
 extern void StepMarkerOrbitForward(u32);
 extern void sub_080054C0(void);
-extern void sub_08005798(void);
+extern void BlinkSwapMarkerObjects(void);
 extern void sub_0800598C(void);
-extern void sub_0800712C(void);
+extern void PlaceTransferSlotMarkers(void);
 extern u32 sub_080058A4(void);
-extern u32 sub_08005588(void);
+extern u32 MoveRecordSelectionByDirection(void);
 extern void sub_0800725C(void);
 extern void sub_080072EC(void);
 extern void sub_08007408(void);
@@ -150,9 +150,9 @@ extern void sub_08007408(void);
     sub_0800598C(); \
 } while (0)
 
-void sub_08003D4C(void)
+void FadeInRecordSelection(void)
 {
-    ENTRY_FRAME_WORK(sub_08005798());
+    ENTRY_FRAME_WORK(BlinkSwapMarkerObjects());
     if (gUnknown_03000440[0x56] == 1)
     {
         if (gUnknown_03000440[0x84] <= 8)
@@ -174,11 +174,11 @@ void sub_08003D4C(void)
     }
 }
 
-void sub_08003DE0(void)
+void HandleRecordSelectionInput(void)
 {
-    ENTRY_FRAME_WORK(sub_08005798());
-    sub_0800712C();
-    if (!sub_080058A4() && !sub_08005588())
+    ENTRY_FRAME_WORK(BlinkSwapMarkerObjects());
+    PlaceTransferSlotMarkers();
+    if (!sub_080058A4() && !MoveRecordSelectionByDirection())
     {
         const u8 *pressed = (const u8 *)&gNewKeys;
         if (*pressed & KEY_B)
@@ -190,7 +190,7 @@ void sub_08003DE0(void)
     }
 }
 
-void sub_08003E54(void)
+void StartRecordSelectionExitFade(void)
 {
     ENTRY_FRAME_WORK((void)0);
     StartBlendFade(6, 63, 32);
@@ -205,7 +205,7 @@ void sub_08003EA0(void)
         gNestedCallbackIndex++;
 }
 
-void sub_08003EE0(void)
+void ReturnToThreeOptionSelection(void)
 {
     CpuFastSet((const void *)0x084E43D8, (void *)0x050003E0, 8);
     ClearFrameObjects(0, 128);
@@ -215,9 +215,9 @@ void sub_08003EE0(void)
     gNestedCallbackIndex = 16;
 }
 
-void sub_08003F28(void)
+void SnapshotRecordSelectionPalettes(void)
 {
-    ENTRY_FRAME_WORK(sub_08005798());
+    ENTRY_FRAME_WORK(BlinkSwapMarkerObjects());
     SnapshotPalettes();
     gUnknown_03000440[0x84] = 0;
     gNestedCallbackIndex++;
@@ -225,7 +225,7 @@ void sub_08003F28(void)
 
 void sub_08003F74(void)
 {
-    ENTRY_FRAME_WORK(sub_08005798());
+    ENTRY_FRAME_WORK(BlinkSwapMarkerObjects());
     if (gUnknown_03000440[0x84] <= 8)
     {
         BlendBgPaletteBanksNow(0, gUnknown_03000440[0x84] * 4, 0xFFFF);
@@ -236,10 +236,10 @@ void sub_08003F74(void)
         gNestedCallbackIndex = 16;
 }
 
-void sub_08003FE8(void)
+void InitRecordSelectionDialogue(void)
 {
     ENTRY_FRAME_WORK((void)0);
-    sub_0803FAA0(1, 2, 0);
+    InitDialogue(1, 2, 0);
     gNestedCallbackIndex++;
 }
 
@@ -258,13 +258,13 @@ void sub_08004028(void)
 
 extern const u8 gUnknownPalette_0850F2B8[];
 extern void sub_080054C0(void);
-extern void sub_080059D0(void);
-extern void sub_08006238(u32);
+extern void PrepareSelectedRecordParts(void);
+extern void DrawFirstRowHighlightTiles(u32);
 extern void sub_08006284(u32);
 extern void sub_080062D0(u32);
 extern void sub_0800631C(u32);
 extern void sub_08006368(u32);
-extern void sub_08005AD0(void);
+extern void DrawCurrentInventoryNameText(void);
 extern void sub_08005B44(void);
 extern void sub_08005C10(void);
 extern void sub_08005BB4(void);
@@ -279,7 +279,7 @@ extern void sub_08006154(void);
 extern void sub_080063B4(void);
 extern void sub_08006414(void);
 extern void sub_08006494(void);
-extern void sub_0800656C(void);
+extern void InitEditedPartsPreview(void);
 extern void sub_08042E58(u32, u32, u32, u32, u32, u32, u32, u32, u32, u32, u32);
 
 void sub_0800406C(void)
@@ -312,7 +312,7 @@ void sub_0800406C(void)
         CpuFastSet(gUnknownPalette_0850F2B8, (void *)0x0202F9E0, 8);
         CpuFastSet((const void *)0x084E43F8, (void *)0x0202F9C0, 8);
         gUnknown_03000440[0x5A] = 0;
-        sub_080059D0();
+        PrepareSelectedRecordParts();
         gUnknown_03000440[0x84] = 0;
     }
     else
@@ -333,12 +333,12 @@ void sub_0800406C(void)
     *(volatile u16 *)0x04000000 &= 0xFFDF;
     gUnknown_03000440[0x53] = 0;
     gUnknown_03000440[0x96] = 1;
-    sub_08006238(0);
+    DrawFirstRowHighlightTiles(0);
     sub_08006284(0);
     sub_080062D0(0);
     sub_0800631C(0);
     sub_08006368(0);
-    sub_08005AD0();
+    DrawCurrentInventoryNameText();
     sub_08005B44();
     sub_08005C10();
     sub_08005BB4();
@@ -356,7 +356,7 @@ void sub_0800406C(void)
         0, 6, 168, 32, gUnknown_03000440[0x5E], 1, 5);
     sub_08006494();
     if (gUnknown_03000440[0x56] != 0)
-        sub_0800656C();
+        InitEditedPartsPreview();
     gUnknown_03000440[0x84] = 0;
     gNestedCallbackIndex++;
 }
@@ -370,20 +370,20 @@ void sub_0800406C(void)
 extern void ScrollBg3Diagonally2(void);
 extern void sub_08006764(void);
 extern void sub_08006514(void);
-extern void sub_08006824(void);
+extern void BlinkFiveRowHighlight(void);
 extern void sub_08006E44(void);
 extern void sub_08006F14(void);
-extern u32 sub_080068EC(void);
-extern u32 sub_08006980(void);
+extern u32 MoveFiveRowSelectionUpDown(void);
+extern u32 CycleUnassignedInventoryOnLeftRight(void);
 extern u32 sub_08006A00(void);
 extern u32 sub_08006A98(void);
 extern u32 sub_08006B30(void);
 extern u32 sub_08006BC8(void);
-extern u32 sub_08006C64(void);
+extern u32 CycleMatchingPartSetOnStart(void);
 extern void sub_0800667C(void);
 extern void sub_08006444(void);
 extern u32 sub_08006F34(void);
-extern void sub_08006FB0(void);
+extern void CommitPartsToSelectedRecord(void);
 extern void sub_080070F0(void);
 extern u8 gUnknown_0300047C[];
 
@@ -391,12 +391,12 @@ extern u8 gUnknown_0300047C[];
     ScrollBg3Diagonally2(); \
     sub_08006764(); \
     sub_08006514(); \
-    sub_08006824(); \
+    BlinkFiveRowHighlight(); \
     sub_08006E44(); \
     sub_08006F14(); \
 } while (0)
 
-void sub_080043A8(void)
+void FadeInInventoryDisplay(void)
 {
     DESTINATION_FRAME_WORK();
     if (gUnknown_03000440[0x56] == 0)
@@ -420,11 +420,11 @@ void sub_080043A8(void)
     }
 }
 
-void sub_0800442C(void)
+void HandleInventoryDisplayInput(void)
 {
     DESTINATION_FRAME_WORK();
-    if (!sub_080068EC() && !sub_08006980() && !sub_08006A00()
-        && !sub_08006A98() && !sub_08006B30() && !sub_08006BC8() && !sub_08006C64())
+    if (!MoveFiveRowSelectionUpDown() && !CycleUnassignedInventoryOnLeftRight() && !sub_08006A00()
+        && !sub_08006A98() && !sub_08006B30() && !sub_08006BC8() && !CycleMatchingPartSetOnStart())
     {
         const u8 *pressed = (const u8 *)&gNewKeys;
         if (*pressed & KEY_B)
@@ -453,7 +453,7 @@ void sub_0800442C(void)
     }
 }
 
-void sub_080044F8(void)
+void BeginInventoryReturnFade(void)
 {
     DESTINATION_FRAME_WORK();
     if (gUnknown_03000440[0x50] == 0)
@@ -484,14 +484,14 @@ void sub_0800454C(void)
         gNestedCallbackIndex++;
 }
 
-void sub_080045C4(void)
+void CommitPartsAndReturnToRecords(void)
 {
     sub_08006764();
-    sub_08006FB0();
+    CommitPartsToSelectedRecord();
     gNestedCallbackIndex = 0;
 }
 
-void sub_080045DC(void)
+void StartInventoryExitFade(void)
 {
     DESTINATION_FRAME_WORK();
     StartBlendFade(6, 63, 32);

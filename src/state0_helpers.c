@@ -15,7 +15,7 @@ void ScrollBg3Diagonally2(void)
     }
 }
 
-void sub_08004E98(void)
+void InitMarkerOrbitObjects(void)
 {
     gFrameObjects[0].flags = 0xC604;
     gFrameObjects[0].unknown23[0] = 0;
@@ -61,7 +61,7 @@ void StepMarkerOrbitForward(u32 index)
     gFrameObjects[index].unknown23[0] = (gFrameObjects[index].unknown23[0] + 1) & 63;
 }
 
-void sub_08004FD0(void)
+void LoadActiveRecordObjGraphics(void)
 {
     u32 i = 0;
     struct State0Record8 *record = gUnknownRecords_030017A0;
@@ -70,7 +70,7 @@ void sub_08004FD0(void)
             sub_08042D94(record->byte3, record->byte4, record->byte5, record->byte6, i);
 }
 
-void sub_08005118(void)
+void DrawSelectedRecordNameText(void)
 {
     struct State0Record8 *record;
     struct State0Record8 *base;
@@ -106,7 +106,7 @@ void sub_0800519C(void)
     }
 }
 
-void sub_0800522C(void)
+void LoadSelectedRecordTileGraphic(void)
 {
     struct State0Record8 *record = gUnknownRecords_030017A0;
     record += gState0TypedWork.bytes[0x51];

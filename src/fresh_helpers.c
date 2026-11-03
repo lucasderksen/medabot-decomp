@@ -75,7 +75,7 @@ u32 sub_080483F8(void)
 #include "map_metadata.h"
 s32 sub_08048684(s32 index);
 void sub_08048708(void);
-void sub_0804B2B0(void);
+void LoadMapBgLayers(void);
 void sub_0804B1B0(void);
 extern const u8 *const gFreshPointers_083F7E80[];
 extern u8 gFreshWork_03006D38[];
@@ -95,7 +95,7 @@ void sub_080480E4(void)
     gBgScroll3.y = gFreshSettings_03005310.y[2];
     LoadMapBgPalettes();
     sub_08048708();
-    sub_0804B2B0();
+    LoadMapBgLayers();
     gUnknown_030057E0[0xC36] = zero;
     StepMapTileAnimation();
     sub_080513C8(gUnknown_030057E0[0xCBA]);

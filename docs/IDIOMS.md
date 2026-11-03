@@ -52,7 +52,7 @@ s32 rx[4][4] = {
 
 - Base loaded before the index shift (`ldr rB,=gFrameObjects; lsls r0,rI,#6`):
   `u32 root = (u32)gFrameObjects; object = (struct FrameObject *)(root + (index << 6));`
-  (sub_0806E074, sub_0806B1FC, sub_080706A4; older sub_0806E038, sub_08070648).
+  (sub_0806E074, sub_0806B1FC, BobObjectVertically; older sub_0806E038, sub_08070648).
   When the reference reloads the base literal for each later access, give each
   access its own block-scoped `u32 root` (sub_0807190C, sub_080719B8).
 - Symbol + offset kept as `ldr base; adds #off` instead of one folded literal:
@@ -192,7 +192,7 @@ s32 rx[4][4] = {
   (`name[13]` at +0, byte +0x10, `data11[6]` at +0x11, id +0x17); `parts[k]` as a nested
   struct array reproduced the reference givs (sub_08014F90, sub_0801D5A8).
 - `(i << 8) + base` added before `+ j`: write `row = buf + (i << 8); row[j]`, not
-  `buf[(i << 8) + j]` or a 2D array (sub_08004AF8).
+  `buf[(i << 8) + j]` or a 2D array (ExchangeTransferBuffersOverSerial).
 - m2c `D_0300xxxx` bases with offsets like `0xFFFFF1C0` are one symbol at several
   offsets (gcc CSE of symbol+const): here `&gFrameObjects[n]` (sub_0801D738).
 - `(k << 8) + root + 0x1664` (big folded constant after the base) came from
@@ -200,9 +200,9 @@ s32 rx[4][4] = {
   `u32 root = (u32)gFrameObjects` (sub_0801D9DC); `gFrameObjects[0x59 + k * 4]` gives
   `(k << 8) + 0x1640 + base`.
 - `a == 3 && b == 3` on adjacent bytes compiles to one word compare; the reference's
-  two byte compares came from nested `if (a == 3) if (b == 3)` (sub_08004AF8).
+  two byte compares came from nested `if (a == 3) if (b == 3)` (ExchangeTransferBuffersOverSerial).
 - An `adds` of literal `0xFFFF8000` before a u16 store came from
-  `+ (u16)(x + 0x8000)`; `- 0x8000` and `+ 0xFFFF8000` emit `0x8000` (sub_08004AF8).
+  `+ (u16)(x + 0x8000)`; `- 0x8000` and `+ 0xFFFF8000` emit `0x8000` (ExchangeTransferBuffersOverSerial).
 - A loop whose body starts with `if (!x) break;` is rotated by gcc (entry jump to a
   bottom copy of the test). The reference's top-of-loop exit test came from `return`
   or `goto label_after_loop` instead of `break` (sub_08018D0C, sub_08018DF4, near-miss sub_0801A33C).
@@ -264,14 +264,14 @@ s32 rx[4][4] = {
 - An `adds rX,rY,#0` copy right after a load (root base copied to a callee-saved register, or a byte compared through a copy) came from re-reading the same field/global instead of a cached local, e.g. `gFrameObjects[i].unknown1A` in each test, `ctx->cursor05 != 0 ? ctx->cursor05 - 1 : 4` (sub_0806B248, sub_08066280).
 
 - A comparison temp assigned inside the condition, `(value >> 8) == (low = value & 0xFF)`, moved the
-  `movs #0xFF` after the shift (found by tools/permute.py, sub_0800FDD8).
+  `movs #0xFF` after the shift (found by tools/permute.py, CycleSelectablePartOnLeftRight).
 - A pointer computed from a base loaded first (`ldr rB,=gX` before the index math, then `adds rI,rB`)
   also applies to non-frame bases: block-scoped `u32 root = (u32)gSetupBuffer_03000590;` (sub_080173B4) and
   `(... + 0x18 + root)` for gInventoryRecords (sub_0800AD58).
 - Values from a table passed later as call arguments stayed in low registers only as `u32` locals;
   `u8 x = table[i]` moved them to high registers (sub_080183A4).
 - A field read twice instead of a `u8 flags` local avoided the in-place `ands` on the dying register
-  (`movs r0,#0x40; ands r0,r1` in the reference) (near-miss sub_0800A1E4, 13 -> 9 rows).
+  (`movs r0,#0x40; ands r0,r1` in the reference) (near-miss CycleOwnedInventoryOnLeftRight, 13 -> 9 rows).
 - A constant reused in a later compare as `lsls/lsrs #16` of the OR operand register came from a `u16` comparison temp (`u16 mask = w0 & 0xC000; if (mask == 0x4000 ...)`) (sub_08063254).
 - `(u8)(field += 8) > 0x40` kept one hoisted `movs rK,#0xFF` used by a later `ands` test (sub_0806CB28).
 
@@ -541,7 +541,7 @@ rows), sub_080465B8 (1,192 B) and sub_08046D1C (1,256 B); drafts in docs/drafts/
   new register while the libcall result stays live) came from writing the
   division twice as an operator: `if ((u8)(L / 10u) * b + b > 100) s = 100; else
   s = b + (L / 10u) * b;`. The const libcall is CSE'd, the truncation is not
-  (sub_08041D70; a `u8 t` temporary merges both sums instead).
+  (AddInventoryRecord; a `u8 t` temporary merges both sums instead).
 - A constant base the reference keeps in a caller-saved register across a loop
   and reloads only at one join (`ldr r2, =gFrameObjects` after the `next:`
   label) is a variable with two definitions, which GCSE cprop cannot replace:
@@ -842,7 +842,7 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
 - To make the ior result share the constant's register (`movs r2,#0xC0; lsls r2,#23;
   orrs r2,r0`), shift first into a temp, then `t = 0x60000000; t |= shifted; t >>= 16;`.
   The one-expression form ties the result to the shifted operand (sub_080639C4).
-- sub_0804B2B0 (844 B) matched once the call arguments `gContinuedWork_030057E0.halfC4A >> 3`
+- LoadMapBgLayers (844 B) matched once the call arguments `gContinuedWork_030057E0.halfC4A >> 3`
   were written `halfC4A / 8` (u16 field): the unsigned division expands later than the
   shift, so the argument value no longer took a high register (ip/sb/r8 copies before the
   calls disappeared, 35 -> 0 rows). Worth one try wherever a shifted field argument is
@@ -916,7 +916,7 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
 - Same lever with two call arms: `u32 object` declared at function scope and assigned in
   both `if`/`else if` arms (`object = twice + base;` with block-local `twice`/`base`)
   gave the reference's separate object register and pointer temp, the cross-jumped
-  `step++`/`column++` tail and all DMA registers, with no do/while wraps (sub_0806FF2C,
+  `step++`/`column++` tail and all DMA registers, with no do/while wraps (StepBridgeSegmentDraw,
   26 -> 0 rows). Block-local `object` in each arm, or one combined expression, does not.
 - Inner tile-copy loop the reference runs as a reversed countdown (`cmp width,#0; beq`,
   then `subs rN,#1; cmp rN,#0; bne`, with `palette << 12` recomputed per row) appeared
@@ -960,7 +960,7 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
   `{ u8 *slot; struct R *records = (struct R *)0x02040000; slot = &table[records[i].id * 2 + ...]; *slot += amount[i]; }`.
   `table[...] += ...` or a for-init `records` kept the opposite order. No agbcc flag
   (all -f/-fno- options, singly and in pairs, and old_agbcc) changed any of the 2-3 row
-  near-misses sub_08067974, sub_08067D00, sub_0805DEC8, sub_08065208, sub_08060708 (lean_c r9).
+  near-misses StepCreditsTextScroll, sub_08067D00, sub_0805DEC8, sub_08065208, sub_08060708 (lean_c r9).
 ## Variable scope and pseudo sharing (lean_e, 21 October)
 
 - Repeated if/else-chain branches that each build `&gFrameObjects[arg0 * 3 + 0x47]` matched only with
@@ -989,7 +989,7 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
   reuse a constant it already holds (lean_c r10). sub_0805DEC8: the first call's result and the fill byte
   are one variable, `value = sub_08074FA4(4); if (value) return value; ... name[i] = value = 0xFE;`
   (the result lands in r1, and the store-chained `0xFE` comes after the loop base load).
-  sub_08067974: the `0x1F` mask is loaded through the later `s8 row` variable, `low = timer; row = 0x1F;
+  StepCreditsTextScroll: the `0x1F` mask is loaded through the later `s8 row` variable, `low = timer; row = 0x1F;
   low &= row; ... row = timer / 32 + 0x10; row &= 0x1F;`. Reassigning `row` kills the equivalence, so
   the second mask is a fresh `movs #0x1F` (try_decls then picked `s8`).
 - sub_08064A80 (lean_c r10): one variable for two roles in disjoint branches matched; `bits` is the
@@ -1136,14 +1136,14 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
 - A register copy the reference places on one exit edge only (`adds r4,r5,#0; b second` in its own block,
   ours hoisted before the branch) is a GCSE PRE copy inserted at the end of the edge's source block. The
   block survives until GCSE only if it holds an insn: a dead store before the `goto` (`if (x != 1) { found = 1;
-  goto second; }`; flow deletes the store later) reproduced it (sub_0800A1E4).
+  goto second; }`; flow deletes the store later) reproduced it (CycleOwnedInventoryOnLeftRight).
 - `table[idx]` with a constant pointer argument: a symbol (`D_02020000`) is PRE-hoisted into a callee-saved
   register before an earlier loop; `(u16 *)0x02020000` is not a pool load and stays at the call (sub_080185E8).
 - A loop counter giv `slot = i + 4` that the reference strength-reduces (init after the hoisted constants,
   `lsls rS,#6` per iteration) appears only when no other `4 + i` is computed: reading the counter bytes as
   `pad3D[4 + i]` makes CSE share that index and the giv is "not worth while"; an array field view starting
   at the byte (`cells41[i]`) plus `gFrameObjects[i + 4].field` per store and `call(i + 4)` matched
-  (sub_0800712C). Read `-dL` (`giv of insn N not worth while`) to see such decisions.
+  (PlaceTransferSlotMarkers). Read `-dL` (`giv of insn N not worth while`) to see such decisions.
 
 ## Allocation debug compiler and priorities (lean_c, 21 October)
 
@@ -1402,7 +1402,7 @@ scores are search metrics, and exact bytes still require `tools/match.py`.
   parameter's zero extension is deleted by combine. The helpers' return type also
   matters: returning `u16` instead of `u32` from the tail wraps changed global
   priorities (live length) enough to swap two callee-saved registers
-  (sub_0803BE44; the permuter found the return-type change).
+  (ScrollBgToFollowObject; the permuter found the return-type change).
 - Global-allocation priorities use live lengths computed by flow, before combine, so
   insns combine deletes later (here the u16 helper's zero extensions) still lengthen
   every pseudo live across them; plain inline copies are usually gone by then (CSE).

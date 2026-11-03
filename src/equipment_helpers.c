@@ -152,7 +152,7 @@ void sub_08043F9C(void)
         StartBlendFade(0, 0, 0);
 }
 
-void sub_08043FEC(u32 index)
+void StepEquipmentTileAnimation(u32 index)
 {
     u8 *work = gState0TransferWork.bytes;
     u32 frameOffset;

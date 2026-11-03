@@ -55,7 +55,7 @@ void sub_08012C0C(void)
     sub_08015BA8(*selection);
     sub_08015C40(*selection);
     sub_08015E68(*selection);
-    sub_08015F24();
+    DrawSelectedMenuLabel();
     sub_08015F78();
     sub_08043240(*selection * 4 + 0x5A, 8);
     gNestedCallbackIndex++;

@@ -21,9 +21,9 @@ extern const void *const gState0NextText_083B4C60[];
 extern const void *const gState0NextScripts_083B5578[];
 void BlendBgPaletteBanksNow(u32, u32, u32);
 void BlendObjPaletteBanksNow(u32, u32, u32);
-void sub_0803FAA0(u32, u32, u32);
+void InitDialogue(u32, u32, u32);
 
-void sub_0800D9DC(void)
+void DispatchPartListCallbacks(void)
 {
     if (!sub_0803EED8())
     {
@@ -43,7 +43,7 @@ void sub_0800DA34(void)
     volatile u16 *bg2;
     volatile u16 *bg3;
     u32 fill;
-    if (gState0TypedWork.bytes[0x42] == 1) sub_0800F440();
+    if (gState0TypedWork.bytes[0x42] == 1) UpdateSelectedPartPreview();
     else if (gState0TypedWork.bytes[0x3C] == 4) PlayMusic(7);
     *(volatile u16 *)0x04000000 &= 0xF0FF;
     bg0 = (volatile u16 *)0x04000008;
@@ -86,47 +86,47 @@ void sub_0800DA34(void)
     CpuFastSet(&fill, gFrameObjects, 0x01000800);
     *(volatile u16 *)0x04000000 |= 0x1F60;
     CopyTilemapRect(10, 2, 16, 0, gState0NextText_083B4C60[gState0TypedWork.bytes[0x3E] + 89], *(volatile u16 *)0x04000008, 512);
-    sub_0800EC20();
+    SplitPartIndexIntoPageRow();
     sub_08042950(gState0TypedWork.bytes[0x3F] + 1, 11, 2, 2, *(volatile u16 *)0x0400000A, 0x7360);
-    sub_0800EC44();
-    sub_0800ED10();
-    sub_0800EDA0();
-    sub_0800EE34();
-    sub_0800EEE4();
-    sub_0800EFB0();
+    DrawPartPageNames();
+    DrawPartPageCounts();
+    DrawPartPageAssignedCounts();
+    DrawPartPageStatusTiles();
+    InitPartPageMarkerPair();
+    PlacePartRowCursor();
     gState0TypedWork.bytes[0x44] = 0;
-    if (gState0TypedWork.bytes[0x42] != 1) sub_0800F218();
+    if (gState0TypedWork.bytes[0x42] != 1) InitPartListPreview();
     gNestedCallbackIndex++;
 }
 
 void sub_0800DD88(void)
 {
     ScrollBg3Diagonally3();
-    sub_0800EF58();
+    BlinkPartPageMarkerPair();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 80);
-    sub_0800F440();
-    sub_0803FAA0(1, 2, 0);
+    UpdateSelectedPartPreview();
+    InitDialogue(1, 2, 0);
     gNestedCallbackIndex++;
 }
 
 void sub_0800DDC0(void)
 {
     ScrollBg3Diagonally3();
-    sub_0800EF58();
+    BlinkPartPageMarkerPair();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 80);
-    sub_0800F440();
+    UpdateSelectedPartPreview();
     if (RunDialogue(gState0NextScripts_083B5578[16])) gNestedCallbackIndex++;
 }
 
 void sub_0800DE00(void)
 {
     ScrollBg3Diagonally3();
-    sub_0800EF58();
+    BlinkPartPageMarkerPair();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 80);
-    sub_0800F440();
-    if (sub_0800EFFC()) return;
-    if (sub_0800F08C()) return;
-    if (sub_0800F148()) return;
+    UpdateSelectedPartPreview();
+    if (MovePartRowOnUpDown()) return;
+    if (MovePartPageOnLeftRight()) return;
+    if (CyclePartCategoryOnLR()) return;
     if (*(u8 *)&gNewKeys & 2)
     {
         if (gState0TypedWork.bytes[0x3C] == 4) PlaySoundEffect(6);
@@ -153,18 +153,18 @@ void sub_0800DEC8(void)
     StartBlendFade(6, 63, 32);
     CpuFastSet((const void *)0x084E43D8, (void *)0x050003E0, 8);
     ScrollBg3Diagonally3();
-    sub_0800EF58();
+    BlinkPartPageMarkerPair();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 80);
-    sub_0800F440();
+    UpdateSelectedPartPreview();
     gNestedCallbackIndex++;
 }
 
 void sub_0800DF14(void)
 {
     ScrollBg3Diagonally3();
-    sub_0800EF58();
+    BlinkPartPageMarkerPair();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 80);
-    sub_0800F440();
+    UpdateSelectedPartPreview();
     if (StepBlendFade()) gNestedCallbackIndex++;
 }
 
@@ -196,14 +196,14 @@ extern const void *const gState0NextText_083B4C60[];
 extern const void *const gState0NextScripts_083B5578[];
 void BlendBgPaletteBanksNow(u32, u32, u32);
 void BlendObjPaletteBanksNow(u32, u32, u32);
-void sub_0803FAA0(u32, u32, u32);
+void InitDialogue(u32, u32, u32);
 
 void sub_0800DD00(void)
 {
     ScrollBg3Diagonally3();
-    sub_0800EF58();
+    BlinkPartPageMarkerPair();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 80);
-    sub_0800F440();
+    UpdateSelectedPartPreview();
     { u8 *work = gState0TypedWork.bytes;
     u8 *state = work + 0x42;
     if (*state == 1)
@@ -225,9 +225,9 @@ void sub_0800DD00(void)
 void sub_0800DF78(void)
 {
     ScrollBg3Diagonally3();
-    sub_0800EF58();
+    BlinkPartPageMarkerPair();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 80);
-    sub_0800F440();
+    UpdateSelectedPartPreview();
     SnapshotPalettes();
     gState0TypedWork.bytes[0x84] = 0;
     gNestedCallbackIndex++;
@@ -236,9 +236,9 @@ void sub_0800DF78(void)
 void sub_0800DFB8(void)
 {
     ScrollBg3Diagonally3();
-    sub_0800EF58();
+    BlinkPartPageMarkerPair();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 80);
-    sub_0800F440();
+    UpdateSelectedPartPreview();
     if (gState0TypedWork.bytes[0x84] <= 8)
     {
         BlendBgPaletteBanksNow(0, gState0TypedWork.bytes[0x84] * 4, 0xFFFF);
@@ -268,17 +268,17 @@ extern const void *const gState0NextText_083B4C60[];
 extern const void *const gState0NextScripts_083B5578[];
 void BlendBgPaletteBanksNow(u32, u32, u32);
 void BlendObjPaletteBanksNow(u32, u32, u32);
-void sub_0803FAA0(u32, u32, u32);
+void InitDialogue(u32, u32, u32);
 
-u32 sub_0800FDD8(void);
+u32 CycleSelectablePartOnLeftRight(void);
 extern const void *const gState0NextScripts_083BE564[];
 extern const void *const gState0NextScripts_083BEAAC[];
 void sub_0800E2B0(void)
 {
     u8 *work;
     ScrollBg3Diagonally3();
-    sub_0800F440();
-    sub_0800FD74();
+    UpdateSelectedPartPreview();
+    BlinkPartDetailMarkerPair();
     work = gState0TypedWork.bytes;
     if (work[0x3C] == 0 || work[0x3C] == 4)
     {
@@ -297,18 +297,18 @@ void sub_0800E2B0(void)
 void sub_0800E328(void)
 {
     ScrollBg3Diagonally3();
-    sub_0800F440();
-    sub_0800FD74();
-    sub_0803FAA0(1, 2, 0);
+    UpdateSelectedPartPreview();
+    BlinkPartDetailMarkerPair();
+    InitDialogue(1, 2, 0);
     gNestedCallbackIndex++;
 }
 
 void sub_0800E3A0(void)
 {
     ScrollBg3Diagonally3();
-    sub_0800F440();
-    sub_0800FD74();
-    if (sub_0800FDD8())
+    UpdateSelectedPartPreview();
+    BlinkPartDetailMarkerPair();
+    if (CycleSelectablePartOnLeftRight())
     {
         RestartDialogueText();
         gNestedCallbackIndex--;
@@ -336,8 +336,8 @@ void sub_0800E43C(void)
 {
     u8 *work;
     ScrollBg3Diagonally3();
-    sub_0800F440();
-    sub_0800FD74();
+    UpdateSelectedPartPreview();
+    BlinkPartDetailMarkerPair();
     work = gState0TypedWork.bytes;
     if (work[0x3C] == 0 || work[0x3C] == 4)
     {
@@ -352,8 +352,8 @@ void sub_0800E488(void)
 {
     u8 *work;
     ScrollBg3Diagonally3();
-    sub_0800F440();
-    sub_0800FD74();
+    UpdateSelectedPartPreview();
+    BlinkPartDetailMarkerPair();
     work = gState0TypedWork.bytes;
     if (work[0x3C] == 0 || work[0x3C] == 4)
     {
@@ -389,9 +389,9 @@ extern const void *const gState0NextText_083B4C60[];
 extern const void *const gState0NextScripts_083B5578[];
 void BlendBgPaletteBanksNow(u32, u32, u32);
 void BlendObjPaletteBanksNow(u32, u32, u32);
-void sub_0803FAA0(u32, u32, u32);
+void InitDialogue(u32, u32, u32);
 
-u32 sub_0800FDD8(void);
+u32 CycleSelectablePartOnLeftRight(void);
 extern const void *const gState0NextScripts_083BE564[];
 extern const void *const gState0NextScripts_083BEAAC[];
 #include "equipment_helpers.h"
@@ -401,7 +401,7 @@ extern const u8 *const gState0NextCommands_083B6100[];
 extern u32 gUnknownMask_03002B68;
 void sub_0800E4F8(void)
 {
-    sub_0800F440();
+    UpdateSelectedPartPreview();
     ClearFrameObjects(0, 128);
     switch (gState0TypedWork.bytes[0x3C])
     {
@@ -440,10 +440,10 @@ void sub_0800E4F8(void)
 void sub_0800E654(void)
 {
     ScrollBg3Diagonally3();
-    sub_0800F440();
+    UpdateSelectedPartPreview();
     HideFrameObjects(1, 5);
     CpuFastSet((const void *)0x084E4418, (void *)0x050003C0, 8);
-    sub_0800FF50();
+    InitTableCursorObject();
     RestartDialogueText();
     gNestedCallbackIndex++;
 }
@@ -451,7 +451,7 @@ void sub_0800E654(void)
 void sub_0800E690(void)
 {
     ScrollBg3Diagonally3();
-    sub_0800F440();
+    UpdateSelectedPartPreview();
     RunFrameObjectCommands(gState0NextCommands_083B6100[3], 6);
     if (RunDialogue(gState0NextScripts_083B5578[5])) gNestedCallbackIndex++;
 }
@@ -459,31 +459,31 @@ void sub_0800E690(void)
 void sub_0800E9F0(void)
 {
     ScrollBg3Diagonally3();
-    sub_0800F440();
+    UpdateSelectedPartPreview();
     HideFrameObjects(6, 1);
     CpuFastSet((const void *)0x084E43F8, (void *)0x050003C0, 8);
     RestartDialogueText();
-    sub_0800FCF0();
+    InitPartDetailMarkerPair();
     gNestedCallbackIndex = 19;
 }
 
 void sub_0800EA2C(void)
 {
     ScrollBg3Diagonally3();
-    sub_0800F440();
+    UpdateSelectedPartPreview();
     gFrameObjects[1].flags &= 0xBFFF;
     gFrameObjects[2].flags &= 0xBFFF;
     LoadLeTilemap(18, 5, (const void *)0x08488494, *(volatile u16 *)0x04000008, 896);
     gState0TypedWork.bytes[0x4A] = 0;
-    sub_08010040();
+    InitObject4RowCursor();
     gNestedCallbackIndex++;
 }
 
-void sub_0800EB34(void)
+void WaitRowCursorBlinkAndShrink(void)
 {
     ScrollBg3Diagonally3();
-    sub_0800F440();
-    if (sub_0801013C())
+    UpdateSelectedPartPreview();
+    if (StepRowCursorBlinkShrink())
     {
         HideFrameObjects(4, 1);
         gNestedCallbackIndex++;
@@ -493,7 +493,7 @@ void sub_0800EB34(void)
 void sub_0800EB60(void)
 {
     ScrollBg3Diagonally3();
-    sub_0800F440();
+    UpdateSelectedPartPreview();
     switch (gState0TypedWork.bytes[0x4A])
     {
     case 0: gNestedCallbackIndex = 10; break;
@@ -535,9 +535,9 @@ extern const void *const gState0NextText_083B4C60[];
 extern const void *const gState0NextScripts_083B5578[];
 void BlendBgPaletteBanksNow(u32, u32, u32);
 void BlendObjPaletteBanksNow(u32, u32, u32);
-void sub_0803FAA0(u32, u32, u32);
+void InitDialogue(u32, u32, u32);
 
-u32 sub_0800FDD8(void);
+u32 CycleSelectablePartOnLeftRight(void);
 extern const void *const gState0NextScripts_083BE564[];
 extern const void *const gState0NextScripts_083BEAAC[];
 #include "equipment_helpers.h"
@@ -549,7 +549,7 @@ void sub_0800E6C8(void)
 {
     u32 up;
     ScrollBg3Diagonally3();
-    sub_0800F440();
+    UpdateSelectedPartPreview();
     RunFrameObjectCommands(gState0NextCommands_083B6100[3], 6);
     up = (u8)(*(u8 *)&gRepeatedKeys & KEY_UP);
     if (up)
@@ -558,7 +558,7 @@ void sub_0800E6C8(void)
         if (work[0x44] == 0) work[0x44] = work[0x45] - 1;
         else work[0x44]--;
         PlaySoundEffect(2);
-        sub_0800FFF4();
+        UpdateTableCursorPosition();
     }
     else if (*(u8 *)&gRepeatedKeys & KEY_DOWN)
     {
@@ -566,12 +566,12 @@ void sub_0800E6C8(void)
         if (work[0x44] == work[0x45] - 1) work[0x44] = up;
         else work[0x44]++;
         PlaySoundEffect(2);
-        sub_0800FFF4();
+        UpdateTableCursorPosition();
     }
     else if (*(u8 *)&gNewKeys & KEY_A)
     {
         PlaySoundEffect(4);
-        sub_0800FF50();
+        InitTableCursorObject();
         RestartDialogueText();
         gNestedCallbackIndex++;
     }

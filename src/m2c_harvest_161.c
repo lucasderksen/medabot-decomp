@@ -40,12 +40,12 @@ extern struct LocalTransferSetup gGraphicsTransferCounter;
 extern u8 gState0FrameBackup[0xA0];
 extern u8 gUnknown_03006F84;
 s32 sub_0806B0D4(void);
-s32 sub_0806B4C8(void);
+s32 StepSceneFrameAnimations(void);
 void sub_080605A0(void);
 void sub_08060620(void);
 void sub_08069DF0(void);
 void sub_0806A078(u8 *, const u8 *);
-void sub_0806B530(u8, u8, u8, u8);
+void SetObjectAnimationState(u8, u8, u8, u8);
 
 void sub_08060B28(void);
 void sub_08069E78(void);
@@ -99,9 +99,9 @@ void sub_08069E78(void) {
 s32 sub_0806A08C(void) {
     switch (gUnknown_03006F88) {                    /* irregular */
     case 0:
-        sub_0803FAA0(1U, 2U, 0U);
+        InitDialogue(1U, 2U, 0U);
         sub_08069DF0();
-        sub_0806B530(0, 1, 0x20, 0x58);
+        SetObjectAnimationState(0, 1, 0x20, 0x58);
         sub_0806A078(gDebugMenuTextBuffer, gState0MapPartLabels_083BEB68[gUnknown_03006F84]);
         gUnknown_03006F88 += 1;
         break;
@@ -111,7 +111,7 @@ s32 sub_0806A08C(void) {
         }
     default:
         sub_0806B0D4();
-        sub_0806B4C8();
+        StepSceneFrameAnimations();
         break;
     }
     return 0;

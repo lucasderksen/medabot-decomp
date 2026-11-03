@@ -77,7 +77,7 @@ void sub_08015F78(void) {
 
     var_r4 = 0;
     do {
-        sub_08015F90(var_r4);
+        InitRingObjectScaled(var_r4);
         var_r4 += 1;
     } while (var_r4 <= 5U);
 }
@@ -87,7 +87,7 @@ void sub_08016068(void) {
 
     var_r4 = 0;
     do {
-        sub_08016080(var_r4);
+        InitRingObjectCollapsed(var_r4);
         var_r4 += 1;
     } while (var_r4 <= 5U);
 }
@@ -244,7 +244,7 @@ void sub_08030FEC(void) {
         if (gFrameObjects[0x21].scaleY == 8) {
             PlayMusic(0x1CU);
             ClearFrameObjects(0x21U, 1U);
-            sub_0803FAA0(1U, 2U, 0U);
+            InitDialogue(1U, 2U, 0U);
             gNestedCallbackIndex += 1;
             return;
         }
@@ -258,7 +258,7 @@ void sub_08031048(void) {
     if (gState0TypedWork.widths.word86 == 0x5A) {
         if (gFrameObjects[0x21].scaleY == 8) {
             ClearFrameObjects(0x21U, 1U);
-            sub_0803FAA0(1U, 2U, 0U);
+            InitDialogue(1U, 2U, 0U);
             gNestedCallbackIndex += 1;
             return;
         }

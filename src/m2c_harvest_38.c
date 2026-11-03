@@ -49,7 +49,7 @@ void sub_08065790(void) {
     field = (s8 *) gMainContextPointer_03006F74 + 0x7F;
     zero = 0;
     *field = value;
-    sub_0803FAA0(1U, 0U, 0U);
+    InitDialogue(1U, 0U, 0U);
     (*(s32 *)((u8 *)(gMainContextPointer_03006F74) + 8)) = zero;
     gNestedCallbackIndex += 1;
 }

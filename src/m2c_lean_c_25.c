@@ -35,9 +35,9 @@ extern struct CreditsContext67974 *gCreditsContext67974 asm("gMainContextPointer
 extern void sub_08067314(s8 width, s32 column);
 extern void sub_080673AC(s32 row, s32 column);
 
-void sub_08067974(void);
+void StepCreditsTextScroll(void);
 
-void sub_08067974(void) {
+void StepCreditsTextScroll(void) {
 
     struct CreditsContext67974 *ctx;
     s32 limit;

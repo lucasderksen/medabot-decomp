@@ -11,7 +11,7 @@ void sub_08009484(void);
 void sub_08009540(void);
 void sub_08009620(void);
 void sub_080096BC(void);
-void sub_08009750(void);
+void ShowInventoryRecordSprite(void);
 void sub_080097E0(void);
 void sub_0800988C(void);
 void sub_08009900(void);

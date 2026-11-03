@@ -33,9 +33,9 @@ struct Inventory41D70 {
 
 extern struct Inventory41D70 gInventory41D70[] asm("gInventoryRecords");
 
-u32 sub_08041D70(u8 kind);
+u32 AddInventoryRecord(u8 kind);
 
-u32 sub_08041D70(u8 kind) {
+u32 AddInventoryRecord(u8 kind) {
 
     u32 i;
 

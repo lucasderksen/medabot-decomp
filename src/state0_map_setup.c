@@ -7,7 +7,7 @@
 extern const u8 gState0MapImage_084C7F08[];
 extern const u8 gState0MapPalette_084C8014[];
 
-void sub_080103F4(void)
+void LoadBg0ImageAndPalette(void)
 {
     volatile u32 *dma;
     *(volatile u16 *)0x04000000 |= 0x100;

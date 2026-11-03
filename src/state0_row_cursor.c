@@ -2,7 +2,7 @@
 #include "state0_work.h"
 #include "frame.h"
 
-void sub_08010040(void)
+void InitObject4RowCursor(void)
 {
     gFrameObjects[4].flags = 0xD204;
     gFrameObjects[4].screenX = 168;

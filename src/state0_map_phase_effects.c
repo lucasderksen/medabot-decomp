@@ -17,7 +17,7 @@ void sub_08013614(void)
     selection += 0x80;
     CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
-    sub_0803FAA0(1, 2, 0);
+    InitDialogue(1, 2, 0);
     gNestedCallbackIndex++;
 }
 

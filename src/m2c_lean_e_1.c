@@ -205,7 +205,7 @@ void sub_08061F00(void) {
         for (i = 0; i <= 1; i++)
             gFrameObjects[i + 11].flags &= 0xBFFF;
         StartChoiceBox(1, 0x16, 7);
-        sub_0803FAA0(1, 0, 0);
+        InitDialogue(1, 0, 0);
         gNestedCallbackIndex = 6;
         return;
     }

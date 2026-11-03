@@ -60,7 +60,7 @@ extern u8 gUnknown_084DD368;
 extern void *gUnknown_03007014;
 extern void *gUnknown_08485A70;
 
-void sub_080103A4(void);
+void AlternateMosaicPulses(void);
 void sub_08015738(void);
 void sub_08015A90(void);
 void sub_08015AFC(void);
@@ -180,7 +180,7 @@ void sub_08073FB8(void *arg0);
 s32 sub_08074540(void);
 s32 sub_08075130(void);
 
-void sub_080103A4(void) {
+void AlternateMosaicPulses(void) {
     if ((u32) gState0TypedWork.bytes[0x85] <= 2U) {
         if (1 & gState0TypedWork.bytes[0x85]) {
             gNestedCallbackIndex = 1;

@@ -6,7 +6,7 @@
 #include "serial.h"
 
 extern void ScrollBg3Diagonally2(void);
-extern void sub_08005000(void);
+extern void PlaceNineRecordObjectGroups(void);
 extern void sub_080054C0(void);
 extern void sub_08007480(void);
 extern void CopyPartMetadataSlot(u32, u32, void *);
@@ -20,10 +20,10 @@ extern const void *const gUnknownPointers_083CF530[];
     sub_08007480(); \
 } while (0)
 
-void sub_08004764(void)
+void HideMarkersAndResetDelay(void)
 {
     ScrollBg3Diagonally2();
-    sub_08005000();
+    PlaceNineRecordObjectGroups();
     sub_080054C0();
     HideFrameObjects(0, 4);
     gState0TypedWork.widths.word5C = 0;
@@ -59,7 +59,7 @@ void sub_080047EC(void)
         gNestedCallbackIndex++;
 }
 
-void sub_08004840(void)
+void ExitToSubstate7(void)
 {
     ClearFrameObjects(0, 128);
     gState0TypedWork.bytes[0x96] = 0;
@@ -68,7 +68,7 @@ void sub_08004840(void)
     gNestedCallbackIndex = 0;
 }
 
-void sub_08004874(void)
+void DelayThenStartExitFade(void)
 {
     ENTRY_LINK_WORK();
     if (gState0TypedWork.widths.word5C > 60)
@@ -86,7 +86,7 @@ void sub_080048B0(void)
         gNestedCallbackIndex++;
 }
 
-void sub_080048D8(void)
+void CopySelectedRecordsAndEnterState3(void)
 {
     s32 i;
     ClearFrameObjects(0, 128);
@@ -106,11 +106,11 @@ void sub_080048D8(void)
     gNestedCallbackIndex = 5;
 }
 
-void sub_080049C8(void)
+void InitDialogueBeforeTransfer(void)
 {
     ScrollBg3Diagonally2();
     sub_080054C0();
-    sub_0803FAA0(1, 0, 0);
+    InitDialogue(1, 0, 0);
     gNestedCallbackIndex++;
 }
 
@@ -122,7 +122,7 @@ void sub_080049EC(void)
         gNestedCallbackIndex++;
 }
 
-void sub_08004A18(void)
+void PrepareSerialSendBuffer(void)
 {
     ScrollBg3Diagonally2();
     sub_080054C0();
@@ -132,7 +132,7 @@ void sub_08004A18(void)
     gNestedCallbackIndex++;
 }
 
-void sub_08004A40(void)
+void WaitSerialSyncAndClearOutput(void)
 {
     ScrollBg3Diagonally2();
     sub_080054C0();
@@ -144,7 +144,7 @@ void sub_08004A40(void)
     }
 }
 
-void sub_08004A78(void)
+void DelayThenInitSerialTransfer(void)
 {
     ScrollBg3Diagonally2();
     sub_080054C0();

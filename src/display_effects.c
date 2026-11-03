@@ -16,7 +16,7 @@ struct EffectWorkPrefix
     s8 unknown11;
 };
 
-void sub_0803FAA0(u32 inputFirst, u32 inputSecond, u32 inputMode)
+void InitDialogue(u32 inputFirst, u32 inputSecond, u32 inputMode)
 {
     u8 first = inputFirst;
     u8 second = inputSecond;

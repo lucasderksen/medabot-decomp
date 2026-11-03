@@ -19,8 +19,8 @@ void sub_0800A05C(void);
 void sub_0800A0B8(void);
 void sub_0800A0FC(void);
 void sub_0800A180(void);
-void sub_0800A1E4(void);
-void sub_0800A2B4(void);
+void CycleOwnedInventoryOnLeftRight(void);
+void RedrawInventoryDetailOnLeftRight(void);
 
 void sub_0800A000(void)
 {
@@ -106,7 +106,7 @@ void sub_0800A180(void)
     }
 }
 
-void sub_0800A2B4(void)
+void RedrawInventoryDetailOnLeftRight(void)
 {
     if (*(u8 *)&gRepeatedKeys & 48)
     {
@@ -134,8 +134,8 @@ void sub_0800A05C(void);
 void sub_0800A0B8(void);
 void sub_0800A0FC(void);
 void sub_0800A180(void);
-void sub_0800A1E4(void);
-void sub_0800A2B4(void);
+void CycleOwnedInventoryOnLeftRight(void);
+void RedrawInventoryDetailOnLeftRight(void);
 
 extern const u8 gUnknownBytes_083B7F8C[];
 extern const u8 gUnknownBytes_083B7E54[];
@@ -242,8 +242,8 @@ void sub_0800A05C(void);
 void sub_0800A0B8(void);
 void sub_0800A0FC(void);
 void sub_0800A180(void);
-void sub_0800A1E4(void);
-void sub_0800A2B4(void);
+void CycleOwnedInventoryOnLeftRight(void);
+void RedrawInventoryDetailOnLeftRight(void);
 
 extern const u8 gUnknownBytes_083B7F8C[];
 extern const u8 gUnknownBytes_083B7E54[];

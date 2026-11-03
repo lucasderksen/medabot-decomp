@@ -18,13 +18,13 @@ void ScrollBg3Diagonally3(void)
     }
 }
 
-void sub_0800EC20(void)
+void SplitPartIndexIntoPageRow(void)
 {
     gState0TypedWork.bytes[0x3F] = gState0TypedWork.bytes[0x3D] / 4;
     gState0TypedWork.bytes[0x40] = gState0TypedWork.bytes[0x3D] % 4;
 }
 
-void sub_0800EEE4(void)
+void InitPartPageMarkerPair(void)
 {
     gFrameObjects[1].flags = 0xC804;
     gFrameObjects[1].screenX = 76;
@@ -42,7 +42,7 @@ void sub_0800EEE4(void)
     gFrameObjects[2].priority = 128;
 }
 
-void sub_0800EF58(void)
+void BlinkPartPageMarkerPair(void)
 {
     if (gFrameCounter & 8)
     {
@@ -56,7 +56,7 @@ void sub_0800EF58(void)
     }
 }
 
-void sub_0800EFB0(void)
+void PlacePartRowCursor(void)
 {
     gFrameObjects[3].flags = 0xC804;
     gFrameObjects[3].screenX = 80;
@@ -67,7 +67,7 @@ void sub_0800EFB0(void)
     gFrameObjects[3].priority = 129;
 }
 
-u32 sub_0800EFFC(void)
+u32 MovePartRowOnUpDown(void)
 {
     if (*(u8 *)&gRepeatedKeys & 64)
     {
@@ -83,14 +83,14 @@ u32 sub_0800EFFC(void)
     {
         PlaySoundEffect(2);
         gState0TypedWork.bytes[0x3D] = gState0TypedWork.bytes[0x3F] * 4 + gState0TypedWork.bytes[0x40];
-        sub_0800EFB0();
-        sub_0800F300();
+        PlacePartRowCursor();
+        RefreshSelectedPartPreview();
         return 1;
     }
     return 0;
 }
 
-u32 sub_0800F08C(void)
+u32 MovePartPageOnLeftRight(void)
 {
     if (*(u8 *)&gRepeatedKeys & 32)
     {
@@ -107,17 +107,17 @@ u32 sub_0800F08C(void)
         PlaySoundEffect(2);
         gState0TypedWork.bytes[0x3D] = gState0TypedWork.bytes[0x3F] * 4 + gState0TypedWork.bytes[0x40];
         sub_08042950(gState0TypedWork.bytes[0x3F] + 1, 11, 2, 2, *(volatile u16 *)0x0400000A, 0x7360);
-        sub_0800EC44();
-        sub_0800ED10();
-        sub_0800EDA0();
-        sub_0800EE34();
-        sub_0800F300();
+        DrawPartPageNames();
+        DrawPartPageCounts();
+        DrawPartPageAssignedCounts();
+        DrawPartPageStatusTiles();
+        RefreshSelectedPartPreview();
         return 1;
     }
     return 0;
 }
 
-u32 sub_0800F148(void)
+u32 CyclePartCategoryOnLR(void)
 {
     if (((struct KeyBytes *)&gNewKeys)->high & 2)
     {
@@ -134,11 +134,11 @@ u32 sub_0800F148(void)
         PlaySoundEffect(2);
         gState0TypedWork.bytes[0x3D] = gState0TypedWork.bytes[0x3F] * 4 + gState0TypedWork.bytes[0x40];
         CopyTilemapRect(10, 2, 16, 0, gState0NextText_083B4C60[gState0TypedWork.bytes[0x3E] + 89], *(volatile u16 *)0x04000008, 512);
-        sub_0800EC44();
-        sub_0800ED10();
-        sub_0800EDA0();
-        sub_0800EE34();
-        sub_0800F300();
+        DrawPartPageNames();
+        DrawPartPageCounts();
+        DrawPartPageAssignedCounts();
+        DrawPartPageStatusTiles();
+        RefreshSelectedPartPreview();
         return 1;
     }
     return 0;

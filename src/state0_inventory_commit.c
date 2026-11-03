@@ -7,7 +7,7 @@
 #include "main.h"
 #include "input.h"
 
-u32 sub_08006E08(volatile u32 part)
+u32 DecrementPartIndexWrapped(volatile u32 part)
 {
     if (!part)
         part = gUnknownRecords_030017A0[gState0TypedWork.bytes[0x51]].unknown00[1] + 120;
@@ -41,7 +41,7 @@ void sub_08006F14(void)
         sub_080432A0(6, 0, 0);
 }
 
-void sub_08006FB0(void)
+void CommitPartsToSelectedRecord(void)
 {
     u8 count = 0;
     struct State0Record8 *base;
@@ -87,7 +87,7 @@ next:
 
 u32 sub_080437E0(void);
 
-u32 sub_08006C64(void)
+u32 CycleMatchingPartSetOnStart(void)
 {
     volatile u32 category;
     volatile u32 part;
@@ -116,7 +116,7 @@ complete:
         sub_080063B4(); sub_08006414(); sub_08006444(); sub_0800667C();
         return 1;
 cycle:
-        part = sub_08006E08(part);
+        part = DecrementPartIndexWrapped(part);
         base = gUnknownRecords_030017A0;
         selected = &gState0TypedWork.bytes[0x51];
         part0 = selected + 0x47;
@@ -136,7 +136,7 @@ cycle:
             case 3: part = *part3; break;
             }
             part = sub_080436AC(part, category, 0, base[*selected].unknown00[1]);
-            part = sub_08006E08(part);
+            part = DecrementPartIndexWrapped(part);
         }
     }
     return 0;

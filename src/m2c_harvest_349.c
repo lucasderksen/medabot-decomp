@@ -24,9 +24,9 @@ extern void PlaceAlignedTextObjects(const u8 *, u32, s32, s32, u32, u32, u32, u3
 extern void CopyBytesU8Count(const u8 *, u8 *, u8);
 extern void FillTextWithHyphens(void *, u32);
 
-void sub_0800EC44(void);
+void DrawPartPageNames(void);
 
-void sub_0800EC44(void) {
+void DrawPartPageNames(void) {
 
   const u8 *objects;
   const void * const **cursorAddress;

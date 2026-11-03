@@ -20,7 +20,7 @@ void sub_0805C9C4(void)
     DISPLAY_CONTROL = 0x60;
     CpuFastSet((const void *)0x084E43D8, (void *)0x0202F9E0, 8);
     LeDecompress((const u8 *)0x084C8034, (void *)0x06017400);
-    sub_0803FAA0(1, 2, 0);
+    InitDialogue(1, 2, 0);
     DISPLAY_CONTROL |= 0x1000;
     gNestedCallbackIndex++;
 }

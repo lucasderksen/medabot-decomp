@@ -2,7 +2,7 @@
 #include "state0_next_helpers.h"
 #include "tile_text.h"
 
-void sub_0800F8D8(void)
+void DrawPartCategoryLabelRows(void)
 {
     u8 *work = gState0TypedWork.bytes;
     switch (work[0x3E])

@@ -9,7 +9,7 @@
 
 union InventoryKeys { u32 raw; struct { u32 low:6; u32 up:1; u32 down:1; u32 high:24; } bits; };
 
-void sub_0800656C(void)
+void InitEditedPartsPreview(void)
 {
     u32 fill;
     FillBytes(&gRecordDisplayWork, 0xD0, 0);
@@ -78,11 +78,11 @@ void sub_08006764(void)
             60, 50, 450, 8, 5, 0);
 }
 
-void sub_08006824(void)
+void BlinkFiveRowHighlight(void)
 {
     if (gFrameCounter & 8) {
         switch (gState0TypedWork.bytes[0x5A]) {
-        case 0: sub_08006238(0); break;
+        case 0: DrawFirstRowHighlightTiles(0); break;
         case 1: sub_08006284(0); break;
         case 2: sub_080062D0(0); break;
         case 3: sub_0800631C(0); break;
@@ -90,7 +90,7 @@ void sub_08006824(void)
         }
     } else {
         switch (gState0TypedWork.bytes[0x5A]) {
-        case 0: sub_08006238(1); break;
+        case 0: DrawFirstRowHighlightTiles(1); break;
         case 1: sub_08006284(1); break;
         case 2: sub_080062D0(1); break;
         case 3: sub_0800631C(1); break;
@@ -99,7 +99,7 @@ void sub_08006824(void)
     }
 }
 
-u32 sub_080068EC(void)
+u32 MoveFiveRowSelectionUpDown(void)
 {
     if ((u8)gRepeatedKeys & 0x40) {
         if (!gState0TypedWork.bytes[0x5A]) gState0TypedWork.bytes[0x5A] = 4;
@@ -111,14 +111,14 @@ u32 sub_080068EC(void)
     }
     if (((union InventoryKeys *)&gRepeatedKeys)->bits.up | ((union InventoryKeys *)&gRepeatedKeys)->bits.down) {
         PlaySoundEffect(2);
-        sub_08006238(0); sub_08006284(0); sub_080062D0(0); sub_0800631C(0); sub_08006368(0);
+        DrawFirstRowHighlightTiles(0); sub_08006284(0); sub_080062D0(0); sub_0800631C(0); sub_08006368(0);
         sub_08006494();
         return 1;
     }
     return 0;
 }
 
-u32 sub_08006980(void)
+u32 CycleUnassignedInventoryOnLeftRight(void)
 {
     u8 *work = gState0TypedWork.bytes;
     u32 previous;
@@ -131,7 +131,7 @@ unchanged:
     return 0;
 changed:
     PlaySoundEffect(2);
-    sub_08005AD0(); sub_08005B44(); sub_08005C10(); sub_08005BB4();
+    DrawCurrentInventoryNameText(); sub_08005B44(); sub_08005C10(); sub_08005BB4();
     sub_08005D1C(); sub_08005E84(); sub_08005FEC(); sub_08006154();
     return 1;
 }

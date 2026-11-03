@@ -20,14 +20,14 @@ extern u8 gUnknown_03000491;
 extern u8 gUnknown_03001845[];
 extern u8 gUnknown_083AF490[];
 
-s32 sub_08007440(u32 arg0);
+s32 IsSelectionAbsentFromTransferSlots(u32 arg0);
 void sub_0801A5D8(void);
 s32 sub_0801B4C8(s32 arg0);
 void sub_0801BBC4(void);
 u32 StepObjectHop(u32 index);
 void sub_08035844(u32 arg0);
 
-s32 sub_08007440(u32 arg0) {
+s32 IsSelectionAbsentFromTransferSlots(u32 arg0) {
 
     u32 i;
 

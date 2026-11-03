@@ -11,7 +11,7 @@ extern u8 gUnknown_03000B90;
 extern u8 gTransferSendBuffers[3][256];
 extern u8 gTransferReceiveBuffers[3][256];
 
-void sub_08004C58(void)
+void DelayThenResetTransferCounters(void)
 {
     ScrollBg3Diagonally2();
     sub_080054C0();
@@ -28,7 +28,7 @@ void sub_08004C58(void)
         gState0TypedWork.widths.word86++;
 }
 
-void sub_08004CA4(void)
+void VerifyTransferChecksums(void)
 {
     ScrollBg3Diagonally2();
     sub_080054C0();
@@ -82,7 +82,7 @@ void sub_08004DB4(void)
     gNestedCallbackIndex++;
 }
 
-void sub_08004DF0(void)
+void FadeToBlackAfterTransfer(void)
 {
     ScrollBg3Diagonally2();
     sub_080054C0();
@@ -96,7 +96,7 @@ void sub_08004DF0(void)
         gNestedCallbackIndex++;
 }
 
-void sub_08004E40(void)
+void ExitToSubstate7AfterTransfer(void)
 {
     ClearFrameObjects(0, 128);
     gState0TypedWork.bytes[0x96] = 0;

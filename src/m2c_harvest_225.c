@@ -40,7 +40,7 @@ extern u8 gUnknown_0300049E;
 extern u8 gUnknown_0300199A[6];
 extern void LoadActionHalfwordScriptParams(void);extern void AdvanceActionHalfwordScript(void);
 
-void sub_08005000(void);
+void PlaceNineRecordObjectGroups(void);
 void sub_0801630C(void);
 void sub_08039A2C(void);
 void sub_0803E8EC(void);
@@ -48,7 +48,7 @@ void sub_08062D60(void);
 void sub_0806E9E0(void);
 void sub_08072734(struct SoundWork72734 *work);
 
-void sub_08005000(void) {
+void PlaceNineRecordObjectGroups(void) {
 
     struct State0Record8 *temp_r3;
     u32 var_r5;

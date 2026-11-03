@@ -24,7 +24,7 @@ extern s8 gUnknown_03006F90;
 extern u8 gUnknown_03006F84;
 
 void sub_0803D6AC(void);
-void sub_0803E870(void);
+void LoadScrollControlRecord2(void);
 void sub_0804AF94(void);
 void sub_08069490(void);
 
@@ -44,7 +44,7 @@ void sub_0803D6AC(void) {
     gNestedCallbackIndex = 0x50;
 }
 
-void sub_0803E870(void) {
+void LoadScrollControlRecord2(void) {
     CopyBytes(gState0ScrollControls_083C3C84[gState0TransferWork.bytes[0x38]], &gState0TransferWork.bytes[0x39], 8U);
 }
 

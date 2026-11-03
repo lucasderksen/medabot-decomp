@@ -18,7 +18,7 @@ void sub_08009484(void);
 void sub_08009540(void);
 void sub_08009620(void);
 void sub_080096BC(void);
-void sub_08009750(void);
+void ShowInventoryRecordSprite(void);
 void sub_080097E0(void);
 void sub_0800988C(void);
 void sub_08009900(void);
@@ -32,7 +32,7 @@ void sub_08009D30(void);
 void sub_08009DA0(void);
 void sub_08044CDC(u32);
 
-void sub_08007584(void)
+void DispatchInventoryCallbacks(void)
 {
     if (!sub_0803EED8())
         gUnknownCallbacks_083AC86C[gNestedCallbackIndex]();
@@ -76,7 +76,7 @@ void sub_080075AC(void)
     sub_08009540();
     sub_08009620();
     sub_080096BC();
-    sub_08009750();
+    ShowInventoryRecordSprite();
     sub_080097E0();
     sub_0800988C();
     sub_08009900();
@@ -194,8 +194,8 @@ void sub_0800A05C(void);
 void sub_0800A0B8(void);
 void sub_0800A0FC(void);
 void sub_0800A180(void);
-void sub_0800A1E4(void);
-void sub_0800A2B4(void);
+void CycleOwnedInventoryOnLeftRight(void);
+void RedrawInventoryDetailOnLeftRight(void);
 void sub_0800B498(void);
 
 void sub_08007A04(void)
@@ -241,7 +241,7 @@ void sub_08007BD8(void)
 void sub_08007BFC(void)
 {
     ScrollBg3Diagonally(); sub_0800A180();
-    sub_0803FAA0(1, 2, 0);
+    InitDialogue(1, 2, 0);
     gNestedCallbackIndex++;
 }
 
@@ -256,7 +256,7 @@ void sub_08007C4C(void)
 {
     u32 right;
     u8 *keys;
-    ScrollBg3Diagonally(); sub_0800A180(); sub_0800A1E4(); sub_0800A2B4();
+    ScrollBg3Diagonally(); sub_0800A180(); CycleOwnedInventoryOnLeftRight(); RedrawInventoryDetailOnLeftRight();
     keys = (u8 *)&gNewKeys;
     if (keys[0] & 2)
     {
@@ -356,10 +356,10 @@ void sub_08009F50(void);
 void sub_08009F90(void);
 void sub_0800A0FC(void);
 void sub_0800A180(void);
-void sub_0800A1E4(void);
+void CycleOwnedInventoryOnLeftRight(void);
 void sub_0800A2E8(void);
 void sub_0800A594(void);
-void sub_0800A854(void);
+void InitObject3RowCursor(void);
 u32 sub_0800A8A0(void);
 u32 sub_0800A928(void);
 u32 sub_0800A960(void);
@@ -394,7 +394,7 @@ void sub_08007E38(void)
     gState0TypedWork.bytes[0x44] = 0;
     gState0TypedWork.bytes[0x46] = 0;
     sub_08009E4C(); sub_08009EF4(); sub_08009F50(); sub_08009F90();
-    sub_0800A0FC(); sub_0800A2E8(); sub_0800A594(); sub_0800A854();
+    sub_0800A0FC(); sub_0800A2E8(); sub_0800A594(); InitObject3RowCursor();
     StartBlendFade(5, 63, 32);
     gState0TypedWork.bytes[0x84] = 0;
     gNestedCallbackIndex++;
@@ -411,7 +411,7 @@ void sub_08008050(void)
 {
     ScrollBg3Diagonally(); sub_0800A180();
     SetObjectXWobble(3, *(u8 *)&gFrameCounter, 8);
-    sub_0803FAA0(1, 2, 0);
+    InitDialogue(1, 2, 0);
     gNestedCallbackIndex++;
 }
 
@@ -436,7 +436,7 @@ void sub_080080C8(void)
     }
     else
     {
-        sub_0800A1E4();
+        CycleOwnedInventoryOnLeftRight();
         if (sub_0800A928())
         {
             RestartDialogueText();
@@ -509,7 +509,7 @@ void sub_08009F50(void);
 void sub_08009F90(void);
 void sub_0800A0FC(void);
 void sub_0800A180(void);
-void sub_0800A1E4(void);
+void CycleOwnedInventoryOnLeftRight(void);
 void sub_0800AB0C(void);
 void sub_0800ABA4(void);
 void sub_0800ABF0(void);
@@ -566,7 +566,7 @@ void sub_08008430(void)
 void sub_08008454(void)
 {
     ScrollBg3Diagonally(); sub_0800A180();
-    sub_0803FAA0(1, 2, 0);
+    InitDialogue(1, 2, 0);
     gNestedCallbackIndex++;
 }
 
@@ -579,7 +579,7 @@ void sub_08008478(void)
 void sub_080084A4(void)
 {
     u8 *keys;
-    ScrollBg3Diagonally(); sub_0800A180(); sub_0800A1E4(); sub_0800ABF0();
+    ScrollBg3Diagonally(); sub_0800A180(); CycleOwnedInventoryOnLeftRight(); sub_0800ABF0();
     keys = (u8 *)&gNewKeys;
     if (keys[0] & 1)
     {
@@ -675,7 +675,7 @@ void sub_08009F50(void);
 void sub_08009FC8(void);
 void sub_0800A0FC(void);
 void sub_0800A180(void);
-void sub_0800A1E4(void);
+void CycleOwnedInventoryOnLeftRight(void);
 void sub_0800AA1C(void);
 void sub_0800AAC0(void);
 void sub_0800AB0C(void);
@@ -687,7 +687,7 @@ u32 sub_0800AD58(void);
 u32 sub_0800ADE8(void);
 u32 sub_0800AE54(void);
 void sub_0800AFF8(void);
-void sub_0800B0F8(void);
+void CopyInventoryPageTiles(void);
 void sub_0800B130(void);
 void sub_0800B174(void);
 void sub_0800B468(void);
@@ -798,7 +798,7 @@ void sub_080087CC(void)
     gState0TypedWork.selection.word48 = 0;
     gState0TypedWork.bytes[0x3F] = 0;
     sub_08009EA0(); sub_08009EF4(); sub_08009F50(); sub_08009FC8(); sub_0800A0FC();
-    sub_0800AFF8(); sub_0800B0F8(); sub_0800B174();
+    sub_0800AFF8(); CopyInventoryPageTiles(); sub_0800B174();
     StartBlendFade(5, 63, 32);
     gState0TypedWork.bytes[0x84] = 0;
     gNestedCallbackIndex++;
@@ -814,7 +814,7 @@ void sub_080089A8(void)
 {
     u8 *keys;
     ScrollBg3Diagonally(); sub_0800A180(); sub_0800B130();
-    sub_0800A1E4(); sub_0800B468();
+    CycleOwnedInventoryOnLeftRight(); sub_0800B468();
     keys = (u8 *)&gNewKeys;
     if (keys[0] & 2)
     {
@@ -899,7 +899,7 @@ void sub_08008BE0(void)
 void ScrollBg3Diagonally(void);
 void sub_08009AF8(void);
 void sub_0800A0FC(void);
-void sub_0800A854(void);
+void InitObject3RowCursor(void);
 void sub_0800AFF8(void);
 void sub_0800B174(void);
 void sub_0800B5E8(void);
@@ -983,7 +983,7 @@ void sub_080090D0(void)
         RestartDialogueText(); sub_0800A0FC(); gNestedCallbackIndex = 11;
         break;
     case 1:
-        RestartDialogueText(); sub_0800A0FC(); sub_0800A854(); gNestedCallbackIndex = 27;
+        RestartDialogueText(); sub_0800A0FC(); InitObject3RowCursor(); gNestedCallbackIndex = 27;
         break;
     case 2:
         if (gState0TypedWork.bytes[0x46] & 128)
@@ -1062,7 +1062,7 @@ void sub_080092D4(void)
     record = &records[work[0x3D]];
     if (record->byte0 & 64)
     {
-        sub_0803FAA0(1, 2, 0);
+        InitDialogue(1, 2, 0);
         work[0x84] = 9;
         gNestedCallbackIndex++;
     }
@@ -1071,7 +1071,7 @@ void sub_080092D4(void)
         selected = (1U << record->byte1) & gUnknownMask_03002B68;
         if (selected)
         {
-            sub_0803FAA0(1, 2, 0);
+            InitDialogue(1, 2, 0);
             work[0x84] = 8;
             gNestedCallbackIndex++;
         }

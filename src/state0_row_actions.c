@@ -6,7 +6,7 @@
 
 extern void (*const gState0RowObjectCallbacks_083ACE14[])(void);
 
-u32 sub_0801013C(void)
+u32 StepRowCursorBlinkShrink(void)
 {
     void (*const *callbacks)(void) = gState0RowObjectCallbacks_083ACE14;
     u8 *objects = (u8 *)gFrameObjects;
@@ -23,7 +23,7 @@ void sub_0801022C(void)
     gFrameObjects[4].unknown23[6]++;
 }
 
-void sub_080102C0(void)
+void EnableBgMosaicAndPlayMusic(void)
 {
     *(volatile u16 *)0x04000008 |= 64;
     *(volatile u16 *)0x0400000A |= 64;

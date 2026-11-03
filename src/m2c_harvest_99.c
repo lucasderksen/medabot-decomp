@@ -16,9 +16,9 @@ extern s32 __modsi3(u16,u8);
 extern u8 gUnknown_084859B4[];
 extern void ClearFrameObject(u8);
 
-void sub_0806DE0C(void);
+void RunIntervalObjectCallbacks(void);
 
-void sub_0806DE0C(void) {
+void RunIntervalObjectCallbacks(void) {
     u8 i=0;
     struct FrameObject *frame;
     do {

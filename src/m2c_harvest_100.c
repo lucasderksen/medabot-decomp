@@ -23,7 +23,7 @@ void sub_08065590(void) {
         if (RunDialogueClose() != 0) {
             u32 zero;
             *((u8*)gMainContextPointer_03006F74 + 0x4C) = (zero = 0);
-            sub_0803FAA0(1,zero,zero);
+            InitDialogue(1,zero,zero);
         }
     } else {
         const void *const *scripts = gMain2ScriptSlots_0848521C;

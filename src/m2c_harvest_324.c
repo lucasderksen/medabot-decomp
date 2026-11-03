@@ -36,7 +36,7 @@ void sub_080611E8(void) {
             return;
         }
         ((struct Fade611E8 *)gMainContextPointer_03006F74)->timer = 0;
-        sub_0803FAA0(1U, 0U, 0U);
+        InitDialogue(1U, 0U, 0U);
         ((struct Fade611E8 *)gMainContextPointer_03006F74)->timer = 0;
         ((struct Fade611E8 *)gMainContextPointer_03006F74)->kind = 0;
         ((struct Fade611E8 *)gMainContextPointer_03006F74)->mode = 0U;
@@ -52,7 +52,7 @@ void sub_080611E8(void) {
     }
     ((struct Fade611E8 *)gMainContextPointer_03006F74)->timer = 0;
     gFrameObjects[8].flags |= 0x4000;
-    sub_0803FAA0(1U, 0U, 0U);
+    InitDialogue(1U, 0U, 0U);
     ((struct Fade611E8 *)gMainContextPointer_03006F74)->timer = 0;
     ((struct Fade611E8 *)gMainContextPointer_03006F74)->kind = 0;
     phase = &gNestedCallbackIndex;

@@ -16,7 +16,7 @@ void sub_08012C64(void)
     selection = work + 0x80;
     CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
-    sub_08016288();
+    HandleRingRotationInput();
     sub_080178CC();
     if (work[0x83] != 0)
         return;

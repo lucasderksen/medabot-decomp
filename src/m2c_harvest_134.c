@@ -154,7 +154,7 @@ void sub_08071304(void) {
     scriptWork = work;
     switch (phase) {
     case 0:
-        sub_0803FAA0(1U, 0U, 0U);
+        InitDialogue(1U, 0U, 0U);
         gGraphicsTransferCounter.counter += 1;
         break;
     case 4: case 8: case 12: case 16: case 20: case 24:

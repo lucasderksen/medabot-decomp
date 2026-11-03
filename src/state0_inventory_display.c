@@ -5,7 +5,7 @@
 
 #include "state0_inventory.h"
 
-void sub_08005AD0(void)
+void DrawCurrentInventoryNameText(void)
 {
     u8 *work;
     HideFrameObjects(10, 10);
@@ -213,7 +213,7 @@ void sub_08006154(void)
 #include "state0_display.h"
 #include "state0_inventory.h"
 
-void sub_080059D0(void)
+void PrepareSelectedRecordParts(void)
 {
     struct State0Record8 *base = gUnknownRecords_030017A0;
     u8 *work = gState0TypedWork.bytes;
@@ -250,7 +250,7 @@ void sub_080059D0(void)
 
 void sub_0804305C(u32,u32,u32,u32,u32,u32,u32,u32,u32,u32,u32);
 
-void sub_08006238(u32 selected)
+void DrawFirstRowHighlightTiles(u32 selected)
 {
     if (!selected)
         FillTilemapRectSequential(2, 2, 14, 9, *(volatile u16 *)0x0400000A, 0xC370);

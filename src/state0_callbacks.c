@@ -6,7 +6,7 @@
 #include "frame.h"
 #include "interrupts.h"
 
-void sub_080025B4(void)
+void HandleBg1ScrollAndButtons(void)
 {
     const u8 *held = (const u8 *)&gHeldKeys;
     const u8 *pressed;
@@ -34,23 +34,23 @@ void sub_080025B4(void)
     }
     if (*pressed & KEY_START)
     {
-        sub_0803FAA0(0, 0, 0);
+        InitDialogue(0, 0, 0);
         gNestedCallbackIndex += 2;
     }
     if (*pressed & KEY_SELECT)
     {
-        sub_0803FAA0(0, 0, 0);
+        InitDialogue(0, 0, 0);
         gNestedCallbackIndex += 3;
     }
 }
 
-void sub_080026A4(void)
+void AnimatePortraitUntilDone(void)
 {
     if ((u8)StepPortraitAnimation(0, 1, 8, 4, gUnknown_03000440[0x88], gUnknown_03000440[0x85]) == 1)
         gNestedCallbackIndex = 1;
 }
 
-void sub_080026E0(void)
+void WriteTextBufferAndRunDialogue(void)
 {
     gUnknown_03002B70[4] = 0x17;
     gUnknown_03002B70[5] = 0x29;
@@ -66,7 +66,7 @@ void sub_080026E0(void)
         gNestedCallbackIndex = 1;
 }
 
-void sub_08002730(void)
+void RunDialogueThenStartChoiceBox(void)
 {
     if (RunDialogue(gUnknownPointers_083B5578[1]))
     {
@@ -75,7 +75,7 @@ void sub_08002730(void)
     }
 }
 
-void sub_0800275C(void)
+void WaitChoiceBoxThenRestartDialogue(void)
 {
     if (RunChoiceBox())
     {
@@ -84,7 +84,7 @@ void sub_0800275C(void)
     }
 }
 
-void sub_0800277C(void)
+void RunChoiceResultDialogue(void)
 {
     const void *data;
     if (gUnknown_03000440[0x28] & 0xF0)
@@ -95,12 +95,12 @@ void sub_0800277C(void)
         gNestedCallbackIndex = 1;
 }
 
-void sub_080027BC(void)
+void DispatchMainState0Substate1(void)
 {
     gUnknownCallbacks_083AC404[gNestedCallbackIndex]();
 }
 
-void sub_080027DC(void)
+void LoadFourRowSelectionGraphics(void)
 {
     *(volatile u16 *)0x04000000 = 0x1F60;
     *(volatile u16 *)0x04000008 = 0x0500;
@@ -126,7 +126,7 @@ void sub_080027DC(void)
     gNestedCallbackIndex++;
 }
 
-void sub_080028AC(void)
+void AnimateFourRowsIn(void)
 {
     if (gUnknown_03000440[0x84] <= 12)
         CopyTilemapRect(12, 2, 18, 1, gUnknownPointers_083B4C60[gUnknown_03000440[0x84] + 19], *(volatile u16 *)0x04000008, 0);
@@ -152,12 +152,12 @@ void sub_080028AC(void)
         sub_08041164(gUnknown_03000440 + 0x9E, *(u32 *)gUnknown_03002B70);
         PlaceAlignedTextObjects(gUnknown_03000440 + 0x9E, 10, 23, 10, 5, 15, 2, 0);
         gUnknown_03000440[0x8E] = 0;
-        sub_08003300();
+        InitFourRowCursor();
         gNestedCallbackIndex++;
     }
 }
 
-void sub_08002A2C(void)
+void HandleFourRowSelectionInput(void)
 {
     const u8 *repeated;
     const u8 *pressed;
@@ -192,7 +192,7 @@ void sub_08002A2C(void)
     }
 }
 
-void sub_08002AF8(void)
+void AnimateFourRowsOut(void)
 {
     if (gUnknown_03000440[0x84] <= 12)
         CopyTilemapRect(12, 2, 18, 1, gUnknownPointers_083B4C60[31 - gUnknown_03000440[0x84]], *(volatile u16 *)0x04000008, 0);
@@ -214,7 +214,7 @@ void sub_08002AF8(void)
         sub_08044094();
 }
 
-void sub_08002C34(void)
+void ClearUnselectedRows(void)
 {
     switch (gUnknown_03000440[0x8E])
     {
@@ -243,7 +243,7 @@ void sub_08002C34(void)
     gNestedCallbackIndex++;
 }
 
-void sub_08002D48(void)
+void MoveSelectedRowToTop(void)
 {
     CopyTilemapRect(12, 2, 18, gUnknown_03000440[0x88] - 1,
         gUnknownPointers_083B4C60[gUnknown_03000440[0x8E] * 13 + 31], *(volatile u16 *)0x04000008, 0);
@@ -260,7 +260,7 @@ void sub_08002D48(void)
     }
 }
 
-void sub_08002DF4(void)
+void SlideSelectedRowLeft(void)
 {
     if (gUnknown_03000440[0x8E] != 2 && gUnknown_03000440[0x84] <= 16)
     {
@@ -277,7 +277,7 @@ void sub_08002DF4(void)
         gNestedCallbackIndex++;
 }
 
-void sub_08002EC4(void)
+void SwitchStateForSelectedRow(void)
 {
     switch (gUnknown_03000440[0x8E])
     {
@@ -330,7 +330,7 @@ void sub_08002F70(void)
     gNestedCallbackIndex++;
 }
 
-void sub_08003018(void)
+void SlideSelectedRowRight(void)
 {
     if (gUnknown_03000440[0x8E] != 2 && gUnknown_03000440[0x84] <= 16)
     {
@@ -352,7 +352,7 @@ void sub_08003018(void)
     }
 }
 
-void sub_08003104(void)
+void LowerSelectedRowAndRedrawRows(void)
 {
     CopyTilemapRect(12, 2, 18, gUnknown_03000440[0x84] + 1,
         gUnknownPointers_083B4C60[gUnknown_03000440[0x8E] * 13 + 31], *(volatile u16 *)0x04000008, 0);
@@ -385,14 +385,14 @@ void sub_08003104(void)
         LoadLeTilemap(21, 9, (const u8 *)0x084880E0, *(volatile u16 *)0x04000008, 0x120);
         sub_08041164(gUnknown_03000440 + 0x9E, *(u32 *)gUnknown_03002B70);
         PlaceAlignedTextObjects(gUnknown_03000440 + 0x9E, 10, 23, 10, 5, 15, 2, 0);
-        sub_08003300();
+        InitFourRowCursor();
         gNestedCallbackIndex = 2;
     }
     else
         gUnknown_03000440[0x84]++;
 }
 
-void sub_08003300(void)
+void InitFourRowCursor(void)
 {
     LeDecompress((const u8 *)0x084C8714, (void *)0x06016C00);
     {

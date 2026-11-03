@@ -33,9 +33,9 @@ struct Bridge6FF2C
 extern const u8 gBridgeSteps_08485AEC[];
 extern struct Bridge6FF2C gBridge6FF2C asm("gCounter6ED08_03001800");
 
-s32 sub_0806FF2C(u8 index);
+s32 StepBridgeSegmentDraw(u8 index);
 
-s32 sub_0806FF2C(u8 index) {
+s32 StepBridgeSegmentDraw(u8 index) {
 
     u16 tile[1];
     u8 x;

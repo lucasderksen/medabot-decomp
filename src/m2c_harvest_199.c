@@ -236,7 +236,7 @@ void sub_080644D8(void) {
  s32 mode;
  sub_08062ED8();
  if(((struct ChoiceWork644D8 *)gMainContextPointer_03006F74)->timer==0) {
-  sub_0803FAA0(1,0,1);
+  InitDialogue(1,0,1);
   gNestedCallbackIndex++;
   mode=((struct ChoiceWork644D8 *)gMainContextPointer_03006F74)->mode;
   sound=5;

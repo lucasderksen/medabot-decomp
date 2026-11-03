@@ -35,7 +35,7 @@ s32 sub_08068888();
 s32 sub_080733BC(s32, s32);
 s32 sub_080734F4(s32, s32);
 s32 sub_08073810(s32, s32);
-void sub_08073A48(s32);
+void LoadWaveRamPattern(s32);
 void sub_0807490C(void *);
 s32 sub_080751E4(s32, s32);
 
@@ -159,7 +159,7 @@ void sub_08073A88(void) {
     *(s16 *)0x04000084 = 0x80;
     *(s16 *)0x04000082 = 0x400E;
     *(s16 *)0x04000070 = 0xC0;
-    sub_08073A48(0);
+    LoadWaveRamPattern(0);
     sub_080751E4(7, 7);
 }
 

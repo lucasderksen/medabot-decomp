@@ -198,7 +198,7 @@ void sub_0806A860(void) {
     for (i = 0; i <= 2; i++) {
         if (gUnknown_03006F8C[i] <= 2) {
             if (gUnknown_03006FEC[i] == 0x20) {
-                sub_0806B530(i + 1, 10, i, 0);
+                SetObjectAnimationState(i + 1, 10, i, 0);
                 gUnknown_03006FF0[i] = 0;
             } else if (gUnknown_03006FEC[i] <= gUnknown_03006FF0[i]) {
                 gFrameObjects[i + 1].unknown23[4] += 2;

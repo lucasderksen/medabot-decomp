@@ -35,7 +35,7 @@ extern u8 gUnknown_03006FEC[3];
 extern u8 gUnknown_03006FF0[3];
 extern void sub_08036CCC(u32,u32,s32);
 extern void sub_08069E78(void);
-extern void sub_0806B530(u8,u8,u8,u8);
+extern void SetObjectAnimationState(u8,u8,u8,u8);
 
 void sub_0801F3F0(void);
 void sub_080237C8(void);
@@ -104,7 +104,7 @@ s32 sub_0806A654(void) {
     switch (gUnknown_03006F88) {
     case 0:
         sub_08069E78();
-        sub_0806B530(0,5,0,0);
+        SetObjectAnimationState(0,5,0,0);
         gUnknown_03006F88++;
         break;
     case 1:
@@ -113,9 +113,9 @@ s32 sub_0806A654(void) {
             sub_08043240(0x26,12);
             sub_08043240(0x32,12);
             sub_08043240(0x3E,12);
-            sub_0806B530(1,10,0,0);
-            sub_0806B530(2,10,1,0);
-            sub_0806B530(3,10,2,0);
+            SetObjectAnimationState(1,10,0,0);
+            SetObjectAnimationState(2,10,1,0);
+            SetObjectAnimationState(3,10,2,0);
             gUnknown_03006FF8[1] = 0;
             gUnknown_03006FF8[0] = 0;
             gUnknown_03007000[1] = 0;

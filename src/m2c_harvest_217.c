@@ -20,14 +20,14 @@
 struct ContinueTravelWork { u8 pad[0xC35]; u8 first,second; u8 pad2[0x11]; u16 x,y; u8 pad3[6]; u16 resultX,resultY; u8 stepX,stepY; u8 pad4[15]; u8 kind; };
 
 extern struct ContinueTravelWork gContinuedWork_030057E0;
-extern void sub_0804B2B0(void);
+extern void LoadMapBgLayers(void);
 
 void sub_0804DDCC(void);
 
 void sub_0804DDCC(void) {
     LoadMapBgPalettes();
     sub_08048708();
-    sub_0804B2B0();
+    LoadMapBgLayers();
     sub_0804387C();
     gContinuedWork_030057E0.first = 0;
     gContinuedWork_030057E0.second = 0;

@@ -44,7 +44,7 @@ void sub_08063F08(void) {
         gNestedCallbackIndex += 1;
         ((struct PeerWork63F08 *)gMainContextPointer_03006F74)->clear = 0;
         if ((s8) ((struct PeerWork63F08 *)gMainContextPointer_03006F74)->enabled != 0) {
-            sub_0803FAA0(1U, 0U, 1U);
+            InitDialogue(1U, 0U, 1U);
         }
     } else {
         serial->word06 = 0xFDEF;

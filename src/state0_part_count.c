@@ -2,7 +2,7 @@
 #include "object_helpers.h"
 #include "tile_text.h"
 
-void sub_0800FC60(void)
+void CountSelectablePartsInCategory(void)
 {
     u8 *initialWork = gState0TypedWork.bytes;
     u8 *initialCounter = &initialWork[0x41];

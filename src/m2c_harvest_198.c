@@ -198,7 +198,7 @@ void sub_080609D4(void) {
   *bldy=(u32)(u8)next*2;
  } else {
   work->phase=remaining;
-  sub_0803FAA0(1,2,0);
+  InitDialogue(1,2,0);
   gNestedCallbackIndex++;
  }
  sub_080605A0();sub_08060620();

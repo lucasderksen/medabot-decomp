@@ -65,7 +65,7 @@ void sub_0800F7D0(void)
                      ((u32)work[0xEF] * 0x40000 + 0xA2080000) >> 16);
 }
 
-void sub_0800F844(void)
+void DrawSelectedPartText(void)
 {
     u8 *work;
     const void *const *names;

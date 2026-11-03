@@ -10,7 +10,7 @@ void sub_080107F0(void)
 {
     sub_08012098();
     StepFirstBgAutoScroll();
-    sub_0803FAA0(1, 0, 0);
+    InitDialogue(1, 0, 0);
     gNestedCallbackIndex++;
 }
 
@@ -49,7 +49,7 @@ void sub_080108D0(void)
     StepFirstBgAutoScroll();
     if (RunDialogueClose())
     {
-        sub_0803FAA0(1, 2, 0);
+        InitDialogue(1, 2, 0);
         gNestedCallbackIndex++;
     }
 }

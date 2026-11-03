@@ -31,7 +31,7 @@ void sub_0803E434(void) {
     else
         commands = gUnknownPointers_083CF530[7];
     if (RunDialogue(commands) != 0) {
-        sub_0803FAA0(1, 0, 0);
+        InitDialogue(1, 0, 0);
         gNestedCallbackIndex++;
     }
 }

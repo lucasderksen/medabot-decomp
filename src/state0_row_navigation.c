@@ -4,7 +4,7 @@
 #include "frame.h"
 #include "input.h"
 
-void sub_080100BC(void)
+void MoveObject4RowCursorUpDown(void)
 {
     if (*(u8 *)&gRepeatedKeys & 64)
     {

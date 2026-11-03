@@ -19,7 +19,7 @@ extern u8 gDebugProcessStateByte;
 extern u8 gDebugProcessCallbackByte;
 extern u8 gDebugMedalWork_03000BEA[];
 extern const u8 *const gDebugMedalMetadata_083B6590[];
-u32 sub_08041D70(u8 value);
+u32 AddInventoryRecord(u8 value);
 extern u8 gDebugMenuTextBuffer[];
 extern const void *const gDebugPartLabels_083ACC2C[];
 extern const MainCallback gDebugMenuProcessCallbacks_083ACACC[];

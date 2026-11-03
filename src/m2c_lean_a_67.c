@@ -24,9 +24,9 @@ extern u8 gUnknown_083AD4F0[];
 extern u8 gUnknown_083AD4F6[];
 extern u8 gUnknown_083AD4FC[];
 
-s32 sub_08016154(u32 index, u32 reverse);
+s32 StepRingObjectRotation(u32 index, u32 reverse);
 
-s32 sub_08016154(u32 index, u32 reverse) {
+s32 StepRingObjectRotation(u32 index, u32 reverse) {
 
     s32 done;
     u32 t;

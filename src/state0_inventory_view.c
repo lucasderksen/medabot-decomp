@@ -18,7 +18,7 @@ void sub_08009CDC(void);
 void sub_08009D30(void);
 void sub_08009DA0(void);
 void sub_080096BC(void);
-void sub_08009750(void);
+void ShowInventoryRecordSprite(void);
 void sub_080097E0(void);
 
 void ScrollBg3Diagonally(void)
@@ -141,7 +141,7 @@ void sub_080096BC(void)
     }
 }
 
-void sub_08009750(void)
+void ShowInventoryRecordSprite(void)
 {
     u8 *work = gState0TypedWork.bytes;
     struct InventoryRecord *records;
@@ -258,7 +258,7 @@ void sub_080099A4(void)
     {
         PlaySoundEffect(2);
         gFrameObjects[3].screenY = gState0TypedWork.bytes[0x40] * 16 + 40;
-        sub_080096BC(); sub_08009750(); sub_080097E0();
+        sub_080096BC(); ShowInventoryRecordSprite(); sub_080097E0();
         sub_08009CDC(); sub_08009D30(); sub_08009DA0();
     }
 }
@@ -284,7 +284,7 @@ void sub_08009A38(void)
         index = gState0TypedWork.bytes[0x3F] + 75;
         CopyTilemapRect(10, 2, 5, 2, assets[index], *(volatile u16 *)0x0400000A, 0x200);
         sub_08009484(); sub_08009540(); sub_08009620();
-        sub_080096BC(); sub_08009750(); sub_080097E0();
+        sub_080096BC(); ShowInventoryRecordSprite(); sub_080097E0();
         sub_08009CDC(); sub_08009D30(); sub_08009DA0();
     }
 }
@@ -362,7 +362,7 @@ void sub_08009BC8(void)
                 assetIndex = *page + 75;
                 CopyTilemapRect(10, 2, 5, 2, assets[assetIndex], *(volatile u16 *)0x0400000A, 0x200);
                 sub_08009484(); sub_08009540(); sub_08009620();
-                sub_080096BC(); sub_08009750(); sub_080097E0();
+                sub_080096BC(); ShowInventoryRecordSprite(); sub_080097E0();
                 sub_08009CDC(); sub_08009D30(); sub_08009DA0();
             }
             *marked = 0;

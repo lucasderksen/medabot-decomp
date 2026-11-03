@@ -3,7 +3,7 @@
 #include "state0_inventory_confirm.h"
 #include "main_callbacks.h"
 
-void sub_0800B814(void);
+void ShrinkObject7ToHidden(void);
 void sub_0800B858(void);
 void DummyInterruptHandler(void);
 
@@ -14,5 +14,5 @@ const u16 gState0CursorCoordinates_083ACA2C[16] __attribute__((section(".rodata.
 };
 
 const MainCallback gState0ConfirmCallbacks_083ACA4C[4] __attribute__((section(".rodata.confirm_callbacks"))) = {
-    sub_0800B79C, sub_0800B814, sub_0800B858, DummyInterruptHandler
+    sub_0800B79C, ShrinkObject7ToHidden, sub_0800B858, DummyInterruptHandler
 };

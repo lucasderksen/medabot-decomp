@@ -17,7 +17,7 @@ extern u32 gPostDispatchWord_03002B70;
 extern void PlaySoundEffect(u32);
 extern void PlayMusic(u32);
 extern void FadeOutMusic(u32);
-extern u32 sub_08041D70(u8);
+extern u32 AddInventoryRecord(u8);
 extern void sub_080422B8(u32, u32);
 extern u32 sub_08042238(u32);
 
@@ -112,7 +112,7 @@ void sub_08047DF0(u8 index, u8 row, u8 amount) { sub_0804213C(index, row, amount
 
 void sub_08047E08(u8 index, u8 row, u8 amount) { sub_08042170(index, row, amount); }
 
-u32 sub_08047E20(u8 identifier) { return sub_08041D70(identifier); }
+u32 sub_08047E20(u8 identifier) { return AddInventoryRecord(identifier); }
 
 u32 sub_08047E30(void) { return sub_08042218(); }
 
@@ -162,7 +162,7 @@ u32 InitAndRunDialogue(u8 first, u8 second, u8 mode, const void *script)
     {
     case 0:
         if (work[1] == 0)
-            sub_0803FAA0(first, second, mode);
+            InitDialogue(first, second, mode);
         else
             RestartDialogueText();
         gLaterBuffer_030064A0[0]++;

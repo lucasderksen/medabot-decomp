@@ -17,7 +17,7 @@ extern u8 gDebugProcessStateByte;
 extern u8 gDebugProcessCallbackByte;
 extern u8 gDebugMedalWork_03000BEA[];
 extern const u8 *const gDebugMedalMetadata_083B6590[];
-u32 sub_08041D70(u8 value);
+u32 AddInventoryRecord(u8 value);
 extern u8 gDebugMenuTextBuffer[];
 extern const void *const gDebugMedalLabels_083ACC08[];
 extern const MainCallback gDebugMenuProcessCallbacks_083ACACC[];
@@ -111,7 +111,7 @@ void sub_0800BE8C(void)
         case 0:
             if (*values <= 29 && !FindInventoryRecordById(*values))
             {
-                u8 slot = sub_08041D70(values[*selected]);
+                u8 slot = AddInventoryRecord(values[*selected]);
                 CopyBytes(gDebugMedalMetadata_083B6590[values[*selected]],
                             gDebugMedalWork_03000BEA + slot * 64, 11);
             }
@@ -127,7 +127,7 @@ void sub_0800BE8C(void)
             {
                 if (!FindInventoryRecordById(gState0TypedWork.bytes[0x37]))
                 {
-                    u8 slot = sub_08041D70(gState0TypedWork.bytes[0x37]);
+                    u8 slot = AddInventoryRecord(gState0TypedWork.bytes[0x37]);
                     CopyBytes(gDebugMedalMetadata_083B6590[gState0TypedWork.bytes[0x37]],
                                 gDebugMedalWork_03000BEA + slot * 64, 11);
                 }

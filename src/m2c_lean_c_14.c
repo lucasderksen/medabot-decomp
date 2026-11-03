@@ -54,7 +54,7 @@ void sub_08063254(void) {
         sub_08062A10(1);
         sub_08062BEC(gSwapContext63254->slot32 * 4 + gSwapContext63254->slot34, 1);
         sub_08041020(gUnknown_030004F2, 0x10, 0xE, 0xA, 0x10, 0xD, 0, 1);
-        sub_0803FAA0(1, 0, 1);
+        InitDialogue(1, 0, 1);
         gNestedCallbackIndex++;
     }
     sub_08062B48(gSwapContext63254->firstA, gSwapContext63254->firstB, 0);

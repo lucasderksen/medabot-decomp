@@ -2,7 +2,7 @@
 #include "state0_work.h"
 #include "state0_callbacks.h"
 
-void sub_08010328(void)
+void StepMosaicSizeUp(void)
 {
     *(volatile u16 *)0x0400004C = gState0TypedWork.bytes[0x84] + (gState0TypedWork.bytes[0x84] << 4);
     gState0TypedWork.bytes[0x84] += 2;

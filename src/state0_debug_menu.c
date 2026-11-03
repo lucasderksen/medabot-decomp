@@ -15,7 +15,7 @@ extern const MainCallback gDebugMenuPages_083ACA80[];
 extern const MainCallback gDebugMenuValues_083ACAC0[];
 extern const void *const gDebugMenuCategoryText_083ACBA0[];
 
-void sub_0800B814(void)
+void ShrinkObject7ToHidden(void)
 {
     gFrameObjects[7].scaleX -= 8;
     gFrameObjects[7].scaleY -= 8;
@@ -32,7 +32,7 @@ void sub_0800B858(void)
     gFrameObjects[7].unknown23[6]++;
 }
 
-void sub_0800B890(void)
+void DispatchDebugMenu(void)
 {
     gDebugMenuCallbacks_083ACA5C[gNestedCallbackIndex]();
 }

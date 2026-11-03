@@ -25,7 +25,7 @@ void sub_08043DF8(void);
 void sub_08043E48(void);
 void sub_08043E54(void);
 void sub_08043F9C(void);
-void sub_08043FEC(u32 index);
+void StepEquipmentTileAnimation(u32 index);
 void sub_0804387C(void);
 void sub_08043AE0(void);
 

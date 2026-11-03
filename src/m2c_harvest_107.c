@@ -34,13 +34,13 @@ extern void sub_0801BD1C(const void *, s32, s32);
 extern void sub_0801C2F0(s32);
 s32 sub_0801AFB8(u8);
 
-void sub_08015F24(void);
+void DrawSelectedMenuLabel(void);
 void sub_08025D6C(void);
 void sub_0803A5CC(void);
 void sub_0803ADFC(void);
 void sub_0803D3C0(void);
 
-void sub_08015F24(void) {
+void DrawSelectedMenuLabel(void) {
     const u8 **table;
     HideFrameObjects(0x1EU, 0xBU);
     table=gUnknown_083C47EC;

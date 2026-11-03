@@ -102,7 +102,7 @@ void sub_0804CCAC(void)
     u32 result, mask;
     *previous = snapshot;
     ReadBankedScriptArgs(2);
-    result = sub_08049780(255);
+    result = NextLookupRandom(255);
     mask = 15;
     mask &= result;
     if (mask)

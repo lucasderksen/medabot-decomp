@@ -25,7 +25,7 @@ void sub_0805CED0(void)
     }
     else
     {
-        sub_0803FAA0(1, 2, 0);
+        InitDialogue(1, 2, 0);
         gNestedCallbackIndex++;
     }
 }

@@ -170,7 +170,7 @@ extern u8 gLaterBuffer_03005310[];
 extern const u8 gRandomBytes_083F7D80[];
 s32 Mod(s32 numerator, s32 denominator);
 
-u32 sub_08049780(u32 input)
+u32 NextLookupRandom(u32 input)
 {
     u8 range = input;
     const u8 *table = gRandomBytes_083F7D80;

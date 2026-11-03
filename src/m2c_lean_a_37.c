@@ -20,16 +20,16 @@
 #include "state0_work.h"
 #include "tile_text.h"
 
-extern void sub_0800F300(void);
+extern void RefreshSelectedPartPreview(void);
 extern void sub_0800F6E4(void);
 extern void sub_0800F77C(void);
 extern void sub_0800F7D0(void);
-extern void sub_0800F844(void);
+extern void DrawSelectedPartText(void);
 extern void sub_0800F8A0(void);
-extern void sub_0800FA7C(void);
+extern void DrawPartCategoryValueRows(void);
 
 u32 sub_0800AD58(void);
-s32 sub_0800FDD8(void);
+s32 CycleSelectablePartOnLeftRight(void);
 
 u32 sub_0800AD58(void) {
 
@@ -64,7 +64,7 @@ u32 sub_0800AD58(void) {
     return 0;
 }
 
-s32 sub_0800FDD8(void) {
+s32 CycleSelectablePartOnLeftRight(void) {
 
     u16 value;
     s32 low;
@@ -113,10 +113,10 @@ s32 sub_0800FDD8(void) {
         sub_0800F6E4();
         sub_0800F77C();
         sub_0800F7D0();
-        sub_0800F844();
+        DrawSelectedPartText();
         sub_0800F8A0();
-        sub_0800FA7C();
-        sub_0800F300();
+        DrawPartCategoryValueRows();
+        RefreshSelectedPartPreview();
         return 1;
     }
 end:

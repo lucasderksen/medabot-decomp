@@ -5,7 +5,7 @@
 
 extern const MainCallback gUnknownCallbacks_083AC86C[112];
 
-void sub_08007584(void);
+void DispatchInventoryCallbacks(void);
 void sub_080075AC(void);
 void sub_08007834(void);
 void sub_08007868(void);

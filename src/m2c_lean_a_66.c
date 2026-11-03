@@ -58,7 +58,7 @@ u32 sub_08006F34(void) {
             return 1;
         }
     }
-    /* Falls off the end like the reference (flag clear or selector > 4): r0 is the caller's; the only caller, sub_0800442C, calls with r0 = 0 (after a zero key test), so it takes neither choice 1 nor 2. */
+    /* Falls off the end like the reference (flag clear or selector > 4): r0 is the caller's; the only caller, HandleInventoryDisplayInput, calls with r0 = 0 (after a zero key test), so it takes neither choice 1 nor 2. */
 }
 
 u32 sub_08015390(u32 slot) {
@@ -98,13 +98,13 @@ u32 sub_080155A8(u32 slot, u32 level, u32 adjust) {
         goto search;
     goto fail;
 raise0:
-    sub_08015668(slot, 0);
+    CopySetupSelectionRecord(slot, 0);
     return 0;
 raise1:
-    sub_08015668(slot, 1);
+    CopySetupSelectionRecord(slot, 1);
     return 0;
 raise2:
-    sub_08015668(slot, 2);
+    CopySetupSelectionRecord(slot, 2);
     return 0;
 fail:
     return 1;

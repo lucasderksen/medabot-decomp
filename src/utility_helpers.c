@@ -13,7 +13,7 @@ extern const u8 gUnknownBytes_083B2AF0[];
 extern u8 gUnknown_030057E0[];
 extern u8 gUnknown_03000BE0[];
 void StepSecondBgAutoScroll(void);
-void sub_08043FEC(u32);
+void StepEquipmentTileAnimation(u32);
 
 void sub_08044094(void)
 {
@@ -44,7 +44,7 @@ u32 sub_080440D4(void)
 void sub_08044100(void)
 {
     StepSecondBgAutoScroll();
-    sub_08043FEC(gState0TransferWork.bytes[0x38]);
+    StepEquipmentTileAnimation(gState0TransferWork.bytes[0x38]);
 }
 
 void ReadTilemapRect(u32 width, u32 height, u32 x, u32 y, u32 control, u16 *destination)
@@ -121,7 +121,7 @@ extern const u8 gUnknownBytes_083B2AF0[];
 extern u8 gUnknown_030057E0[];
 extern u8 gUnknown_03000BE0[];
 void StepSecondBgAutoScroll(void);
-void sub_08043FEC(u32);
+void StepEquipmentTileAnimation(u32);
 
 void ApplyObjectMotionStep(u32 objectIndex)
 {
@@ -326,7 +326,7 @@ extern u8 gUnknown_02024000[];
 extern const u8 gUnknownBytes_083D1D78[];
 void ClearBgScrolls2(void);
 void StepSecondBgAutoScroll(void);
-void sub_08043FEC(u32);
+void StepEquipmentTileAnimation(u32);
 
 void sub_080441B8(void)
 {

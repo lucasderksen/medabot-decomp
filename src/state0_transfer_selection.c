@@ -6,8 +6,8 @@
 #include "frame.h"
 #include "main.h"
 
-u32 sub_08007440(u32 index);
-void sub_0800712C(void);
+u32 IsSelectionAbsentFromTransferSlots(u32 index);
+void PlaceTransferSlotMarkers(void);
 void sub_08014F90(u32,u32);
 extern u8 gUnknown_03000590[];
 extern u8 gTransferSelectedSlots[3];
@@ -28,7 +28,7 @@ void sub_0800725C(void)
     }
     default:
         if (gState0TypedWork.bytes[0x52]&0x80) {
-            PlaySoundEffect(2); gState0TypedWork.bytes[0x52]=0; sub_08005798();
+            PlaySoundEffect(2); gState0TypedWork.bytes[0x52]=0; BlinkSwapMarkerObjects();
             goto done;
         }
         if (sub_080440B4()) {
@@ -40,7 +40,7 @@ void sub_0800725C(void)
     goto failed;
 deselect:
     *slot=0;
-    sub_0800712C(); PlaySoundEffect(5);
+    PlaceTransferSlotMarkers(); PlaySoundEffect(5);
     goto done;
 failed:
     PlaySoundEffect(6); gNestedCallbackIndex=11;
@@ -94,13 +94,13 @@ void sub_080072EC(void)
             if (!*slot) {
                 struct State0Record8 *base;
                 u8 *work;
-                if (!sub_08007440(i)) goto failed;
+                if (!IsSelectionAbsentFromTransferSlots(i)) goto failed;
                 base=gUnknownRecords_030017A0;
                 work=gState0TypedWork.bytes;
                 if (base[work[0x51]].unknown00[0]!=3) goto failed;
                 PlaySoundEffect(4);
                 *slot=work[0x51]+16;
-                sub_0800712C();
+                PlaceTransferSlotMarkers();
                 if(i==2) {
                     switch(work[0x50]) {
                     case 1: case 2: goto confirmed;
@@ -110,8 +110,8 @@ void sub_080072EC(void)
                 if(sub_080440B4()==i+1) goto confirmed;
                 work[0x51]=gState0NextRow_083AC5E8[work[0x51]];
                 StepMarkerOrbitForward(0); StepMarkerOrbitForward(1); StepMarkerOrbitForward(2); StepMarkerOrbitForward(3);
-                sub_08005118(); sub_0800519C(); sub_0800522C(); sub_080053C8();
-                sub_08005000(); sub_08005948();
+                DrawSelectedRecordNameText(); sub_0800519C(); LoadSelectedRecordTileGraphic(); sub_080053C8();
+                PlaceNineRecordObjectGroups(); sub_08005948();
                 goto done;
 failed:
                 PlaySoundEffect(6);

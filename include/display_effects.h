@@ -8,6 +8,6 @@ void BlendBgPaletteBanksNow(u32 color, u32 weight, u32 paletteMask);
 void BlendBgPaletteBanks(u32 color, u32 weight, u32 paletteMask);
 void BlendObjPaletteBanks(u32 color, u32 weight, u32 paletteMask);
 void BlendObjPaletteBanksNow(u32 color, u32 weight, u32 paletteMask);
-void sub_0803FAA0(u32 first, u32 second, u32 mode);
+void InitDialogue(u32 first, u32 second, u32 mode);
 
 #endif

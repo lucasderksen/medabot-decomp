@@ -79,7 +79,7 @@ void sub_08012EA8(void)
     (*counter)++;
     if (*counter == 10)
     {
-        sub_08015F24();
+        DrawSelectedMenuLabel();
         gNestedCallbackIndex = 7;
     }
 }

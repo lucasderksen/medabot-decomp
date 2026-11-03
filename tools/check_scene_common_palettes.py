@@ -7,7 +7,7 @@ from common import find_rom, load_segments
 from cpu import RoutineCpu, arm_const, unicorn
 
 LOW, HIGH = 0x084C7F34, 0x084C8034
-NAMES = ('sub_080103F4', 'sub_0801058C', 'sub_08011764', 'sub_0801A788', 'sub_0801E300', 'sub_0803B5DC', 'sub_0803FAA0', 'sub_0805718C', 'sub_08061CE0',)
+NAMES = ('LoadBg0ImageAndPalette', 'sub_0801058C', 'sub_08011764', 'sub_0801A788', 'sub_0801E300', 'sub_0803B5DC', 'InitDialogue', 'sub_0805718C', 'sub_08061CE0',)
 
 rom = find_rom().read_bytes()
 cpu = RoutineCpu(rom)

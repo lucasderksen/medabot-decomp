@@ -23,6 +23,6 @@ u32 sub_08049768(const void *source, s32 size);
 void CopyBytes2(const void *source, void *destination, u32 size);
 
 void sub_08049374(u32 index);
-u32 sub_08049780(u32 range);
+u32 NextLookupRandom(u32 range);
 
 #endif

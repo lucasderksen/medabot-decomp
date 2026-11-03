@@ -98,7 +98,7 @@ void sub_08011764(void)
     sub_08012024();
     sub_080120C8();
     sub_0801214C();
-    sub_080121A8();
+    LoadScrollControlRecord();
     sub_08043DF8();
     sub_080124B8();
     {

@@ -22,7 +22,7 @@ extern u8 gUnknown_03006F8C[3];
 extern u8 gUnknown_03006FD0[3][3];
 
 void sub_08067870(void);
-void sub_0806AA10(void);
+void AdvanceEncounterFramePhases(void);
 
 void sub_08067870(void) {
 
@@ -37,7 +37,7 @@ void sub_08067870(void) {
     }
 }
 
-void sub_0806AA10(void) {
+void AdvanceEncounterFramePhases(void) {
 
     s32 i;
 

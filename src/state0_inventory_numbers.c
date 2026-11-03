@@ -25,11 +25,11 @@ void sub_0800AF64(void);
 
 extern u8 gState0Page;
 void sub_0800AFF8(void);
-void sub_0800B0F8(void);
+void CopyInventoryPageTiles(void);
 void sub_0800B174(void);
 
 
-void sub_0800B0F8(void)
+void CopyInventoryPageTiles(void)
 {
     u32 i = 0;
     u8 *page = &gState0Page;
@@ -49,7 +49,7 @@ void sub_0800B130(void)
     (*counter)++;
     if (*counter > 180 && (*counter & 1))
     {
-        sub_0800B0F8();
+        CopyInventoryPageTiles();
         work[0x3F]++;
         if (work[0x3F] == 8)
         {

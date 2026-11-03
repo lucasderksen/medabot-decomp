@@ -5,7 +5,7 @@
 
 extern const u8 *const gUnknownPointers_083B803C[];
 
-void sub_0800FF50(void)
+void InitTableCursorObject(void)
 {
     const u8 *const *tables = gUnknownPointers_083B803C;
     u8 *work = gState0TypedWork.bytes;
@@ -21,7 +21,7 @@ void sub_0800FF50(void)
     InitFrameObjectCommands(gUnknownPointers_083B6100[3], 6);
 }
 
-void sub_0800FFF4(void)
+void UpdateTableCursorPosition(void)
 {
     const u8 *const *tables = gUnknownPointers_083B803C;
     u8 *work = gState0TypedWork.bytes;

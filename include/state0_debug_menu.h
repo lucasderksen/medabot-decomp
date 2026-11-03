@@ -5,9 +5,9 @@
 
 /* Labels and dispatch are verified by forced emulator entry; normal entry is untraced. */
 struct DebugMenuKeyBits { u32 unknown00:6, up:1, down:1; };
-void sub_0800B814(void);
+void ShrinkObject7ToHidden(void);
 void sub_0800B858(void);
-void sub_0800B890(void);
+void DispatchDebugMenu(void);
 void sub_0800B8B0(void);
 void sub_0800B938(void);
 void sub_0800BA74(void);

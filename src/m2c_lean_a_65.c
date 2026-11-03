@@ -23,9 +23,9 @@ struct Counter712C { u8 pad00[0x41]; u8 cells41[3]; };
 
 extern struct Counter712C gCounter712C asm("gCounter6ED08_03001800");
 
-void sub_0800712C(void);
+void PlaceTransferSlotMarkers(void);
 
-void sub_0800712C(void) {
+void PlaceTransferSlotMarkers(void) {
 
     u32 i;
 

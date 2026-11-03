@@ -79,9 +79,9 @@ extern void sub_0801A0D0(void);
 extern void sub_0801A678(void);
 extern void sub_080356B4(u32);
 
-void sub_08004AF8(void);
-void sub_0800ED10(void);
-void sub_0800EDA0(void);
+void ExchangeTransferBuffersOverSerial(void);
+void DrawPartPageCounts(void);
+void DrawPartPageAssignedCounts(void);
 void sub_08014404(void);
 void sub_08014F90(u32 first, u32 count);
 void sub_0801D5A8(void);
@@ -89,7 +89,7 @@ void sub_0801D738(void);
 void sub_0801D9DC(void);
 void sub_0801DAEC(void);
 
-void sub_08004AF8(void) {
+void ExchangeTransferBuffersOverSerial(void) {
 
     u8 *row;
     u16 count;
@@ -129,7 +129,7 @@ void sub_08004AF8(void) {
     }
 }
 
-void sub_0800ED10(void) {
+void DrawPartPageCounts(void) {
 
     u32 i;
 
@@ -144,7 +144,7 @@ void sub_0800ED10(void) {
     } while (i <= 3);
 }
 
-void sub_0800EDA0(void) {
+void DrawPartPageAssignedCounts(void) {
 
     u32 i;
 

@@ -31,7 +31,7 @@ extern void ClearFrameObject(u8);
 
 void sub_08063948(void);
 void sub_0806463C(void);
-void sub_0807178C(void);
+void RunPerFrameObjectCallbacks(void);
 
 void sub_08063948(void) {
 
@@ -67,7 +67,7 @@ void sub_0806463C(void) {
     }
 }
 
-void sub_0807178C(void) {
+void RunPerFrameObjectCallbacks(void) {
 
     s32 temp_r0;
     struct FrameObject *temp_r4;

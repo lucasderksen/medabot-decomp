@@ -66,7 +66,7 @@ void sub_08014DC8(void)
         u32 offset = index * 256;
         u8 *record = base + offset;
         if (record[0xDD] > 3)
-            sub_08015668(index, record[0xDD] - 4);
+            CopySetupSelectionRecord(index, record[0xDD] - 4);
     }
     gNestedCallbackIndex++;
 }

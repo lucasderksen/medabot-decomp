@@ -23,7 +23,7 @@ void sub_08012F00(void)
             {
                 u8 *amount = work + 0x82;
                 if (*amount != 0)
-                    sub_08015668(*selection, *amount - 1);
+                    CopySetupSelectionRecord(*selection, *amount - 1);
                 else
                     sub_08015564(*selection, 0);
             }

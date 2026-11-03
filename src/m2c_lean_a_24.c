@@ -41,13 +41,13 @@ extern struct Work16288 gWork16288 asm("gCounter6ED08_03001800");
 extern u32 sub_08016138(u32);
 extern void PlaySoundEffect(u32);
 
-void sub_08016288(void);
+void HandleRingRotationInput(void);
 void sub_08017E00(void);
 void sub_08017F9C(void);
 void sub_0801A4F4(u8 *source, u32 selected, u32 first, s32 x, s32 y);
 void sub_0801BF14(u32 index);
 
-void sub_08016288(void) {
+void HandleRingRotationInput(void) {
 
     const u8 *table;
 
@@ -63,7 +63,7 @@ void sub_08016288(void) {
                 gWork16288.value81 = *(const u8 *)(base + offset);
             }
             gWork16288.choice83 = 0;
-            sub_08015F24();
+            DrawSelectedMenuLabel();
         }
     } else {
         if (*(u8 *)&gRepeatedKeys & 0x10) {

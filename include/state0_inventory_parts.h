@@ -9,8 +9,8 @@ void sub_0800A05C(void);
 void sub_0800A0B8(void);
 void sub_0800A0FC(void);
 void sub_0800A180(void);
-void sub_0800A1E4(void);
-void sub_0800A2B4(void);
+void CycleOwnedInventoryOnLeftRight(void);
+void RedrawInventoryDetailOnLeftRight(void);
 void sub_0800A2E8(void);
 void sub_0800A594(void);
 

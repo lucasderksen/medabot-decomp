@@ -7,12 +7,12 @@
 #include "frame.h"
 #include "interrupts.h"
 
-void sub_08003374(void)
+void DispatchMainState0Substate2(void)
 {
     gUnknownCallbacks_083AC454[gNestedCallbackIndex]();
 }
 
-void sub_08003394(void)
+void LoadThreeOptionGraphics(void)
 {
     ClearBgScrolls();
     *(volatile u16 *)0x04000000 &= 0xF1FF;
@@ -20,7 +20,7 @@ void sub_08003394(void)
     *(volatile u16 *)0x0400000C = 0x1906;
     *(volatile u16 *)0x0400000E = 0x1A07;
     LeDecompress((const u8 *)0x084E4678, (void *)0x06004000);
-    sub_08003904();
+    LoadSelectedOptionTiles();
     LoadLeTilemap(0, 0, (const u8 *)0x084F0C40, *(volatile u16 *)0x0400000A, 0);
     LoadLeTilemap(0, 0, (const u8 *)0x084F17DC, *(volatile u16 *)0x0400000C, 0);
     LoadLeTilemap(0, 0, (const u8 *)0x084F24CC, *(volatile u16 *)0x0400000E, 0);
@@ -37,9 +37,9 @@ void sub_08003394(void)
     gNestedCallbackIndex++;
 }
 
-void sub_080034A4(void)
+void FadeInThenInitThreeOptionCursor(void)
 {
-    sub_080039BC();
+    ScrollBg3DecXIncY();
     if (gUnknown_03000440[0x84] <= 8)
     {
         BlendBgPaletteBanksNow(0, 32 - gUnknown_03000440[0x84] * 4, 0x1FFF);
@@ -48,15 +48,15 @@ void sub_080034A4(void)
     }
     else
     {
-        sub_0800393C();
+        InitThreeOptionCursor();
         gNestedCallbackIndex++;
     }
 }
 
-void sub_08003504(void)
+void HandleThreeOptionInput(void)
 {
     const u8 *pressed;
-    sub_080039BC();
+    ScrollBg3DecXIncY();
     RunFrameObjectCommands(gUnknownPointers_083B6100[0], 0);
     if (*(const u8 *)&gRepeatedKeys & KEY_UP)
     {
@@ -65,7 +65,7 @@ void sub_08003504(void)
         else
             gUnknown_03000440[0x8F]--;
         PlaySoundEffect(2);
-        sub_08003904();
+        LoadSelectedOptionTiles();
         gFrameObjects[0].screenX = 136 - gUnknown_03000440[0x8F] * 8;
         gFrameObjects[0].screenY = gUnknown_03000440[0x8F] * 24 + 32;
     }
@@ -76,7 +76,7 @@ void sub_08003504(void)
         else
             gUnknown_03000440[0x8F]++;
         PlaySoundEffect(2);
-        sub_08003904();
+        LoadSelectedOptionTiles();
         gFrameObjects[0].screenX = 136 - gUnknown_03000440[0x8F] * 8;
         gFrameObjects[0].screenY = gUnknown_03000440[0x8F] * 24 + 32;
     }
@@ -96,9 +96,9 @@ void sub_08003504(void)
     }
 }
 
-void sub_08003620(void)
+void BeginThreeOptionFadeOut(void)
 {
-    sub_080039BC();
+    ScrollBg3DecXIncY();
     ClearFrameObjects(0, 1);
     SnapshotPalettes();
     gUnknown_03000440[0x84] = 0;
@@ -106,9 +106,9 @@ void sub_08003620(void)
     gNestedCallbackIndex++;
 }
 
-void sub_08003654(void)
+void StepThreeOptionFadeOut(void)
 {
-    sub_080039BC();
+    ScrollBg3DecXIncY();
     if (gUnknown_03000440[0x84] <= 8)
     {
         BlendBgPaletteBanksNow(0, gUnknown_03000440[0x84] * 4, 0x1FFF);
@@ -119,16 +119,16 @@ void sub_08003654(void)
         gNestedCallbackIndex++;
 }
 
-void sub_080036A8(void)
+void ReturnToFourRowSelection(void)
 {
     PlayMusic(6);
     gMainSubstate = 1;
     gNestedCallbackIndex = 16;
 }
 
-void sub_080036C8(void)
+void WaitThreeOptionBlendFade(void)
 {
-    sub_080039BC();
+    ScrollBg3DecXIncY();
     RunFrameObjectCommands(gUnknownPointers_083B6100[1], 0);
     if (StepBlendFade())
         gNestedCallbackIndex++;
@@ -161,7 +161,7 @@ void sub_080036F4(void)
     }
 }
 
-void sub_08003784(void)
+void RestoreThreeOptionGraphics(void)
 {
     volatile u32 *dma;
     ClearBgScrolls();
@@ -171,7 +171,7 @@ void sub_08003784(void)
     *(volatile u16 *)0x0400000C = 0x1906;
     *(volatile u16 *)0x0400000E = 0x1A07;
     LeDecompress((const u8 *)0x084E4678, (void *)0x06004000);
-    sub_08003904();
+    LoadSelectedOptionTiles();
     dma = (volatile u32 *)0x040000D4;
     dma[0] = 0x02020800;
     dma[1] = 0x06002800;
@@ -191,23 +191,23 @@ void sub_08003784(void)
     gNestedCallbackIndex++;
 }
 
-void sub_080038CC(void)
+void WaitFadeThenInitThreeOptionCursor(void)
 {
-    sub_080039BC();
+    ScrollBg3DecXIncY();
     if (StepBlendFade())
     {
-        sub_0800393C();
+        InitThreeOptionCursor();
         gNestedCallbackIndex++;
     }
 }
 
-void sub_080038F0(void)
+void ResumeThreeOptionInput(void)
 {
-    sub_080039BC();
+    ScrollBg3DecXIncY();
     gNestedCallbackIndex = 2;
 }
 
-void sub_08003904(void)
+void LoadSelectedOptionTiles(void)
 {
     const u8 *source;
     switch (gUnknown_03000440[0x8F])
@@ -225,7 +225,7 @@ void sub_08003904(void)
     LeDecompress(source, (void *)0x06007E00);
 }
 
-void sub_0800393C(void)
+void InitThreeOptionCursor(void)
 {
     LeDecompress((const u8 *)0x084C8714, (void *)0x06016C00);
     {
@@ -244,7 +244,7 @@ void sub_0800393C(void)
     InitFrameObjectCommands(gUnknownPointers_083B6100[0], 0);
 }
 
-void sub_080039BC(void)
+void ScrollBg3DecXIncY(void)
 {
     if (gFrameCounter & 1)
     {

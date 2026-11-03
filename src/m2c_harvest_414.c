@@ -23,7 +23,7 @@ extern s32 ClearFrameObject(u8);
 
 s32 sub_0806B1FC(u32 arg);
 s32 sub_0806E074(u8 index);
-s32 sub_080706A4(u8 index);
+s32 BobObjectVertically(u8 index);
 
 s32 sub_0806B1FC(u32 arg) {
 
@@ -67,7 +67,7 @@ s32 sub_0806E074(u8 index) {
     return 1;
 }
 
-s32 sub_080706A4(u8 index) {
+s32 BobObjectVertically(u8 index) {
 
     if (index & 1) {
         gFrameObjects[index].screenY = gFrameObjects[index].unknown23[0] - gUnknown_080B00C8[gFrameObjects[index].commandOffset & 0x3F];
