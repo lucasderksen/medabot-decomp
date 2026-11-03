@@ -1,8 +1,8 @@
-"""Rename functions everywhere they are referenced.
+"""Rename functions and data symbols everywhere they are referenced.
 
     python tools/rename.py sub_0801234C=DescriptiveName [OLD=NEW ...]
     python tools/rename.py --file names.txt          # one OLD=NEW (or OLD NEW) per line, # comments
-    python tools/rename.py --alias __udivsi3=__udivsi3
+    python tools/rename.py --alias sub_0807CEC8=__udivsi3   # (already applied)
 
 With --alias, OLD is an address alias in config/symbols.json for a routine
 that already has a name (libgcc entry points): references move to NEW and the
@@ -10,12 +10,14 @@ alias entry is removed. No file may use both names, because their declarations
 may disagree.
 
 Each OLD must be a matching function (a segment whose input section is
-`.text.OLD`); NONMATCH functions are refused because their file names carry
-the address name. NEW must be a C identifier that occurs nowhere in the
-tracked tree yet. Every whole-word occurrence is replaced in tracked text files
-(sources, headers, assembly, config, docs and tools), except tests/, whose
-fixtures use their own synthetic names. config/segments.json keeps the address
-of every function, so a renamed function can still be found by address.
+`.text.OLD`) or a RAM/ROM data symbol listed in config/symbols.json, whose
+address stays recorded there under the new name. NONMATCH functions are
+refused because their file names carry the address name. NEW must be a C
+identifier that occurs nowhere in the tracked tree yet. Every whole-word
+occurrence is replaced in tracked text files (sources, headers, assembly,
+config, docs and tools), except tests/, whose fixtures use their own synthetic
+names. config/segments.json keeps the address of every function, so a renamed
+function can still be found by address.
 Run tools/build.py afterwards; the ROM must stay byte-identical.
 """
 
@@ -28,7 +30,8 @@ import sys
 from common import ROOT, tool
 
 IDENTIFIER = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
-SKIP_PREFIXES = ("tests/",)
+# tests/ fixtures use synthetic names; this file's own examples must not be rewritten.
+SKIP_PREFIXES = ("tests/", "tools/rename.py")
 
 
 def tracked_text_files():
@@ -55,7 +58,7 @@ def parse_pairs(items):
     return pairs
 
 
-def validate(pairs, segments, files):
+def validate(pairs, segments, files, symbols=None):
     functions = {}
     for segment in segments:
         section = segment.get("input_section", "")
@@ -68,9 +71,10 @@ def validate(pairs, segments, files):
     corpus = "\n".join(text for _, text in files)
     for old, new in pairs:
         segment = functions.get(old)
-        if segment is None:
-            errors.append(f"{old}: no segment has input section .text.{old}")
-        elif segment.get("nonmatching"):
+        data_symbol = isinstance((symbols or {}).get(old), str)
+        if segment is None and not data_symbol:
+            errors.append(f"{old}: no segment has input section .text.{old}, and no data symbol in config/symbols.json")
+        elif segment is not None and segment.get("nonmatching"):
             errors.append(f"{old}: NONMATCH function (its files are named after it); match it first")
         if not IDENTIFIER.match(new):
             errors.append(f"{new}: not a C identifier")
@@ -127,7 +131,7 @@ def main():
     files = list(tracked_text_files())
     symbols_path = ROOT / "config" / "symbols.json"
     symbols = json.loads(symbols_path.read_text(encoding="utf-8"))
-    errors = validate_aliases(pairs, symbols, files, elf_addresses()) if args.alias else validate(pairs, segments, files)
+    errors = validate_aliases(pairs, symbols, files, elf_addresses()) if args.alias else validate(pairs, segments, files, symbols)
     if errors:
         raise SystemExit("Refused:\n  " + "\n  ".join(errors))
 
@@ -151,7 +155,7 @@ def main():
                 print(path.relative_to(ROOT))
             else:
                 path.write_bytes(new_text.encode("utf-8"))
-    print(f"{'Would rename' if args.dry_run else 'Renamed'} {len(pairs)} functions in {changed} files.")
+    print(f"{'Would rename' if args.dry_run else 'Renamed'} {len(pairs)} symbols in {changed} files.")
     return 0
 
 

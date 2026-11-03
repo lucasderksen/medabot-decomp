@@ -31,6 +31,11 @@ class RenameTests(unittest.TestCase):
         self.assertIn("NONMATCH", errors[1])
         self.assertIn("already used", errors[2])
 
+    def test_accepts_data_symbols_but_not_function_aliases(self):
+        symbols = {"gUnknown_03000100": "0x03000100", "sub_08000400": {"address": "0x08000401", "kind": "thumb_function"}}
+        self.assertEqual(validate([("gUnknown_03000100", "gFreshWord")], SEGMENTS, FILES, symbols), [])
+        self.assertEqual(len(validate([("sub_08000400", "Fresh")], SEGMENTS, FILES, symbols)), 1)
+
     def test_refuses_duplicate_targets_and_bad_identifiers(self):
         errors = validate([("sub_08000100", "9bad")], SEGMENTS, FILES)
         self.assertTrue(any("identifier" in error for error in errors))
