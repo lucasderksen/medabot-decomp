@@ -1,6 +1,7 @@
 /*
- * sub_08045E6C: not matching yet. The build assembles asm/non_matching/sub_08045E6C.inc
- * in its place; the C below is the closest attempt (docs/drafts/README.md).
+ * Byte-verified functions derived from m2c drafts, source rewrites and clones.
+ * Names and types are provisional;
+ * see docs/M2C.md.
  */
 
 #include "global.h"
@@ -24,8 +25,10 @@
 extern u8 gUnknown_02030400[];
 extern u8 gUnknown_02030800[];
 
-NONMATCH("asm/non_matching/sub_08045E6C.inc", u32 sub_08045E6C(const struct RecordAssetSet *const *sets, const u32 *commands, u8 selector, u8 palette, struct RecordTileBlock *records, u16 *tileBase, u32 mode))
-{
+u32 sub_08045E6C(const struct RecordAssetSet *const *sets, const u32 *commands, u8 selector, u8 palette, struct RecordTileBlock *records, u16 *tileBase, u32 mode);
+
+u32 sub_08045E6C(const struct RecordAssetSet *const *sets, const u32 *commands, u8 selector, u8 palette, struct RecordTileBlock *records, u16 *tileBase, u32 mode) {
+
     const struct RecordAssetSet *set;
     struct RecordTileBlock *block;
     const u32 *p;
@@ -83,7 +86,7 @@ NONMATCH("asm/non_matching/sub_08045E6C.inc", u32 sub_08045E6C(const struct Reco
         if (size != 0)
             CpuSet(gUnknown_02030800, (void *)((*tileBase << 5) + 0x06010000), size << 10 >> 11);
         block = &records[selector];
-        { u32 sum = InitRecordSpriteObject((struct OamEntry *)block, set, palette, *tileBase) + *tileBase; *tileBase = sum; }
+        *tileBase += InitRecordSpriteObject((struct OamEntry *)block, set, palette, *tileBase);
         if (gState0TypedWork.bytes[0x96])
             ((s8 *)block->unknown00)[1] = ((s8 *)block->unknown00)[1] & ~3;
         else
@@ -96,4 +99,3 @@ NONMATCH("asm/non_matching/sub_08045E6C.inc", u32 sub_08045E6C(const struct Reco
         total += sub_08045E6C(sets, commands, sets[selector]->child0F, palette, records, tileBase, mode);
     return total;
 }
-END_NONMATCH

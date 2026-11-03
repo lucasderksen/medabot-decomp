@@ -16,8 +16,8 @@ produce it), and check that every rebuild is identical to the original.
 
 ## Status
 
-- **3,529 of 3,540 functions** match as C or assembly (98.4% of the code bytes).
-  The 11 functions left, 8,020 bytes, are `NONMATCH` functions: the build
+- **3,530 of 3,540 functions** match as C or assembly (98.4% of the code bytes).
+  The 10 functions left, 7,564 bytes, are `NONMATCH` functions: the build
   assembles their original code, and the closest C attempt sits alongside in
   `src/non_matching/`. Each one's problem is listed in
   [docs/NONMATCHING.md](docs/NONMATCHING.md).
@@ -29,7 +29,7 @@ produce it), and check that every rebuild is identical to the original.
   profiles are recorded in `config/segments.json`.
 - Most functions still have address names (`sub_08xxxxxx`). Naming is the
   next phase.
-- Four functions use a marked *fake match* (three `FORCE_REGISTER` pins and one
+- Five functions use a marked *fake match* (four `FORCE_REGISTER` pins and one
   `do { } while (0)` wrap) and five fall off the end like the reference; both
   are listed in [docs/NONMATCHING.md](docs/NONMATCHING.md).
 

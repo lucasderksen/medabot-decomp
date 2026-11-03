@@ -1388,6 +1388,14 @@ scores are search metrics, and exact bytes still require `tools/match.py`.
   function that emits it, with its source file and flags.
 - `ldr r3, =K; adds r2, r3, #0; ands` comes from an HImode constant: `x = (x + 0x10) & 0x3FF`
   stored to a `u16` narrows the `and` to HImode, and movhi of a large constant goes through r3.
+- `ldr r1, [sp, #N]; ldrh r1, [r1]; adds r0, r0, r1; ldr r2, [sp, #N]; strh r0, [r2]` after a
+  call is a HImode `u16 += u16` through a spilled pointer: combine keeps
+  `(subreg:SI (mem:HI p))` as an operand of the add and reload loads it with the address in the same
+  register. It needs both operands to be 16-bit; when the other operand is a call result, the callee
+  must be declared to return `u16` (sub_08045E6C: `*tileBase += InitRecordSpriteObject(...)` matched
+  once InitRecordSpriteObject returned `u16`; the matched sibling shape is sub_08029FE0's
+  `valuesD6[i] += valueC8`, found with tools/asm_grep.py). Check the callee still matches after
+  changing its return type.
 - A reload register must be in the insn's `used_spill_regs`, so it can never be a hard register
   that an allocated pseudo occupies across the insn. `ldr r1, [sp, #N]; ldrh r1, [r1]` (address
   reload and loaded value in the same register) therefore means the loaded value was itself a
