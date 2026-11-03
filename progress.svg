@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" font-family="Verdana,DejaVu Sans,sans-serif" font-size="11">
 <style>.bg{fill:#fff}.grid{stroke:#e3e6ea}.axis,.label{fill:#57606a}.title{fill:#1f2328}@media (prefers-color-scheme:dark){.bg{fill:#0d1117}.grid{stroke:#30363d}.axis,.label{fill:#8b949e}.title{fill:#e6edf3}}</style>
 <rect class="bg" width="760" height="300" rx="6"/>
-<text class="title" x="64" y="24" font-size="14" font-weight="bold">Medabots decompilation: 98.2% of code region, 99.89% of whole ROM</text>
+<text class="title" x="64" y="24" font-size="14" font-weight="bold">Medabots decompilation: 98.5% of code region, 99.91% of whole ROM</text>
 <line class="grid" x1="64" x2="736" y1="242.0" y2="242.0"/>
 <text class="axis" x="56" y="246.0" text-anchor="end">0%</text>
 <line class="grid" x1="64" x2="736" y1="191.5" y2="191.5"/>
@@ -13,11 +13,11 @@
 <line class="grid" x1="64" x2="736" y1="40.0" y2="40.0"/>
 <text class="axis" x="56" y="44.0" text-anchor="end">100%</text>
 <text class="axis" x="64.0" y="260" text-anchor="middle">2026-10-29</text>
-<text class="axis" x="736.0" y="260" text-anchor="middle">2026-10-30</text>
-<polyline fill="none" stroke="#2da44e" stroke-width="2" points="64.0,43.6 232.0,43.6 400.0,43.6 568.0,43.6 736.0,43.6"/>
-<circle cx="736.0" cy="43.6" r="3" fill="#2da44e"/>
+<text class="axis" x="736.0" y="260" text-anchor="middle">2026-11-03</text>
+<polyline fill="none" stroke="#2da44e" stroke-width="2" points="64.0,43.6 198.4,43.6 332.8,43.6 467.2,43.6 601.6,43.6 736.0,42.9"/>
+<circle cx="736.0" cy="42.9" r="3" fill="#2da44e"/>
 <rect x="406" y="277" width="10" height="10" fill="#2da44e"/><text class="label" x="420" y="286">Code region in source</text>
-<polyline fill="none" stroke="#d9822b" stroke-width="2" points="64.0,40.2 232.0,40.2 400.0,40.2 568.0,40.2 736.0,40.2"/>
+<polyline fill="none" stroke="#d9822b" stroke-width="2" points="64.0,40.2 198.4,40.2 332.8,40.2 467.2,40.2 601.6,40.2 736.0,40.2"/>
 <circle cx="736.0" cy="40.2" r="3" fill="#d9822b"/>
 <rect x="581" y="277" width="10" height="10" fill="#d9822b"/><text class="label" x="595" y="286">Whole ROM in source</text>
 </svg>
