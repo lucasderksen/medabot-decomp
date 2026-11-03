@@ -53,20 +53,20 @@ NONMATCH("asm/non_matching/sub_080697B4.inc", void sub_080697B4(u8 selector, u8 
         u32 position = start;
         for (column = 0; column < widths[selector]; column++) {
             u32 value;
-            volatile struct DmaTransfer *dma = (volatile struct DmaTransfer *)0x040000D4;
             if (selector > 4) value = row * 6 + column + offsets[selector];
             else value = offsets[selector] + *(const u16 *)source;
-            tile[0] = bases[selector] + value;
+            tile[0] = bases[selector];
+            tile[0] = tile[0] + value;
             if (selector <= 3) {
-                dma->source = tile;
+                ((volatile struct DmaTransfer *)0x040000D4)->source = tile;
                 vram = (position >> 16) * 2 + 0x0600F800;
             } else {
-                dma->source = tile;
+                ((volatile struct DmaTransfer *)0x040000D4)->source = tile;
                 vram = (position >> 16) * 2 + 0x0600E800;
             }
-            dma->destination = (void *)(((u32)(u16)(row + y) << 6) + vram);
-            dma->control = 0x80000001;
-            (void)dma->control;
+            ((volatile struct DmaTransfer *)0x040000D4)->destination = (void *)(((u32)(u16)(row + y) << 6) + vram);
+            ((volatile struct DmaTransfer *)0x040000D4)->control = 0x80000001;
+            (void)((volatile struct DmaTransfer *)0x040000D4)->control;
             source += 2;
             position += 0x10000;
         }
