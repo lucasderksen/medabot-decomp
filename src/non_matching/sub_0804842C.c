@@ -55,8 +55,7 @@ NONMATCH("asm/non_matching/sub_0804842C.inc", u32 sub_0804842C(u32 first, u32 se
             second |= k & 0x100;
             if (!(0x80 & second)) {
                 FORCE_REGISTER(u32 c, r1) = 0x7F; /* FAKE MATCH: the reference reloads 0x7F into r1 instead of tying it to the result */
-                FORCE_REGISTER(u32 m, r0) = second; /* FAKE MATCH: masked copy of second in r0 */
-                m &= c;
+                u32 m = second & c;
                 work[0xC31] = m;
                 sub_08047BB4(second);
                 *p = 0xFF;
