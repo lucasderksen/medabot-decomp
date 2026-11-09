@@ -255,7 +255,7 @@ void sub_0804FC1C(void);
 void sub_0804FC6C(void);
 void sub_080505FC(void);
 void sub_080506BC(void);
-void sub_080513C8(u32 value);
+void sub_080513C8(s32 value);
 void sub_08052784(void);
 void sub_08047878(u32 first, u32 second);
 void sub_0804F6E0(void);

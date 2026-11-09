@@ -39,7 +39,8 @@ def strip_asm_labels(path):
     if not Path(path).exists():  # preprocessing mocked out (tests)
         return aliases
     text = Path(path).read_text(encoding="utf-8")
-    pattern = re.compile(r'\b(\w+)((?:\s*\[[^\]]*\])*)\s*(?:__asm__|asm)\s*\(\s*"\*?([^"]+)"\s*\)')
+    # Array views (`x[]`) and function declarations (`f(params)`) may carry labels too.
+    pattern = re.compile(r'\b(\w+)((?:\s*\[[^\]]*\])*|\s*\([^()]*\))\s*(?:__asm__|asm)\s*\(\s*"\*?([^"]+)"\s*\)')
 
     def replace(match):
         if match.group(1) != match.group(3):

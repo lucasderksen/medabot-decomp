@@ -58,11 +58,36 @@ struct ObjectAttributes13C8
     u16 attributes;
     u16 unknown02;
 };
+union Coordinate13C8
+{
+    s32 value;
+    struct { u32 fraction : 8; s32 integer : 24; } parts;
+};
+struct ObjectView13C8
+{
+    u8 unknown00[2];
+    s16 screenX;                            /* 02 */
+    s16 screenY;                            /* 04 */
+    u8 unknown06[6];
+    union Coordinate13C8 x;                 /* 0C */
+    union Coordinate13C8 y;                 /* 10 */
+    u8 unknown14[0x17];
+    u8 byte2B;                              /* 2B */
+    u8 unknown2C[4];
+    s16 value30;                            /* 30 */
+    u8 unknown32[0xE];
+};
 extern struct SelectionWork13C8 gSelectionWork13C8 asm("gContinuedWork_030057E0");
 extern struct ObjectAttributes13C8 gObjectAttributes13C8[] asm("gLaterBuffer_030055A0");
 extern const struct SelectionRecord *const gUnknown_08483234[] asm("gMapObjectLists_08483234");
 
-NONMATCH("asm/non_matching/sub_080513C8.inc", void sub_080513C8(u32 value))
+extern void SetObject13C8(u8 index, u16 flags, u8 frame, u8 palette, u8 selector) asm("sub_08048864");
+extern s32 PaletteFor13C8(u8 index) asm("sub_08048684");
+extern void Refresh13C8(u8 index) asm("sub_080487C8");
+extern void SetFrame13C8(u8 index, u8 value, void *record) asm("sub_0805218C");
+extern void SetPose13C8(u8 index, u8 value) asm("sub_08049420");
+
+NONMATCH("asm/non_matching/sub_080513C8.inc", void sub_080513C8(s32 value))
 {
     s32 slot;
     struct SelectionRecord saved[64];
@@ -75,7 +100,6 @@ NONMATCH("asm/non_matching/sub_080513C8.inc", void sub_080513C8(u32 value))
     const struct SelectionRecord *entry;
     s32 hi;
     s32 objIndex;
-    s32 shadowIndex;
     s32 i;
 
     records = gSelectionRecords_03005DBC;
@@ -97,11 +121,11 @@ NONMATCH("asm/non_matching/sub_080513C8.inc", void sub_080513C8(u32 value))
                 found = 0;
                 if (value == 0)
                 {
-                    hi = entry->flags.value >> 4;
+                    skip = 0; /* FAKE MATCH: redundant store keeps this arm a block of its own, so gcse inserts the work reload and slot + 1 here as the reference does */
+                    goto store;
                 }
-                else
                 {
-                if ((s32)value >= 0 && (s32)value <= 2)
+                if (value >= 0) if (value <= 2)
                 {
                         for (k = 0; k <= 0x3F; k++)
                         {
@@ -115,7 +139,7 @@ NONMATCH("asm/non_matching/sub_080513C8.inc", void sub_080513C8(u32 value))
                         if (value == 1)
                             goto store;
                         if (value == 2 && saved[k].flags.bits.active != 1)
-                            goto next;
+                            skip = 1;
                     }
                     else if (value == 2)
                     {
@@ -145,46 +169,47 @@ NONMATCH("asm/non_matching/sub_080513C8.inc", void sub_080513C8(u32 value))
                     {
                         switch (entry->attributes >> 12)
                         {
-                        default:
-                            objIndex = count + 0x31;
-                            shadowIndex = count + 0x5B;
-                            break;
                         case 0:
                         case 2:
                         case 4:
                         case 6:
-                            objIndex = count + 0x31;
-                            sub_08048864((u8)objIndex, 0xC804, hi * 12, hi, 1);
+                            SetObject13C8(count + 0x31, 0xC804, hi * 12, hi, 1);
                             gSelectionWork13C8.records[slot].flags.bits.auxiliary = 1;
-                            gFrameObjects[objIndex].value30 = sub_08048684(hi);
-                            sub_080487C8((u8)objIndex);
-                            shadowIndex = count + 0x5B;
-                            if (gObjectAuxiliaryLookup_083D2D0D[(u16)gFrameObjects[objIndex].value30] != 0)
-                                sub_08048864((u8)shadowIndex, 0xCC0C, 0x90, 0xE, 1);
-                            do {
+                            gFrameObjects[count + 0x31].value30 = PaletteFor13C8(hi);
+                            Refresh13C8(count + 0x31);
+                            if (gObjectAuxiliaryLookup_083D2D0D[(u16)gFrameObjects[count + 0x31].value30] != 0)
+                                SetObject13C8(count + 0x5B, 0xCC0C, 0x90, 0xE, 1);
                             break;
-                            } while (0);
                         }
+                        objIndex = count + 0x31;
                         gSelectionWork13C8.records[slot].flags.bits.index = count;
                         hi = entry->flags.value >> 4;
                         gObjectAttributes13C8[objIndex].attributes = entry->attributes & 0xFFF;
-                        gFrameObjects[objIndex].byte2B = hi;
-                        gFrameObjects[objIndex].positionX.value = (gFrameObjects[objIndex].positionX.value & 0xFF) | ((entry->x * 16 + gSelectionWork13C8.halfC48) << 8);
-                        gFrameObjects[objIndex].positionY = (gFrameObjects[objIndex].positionY & 0xFF) | ((entry->y * 16 + gSelectionWork13C8.halfC4A) << 8);
-                        sub_0805218C((u8)objIndex, 0xF & entry->flags.value, &gSelectionRecords_03005DBC[slot]);
-                        sub_08049420((u8)objIndex, (u8)(hi * 4 + (0xF & entry->flags.value)));
+                        {
+                            struct ObjectView13C8 *objects = (struct ObjectView13C8 *)gFrameObjects;
+
+                            objects[objIndex].byte2B = hi;
+                            objects[objIndex].x.parts.integer = entry->x * 16 + gSelectionWork13C8.halfC48;
+                            objects[objIndex].y.parts.integer = entry->y * 16 + gSelectionWork13C8.halfC4A;
+                        }
+                        SetFrame13C8(objIndex, 0xF & entry->flags.value, &gSelectionRecords_03005DBC[slot]);
+                        SetPose13C8(objIndex, hi * 4 + (0xF & entry->flags.value));
                         if (value != 0 && found != 0)
                         {
-                            do {
-                            sub_0805218C((u8)objIndex, saved[k].frame, &gSelectionRecords_03005DBC[slot]);
-                            } while (0);
-                            sub_08049420((u8)objIndex, (u8)(saved[k].frame + hi * 4));
+                            SetFrame13C8(objIndex, saved[k].frame, &gSelectionRecords_03005DBC[slot]);
+                            SetPose13C8(objIndex, saved[k].frame + hi * 4);
                         }
-                        gFrameObjects[objIndex].unknown2C[0] = 0;
-                        gFrameObjects[shadowIndex].positionX.value = (gFrameObjects[shadowIndex].positionX.value & 0xFF) | ((gFrameObjects[objIndex].positionX.value >> 8) << 8);
-                        gFrameObjects[shadowIndex].positionY = (gFrameObjects[shadowIndex].positionY & 0xFF) | (((gFrameObjects[objIndex].positionY >> 8) - 5) << 8);
-                        gFrameObjects[shadowIndex].screenX = gFrameObjects[objIndex].screenX;
-                        gFrameObjects[shadowIndex].screenY = gFrameObjects[objIndex].screenY - 5;
+                        {
+                            struct ObjectView13C8 *objects = (struct ObjectView13C8 *)gFrameObjects;
+                            s32 obj = count + 0x31;
+                            s32 shadow = count + 0x5B;
+
+                            objects[obj].unknown2C[0] = 0;
+                            objects[shadow].x.parts.integer = objects[obj].x.parts.integer;
+                            objects[shadow].y.parts.integer = objects[obj].y.parts.integer - 5;
+                            objects[shadow].screenX = objects[obj].screenX;
+                            objects[shadow].screenY = objects[obj].screenY - 5;
+                        }
                     }
                     count++;
                 }
