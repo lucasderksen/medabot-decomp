@@ -1301,6 +1301,9 @@ step ahead from the case-1 `0x31000000` reload on).
 - A debug print after `find_reg` in `global_alloc` (allocno order, hard reg, refs, length)
   plus one in `update_equiv_regs` at the doubling were enough to explain sub_08072080; same
   build recipe as the debug agbcc above.
+- sub_08072080 matched by writing the destination as a function-scope `u16 *p = array;`
+  used for both the loop store (`p[i] = ...`) and the DMA source: the giv is then no longer
+  doubled (35 instead of 70), so it is allocated ahead of `inv * 31` and `i`.
 - regmove ties `x = mode & bit` to the dying `bit` even with `-fno-regmove` (local-alloc then
   ties it); a `u8 bit = (*p & 0x8000) != 0;` operand changes the extraction to
   `lsrs #15; ands #1` and the surrounding priorities (sub_08045E6C, 20 -> 16 rows).
