@@ -35,7 +35,6 @@ Rows are the differing instruction rows from `tools/asm_diff.py`.
 | Function | File | Flags | Size, best attempt | Problem |
 | --- | --- | --- | --- | --- |
 | `sub_08020B4C` | [sub_08020B4C.c](../src/non_matching/sub_08020B4C.c) | `-fprologue-bugfix` | 416 B; 416 B, 38 rows | The `pos154[0]` address loses its high register; local-alloc gives sl/sb to CSE'd byte-address pseudos |
-| `sub_0804538C` | [sub_0804538C.c](../src/non_matching/sub_0804538C.c) | `-fprologue-bugfix` | 208 B; 196 B, 59 rows | gcse PRE hoists `y + height` to the outer loop; the reference only hoists `row + 1` and reloads 0xFFFFFE00 per iteration |
 | `sub_08045E6C` | [sub_08045E6C.c](../src/non_matching/sub_08045E6C.c) | `-fprologue-bugfix` | 456 B; 452 B, 45 rows | Index arithmetic one register lower than the reference; `visible = 0` store merge |
 | `sub_080465B8` | [sub_080465B8.c](../src/non_matching/sub_080465B8.c) | `-fprologue-bugfix` | 1,192 B; 1,192 B, 49 rows | Register allocation in the visible block (&matrix/k/0x1095 in r5/r3/r6, reference r6/r5/r3) |
 | `sub_0804842C` | [sub_0804842C.c](../src/non_matching/sub_0804842C.c) | `-fprologue-bugfix` | 600 B; 600 B, 82 rows | The reference keeps r6 as a reload register for the 0xC30 constant in several cases |
@@ -59,6 +58,7 @@ them.
 | `sub_080185E8` | `src/m2c_harvest_419.c` | `FORCE_REGISTER(u32 twice, r0)`: keeps `index * 2` in r0 |
 | `sub_08001520` | `src/m2c_final_08001520_0.c` | `FORCE_REGISTER` pins: `depth` in r7 (shared with `width`), the depth sum in r0, the X scroll in r8 |
 | `sub_080488E8` | `src/m2c_harvest_419.c` | `FORCE_REGISTER(s32 i, r4)`: global-alloc would give r4 to `power` |
+| `sub_0804538C` | `src/m2c_final_0804538C_0.c` | Nested `do { } while (0)` wraps (nine around `width = dims & mask`, two around a no-op `height = (u16)height`, three around `column = 0`) and a no-op `height = (u16)height` in the inner loop: they set the global-alloc order column, height, width, object (r3, r5, r6, r7) |
 | `sub_08060708` | `src/m2c_harvest_420.c` | `FORCE_REGISTER(u8 one, r0) = 1`: a fresh 1, so the two arms cross-jump |
 
 ## Other accepted workarounds
