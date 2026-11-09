@@ -40,7 +40,6 @@ Rows are the differing instruction rows from `tools/asm_diff.py`.
 | `sub_08045E6C` | [sub_08045E6C.c](../src/non_matching/sub_08045E6C.c) | `-fprologue-bugfix` | 456 B; 452 B, 45 rows | Index arithmetic one register lower than the reference; `visible = 0` store merge |
 | `sub_080465B8` | [sub_080465B8.c](../src/non_matching/sub_080465B8.c) | `-fprologue-bugfix` | 1,192 B; 1,192 B, 49 rows | Register allocation in the visible block (&matrix/k/0x1095 in r5/r3/r6, reference r6/r5/r3) |
 | `sub_0804842C` | [sub_0804842C.c](../src/non_matching/sub_0804842C.c) | `-fprologue-bugfix` | 600 B; 600 B, 82 rows | The reference keeps r6 as a reload register for the 0xC30 constant in several cases |
-| `sub_08048BE0` | [sub_08048BE0.c](../src/non_matching/sub_08048BE0.c) | `-fprologue-bugfix` | 200 B; 200 B, 6 rows | Constant copy `ldr r3,=0xFFFF; adds r1,r3,#0`: cse folds the constant straight into r1 |
 | `sub_080513C8` | [sub_080513C8.c](../src/non_matching/sub_080513C8.c) | `-fprologue-bugfix` | 1,064 B; 1,064 B, 238 rows | Unsigned `bhi` instead of signed range checks; the value==0 arm keeps its own load |
 | `sub_08051CB8` | [sub_08051CB8.c](../src/non_matching/sub_08051CB8.c) | `-fprologue-bugfix -fno-regmove` | 384 B; 384 B, 7 rows | Register swap: direction r8 and work base r7 (reference r4 and r8); global-alloc priority |
 | `sub_08052784` | [sub_08052784.c](../src/non_matching/sub_08052784.c) | `-fprologue-bugfix` | 372 B; 364 B, 38 rows | Loop counters i and k allocated the other way round |
@@ -60,6 +59,7 @@ them.
 | `sub_080185E8` | `src/m2c_harvest_419.c` | `FORCE_REGISTER(u32 twice, r0)`: keeps `index * 2` in r0 |
 | `sub_080488E8` | `src/m2c_harvest_419.c` | `FORCE_REGISTER(s32 i, r4)`: global-alloc would give r4 to `power` |
 | `sub_08060708` | `src/m2c_harvest_420.c` | `FORCE_REGISTER(u8 one, r0) = 1`: a fresh 1, so the two arms cross-jump |
+| `sub_08048BE0` | `src/m2c_final_08048BE0_0.c` | `FORCE_REGISTER(u32 next, r0)` and `FORCE_REGISTER(u16 mask, r1) = 0xFFFF`: the u16 hard register makes reload emit the reference's `ldr r3,=0xFFFF; adds r1,r3,#0` |
 
 ## Other accepted workarounds
 
