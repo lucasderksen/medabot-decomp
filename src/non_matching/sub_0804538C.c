@@ -33,7 +33,14 @@ struct OamBits538C {
 
 NONMATCH("asm/non_matching/sub_0804538C.inc", void sub_0804538C(struct RecordObjectWork *work, s32 yArg, s32 xArg, s32 keyArg))
 {
-    /* include/record_helpers.h declares full-width parameters; the draft works on halfwords. */
+    /*
+     * Structurally closest attempt (204 B, 63 rows): it reproduces the reference's
+     * control flow ("b" to the outer test, row + 1 spilled, 0x1FF hoisted, the
+     * inner-preheader copy of width, 0xFFFFFE00 reloaded per iteration, the
+     * operand order of both adds). What is left is global register allocation:
+     * the reference allocates height (r5) and width (r6) before object (r7), x (r8),
+     * work (sb) and y (sl); here object/x win (priority 0.95/0.56 vs 0.51/0.45).
+     */
     u16 y = yArg;
     u16 x = xArg;
     u16 key = keyArg;
@@ -42,7 +49,7 @@ NONMATCH("asm/non_matching/sub_0804538C.inc", void sub_0804538C(struct RecordObj
     u32 height;
     u32 width;
     u16 row;
-    u16 column;
+    u32 column; /* u32 + explicit truncation keeps the inner loop at <= 26 insns so loop.c hoists 0x1FF first */
 
     object = (struct OamBits538C *)work->objects;
     height = object->shape;
@@ -52,16 +59,22 @@ NONMATCH("asm/non_matching/sub_0804538C.inc", void sub_0804538C(struct RecordObj
     width = dims & 0xFFFF;
     work->key = key;
     for (row = 0; row < work->rows; row++) {
-        for (column = 0; column < work->columns; column++) {
+        for (column = 0; column < work->columns; column = (u16)(column + 1)) {
             s32 sx;
+            u16 w; /* hoisted by loop.c into the inner preheader: the reference's "adds r4, r6, #0" */
             object->y = y;
             sx = (s16)x;
             object->x = sx;
-            x += width;
+            w = width;
+            x = w + x;
             object++;
+            height = (u16)height; /* no-op (height < 0x10000); stops gcse PRE hoisting y + height */
         }
         x -= width * work->columns;
-        y += height;
+        {
+            u16 h = height;
+            y = h + y;
+        }
     }
 }
 END_NONMATCH
