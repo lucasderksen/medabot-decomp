@@ -38,7 +38,6 @@ Rows are the differing instruction rows from `tools/asm_diff.py`.
 | `sub_08020B4C` | [sub_08020B4C.c](../src/non_matching/sub_08020B4C.c) | `-fprologue-bugfix` | 416 B; 416 B, 38 rows | The `pos154[0]` address loses its high register; local-alloc gives sl/sb to CSE'd byte-address pseudos |
 | `sub_0804538C` | [sub_0804538C.c](../src/non_matching/sub_0804538C.c) | `-fprologue-bugfix` | 208 B; 196 B, 59 rows | gcse PRE hoists `y + height` to the outer loop; the reference only hoists `row + 1` and reloads 0xFFFFFE00 per iteration |
 | `sub_08045E6C` | [sub_08045E6C.c](../src/non_matching/sub_08045E6C.c) | `-fprologue-bugfix` | 456 B; 452 B, 45 rows | Index arithmetic one register lower than the reference; `visible = 0` store merge |
-| `sub_080465B8` | [sub_080465B8.c](../src/non_matching/sub_080465B8.c) | `-fprologue-bugfix` | 1,192 B; 1,192 B, 49 rows | Register allocation in the visible block (&matrix/k/0x1095 in r5/r3/r6, reference r6/r5/r3) |
 | `sub_0804842C` | [sub_0804842C.c](../src/non_matching/sub_0804842C.c) | `-fprologue-bugfix` | 600 B; 600 B, 82 rows | The reference keeps r6 as a reload register for the 0xC30 constant in several cases |
 | `sub_08048BE0` | [sub_08048BE0.c](../src/non_matching/sub_08048BE0.c) | `-fprologue-bugfix` | 200 B; 200 B, 6 rows | Constant copy `ldr r3,=0xFFFF; adds r1,r3,#0`: cse folds the constant straight into r1 |
 | `sub_080513C8` | [sub_080513C8.c](../src/non_matching/sub_080513C8.c) | `-fprologue-bugfix` | 1,064 B; 1,064 B, 238 rows | Unsigned `bhi` instead of signed range checks; the value==0 arm keeps its own load |
@@ -60,6 +59,7 @@ them.
 | `sub_080185E8` | `src/m2c_harvest_419.c` | `FORCE_REGISTER(u32 twice, r0)`: keeps `index * 2` in r0 |
 | `sub_080488E8` | `src/m2c_harvest_419.c` | `FORCE_REGISTER(s32 i, r4)`: global-alloc would give r4 to `power` |
 | `sub_08060708` | `src/m2c_harvest_420.c` | `FORCE_REGISTER(u8 one, r0) = 1`: a fresh 1, so the two arms cross-jump |
+| `sub_080465B8` | `src/m2c_final_080465B8_0.c` | Two `do { } while (0)` wraps: around the command-search flag test (found/flag in r4/r5) and around the child0F call (work in r8, set in sb) |
 
 ## Other accepted workarounds
 
