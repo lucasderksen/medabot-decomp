@@ -1433,7 +1433,10 @@ scores are search metrics, and exact bytes still require `tools/match.py`.
 - **A user variable as the first step of an OR chain prevents a tie.** In
   `keys = a << 3; keys = keys | b | c;` the first shift is set into a non-local
   user pseudo, so the `lsrs` feeding it is not tied (`lsrs r0,r7; lsls r1,r0,#3`
-  instead of `lsrs r1,r5; lsls r1,r1,#3`). Used for sub_08051CB8.
+  instead of `lsrs r1,r5; lsls r1,r1,#3`). Used for sub_08051CB8. When single
+  steps must be wrapped (loop-depth refs), keep the last steps as one chain
+  (`keys = keys | b | c;`): a chain temporary that local-alloc puts in r1 gives
+  `keys` its r1 preference, while `keys |= b; keys |= c;` loses it (r2).
 - **The cse 1,000-insn hash flush is visible in long straight-line functions**
   (sub_08059960). After the flush, gcse turns the first reload of a cached address
   into a register copy (`adds r7, r6, #0`), and later blocks get new constant

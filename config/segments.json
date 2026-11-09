@@ -34307,10 +34307,9 @@
       "-fprologue-bugfix",
       "-fno-regmove"
     ],
-    "source": "src/non_matching/sub_08051CB8.c",
+    "source": "src/m2c_final_08051CB8_0.c",
     "input_section": ".text.sub_08051CB8",
-    "nonmatching": true,
-    "description": "Not matching yet: original assembly in a NONMATCH function, closest C attempt alongside"
+    "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
     "name": "sub_08051E38",
