@@ -28489,10 +28489,9 @@
     "cflags": [
       "-fprologue-bugfix"
     ],
-    "source": "src/non_matching/sub_08045E6C.c",
+    "source": "src/m2c_final_08045E6C_0.c",
     "input_section": ".text.sub_08045E6C",
-    "nonmatching": true,
-    "description": "Not matching yet: original assembly in a NONMATCH function, closest C attempt alongside"
+    "description": "byte-verified m2c-derived candidate; names and types provisional"
   },
   {
     "name": "sub_08046034",

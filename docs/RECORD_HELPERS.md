@@ -34,7 +34,7 @@ The assigned interval is 08044CDC..08046D1C, stopping before the compositor at 4
 | 08045C30 | 08045D1C | 236 | Integrated exact C |
 | 08045D1C | 08045D34 | 24 | Integrated exact C |
 | 08045D34 | 08045E6C | 312 | Integrated exact C |
-| 08045E6C | 08046034 | 456 | Candidate |
+| 08045E6C | 08046034 | 456 | Integrated C (one register pin) |
 | 08046034 | 080460B0 | 124 | Integrated exact C |
 | 08046CC8 | 08046D1C | 84 | Integrated exact C |
 

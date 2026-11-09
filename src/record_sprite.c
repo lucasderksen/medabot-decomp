@@ -9,7 +9,7 @@ struct ObjectAttributes
     u32 tile:10, priority:2, palette:4, key:16;
 };
 
-u32 sub_08045D34(struct OamEntry *entry, const struct RecordAssetSet *source, u8 palette, u32 tile)
+u16 sub_08045D34(struct OamEntry *entry, const struct RecordAssetSet *source, u8 palette, u32 tile)
 {
     struct ObjectAttributes *object = (struct ObjectAttributes *)entry;
     const struct RecordAssetSet *descriptor = source;
