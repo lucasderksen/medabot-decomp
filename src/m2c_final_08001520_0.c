@@ -1,6 +1,7 @@
 /*
- * sub_08001520: not matching yet. The build assembles asm/non_matching/sub_08001520.inc
- * in its place; the C below is the closest attempt (docs/drafts/README.md).
+ * Byte-verified functions derived from m2c drafts, source rewrites and clones.
+ * Names and types are provisional;
+ * see docs/M2C.md.
  */
 
 #include "global.h"
@@ -28,24 +29,27 @@
 #include "sound_samples.h"
 #include "sound_work.h"
 #include "sprite_layouts.h"
-#include "state0_debug_menu.h"
 #include "state0_work.h"
 #include "tile_text.h"
 
-extern u8 gUnknown_03000438;
-extern struct { s16 x; s16 y; } gUnknown_03001794;
-extern struct BgScroll gUnknown_03002C24;
+struct ScreenOffset { s16 x; s16 y; };
+
+extern const struct SpriteFrameHeader *const *const gSpriteFrameGroups_083AC208[];
+extern const struct SpriteFrameHeader *const *const gSpriteFrameGroups_083AC248[];
+extern const struct SpriteFrameHeader *const *const gSpriteFrameGroups_083AC288[];
+extern const struct SpriteFrameHeader *const *const gSpriteFrameGroups_Default[];
 extern s32 gUnknown_03005040;
 extern s32 gUnknown_03005044;
 extern s32 gUnknown_0300504C;
 extern s32 sub_0807CD2C(s32, s32);
-extern const struct SpriteFrameHeader *const *const gSpriteFrameGroups_Default[];
-extern const struct SpriteFrameHeader *const *const gSpriteFrameGroups_083AC208[];
-extern const struct SpriteFrameHeader *const *const gSpriteFrameGroups_083AC248[];
-extern const struct SpriteFrameHeader *const *const gSpriteFrameGroups_083AC288[];
+extern struct BgScroll gUnknown_03002C24;
+extern struct ScreenOffset gUnknown_03001794;
+extern u8 gUnknown_03000438;
 
-NONMATCH("asm/non_matching/sub_08001520.inc", void sub_08001520(void))
-{
+void sub_08001520(void);
+
+void sub_08001520(void) {
+
     union FrameOrderEntry order[128];
     u32 zero;
     s32 x;
@@ -58,22 +62,16 @@ NONMATCH("asm/non_matching/sub_08001520.inc", void sub_08001520(void))
     s32 doubleBits;
     s32 affineBits;
     const struct SpriteFrameHeader *const *frames;
-    union FrameOrderEntry *entry;
     struct FrameObject *object;
-    const struct SpriteFrameHeader *const *const *groups;
     const struct SpriteFramePart *part;
     s32 screenX;
     s32 screenY;
     s32 width;
     s32 height;
     s32 shape;
-    u16 f2;
-    u32 flags;
-    u32 tile;
-    s32 depth;
+    FORCE_REGISTER(s32 depth, r7); /* FAKE MATCH: depth shares r7 with width as in the reference; global-alloc otherwise gives it r4 because width is live (uninitialised for unknown shapes) around the loop */
     s32 scale;
     s32 scroll;
-    struct OamEntry *oam;
 
     if (1 & gUnknown_03000438)
     {
@@ -109,8 +107,15 @@ NONMATCH("asm/non_matching/sub_08001520.inc", void sub_08001520(void))
         case 0x80:
             screenX = (object->positionX.value >> 8) * 4;
             screenY = ((object->positionY >> 8) + gUnknown_03005044) * 4;
-            depth = object->positionZ >> 8;
-            depth = (depth + 0x3000) / 64;
+            shape = object->positionZ >> 8;
+            {
+                /* (shape + 0x3000) / 64 written out as the signed division expands */
+                FORCE_REGISTER(s32 sum, r0) = shape + 0x3000; /* FAKE MATCH: the sum in r0 and the shifted Z in r1 as in the reference (ours swaps them otherwise) */
+                if (sum < 0)
+                    sum = shape + 0x303F;
+                depth = sum >> 6;
+            }
+
             screenX = sub_0807CD2C(screenX, depth);
             screenY = sub_0807CD2C(screenY, depth);
             object->screenX = gUnknown_03005040 + screenX;
@@ -130,41 +135,41 @@ NONMATCH("asm/non_matching/sub_08001520.inc", void sub_08001520(void))
         switch (0xF & object->tableSelector)
         {
         case 1:
-            groups = gSpriteFrameGroups_083AC208;
+            frames = gSpriteFrameGroups_083AC208[object->frameAndGroup >> 8];
             break;
         case 2:
-            groups = gSpriteFrameGroups_083AC248;
+            frames = gSpriteFrameGroups_083AC248[object->frameAndGroup >> 8];
             break;
         case 3:
-            groups = gSpriteFrameGroups_083AC288;
+            frames = gSpriteFrameGroups_083AC288[object->frameAndGroup >> 8];
             break;
         case 0:
         default:
-            groups = gSpriteFrameGroups_Default;
+            frames = gSpriteFrameGroups_Default[object->frameAndGroup >> 8];
             break;
         }
-        frames = groups[object->frameAndGroup >> 8];
-        do {
         part = (const struct SpriteFramePart *)(frames[object->frameAndGroup & 0xFF] + 1);
-        scroll = (s16)gBgScrollBase.x;
-        screenX = gUnknown_03001794.x - scroll + object->screenX;
+        {
+            FORCE_REGISTER(s32 scrollX, r8) = (s16)gBgScrollBase.x; /* FAKE MATCH: the reference keeps the X scroll in r8 (global-alloc otherwise picks r1 and moves the scroll base address to sb) */
+            screenX = gUnknown_03001794.x - scrollX + object->screenX;
+        }
+
         scroll = (s16)gBgScrollBase.y;
         screenY = gUnknown_03001794.y - scroll + object->screenY;
-        } while (0);
-        flags = object->flags;
-        if ((0xC0 & flags) == 0x40)
+        if ((0xC0 & object->flags) == 0x40)
         {
             if ((u32)(screenY + 0x20) > 0x100)
             {
-                object->flags = 2 | flags;
+                object->flags |= 2;
                 continue;
             }
             if ((u32)(screenX + 0x20) > 0x150)
             {
-                object->flags = 2 | flags;
+                object->flags |= 2;
                 continue;
             }
-            object->flags = 0xFFFD & flags;
+            object->flags &= 0xFFFD;
+
         }
         if (!(0x4000 & object->flags))
             continue;
@@ -244,10 +249,9 @@ NONMATCH("asm/non_matching/sub_08001520.inc", void sub_08001520(void))
                 height = 32;
                 break;
             }
-            f2 = object->flags;
             if (0x200 & object->flags)
             {
-                if ((0xC0 & f2) != 0xC0)
+                if ((0xC0 & object->flags) != 0xC0)
                 {
                     x = part->x + width;
                     y = part->y + height;
@@ -279,7 +283,7 @@ NONMATCH("asm/non_matching/sub_08001520.inc", void sub_08001520(void))
                 }
                 else
                 {
-                    if (0x20 & f2)
+                    if (0x20 & object->flags)
                     {
                         width = part->x;
                         height = part->y;
@@ -289,11 +293,11 @@ NONMATCH("asm/non_matching/sub_08001520.inc", void sub_08001520(void))
                         width = 0;
                         height = 0;
                     }
-                    if (0x1000 & f2)
+                    if (0x1000 & object->flags)
                         width = -part->x - width + screenX - width;
                     else
                         width = width + (part->x + screenX);
-                    if (0x2000 & f2)
+                    if (0x2000 & object->flags)
                         height = -part->y - height + screenY - height;
                     else
                         height = height + (part->y + screenY);
@@ -305,11 +309,11 @@ NONMATCH("asm/non_matching/sub_08001520.inc", void sub_08001520(void))
             }
             else
             {
-                if (0x1000 & f2)
+                if (0x1000 & object->flags)
                     width = -part->x - width + screenX - width;
                 else
                     width = screenX + part->x;
-                if (0x2000 & f2)
+                if (0x2000 & object->flags)
                     height = -part->y - height + screenY - height;
                 else
                     height = screenY + part->y;
@@ -318,28 +322,29 @@ NONMATCH("asm/non_matching/sub_08001520.inc", void sub_08001520(void))
                 shadow[oamIndex].attr1 = ((width & 0x1FF) | (((const u8 *)part)[1] << 8))
                     ^ (object->flags & 0x3000);
             }
-            f2 = object->flags;
-            if (4 & f2)
+            if (4 & object->flags)
             {
-                tile = part->tileAndPalette;
-                if (0xF000 & tile)
-                    (&gOamShadow->attr2)[oamIndex * 4] = (0xC00 & f2) | tile;
+                if (0xF000 & part->tileAndPalette)
+                    (&gOamShadow->attr2)[oamIndex * 4] = (0xC00 & object->flags) | part->tileAndPalette;
                 else
-                    (&gOamShadow->attr2)[oamIndex * 4] = (tile & 0xFFF) | (object->palette << 12) | (0xC00 & f2);
+                    (&gOamShadow->attr2)[oamIndex * 4] = (part->tileAndPalette & 0xFFF) | (object->palette << 12) | (0xC00 & object->flags);
             }
             else
             {
-                (&gOamShadow->attr2)[oamIndex * 4] = ((object->palette << 12) + part->tileAndPalette) | (0xC00 & f2);
+                (&gOamShadow->attr2)[oamIndex * 4] = ((object->palette << 12) + part->tileAndPalette) | (0xC00 & object->flags);
             }
+
             oamIndex++;
             part++;
             if (oamIndex > 0x7F)
-                goto done;
+                break;
         }
+        if (oamIndex > 0x7F)
+            break;
     }
-done:
+
     for (i = oamIndex; i < 128; i++)
-        gOamShadow[i].attr0 = 0x200;
+        (&gOamShadow->attr0)[i * 4] = 0x200;
+
     gState0TypedWork.bytes[0x12E] = 1;
 }
-END_NONMATCH
