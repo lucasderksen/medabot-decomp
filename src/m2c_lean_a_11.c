@@ -39,7 +39,7 @@ struct Setup21418 { u8 unknown00[0xD5]; u8 byteD5; u8 unknownD6[0x2A]; };
 
 extern struct Setup21418 gSetup21418[] asm("gSetupBuffer_03000590");
 extern struct Work21418 gWork21418 asm("gCounter6ED08_03001800");
-extern void sub_08035740(u8 *, s32, u32);
+extern void AddByteCapped(u8 *, s32, u32);
 
 void sub_0801A144(const u8 *source, u32 selected);
 void sub_08021418(void);
@@ -91,8 +91,8 @@ void sub_08021418(void) {
         && gWork21418.records[gWork21418.slot8A].value == gWork21418.value52) {
         gWork21418.flag53 = 1;
         if (gWork21418.mode51 != 2) {
-            sub_08035740(&gWork21418.records[gWork21418.slot8A].count4, (s16)gWork21418.valueE8 >> 1, 0xFF);
-            sub_08035740(&gWork21418.records[gWork21418.slot8A].count5,
+            AddByteCapped(&gWork21418.records[gWork21418.slot8A].count4, (s16)gWork21418.valueE8 >> 1, 0xFF);
+            AddByteCapped(&gWork21418.records[gWork21418.slot8A].count5,
                          (gWork21418.valueEC + gSetup21418[gWork21418.setup87].byteD5) >> 1, 0xFF);
             gWork21418.counterAA++;
         } else {
@@ -106,8 +106,8 @@ void sub_08021418(void) {
         gWork21418.records[gWork21418.slot8A].count4 = 0;
         gWork21418.records[gWork21418.slot8A].count5 = 0;
         if (gWork21418.mode51 != 2) {
-            sub_08035740(&gWork21418.records[gWork21418.slot8A].count4, (s16)gWork21418.valueE8, 0xFF);
-            sub_08035740(&gWork21418.records[gWork21418.slot8A].count5,
+            AddByteCapped(&gWork21418.records[gWork21418.slot8A].count4, (s16)gWork21418.valueE8, 0xFF);
+            AddByteCapped(&gWork21418.records[gWork21418.slot8A].count5,
                          gWork21418.valueEC + gSetup21418[gWork21418.setup87].byteD5, 0xFF);
         } else {
             gWork21418.records[gWork21418.slot8A].count4++;

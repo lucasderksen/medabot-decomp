@@ -23,9 +23,9 @@ struct Counter712C { u8 pad00[0x41]; u8 cells41[3]; };
 
 extern struct Counter712C gCounter712C asm("gCounter6ED08_03001800");
 
-void sub_0800712C(void);
+void PlaceTransferSlotMarkers(void);
 
-void sub_0800712C(void) {
+void PlaceTransferSlotMarkers(void) {
 
     u32 i;
 
@@ -42,7 +42,7 @@ void sub_0800712C(void) {
                 gFrameObjects[i + 4].tableSelector = 0;
                 gFrameObjects[i + 4].priority = 0xC0;
             } else {
-                sub_08040D0C(i + 4, 1);
+                HideFrameObjects(i + 4, 1);
             }
         }
         break;
@@ -57,7 +57,7 @@ void sub_0800712C(void) {
                 gFrameObjects[i + 4].tableSelector = 0;
                 gFrameObjects[i + 4].priority = 0xC0;
             } else {
-                sub_08040D0C(i + 4, 1);
+                HideFrameObjects(i + 4, 1);
             }
         }
         break;

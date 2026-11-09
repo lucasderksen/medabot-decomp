@@ -98,8 +98,8 @@ u32 sub_0804F188(u32 input)
     if (!gLaterBuffer_03006D20[0])
     {
         u8 *work = gUnknown_030057E0;
-        work[0xC56] = sub_0805273C(*(u16 *)(work + 0xC52));
-        work[0xC57] = sub_08052760(*(u16 *)(work + 0xC54));
+        work[0xC56] = ConvertXToCellColumn(*(u16 *)(work + 0xC52));
+        work[0xC57] = ConvertYToCellRow(*(u16 *)(work + 0xC54));
         result = 1;
     }
     return result;

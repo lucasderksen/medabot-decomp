@@ -22,11 +22,11 @@ void sub_08043560(u32 index, u32 row, u32 byteOffset, u32 subtract, u32 amount)
 void sub_080435B0(u32 value, u32 x, u32 y, u32 control, u16 entry)
 {
     if (value == 255)
-        sub_08042698(2, 2, x, y, control, (u16)(entry + 0x101C));
+        FillTilemapRectSequential(2, 2, x, y, control, (u16)(entry + 0x101C));
     else if (value >> 2)
-        sub_08042698(2, 2, x, y, control, (u16)(entry + value * 4 + 0x1000));
+        FillTilemapRectSequential(2, 2, x, y, control, (u16)(entry + value * 4 + 0x1000));
     else
-        sub_08042698(2, 2, x, y, control, (u16)(entry + value * 4));
+        FillTilemapRectSequential(2, 2, x, y, control, (u16)(entry + value * 4));
 }
 
 
@@ -103,11 +103,11 @@ void sub_08043C08(u32 index, u32 shadowPalette)
 
 s32 sub_08043C94(void)
 {
-    s32 value = sub_080424B8();
+    s32 value = NextRandomByte();
     return value * 100 / 255;
 }
 
-void sub_08043CA8(void)
+void ClearBgScrolls2(void)
 {
     gBgScroll0.x = 0; gBgScroll0.y = 0;
     gBgScroll1.x = 0; gBgScroll1.y = 0;
@@ -125,18 +125,18 @@ void sub_08043DF8(void)
         *(volatile u16 *)0x04000050 = 0x1844;
     }
     else
-        sub_0804253C(0, 0, 0);
+        StartBlendFade(0, 0, 0);
 }
 
 void sub_08043E48(void)
 {
-    sub_08043CD4();
+    StepFirstBgAutoScroll();
 }
 
 void sub_08043E54(void)
 {
     u8 *work = gState0TransferWork.bytes;
-    sub_0803F63C(gEquipmentTable_083C3CDC[work[0x38]], work + 0x74, 8);
+    CopyBytes(gEquipmentTable_083C3CDC[work[0x38]], work + 0x74, 8);
 }
 
 void sub_08043F9C(void)
@@ -149,10 +149,10 @@ void sub_08043F9C(void)
         *(volatile u16 *)0x04000050 = 0x1844;
     }
     else
-        sub_0804253C(0, 0, 0);
+        StartBlendFade(0, 0, 0);
 }
 
-void sub_08043FEC(u32 index)
+void StepEquipmentTileAnimation(u32 index)
 {
     u8 *work = gState0TransferWork.bytes;
     u32 frameOffset;
@@ -163,13 +163,13 @@ void sub_08043FEC(u32 index)
     {
         work[0x7D] = zero;
         work[0x7C] = (work[0x7C] + 1) & 127;
-        sub_08041D04(gEquipmentWidths_083C4238 + index, work + 0x7E, 1);
+        CopyBytesU8Count(gEquipmentWidths_083C4238 + index, work + 0x7E, 1);
         frameOffset = index * 128 + work[0x7C];
-        sub_08041D04((const u8 *)gEquipmentFrames_083C4243 + frameOffset, work + 0x7F, 1);
+        CopyBytesU8Count((const u8 *)gEquipmentFrames_083C4243 + frameOffset, work + 0x7F, 1);
         if (work[0x7F] == 255)
         {
             work[0x7C] = zero;
-            sub_08041D04(gEquipmentFrames_083C4243[index], work + 0x7F, 1);
+            CopyBytesU8Count(gEquipmentFrames_083C4243[index], work + 0x7F, 1);
         }
         CpuSet(gEquipmentTiles_02027000 + work[0x7E] * work[0x7F] * 32,
                (void *)0x06008020, work[0x7E] * 8 | CPU_SET_32BIT);
@@ -186,7 +186,7 @@ void sub_0804387C(void)
     u8 *work = gEquipmentWork;
     u32 copied, zero;
     u8 *first;
-    sub_08041D04((const u8 *)((u32)gEquipmentTable_083BEC10 + work[0x7FE] * 8), gUnknown_0300052E, 1);
+    CopyBytesU8Count((const u8 *)((u32)gEquipmentTable_083BEC10 + work[0x7FE] * 8), gUnknown_0300052E, 1);
     copied = gUnknown_0300052E[0];
     first = work + 0xC29;
     zero = 0;
@@ -230,7 +230,7 @@ void sub_08043AE0(void)
 #include "bg_scroll.h"
 #include "state0_work.h"
 
-void sub_08043CD4(void)
+void StepFirstBgAutoScroll(void)
 {
     if (gState0TransferWork.scroll.first.selector)
     {
@@ -275,7 +275,7 @@ void sub_08043CD4(void)
     }
 }
 
-void sub_08043E78(void)
+void StepSecondBgAutoScroll(void)
 {
     if (gState0TransferWork.scroll.second.selector)
     {

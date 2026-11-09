@@ -134,7 +134,7 @@ void sub_0802EE14(void) {
             gFrameObjects[i + 0x24].frameAndGroup = 0x8100;
         }
     }
-    sub_08074DE0(0x2A);
+    PlaySoundEffect(0x2A);
     gCounter6ED08_03001800.counterAA++;
 }
 
@@ -166,7 +166,7 @@ void sub_0802F9B8(void) {
         gFrameObjects[0x22].flags |= 0x1000;
     }
     gState0TypedWork.widths.word86 = 0;
-    sub_08074DE0(0x2B);
+    PlaySoundEffect(0x2B);
     gCounter6ED08_03001800.counterAA++;
 }
 
@@ -184,7 +184,7 @@ void sub_08033B7C(void) {
     } else if (kind == 3) {
         gSetupRecs3B7C[gCounter6ED08_03001800.slot87].flagsBC |= 1;
     }
-    sub_08034F08();
+    AdvanceActionByteScript();
 }
 
 void sub_08033D30(void) {
@@ -218,10 +218,10 @@ void sub_08033D30(void) {
         && gWork3D30.recs28[gWork3D30.byte8A].byte3 == 0x33)
         gWork3D30.valueEC += gWork3D30.recs28[gWork3D30.byte8A].byte5;
     sub_08035B9C(gWork3D30.slot87);
-    sub_08035754(&gWork3D30.valueEC, gSetupRecs3D30[gWork3D30.value88].byteD1);
+    SubtractWithZeroFloor(&gWork3D30.valueEC, gSetupRecs3D30[gWork3D30.value88].byteD1);
     if (gWork3D30.byteDE != 0 && gWork3D30.byteDF == 0x1B)
-        sub_08035754(&gWork3D30.valueEC, gSetupRecs3D30[gWork3D30.value88].wordD8);
-    sub_08034F08();
+        SubtractWithZeroFloor(&gWork3D30.valueEC, gSetupRecs3D30[gWork3D30.value88].wordD8);
+    AdvanceActionByteScript();
 }
 
 void sub_08034FC8(u32 row, u32 frame, u32 kind) {
@@ -259,7 +259,7 @@ void sub_08034FC8(u32 row, u32 frame, u32 kind) {
 
 void sub_08035C70(void) {
 
-    sub_080445F4();
+    InitRecordDisplayRendering();
     if (!(1 & gCounter6ED08_03001800.flagsF8)) {
         gCounter6ED08_03001800.pos154[0] = 0x3C;
         gCounter6ED08_03001800.byte114 = 0;

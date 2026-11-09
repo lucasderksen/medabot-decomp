@@ -93,9 +93,9 @@ void sub_080140B0(void)
         u16 *counter = (u16 *)(work + 0x86);
         if (++*counter == 60)
         {
-            sub_08040CD0(3, 2);
+            ClearFrameObjects(3, 2);
             CpuFastSet((const void *)0x0850F398, (void *)0x050003E0, 8);
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
         break;
     }

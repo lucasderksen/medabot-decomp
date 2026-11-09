@@ -4,7 +4,7 @@
 extern const void *gSetupPointer_03005590;
 extern u8 gUnknown_030057E0[];
 
-u32 sub_0804D83C(void)
+u32 ReadBankedScriptByte(void)
 {
     const u8 *source = gSetupPointer_03005590;
     u16 firstOffset, secondOffset, dataOffset;

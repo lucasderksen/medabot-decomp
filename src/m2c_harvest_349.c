@@ -19,14 +19,14 @@
 #include "state0_work.h"
 #include "tile_text.h"
 
-extern void sub_08040D0C(u8, u8);
-extern void sub_08040DB8(const u8 *, u32, s32, s32, u32, u32, u32, u32);
-extern void sub_08041D04(const u8 *, u8 *, u8);
-extern void sub_08042678(void *, u32);
+extern void HideFrameObjects(u8, u8);
+extern void PlaceAlignedTextObjects(const u8 *, u32, s32, s32, u32, u32, u32, u32);
+extern void CopyBytesU8Count(const u8 *, u8 *, u8);
+extern void FillTextWithHyphens(void *, u32);
 
-void sub_0800EC44(void);
+void DrawPartPageNames(void);
 
-void sub_0800EC44(void) {
+void DrawPartPageNames(void) {
 
   const u8 *objects;
   const void * const **cursorAddress;
@@ -41,7 +41,7 @@ void sub_0800EC44(void) {
   s32 y;
   u32 column;
   u32 displayPosition;
-  sub_08040D0C(0xAU, 0x3CU);
+  HideFrameObjects(0xAU, 0x3CU);
   column = 0;
   objects = gObjectHalfwordBytes;
   work = gState0TypedWork.bytes;
@@ -64,13 +64,13 @@ void sub_0800EC44(void) {
       cursor = gPartTextPointers_083BBB4C;
       index = (((rowFour + column) * 4) + bank) * 4;
       cursor = (const void * const *) (index - (0U - ((u32) (*(cursorAddress = &cursor)))));
-      sub_08041D04((const u8 *) (*cursor), buffer, 0xFU);
-      sub_08040DB8(buffer, displayPosition >> 0x18, 0xB, y, 0xAU, 0xDU, one, one);
+      CopyBytesU8Count((const u8 *) (*cursor), buffer, 0xFU);
+      PlaceAlignedTextObjects(buffer, displayPosition >> 0x18, 0xB, y, 0xAU, 0xDU, one, one);
     }
     else
     {
-      sub_08042678(buffer, 0xDU);
-      sub_08040DB8(buffer, displayPosition >> 0x18, 0xB, y, 0xAU, 0xDU, one, one);
+      FillTextWithHyphens(buffer, 0xDU);
+      PlaceAlignedTextObjects(buffer, displayPosition >> 0x18, 0xB, y, 0xAU, 0xDU, one, one);
     }
     y += 2;
     displayPosition += 0x0F000000;

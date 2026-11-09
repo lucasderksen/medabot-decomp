@@ -30,7 +30,7 @@ extern const u8 gUnknown_084D70A8[];
 extern const u8 gUnknown_0850FC98[64];
 extern const u8 gUnknown_0850FCD8[64];
 extern void sub_08017994(u32, u32, u32);
-extern void sub_08040D0C(u8, u8);
+extern void HideFrameObjects(u8, u8);
 extern void sub_080432A0(u32, u32, u32);
 
 void sub_0801830C(void);
@@ -51,10 +51,10 @@ void sub_0801830C(void) {
     s32 temp_r3;
     u32 var_r4;
 
-    sub_08040D0C(4U, 1U);
-    sub_08040D0C(5U, 1U);
-    sub_08040D0C(6U, 1U);
-    sub_08040D0C(7U, 1U);
+    HideFrameObjects(4U, 1U);
+    HideFrameObjects(5U, 1U);
+    HideFrameObjects(6U, 1U);
+    HideFrameObjects(7U, 1U);
     var_r4 = 0;
     setup = gSetupBuffer_03000590;
     work = gState0TypedWork.bytes;
@@ -101,7 +101,7 @@ void sub_08022870(void) {
     view->destinationY=source->screenY-4;
     view->kind=6;
     commands=gState0NextCommands_083B6100;
-    sub_08040B90(commands[0x3E],0x21);
+    InitFrameObjectCommands(commands[0x3E],0x21);
     typed=gState0TypedWork.bytes;
     *(u16 *)(typed+0x86)=0x3C;
     work[0xAA]++;
@@ -132,7 +132,7 @@ void sub_08022D4C(void) {
     view->destinationY=source->screenY-4;
     view->kind=6;
     commands=gState0NextCommands_083B6100;
-    sub_08040B90(commands[0x3E],0x21);
+    InitFrameObjectCommands(commands[0x3E],0x21);
     typed=gState0TypedWork.bytes;
     *(u16 *)(typed+0x86)=0x3C;
     work[0xAA]++;

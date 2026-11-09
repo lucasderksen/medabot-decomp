@@ -35,16 +35,16 @@ s32 sub_0806B248(u32 index);
 
 void sub_08061338(void) {
 
-    sub_08041C14(8, gFrameCounter, 8);
+    SetObjectXWobble(8, gFrameCounter, 8);
     if (0x40 & (u8)gRepeatedKeys) {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         if (gMenuContext61338->cursor05 != 0)
             gMenuContext61338->cursor05--;
         else
             gMenuContext61338->cursor05 = 2;
     }
     if (0x80 & (u8)gRepeatedKeys) {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         if (gMenuContext61338->cursor05 < 2)
             gMenuContext61338->cursor05++;
         else
@@ -52,28 +52,28 @@ void sub_08061338(void) {
     }
     gFrameObjects[8].screenY = gMenuContext61338->cursor05 * 24 + 0x20;
     if (1 & gFamilyKeyBytes49558_0300058C) {
-        sub_08074DE0(4);
+        PlaySoundEffect(4);
         switch (gMenuContext61338->cursor05) {
         case 0:
             gMenuContext61338->value02 = 0;
-            gUnknown_0300137C = 8;
+            gNestedCallbackIndex = 8;
             gMenuContext61338->flag06 = 0;
             sub_08060BE4(0, 0);
             break;
         case 1:
             gMenuContext61338->value02 = 0;
-            gUnknown_0300137C = 8;
+            gNestedCallbackIndex = 8;
             gMenuContext61338->flag06 = 0;
             sub_08060BE4(0, 0);
             break;
         case 2:
         cancel:
             gState0TypedWork.bytes[0x84] = 0;
-            gUnknown_0300137C = 6;
+            gNestedCallbackIndex = 6;
             break;
         }
     } else if (2 & gFamilyKeyBytes49558_0300058C) {
-        sub_08074DE0(5);
+        PlaySoundEffect(5);
         goto cancel;
     }
 }

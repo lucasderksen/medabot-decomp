@@ -30,7 +30,7 @@ extern const u16 gUnknown_083AF660[];
 extern const u8 *gState0NextCommands_083B6100[];
 extern const u8 gUnknown_083AD51A[];
 extern void sub_0801AEB4();
-extern void sub_0803E894();
+extern void ScrollBg3Diagonally4();
 extern void sub_0806E10C(s32, s32);
 
 void sub_080165B0(void);
@@ -46,7 +46,7 @@ void sub_0806D9A8(void);
 s32 sub_08074F4C(s32 index);
 
 void sub_080165B0(void) {
-    u32 *output=&gUnknown_0300137C;
+    u32 *output=&gNestedCallbackIndex;
     const u8 *table=gUnknown_083AD51A;
     u8 *work=gState0TransferWork.bytes;
     *output=table[work[0x81]];
@@ -68,9 +68,9 @@ void sub_0801F780(void) {
         gFrameObjects[0xA].scaleY -= 4;
     }
     table=gState0NextCommands_083B6100;
-    sub_08040BD8(table[33], 0xBU);
+    RunFrameObjectCommands(table[33], 0xBU);
     if (gFrameObjects[0xB].commandStopped == 0xFF) {
-        sub_08040CD0(0xAU, 2U);
+        ClearFrameObjects(0xAU, 2U);
         gState0TransferWork.bytes[0xAA] += 1;
     }
 }
@@ -102,34 +102,34 @@ void sub_08026BF8(void) {
     var_r4 = 0;
     if (gState0TransferWork.bytes[0xD2] != 0) {
         table=gState0NextCommands_083B6100;
-        sub_08040BD8(table[30], 0xAU);
+        RunFrameObjectCommands(table[30], 0xAU);
         if (gFrameObjects[0xA].commandStopped == 0xFF) {
             var_r4 = 1;
         }
     }
     if (gState0TransferWork.bytes[0xD3] != 0) {
         table=gState0NextCommands_083B6100;
-        sub_08040BD8(table[30], 0xBU);
+        RunFrameObjectCommands(table[30], 0xBU);
         if (gFrameObjects[0xB].commandStopped == 0xFF) {
             var_r4 = 1;
         }
     }
     if (gState0TransferWork.bytes[0xD4] != 0) {
         table=gState0NextCommands_083B6100;
-        sub_08040BD8(table[30], 0xCU);
+        RunFrameObjectCommands(table[30], 0xCU);
         if (gFrameObjects[0xC].commandStopped == 0xFF) {
             var_r4 = 1;
         }
     }
     if (gState0TransferWork.bytes[0xD5] != 0) {
         table=gState0NextCommands_083B6100;
-        sub_08040BD8(table[30], 0xDU);
+        RunFrameObjectCommands(table[30], 0xDU);
         if (gFrameObjects[0xD].commandStopped == 0xFF) {
             var_r4 = 1;
         }
     }
     if (var_r4 != 0) {
-        sub_08040CD0(0xAU, 4U);
+        ClearFrameObjects(0xAU, 4U);
         gState0TransferWork.bytes[0xAA] += 1;
     }
 }
@@ -137,11 +137,11 @@ void sub_08026BF8(void) {
 void sub_08031298(void) {
  u32 *counter;
  if(gState0TypedWork.bytes[0x89]!=1) {
-  sub_080750F0(8U);
-  counter=&gUnknown_0300137C;
+  FadeOutMusic(8U);
+  counter=&gNestedCallbackIndex;
   *counter+=1;
  }else {
-  counter=&gUnknown_0300137C;
+  counter=&gNestedCallbackIndex;
   *counter=0x58;
  }
 }
@@ -162,13 +162,13 @@ void sub_08037424(s32 arg0) {
 
 void sub_0803E03C(void) {
     const u8 **table;
-    sub_0803E894();
+    ScrollBg3Diagonally4();
     table=gState0NextCommands_083B6100;
-    sub_08040BD8(table[0x75-gState0TransferWork.bytes[0x1A2]], 4U);
+    RunFrameObjectCommands(table[0x75-gState0TransferWork.bytes[0x1A2]], 4U);
     if (gFrameObjects[4].commandStopped == 0xFF) {
         gFrameObjects[3].frameAndGroup = 0x8505;
-        sub_08074DE0(0x54U);
-        gUnknown_0300137C += 1;
+        PlaySoundEffect(0x54U);
+        gNestedCallbackIndex += 1;
     }
 }
 
@@ -176,7 +176,7 @@ void sub_08064880(void) {
     u16 mask;
     
     if (sub_08065710((u8*)gMainContextPointer_03006F74 + 0x50) != 0) {
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     
     }
     gBgScroll2.y = (((*(s16*)((u8*)gMainContextPointer_03006F74+0x3A)) * 0x10) + 0x1B8) & (mask=0x1FF);
@@ -196,7 +196,7 @@ void sub_080665B0(void) {
             return;
         }
         gMainSubstate = 0x1B;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
     }
 }
 
@@ -206,8 +206,8 @@ void sub_0806D9A8(void) {
 
     work=(void*)&gState0TransferWork;
     if (work->counter == 0) {
-        sub_08074B88(0U);
-        sub_08048864(1U, 0xC400U, 0x210U, 1U, 3U);
+        PlayMusic(0U);
+        InitFrameObject(1U, 0xC400U, 0x210U, 1U, 3U);
         gFrameObjects[1].screenX = 0x118;
         gFrameObjects[1].screenY = 0x55;
         gFrameObjects[1].priority = 0x20;
@@ -215,13 +215,13 @@ void sub_0806D9A8(void) {
     }
     temp_r7 = gFrameObjects[1].commandDelay;
     if (temp_r7 == 0) {
-        sub_08048864(3U, 0xC000U, 0x213U, 3U, 3U);
+        InitFrameObject(3U, 0xC000U, 0x213U, 3U, 3U);
         gFrameObjects[3].screenX = 0x12C;
         gFrameObjects[3].screenY = 0x55;
         gFrameObjects[3].priority = 0x40;
         (*(s16 *)((u8 *)(gFrameObjects) + 0xF2)) = (s16) temp_r7;
         sub_0806E10C(7, 3);
-        sub_08048864(4U, 0xC400U, 0x21CU, 5U, 3U);
+        InitFrameObject(4U, 0xC400U, 0x21CU, 5U, 3U);
         gFrameObjects[4].screenX = 0x12C;
         gFrameObjects[4].screenY = 0x3C;
         gFrameObjects[4].priority = 0x10;
@@ -229,7 +229,7 @@ void sub_0806D9A8(void) {
         sub_0806E10C(8, 4);
         work=(void*)&gState0TransferWork;
         work->counter = temp_r7;
-        gUnknown_0300137C = 7;
+        gNestedCallbackIndex = 7;
         return;
     }
     work=(void*)&gState0TransferWork;

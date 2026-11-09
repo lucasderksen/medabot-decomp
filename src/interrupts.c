@@ -13,7 +13,7 @@ extern u8 gUnknown_03000440[];
 extern struct OamEntry gOamShadow[128];
 
 extern void sub_08047204(void);
-extern void sub_08045A14(void *first, void *second);
+extern void WriteOamAffineFields(void *first, void *second);
 extern void sub_08074070(void);
 extern void sub_08073274(void);
 
@@ -26,7 +26,7 @@ void VBlankHandler(void)
         RunVBlankWork();
         gVBlankFlags &= 0xFFFE;
         if (gMainSerialWork.polledBits & 0x80)
-            sub_080023D8();
+            StartSerialTransfer();
 
         REG_IME = 0;
         gVBlankMissedFrames++;
@@ -62,7 +62,7 @@ void RunVBlankWork(void)
         if (gRenderMode == 2)
         {
             sub_08047204();
-            sub_08045A14(gRenderWork->objects, gRenderWork->unknownF8C);
+            WriteOamAffineFields(gRenderWork->objects, gRenderWork->unknownF8C);
             for (i = 0; i <= 87; i++)
                 gOamShadow[i].affine = gRenderWork->objects[i].affine;
             for (i = 0; i <= 39; i++)

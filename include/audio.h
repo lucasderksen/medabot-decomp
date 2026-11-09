@@ -5,7 +5,7 @@
 #include "sound_voice.h"
 
 /* Select sixteen waveform bytes; the original caller lookup is unchecked. */
-void sub_08073A48(s32 waveform);
+void LoadWaveRamPattern(s32 waveform);
 
 /* Update one hardware channel's routing bits. */
 void sub_08073604(void *channel);

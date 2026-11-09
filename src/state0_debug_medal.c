@@ -17,7 +17,7 @@ extern u8 gDebugProcessStateByte;
 extern u8 gDebugProcessCallbackByte;
 extern u8 gDebugMedalWork_03000BEA[];
 extern const u8 *const gDebugMedalMetadata_083B6590[];
-u32 sub_08041D70(u8 value);
+u32 AddInventoryRecord(u8 value);
 extern u8 gDebugMenuTextBuffer[];
 extern const void *const gDebugMedalLabels_083ACC08[];
 extern const MainCallback gDebugMenuProcessCallbacks_083ACACC[];
@@ -38,40 +38,40 @@ void sub_0800BE8C(void)
     switch (work[0x34])
     {
     case 0:
-        if (gFrameCounter & 4) sub_08040CD0(8, 8);
+        if (gFrameCounter & 4) ClearFrameObjects(8, 8);
         else
         {
-            sub_0803F63C(gDebugMedalLabels_083ACC08[0], work + 0x9E, 8);
-            sub_08040DB8(work + 0x9E, 8, 2, 2, 8, 15, 1, 0);
+            CopyBytes(gDebugMedalLabels_083ACC08[0], work + 0x9E, 8);
+            PlaceAlignedTextObjects(work + 0x9E, 8, 2, 2, 8, 15, 1, 0);
         }
-        sub_0803F63C(gDebugMedalLabels_083ACC08[1], gDebugMenuTextBuffer, 8);
-        sub_08040DB8(gDebugMenuTextBuffer, 16, 2, 4, 8, 15, 1, 0);
-        sub_0803F63C(gDebugMedalLabels_083ACC08[2], gDebugMenuTextBuffer, 8);
-        sub_08040DB8(gDebugMenuTextBuffer, 24, 2, 6, 8, 15, 1, 0);
+        CopyBytes(gDebugMedalLabels_083ACC08[1], gDebugMenuTextBuffer, 8);
+        PlaceAlignedTextObjects(gDebugMenuTextBuffer, 16, 2, 4, 8, 15, 1, 0);
+        CopyBytes(gDebugMedalLabels_083ACC08[2], gDebugMenuTextBuffer, 8);
+        PlaceAlignedTextObjects(gDebugMenuTextBuffer, 24, 2, 6, 8, 15, 1, 0);
         break;
     case 1:
-        if (gFrameCounter & 4) sub_08040CD0(16, 8);
+        if (gFrameCounter & 4) ClearFrameObjects(16, 8);
         else
         {
-            sub_0803F63C(gDebugMedalLabels_083ACC08[1], work + 0x9E, 8);
-            sub_08040DB8(work + 0x9E, 16, 2, 4, 8, 15, 1, 0);
+            CopyBytes(gDebugMedalLabels_083ACC08[1], work + 0x9E, 8);
+            PlaceAlignedTextObjects(work + 0x9E, 16, 2, 4, 8, 15, 1, 0);
         }
-        sub_0803F63C(gDebugMedalLabels_083ACC08[0], gDebugMenuTextBuffer, 8);
-        sub_08040DB8(gDebugMenuTextBuffer, 8, 2, 2, 8, 15, 1, 0);
-        sub_0803F63C(gDebugMedalLabels_083ACC08[2], gDebugMenuTextBuffer, 8);
-        sub_08040DB8(gDebugMenuTextBuffer, 24, 2, 6, 8, 15, 1, 0);
+        CopyBytes(gDebugMedalLabels_083ACC08[0], gDebugMenuTextBuffer, 8);
+        PlaceAlignedTextObjects(gDebugMenuTextBuffer, 8, 2, 2, 8, 15, 1, 0);
+        CopyBytes(gDebugMedalLabels_083ACC08[2], gDebugMenuTextBuffer, 8);
+        PlaceAlignedTextObjects(gDebugMenuTextBuffer, 24, 2, 6, 8, 15, 1, 0);
         break;
     default:
-        if (gFrameCounter & 4) sub_08040CD0(24, 8);
+        if (gFrameCounter & 4) ClearFrameObjects(24, 8);
         else
         {
-            sub_0803F63C(gDebugMedalLabels_083ACC08[2], work + 0x9E, 8);
-            sub_08040DB8(work + 0x9E, 24, 2, 6, 8, 15, 1, 0);
+            CopyBytes(gDebugMedalLabels_083ACC08[2], work + 0x9E, 8);
+            PlaceAlignedTextObjects(work + 0x9E, 24, 2, 6, 8, 15, 1, 0);
         }
-        sub_0803F63C(gDebugMedalLabels_083ACC08[1], gDebugMenuTextBuffer, 8);
-        sub_08040DB8(gDebugMenuTextBuffer, 16, 2, 4, 8, 15, 1, 0);
-        sub_0803F63C(gDebugMedalLabels_083ACC08[0], gDebugMenuTextBuffer, 8);
-        sub_08040DB8(gDebugMenuTextBuffer, 8, 2, 2, 8, 15, 1, 0);
+        CopyBytes(gDebugMedalLabels_083ACC08[1], gDebugMenuTextBuffer, 8);
+        PlaceAlignedTextObjects(gDebugMenuTextBuffer, 16, 2, 4, 8, 15, 1, 0);
+        CopyBytes(gDebugMedalLabels_083ACC08[0], gDebugMenuTextBuffer, 8);
+        PlaceAlignedTextObjects(gDebugMenuTextBuffer, 8, 2, 2, 8, 15, 1, 0);
         break;
     }
     }
@@ -87,20 +87,20 @@ void sub_0800BE8C(void)
         if (!*value) *value = 29;
         else (*value)--;
     }
-    sub_08040CD0(32, 3);
-    sub_08041370(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x69));
-    sub_08040DB8(gDebugMenuTextBuffer, 32, 8, 2, 3, 15, 1, 0);
-    sub_08040CD0(35, 3);
-    sub_08041370(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x68));
-    sub_08040DB8(gDebugMenuTextBuffer, 35, 8, 4, 3, 15, 1, 0);
-    sub_08040CD0(38, 3);
-    sub_08041370(gDebugMenuTextBuffer, gDebugProcessCallbackByte);
-    sub_08040DB8(gDebugMenuTextBuffer, 38, 8, 6, 3, 15, 1, 0);
+    ClearFrameObjects(32, 3);
+    FormatDecimalString(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x69));
+    PlaceAlignedTextObjects(gDebugMenuTextBuffer, 32, 8, 2, 3, 15, 1, 0);
+    ClearFrameObjects(35, 3);
+    FormatDecimalString(gDebugMenuTextBuffer, *(u8 *)((u32)gDebugMenuTextBuffer - 0x68));
+    PlaceAlignedTextObjects(gDebugMenuTextBuffer, 35, 8, 4, 3, 15, 1, 0);
+    ClearFrameObjects(38, 3);
+    FormatDecimalString(gDebugMenuTextBuffer, gDebugProcessCallbackByte);
+    PlaceAlignedTextObjects(gDebugMenuTextBuffer, 38, 8, 6, 3, 15, 1, 0);
     { u32 cancel = (u8)(*(u8 *)&gNewKeys & 2);
     if (cancel)
     {
-        sub_08040CD0(8, 33);
-        gUnknown_0300137C = 1;
+        ClearFrameObjects(8, 33);
+        gNestedCallbackIndex = 1;
     }
     else if (*(u8 *)&gNewKeys & 1)
     {
@@ -109,26 +109,26 @@ void sub_0800BE8C(void)
         switch (*selected)
         {
         case 0:
-            if (*values <= 29 && !sub_08041D3C(*values))
+            if (*values <= 29 && !FindInventoryRecordById(*values))
             {
-                u8 slot = sub_08041D70(values[*selected]);
-                sub_0803F63C(gDebugMedalMetadata_083B6590[values[*selected]],
+                u8 slot = AddInventoryRecord(values[*selected]);
+                CopyBytes(gDebugMedalMetadata_083B6590[values[*selected]],
                             gDebugMedalWork_03000BEA + slot * 64, 11);
             }
             break;
         case 1:
             if (*(u8 *)((u32)gDebugMenuTextBuffer - 0x68) <= 29
-                && sub_08041D3C(*(u8 *)((u32)gDebugMenuTextBuffer - 0x68)))
-                sub_08041FE4(values[*selected]);
+                && FindInventoryRecordById(*(u8 *)((u32)gDebugMenuTextBuffer - 0x68)))
+                ClearInventoryRecordById(values[*selected]);
             break;
         default:
             gDebugProcessCallbackByte = cancel;
             do
             {
-                if (!sub_08041D3C(gState0TypedWork.bytes[0x37]))
+                if (!FindInventoryRecordById(gState0TypedWork.bytes[0x37]))
                 {
-                    u8 slot = sub_08041D70(gState0TypedWork.bytes[0x37]);
-                    sub_0803F63C(gDebugMedalMetadata_083B6590[gState0TypedWork.bytes[0x37]],
+                    u8 slot = AddInventoryRecord(gState0TypedWork.bytes[0x37]);
+                    CopyBytes(gDebugMedalMetadata_083B6590[gState0TypedWork.bytes[0x37]],
                                 gDebugMedalWork_03000BEA + slot * 64, 11);
                 }
                 gState0TypedWork.bytes[0x37]++;

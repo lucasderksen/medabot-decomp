@@ -13,7 +13,7 @@ void sub_08013A74(void)
     sub_080195C0();
     selection = gState0TransferWork.bytes;
     selection += 0x80;
-    sub_080164F4(*selection);
+    CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     base = gUnknown_03000440;
     counter = base;
@@ -24,13 +24,13 @@ void sub_08013A74(void)
         u32 brightness = 32;
         u32 weight = brightness - position;
         u32 mask = 0xFFFF;
-        sub_0803F684(0, weight, mask);
+        BlendBgPaletteBanksNow(0, weight, mask);
         brightness -= *counter * 4;
-        sub_0803F998(0, brightness, mask);
+        BlendObjPaletteBanksNow(0, brightness, mask);
         (*counter)++;
     }
     else
-        gUnknown_0300137C = 11;
+        gNestedCallbackIndex = 11;
 }
 
 void sub_08013AE4(void)
@@ -42,7 +42,7 @@ void sub_08013AE4(void)
     sub_080195C0();
     work = gState0TransferWork.bytes;
     selection = work + 0x80;
-    sub_080164F4(*selection);
+    CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     switch (*selection)
     {
@@ -74,9 +74,9 @@ void sub_08013AE4(void)
         }
         break;
     }
-    sub_08040CD0(0, 70);
+    ClearFrameObjects(0, 70);
     control = *(volatile u16 *)0x04000008;
-    sub_0803EF8C(30, 8, 0, 12, control, zero = 0);
-    sub_0803EF8C(30, 8, 0, 12, *(volatile u16 *)0x0400000A, zero);
-    gUnknown_0300137C = 13;
+    FillTilemapRect(30, 8, 0, 12, control, zero = 0);
+    FillTilemapRect(30, 8, 0, 12, *(volatile u16 *)0x0400000A, zero);
+    gNestedCallbackIndex = 13;
 }

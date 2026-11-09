@@ -47,11 +47,11 @@ s32 sub_08071B64(u32 arg0) {
             temp_r4->commandOffset = temp_r0_2;
             if (((u8)temp_r0_2 == 8) && (temp_r4->commandStopped != 0xFF)) {
                 if (temp_r5 == 0xB) {
-                    sub_08048864(0xCU, 0xCC00U, 0x50EU, 4U, 3U);
+                    InitFrameObject(0xCU, 0xCC00U, 0x50EU, 4U, 3U);
                     var_r4 = 0xC;
                 } else {
                     var_r4 = temp_r5 + 1;
-                    sub_08048864(var_r4, 0xC800U, 0x50EU, 4U, 3U);
+                    InitFrameObject(var_r4, 0xC800U, 0x50EU, 4U, 3U);
                 }
                 lateRoot=(u32)gFrameObjects;
                 temp_r1=(struct FrameObject *)(lateRoot + (var_r4 << 6));

@@ -41,9 +41,9 @@ u32 sub_080370AC(u32 index, u32 count) {
                 var_r8 = 0;
             } else {
                 temp_r4->flags = 0x8000 | temp_r2;
-                sub_08040BD8(*tab, temp_r3);
+                RunFrameObjectCommands(*tab, temp_r3);
                 if (temp_r4->commandStopped == 0xFF) {
-                    sub_08040CD0(temp_r3, 1U);
+                    ClearFrameObjects(temp_r3, 1U);
                 } else {
                     var_r8 = 0;
                 }

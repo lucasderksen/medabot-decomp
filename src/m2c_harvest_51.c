@@ -12,7 +12,7 @@
 #include "render_work.h"
 #include "state0_work.h"
 
-extern s8 sub_08036E54(s16);
+extern s8 Clamp1To99(s16);
 extern u8 *gUnknown_083B6298;
 extern u8 gUnknown_030018D2[];
 
@@ -26,8 +26,8 @@ void sub_08022C28(void) {
     s32 zero;
     setup[(*slot << 8) + 0xC4] = (zero = 0, 0x1F);
     setup[(*slot << 8) + 0xC5] = zero;
-    setup[(*slot << 8) + 0xC6] = sub_08036E54(*(s16 *) &work[0xE8]);
-    setup[(*slot << 8) + 0xC7] = sub_08036E54(*(s16 *) &work[0xEC]);
+    setup[(*slot << 8) + 0xC6] = Clamp1To99(*(s16 *) &work[0xE8]);
+    setup[(*slot << 8) + 0xC7] = Clamp1To99(*(s16 *) &work[0xEC]);
     work[0xAA]++;
 }
 
@@ -40,7 +40,7 @@ void sub_0802B460(void) {
     u8 *stopped = objects + 0x862;
     do {
         if (*(u8 *) (i + (u32) flags) != 0) {
-            sub_08040BD8(*script, i + 0x21);
+            RunFrameObjectCommands(*script, i + 0x21);
             if (*stopped == 0xFF)
                 found = 1;
         }

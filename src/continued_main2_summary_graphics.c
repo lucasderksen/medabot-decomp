@@ -37,13 +37,13 @@ void sub_0805D790(void)
     bg3 = (volatile u16 *)0x0400000E;
     control = 0x3C07;
     *bg3 = control;
-    sub_0805BA34(gMain2StatsMap_0878F004, *bg1);
-    sub_0805BA34(gMain2StatsMap_0878F1D4, *bg2);
-    sub_0805BA34(gMain2StatsMap_0878F2F8, *bg3);
+    LoadLz77SizedTilemap(gMain2StatsMap_0878F004, *bg1);
+    LoadLz77SizedTilemap(gMain2StatsMap_0878F1D4, *bg2);
+    LoadLz77SizedTilemap(gMain2StatsMap_0878F2F8, *bg3);
     {
         const u8 *source = gMain2StatsTiles_0878DE74;
         scratch = (u8 *)0x02030000;
-        length = sub_08044D0C(source, scratch);
+        length = DecompressLz77OrCopy(source, scratch);
     }
     CpuSet(scratch, (void *)0x06004000, (length << 10) >> 11);
     {
@@ -68,5 +68,5 @@ void sub_0805D790(void)
         gFrameObjects[0].screenX = 208;
         gFrameObjects[0].screenY = 24;
     }
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

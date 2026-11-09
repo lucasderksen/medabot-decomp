@@ -46,8 +46,8 @@ PC-relative loads; control branches around it. Zero padding occurs at
 `ResetGame` first tests the signed byte at `03005030`. Its exact gameplay meaning
 remains unknown. If it is nonzero, the routine stores `FFFF` in both halfwords
 of `gMainSerialWork.unknown04`, the outgoing four-byte payload at `03005014`.
-It then performs exactly eight iterations of `sub_080022DC(payload)` followed by
-`VBlankIntrWait`. It clears the byte at `03005030` and calls `sub_080021A4`.
+It then performs exactly eight iterations of `PrepareSerialSendPacket(payload)` followed by
+`VBlankIntrWait`. It clears the byte at `03005030` and calls `StopSerialLink`.
 The matching source uses an unsigned first-halfword and signed second-halfword
 view to preserve the original constant encodings (`FFFF` and signed `-1`);
 both stores write the same sixteen one bits. These view types do not establish
@@ -65,7 +65,7 @@ The routine then performs these operations regardless of the initial byte:
 3. Write zero to `SOUNDCNT_X` (`04000084`), disabling the sound hardware, then
    write zero to `IME` (`04000208`).
 4. Call `ResetMemory`, then `InitInterrupts`, then serial initializer
-   `sub_080020C8`.
+   `InitSerialLink`.
 5. Set `gMainState` at `0300178C` to three, clear words at `03002B8C` and
    `0300137C`, and disable DMA0 with a zero halfword store to `040000BA`.
 6. Return to the calling reset-button check.

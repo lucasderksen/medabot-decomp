@@ -58,7 +58,7 @@ void sub_08066714(void) {
     dst[i] = src[i];
     i++;
     dst[i] = src[i];
-    if (sub_0803FB3C(gScriptContext66714->script270) != 0) {
+    if (RunDialogue(gScriptContext66714->script270) != 0) {
         if (gState0TypedWork.bytes[0x2A] == 0)
             gMainSerialOutgoingWork.word06 = 0xFF00;
         else
@@ -66,14 +66,14 @@ void sub_08066714(void) {
         w0 = gMainSerialOutgoingWork.words[0][1];
         w1 = gMainSerialOutgoingWork.words[1][1];
         if ((w0 & 0xFF00) == 0xFF00 && (w1 & 0xFF00) == 0xFF00) {
-            sub_0803FB0C();
+            RestartDialogueText();
             if (w0 == w1) {
                 sub_080656DC(gScriptContext66714->block50, 0, 0, 1, 0xC0);
-                gUnknown_0300137C = 5;
+                gNestedCallbackIndex = 5;
                 gScriptContext66714->flag4A = w0 != 0xFF00;
                 return;
             }
-            gUnknown_0300137C = 3;
+            gNestedCallbackIndex = 3;
             gScriptContext66714->cursor05 = 6;
         }
     }

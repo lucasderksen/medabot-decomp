@@ -13,12 +13,12 @@ void sub_080521A8(void)
     {
         union SelectionFlags flags;
         u8 index;
-        record += (u8)sub_08049780(64);
+        record += (u8)NextLookupRandom(64);
         flags = record->flags;
         if ((flags.value & 0x80) && (record->attributes >> 12) == 0)
         {
             index = flags.bits.index + 49;
-            sub_0805218C(index, (u8)sub_08049780(4), record);
+            sub_0805218C(index, (u8)NextLookupRandom(4), record);
         }
     }
 }

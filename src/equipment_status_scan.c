@@ -1,6 +1,6 @@
 #include "state0_work.h"
 
-u32 sub_08018EE0(u32 bank)
+u32 FindMismatchedSetupEntry(u32 bank)
 {
     u32 index = 0;
     u32 entry = (u32)gSetupBuffer_03000590;

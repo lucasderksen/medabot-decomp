@@ -47,7 +47,7 @@ extern void sub_080701A8(void);
 
 void sub_080381E0(void);
 void sub_080382F4(void);
-void sub_0806B530(u8 index,u8 state,u8 first,u8 second);
+void SetObjectAnimationState(u8 index,u8 state,u8 first,u8 second);
 void sub_0806EEA8(void);
 
 void sub_080381E0(void) {
@@ -118,7 +118,7 @@ void sub_080382F4(void) {
     temp_r0->unknown2C[1] += 1;
 }
 
-void sub_0806B530(u8 index,u8 state,u8 first,u8 second) {
+void SetObjectAnimationState(u8 index,u8 state,u8 first,u8 second) {
 
  if(state==0){
   struct CommandFrame6B530 *f;
@@ -224,16 +224,16 @@ void sub_0806EEA8(void) {
     *(volatile u16 *)0x0400000C = 0xE02;
     *(volatile u16 *)0x0400000E = 0xF03;
     sub_08068460(4, 1, 0);
-    sub_08048864(9U, 0xC800U, 0x304U, 1U, 3U);
+    InitFrameObject(9U, 0xC800U, 0x304U, 1U, 3U);
     ((struct FrameWork6EEA8 *)gFrameObjects)->x9 = 8;
     ((struct FrameWork6EEA8 *)gFrameObjects)->y9 = 0xA0;
-    sub_08048864(0xAU, 0xC800U, 0x305U, 1U, 3U);
+    InitFrameObject(0xAU, 0xC800U, 0x305U, 1U, 3U);
     ((struct FrameWork6EEA8 *)gFrameObjects)->x10 = frameZero;
     ((struct FrameWork6EEA8 *)gFrameObjects)->y10 = 0x90;
     var_r5 = 0;
     var_r4 = &gFrameObjects[0xB].screenX;
     do {
-        sub_08048864(var_r5 + 0xB, 0xC400U, var_r5 + 0x300, 0U, 3U);
+        InitFrameObject(var_r5 + 0xB, 0xC400U, var_r5 + 0x300, 0U, 3U);
         (*(s16 *)((u32)var_r4 + 0)) = 0xC0;
         (*(s16 *)((u32)var_r4 + 2)) = 0xC8;
         var_r4 = (s16 *)((u32)var_r4 + 0x40);
@@ -244,7 +244,7 @@ void sub_0806EEA8(void) {
     var_r4_2 = &frameBase[var_r5+3].screenX;
     var_r6 = 0xA0;
     do {
-        sub_08048864(var_r5 + 3, 0xC400U, 0x308U, 2U, 3U);
+        InitFrameObject(var_r5 + 3, 0xC400U, 0x308U, 2U, 3U);
         (*(s16 *)((u32)var_r4_2 + 0)) = var_r6;
         (*(s16 *)((u32)var_r4_2 + 2)) = 0xC8;
         (*(s8 *)((u32)var_r4_2 + 9)) = 0x20;
@@ -260,5 +260,5 @@ void sub_0806EEA8(void) {
     *(volatile u16 *)0x04000050 = 0x1844;
     *(volatile u16 *)0x04000052 = 0x80B;
     gGraphicsWork6EEA803001800.saved = (u16) gGraphicsWork6EEA803001800.incoming;
-    gUnknown_0300137C = 1;
+    gNestedCallbackIndex = 1;
 }

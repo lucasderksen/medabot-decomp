@@ -26,9 +26,9 @@ void sub_0800AB0C(void) {
     do {
         x = 6 + column * 2;
         if (column < (u32) gInventoryRecords[gUnknown_0300047D].unknown06[3]) {
-            sub_08042698(2U, 2U, x, 7U, (u32) *(volatile u16 *)0x0400000A, (u32) ((((u8 *)&gInventoryRecords + 24)[column + ((u32) gUnknown_0300047D << 6)] << 0x12) + 0xB3400000) >> 0x10);
+            FillTilemapRectSequential(2U, 2U, x, 7U, (u32) *(volatile u16 *)0x0400000A, (u32) ((((u8 *)&gInventoryRecords + 24)[column + ((u32) gUnknown_0300047D << 6)] << 0x12) + 0xB3400000) >> 0x10);
         } else {
-            sub_08042698(2U, 2U, x, 7U, (u32) *(volatile u16 *)0x0400000A, (u32) ((((u8 *)&gInventoryRecords + 24)[column + ((u32) gUnknown_0300047D << 6)] << 0x12) + 0xA3400000) >> 0x10);
+            FillTilemapRectSequential(2U, 2U, x, 7U, (u32) *(volatile u16 *)0x0400000A, (u32) ((((u8 *)&gInventoryRecords + 24)[column + ((u32) gUnknown_0300047D << 6)] << 0x12) + 0xA3400000) >> 0x10);
         }
         column += 1;
     } while (column <= 7U);

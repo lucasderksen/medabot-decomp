@@ -23,7 +23,7 @@ and are excluded from `src/display_effects.c`.
 
 ## Initializer evidence
 
-`sub_0803FAA0` reduces its first three arguments to bytes, clears the first
+`InitDialogue` reduces its first three arguments to bytes, clears the first
 `0x28` bytes of callback work at `0x03000440`, and stores the three bytes at
 offsets 0, 1, and 2. It writes unsigned `0xFF` at offset `0x0F` and signed `-1`
 at offsets `0x10` and `0x11`. The local `EffectWorkPrefix` declaration preserves

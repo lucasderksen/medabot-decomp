@@ -15,7 +15,7 @@ void sub_08057698(void)
 
 void sub_080576BC(void)
 {
-    if (sub_08049E08(0))
+    if (StepPaletteFadeToColor(0))
         sub_0804A210();
 }
 

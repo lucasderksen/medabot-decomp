@@ -59,27 +59,27 @@ void sub_0804B008(void) {
 
     u32 x, y;
 
-    if (sub_08049E08(0x7FFF) != 0) {
+    if (StepPaletteFadeToColor(0x7FFF) != 0) {
         gLaterBuffer_03005590 = gSetupData_08765EC0;
         if (((struct OtherWork14 *)gContinuedOtherWork_030057A0)->byte14 == 0)
             gContinuedWork_030057E0.map = ((struct OtherWork14 *)gContinuedOtherWork_030057A0)->half26;
         sub_080528F8(gContinuedWork_030057E0.map);
-        x = ((u8 (*)(u32))sub_0805273C)(gContinuedWork_030057E0.halfC52);
-        y = ((u8 (*)(u32))sub_08052760)(gContinuedWork_030057E0.halfC54);
+        x = ((u8 (*)(u32))ConvertXToCellColumn)(gContinuedWork_030057E0.halfC52);
+        y = ((u8 (*)(u32))ConvertYToCellRow)(gContinuedWork_030057E0.halfC54);
         if (gContinuedWork_030057E0.cellX >= sub_080529AC(gContinuedWork_030057E0.map, 0) >> 1)
             x = (sub_080529AC(gContinuedWork_030057E0.map, 0) >> 1) - 1;
         if (gContinuedWork_030057E0.cellY >= sub_080529AC(gContinuedWork_030057E0.map, 1) >> 1)
             y = (sub_080529AC(gContinuedWork_030057E0.map, 1) >> 1) - 1;
         gContinuedWork_030057E0.halfC52 = x * 16 + gContinuedWork_030057E0.halfC48;
         gContinuedWork_030057E0.halfC54 = y * 16 + gContinuedWork_030057E0.halfC4A;
-        gContinuedWork_030057E0.cellX = sub_0805273C(gContinuedWork_030057E0.halfC52);
-        gContinuedWork_030057E0.cellY = sub_08052760(gContinuedWork_030057E0.halfC54);
+        gContinuedWork_030057E0.cellX = ConvertXToCellColumn(gContinuedWork_030057E0.halfC52);
+        gContinuedWork_030057E0.cellY = ConvertYToCellRow(gContinuedWork_030057E0.halfC54);
         sub_08052AA4();
         gContinuedWork_030057E0.byteC28 = gContinuedWork_030057E0.byteC5C;
         sub_0805330C();
         *(volatile u16 *)0x04000000 = 0x1E40;
         sub_0804B248();
         gContinuedWork_030057E0.byteCBA = 0;
-        gUnknown_0300137C = 1;
+        gNestedCallbackIndex = 1;
     }
 }

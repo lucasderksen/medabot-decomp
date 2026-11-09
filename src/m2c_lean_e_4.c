@@ -58,7 +58,7 @@ void sub_08067F64(void) {
         if (gDebugMenuTextBuffer[i] == 0xFE)
             break;
     }
-    sub_08040DB8(gDebugMenuTextBuffer, 0x14, 5, 0xA, 0xA, 1, 1, 0);
+    PlaceAlignedTextObjects(gDebugMenuTextBuffer, 0x14, 5, 0xA, 0xA, 1, 1, 0);
     if (gInventoryRecords[gQuantityResult_030017EC].byte5 == 0x64) {
         *(volatile u16 *)((((*(volatile u16 *)0x04000008 >> 8) & 0x1F) << 11) + 0x0600029A) = (gSetupContext67F64->tileBase36 + 0x14) | 0x7000;
         *(volatile u16 *)((((*(volatile u16 *)0x04000008 >> 8) & 0x1F) << 11) + 0x060002DA) = (gSetupContext67F64->tileBase36 + 0x15) | 0x7000;
@@ -86,7 +86,7 @@ void sub_08067F64(void) {
             *dst = ((u8)(gInventoryRecords[gQuantityResult_030017EC].byte5) % 10u * 2 + ctx->tileBase36 + 1) | 0x7000;
         }
     }
-    sub_08040DB8(gDebugMedalWork_03000BEA + (gQuantityResult_030017EC << 6), 0x1E, 0x11, 0xA, 0xA, 2, 0, 0);
+    PlaceAlignedTextObjects(gDebugMedalWork_03000BEA + (gQuantityResult_030017EC << 6), 0x1E, 0x11, 0xA, 0xA, 2, 0, 0);
     *(volatile u16 *)0x04000000 |= 0x200;
     *(volatile u16 *)0x04000000 |= 0x400;
     *(volatile u16 *)0x04000000 |= 0x800;
@@ -97,6 +97,6 @@ void sub_08067F64(void) {
     gSetupContext67F64->flags48[2] = 0;
     gSetupContext67F64->flags48[3] = 0;
     gSetupContext67F64->cursor05 = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
     gState0TypedWork.bytes[0x84] = 0;
 }

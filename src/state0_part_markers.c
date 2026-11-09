@@ -2,7 +2,7 @@
 #include "frame.h"
 #include "main.h"
 
-void sub_0800FCF0(void)
+void InitPartDetailMarkerPair(void)
 {
     if (gState0TypedWork.bytes[0x41] > 1)
     {
@@ -23,7 +23,7 @@ void sub_0800FCF0(void)
     }
 }
 
-void sub_0800FD74(void)
+void BlinkPartDetailMarkerPair(void)
 {
     if (gState0TypedWork.bytes[0x41] > 1)
     {

@@ -60,21 +60,21 @@ void sub_080675D4(void) {
     s32 i, k;
     u32 root;
 
-    sub_08074B88(5);
+    PlayMusic(5);
     fill = 0;
     CpuFastSet(&fill, (void *)0x06000000, 0x01006000);
-    sub_08040CD0(0, 0x80);
-    sub_080415BC();
+    ClearFrameObjects(0, 0x80);
+    ClearBgScrolls();
     *(volatile u16 *)0x04000000 = 0x6060;
     *(volatile u16 *)0x04000008 = 0x1B04;
-    sub_0805BA34(gBiosLz77Stream_087A4EF0, *(volatile u16 *)0x04000008);
+    LoadLz77SizedTilemap(gBiosLz77Stream_087A4EF0, *(volatile u16 *)0x04000008);
     *(volatile u16 *)0x04000008 = 0x1F04;
     *(volatile u16 *)0x0400000A = 0x1E05;
     *(volatile u16 *)0x0400000C = 0x3D06;
     *(volatile u16 *)0x0400000E = 0x1C07;
-    sub_0805BA34(gBiosLz77Stream_087A5058, *(volatile u16 *)0x0400000C);
-    sub_0805BA34(gBiosLz77Stream_087A5294, *(volatile u16 *)0x0400000E);
-    size = sub_08044D0C(gBiosLz77Stream_087A2604, gScratch6030C02030000);
+    LoadLz77SizedTilemap(gBiosLz77Stream_087A5058, *(volatile u16 *)0x0400000C);
+    LoadLz77SizedTilemap(gBiosLz77Stream_087A5294, *(volatile u16 *)0x0400000E);
+    size = DecompressLz77OrCopy(gBiosLz77Stream_087A2604, gScratch6030C02030000);
     CpuFastSet(gScratch6030C02030000, (void *)0x06004000, (size << 9) >> 11);
     CpuFastSet(gUnknown_087A25A4, gEquipmentPaletteShadow, 0x18);
     CpuFastSet(palette, gCopy6280C0202F800, 0x20);
@@ -96,7 +96,7 @@ void sub_080675D4(void) {
         k = i + 1;
         ((struct FrameObject *)root)[k].flags = 0xC800;
         ((struct FrameObject *)root)[k].tableSelector = 2;
-        ((struct FrameObject *)root)[k].palette = sub_0807CD2C(i, 0x12);
+        ((struct FrameObject *)root)[k].palette = __divsi3(i, 0x12);
         ((struct FrameObject *)root)[k].frameAndGroup = 0x116;
     }
     sub_08066A14();
@@ -121,5 +121,5 @@ void sub_080675D4(void) {
     gSetupContext675D4->flags48[2] = 0;
     gSetupContext675D4->flags48[3] = 0;
     gState0TypedWork.bytes[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

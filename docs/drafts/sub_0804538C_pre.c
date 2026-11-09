@@ -19,7 +19,7 @@ void sub_0804538C(struct RecordObjectWork *work, u16 y, u16 x, u16 key) {
     object = (struct OamBits538C *)work->objects;
     height = object->shape;
     width = object->size;
-    dims = sub_08044E64(height << 14, width << 30);
+    dims = GetOamDimensions(height << 14, width << 30);
     height = dims >> 16;
     width = dims & 0xFFFF;
     work->key = key;

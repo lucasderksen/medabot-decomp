@@ -10,7 +10,7 @@
 #include "object_numeric_helpers.h"
 #include "serial.h"
 
-extern void sub_0806B718(s32);
+extern void ClearFrameObject(s32);
 
 s32 sub_0806C88C(void);
 
@@ -22,13 +22,13 @@ s32 sub_0806C88C(void) {
     phase = gFrameObjects->commandDelay;
     switch (phase) {                              /* irregular */
     case 0:
-        sub_08048864(0U, 0xC000U, 0x33U, 0xCU, 3U);
+        InitFrameObject(0U, 0xC000U, 0x33U, 0xCU, 3U);
         gFrameObjects->screenX = 0x78;
         gFrameObjects->screenY = 0x50;
         gFrameObjects->unknown1A = (u16) phase;
         gFrameObjects->commandDelay += 1;
         gFrameObjects[0x1E].frameAndGroup = (u16) phase;
-        sub_08048864(0x21U, 0xCC08U, 0x12U, 2U, 3U);
+        InitFrameObject(0x21U, 0xCC08U, 0x12U, 2U, 3U);
         gFrameObjects[0x21].screenX = (s16) (u16) gFrameObjects[0x1E].screenX;
         gFrameObjects[0x21].screenY = (u16) gFrameObjects[0x1E].screenY + 0xA;
         break;
@@ -38,7 +38,7 @@ s32 sub_0806C88C(void) {
             gFrameObjects[0x20].screenY = (u16) gFrameObjects[0x20].screenY - 2;
         }
         if (((u32) gFrameObjects->unknown1A > 0xEBU) || (9 & (u8)gNewKeys)) {
-            sub_0806B718(0);
+            ClearFrameObject(0);
             return 1;
         }
         break;

@@ -28,7 +28,7 @@ void sub_080292D4(void) {
     u32 slot = 0x21000000;
     do {
         if (*(u8 *) (i + (u32) flags) != 0) {
-            sub_08040BD8(*commands, slot >> 24);
+            RunFrameObjectCommands(*commands, slot >> 24);
             if (*stopped == 0xFF)
                 found = 1;
         }
@@ -37,7 +37,7 @@ void sub_080292D4(void) {
         i++;
     } while (i <= 2);
     if (found != 0) {
-        sub_08040CD0(0x21, 3);
+        ClearFrameObjects(0x21, 3);
         gState0TransferWork.bytes[0xAA]++;
     }
 }

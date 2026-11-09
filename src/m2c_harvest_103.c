@@ -24,7 +24,7 @@ void sub_0803A130(void) {
   * selected is intentionally uninitialized on that path. */
  u32 i,selected;
  u8 slot;struct FrameObject *object;u8 *work;u32 zero;
- sub_0803D450();i=0;
+ LoadActionHalfwordScriptParams();i=0;
  if(gFrameObjects[0xA].flags==0)selected=0xA;
  else {
 search:
@@ -36,12 +36,12 @@ search:
    else goto search;
   }
  }
- slot=selected;sub_08040CD0(slot,1);
+ slot=selected;ClearFrameObjects(slot,1);
  {struct FrameObject *frames=gFrameObjects;object=&frames[selected];}work=gState0TransferWork.bytes;
  object->flags=(zero=0,*(u16*)(work+0x10E)<<10);object->flags|=0x4004;
  object->tableSelector=zero;object->palette=0xE;object->priority=0x80;
  object->unknown2C[1]=*(u16*)(work+0x110);
- sub_08040B90(gState0NextCommands_083B6100[object->unknown2C[1]],slot);
+ InitFrameObjectCommands(gState0NextCommands_083B6100[object->unknown2C[1]],slot);
  object->byte2B=*(u16*)(work+0x102);
  object->screenY=*(u16*)(work+0x106);
  object->unknown23[1]=*(u16*)(work+0x10A);
@@ -55,7 +55,7 @@ search:
   object->screenX=0xF0-*(u16*)(work+0x104);
   object->unknown23[2]=(0x20-work[0x108])&0x1F;
  }
- sub_0803D4AC();
+ AdvanceActionHalfwordScript();
 }
 
 void sub_0803ACB4(void) {
@@ -63,7 +63,7 @@ void sub_0803ACB4(void) {
   * selected is intentionally uninitialized on that path. */
  u32 i,selected;
  u8 slot;struct FrameObject *object;u8 *work;u32 zero;
- sub_0803D450();i=0;
+ LoadActionHalfwordScriptParams();i=0;
  if(gFrameObjects[0xA].flags==0)selected=0xA;
  else {
 search:
@@ -75,12 +75,12 @@ search:
    else goto search;
   }
  }
- slot=selected;sub_08040CD0(slot,1);
+ slot=selected;ClearFrameObjects(slot,1);
  {struct FrameObject *frames=gFrameObjects;object=&frames[selected];}work=gState0TransferWork.bytes;
  object->flags=(zero=0,*(u16*)(work+0x10E)<<10);object->flags|=0x4004;
  object->tableSelector=zero;object->palette=0xE;object->priority=0x80;
  object->unknown2C[1]=*(u16*)(work+0x110);
- sub_08040B90(gState0NextCommands_083B6100[object->unknown2C[1]],slot);
+ InitFrameObjectCommands(gState0NextCommands_083B6100[object->unknown2C[1]],slot);
  object->byte2B=*(u16*)(work+0x102);
  object->screenY=*(u16*)(work+0x106);
  object->unknown23[1]=*(u16*)(work+0x10A);
@@ -94,5 +94,5 @@ search:
   object->screenX=0xF0-*(u16*)(work+0x104);
   object->unknown23[2]=(0x20-work[0x108])&0x1F;
  }
- sub_0803D4AC();
+ AdvanceActionHalfwordScript();
 }

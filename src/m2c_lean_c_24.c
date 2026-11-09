@@ -52,7 +52,7 @@ void sub_08062614(void) {
     s8 i;
     u32 money;
 
-    if (sub_08041674() == 0)
+    if (RunChoiceBox() == 0)
         return;
     gState0TypedWork.bytes[0x84] = 0;
     gState0TypedWork.bytes[0x1B] = 0;
@@ -84,10 +84,10 @@ void sub_08062614(void) {
                 *slot -= ((u8 *)0x02023000)[i];
             }
         }
-        sub_08040D0C(0, 7);
+        HideFrameObjects(0, 7);
         sub_08041164(gDebugMenuTextBuffer, gPostDispatchWord_03002B70);
-        sub_08040DB8(gDebugMenuTextBuffer, 0, 0x15, 1, 7, 15, 1, 0);
+        PlaceAlignedTextObjects(gDebugMenuTextBuffer, 0, 0x15, 1, 7, 15, 1, 0);
         gDebugMenuTextBuffer[-0x1A] = 0;
     }
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

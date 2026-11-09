@@ -30,7 +30,7 @@ struct ObservedActionFrameBacking
     u8 commandStopped862;
 };
 
-extern s8 sub_08036E54(s16);
+extern s8 Clamp1To99(s16);
 extern u8 *gUnknown_083B6298;
 extern u8 gUnknown_030018D2[];
 
@@ -68,7 +68,7 @@ void sub_08020628(void) {
     }
     objects->palette84A = 7;
     objects->priority84B = 240;
-    sub_08040B90(gUnknownPointers_083B6100[34], 33);
+    InitFrameObjectCommands(gUnknownPointers_083B6100[34], 33);
     work[0xAA]++;
 }
 
@@ -79,7 +79,7 @@ void sub_08023A48(void) {
     s32 zero;
     setup[(*slot << 8) + 0xC4] = (zero = 0, 0x26);
     setup[(*slot << 8) + 0xC5] = zero;
-    setup[(*slot << 8) + 0xC6] = sub_08036E54(*(s16 *) &work[0xE8]);
-    setup[(*slot << 8) + 0xC7] = sub_08036E54(*(s16 *) &work[0xEC]);
+    setup[(*slot << 8) + 0xC6] = Clamp1To99(*(s16 *) &work[0xE8]);
+    setup[(*slot << 8) + 0xC7] = Clamp1To99(*(s16 *) &work[0xEC]);
     work[0xAA]++;
 }

@@ -15,7 +15,7 @@
 #include "state0_next_helpers.h"
 #include "state0_work.h"
 
-extern s8 sub_08036E54(s16);
+extern s8 Clamp1To99(s16);
 extern u8 *gUnknown_083B620C;
 extern u8 *gUnknown_083B62A0;
 extern u8 gUnknown_030018D2[];
@@ -50,7 +50,7 @@ void sub_0802BAAC(void) {
     u8 *stopped = objects + 0x862;
     do {
         if (*(u8 *) (i + (u32) flags) != 0) {
-            sub_08040BD8(*script, i + 0x21);
+            RunFrameObjectCommands(*script, i + 0x21);
             if (*stopped == 0xFF)
                 found = 1;
         }
@@ -70,7 +70,7 @@ void sub_0802CA5C(void) {
     u8 *stopped = objects + 0x862;
     do {
         if (*(u8 *) (i + (u32) flags) != 0) {
-            sub_08040BD8(*script, i + 0x21);
+            RunFrameObjectCommands(*script, i + 0x21);
             if (*stopped == 0xFF)
                 found = 1;
         }

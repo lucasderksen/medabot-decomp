@@ -69,7 +69,7 @@ void sub_0806E93C(void) {
     }
     if ((s32) count > 0x3C) {
         saved->counter = 0;
-        gUnknown_0300137C = 8;
+        gNestedCallbackIndex = 8;
         return;
     }
 block_4:

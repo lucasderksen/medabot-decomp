@@ -22,7 +22,7 @@
 
 extern const u8 gUnknown_083AFC2C[];
 
-void sub_0803BE44(void);
+void ScrollBgToFollowObject(void);
 
 /* Scroll positions wrap at 512 pixels. */
 static inline u16 WrapScroll9(u32 value)
@@ -37,7 +37,7 @@ static inline u16 WrapScroll9Half(u16 value)
     return value & 0x1FF;
 }
 
-void sub_0803BE44(void) {
+void ScrollBgToFollowObject(void) {
 
     struct FrameObject *object;
     struct FrameObject *other;

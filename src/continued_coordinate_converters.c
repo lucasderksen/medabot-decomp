@@ -2,7 +2,7 @@
 
 extern u8 gUnknown_030057E0[];
 
-u32 sub_0805273C(u32 input)
+u32 ConvertXToCellColumn(u32 input)
 {
     u16 value = input;
     u8 *work = gUnknown_030057E0;
@@ -10,7 +10,7 @@ u32 sub_0805273C(u32 input)
     return (u8)(relative / 16);
 }
 
-u32 sub_08052760(u32 input)
+u32 ConvertYToCellRow(u32 input)
 {
     u16 value = input;
     u8 *work = gUnknown_030057E0;

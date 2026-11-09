@@ -4,7 +4,7 @@ extern void DummyInterruptHandler(void);
 extern void sub_0803B900(void);
 extern void sub_0803B9A4(void);
 extern void sub_0803BBE0(void);
-extern void sub_0803BE44(void);
+extern void ScrollBgToFollowObject(void);
 extern void sub_0803C044(void);
 extern void sub_0803C0CC(void);
 extern void sub_0803C33C(void);
@@ -95,7 +95,7 @@ void (*const gObjectPhaseCallbacks_083AFAEC[80])(void) = {
     DummyInterruptHandler,
     DummyInterruptHandler,
     DummyInterruptHandler,
-    sub_0803BE44,
+    ScrollBgToFollowObject,
     sub_0803C044,
     sub_0803C0CC,
     sub_0803C5F8,

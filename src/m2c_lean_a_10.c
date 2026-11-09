@@ -39,7 +39,7 @@ void sub_0801264C(void) {
             }
         }
     }
-    enemyTotal = sub_0807CEC8(enemyTotal, enemyCount);
+    enemyTotal = __udivsi3(enemyTotal, enemyCount);
     {
         struct LeanSetupSide *sides;
         i = 0;
@@ -52,7 +52,7 @@ void sub_0801264C(void) {
             }
         }
     }
-    allyTotal = sub_0807CEC8(allyTotal, allyCount);
+    allyTotal = __udivsi3(allyTotal, allyCount);
     if (allyTotal < enemyTotal)
         gCounter6ED08_03001800.bonus16C += (enemyTotal - allyTotal) * (enemyCount << 4);
 }

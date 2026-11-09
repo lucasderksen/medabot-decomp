@@ -32,7 +32,7 @@ struct FixedPoint24 { u32 fraction:8; u32 whole:24; };
 extern struct ContinuedWorkCBDC gCbdcWork asm("gContinuedWork_030057E0");
 extern struct LaterEntry55A0 gLaterEntries55A0[] asm("gLaterBuffer_030055A0");
 extern u8 gContinuedBytesFC7C[] asm("gContinuedWork_030057E0");
-extern void sub_0804D8CC(u32 count);
+extern void ReadBankedScriptArgs(u32 count);
 
 void sub_0804CBDC(void);
 void sub_0804FC7C(void);
@@ -42,7 +42,7 @@ void sub_0804CBDC(void) {
     struct ContinuedWorkCBDC *work = &gCbdcWork;
 
     work->savedTimer = work->timer;
-    sub_0804D8CC(3);
+    ReadBankedScriptArgs(3);
     if (gCbdcWork.side == 0) {
         if (work->limits[0] >= work->count)
             return;
@@ -63,8 +63,8 @@ void sub_0804FC7C(void) {
     ((struct FixedPoint24 *)(objects + 0xC0C))->whole = value;
     value = *(u16 *)(work + 0xC70);
     ((struct FixedPoint24 *)(objects + 0xC10))->whole = value;
-    sub_080497C0(objects + 0xC00, &gFrameObjects[work[0xC94] + 0x4F], 0x40);
+    CopyBytes2(objects + 0xC00, &gFrameObjects[work[0xC94] + 0x4F], 0x40);
     gLaterEntries55A0[work[0xC94] + 0x4F].first = 0xFFFF;
-    sub_080497C0(objects + 0x1680, &gFrameObjects[work[0xC94] + 0x79], 0x40);
+    CopyBytes2(objects + 0x1680, &gFrameObjects[work[0xC94] + 0x79], 0x40);
     sub_08050290();
 }

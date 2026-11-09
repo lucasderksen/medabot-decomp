@@ -59,6 +59,6 @@ void sub_0801E474(void) {
         objects->x = (s16) *(u16 *) (work + 0x154);
         objects->y = *(s16 *) (work + 0x156);
     }
-    sub_08074DE0(0x72U);
+    PlaySoundEffect(0x72U);
     gState0TransferWork.bytes[0xAA] += 1;
 }

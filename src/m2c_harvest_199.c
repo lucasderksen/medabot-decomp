@@ -46,17 +46,17 @@ extern s32 sub_08032FFC(void);
 extern s32 sub_080330E8(s32);
 extern s32 sub_08033154(u32,u32);
 extern s32 sub_080724B0(void *);
-extern s32 sub_0807CD2C(s32, s32);
-extern s32 sub_0807CDF8(s32, s32);
+extern s32 __divsi3(s32, s32);
+extern s32 __modsi3(s32, s32);
 extern u32 sub_0803301C(void);
 extern u32 sub_08033184(u32);
-extern u32 sub_08036E54(u32);
+extern u32 Clamp1To99(u32);
 extern void sub_08017A7C(u32,u32,u32);
 extern void sub_08017C50(u32);
 extern void sub_080356B4(u32);
 extern void sub_08062ED8(void);
 extern void sub_080724D8(void *);
-extern void sub_08074DE0(u32);
+extern void PlaySoundEffect(u32);
 
 void sub_080185A8(void);
 void sub_0801DF60(void);
@@ -80,13 +80,13 @@ void sub_080185A8(void) {
  u32 first=*(const u8 *)(offset+(u32)table);
  offset++;
  sub_08017A7C(selection,first,*(const u8 *)(offset+(u32)table));
- sub_08040CD0(8,1);
+ ClearFrameObjects(8,1);
  sub_08017C50(1);
 }
 
 void sub_0801DF60(void) {
-    sub_0803F15C(0x1EU, 1U, 0U, (u32) gState0TypedWork.bytes[0x84], gState0NextText_083B4C60[0x69], (u32) *(volatile u16 *)0x04000008, 0U);
-    sub_0803F15C(0x1EU, 1U, 0U, 0x13 - gState0TypedWork.bytes[0x84], gState0NextText_083B4C60[0x69], (u32) *(volatile u16 *)0x04000008, 0U);
+    CopyTilemapRect(0x1EU, 1U, 0U, (u32) gState0TypedWork.bytes[0x84], gState0NextText_083B4C60[0x69], (u32) *(volatile u16 *)0x04000008, 0U);
+    CopyTilemapRect(0x1EU, 1U, 0U, 0x13 - gState0TypedWork.bytes[0x84], gState0NextText_083B4C60[0x69], (u32) *(volatile u16 *)0x04000008, 0U);
     if (gState0TypedWork.bytes[0x84] == 9) {
         gState0TransferWork.bytes[0x1AE] = 1;
         gState0TransferWork.bytes[0xAA] = (u8) (gState0TransferWork.bytes[0xAA] + 1);
@@ -109,7 +109,7 @@ void sub_08023E94(void) {
  frames->first.kind=6;
  gState0TypedWork.bytes[0x84]=0x42;
  slot=gState0TypedWork.bytes[0x84];
- sub_08040B90(gState0NextCommands_083B6100[slot],0x21);
+ InitFrameObjectCommands(gState0NextCommands_083B6100[slot],0x21);
  gState0TypedWork.widths.word86=0x3C;
  work[0xAA]++;
 }
@@ -118,7 +118,7 @@ void sub_080242F8(void) {
  struct ContinuedPartnerFrames25378 *frames=(struct ContinuedPartnerFrames25378 *)gFrameObjects;
  u32 finished;
  if(frames->first.flags&0x8000) {
-  if(sub_08036AC4(0x21,0)) sub_08040CD0(0x21,1);
+  if(sub_08036AC4(0x21,0)) ClearFrameObjects(0x21,1);
   else if(!(gState0TransferWork.bytes[0xF8]&1)) {
    frames->first.x=(u16)frames->first.x-1;
    frames->first.angle=(frames->first.angle-0x10)&0x3FF;
@@ -127,10 +127,10 @@ void sub_080242F8(void) {
    frames->first.angle=(frames->first.angle+0x10)&0x3FF;
   }
  }
- sub_080353CC(gState0TransferWork.bytes[0x88]*4+0x5A);
- sub_080353CC(gState0TransferWork.bytes[0x88]*4+0x5B);
- sub_080353CC(gState0TransferWork.bytes[0x88]*4+0x5C);
- finished=sub_080353CC(gState0TransferWork.bytes[0x88]*4+0x5D);
+ StepObjectHop(gState0TransferWork.bytes[0x88]*4+0x5A);
+ StepObjectHop(gState0TransferWork.bytes[0x88]*4+0x5B);
+ StepObjectHop(gState0TransferWork.bytes[0x88]*4+0x5C);
+ finished=StepObjectHop(gState0TransferWork.bytes[0x88]*4+0x5D);
  if(gFrameObjects[gState0TransferWork.bytes[0x88]*4+0x5D].unknown23[0]==0x10) {
   gFrameObjects[gState0TransferWork.bytes[0x88]*4+0x5A].screenY=(u16)gFrameObjects[gState0TransferWork.bytes[0x88]*4+0x5A].screenY+8;
   gFrameObjects[gState0TransferWork.bytes[0x88]*4+0x5B].screenY=(u16)gFrameObjects[gState0TransferWork.bytes[0x88]*4+0x5B].screenY-8;
@@ -144,7 +144,7 @@ void sub_080242F8(void) {
  sub_080356CC(gState0TransferWork.bytes[0x88]*4+0x5D,gState0TransferWork.bytes[0x88]+0x72);
  if(finished) {
   sub_080356B4(gState0TransferWork.bytes[0x88]+0x72);
-  sub_08074DE0(0x41);
+  PlaySoundEffect(0x41);
   gState0TransferWork.bytes[0xAA]++;
  }
 }
@@ -155,8 +155,8 @@ void sub_08025A18(void) {
  u8 *bank=work+0x88;
  u32 kind,partOffset;
  setup[*bank].zero=0;
- setup[*bank].first=sub_08036E54(*(s16 *)(work+0xE8));
- setup[*bank].second=sub_08036E54(*(s16 *)(work+0xEC));
+ setup[*bank].first=Clamp1To99(*(s16 *)(work+0xE8));
+ setup[*bank].second=Clamp1To99(*(s16 *)(work+0xEC));
  partOffset=work[0xA7]*24;
  kind=*(u8 *)(partOffset+(work[0x87]<<8)+(u32)setup+0x49);
  if(kind==0x2E) setup[*bank].mode=kind;
@@ -180,26 +180,26 @@ void sub_0802C440(void) {
  const u8 **firstCommands,**secondCommands;
  u8 *selected;
  u16 *second;
- gState0TransferWork.bytes[0x60]=sub_08032FC4(gState0TransferWork.bytes[0x87]);
+ gState0TransferWork.bytes[0x60]=GetSlotGroupStart(gState0TransferWork.bytes[0x87]);
  firstIndex=0;
  selected=((struct ContinuedSelections2C440 *)&gState0TransferWork)->selected;
  firstCommands=&gUnknown_083B6200;
  firstStart=0x21000000;
  do {
-  if(*(u8 *)(firstIndex+(u32)selected)) sub_08040BD8(*firstCommands,firstStart>>24);
+  if(*(u8 *)(firstIndex+(u32)selected)) RunFrameObjectCommands(*firstCommands,firstStart>>24);
   firstStart+=0x1000000;firstIndex++;
  } while(firstIndex<=2);
- gState0TransferWork.bytes[0x60]=sub_08032FB8(gState0TransferWork.bytes[0x87]);
+ gState0TransferWork.bytes[0x60]=GetOtherSlotGroupStart(gState0TransferWork.bytes[0x87]);
  firstIndex=0;
  secondCommands=&gUnknown_083B6204;
  secondStart=0x24000000;
  second=((struct ContinuedSelections2C440 *)&gState0TransferWork)->second;
  do {
-  if(*second) sub_08040BD8(*secondCommands,secondStart>>24);
+  if(*second) RunFrameObjectCommands(*secondCommands,secondStart>>24);
   secondStart+=0x1000000;second++;firstIndex++;
  } while(firstIndex<=2);
  if(gFrameObjects[0x21].commandStopped==0xFF) {
-  sub_08040CD0(0x21,6);
+  ClearFrameObjects(0x21,6);
   gState0TypedWork.bytes[0x84]=0;
   gState0TransferWork.bytes[0xAA]++;
  }
@@ -213,20 +213,20 @@ void sub_0803029C(void){
  frames->frame.screenX=(u16)gFrameObjects[work[0x87]*4+0x5D].screenX;
  frames->frame.screenY=(u16)gFrameObjects[work[0x87]*4+0x5D].screenY-4;
  frames->frame.palette=7;frames->frame.priority=0xF2;
- sub_08040B90(gState0NextCommands_083B6100[0x6F],0x25);
+ InitFrameObjectCommands(gState0NextCommands_083B6100[0x6F],0x25);
  if(work[0xF8]&1)frames->frame.flags|=0x1000;
- sub_08074DE0(0x30);work[0xAA]++;
+ PlaySoundEffect(0x30);work[0xAA]++;
 }
 
 void sub_08031AFC(void){
  u32 i;u8 *work=gState0TransferWork.bytes;
- work[0x60]=sub_08032FB8(work[0x5C]);i=0;
+ work[0x60]=GetOtherSlotGroupStart(work[0x5C]);i=0;
  {u8 *setup=gSetupBuffer_03000590;u32 address=(u32)work;u8 *cursor=(u8 *)(address+0x60);u8 *slots=(u8 *)(address+0x61);
  do{u32 record=((*cursor)<<8)+(u32)setup;
  if(*(u8 *)(record+0x40)&&sub_08032FD0(*cursor,setup[(*(u8 *)(address+0x5C)<<8)+6]))*(u8 *)(i+(u32)slots)=*cursor+1;
  *cursor+=1;++i;}while(i<=2);}
  if(sub_08032FFC())((struct Continued31AFCWork *)&gState0TransferWork)->selected=sub_0803301C()+1;
- else{u8 *work=gState0TransferWork.bytes;work[0x60]=sub_08032FB8(work[0x5C]);((struct Continued31AFCWork *)work)->selected=sub_08033090(work[0x60])+1;}
+ else{u8 *work=gState0TransferWork.bytes;work[0x60]=GetOtherSlotGroupStart(work[0x5C]);((struct Continued31AFCWork *)work)->selected=PickRandomGroupSlot(work[0x60])+1;}
  {u8 *work=gState0TransferWork.bytes;u8 *selected=&((struct Continued31AFCWork *)work)->selected;((struct Continued31AFCWork *)work)->found=sub_080330E8(*selected-1)+1;}
  {u8 *work=gState0TransferWork.bytes;sub_08033154(work[0x5C],work[0x5D]);}
 }
@@ -236,12 +236,12 @@ void sub_080644D8(void) {
  s32 mode;
  sub_08062ED8();
  if(((struct ChoiceWork644D8 *)gMainContextPointer_03006F74)->timer==0) {
-  sub_0803FAA0(1,0,1);
-  gUnknown_0300137C++;
+  InitDialogue(1,0,1);
+  gNestedCallbackIndex++;
   mode=((struct ChoiceWork644D8 *)gMainContextPointer_03006F74)->mode;
   sound=5;
   if(mode!=0) sound=14;
-  sub_08074DE0(sound);
+  PlaySoundEffect(sound);
  }
 }
 
@@ -264,12 +264,12 @@ u32 sub_08073B68(s32 arg0) {
     s32 var_r4;
 
     if (arg0 > 0) {
-        temp_r4 = sub_0807CDF8(arg0, 0xC);
-        var_r1 = (u32)table[temp_r4] << sub_0807CD2C(arg0, 0xC);
+        temp_r4 = __modsi3(arg0, 0xC);
+        var_r1 = (u32)table[temp_r4] << __divsi3(arg0, 0xC);
     } else if (arg0 < 0) {
         arg0 = (s32)(0U-(u32)arg0);
-        var_r4 = sub_0807CD2C(arg0, 0xC);
-        var_r1_2 = sub_0807CDF8(arg0, 0xC);
+        var_r4 = __divsi3(arg0, 0xC);
+        var_r1_2 = __modsi3(arg0, 0xC);
         if (var_r1_2 != 0) {
             var_r1_2 = 0xC - var_r1_2;
             var_r4 += 1;

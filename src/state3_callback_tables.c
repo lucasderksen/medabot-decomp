@@ -7,7 +7,7 @@ extern void sub_0806E130(void);
 extern void sub_08068DD0(void);
 extern void sub_0806B744(void);
 extern void sub_080708D8(void);
-extern void sub_08000840(void);
+extern void DummyInterruptHandler(void);
 extern s32 sub_08068920(void);
 extern s32 sub_08068924(void);
 extern s32 sub_08068978(void);
@@ -37,7 +37,7 @@ void (*const gMainState3Callbacks[8])(void) = {
     sub_08068DD0,
     sub_0806B744,
     sub_080708D8,
-    sub_08000840,
+    DummyInterruptHandler,
 };
 
 s32 (*const gUnknown_08485708[5])(void) = {

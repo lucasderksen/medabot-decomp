@@ -18,18 +18,18 @@ void sub_08017C50(s32 mode) {
 
     if(mode==0){
         if(gState0TypedWork.bytes[0x3C]==0){
-            sub_08042698(2,2,26,17,*(volatile u16 *)0x04000008,0x8304);
+            FillTilemapRectSequential(2,2,26,17,*(volatile u16 *)0x04000008,0x8304);
         }else{
-            sub_08042698(2,2,2,17,*(volatile u16 *)0x04000008,0x8300);
+            FillTilemapRectSequential(2,2,2,17,*(volatile u16 *)0x04000008,0x8300);
         }
         return;
     }
     {
     u32 selected=gState0TypedWork.bytes[0x3C];
     if(selected==0){
-        sub_0803EF8C(2,2,26,17,*(volatile u16 *)0x04000008,selected);
+        FillTilemapRect(2,2,26,17,*(volatile u16 *)0x04000008,selected);
     }else{
-        sub_0803EF8C(2,2,2,17,*(volatile u16 *)0x04000008,0);
+        FillTilemapRect(2,2,2,17,*(volatile u16 *)0x04000008,0);
     }
     }
 }

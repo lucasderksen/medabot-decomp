@@ -24,11 +24,11 @@ void sub_08016D18(void) {
     u32 recordAddress;
     u32 setupRoot;
     const u8 *const *labels;
-    sub_08040D0C(0x14,0xB);
+    HideFrameObjects(0x14,0xB);
     work=gState0TransferWork.bytes;
     choice=work[0x82];
     switch(choice) {
-    case 0:sub_08042678(gDebugMenuTextBuffer,0xA);break;
+    case 0:FillTextWithHyphens(gDebugMenuTextBuffer,0xA);break;
     case 1:case 2:case 3:
         labels=gUnknown_083BE868;
         setupRoot=(u32)gSetupBuffer_03000590;
@@ -36,9 +36,9 @@ void sub_08016D18(void) {
         recordAddress+=(u32)work[0x80]<<8;
         recordAddress+=setupRoot;
         text=labels[*(u8 *)(recordAddress+0x49)];
-        sub_08041D04(text,gDebugMenuTextBuffer,0xC);
+        CopyBytesU8Count(text,gDebugMenuTextBuffer,0xC);
         break;
     default:break;
     }
-    sub_08040DB8(gDebugMenuTextBuffer,0x14,0x15,0x11,8,0xE,0,0);
+    PlaceAlignedTextObjects(gDebugMenuTextBuffer,0x14,0x15,0x11,8,0xE,0,0);
 }

@@ -22,8 +22,8 @@ void sub_0804A60C(void)
     volatile struct SetupDma *dma;
     u8 *work;
     u32 offset;
-    sub_08049714(gFrameObjects, 8192);
-    sub_08049714(gLaterBuffer_030055A0, 512);
+    ClearBytes(gFrameObjects, 8192);
+    ClearBytes(gLaterBuffer_030055A0, 512);
     zero = 0;
     fill = zero;
     dma = (volatile struct SetupDma *)0x040000D4;
@@ -46,8 +46,8 @@ void sub_0804A944(void)
 {
     u32 fill;
     volatile struct SetupDma *dma;
-    sub_08049714(gFrameObjects, 8192);
-    sub_08049714(gLaterBuffer_030055A0, 512);
+    ClearBytes(gFrameObjects, 8192);
+    ClearBytes(gLaterBuffer_030055A0, 512);
     fill = 0;
     dma = (volatile struct SetupDma *)0x040000D4;
     dma->source = (u32)&fill;
@@ -78,8 +78,8 @@ void sub_0804AA74(void)
 {
     u32 fill;
     volatile struct SetupDma *dma;
-    sub_08049714(gFrameObjects, 8192);
-    sub_08049714(gLaterBuffer_030055A0, 512);
+    ClearBytes(gFrameObjects, 8192);
+    ClearBytes(gLaterBuffer_030055A0, 512);
     fill = 0;
     dma = (volatile struct SetupDma *)0x040000D4;
     dma->source = (u32)&fill;
@@ -99,8 +99,8 @@ void sub_0804ACD4(void)
 {
     u32 fill;
     volatile struct SetupDma *dma;
-    sub_08049714(gFrameObjects, 8192);
-    sub_08049714(gLaterBuffer_030055A0, 512);
+    ClearBytes(gFrameObjects, 8192);
+    ClearBytes(gLaterBuffer_030055A0, 512);
     fill = 0;
     dma = (volatile struct SetupDma *)0x040000D4;
     dma->source = (u32)&fill;

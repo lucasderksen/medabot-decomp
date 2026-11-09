@@ -13,15 +13,15 @@ void sub_08010478(void)
     for (i = first; i <= gState0TypedWork.selection.word48; i++)
     {
         if (i <= 14)
-            sub_0803EF8C(1, 20, i, 0, *(volatile u16 *)0x04000008,
+            FillTilemapRect(1, 20, i, 0, *(volatile u16 *)0x04000008,
                          (u16)(gState0TypedWork.selection.word48 - i + 0xD130));
     }
     for (i = first; i <= gState0TypedWork.selection.word48; i++)
     {
         if (i <= 14)
-            sub_0803EF8C(1, 20, 29 - i, 0, *(volatile u16 *)0x04000008,
+            FillTilemapRect(1, 20, 29 - i, 0, *(volatile u16 *)0x04000008,
                          (u16)(gState0TypedWork.selection.word48 - i + 0xD130));
     }
     if (++gState0TypedWork.selection.word48 > 19)
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
 }

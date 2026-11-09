@@ -3,7 +3,7 @@
 extern void sub_080675D4(void);
 extern void sub_08067870(void);
 extern void sub_080678D4(void);
-extern void sub_08067974(void);
+extern void StepCreditsTextScroll(void);
 extern void sub_08067A70(void);
 extern void sub_08067ACC(void);
 extern void sub_08067B28(void);
@@ -19,7 +19,7 @@ void (*const gBackgroundScrollCallbacks_080B0020[7])(void) = {
     sub_080675D4,
     sub_08067870,
     sub_080678D4,
-    sub_08067974,
+    StepCreditsTextScroll,
     sub_08067A70,
     sub_08067ACC,
     sub_08067B28,

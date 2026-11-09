@@ -15,26 +15,26 @@ extern const MainCallback gDebugMenuPages_083ACA80[];
 extern const MainCallback gDebugMenuValues_083ACAC0[];
 extern const void *const gDebugMenuCategoryText_083ACBA0[];
 
-void sub_0800B814(void)
+void ShrinkObject7ToHidden(void)
 {
     gFrameObjects[7].scaleX -= 8;
     gFrameObjects[7].scaleY -= 8;
     if (!gFrameObjects[7].scaleX)
     {
-        sub_08040D0C(7, 1);
+        HideFrameObjects(7, 1);
         gFrameObjects[7].unknown23[6]++;
     }
 }
 
 void sub_0800B858(void)
 {
-    sub_0803EF8C(12, 8, 18, 12, *(volatile u16 *)0x04000008, 0);
+    FillTilemapRect(12, 8, 18, 12, *(volatile u16 *)0x04000008, 0);
     gFrameObjects[7].unknown23[6]++;
 }
 
-void sub_0800B890(void)
+void DispatchDebugMenu(void)
 {
-    gDebugMenuCallbacks_083ACA5C[gUnknown_0300137C]();
+    gDebugMenuCallbacks_083ACA5C[gNestedCallbackIndex]();
 }
 
 void sub_0800B8B0(void)
@@ -57,7 +57,7 @@ void sub_0800B8B0(void)
     dma[1] = 0x050003E0;
     dma[2] = 0x84000008;
     (void)dma[2];
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0800B938(void)
@@ -75,26 +75,26 @@ void sub_0800B938(void)
     }
     { u32 hidden = gFrameCounter & 4;
     if (hidden)
-        sub_08040CD0(0, 8);
+        ClearFrameObjects(0, 8);
     else
     {
-        sub_0803F63C(gDebugMenuCategoryText_083ACBA0[gState0TypedWork.bytes[0x32]], &gState0TypedWork.bytes[0x9E], 8);
-        sub_08040DB8(&gState0TypedWork.bytes[0x9E], 0, 1, 0, 8, 15, 1, hidden);
+        CopyBytes(gDebugMenuCategoryText_083ACBA0[gState0TypedWork.bytes[0x32]], &gState0TypedWork.bytes[0x9E], 8);
+        PlaceAlignedTextObjects(&gState0TypedWork.bytes[0x9E], 0, 1, 0, 8, 15, 1, hidden);
     }
     }
     cancel = *(u8 *)&gNewKeys & 2;
     if (cancel)
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     else if (*(u8 *)&gNewKeys & 1)
     {
-        sub_0803F63C(gDebugMenuCategoryText_083ACBA0[gState0TypedWork.bytes[0x32]], &gState0TypedWork.bytes[0x9E], 8);
-        sub_08040DB8(&gState0TypedWork.bytes[0x9E], 0, 1, 0, 8, 15, 1, cancel);
+        CopyBytes(gDebugMenuCategoryText_083ACBA0[gState0TypedWork.bytes[0x32]], &gState0TypedWork.bytes[0x9E], 8);
+        PlaceAlignedTextObjects(&gState0TypedWork.bytes[0x9E], 0, 1, 0, 8, 15, 1, cancel);
         gState0TypedWork.bytes[0x33] = cancel;
         gState0TypedWork.bytes[0x34] = cancel;
         gState0TypedWork.bytes[0x35] = cancel;
         gState0TypedWork.bytes[0x36] = cancel;
         gState0TypedWork.bytes[0x37] = cancel;
-        gUnknown_0300137C = 3;
+        gNestedCallbackIndex = 3;
     }
 }
 
@@ -106,7 +106,7 @@ void sub_0800BA74(void)
     dma[2] = 0x84000400;
     (void)dma[2];
     gMainSubstate = gState0TypedWork.bytes[0x30];
-    gUnknown_0300137C = gState0TypedWork.bytes[0x31];
+    gNestedCallbackIndex = gState0TypedWork.bytes[0x31];
 }
 
 void sub_0800BAB8(void)

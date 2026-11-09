@@ -22,8 +22,8 @@ struct ContinuedSetup1B76C { u8 prefix[0x58]; u8 slot0; u8 unknown59[0x18]; u8 s
 
 extern const u8 *const gUnknown_083C4B90[];
 extern u8 gDebugMenuTextBuffer[0x53]; /* Observed encompassing text and scratch bytes. */
-extern void sub_0803F684(u32, u32, u32);
-extern void sub_0803F998(u32, u32, u32);
+extern void BlendBgPaletteBanksNow(u32, u32, u32);
+extern void BlendObjPaletteBanksNow(u32, u32, u32);
 s32 sub_08016E5C(u32, s32);
 
 void sub_08017268(void);
@@ -33,46 +33,46 @@ void sub_0803CECC(void);
 void sub_08017268(void) {
     u8 *scratch;
     const void *source;
-    sub_08040D0C(0x14,0x10);
+    HideFrameObjects(0x14,0x10);
     switch(gState0TransferWork.bytes[0x82]) {
     case 0:
-        sub_08041D04(gUnknown_083C4B90[3],gDebugMenuTextBuffer,14);
+        CopyBytesU8Count(gUnknown_083C4B90[3],gDebugMenuTextBuffer,14);
         break;
     case 1: {
         u8 *record=gSetupBuffer_03000590;
         record+=gState0TransferWork.bytes[0x80]<<8;
         if(record[5]>9) {
-            sub_08041D04(gUnknownBytes_083B7F8C+record[1]*3,scratch=gDebugMenuTextBuffer+0x50,3);
+            CopyBytesU8Count(gUnknownBytes_083B7F8C+record[1]*3,scratch=gDebugMenuTextBuffer+0x50,3);
             source=gUnknownPointers_083B74B8[scratch[0]];
             scratch-=0x50;
-            sub_0803F63C(source,scratch,17);
-        } else sub_08042678(gDebugMenuTextBuffer,13);
+            CopyBytes(source,scratch,17);
+        } else FillTextWithHyphens(gDebugMenuTextBuffer,13);
         break;
     }
     case 2: {
         u8 *record=gSetupBuffer_03000590;
         record+=gState0TransferWork.bytes[0x80]<<8;
         if(record[5]>29) {
-            sub_08041D04(gUnknownBytes_083B7F8C+record[1]*3,scratch=gDebugMenuTextBuffer+0x50,3);
+            CopyBytesU8Count(gUnknownBytes_083B7F8C+record[1]*3,scratch=gDebugMenuTextBuffer+0x50,3);
             source=gUnknownPointers_083B74B8[scratch[1]];
             scratch-=0x50;
-            sub_0803F63C(source,scratch,17);
-        } else sub_08042678(gDebugMenuTextBuffer,13);
+            CopyBytes(source,scratch,17);
+        } else FillTextWithHyphens(gDebugMenuTextBuffer,13);
         break;
     }
     case 3: {
         u8 *record=gSetupBuffer_03000590;
         record+=gState0TransferWork.bytes[0x80]<<8;
         if(record[5]>59) {
-            sub_08041D04(gUnknownBytes_083B7F8C+record[1]*3,scratch=gDebugMenuTextBuffer+0x50,3);
+            CopyBytesU8Count(gUnknownBytes_083B7F8C+record[1]*3,scratch=gDebugMenuTextBuffer+0x50,3);
             source=gUnknownPointers_083B74B8[scratch[2]];
             scratch-=0x50;
-            sub_0803F63C(source,scratch,17);
-        } else sub_08042678(gDebugMenuTextBuffer,13);
+            CopyBytes(source,scratch,17);
+        } else FillTextWithHyphens(gDebugMenuTextBuffer,13);
         break;
     }
     }
-    sub_08040DB8(gDebugMenuTextBuffer,20,10,17,10,13,0,0);
+    PlaceAlignedTextObjects(gDebugMenuTextBuffer,20,10,17,10,13,0,0);
 }
 
 void sub_0801B76C(void) {
@@ -150,10 +150,10 @@ void sub_0803CECC(void) {
         return;
     }
     highBits = (temp_r2->unknown2C[2] << 0xA) | (temp_r2->unknown2C[1] << 5);
-    sub_0803F684((u16)(temp_r2->unknown2C[0] | highBits), (u32) temp_r2->unknown2C[3], 0xFDFFU);
+    BlendBgPaletteBanksNow((u16)(temp_r2->unknown2C[0] | highBits), (u32) temp_r2->unknown2C[3], 0xFDFFU);
     temp_r2_2 = &frames[*selected];
     highBits = (temp_r2_2->unknown2C[2] << 0xA) | (temp_r2_2->unknown2C[1] << 5);
-    sub_0803F998((u16)(temp_r2_2->unknown2C[0] | highBits), (u32) temp_r2_2->unknown2C[3], 0xB00FU);
+    BlendObjPaletteBanksNow((u16)(temp_r2_2->unknown2C[0] | highBits), (u32) temp_r2_2->unknown2C[3], 0xB00FU);
     temp_r1 = &frames[*selected];
     rawCounter = temp_r1->unknown2C[3];
     temp_r0_2 = rawCounter;

@@ -10,15 +10,15 @@ extern u8 gUnknown_030057E0[];
 extern u8 gFreshWork_030064A0[];
 #include "map_object_spawns.h"
 
-void sub_08048000(u32 first)
+void StartChoiceBoxAfterDialogue(u32 first)
 {
     (*(volatile u16 *)0x04000008) = 0x500;
     (*(volatile u16 *)0x04000000) = 0x1F60;
-    sub_080415E8((u8)first, 22, 7);
+    StartChoiceBox((u8)first, 22, 7);
     gFreshWork_030064A0[0x64] = 0;
 }
 
-u32 sub_08048038(void)
+u32 RunChoiceBoxAfterDialogue(void)
 {
     u32 result = 0;
     u32 address = (u32)gFreshWork_030064A0;
@@ -28,13 +28,13 @@ u32 sub_08048038(void)
     switch (*status)
     {
     case 1:
-        if (!sub_08041CD4()) break;
+        if (!RunDialoguePortraitClose()) break;
     case 0:
         gUnknown_03000440[0x1B] = result;
         (*status)++;
         break;
     case 2:
-        result = sub_08041674();
+        result = RunChoiceBox();
         break;
     }
     return result;
@@ -75,7 +75,7 @@ u32 sub_080483F8(void)
 #include "map_metadata.h"
 s32 sub_08048684(s32 index);
 void sub_08048708(void);
-void sub_0804B2B0(void);
+void LoadMapBgLayers(void);
 void sub_0804B1B0(void);
 extern const u8 *const gFreshPointers_083F7E80[];
 extern u8 gFreshWork_03006D38[];
@@ -93,23 +93,23 @@ void sub_080480E4(void)
     gBgScroll2.y = gFreshSettings_03005310.y[1];
     gBgScroll3.x = gFreshSettings_03005310.x[2];
     gBgScroll3.y = gFreshSettings_03005310.y[2];
-    sub_0804830C();
+    LoadMapBgPalettes();
     sub_08048708();
-    sub_0804B2B0();
+    LoadMapBgLayers();
     gUnknown_030057E0[0xC36] = zero;
-    sub_08048174();
+    StepMapTileAnimation();
     sub_080513C8(gUnknown_030057E0[0xCBA]);
     sub_08052784();
     sub_080517F0();
     sub_08052B70();
     sub_08052F64();
     sub_08053108();
-    sub_08048288();
+    LoadSelectedObjTileSlots();
     gUnknown_030057E0[0xC4C] = 1;
     sub_0804B1B0();
 }
 
-void sub_08048174(void)
+void StepMapTileAnimation(void)
 {
     const u8 *source = gFreshPointers_08409480[gUnknown_030057E0[0x7FE]];
     u8 units = source[0];
@@ -160,7 +160,7 @@ s32 sub_08048210(s32 value)
     return value;
 }
 
-void sub_08048288(void)
+void LoadSelectedObjTileSlots(void)
 {
     s32 index = 0;
     u8 *destination = (u8 *)0x06010000;
@@ -174,7 +174,7 @@ void sub_08048288(void)
     }
 }
 
-void sub_080482CC(s32 value)
+void LoadObjTilesIntoAllSlots(s32 value)
 {
     s32 index = sub_08048210(value);
     const u8 *const *table = gFreshPointers_083F7E80;
@@ -191,7 +191,7 @@ void sub_080482CC(s32 value)
 
 extern const u8 *const gFreshPointers_083F9980[];
 
-void sub_0804830C(void)
+void LoadMapBgPalettes(void)
 {
     const u8 *source = gFreshPointers_083F9980[gUnknown_030057E0[0x7FE]];
     if (source)

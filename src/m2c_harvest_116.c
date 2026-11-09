@@ -15,7 +15,7 @@ void sub_08069EDC(void);
 void sub_08069EDC(void) {
     volatile u32 *dma;
     volatile u16 *blend;
-    sub_08048864(1U, 0xC808U, 0x10BU, 3U, 3U);
+    InitFrameObject(1U, 0xC808U, 0x10BU, 3U, 3U);
     gFrameObjects[1].screenY = 0x40;
     gFrameObjects[1].unknown1A = 0;
     dma=(void*)0x040000D4;

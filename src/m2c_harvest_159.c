@@ -49,7 +49,7 @@ void sub_08070914(void) {
     dma->destination = &gGraphicsTransferCounter;
     dma->control = 0x85000005;
     (void)dma->control;
-    sub_08074B88(0U);
+    PlayMusic(0U);
     *(volatile u16 *)0x04000000 = 0x60;
     gGraphicsTransferCounter.mode0 = 3;
     gGraphicsTransferCounter.selection2 = 6;
@@ -62,5 +62,5 @@ void sub_08070914(void) {
     gBgScroll3.x = 0;
     gBgScroll3.y = 0;
     gUnknown_03007010 = 0;
-    gUnknown_0300137C = 3;
+    gNestedCallbackIndex = 3;
 }

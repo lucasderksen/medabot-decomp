@@ -27,6 +27,6 @@ void sub_0806D6AC(void) {
   work->counter=0;
   gMainState=work->main;
   gMainSubstate=work->sub;
-  gUnknown_0300137C=work->previous;
+  gNestedCallbackIndex=work->previous;
  }
 }

@@ -98,7 +98,7 @@ void sub_080191E4(s32 bank) {
  s32 offset=(setup[(bank<<8)+0x91]-100)*11+*column;
  const u8 *text=(const u8 *)((u32)gUnknown_083C4D90+offset);
  u8 *destination=gUnknown_0300052E;
- sub_08041D04(text,destination,1);
+ CopyBytesU8Count(text,destination,1);
  sub_08019184(bank,destination[0]);
 }
 
@@ -150,7 +150,7 @@ void sub_0802ED34(void) {
   slot++;
  }while(slot<=2);
  if(done) {
-  sub_08074DE0(0x51);
+  PlaySoundEffect(0x51);
   ((struct Continued2ED34Work *)&gState0TransferWork)->phaseAA++;
  }
 }
@@ -184,7 +184,7 @@ void sub_0805FEC8(void) {
  work->phase=remaining;
  gFrameObjects[1].flags |=0x4000;
  gFrameObjects[1].unknown1A=remaining;
- gUnknown_0300137C++;
+ gNestedCallbackIndex++;
 }
 
 void sub_080609D4(void) {
@@ -198,22 +198,22 @@ void sub_080609D4(void) {
   *bldy=(u32)(u8)next*2;
  } else {
   work->phase=remaining;
-  sub_0803FAA0(1,2,0);
-  gUnknown_0300137C++;
+  InitDialogue(1,2,0);
+  gNestedCallbackIndex++;
  }
  sub_080605A0();sub_08060620();
 }
 
 void sub_08062754(void) {
 
-    if (sub_08041CA4() != 0) {
+    if (RunDialogueClose() != 0) {
         if (((struct ChoiceWork62754 *)&gState0TypedWork)->choice == 0) {
-            sub_08040D0C(0x61U, 7U);
-            sub_08040D0C(0xDU, 0x34U);
-            sub_08040D0C(0x45U, 0x1CU);
-            gUnknown_0300137C=5;
+            HideFrameObjects(0x61U, 7U);
+            HideFrameObjects(0xDU, 0x34U);
+            HideFrameObjects(0x45U, 0x1CU);
+            gNestedCallbackIndex=5;
         } else {
-            gUnknown_0300137C=4;
+            gNestedCallbackIndex=4;
         }
 
     }
@@ -224,7 +224,7 @@ void sub_08069E1C(void) {
  struct FrameWork69E1C *frames;
  s16 *xPointer;
  volatile struct DmaRegisters69E1C *dma;
- sub_08048864(1,0xC404,0x100,1,3);
+ InitFrameObject(1,0xC404,0x100,1,3);
  frames=(struct FrameWork69E1C *)gFrameObjects;
  xPointer=&frames->x;
  zero=0;
@@ -246,7 +246,7 @@ void sub_0806E96C(void) {
   work->counter=0;
   sub_08068684(2,4,0);
   work->field4=10;
-  gUnknown_0300137C=2;
+  gNestedCallbackIndex=2;
   return;
  }
  work->counter++;

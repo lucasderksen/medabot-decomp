@@ -52,5 +52,5 @@ void sub_0805CDAC(void)
     DISPLAY_CONTROL |= 0x400;
     DISPLAY_CONTROL |= 0x800;
     DISPLAY_CONTROL |= 0x1000;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

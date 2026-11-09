@@ -83,7 +83,7 @@ void sub_08028504(void) {
     frames->frame.byte2B = 0x20;
     frames->frame.unknown2C[0] = 0xC0;
     frames->frame.unknown2C[1] = 0;
-    sub_08040B90(gState0NextCommands_083B6100[frames->frame.unknown2C[2]], 0x21U);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[frames->frame.unknown2C[2]], 0x21U);
     if (!(1 & gState0TransferWork.bytes[0xF8])) {
         frames->frame.screenX = 0xB8;
     } else {

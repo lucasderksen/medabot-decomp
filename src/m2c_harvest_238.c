@@ -54,14 +54,14 @@ s32 sub_08074F74(s32 arg0);
 void sub_08015E68(u32 value) {
 
     if (value <= 2U) {
-        sub_08042838((u32) gUnknown_03000590[value].kind, 4U, 0x12U, 2U, (u32) *(volatile u16 *)0x0400000A, 0xD220U);
-        sub_08042698(1U, 1U, 6U, 0x12U, (u32) *(volatile u16 *)0x0400000A, 0xD21AU);
-        sub_08042838(0x50U, 7U, 0x12U, 2U, (u32) *(volatile u16 *)0x0400000A, 0xD220U);
+        DrawNumberTileRow((u32) gUnknown_03000590[value].kind, 4U, 0x12U, 2U, (u32) *(volatile u16 *)0x0400000A, 0xD220U);
+        FillTilemapRectSequential(1U, 1U, 6U, 0x12U, (u32) *(volatile u16 *)0x0400000A, 0xD21AU);
+        DrawNumberTileRow(0x50U, 7U, 0x12U, 2U, (u32) *(volatile u16 *)0x0400000A, 0xD220U);
         return;
     }
-    sub_08042838((u32) gUnknown_03000590[value].kind, 0x18U, 0x12U, 2U, (u32) *(volatile u16 *)0x0400000A, 0xD220U);
-    sub_08042698(1U, 1U, 0x1AU, 0x12U, (u32) *(volatile u16 *)0x0400000A, 0xD21AU);
-    sub_08042838(0x50U, 0x1BU, 0x12U, 2U, (u32) *(volatile u16 *)0x0400000A, 0xD220U);
+    DrawNumberTileRow((u32) gUnknown_03000590[value].kind, 0x18U, 0x12U, 2U, (u32) *(volatile u16 *)0x0400000A, 0xD220U);
+    FillTilemapRectSequential(1U, 1U, 0x1AU, 0x12U, (u32) *(volatile u16 *)0x0400000A, 0xD21AU);
+    DrawNumberTileRow(0x50U, 0x1BU, 0x12U, 2U, (u32) *(volatile u16 *)0x0400000A, 0xD220U);
 }
 
 void sub_08016DCC(void) {
@@ -69,7 +69,7 @@ void sub_08016DCC(void) {
     void *temp_r1;
 
     if (((struct ContinuedDisplayChoice23 *)&gState0TransferWork)->choice == 1) {
-        sub_08042698(2U, 1U, 0xEU, 0xCU, (u32) *(volatile u16 *)0x04000008, 0xD218U);
+        FillTilemapRectSequential(2U, 1U, 0xEU, 0xCU, (u32) *(volatile u16 *)0x04000008, 0xD218U);
         {
         u8 *setup=gSetupBuffer_03000590;
         temp_r1 = (void *)((((struct ContinuedDisplayChoice23 *)&gState0TransferWork)->bank << 8) + (u32)setup);
@@ -77,7 +77,7 @@ void sub_08016DCC(void) {
         }
         return;
     }
-    sub_0803EF8C(7U, 1U, 0xEU, 0xCU, (u32) *(volatile u16 *)0x04000008, 0U);
+    FillTilemapRect(7U, 1U, 0xEU, 0xCU, (u32) *(volatile u16 *)0x04000008, 0U);
 }
 
 void sub_08018BD4(void) {
@@ -122,14 +122,14 @@ void sub_08028078(void) {
         ((struct ContinuedPhase31 *)work)->phase++;
     }else{
         struct ContinuedPhase31 *phase;
-        sub_08074DE0(0x3E);
+        PlaySoundEffect(0x3E);
         phase=(struct ContinuedPhase31 *)&gState0TransferWork;
         phase->phase+=2;
     }
 }
 
 void sub_0803E8B8(void) {
-u32 selected=sub_080424B8()&0xF;u32 index=0;u8 *choices=gUnknown_0300199A;const u8 *source=gUnknown_083AFE18;source+=selected*6;do{*(u8 *)(index+(u32)choices)=*source;source++;index++;}while(index<=5);}
+u32 selected=NextRandomByte()&0xF;u32 index=0;u8 *choices=gUnknown_0300199A;const u8 *source=gUnknown_083AFE18;source+=selected*6;do{*(u8 *)(index+(u32)choices)=*source;source++;index++;}while(index<=5);}
 
 void sub_080712C8(void) {
 
@@ -143,7 +143,7 @@ void sub_080712C8(void) {
     dma->control=0x85000800;
     (void)dma->control;
     gWork080712C8.mode = 0xD;
-    gUnknown_0300137C = 5;
+    gNestedCallbackIndex = 5;
 }
 
 s32 sub_08072234(void) {

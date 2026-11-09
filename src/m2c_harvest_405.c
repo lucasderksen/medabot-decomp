@@ -45,7 +45,7 @@ void sub_080280D4(void)
 
   value = 0x3eU;
   difference = value;
-  sub_08074DE0((u32) value);
+  PlaySoundEffect((u32) value);
   address = (u32) (&gCounter6ED08_03001800);
   address = address + 0xaaU;
   difference = address;
@@ -147,7 +147,7 @@ void sub_0802976C(void)
   value = (u32) (*((const u8 * const *) address));
   address = packedIndex >> 0x18U;
   difference = address;
-  sub_08040BD8((const u8 *) value, (u8) address);
+  RunFrameObjectCommands((const u8 *) value, (u8) address);
   value = (u32) (&gFrameObjects);
   value = frameOffset + value;
   difference = value;
@@ -197,7 +197,7 @@ void sub_0802976C(void)
   difference = value;
   address = 0x3U;
   difference = address;
-  sub_08040CD0((u8) value, (u8) address);
+  ClearFrameObjects((u8) value, (u8) address);
   address = (u32) (&gCounter6ED08_03001800);
   address = address + 0xaaU;
   difference = address;

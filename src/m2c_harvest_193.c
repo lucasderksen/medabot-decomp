@@ -42,7 +42,7 @@ void sub_0806E504(void) {
  dma->source=&fill;dma->destination=gFrameObjects;dma->control=0x85000800;(void)dma->control;
  fill=zero;
  dma->source=&fill;dma->destination=&gGraphicsWork6E50403001800;dma->control=0x85000005;(void)dma->control;
- sub_08074B88(0U);
+ PlayMusic(0U);
  *(volatile u16 *)0x04000000=0x60;
  byteZero=0;
  gGraphicsWork6E50403001800.savedState=3;
@@ -54,5 +54,5 @@ void sub_0806E504(void) {
  gBgScroll3.x=zero;gBgScroll3.y=zero;
  gMain2Byte_03007008=byteZero;
  sub_08068460(2,4,0);
- gUnknown_0300137C=4;
+ gNestedCallbackIndex=4;
 }

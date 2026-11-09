@@ -67,9 +67,9 @@ void sub_08060708(void) {
     bg3 = (volatile u16 *)0x0400000E;
     control = 0x1C07;
     *bg3 = control;
-    sub_0805BA34(gBiosLz77Stream_0878BA54, *bg1);
-    sub_0805BA34(gBiosLz77Stream_0878BB28, *bg2);
-    sub_0805BA34(gBiosLz77Stream_0878BC1C, *bg3);
+    LoadLz77SizedTilemap(gBiosLz77Stream_0878BA54, *bg1);
+    LoadLz77SizedTilemap(gBiosLz77Stream_0878BB28, *bg2);
+    LoadLz77SizedTilemap(gBiosLz77Stream_0878BC1C, *bg3);
     if (gMainSubstate == 0x17)
     {
         FORCE_REGISTER(u8 one, r0) = 1; /* FAKE MATCH: a fresh 1 as in the reference; cse otherwise stores block's register and the arms do not cross-jump */
@@ -98,7 +98,7 @@ void sub_08060708(void) {
         break;
     }
     do {
-    length = sub_08044D0C(gBiosLz77Stream_087889D4, (void *)0x02030000);
+    length = DecompressLz77OrCopy(gBiosLz77Stream_087889D4, (void *)0x02030000);
     } while (0);
     CpuFastSet((void *)0x02030000, (void *)(0x06000000 + (block << 14)), (length << 9) >> 11);
     source = gNativeLeStream_08785EC0;
@@ -123,6 +123,6 @@ void sub_08060708(void) {
     gFrameObjects[1].frameAndGroup = 0x10E;
     gFrameObjects[0].screenX = gTable08483854[((struct Main2MapContext *)gMainContextPointer_03006F74)->byte17 * 2] * 8;
     gFrameObjects[0].screenY = gTable08483854[((struct Main2MapContext *)gMainContextPointer_03006F74)->byte17 * 2 + 1] * 8;
-    sub_08044D0C(gBiosLz77Stream_087885B4, (void *)0x020301E0);
-    gUnknown_0300137C++;
+    DecompressLz77OrCopy(gBiosLz77Stream_087885B4, (void *)0x020301E0);
+    gNestedCallbackIndex++;
 }

@@ -38,7 +38,7 @@ u32 sub_0801554C(u32 first, u32 second)
     }
 }
 
-u32 sub_08032FC4(u32 first)
+u32 GetSlotGroupStart(u32 first)
 {
     if (first <= 2)
         return 0;

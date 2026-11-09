@@ -5,7 +5,7 @@
 extern u8 gLaterBuffer_03005350[];
 u32 sub_08049A6C(void);
 
-u32 sub_08049E08(u32 input)
+u32 StepPaletteFadeToColor(u32 input)
 {
     u16 color = input;
     u32 result = 0;

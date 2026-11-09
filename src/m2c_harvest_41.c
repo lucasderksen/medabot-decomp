@@ -24,7 +24,7 @@ void sub_0802186C(void) {
     u8 var_r0;
 
     if (gFrameObjects[0x21].scaleX == 8) {
-        sub_08040CD0(0x21U, 3U);
+        ClearFrameObjects(0x21U, 3U);
         gState0TransferWork.bytes[0xAA] = gState0TransferWork.bytes[0xAA] + 1;
     } else {
         gFrameObjects[0x21].scaleX -= 8;
@@ -35,7 +35,7 @@ void sub_0802186C(void) {
 
 void sub_08023A04(void) {
     if (gFrameObjects[0x21].scaleX == 8) {
-        sub_08040CD0(0x21U, 1U);
+        ClearFrameObjects(0x21U, 1U);
         gState0TransferWork.bytes[0xAA] += 1;
     } else {
         gFrameObjects[0x21].scaleX -= 8;
@@ -48,7 +48,7 @@ void sub_08023E50(void) {
     u8 var_r0;
 
     if (gFrameObjects[0x21].scaleX == 8) {
-        sub_08040D0C(0x21U, 1U);
+        HideFrameObjects(0x21U, 1U);
         gState0TransferWork.bytes[0xAA] = gState0TransferWork.bytes[0xAA] + 1;
     } else {
         gFrameObjects[0x21].scaleX -= 8;
@@ -61,7 +61,7 @@ void sub_0802C820(void) {
     u8 var_r0;
 
     if (gFrameObjects[0x21].scaleX == 4) {
-        sub_08040CD0(0x21U, 1U);
+        ClearFrameObjects(0x21U, 1U);
         gState0TransferWork.bytes[0xAA] = gState0TransferWork.bytes[0xAA] + 1;
     } else {
         gFrameObjects[0x21].scaleX -= 4;
@@ -74,7 +74,7 @@ void sub_0802F48C(void) {
     u8 var_r0;
 
     if (gFrameObjects[0x21].scaleX == 4) {
-        sub_08040CD0(0x21U, 1U);
+        ClearFrameObjects(0x21U, 1U);
         gState0TransferWork.bytes[0xAA] = gState0TransferWork.bytes[0xAA] + 1;
     } else {
         gFrameObjects[0x21].scaleX -= 4;
@@ -87,7 +87,7 @@ void sub_0802FDC8(void) {
     u8 var_r0;
 
     if (gFrameObjects[0x21].scaleX == 4) {
-        sub_08040CD0(0x21U, 1U);
+        ClearFrameObjects(0x21U, 1U);
         gState0TransferWork.bytes[0xAA] = gState0TransferWork.bytes[0xAA] + 1;
     } else {
         gFrameObjects[0x21].scaleX -= 4;

@@ -12,13 +12,13 @@
 #include "render_work.h"
 
 extern s32 (*gUnknown_08485994[])(u8);
-extern s32 sub_0807CDF8(u16,u8);
+extern s32 __modsi3(u16,u8);
 extern u8 gUnknown_084859B4[];
-extern void sub_0806B718(u8);
+extern void ClearFrameObject(u8);
 
-void sub_0806DE0C(void);
+void RunIntervalObjectCallbacks(void);
 
-void sub_0806DE0C(void) {
+void RunIntervalObjectCallbacks(void) {
     u8 i=0;
     struct FrameObject *frame;
     do {
@@ -35,13 +35,13 @@ void sub_0806DE0C(void) {
             narrow_timer = timer;
             limits = gUnknown_084859B4;
             index = frame->commandDelay - 1;
-            if (sub_0807CDF8(narrow_timer,limits[index]) == 0) {
+            if (__modsi3(narrow_timer,limits[index]) == 0) {
                 result = gUnknown_08485994[index](i);
                 if (result != 1) {
                     switch (result) {
                     case 1: break;
                     case 0: frame->commandDelay=0; frame->commandStopped=0; break;
-                    case 0xFF: sub_0806B718(i); break;
+                    case 0xFF: ClearFrameObject(i); break;
                     }
                 }
             }

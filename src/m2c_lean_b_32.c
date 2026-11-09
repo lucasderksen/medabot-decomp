@@ -68,7 +68,7 @@ s32 sub_08033184(s32 slot) {
         if (part[0x59] != 0 && part[0x59] != part[0x4C])
             entry->key = part[0x4C] - part[0x59];
     }
-    sub_0804242C(4);
+    SortObjectEntriesDescending(4);
     if (gObjectSortEntries[0].key != 0)
         return gObjectSortEntries[0].word4 + 1;
     return 0;
@@ -104,7 +104,7 @@ void sub_08038BC0(void) {
         && gCounter6ED08_03001800.records28[gCounter6ED08_03001800.byte8A].kind3 == 0x33)
         gCounter6ED08_03001800.valueE8 += gCounter6ED08_03001800.records28[gCounter6ED08_03001800.byte8A].value4;
     sub_08035814(gCounter6ED08_03001800.slot87);
-    sub_08035754(&gCounter6ED08_03001800.valueE8, gSetupRecords38BC0[gCounter6ED08_03001800.value88].byteB9);
+    SubtractWithZeroFloor(&gCounter6ED08_03001800.valueE8, gSetupRecords38BC0[gCounter6ED08_03001800.value88].byteB9);
 }
 
 void sub_08041164(void *dest, u32 value) {

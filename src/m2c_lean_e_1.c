@@ -74,15 +74,15 @@ void sub_08061F00(void) {
     u32 add;
     struct Main2PartContext *ctx;
 
-    sub_08041C14(8, gFrameCounter, 4);
+    SetObjectXWobble(8, gFrameCounter, 4);
     sub_0805B984();
     if (8 & (u8)gRepeatedKeys)
     {
         if (((struct Main2PartContext *)gMainContextPointer_03006F74)->count20 == 0)
             goto buzzer;
-        sub_08074DE0(4);
+        PlaySoundEffect(4);
         gState0TypedWork.bytes[0x84] = 0;
-        gUnknown_0300137C = 9;
+        gNestedCallbackIndex = 9;
         return;
     }
     if (((struct Main2PartContext *)gMainContextPointer_03006F74)->byte05 == 0)
@@ -133,7 +133,7 @@ void sub_08061F00(void) {
                 goto redraw;
             }
             ((struct Main2PartContext *)gMainContextPointer_03006F74)->row1A--;
-            sub_08074DE0(2);
+            PlaySoundEffect(2);
             goto reposition;
         }
         if (0x80 & (u8)gRepeatedKeys)
@@ -151,7 +151,7 @@ void sub_08061F00(void) {
             if (((struct Main2PartContext *)gMainContextPointer_03006F74)->row1A >= ((struct Main2PartContext *)gMainContextPointer_03006F74)->count20)
                 goto reposition;
             ((struct Main2PartContext *)gMainContextPointer_03006F74)->row1A++;
-            sub_08074DE0(2);
+            PlaySoundEffect(2);
             goto reposition;
         }
     }
@@ -198,25 +198,25 @@ void sub_08061F00(void) {
         if (((struct Main2PartContext *)gMainContextPointer_03006F74)->total1C == 0)
         {
         buzzer:
-            sub_08074DE0(6);
+            PlaySoundEffect(6);
             return;
         }
-        sub_08074DE0(4);
+        PlaySoundEffect(4);
         for (i = 0; i <= 1; i++)
             gFrameObjects[i + 11].flags &= 0xBFFF;
-        sub_080415E8(1, 0x16, 7);
-        sub_0803FAA0(1, 0, 0);
-        gUnknown_0300137C = 6;
+        StartChoiceBox(1, 0x16, 7);
+        InitDialogue(1, 0, 0);
+        gNestedCallbackIndex = 6;
         return;
     }
     if (!(2 & gFamilyKeyBytes49558_0300058C))
         return;
-    sub_08074DE0(5);
-    sub_08040D0C(0x61, 7);
-    sub_08040D0C(0xD, 0x34);
-    sub_08040D0C(0x45, 0x1C);
+    PlaySoundEffect(5);
+    HideFrameObjects(0x61, 7);
+    HideFrameObjects(0xD, 0x34);
+    HideFrameObjects(0x45, 0x1C);
     gState0TypedWork.bytes[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
     return;
 reposition:
     gFrameObjects[8].screenY = ((struct Main2PartContext *)gMainContextPointer_03006F74)->row1A * 16 + 0x54;
@@ -224,7 +224,7 @@ reposition:
     gFrameObjects[12].screenY = ((struct Main2PartContext *)gMainContextPointer_03006F74)->row1A * 16 + 0x54;
     return;
 refresh:
-    sub_08074DE0(2);
+    PlaySoundEffect(2);
     if (((struct Main2PartContext *)gMainContextPointer_03006F74)->count20 != 0)
         sub_0805A0CC(gObjectSortBytes[gObjectSortBytes[0x78]], 2, 0x1B, 10, 6, (*(volatile u16 *)0x0400000A >> 8) & 0x1F);
     if (((struct Main2PartContext *)gMainContextPointer_03006F74)->count20 > 1)
@@ -245,7 +245,7 @@ refresh:
     }
     if (((struct Main2PartContext *)gMainContextPointer_03006F74)->total1C > 99999)
         ((struct Main2PartContext *)gMainContextPointer_03006F74)->total1C = 99999;
-    sub_08040D0C(0x61, 7);
+    HideFrameObjects(0x61, 7);
     sub_08041164(gDebugMenuTextBuffer, ((struct Main2PartContext *)gMainContextPointer_03006F74)->total1C);
-    sub_08040DB8(gDebugMenuTextBuffer, 0x61, 0x13, 5, 7, 0xC, 2, 0);
+    PlaceAlignedTextObjects(gDebugMenuTextBuffer, 0x61, 0x13, 5, 7, 0xC, 2, 0);
 }

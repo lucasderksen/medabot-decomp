@@ -36,7 +36,7 @@ void sub_08016370(u32 value) {
   u8 kind = gSpriteSetupMetadataBytes_083AD502[(value * 4) + 1];
   u8 x = gSpriteSetupMetadataBytes_083AD502[(value * 4) + 2];
   u8 y = gSpriteSetupMetadataBytes_083AD502[(value * 4) + 3];
-  sub_08040CD0(0x3CU, 0xAU);
+  ClearFrameObjects(0x3CU, 0xAU);
   index = 0;
   if (index < ((u32) count))
   {

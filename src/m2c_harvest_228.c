@@ -32,7 +32,7 @@ struct Dma6FE44 {u32 source,destination,control;};
 extern const struct ScriptSlots640EC gScriptSlots640EC;
 extern const void * const gGraphicsTable62C28[];
 extern struct DigitWork6FE44 gDigitWork6FE44;
-extern u32 sub_0807CEC8(u32,u32),sub_0807CF40(u32,u32);
+extern u32 __udivsi3(u32,u32),__umodsi3(u32,u32);
 extern u8 gUnknown_030004F2[];
 extern u8 gUnknown_03000506[];
 extern void sub_08062D60(void);
@@ -71,7 +71,7 @@ void sub_0802761C(void) {
         if(mode==0 && (*(u8 *)&gRepeatedKeys&1) && (u8)next>0x32)*phase=0x78;
         if(work->phase==0x78){
             struct ContinuedTransferPhase29 *transfer=(struct ContinuedTransferPhase29 *)&gState0TransferWork;
-            sub_08040CD0((u8)(transfer->first*4+0x21),0xC);
+            ClearFrameObjects((u8)(transfer->first*4+0x21),0xC);
             transfer->phase++;
         }
     }
@@ -103,12 +103,12 @@ void sub_080640EC(void) {
 
     s32 temp_r0;
 
-    if (sub_0803FB3C(gScriptSlots640EC.selected) != 0) {
+    if (RunDialogue(gScriptSlots640EC.selected) != 0) {
         sub_08062D60();
         temp_r0 = ((struct TimerWork640EC *)gMainContextPointer_03006F74)->timer - 1;
         ((struct TimerWork640EC *)gMainContextPointer_03006F74)->timer = temp_r0;
         if ((s32) ((u32)temp_r0 << 0x10) < 0) {
-            gUnknown_0300137C += 1;
+            gNestedCallbackIndex += 1;
             ((struct TimerWork640EC *)gMainContextPointer_03006F74)->timer = 0U;
         }
     }
@@ -127,28 +127,28 @@ void sub_0806FE44(void) {
     u16 temp_r6;
 
     temp_r5 = gDigitWork6FE44.left;
-    temp_r6 = sub_0807CF40(gDigitWork6FE44.right, 0x3E8);
+    temp_r6 = __umodsi3(gDigitWork6FE44.right, 0x3E8);
     out=sp0;
-    {u32 digit=sub_0807CF40(temp_r5, 0xA);
+    {u32 digit=__umodsi3(temp_r5, 0xA);
     tileBase=0x90C8;
     digit+=tileBase;
     zero=0;
     out[3]=(u16)digit;}
-    temp_r4 = sub_0807CEC8(temp_r5, 0xA);
+    temp_r4 = __udivsi3(temp_r5, 0xA);
     out1=sp0;
-    out1[1] = (s16) (sub_0807CF40(temp_r4, 0xA) + tileBase);
-    temp_r4=(u16)sub_0807CEC8(temp_r4,0xA);
+    out1[1] = (s16) (__umodsi3(temp_r4, 0xA) + tileBase);
+    temp_r4=(u16)__udivsi3(temp_r4,0xA);
     out2=sp0;
-    out2[0]=(u16)(sub_0807CF40(temp_r4,0xA)+tileBase);
+    out2[0]=(u16)(__umodsi3(temp_r4,0xA)+tileBase);
     sp0[2] = zero;
     out3=sp0;
-    out3[6] = (s16) (sub_0807CF40(temp_r6, 0xA) + tileBase);
-    temp_r4_2 = sub_0807CEC8(temp_r6, 0xA);
+    out3[6] = (s16) (__umodsi3(temp_r6, 0xA) + tileBase);
+    temp_r4_2 = __udivsi3(temp_r6, 0xA);
     out4=sp0;
-    out4[5] = (s16) (sub_0807CF40(temp_r4_2, 0xA) + tileBase);
-    temp_r4_2=(u16)sub_0807CEC8(temp_r4_2,0xA);
+    out4[5] = (s16) (__umodsi3(temp_r4_2, 0xA) + tileBase);
+    temp_r4_2=(u16)__udivsi3(temp_r4_2,0xA);
     out5=sp0;
-    out5[4]=(u16)(sub_0807CF40(temp_r4_2,0xA)+tileBase);
+    out5[4]=(u16)(__umodsi3(temp_r4_2,0xA)+tileBase);
     dma=(volatile struct Dma6FE44 *)0x040000D4;
     dma->source=(u32)sp0;
     dma->destination=0x0600F86C;

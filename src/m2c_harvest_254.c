@@ -75,7 +75,7 @@ void sub_0803D2A8(void) {
     sub_08036370(frames[gState0TypedWork.bytes[0x12F]].unknown2C[1], *temp_r5);
     sub_080364A8(frames[gState0TypedWork.bytes[0x12F]].unknown2C[1], *temp_r5);
     if (total == 4) {
-        sub_08040CD0(gState0TypedWork.bytes[0x12F], 1U);
+        ClearFrameObjects(gState0TypedWork.bytes[0x12F], 1U);
     }
 }
 
@@ -111,7 +111,7 @@ void sub_0806E90C(void) {
 
  u32 value=(u32)gWaitWork6E90C.counter;
  struct Work6E90C *work=&gWaitWork6E90C;
- if(value!=0 && work->counter>60){work->counter=0;work->previous=6;gUnknown_0300137C=2;return;}
+ if(value!=0 && work->counter>60){work->counter=0;work->previous=6;gNestedCallbackIndex=2;return;}
  work->counter=(s32)((u32)work->counter+1U);
 }
 
@@ -120,5 +120,5 @@ void sub_0806F8D8(void) {
  struct Work6F8D8 *work=&gWaitWork6F8D8;s32 before,value;
  work->left+=16;work->right-=16;
  value=work->counter;before=value;value=(s32)((u32)value+1U);work->counter=value;
- if(before>58){work->counter=0;work->previous=6;work->limit=16;gUnknown_0300137C=2;}
+ if(before>58){work->counter=0;work->previous=6;work->limit=16;gNestedCallbackIndex=2;}
 }

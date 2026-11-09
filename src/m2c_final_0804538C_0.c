@@ -53,7 +53,7 @@ void sub_0804538C(struct RecordObjectWork *work, s32 yArg, s32 xArg, s32 keyArg)
     object = (struct OamBits538C *)work->objects;
     height = object->shape;
     width = object->size;
-    dims = sub_08044E64(height << 14, width << 30);
+    dims = GetOamDimensions(height << 14, width << 30);
     height = dims >> 16;
     mask = 0xFFFF;
     /* FAKE MATCH: nine nested do/while(0) wraps raise width's global-alloc priority above object's (r6 before r7); the separate mask keeps the and's constant out of regmove's reach */

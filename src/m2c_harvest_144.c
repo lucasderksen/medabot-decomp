@@ -41,7 +41,7 @@ extern const u8 gUnknown_0850FE98[64];
 extern const u8 gUnknown_0850FEB8[64];
 extern s32 sub_0805DDEC(s32);
 extern u32 sub_08074FA4(u32);
-extern void sub_0803FB0C(void);
+extern void RestartDialogueText(void);
 
 void sub_08025858(void);
 void sub_08028E84(void);
@@ -83,7 +83,7 @@ void sub_08028E84(void) {
     u16 y;
     commands=gState0NextCommands_083B6100;
     frames=(struct ContinuedDropFrame21 *)gFrameObjects;
-    sub_08040BD8(commands[frames->commandIndex],0x21);
+    RunFrameObjectCommands(commands[frames->commandIndex],0x21);
     y=(u16)frames->screenY;
     if (frames->screenY == 0x40) {
         gState0TypedWork.widths.word86=0x3C;
@@ -122,13 +122,13 @@ void sub_0805FA58(void) {
             if (var_r5 == 0) break;
         }
         if (var_r5 == 0) {
-            sub_0803FB0C();
+            RestartDialogueText();
             (*(u16 *)((u8 *)(gMainContextPointer_03006F74) + 2)) = var_r5;
-            gUnknown_0300137C += 1;
+            gNestedCallbackIndex += 1;
         } else {
-            sub_0803FB0C();
+            RestartDialogueText();
             (*(u16 *)((u8 *)(gMainContextPointer_03006F74) + 2)) = 0U;
-            gUnknown_0300137C = 0xC;
+            gNestedCallbackIndex = 0xC;
         }
     }
 }

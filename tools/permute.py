@@ -338,7 +338,9 @@ def batch(path, jobs, seconds, all_kinds=False):
     while pending or running:
         while pending and len(running) < jobs:
             entry = pending.pop(0)
-            command = [sys.executable, __file__, entry["name"], f"--cflags={' '.join(entry['cflags'])}", "--seconds", str(seconds), "--jobs", "1", "--json"]
+            # A batch entry may give cflags as a list or as one space-separated string.
+            flags = entry["cflags"] if isinstance(entry["cflags"], str) else " ".join(entry["cflags"])
+            command = [sys.executable, __file__, entry["name"], f"--cflags={flags}", "--seconds", str(seconds), "--jobs", "1", "--json"]
             running.append(subprocess.Popen(command, cwd=ROOT, stdout=subprocess.PIPE, text=True))
         time.sleep(2)
         for process in [p for p in running if p.poll() is not None]:

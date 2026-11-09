@@ -24,7 +24,7 @@ void sub_0804ED88(void)
             break;
         }
     case 1:
-        if (sub_08047C24(0, 0, 0, gQuantityScripts_0847E388[26]))
+        if (InitAndRunDialogue(0, 0, 0, gQuantityScripts_0847E388[26]))
             sub_08050290();
         break;
     }
@@ -42,7 +42,7 @@ void sub_0804EE8C(void)
             sub_08047C00();
             sub_08047BA8(14);
             selected = work + 0xC94;
-            sub_08047CE4(0, sub_08047BCC(*selected));
+            CopyStringToTextBuffer(0, sub_08047BCC(*selected));
             if (sub_08047DB0(*selected))
                 *state = 1;
             else
@@ -53,11 +53,11 @@ void sub_0804EE8C(void)
             break;
         }
     case 1:
-        if (sub_08047C24(0, 0, 0, gQuantityScripts_0847E388[28]))
+        if (InitAndRunDialogue(0, 0, 0, gQuantityScripts_0847E388[28]))
             sub_08050290();
         break;
     case 2:
-        if (sub_08047C24(0, 0, 0, gQuantityScripts_0847E388[29]))
+        if (InitAndRunDialogue(0, 0, 0, gQuantityScripts_0847E388[29]))
         {
             sub_08050CC0();
             (*state)++;

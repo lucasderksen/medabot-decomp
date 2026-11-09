@@ -11,7 +11,7 @@ extern u32 sub_080532D4(u32 value);
 void sub_0804C5E4(void)
 {
     struct ObjectEntry { u16 value; u16 unknown; };
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     u8 *work = gUnknown_030057E0;
     u8 *initial = work + 0xC94;
     u8 *argument;
@@ -24,12 +24,12 @@ void sub_0804C5E4(void)
     do
     {
         u8 selected = index;
-        if (sub_0804DBF0(selected) != -1)
+        if (GetScriptObjectSlot(selected) != -1)
         {
-            s32 entry = sub_0804DBF0(selected);
+            s32 entry = GetScriptObjectSlot(selected);
             entry += 79;
             if (objects[entry].value != 0)
-                sub_08052D90((u8)(sub_0804DBF0(selected) + 79), *argument);
+                sub_08052D90((u8)(GetScriptObjectSlot(selected) + 79), *argument);
         }
         index++;
     } while (index <= 3);

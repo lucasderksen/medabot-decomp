@@ -9,12 +9,12 @@ void sub_08057CB0(void)
     u8 *counter = work + 0x70;
     u32 index = *counter;
     index += 130;
-    if (sub_08047C24(1, 1, 0, scripts[index]))
+    if (InitAndRunDialogue(1, 1, 0, scripts[index]))
     {
         (*counter)++;
         if (*counter <= 5)
-            gUnknown_0300137C--;
+            gNestedCallbackIndex--;
         else
-            gUnknown_0300137C = 2;
+            gNestedCallbackIndex = 2;
     }
 }

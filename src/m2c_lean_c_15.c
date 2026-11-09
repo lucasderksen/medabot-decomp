@@ -37,7 +37,7 @@ void sub_08064E18(void) {
 
     zero = 0;
     CpuFastSet(&zero, (void *)0x06000000, 0x01006000);
-    sub_08040CD0(0, 0x80);
+    ClearFrameObjects(0, 0x80);
     *(volatile u16 *)0x05000000 = 0;
     count = 0;
     for (i = 0; i <= 0x1D; i++) {
@@ -49,10 +49,10 @@ void sub_08064E18(void) {
     gListContext64E18->count30 = count;
     if (gUnknown_03000584 != 2) {
         gMainSubstate = 6;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
     } else {
-        sub_080415BC();
+        ClearBgScrolls();
         *(volatile u16 *)0x04000000 = 0x60;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }

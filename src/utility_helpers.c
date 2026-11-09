@@ -12,14 +12,14 @@
 extern const u8 gUnknownBytes_083B2AF0[];
 extern u8 gUnknown_030057E0[];
 extern u8 gUnknown_03000BE0[];
-void sub_08043E78(void);
-void sub_08043FEC(u32);
+void StepSecondBgAutoScroll(void);
+void StepEquipmentTileAnimation(u32);
 
 void sub_08044094(void)
 {
     gMainState = 1;
     gMainSubstate = 1;
-    gUnknown_0300137C = 7;
+    gNestedCallbackIndex = 7;
 }
 
 u32 sub_080440B4(void)
@@ -43,11 +43,11 @@ u32 sub_080440D4(void)
 
 void sub_08044100(void)
 {
-    sub_08043E78();
-    sub_08043FEC(gState0TransferWork.bytes[0x38]);
+    StepSecondBgAutoScroll();
+    StepEquipmentTileAnimation(gState0TransferWork.bytes[0x38]);
 }
 
-void sub_08044118(u32 width, u32 height, u32 x, u32 y, u32 control, u16 *destination)
+void ReadTilemapRect(u32 width, u32 height, u32 x, u32 y, u32 control, u16 *destination)
 {
     u32 screenOffset = ((control >> 8) & 31) << 11;
     u32 xAddress = x * 2 + 0x06000000;
@@ -61,7 +61,7 @@ void sub_08044118(u32 width, u32 height, u32 x, u32 y, u32 control, u16 *destina
     }
 }
 
-void sub_08044160(u32 width, u32 height, u32 x, u32 y, u32 control, const u16 *source)
+void WriteTilemapRect(u32 width, u32 height, u32 x, u32 y, u32 control, const u16 *source)
 {
     u32 screenOffset = ((control >> 8) & 31) << 11;
     u32 xAddress = x * 2 + 0x06000000;
@@ -120,10 +120,10 @@ void sub_08044B58(void)
 extern const u8 gUnknownBytes_083B2AF0[];
 extern u8 gUnknown_030057E0[];
 extern u8 gUnknown_03000BE0[];
-void sub_08043E78(void);
-void sub_08043FEC(u32);
+void StepSecondBgAutoScroll(void);
+void StepEquipmentTileAnimation(u32);
 
-void sub_0804422C(u32 objectIndex)
+void ApplyObjectMotionStep(u32 objectIndex)
 {
     struct FrameObject *base = gFrameObjects;
     struct FrameObject *object = &base[objectIndex];
@@ -136,7 +136,7 @@ void sub_0804422C(u32 objectIndex)
     }
 }
 
-u32 sub_080442B4(s32 x1, s32 y1, s32 x2, s32 y2)
+u32 GetDirectionToPoint(s32 x1, s32 y1, s32 x2, s32 y2)
 {
     u32 xSign, ySign;
     float dx, dy;
@@ -324,9 +324,9 @@ extern u8 gUnknown_020260D0[];
 extern u8 gUnknown_020268F0[];
 extern u8 gUnknown_02024000[];
 extern const u8 gUnknownBytes_083D1D78[];
-void sub_08043CA8(void);
-void sub_08043E78(void);
-void sub_08043FEC(u32);
+void ClearBgScrolls2(void);
+void StepSecondBgAutoScroll(void);
+void StepEquipmentTileAnimation(u32);
 
 void sub_080441B8(void)
 {
@@ -338,21 +338,21 @@ void sub_080441B8(void)
         u32 zero = 0;
         CpuFastSet(&zero, (void *)0x05000000, CPU_SET_FILL | 0x80);
     }
-    sub_0803F624(gUnknown_03000490, 20, 0);
+    FillBytes(gUnknown_03000490, 20, 0);
     gUnknown_03000490[0] = 3;
     gState0TransferWork.bytes[0x41] = 0;
     gState0TransferWork.bytes[0x42] = 0;
     gState0TransferWork.bytes[0x43] = 0;
     gMainState = 0;
     gMainSubstate = 3;
-    gUnknown_0300137C = 0;
+    gNestedCallbackIndex = 0;
 }
 
-void sub_080445F4(void)
+void InitRecordDisplayRendering(void)
 {
-    sub_0803F624(gUnknown_02026000, 0xD0, 0);
-    sub_0803F624(gUnknown_020260D0, 0x820, 0);
-    sub_0803F624(gUnknown_020268F0, 0x60, 0);
+    FillBytes(gUnknown_02026000, 0xD0, 0);
+    FillBytes(gUnknown_020260D0, 0x820, 0);
+    FillBytes(gUnknown_020268F0, 0x60, 0);
     gUnknown_03000430 = 2;
     gUnknownPointer_03002414 = gUnknown_02024000;
     {
@@ -366,16 +366,16 @@ void sub_080445F4(void)
     }
     gUnknownPointer_03002414[0x1094] = 0;
     gUnknownPointer_03002414[0x1095] = 0;
-    sub_08047414((struct RecordDisplayWork *)gUnknown_02026000, (struct RenderWork *)gUnknownPointer_03002414, gUnknownBytes_083D1D78, gUnknown_020260D0);
+    InitRecordDisplayWork((struct RecordDisplayWork *)gUnknown_02026000, (struct RenderWork *)gUnknownPointer_03002414, gUnknownBytes_083D1D78, gUnknown_020260D0);
 }
 
 void sub_08044BA8(u32 mode, u32 value)
 {
-    sub_08043CA8();
-    sub_08040CD0(0, 128);
+    ClearBgScrolls2();
+    ClearFrameObjects(0, 128);
     gUnknown_03000440[0x96] = 0;
     gUnknown_03000430 = 0;
-    sub_0803F624(gUnknown_03000440 + 0x3C, 20, 0);
+    FillBytes(gUnknown_03000440 + 0x3C, 20, 0);
     gUnknown_03000440[0x3C] = 3;
     gUnknown_03000440[0x3D] = value;
     switch (mode)
@@ -395,14 +395,14 @@ void sub_08044BA8(u32 mode, u32 value)
     }
     gMainState = 0;
     gMainSubstate = 5;
-    gUnknown_0300137C = 16;
+    gNestedCallbackIndex = 16;
 }
 
 void sub_08044C38(u32 mode)
 {
-    sub_08043CA8();
-    sub_0803F624(gUnknown_0300047C, 20, 0);
-    sub_0803F624(gUnknown_0300047C + 20, 20, 0);
+    ClearBgScrolls2();
+    FillBytes(gUnknown_0300047C, 20, 0);
+    FillBytes(gUnknown_0300047C + 20, 20, 0);
     gUnknown_0300047C[0x4D] = 1;
     gUnknown_0300047C[0x51] = 0;
     switch (mode)
@@ -411,25 +411,25 @@ void sub_08044C38(u32 mode)
         gUnknown_0300047C[0] = 4;
         gMainState = 0;
         gMainSubstate = 4;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     case 1:
         gUnknown_0300047C[0] = 4;
         gMainState = 0;
         gMainSubstate = 5;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     case 2:
         gUnknown_0300047C[0xFC] = 0;
         gMainState = 0;
         gMainSubstate = 10;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     case 3:
         gUnknown_0300047C[0xFC] = 1;
         gMainState = 0;
         gMainSubstate = 10;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         break;
     }
 }

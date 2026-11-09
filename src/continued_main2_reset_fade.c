@@ -10,11 +10,11 @@
 void sub_0805C950(void)
 {
     u32 zero = 0;
-    sub_08074B88(0);
-    sub_08074DE0(0);
+    PlayMusic(0);
+    PlaySoundEffect(0);
     gMainState = 1;
     gMainSubstate = 1;
-    gUnknown_0300137C = zero;
+    gNestedCallbackIndex = zero;
     sub_080476E8(11);
 }
 
@@ -28,6 +28,6 @@ void sub_0805C988(void)
     else
     {
         gMainSubstate = 9;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
     }
 }

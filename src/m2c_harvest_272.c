@@ -33,7 +33,7 @@ void sub_0805FE84(void) {
     *(volatile u16 *)0x04000000 |= 0x1000;
     *(u8 *)gMainContextPointer_03006F74 = 0x20U;
     *(volatile u16 *)0x04000054 = (s16) ((u8) *(u8 *)gMainContextPointer_03006F74 >> 1);
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_080604C4(void) {
@@ -48,19 +48,19 @@ void sub_080604C4(void) {
         return;
     }
     *(volatile u16 *)0x04000000 &= 0xFDFF;
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_08067B9C(void) {
 
  struct FamilyCallbacks callbacks=gUnknown_080B0020;
- callbacks.items[gUnknown_0300137C]();
+ callbacks.items[gNestedCallbackIndex]();
  gBgScroll2.y -= 1;
 }
 
 void sub_08068400(void) {
 
  struct FamilyCallbacks callbacks=gUnknown_080B003C;
- callbacks.items[gUnknown_0300137C]();
+ callbacks.items[gNestedCallbackIndex]();
  gBgScroll2.y += 1;
 }

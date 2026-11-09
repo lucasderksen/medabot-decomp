@@ -31,7 +31,7 @@ struct Setup185E8 {
 };
 
 extern const u8 gUnknown_083AD524[];
-extern s32 sub_0807CD2C(s32, s32);
+extern s32 __divsi3(s32, s32);
 extern u16 gUnknown_02020000[];
 extern u8 gSetupBytes185E8[] asm("gSetupBuffer_03000590");
 extern void sub_08017994(u32, u32, u32);
@@ -47,10 +47,10 @@ u32 sub_080185E8(void) {
     register u32 x;
     register u8 *root;
 
-    sub_08040D0C(4, 1);
-    sub_08040D0C(5, 1);
-    sub_08040D0C(6, 1);
-    sub_08040D0C(7, 1);
+    HideFrameObjects(4, 1);
+    HideFrameObjects(5, 1);
+    HideFrameObjects(6, 1);
+    HideFrameObjects(7, 1);
     if (gState0TypedWork.bytes[0x3C] == 0) {
         for (i = 0, root = gSetupBytes185E8; i <= 2; i++) {
             index = gState0TypedWork.bytes[0x3C] * 3 + i;
@@ -62,8 +62,8 @@ u32 sub_080185E8(void) {
         for (i = 0; i <= 12; i++) {
             gFrameObjects[9 + i].screenX -= 8;
         }
-        sub_08044118(0xD, 6, 0x10 - gState0TypedWork.bytes[0x40], 0xD, *(volatile u16 *)0x04000008, (u16 *)0x02020000);
-        sub_08044160(0xD, 6, 0xF - gState0TypedWork.bytes[0x40], 0xD, *(volatile u16 *)0x04000008, (u16 *)0x02020000);
+        ReadTilemapRect(0xD, 6, 0x10 - gState0TypedWork.bytes[0x40], 0xD, *(volatile u16 *)0x04000008, (u16 *)0x02020000);
+        WriteTilemapRect(0xD, 6, 0xF - gState0TypedWork.bytes[0x40], 0xD, *(volatile u16 *)0x04000008, (u16 *)0x02020000);
     } else {
         for (i = 0, root = gSetupBytes185E8; i <= 2; i++) {
             index = gState0TypedWork.bytes[0x3C] * 3 + i;
@@ -76,8 +76,8 @@ u32 sub_080185E8(void) {
         for (i = 0; i <= 12; i++) {
             gFrameObjects[9 + i].screenX += 8;
         }
-        sub_08044118(0xD, 6, gState0TypedWork.bytes[0x40] + 1, 0xD, *(volatile u16 *)0x04000008, (u16 *)0x02020000);
-        sub_08044160(0xD, 6, gState0TypedWork.bytes[0x40] + 2, 0xD, *(volatile u16 *)0x04000008, (u16 *)0x02020000);
+        ReadTilemapRect(0xD, 6, gState0TypedWork.bytes[0x40] + 1, 0xD, *(volatile u16 *)0x04000008, (u16 *)0x02020000);
+        WriteTilemapRect(0xD, 6, gState0TypedWork.bytes[0x40] + 2, 0xD, *(volatile u16 *)0x04000008, (u16 *)0x02020000);
     }
     if (++gState0TypedWork.bytes[0x40] == 0xE) {
         sub_080187A8();
@@ -101,7 +101,7 @@ s32 sub_080488E8(s32 value, u8 digits) {
         i++;
         for (; j < sub_080488AC(value) - i; j++)
             power *= 10;
-        j = sub_0807CD2C(rest, power);
+        j = __divsi3(rest, power);
         rest -= power * j;
     }
     /* With nonzero digits and no loop iterations, the reference returns the caller's incoming r8. */

@@ -12,9 +12,9 @@
 struct ContinueToggleWork {u8 pad[0x102];s16 slot,xflag,yflag;};
 
 extern struct ContinueToggleWork gUnknown_03001800;
-extern void sub_0803D450(void);extern void sub_0803D4AC(void);
+extern void LoadActionHalfwordScriptParams(void);extern void AdvanceActionHalfwordScript(void);
 
 void sub_0803AA90(void);
 
 void sub_0803AA90(void) {
-sub_0803D450();if(gUnknown_03001800.xflag!=0)gFrameObjects[gUnknown_03001800.slot].flags^=0x1000;if(gUnknown_03001800.yflag!=0)gFrameObjects[gUnknown_03001800.slot].flags^=0x2000;sub_0803D4AC();}
+LoadActionHalfwordScriptParams();if(gUnknown_03001800.xflag!=0)gFrameObjects[gUnknown_03001800.slot].flags^=0x1000;if(gUnknown_03001800.yflag!=0)gFrameObjects[gUnknown_03001800.slot].flags^=0x2000;AdvanceActionHalfwordScript();}

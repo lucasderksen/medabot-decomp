@@ -6,7 +6,7 @@
 #include "frame.h"
 #include "display_helpers.h"
 
-void sub_08004E74(void)
+void ScrollBg3Diagonally2(void)
 {
     if (gFrameCounter & 1)
     {
@@ -15,23 +15,23 @@ void sub_08004E74(void)
     }
 }
 
-void sub_08004E98(void)
+void InitMarkerOrbitObjects(void)
 {
     gFrameObjects[0].flags = 0xC604;
     gFrameObjects[0].unknown23[0] = 0;
-    sub_08004EF8(0);
+    StepMarkerOrbitForward(0);
     gFrameObjects[1].flags = 0xC604;
     gFrameObjects[1].unknown23[0] = 16;
-    sub_08004EF8(1);
+    StepMarkerOrbitForward(1);
     gFrameObjects[2].flags = 0xC604;
     gFrameObjects[2].unknown23[0] = 32;
-    sub_08004EF8(2);
+    StepMarkerOrbitForward(2);
     gFrameObjects[3].flags = 0xC604;
     gFrameObjects[3].unknown23[0] = 48;
-    sub_08004EF8(3);
+    StepMarkerOrbitForward(3);
 }
 
-void sub_08004EF8(u32 index)
+void StepMarkerOrbitForward(u32 index)
 {
     union { struct TileCoordinates coordinates; s32 packed; } position;
     s32 copy;
@@ -61,7 +61,7 @@ void sub_08004EF8(u32 index)
     gFrameObjects[index].unknown23[0] = (gFrameObjects[index].unknown23[0] + 1) & 63;
 }
 
-void sub_08004FD0(void)
+void LoadActiveRecordObjGraphics(void)
 {
     u32 i = 0;
     struct State0Record8 *record = gUnknownRecords_030017A0;
@@ -70,20 +70,20 @@ void sub_08004FD0(void)
             sub_08042D94(record->byte3, record->byte4, record->byte5, record->byte6, i);
 }
 
-void sub_08005118(void)
+void DrawSelectedRecordNameText(void)
 {
     struct State0Record8 *record;
     struct State0Record8 *base;
-    sub_08040D0C(50, 10);
+    HideFrameObjects(50, 10);
     base = gUnknownRecords_030017A0;
     record = &base[gState0TypedWork.bytes[0x51]];
     if (record->unknown00[0] > 1)
-        sub_08040DB8(gUnknown_03000BAA + sub_08041D3C(record->unknown00[2]) * 64,
+        PlaceAlignedTextObjects(gUnknown_03000BAA + FindInventoryRecordById(record->unknown00[2]) * 64,
                     50, 1, 13, 10, 13, 0, 2);
     else
     {
-        sub_08042678(gState0TypedWork.bytes + 0x9E, 10);
-        sub_08040DB8(gState0TypedWork.bytes + 0x9E, 50, 1, 13, 10, 13, 0, 2);
+        FillTextWithHyphens(gState0TypedWork.bytes + 0x9E, 10);
+        PlaceAlignedTextObjects(gState0TypedWork.bytes + 0x9E, 50, 1, 13, 10, 13, 0, 2);
     }
 }
 
@@ -91,22 +91,22 @@ void sub_0800519C(void)
 {
     struct State0Record8 *record;
     struct State0Record8 *base;
-    sub_08040D0C(60, 10);
+    HideFrameObjects(60, 10);
     base = gUnknownRecords_030017A0;
     record = &base[gState0TypedWork.bytes[0x51]];
     if (record->unknown00[0] > 1)
     {
-        sub_0803F63C(gUnknownPointers_083B6590[record->unknown00[2]], gState0TypedWork.bytes + 0x9E, 11);
-        sub_08040DB8(gState0TypedWork.bytes + 0x9E, 60, 4, 16, 7, 14, 1, 2);
+        CopyBytes(gUnknownPointers_083B6590[record->unknown00[2]], gState0TypedWork.bytes + 0x9E, 11);
+        PlaceAlignedTextObjects(gState0TypedWork.bytes + 0x9E, 60, 4, 16, 7, 14, 1, 2);
     }
     else
     {
-        sub_08042678(gState0TypedWork.bytes + 0x9E, 9);
-        sub_08040DB8(gState0TypedWork.bytes + 0x9E, 60, 4, 16, 7, 14, 1, 2);
+        FillTextWithHyphens(gState0TypedWork.bytes + 0x9E, 9);
+        PlaceAlignedTextObjects(gState0TypedWork.bytes + 0x9E, 60, 4, 16, 7, 14, 1, 2);
     }
 }
 
-void sub_0800522C(void)
+void LoadSelectedRecordTileGraphic(void)
 {
     struct State0Record8 *record = gUnknownRecords_030017A0;
     record += gState0TypedWork.bytes[0x51];
@@ -114,10 +114,10 @@ void sub_0800522C(void)
         CpuFastSet(gUnknownBytes_084C29D8 + record->unknown00[2] * 128, (void *)0x06006600, 32);
     else
         CpuFastSet(gUnknownBytes_084C38D8, (void *)0x06006600, 32);
-    sub_08042698(2, 2, 1, 16, *(volatile u16 *)0x0400000A, 0x6330);
+    FillTilemapRectSequential(2, 2, 1, 16, *(volatile u16 *)0x0400000A, 0x6330);
 }
 
-void sub_080056A4(u32 index)
+void StepMarkerOrbitReverse(u32 index)
 {
     union { struct TileCoordinates coordinates; s32 packed; } position;
     s32 copy;

@@ -37,28 +37,28 @@ void sub_08034288(void)
     work->byte160 = sub_08036218();
     sub_08020050();
     if (work->completeB5)
-        sub_08034F08();
+        AdvanceActionByteScript();
 }
 
 void sub_080342C8(void)
 {
     sub_0802057C();
     if (gState0TransferWork.bytes[0xB5])
-        sub_08034F08();
+        AdvanceActionByteScript();
 }
 
 void sub_080342E4(void)
 {
     sub_080207A4();
     if (gState0TransferWork.bytes[0xB5])
-        sub_08034F08();
+        AdvanceActionByteScript();
 }
 
 void sub_08034300(void)
 {
     sub_0802081C();
     if (gState0TransferWork.bytes[0xB5])
-        sub_08034F08();
+        AdvanceActionByteScript();
 }
 
 void sub_0803431C(void)
@@ -72,14 +72,14 @@ void sub_0803431C(void)
     work->byte160 = sub_08036218();
     sub_080208C0();
     if (work->completeB5)
-        sub_08034F08();
+        AdvanceActionByteScript();
 }
 
 void sub_0803435C(void)
 {
     sub_080209B0();
     if (gState0TransferWork.bytes[0xB5])
-        sub_08034F08();
+        AdvanceActionByteScript();
 }
 
 void sub_08034378(void)
@@ -93,40 +93,40 @@ void sub_08034378(void)
     work->byte160 = sub_08036218();
     sub_08020A68();
     if (work->completeB5)
-        sub_08034F08();
+        AdvanceActionByteScript();
 }
 
 void sub_080343B8(void)
 {
     sub_08020CFC();
     if (gState0TransferWork.bytes[0xB5])
-        sub_08034F08();
+        AdvanceActionByteScript();
 }
 
 void sub_080343D4(void)
 {
     sub_080218BC();
     if (gState0TransferWork.bytes[0xB5])
-        sub_08034F08();
+        AdvanceActionByteScript();
 }
 
 void sub_080343F0(void)
 {
     sub_08021E04();
     if (gState0TransferWork.bytes[0xB5])
-        sub_08034F08();
+        AdvanceActionByteScript();
 }
 
 void sub_0803440C(void)
 {
     sub_08022154();
     if (gState0TransferWork.bytes[0xB5])
-        sub_08034F08();
+        AdvanceActionByteScript();
 }
 
 void sub_08034428(void)
 {
     sub_080223BC();
     if (gState0TransferWork.bytes[0xB5])
-        sub_08034F08();
+        AdvanceActionByteScript();
 }

@@ -31,28 +31,28 @@ extern u8 gUnknown_03000BAA[];
 extern const u8 gUnknownBytes_084C29D8[];
 extern const u8 gUnknownBytes_084C38D8[];
 
-void sub_08004E74(void);
-void sub_08004E98(void);
-void sub_08004EF8(u32 index);
-void sub_08004FD0(void);
-void sub_08005000(void);
+void ScrollBg3Diagonally2(void);
+void InitMarkerOrbitObjects(void);
+void StepMarkerOrbitForward(u32 index);
+void LoadActiveRecordObjGraphics(void);
+void PlaceNineRecordObjectGroups(void);
 void sub_0800508C(void);
-void sub_08005118(void);
+void DrawSelectedRecordNameText(void);
 void sub_0800519C(void);
-void sub_0800522C(void);
-void sub_0800529C(void);
+void LoadSelectedRecordTileGraphic(void);
+void InitSelectedRecordPreview(void);
 void sub_080053C8(void);
 void sub_080054C0(void);
-u32 sub_08005588(void);
+u32 MoveRecordSelectionByDirection(void);
 void sub_08005628(void);
-void sub_080056A4(u32 index);
-void sub_08005798(void);
+void StepMarkerOrbitReverse(u32 index);
+void BlinkSwapMarkerObjects(void);
 u32 sub_080058A4(void);
 void sub_08005948(void);
 void sub_0800598C(void);
 
 /* Interfaces observed at these call sites; implementations remain copied. */
-void sub_08047414(struct RecordDisplayWork *, struct RenderWork *, const void *, void *);
+void InitRecordDisplayWork(struct RecordDisplayWork *, struct RenderWork *, const void *, void *);
 void sub_08046A60(void *, struct RecordDisplayWork *, s32 index, s32 category,
                  s32 y, s32 x, u32 priority, u32 palette, u32 flags);
 void sub_08046D1C(void *, struct RecordDisplayWork *, u32, u32, u32, u32, u32, u32, u32, u32, u32, u32);

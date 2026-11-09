@@ -105,8 +105,8 @@ register-allocation variants can help them.
 python -m unittest discover -s tests -p test_rewrite_drafts.py -v
 
 # Use freshly generated or separately preserved raw draft inputs for comparison.
-python tools/rewrite_drafts.py --legacy-only --variant-limit 12 --jobs 2 --names sub_0806DAA4 sub_0803F998 sub_080611E8 sub_08064A80 sub_080256EC sub_0800EA98 sub_08025308 sub_080238A0
-python tools/rewrite_drafts.py --learned-only --all-profiles --variant-limit 13 --jobs 2 --names sub_0806DAA4 sub_0803F998 sub_080611E8 sub_08064A80 sub_080256EC sub_0800EA98 sub_08025308 sub_080238A0
+python tools/rewrite_drafts.py --legacy-only --variant-limit 12 --jobs 2 --names sub_0806DAA4 BlendObjPaletteBanksNow sub_080611E8 sub_08064A80 sub_080256EC sub_0800EA98 sub_08025308 sub_080238A0
+python tools/rewrite_drafts.py --learned-only --all-profiles --variant-limit 13 --jobs 2 --names sub_0806DAA4 BlendObjPaletteBanksNow sub_080611E8 sub_08064A80 sub_080256EC sub_0800EA98 sub_08025308 sub_080238A0
 
 # Bounded final-policy run; valid cached failures are skipped.
 python tools/rewrite_drafts.py --learned-only --variant-limit 13 --jobs 2 --limit 16

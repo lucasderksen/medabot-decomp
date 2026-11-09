@@ -14,9 +14,9 @@
 #include "tile_text.h"
 
 
-void sub_08044FB4(void *dst, const void *src, s32 shape, s32 size, s32 rows, s32 columns, s32 mode);
+void ReorderObjectTileGrid(void *dst, const void *src, s32 shape, s32 size, s32 rows, s32 columns, s32 mode);
 
-void sub_08044FB4(void *dst, const void *src, s32 shape, s32 size, s32 rows, s32 columns, s32 mode) {
+void ReorderObjectTileGrid(void *dst, const void *src, s32 shape, s32 size, s32 rows, s32 columns, s32 mode) {
 
   u16 d[2];
   s32 y;
@@ -27,7 +27,7 @@ void sub_08044FB4(void *dst, const void *src, s32 shape, s32 size, s32 rows, s32
   const u8 *colStart;
   u32 t;
   s32 rowScale;
-  t = sub_08044E64(shape, size);
+  t = GetOamDimensions(shape, size);
   d[0] = t >> 0x10;
   d[1] = t;
   d[0] = (d[0] >> 1) >> 2;

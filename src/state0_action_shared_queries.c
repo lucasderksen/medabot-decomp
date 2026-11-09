@@ -11,10 +11,10 @@ struct ObservedActionResultWork {
     s16 valueEC;
 };
 
-u32 sub_08033090(u32 first)
+u32 PickRandomGroupSlot(u32 first)
 {
     u32 selected = sub_08033074();
-    u32 forward = sub_080424B8() & 1;
+    u32 forward = NextRandomByte() & 1;
     u32 tested = 0;
     u8 *entries = gSetupBuffer_03000590;
     do
@@ -81,7 +81,7 @@ void sub_0803769C(u32 selected)
     record = &((struct ObservedSetupAB *)entries)[selected];
     work->valueE8 = record->byteAB;
     work->valueE8 += sub_0803576C(selected);
-    work->valueE8 += sub_080424B8() & 7;
+    work->valueE8 += NextRandomByte() & 7;
     {
         u32 offset = record->byteA9 + row;
         entries += 0x20;

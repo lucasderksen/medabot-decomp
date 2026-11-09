@@ -21,8 +21,8 @@ struct Continued31458Frame {u8 prefix[0x880];struct FrameObject frame;};
 extern const u8 gUnknown_083AEE98[];
 extern u8 gTransferSelectedSlots[3];
 extern void sub_0801B53C(void);
-extern void sub_08074B88(u32);
-extern void sub_08074DE0(u32);
+extern void PlayMusic(u32);
+extern void PlaySoundEffect(u32);
 
 void sub_08007480(void);
 void sub_08031120(void);
@@ -67,8 +67,8 @@ void sub_08007480(void) {
 
 void sub_08031120(void){
  struct Continued31120Work *work=(void *)gState0TransferWork.bytes;
- if(work->flag57){if(work->flag165)gUnknown_0300137C=0x60;else gUnknown_0300137C=0x4F;}
- else {sub_0801B53C();sub_08074B88(0x11);gUnknown_0300137C++;}
+ if(work->flag57){if(work->flag165)gNestedCallbackIndex=0x60;else gNestedCallbackIndex=0x4F;}
+ else {sub_0801B53C();PlayMusic(0x11);gNestedCallbackIndex++;}
 }
 
 void sub_08031458(void){
@@ -82,5 +82,5 @@ void sub_08031458(void){
  frames->frame.screenY=(u16)gFrameObjects[work[0x87]*4+0x5D].screenY+4;
  frames->frame.palette=gUnknown_083AEE98[work[0x166]];frames->frame.priority=0x80;
  frames->frame.frameAndGroup=0x5801+work[0x166];frames->frame.unknown23[0]=zero;
- sub_08074DE0(0x2A);gUnknown_0300137C++;
+ PlaySoundEffect(0x2A);gNestedCallbackIndex++;
 }

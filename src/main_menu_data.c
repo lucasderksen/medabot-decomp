@@ -31,7 +31,7 @@ extern void sub_080606A8(void);
 extern void sub_08060708(void);
 extern void sub_0806096C(void);
 extern void sub_080609D4(void);
-extern void sub_08060A1C(void);
+extern void RunSceneLocationDialogue(void);
 extern void sub_08060A54(void);
 extern void sub_08060AF4(void);
 extern void sub_08060B28(void);
@@ -271,7 +271,7 @@ const MainCallback gUnknown_08483834[8] = {
     sub_08060708,
     sub_0806096C,
     sub_080609D4,
-    sub_08060A1C,
+    RunSceneLocationDialogue,
     sub_08060A54,
     sub_08060AF4,
     sub_08060B28,

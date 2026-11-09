@@ -60,7 +60,7 @@ void sub_080220A0(void);
 void sub_0802BBA8(void);
 void sub_0802BC1C(void);
 void sub_08033840(void);
-void sub_0806B4C8(void);
+void StepSceneFrameAnimations(void);
 void sub_0806E3C4(void);
 u32 sub_080700C8(void);
 u32 sub_08070170(void);
@@ -123,7 +123,7 @@ void sub_08022010(void) {
     ((struct FrameObject *)(((*bank*3+0x47)<<6)+(u32)frames))->scaleY=0x40;
     ((struct FrameObject *)(((*bank*3+0x47)<<6)+(u32)frames))->scaleX=0x40;
     }
-    sub_08074DE0(0x37);
+    PlaySoundEffect(0x37);
     ((struct ContinuedPhaseWork30 *)work)->phase++;
 }
 
@@ -139,10 +139,10 @@ void sub_080220A0(void) {
         ((struct FrameObject *)(((*bank*3+0x47)<<6)+(u32)frames))->scaleY+=4;
         ((struct FrameObject *)(((*bank*3+0x47)<<6)+(u32)frames))->scaleX-=4;
     }
-    sub_08040BD8(gState0NextCommands_083B6100[60],0x21);
+    RunFrameObjectCommands(gState0NextCommands_083B6100[60],0x21);
     if(gFrameObjects[0x21].commandStopped==0xFF){
-        sub_08040CD0(0x21,1);
-        sub_08040CD0((u8)(gState0TransferWork.bytes[0x88]*3+0x47),1);
+        ClearFrameObjects(0x21,1);
+        ClearFrameObjects((u8)(gState0TransferWork.bytes[0x88]*3+0x47),1);
         ((struct ContinuedPhase31 *)work)->phase++;
     }
 }
@@ -169,7 +169,7 @@ void sub_0802BC1C(void) {
     u32 i;
     u8 *initial,*work,*selected;
     u16 *source,*amounts;
-    sub_08040CD0(0x21,3);
+    ClearFrameObjects(0x21,3);
     i=0;initial=gState0TransferWork.bytes;selected=initial+0xD2;work=initial;
     source=&((struct ContinuedInput31 *)work)->value;
     amounts=(u16 *)(work+0xD6);
@@ -194,20 +194,20 @@ void sub_08033840(void) {
         do {
             gUnknown_03001800.again = 0U;
             temp_r0 = sub_08034E94();
-            gUnknown_0300137C = temp_r0;
+            gNestedCallbackIndex = temp_r0;
             if ((s32) temp_r0 > 0x7F) {
                 do {
-                    sub_08034F08();
+                    AdvanceActionByteScript();
                     temp_r0_2 = sub_08034E94();
-                    gUnknown_0300137C = temp_r0_2;
+                    gNestedCallbackIndex = temp_r0_2;
                 } while ((s32) temp_r0_2 > 0x7F);
             }
-            gUnknown_083AF180[gUnknown_0300137C]();
+            gUnknown_083AF180[gNestedCallbackIndex]();
         } while (gUnknown_03001800.again != 0);
     }
 }
 
-void sub_0806B4C8(void) {
+void StepSceneFrameAnimations(void) {
 
  struct FrameObject *frame;
  const struct AnimationRecord6B4C8 *records;
@@ -232,9 +232,9 @@ void sub_0806E3C4(void) {
 
  const void *const *table = gScriptTable6E3C4;
  struct ScriptWork6E3C4 *work = &gScriptWork6E3C4;
- if (sub_0803FB3C(table[work->selection]) != 0) {
+ if (RunDialogue(table[work->selection]) != 0) {
   work->mode = 5;
-  gUnknown_0300137C = 2;
+  gNestedCallbackIndex = 2;
  }
 }
 

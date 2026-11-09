@@ -43,7 +43,7 @@ void sub_0803CFC8(void) {
         temp_r2->unknown2C[0] = temp_r0 - 1;
     } else {
         temp_r2->flags |= 0x8000;
-        sub_08040BD8(gState0NextCommands_083B6100[firstFrames[gState0TypedWork.bytes[0x12F]].unknown2C[1]], gState0TypedWork.bytes[0x12F]);
+        RunFrameObjectCommands(gState0NextCommands_083B6100[firstFrames[gState0TypedWork.bytes[0x12F]].unknown2C[1]], gState0TypedWork.bytes[0x12F]);
     }
     frames=gFrameObjects;
     temp_r1=&frames[gState0TypedWork.bytes[0x12F]];
@@ -52,7 +52,7 @@ void sub_0803CFC8(void) {
         temp_r1->byte2B = temp_r0_2 - 1;
         return;
     }
-    output.coordinates=sub_08042BC0((u32) temp_r1->unknown23[3], 0x10U, (u32) (*(s16 *)((u8 *)(frames) + 0x282)), (s32) (*(s16 *)((u8 *)(frames) + 0x284)));
+    output.coordinates=GetPolarOffsetPoint((u32) temp_r1->unknown23[3], 0x10U, (u32) (*(s16 *)((u8 *)(frames) + 0x282)), (s32) (*(s16 *)((u8 *)(frames) + 0x284)));
     frames[gState0TypedWork.bytes[0x12F]].screenX = (s16)output.word;
     frames[gState0TypedWork.bytes[0x12F]].screenY = (s16) ((s32)output.word >> 0x10);
     if (!(2 & gGraphicsTransferCounter.flags)) {

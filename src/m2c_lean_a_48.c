@@ -36,7 +36,7 @@ void sub_0805B0D8(void) {
             struct RankEntry *entry = (struct RankEntry *)(count * 8 + 0x02040000);
             entry->id = i;
             entry->difference = gObjectHalfwordBytes[offset + i * 2] - gObjectHalfwordBytes[offset + i * 2 + 1];
-            sub_08042B58(i, slot, info);
+            CopyPartMetadataSlot(i, slot, info);
             entry->rank = info[3];
             *(u32 *)(count * 8 + scores) = info[0xB] * 100;
             count++;

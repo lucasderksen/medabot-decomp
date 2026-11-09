@@ -12,7 +12,7 @@ struct Graphics6CD68 {u8 pad00[0x41];s8 selection;};
 struct FrameWork6CD68 {u8 pad0[0x782];u16 x30;u16 y30;u16 frame30;u8 scaleX30;u8 scaleY30;u8 pad78A[0xE];u16 angle30;u16 timer30;u8 pad79C[0x4];u8 state30;u8 direction30;u8 result30;u8 pad7A3[0x9F];u16 x33;u16 y33;u8 pad846[0x600];u16 frame57;};
 
 extern const u8 gWaveTable08485924[64];
-extern s32 sub_0807CEC8(s32,s32);
+extern s32 __udivsi3(s32,s32);
 extern struct Graphics6CD68 gGraphicsWork6CD6803001800;
 
 void sub_0806CD68(void);
@@ -69,7 +69,7 @@ void sub_0806CD68(void) {
     mirror->x33 = (s16) (u16) mirror->x30;
     sourceY=&mirror->y30;
     sourceTimer=&mirror->timer30;
-    mirror->y33=sub_0807CEC8(*sourceTimer,0xA)+0xC+*sourceY;
+    mirror->y33=__udivsi3(*sourceTimer,0xA)+0xC+*sourceY;
     if ((u32) mirror->timer30 <= 0x1FU) {
         mirror->scaleX30 = ((s8)gWaveTable08485924[mirror->timer30]>>1) + 0x40;
         mirror->scaleY30 = ((s8)gWaveTable08485924[mirror->timer30]>>1) + 0x40;

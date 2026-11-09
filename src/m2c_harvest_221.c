@@ -13,18 +13,18 @@
 struct ContinueFrameTail {u8 pad[0x102];s16 mode;u16 timer,action,status,phase;};
 
 extern struct ContinueFrameTail gUnknown_03001800;
-extern void sub_0803D450(void);extern void sub_0803D4AC(void);
+extern void LoadActionHalfwordScriptParams(void);extern void AdvanceActionHalfwordScript(void);
 
 void sub_0803AB00(void);
 
 void sub_0803AB00(void) {
  s32 mode;struct FrameObject *frames;
- sub_0803D450();mode=gUnknown_03001800.mode;
+ LoadActionHalfwordScriptParams();mode=gUnknown_03001800.mode;
  if(mode==0){SnapshotPalettes();gFrameObjects[0x27].unknown2C[3]=mode;gFrameObjects[0x27].unknown23[6]=0x28;}else{gFrameObjects[0x27].unknown23[6]=0x29;}
  frames=gFrameObjects;
  frames[0x27].byte2B=gUnknown_03001800.timer;
  frames[0x27].unknown2C[0]=gUnknown_03001800.action;
  frames[0x27].unknown2C[1]=gUnknown_03001800.status;
  frames[0x27].unknown2C[2]=gUnknown_03001800.phase;
- sub_0803D4AC();
+ AdvanceActionHalfwordScript();
 }

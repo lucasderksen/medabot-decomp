@@ -35,7 +35,7 @@ u32 sub_080594C8(void)
                 volatile struct NumericDma *dma;
                 const void *const *sources;
                 const u8 *lookup;
-                sub_08048288();
+                LoadSelectedObjTileSlots();
                 dma=(void *)0x040000D4;
                 sources=gPaletteSourcePointers_083F83C0;
                 lookup=gFreshBytes_083D2B26;

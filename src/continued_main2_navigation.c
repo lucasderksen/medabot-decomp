@@ -29,7 +29,7 @@ void sub_0805CFB4(void)
     u8 *context;
     u8 *selectionContext;
     u8 *confirmContext;
-    sub_08041C14(83, *(u8 *)&gFrameCounter, 84);
+    SetObjectXWobble(83, *(u8 *)&gFrameCounter, 84);
     if ((CONTEXT[0x10] - 1) / 5)
     {
         if ((gFrameCounter >> 4) & 1)
@@ -150,7 +150,7 @@ selection:
         if (selectionContext[0x10] > 1 && (gUnknown_0300058C[0] & 4))
         {
             *(u16 *)(selectionContext + 2) = 0;
-            sub_08074DE0(2);
+            PlaySoundEffect(2);
             sub_0805D4A0();
         }
     }
@@ -173,12 +173,12 @@ selection:
             switch (kind)
             {
             case 1:
-                sub_08074DE0(4);
+                PlaySoundEffect(4);
                 switch (*(const u16 *)(0x02040000 + CONTEXT[0xC] * 4))
                 {
                 case 0:
                     CONTEXT[0] = 0;
-                    gUnknown_0300137C = 11;
+                    gNestedCallbackIndex = 11;
                     return;
                 case 1:
                     COMMAND_WORK->byteC5C = 3;
@@ -206,19 +206,19 @@ selection:
                     return;
                 }
                 gUnknown_03000440[0x84] = 0;
-                gUnknown_0300137C = 13;
+                gNestedCallbackIndex = 13;
                 return;
             case 2:
             case 3:
             case 4:
-                sub_0803FB0C();
-                sub_08074DE0(6);
+                RestartDialogueText();
+                PlaySoundEffect(6);
                 gFrameObjects[81].flags &= 0xBFFF;
                 gFrameObjects[82].flags &= 0xBFFF;
-                gUnknown_0300137C = 9;
+                gNestedCallbackIndex = 9;
                 return;
             case 0:
-                sub_08074DE0(6);
+                PlaySoundEffect(6);
                 return;
             }
         }
@@ -228,16 +228,16 @@ selection:
     if (gUnknown_0300058C[0] & 2)
     {
 leave:
-        sub_08074DE0(5);
+        PlaySoundEffect(5);
         SnapshotPalettes();
         gUnknown_03000440[0x84] = 0;
-        gUnknown_0300137C = 7;
+        gNestedCallbackIndex = 7;
     }
     return;
 changed:
-    sub_08074DE0(2);
-    sub_0803FB0C();
+    PlaySoundEffect(2);
+    RestartDialogueText();
     sub_0805B0B0(&gFrameObjects[83]);
-    gUnknown_0300137C = 4;
+    gNestedCallbackIndex = 4;
     sub_0805CB90(gFrameCounter);
 }

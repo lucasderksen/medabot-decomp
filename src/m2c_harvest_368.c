@@ -34,7 +34,7 @@ void sub_0803D0BC(void) {
   word0 *= 4;
   word0 += word2;
   word0 = (u32)*((const u8 *const *)word0);
-  sub_08040BD8((const u8 *) word0, (u8) word1);
+  RunFrameObjectCommands((const u8 *) word0, (u8) word1);
   word4 = (u32) (*((u8 *) (((u32) (&gState0TypedWork)) + 0x12FU)));
   word0 = word4 << 6;
   word1 = word0 + word6;
@@ -52,7 +52,7 @@ void sub_0803D0BC(void) {
     {
       word0 = word4;
       word1 = 1;
-      sub_08040D0C((u8) word0, 1U);
+      HideFrameObjects((u8) word0, 1U);
       return;
     }
     word0 = word3 - word0;

@@ -7,7 +7,7 @@ struct InputDmaRegisters { u32 source, destination, control; };
 void sub_08051E38(u32 mode)
 {
     u8 *work;
-    sub_08048288();
+    LoadSelectedObjTileSlots();
     if (mode == 0)
     {
         volatile struct InputDmaRegisters *dma;

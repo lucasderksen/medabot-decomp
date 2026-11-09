@@ -54,8 +54,8 @@ struct FloatProgressSetup
 };
 struct ContextA0CC { u8 unknown00[0x36]; u16 tileBase; };
 
-extern u32 sub_0807CEC8(u32 value, u32 divisor);
-extern u32 sub_0807CF40(u32 value, u32 divisor);
+extern u32 __udivsi3(u32 value, u32 divisor);
+extern u32 __umodsi3(u32 value, u32 divisor);
 
 void sub_08054014(void);
 void sub_080568F4(void);
@@ -159,12 +159,12 @@ void sub_080569E4(struct FloatProgressWork *work, struct FloatProgressSetup *set
     case 16:
     {
         float q;
-        q = work->float34 / sub_08053360(sub_080533A4(work->float3C));
+        q = work->float34 / sub_08053360(AbsFloat(work->float3C));
         work->float2C = q;
         work->word24 = (float)work->word20 + q;
         if (work->word44 == 0)
             break;
-        work->float00 = work->float00 - sub_08053380(work->float3C) * sub_080533A4(work->float34);
+        work->float00 = work->float00 - sub_08053380(work->float3C) * AbsFloat(work->float34);
         break;
     }
     case 17:
@@ -175,7 +175,7 @@ void sub_080569E4(struct FloatProgressWork *work, struct FloatProgressSetup *set
         work->float34 = t * work->float2C;
         if (work->word44 == 0)
             break;
-        work->float00 = work->float00 - sub_08053380(t) * sub_080533A4(work->float34);
+        work->float00 = work->float00 - sub_08053380(t) * AbsFloat(work->float34);
         break;
     }
     case 18:
@@ -196,18 +196,18 @@ void sub_080569E4(struct FloatProgressWork *work, struct FloatProgressSetup *set
             if (x >= 64.0f)
                 x = 64.0f;
             acc = acc + work->float40 * ((float)table[(s32)(x + 192.0f) & 0xFF] + 256.0f) * (1.0f / 256.0f);
-            if (sub_080533A4(acc) >= work->float34)
+            if (AbsFloat(acc) >= work->float34)
                 break;
             n++;
         }
         work->float2C = n;
-        q = work->float38 / sub_08053360(sub_080533A4(work->float40));
+        q = work->float38 / sub_08053360(AbsFloat(work->float40));
         work->float30 = q;
         work->word24 = (float)work->word20 + work->float2C + q;
-        work->float38 = work->float38 + (work->float34 - sub_080533A4(acc));
+        work->float38 = work->float38 + (work->float34 - AbsFloat(acc));
         if (work->word44 == 0)
             break;
-        work->float00 = work->float00 - sub_08053380(work->float40) * (sub_080533A4(work->float34) + sub_080533A4(work->float38));
+        work->float00 = work->float00 - sub_08053380(work->float40) * (AbsFloat(work->float34) + AbsFloat(work->float38));
         break;
     }
     case 19:
@@ -233,7 +233,7 @@ void sub_080569E4(struct FloatProgressWork *work, struct FloatProgressSetup *set
         }
         if (work->word44 == 0)
             break;
-        work->float00 = work->float00 - sub_08053380(work->float40) * (sub_080533A4(work->float34) + sub_080533A4(work->float38));
+        work->float00 = work->float00 - sub_08053380(work->float40) * (AbsFloat(work->float34) + AbsFloat(work->float38));
         break;
     }
     case 20:
@@ -257,14 +257,14 @@ void sub_080569E4(struct FloatProgressWork *work, struct FloatProgressSetup *set
             n++;
         }
         work->float30 = n;
-        work->float34 = work->float34 + (work->float38 - sub_080533A4(acc));
-        work->float38 = sub_080533A4(acc);
-        q = work->float34 / sub_08053360(sub_080533A4(work->float3C));
+        work->float34 = work->float34 + (work->float38 - AbsFloat(acc));
+        work->float38 = AbsFloat(acc);
+        q = work->float34 / sub_08053360(AbsFloat(work->float3C));
         work->float2C = q;
         work->word24 = (float)work->word20 + q + work->float30;
         if (work->word44 == 0)
             break;
-        work->float00 = work->float00 - sub_08053380(work->float3C) * (sub_080533A4(work->float34) + sub_080533A4(work->float38));
+        work->float00 = work->float00 - sub_08053380(work->float3C) * (AbsFloat(work->float34) + AbsFloat(work->float38));
         break;
     }
     case 21:
@@ -289,7 +289,7 @@ void sub_080569E4(struct FloatProgressWork *work, struct FloatProgressSetup *set
         } while (!(x >= 64.0f));
         if (work->word44 == 0)
             break;
-        work->float00 = work->float00 - sub_08053380(work->float3C) * (sub_080533A4(work->float34) + sub_080533A4(work->float38));
+        work->float00 = work->float00 - sub_08053380(work->float3C) * (AbsFloat(work->float34) + AbsFloat(work->float38));
         break;
     }
     case 23:
@@ -327,8 +327,8 @@ void sub_0805A0CC(u16 value, s8 width, u8 x, u8 y, u8 palette, u8 block) {
                     *dst-- = palette << 12;
                 else
                 {
-                    *dst-- = (sub_0807CF40(value, 10) + tile) | (palette << 12);
-                    value = sub_0807CEC8(value, 10);
+                    *dst-- = (__umodsi3(value, 10) + tile) | (palette << 12);
+                    value = __udivsi3(value, 10);
                 }
             }
             value = original;
@@ -340,8 +340,8 @@ void sub_0805A0CC(u16 value, s8 width, u8 x, u8 y, u8 palette, u8 block) {
                     *dst-- = palette << 12;
                 else
                 {
-                    *dst-- = (sub_0807CF40(value, 10) + tile) | (palette << 12);
-                    value = sub_0807CEC8(value, 10);
+                    *dst-- = (__umodsi3(value, 10) + tile) | (palette << 12);
+                    value = __udivsi3(value, 10);
                 }
             }
         }
@@ -356,8 +356,8 @@ void sub_0805A0CC(u16 value, s8 width, u8 x, u8 y, u8 palette, u8 block) {
                         *dst-- = tile | (palette << 12);
                     else
                     {
-                        *dst-- = (sub_0807CF40(value, 10) + tile) | (palette << 12);
-                        value = sub_0807CEC8(value, 10);
+                        *dst-- = (__umodsi3(value, 10) + tile) | (palette << 12);
+                        value = __udivsi3(value, 10);
                     }
                 }
             }
@@ -370,8 +370,8 @@ void sub_0805A0CC(u16 value, s8 width, u8 x, u8 y, u8 palette, u8 block) {
                     *dst-- = tile | (palette << 12);
                 else
                 {
-                    *dst-- = (sub_0807CF40(value, 10) + tile) | (palette << 12);
-                    value = sub_0807CEC8(value, 10);
+                    *dst-- = (__umodsi3(value, 10) + tile) | (palette << 12);
+                    value = __udivsi3(value, 10);
                 }
             }
         }
@@ -381,10 +381,10 @@ void sub_0805A0CC(u16 value, s8 width, u8 x, u8 y, u8 palette, u8 block) {
         dst = (u16 *)(block << 11) + (x + 0x03000000) + (y << 5);
         for (i = 0; i < 5; i++)
         {
-            digits[i] = sub_0807CF40(value, 10);
+            digits[i] = __umodsi3(value, 10);
             if (digits[i] == 0 && i != 0)
                 break;
-            value = sub_0807CEC8(value, 10);
+            value = __udivsi3(value, 10);
         }
         for (i--; i >= 0; i--)
             *dst++ = (digits[i] + tile) | (palette << 12);
@@ -392,10 +392,10 @@ void sub_0805A0CC(u16 value, s8 width, u8 x, u8 y, u8 palette, u8 block) {
         value = original;
         for (i = 0; i < 5; i++)
         {
-            digits[i] = sub_0807CF40(value, 10);
+            digits[i] = __umodsi3(value, 10);
             if (digits[i] == 0 && i != 0)
                 break;
-            value = sub_0807CEC8(value, 10);
+            value = __udivsi3(value, 10);
         }
         for (i--; i >= 0; i--)
             *dst++ = (digits[i] + tile) | (palette << 12);

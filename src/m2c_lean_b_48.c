@@ -83,13 +83,13 @@ void sub_08046A60(void *unused, struct RecordDisplayWork *work, s32 index, s32 c
             case 1:
                 for (k = 0; gLaterCmdF610[index][k].count; k++) {
                     if (!gLaterCmdF610[index][k].flag)
-                        sub_08046034(work->source, work->data, (const u32 *)gLaterCmdFDB0[index], gLaterCmdFDB0[index][k].count, gLaterCmdF610[index][k].count);
+                        LoadRecordCommandTiles(work->source, work->data, (const u32 *)gLaterCmdFDB0[index], gLaterCmdFDB0[index][k].count, gLaterCmdF610[index][k].count);
                 }
                 break;
             case 2:
                 for (k = 0; gLaterCmdFDB0[index][k].count; k++) {
                     if (!gLaterCmdFDB0[index][k].flag)
-                        sub_08046034(work->source, work->data, (const u32 *)gLaterCmdF610[index], gLaterCmdF610[index][k].count, gLaterCmdFDB0[index][k].count);
+                        LoadRecordCommandTiles(work->source, work->data, (const u32 *)gLaterCmdF610[index], gLaterCmdF610[index][k].count, gLaterCmdFDB0[index][k].count);
                 }
                 break;
             }

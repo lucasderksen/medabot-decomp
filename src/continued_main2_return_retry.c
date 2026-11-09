@@ -39,18 +39,18 @@ void sub_0805DBC4(void)
                 break;
             attempt = (u8)(attempt + 1);
         }
-        sub_08074B88(6);
+        PlayMusic(6);
         if (!result)
         {
-            sub_0803FB0C();
+            RestartDialogueText();
             CONTEXT_HALFWORDS[1] = result;
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
         else
         {
-            sub_0803FB0C();
+            RestartDialogueText();
             CONTEXT_HALFWORDS[1] = 0;
-            gUnknown_0300137C = 12;
+            gNestedCallbackIndex = 12;
         }
     }
 }

@@ -41,7 +41,7 @@ void sub_08034074(void)
     sub_08035DE8();
     sub_080361C4();
     sub_08036218();
-    sub_08040CD0(0, 0x28);
+    ClearFrameObjects(0, 0x28);
     CpuFastSet((const void *)0x084E4658, (void *)0x05000380, 8);
     work = (void *)gState0TransferWork.bytes;
     work->half100 = 0;
@@ -58,6 +58,6 @@ void sub_08034074(void)
         work->byteF9 = record[0xA8] + 0x50;
     ((struct ObservedFrameWaitBytes *)gFrameObjects)->byte69 = 1;
     ((struct ObservedFrameWaitBytes *)gFrameObjects)->byteA9 = 1;
-    sub_08034F08();
+    AdvanceActionByteScript();
 }
 

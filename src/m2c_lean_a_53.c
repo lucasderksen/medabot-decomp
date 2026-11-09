@@ -35,7 +35,7 @@ void sub_08036FF8(u32 index, u32 xArg, u32 yArg, u32 count) {
     struct FrameObject *f;
     u32 root;
 
-    sub_08040CD0(index, count);
+    ClearFrameObjects(index, count);
     i = 0;
     if (i < count) {
         p = (const u16 *)gUnknown_083AF640;
@@ -51,7 +51,7 @@ void sub_08036FF8(u32 index, u32 xArg, u32 yArg, u32 count) {
         f->unknown2C[0] = i * 8;
         { s32 t = (s16)x + p[0]; f->screenX = t & 0x1FF; }
         { s32 t = (s16)y + p[1]; f->screenY = t & 0xFF; }
-        sub_08040B90(gState0NextCommands_083B6100[36], index + i);
+        InitFrameObjectCommands(gState0NextCommands_083B6100[36], index + i);
         } while (0);
         p += 2;
         i++;

@@ -39,7 +39,7 @@ void sub_0803E680(void) {
         gCounter6ED08_03001800.received18A[gCounter6ED08_03001800.count52] = word;
         if (++gCounter6ED08_03001800.count52 > 10) {
             gState0TypedWork.widths.word86 = 0;
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
     }
 }

@@ -12,7 +12,7 @@ struct ObservedActionCommandWork {
     u16 cursorBC;
 };
 
-void sub_08034F08(void)
+void AdvanceActionByteScript(void)
 {
     struct ObservedActionCommandWork *work = (void *)gState0TransferWork.bytes;
     const u8 *script;

@@ -24,9 +24,9 @@ void sub_080147FC(void)
             sub_0801A144(buffer, selected);
         }
     }
-    sub_08074DE0(91);
+    PlaySoundEffect(91);
     gUnknown_03000440[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08014870(void)
@@ -61,12 +61,12 @@ void sub_08014870(void)
                 if (*active & 4)
                 {
                     *active &= 0xFB;
-                    sub_08040CD0(objectIndex >> 24, 3);
+                    ClearFrameObjects(objectIndex >> 24, 3);
                 }
             }
             objectIndex += 4U << 24;
         }
         gState0TransferWork.bytes[0x55] &= 0xF7;
-        gUnknown_0300137C = 68;
+        gNestedCallbackIndex = 68;
     }
 }

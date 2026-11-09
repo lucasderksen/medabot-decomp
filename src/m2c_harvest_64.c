@@ -24,7 +24,7 @@ void sub_08024C44(void) {
     u8 var_r0;
 
     if (gFrameObjects[0x21].scaleX == 0x40) {
-        sub_08074DE0(0x3CU);
+        PlaySoundEffect(0x3CU);
         gState0TypedWork.widths.word86 = 0;
         gState0TransferWork.bytes[0xAA] = gState0TransferWork.bytes[0xAA] + 1;
     } else {
@@ -52,7 +52,7 @@ void sub_08027CB0(void) {
     gState0TypedWork.widths.word86 += 1;
     gFrameObjects[0x21].angle = (gFrameObjects[0x21].angle + 0x40) & 0x3FF;
     if (gFrameObjects[0x22].scaleX == 0x40) {
-        sub_08074DE0(0x30U);
+        PlaySoundEffect(0x30U);
         gState0TypedWork.bytes[0x84] = 0x3C;
         gState0TransferWork.bytes[0xAA] = gState0TransferWork.bytes[0xAA] + 1;
     } else {

@@ -10,14 +10,14 @@ remain provisional.
 
 | Routine | ROM interval | Bytes | Observed operation |
 | --- | --- | ---: | --- |
-| `sub_080020C8` | `20C8..2190` | 200 | Initialize serial hardware, RAM code, context, and buffer pointers |
-| `sub_08002190` | `2190..21A4` | 20 | Set request byte when master byte is nonzero |
-| `sub_080021A4` | `21A4..21F4` | 80 | Reset serial/timer controls and clear request byte |
-| `sub_080021F4` | `21F4..22DC` | 232 | Poll phase, consume packets, advance sequence, and pack status |
-| `sub_080022DC` | `22DC..2328` | 76 | Prepare pending send packet and checksum |
-| `sub_08002328` | `2328..23D8` | 176 | Validate completed receive packets, copy payloads, and clear them |
-| `sub_080023D8` | `23D8..2438` | 96 | Rotate buffers and start a requested transfer |
-| `sub_08002438` | `2438..2534` | 252 | Exchange one halfword for each of four receive slots |
+| `InitSerialLink` | `20C8..2190` | 200 | Initialize serial hardware, RAM code, context, and buffer pointers |
+| `RequestSerialTransfer` | `2190..21A4` | 20 | Set request byte when master byte is nonzero |
+| `StopSerialLink` | `21A4..21F4` | 80 | Reset serial/timer controls and clear request byte |
+| `PollSerialLink` | `21F4..22DC` | 232 | Poll phase, consume packets, advance sequence, and pack status |
+| `PrepareSerialSendPacket` | `22DC..2328` | 76 | Prepare pending send packet and checksum |
+| `ReceiveSerialPackets` | `2328..23D8` | 176 | Validate completed receive packets, copy payloads, and clear them |
+| `StartSerialTransfer` | `23D8..2438` | 96 | Rotate buffers and start a requested transfer |
+| `SerialHandler` | `2438..2534` | 252 | Exchange one halfword for each of four receive slots |
 
 Every routine uses its own `.text.sub_<address>` input section. The isolated
 comparison command is:

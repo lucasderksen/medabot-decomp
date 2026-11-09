@@ -19,7 +19,7 @@ void sub_08042238(u8 value);
 
 void sub_0800D6A8(void)
 {
-    sub_080445F4();
+    InitRecordDisplayRendering();
     sub_080446B4(0, gState0TypedWork.bytes[0x39], gState0TypedWork.bytes[0x39],
                   gState0TypedWork.bytes[0x39], gState0TypedWork.bytes[0x39],
                   56, 104, 0, 4, 0, 0, 0);

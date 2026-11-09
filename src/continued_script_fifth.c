@@ -22,15 +22,15 @@ struct ScriptStatusByte
 void sub_0804CF5C(void)
 {
     u8 *work;
-    sub_0804D8CC(3);
+    ReadBankedScriptArgs(3);
     work = gUnknown_030057E0;
     switch (work[0xC94])
     {
     case 0:
         {
             u8 *argument = work + 0xC96;
-            if (sub_0804DBF0(*argument) != -1)
-                sub_0804D9F8((u8)(sub_0804DBF0(*argument) + 79));
+            if (GetScriptObjectSlot(*argument) != -1)
+                sub_0804D9F8((u8)(GetScriptObjectSlot(*argument) + 79));
             break;
         }
     case 1:

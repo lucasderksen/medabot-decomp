@@ -46,10 +46,10 @@ s32 sub_0803684C(s32 arg0) {
         temp_r4->palette = 0xE;
         temp_r5 = temp_r3;
         work0 = (u8 *) (&gState0NextCommands_083B6100);
-        sub_08040BD8(*((u8 **) (((s8 *) work0) + 0x74)), temp_r5);
+        RunFrameObjectCommands(*((u8 **) (((s8 *) work0) + 0x74)), temp_r5);
         if (temp_r4->commandStopped == 0xFF)
         {
-          sub_08040CD0(temp_r5, 1U);
+          ClearFrameObjects(temp_r5, 1U);
         }
         else
         {

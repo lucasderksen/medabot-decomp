@@ -53,8 +53,8 @@ extern const u8 gUnknown_084E4438[];
 extern const u8 gUnknown_0850F318[];
 extern const u8 gUnknown_0879F6CC[];
 extern s32 sub_08074CE0(void);
-extern s32 sub_0807CD2C(s32, s32);
-extern s32 sub_0807CDF8(s32, s32);
+extern s32 __divsi3(s32, s32);
+extern s32 __modsi3(s32, s32);
 extern u8 gObjectSortBytes[] asm("gObjectSortEntries");
 extern u8 gUnknown_0202F9A0[];
 extern void sub_08062C28(u32, u32);
@@ -86,11 +86,11 @@ void sub_080639C4(void) {
     for (i = 0; i <= 0x3F; i++)
         *dst++ = *src++;
     if (sub_08074CE0() != 0x18)
-        sub_08074B88(0x18);
+        PlayMusic(0x18);
     zero = 0;
     CpuFastSet(&zero, (void *)0x06000000, 0x01006000);
-    sub_080415BC();
-    sub_08040CD0(0, 0x80);
+    ClearBgScrolls();
+    ClearFrameObjects(0, 0x80);
     *(volatile u16 *)0x04000000 = 0x60;
     *(volatile u16 *)0x04000050 = 0x2FF;
     *(volatile u16 *)0x04000054 = 0x10;
@@ -98,12 +98,12 @@ void sub_080639C4(void) {
     *bg1 = 0x1E05;
     *(volatile u16 *)0x0400000C = 0x1B06;
     *(volatile u16 *)0x0400000E = 0x3C07;
-    sub_0805BA34(gBiosLz77Stream_087A0FB4, *bg1);
-    sub_0805BA34(gBiosLz77Stream_087A0D04, *(volatile u16 *)0x0400000C);
-    sub_0805BA34(gBiosLz77Stream_087A1244, *(volatile u16 *)0x0400000E);
+    LoadLz77SizedTilemap(gBiosLz77Stream_087A0FB4, *bg1);
+    LoadLz77SizedTilemap(gBiosLz77Stream_087A0D04, *(volatile u16 *)0x0400000C);
+    LoadLz77SizedTilemap(gBiosLz77Stream_087A1244, *(volatile u16 *)0x0400000E);
     *(volatile u16 *)0x0400000C = 0x1D06;
-    sub_0805BA34(gBiosLz77Stream_087A10F0, *(volatile u16 *)0x0400000C);
-    length = sub_08044D0C(gBiosLz77Stream_0879F80C, (void *)0x02030000);
+    LoadLz77SizedTilemap(gBiosLz77Stream_087A10F0, *(volatile u16 *)0x0400000C);
+    length = DecompressLz77OrCopy(gBiosLz77Stream_0879F80C, (void *)0x02030000);
     CpuSet((void *)0x02030000, (void *)0x06004000, (length << 10) >> 11);
     LeDecompress(gNativeLeStream_08785EC0, (void *)(length + 0x06004000));
     ((struct Main2MedalContext *)gMainContextPointer_03006F74)->tileBase36 = (length >> 5) + 4;
@@ -122,13 +122,13 @@ void sub_080639C4(void) {
         cell2 = 0x06000246;
         medal = ctx->medal231;
         sub_08062C28(medal, ctx->byte238);
-        sub_08040DB8(((struct Main2MedalContext *)gMainContextPointer_03006F74)->text23A, 0x20, 4, 4, 10, 2, 0, 1);
+        PlaceAlignedTextObjects(((struct Main2MedalContext *)gMainContextPointer_03006F74)->text23A, 0x20, 4, 4, 10, 2, 0, 1);
         for (k = 0; k <= 9; k++)
         {
             tileBase = length >> 5;
             gDebugMenuTextBuffer[k] = gDebugMedalMetadata_083B6590[medal][k];
         }
-        sub_08040DB8(gDebugMenuTextBuffer, 0x10, 5, 8, 10, 1, 1, 1);
+        PlaceAlignedTextObjects(gDebugMenuTextBuffer, 0x10, 5, 8, 10, 1, 1, 1);
         value = ((struct Main2MedalContext *)gMainContextPointer_03006F74)->value235;
         if (value == 100)
         {
@@ -177,5 +177,5 @@ void sub_080639C4(void) {
     *(volatile u16 *)0x04000000 |= 0x400;
     *(volatile u16 *)0x04000000 |= 0x800;
     *(volatile u16 *)0x04000000 |= 0x1000;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

@@ -12,10 +12,10 @@
 #include "state0_work.h"
 
 
-void sub_080423A0(u8 count);
-void sub_0804242C(u8 count);
+void SortObjectEntriesAscending(u8 count);
+void SortObjectEntriesDescending(u8 count);
 
-void sub_080423A0(u8 count) {
+void SortObjectEntriesAscending(u8 count) {
 
     u32 j;
     u16 key, tie, word4, word6;
@@ -61,7 +61,7 @@ void sub_080423A0(u8 count) {
     }
 }
 
-void sub_0804242C(u8 count) {
+void SortObjectEntriesDescending(u8 count) {
 
     u32 j;
     u16 key, tie, word4, word6;

@@ -84,7 +84,7 @@ void sub_0802DB3C(void) {
         var_r2 += 1;
     } while (var_r2 <= 2U);
     if (gState0TypedWork.widths.word86 == 0x3C) {
-        sub_08040CD0(0x21U, 6U);
+        ClearFrameObjects(0x21U, 6U);
         gCounter6ED08_03001800.bAA = (u8) (gCounter6ED08_03001800.bAA + 1);
         return;
     }
@@ -112,6 +112,6 @@ void sub_0802E098(void) {
         }
         var_r2 += 1;
     } while (var_r2 <= 2U);
-    sub_08074DE0(0x54U);
+    PlaySoundEffect(0x54U);
     gCounter6ED08_03001800.bAA = (u8) (gCounter6ED08_03001800.bAA + 1);
 }

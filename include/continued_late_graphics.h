@@ -5,7 +5,7 @@
 #include "map_metadata.h"
 #include "main_callbacks.h"
 
-extern u32 gUnknown_0300137C;
+extern u32 gNestedCallbackIndex;
 extern const MainCallback gUnknownCallbacks_083D5FF4[];
 void sub_0805716C(void);
 void sub_0805718C(void);

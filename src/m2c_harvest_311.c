@@ -23,7 +23,7 @@ u32 sub_0803301C(void) {
     u8 *e;
     u8 *a;
     i = sub_08033074();
-    up = sub_080424B8() & 1;
+    up = NextRandomByte() & 1;
     n = 0;
     a = gUnknown_03001800.b61;
     g = &gUnknown_03001800;

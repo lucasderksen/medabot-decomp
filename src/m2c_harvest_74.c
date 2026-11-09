@@ -67,7 +67,7 @@ void sub_0802CE08(void) {
     do {
         if (*(u8 *) (i + (u32) flags) != 0) {
             active++;
-            if (sub_080355F0(i + 0x21) != 0)
+            if (StepFrameObjectToTarget(i + 0x21) != 0)
                 finished++;
         }
         i++;
@@ -96,7 +96,7 @@ void sub_0803E934(void) {
     s16 *coordinate;
     u8 *parameter;
     u32 zero;
-    sub_08040CD0(2, 1);
+    ClearFrameObjects(2, 1);
     objects = (void *) gFrameObjects;
     objects->flags = (zero = 0, 0xC400);
     coordinate = &objects->x;

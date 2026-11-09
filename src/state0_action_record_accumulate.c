@@ -29,7 +29,7 @@ next:
         entries += 24;
         count++;
     } while (count <= 2);
-    sub_08034F08();
+    AdvanceActionByteScript();
 }
 
 void sub_080347BC(void)
@@ -49,5 +49,5 @@ void sub_080347BC(void)
         record += 24;
         count++;
     } while (count <= 3);
-    sub_08034F08();
+    AdvanceActionByteScript();
 }

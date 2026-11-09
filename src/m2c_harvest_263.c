@@ -40,8 +40,8 @@ struct StatePrivate_0801E09C {
 };
 
 extern const u8 gUnknown_08488240[];
-extern u32 sub_0807CEC8(u32,u32);
-extern u32 sub_0807CF40(u32,u32);
+extern u32 __udivsi3(u32,u32);
+extern u32 __umodsi3(u32,u32);
 extern void sub_0801BC5C(s32);
 extern void sub_0801BCA0(void);
 extern void sub_08035C3C(void);
@@ -56,9 +56,9 @@ void sub_08018AB4(u32 value) {
     void *temp_r0_2;
 
     if (value != 0) {
-        sub_0803EF8C(6U, 5U, 0xCU, 0xFU, (u32) *(volatile u16 *)0x0400000A, 0U);
-        sub_08040CD0(0U, 1U);
-        sub_08040CD0(1U, 2U);
+        FillTilemapRect(6U, 5U, 0xCU, 0xFU, (u32) *(volatile u16 *)0x0400000A, 0U);
+        ClearFrameObjects(0U, 1U);
+        ClearFrameObjects(1U, 2U);
         return;
     }
     LoadLeTilemap(0xCU, 0xFU, gUnknown_08488240, (u32) *(volatile u16 *)0x0400000A, 0x230U);
@@ -77,7 +77,7 @@ void sub_08018AB4(u32 value) {
     gFrameObjects[1].screenX = 0x70;
     gFrameObjects[1].screenY = 0x90;
     work=(struct StatePrivate_08018AB4 *)&gState0TransferWork;
-    gFrameObjects[1].frameAndGroup = (u8)sub_0807CEC8(work->number, 0xA) + 0x624;
+    gFrameObjects[1].frameAndGroup = (u8)__udivsi3(work->number, 0xA) + 0x624;
     gFrameObjects[2].flags = 0xC404;
     gFrameObjects[2].tableSelector = 0;
     temp_r0_2 = (u8 *)gFrameObjects + 0x8A;
@@ -85,7 +85,7 @@ void sub_08018AB4(u32 value) {
     (*(s8 *)((u8 *)(++temp_r0_2) + 0)) = 0x40;
     gFrameObjects[2].screenX = 0x80;
     gFrameObjects[2].screenY = 0x90;
-    gFrameObjects[2].frameAndGroup = (u8)sub_0807CF40(work->number, 0xA) + 0x624;
+    gFrameObjects[2].frameAndGroup = (u8)__umodsi3(work->number, 0xA) + 0x624;
 }
 
 void sub_0801E09C(void) {
@@ -100,14 +100,14 @@ void sub_0801E09C(void) {
     temp_r5 = gState0TypedWork.bytes[0x139];
     switch (temp_r5) {                              /* irregular */
     case 0:
-        sub_08043CA8();
+        ClearBgScrolls2();
         *(volatile u16 *)0x04000000 = (u16) (0xE0FF & *(volatile u16 *)0x04000000);
         *(volatile u16 *)0x04000008 = 0x500;
         *(volatile u16 *)0x0400000A = 0x1801;
         *(volatile u16 *)0x0400000C = 0x590A;
         *(volatile u16 *)0x0400000E = 0x5B0B;
         LeDecompress(gMain2SharedObjectTiles_084C8034, (void *)0x06017400);
-        sub_0803EF8C(0x20U, 0x20U, 0U, 0U, (u32) *(volatile u16 *)0x0400000A, (u32) temp_r5);
+        FillTilemapRect(0x20U, 0x20U, 0U, 0U, (u32) *(volatile u16 *)0x0400000A, (u32) temp_r5);
         sub_08043B7C((u32) ((struct StatePrivate_0801E09C *)&gState0TransferWork)->graphics, 0U);
         sp8 = (s32) temp_r5;
         CpuFastSet(&sp8, gFrameObjects, 0x01000800U);

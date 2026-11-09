@@ -29,8 +29,8 @@ void sub_0802DE1C(void) {
     }
     gState0TypedWork.widths.word86 += 1;
     b = (u8 *)gUnknownPointers_083B6100;
-    sub_08040BD8(*(u8 **)(b + 0x1A4), 0x21U);
-    sub_0804422C(0x21U);
+    RunFrameObjectCommands(*(u8 **)(b + 0x1A4), 0x21U);
+    ApplyObjectMotionStep(0x21U);
     gFrameObjects[0x21].unknown23[1] = 4;
     if (gFrameObjects[0x21].unknown23[5] != 0) {
         gFrameObjects[0x21].unknown23[5] -= 1;
@@ -40,7 +40,7 @@ void sub_0802DE1C(void) {
     sequenceOffset = gFrameObjects[0x21].unknown23[0] * 2;
     gFrameObjects[0x21].unknown23[2] = *(const u8 *)(sequence + sequenceOffset);
     if (gFrameObjects[0x21].unknown23[2] == 0xFF) {
-        sub_08040CD0(0x21U, 1U);
+        ClearFrameObjects(0x21U, 1U);
         gUnknown_03001800[0xAA] = 0xAU;
         return;
     }

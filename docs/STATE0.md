@@ -5,7 +5,7 @@ dump. They compile as ordinary C with the default pinned agbcc settings.
 Their address-based names remain provisional. Screen identity and the meaning
 of the larger shared RAM object have not yet been established.
 
-`sub_08002534` dispatches the main-state-zero table at `083AC2C8` using the
+`DispatchMainState0` dispatches the main-state-zero table at `083AC2C8` using the
 word `gMainSubstate` at `03002B8C`. Two additional dispatchers, `08002554` and
 `080027BC`, use the separate word at `0300137C` to index tables at `083AC3C8`
 and `083AC404`. A fourth dispatcher at `08003374` uses the same word with the

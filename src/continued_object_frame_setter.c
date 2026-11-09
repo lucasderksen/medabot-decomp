@@ -10,12 +10,12 @@ void sub_0805076C(u32 indexWord, u32 valueWord)
     struct FrameObject *base;
     s32 mapped;
     {
-        s32 first = sub_0804DBF0(index);
+        s32 first = GetScriptObjectSlot(index);
         base = gFrameObjects;
         first += 79;
         base[first].commandDelay = value;
     }
-    mapped = sub_0804DBF0(index);
+    mapped = GetScriptObjectSlot(index);
     {
         u32 frame = sub_08050320(index, value);
         mapped += 79;

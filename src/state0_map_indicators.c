@@ -22,10 +22,10 @@ void sub_0801214C(void)
     }
 }
 
-void sub_080121A8(void)
+void LoadScrollControlRecord(void)
 {
     u8 *work = gState0TransferWork.bytes;
-    sub_0803F63C(gState0ScrollControls_083C3C84[work[0x38]], work + 0x39, 8);
+    CopyBytes(gState0ScrollControls_083C3C84[work[0x38]], work + 0x39, 8);
 }
 
 void sub_080121CC(void)

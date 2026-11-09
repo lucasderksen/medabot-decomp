@@ -24,7 +24,7 @@ void sub_0803C044(void) {
     count = gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown2C[1];
     if (count != 0) {
         gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown2C[1] = count - 1;
-        sub_0804422C(gState0TypedWork.bytes[0x12F]);
+        ApplyObjectMotionStep(gState0TypedWork.bytes[0x12F]);
         if (gFrameObjects[3].unknown2C[0] == 0) {
             gCounter6ED08_03001800.pos154[0] = gFrameObjects[gState0TypedWork.bytes[0x12F]].screenX;
             gCounter6ED08_03001800.pos154[1] = gFrameObjects[gState0TypedWork.bytes[0x12F]].screenY;
@@ -33,6 +33,6 @@ void sub_0803C044(void) {
             gCounter6ED08_03001800.pos154[3] = gFrameObjects[gState0TypedWork.bytes[0x12F]].screenY;
         }
     } else {
-        sub_08040CD0(gState0TypedWork.bytes[0x12F], 1);
+        ClearFrameObjects(gState0TypedWork.bytes[0x12F], 1);
     }
 }

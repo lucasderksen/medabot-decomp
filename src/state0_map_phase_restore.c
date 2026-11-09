@@ -13,7 +13,7 @@
 void sub_08013824(void)
 {
     u8 *work = (u8 *)0x0300047C;
-    sub_0803F624(work, 20, 0);
+    FillBytes(work, 20, 0);
     work[0] = 2;
     {
         u8 *buffer = gSetupBuffer_03000590;
@@ -21,13 +21,13 @@ void sub_08013824(void)
         u8 *record;
         selection += 0x80;
         record = buffer + *selection * 256;
-        work[1] = sub_08041D3C(record[1]) - 1;
+        work[1] = FindInventoryRecordById(record[1]) - 1;
     }
     work[5] = 1;
     work[6] = 2;
-    sub_08043CA8();
+    ClearBgScrolls2();
     gMainSubstate = 4;
-    gUnknown_0300137C = 40;
+    gNestedCallbackIndex = 40;
 }
 
 void sub_0801387C(void)
@@ -42,7 +42,7 @@ void sub_0801387C(void)
         u32 zero = 0;
         *cleared = zero;
         gRenderMode = zero;
-        sub_08043CA8();
+        ClearBgScrolls2();
         sub_08043E54();
         *(volatile u16 *)0x04000000 &= 0xF0FF;
         *(volatile u16 *)0x04000008 = 0x500;
@@ -83,7 +83,7 @@ void sub_0801387C(void)
     case 5:
         CpuFastSet((void *)0x02028000, (void *)0x03002C30, 0x800);
         gUnknownCallback_030017F0 = sub_08044100;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
         gUnknown_03000440[0x139] = 0;
         break;
     }

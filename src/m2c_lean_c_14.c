@@ -38,7 +38,7 @@ void sub_08063254(void) {
     u16 w1;
     u16 mask;
 
-    sub_0803FB3C(gMain2ScriptSlots_08485678[15]);
+    RunDialogue(gMain2ScriptSlots_08485678[15]);
     gMainSerialOutgoingWork.word06 = gSwapContext63254->firstA | (gSwapContext63254->firstB << 8) | 0x4000;
     w0 = gMainSerialOutgoingWork.words[0][1];
     w1 = gMainSerialOutgoingWork.words[1][1];
@@ -54,8 +54,8 @@ void sub_08063254(void) {
         sub_08062A10(1);
         sub_08062BEC(gSwapContext63254->slot32 * 4 + gSwapContext63254->slot34, 1);
         sub_08041020(gUnknown_030004F2, 0x10, 0xE, 0xA, 0x10, 0xD, 0, 1);
-        sub_0803FAA0(1, 0, 1);
-        gUnknown_0300137C++;
+        InitDialogue(1, 0, 1);
+        gNestedCallbackIndex++;
     }
     sub_08062B48(gSwapContext63254->firstA, gSwapContext63254->firstB, 0);
 }

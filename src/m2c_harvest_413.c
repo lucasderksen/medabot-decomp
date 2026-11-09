@@ -22,22 +22,22 @@ extern u8 gUnknown_03006F8C[3];
 extern u8 gUnknown_03006FD0[3][3];
 
 void sub_08067870(void);
-void sub_0806AA10(void);
+void AdvanceEncounterFramePhases(void);
 
 void sub_08067870(void) {
 
     sub_08066D8C();
     if (gState0TypedWork.bytes[0x84] < 0x41) {
-        sub_0803F684(0, 0x20 - gState0TypedWork.bytes[0x84] / 2, 0xFFFF);
-        sub_0803F998(0, 0x20 - gState0TypedWork.bytes[0x84] / 2, 0xFFFF);
+        BlendBgPaletteBanksNow(0, 0x20 - gState0TypedWork.bytes[0x84] / 2, 0xFFFF);
+        BlendObjPaletteBanksNow(0, 0x20 - gState0TypedWork.bytes[0x84] / 2, 0xFFFF);
         gState0TypedWork.bytes[0x84]++;
         ((u8 *)gMainContextPointer_03006F74)[5] = 0;
     } else {
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
-void sub_0806AA10(void) {
+void AdvanceEncounterFramePhases(void) {
 
     s32 i;
 

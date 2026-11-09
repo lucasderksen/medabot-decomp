@@ -7,18 +7,18 @@
 #include "render_work.h"
 #include "display_helpers.h"
 
-void sub_0800529C(void)
+void InitSelectedRecordPreview(void)
 {
     u32 fill;
-    sub_0803F624(&gRecordDisplayWork, 0xD0, 0);
-    sub_0803F624(gRecordDisplayData, 0x800, 0);
-    sub_0803F624(gRecordDisplayExtra, 0x60, 0);
+    FillBytes(&gRecordDisplayWork, 0xD0, 0);
+    FillBytes(gRecordDisplayData, 0x800, 0);
+    FillBytes(gRecordDisplayExtra, 0x60, 0);
     gRenderMode = 2;
     gRenderWork = (struct RenderWork *)0x02024000;
     fill = 0;
     CpuFastSet(&fill, gRenderWork, CPU_SET_FILL | 0x426);
     gRecordDisplayExtraPointer = gRecordDisplayExtra;
-    sub_08047414(&gRecordDisplayWork, gRenderWork, gUnknownBytes_083D1D78, gRecordDisplayData);
+    InitRecordDisplayWork(&gRecordDisplayWork, gRenderWork, gUnknownBytes_083D1D78, gRecordDisplayData);
     gRecordDisplayWork.data = gRecordDisplayData;
     if (gState0TypedWork.bytes[0x5E])
         sub_08046D1C(gRenderWork->objects, &gRecordDisplayWork,
@@ -79,7 +79,7 @@ void sub_080054C0(void)
     }
 }
 
-u32 sub_08005588(void)
+u32 MoveRecordSelectionByDirection(void)
 {
     u32 changed = 0;
     const u8 *next;
@@ -89,10 +89,10 @@ u32 sub_08005588(void)
     if ((u8)gRepeatedKeys & 0x10) { next = gUnknownPointers_083AC604[3]; changed = 1; }
     if (changed)
     {
-    sub_08074DE0(2);
+    PlaySoundEffect(2);
     gState0TypedWork.bytes[0x51] = next[gState0TypedWork.bytes[0x51]];
-    sub_08004EF8(0); sub_08004EF8(1); sub_08004EF8(2); sub_08004EF8(3);
-    sub_08005118(); sub_0800519C(); sub_0800522C(); sub_080053C8(); sub_08005000(); sub_08005948();
+    StepMarkerOrbitForward(0); StepMarkerOrbitForward(1); StepMarkerOrbitForward(2); StepMarkerOrbitForward(3);
+    DrawSelectedRecordNameText(); sub_0800519C(); LoadSelectedRecordTileGraphic(); sub_080053C8(); PlaceNineRecordObjectGroups(); sub_08005948();
     return 1;
     }
     else return 0;
@@ -100,13 +100,13 @@ u32 sub_08005588(void)
 
 void sub_08005628(void)
 {
-    gFrameObjects[4].flags = 0xC604; gFrameObjects[4].unknown23[0] = 0; sub_080056A4(4);
-    gFrameObjects[5].flags = 0xC604; gFrameObjects[5].unknown23[0] = 16; sub_080056A4(5);
-    gFrameObjects[6].flags = 0xC604; gFrameObjects[6].unknown23[0] = 32; sub_080056A4(6);
-    gFrameObjects[7].flags = 0xC604; gFrameObjects[7].unknown23[0] = 48; sub_080056A4(7);
+    gFrameObjects[4].flags = 0xC604; gFrameObjects[4].unknown23[0] = 0; StepMarkerOrbitReverse(4);
+    gFrameObjects[5].flags = 0xC604; gFrameObjects[5].unknown23[0] = 16; StepMarkerOrbitReverse(5);
+    gFrameObjects[6].flags = 0xC604; gFrameObjects[6].unknown23[0] = 32; StepMarkerOrbitReverse(6);
+    gFrameObjects[7].flags = 0xC604; gFrameObjects[7].unknown23[0] = 48; StepMarkerOrbitReverse(7);
 }
 
-void sub_08005798(void)
+void BlinkSwapMarkerObjects(void)
 {
     if (gState0TypedWork.bytes[0x52] & 0x80)
     {
@@ -120,7 +120,7 @@ void sub_08005798(void)
             gFrameObjects[4].flags &= 0xBFFF; gFrameObjects[5].flags &= 0xBFFF;
             gFrameObjects[6].flags &= 0xBFFF; gFrameObjects[7].flags &= 0xBFFF;
         }
-        sub_080056A4(4); sub_080056A4(5); sub_080056A4(6); sub_080056A4(7);
+        StepMarkerOrbitReverse(4); StepMarkerOrbitReverse(5); StepMarkerOrbitReverse(6); StepMarkerOrbitReverse(7);
     }
     else
     {
@@ -133,16 +133,16 @@ u32 sub_080058A4(void)
 {
     if (!gState0TypedWork.bytes[0x50] && ((u8)gNewKeys & 4))
     {
-    sub_08074DE0(2);
+    PlaySoundEffect(2);
     if (gState0TypedWork.bytes[0x52] & 0x80)
     {
         gState0TypedWork.bytes[0x52] &= 0x7F;
         if (gState0TypedWork.bytes[0x52] != gState0TypedWork.bytes[0x51])
         {
-            sub_0803F65C(&gUnknownRecords_030017A0[gState0TypedWork.bytes[0x52]],
+            SwapBytes(&gUnknownRecords_030017A0[gState0TypedWork.bytes[0x52]],
                         &gUnknownRecords_030017A0[gState0TypedWork.bytes[0x51]], 8);
-            sub_08004FD0(); sub_08005000(); sub_0800508C(); sub_08005118(); sub_0800519C();
-            sub_0800522C(); sub_080053C8(); sub_08005948();
+            LoadActiveRecordObjGraphics(); PlaceNineRecordObjectGroups(); sub_0800508C(); DrawSelectedRecordNameText(); sub_0800519C();
+            LoadSelectedRecordTileGraphic(); sub_080053C8(); sub_08005948();
         }
         gState0TypedWork.bytes[0x52] = 0;
     }
@@ -151,7 +151,7 @@ u32 sub_080058A4(void)
         gState0TypedWork.bytes[0x52] = gState0TypedWork.bytes[0x51] + 0x80;
         sub_08005628();
     }
-    sub_08005798();
+    BlinkSwapMarkerObjects();
     return 1;
     }
     return 0;

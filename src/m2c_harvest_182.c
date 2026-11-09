@@ -35,7 +35,7 @@ extern u8 gUnknown_03006FEC[3];
 extern u8 gUnknown_03006FF0[3];
 extern void sub_08036CCC(u32,u32,s32);
 extern void sub_08069E78(void);
-extern void sub_0806B530(u8,u8,u8,u8);
+extern void SetObjectAnimationState(u8,u8,u8,u8);
 
 void sub_0801F3F0(void);
 void sub_080237C8(void);
@@ -73,7 +73,7 @@ void sub_080237C8(void) {
     frames->first.kind=6;
     typed=&gState0TypedWork;
     typed->bytes[0x84]=0x42;
-    sub_08040B90(gState0NextCommands_083B6100[0x42],0x21);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[0x42],0x21);
     typed->widths.word86=0x3C;
     work[0xAA]++;
 }
@@ -81,7 +81,7 @@ void sub_080237C8(void) {
 void sub_08024AF4(void) {
     struct ContinuedPartnerFrames25378 *frames;
     u8 *work;
-    sub_08040D0C(0x21,1);
+    HideFrameObjects(0x21,1);
     frames=(struct ContinuedPartnerFrames25378 *)gFrameObjects;
     frames->second.flags=0xC404;
     frames->second.selector=0;
@@ -96,7 +96,7 @@ void sub_08024AF4(void) {
     case 2:frames->second.group=0x4E03;break;
     default:frames->second.group=0x4E01;break;
     }
-    sub_08074DE0(0x6A);
+    PlaySoundEffect(0x6A);
     gState0TransferWork.bytes[0xAA]++;
 }
 
@@ -104,18 +104,18 @@ s32 sub_0806A654(void) {
     switch (gUnknown_03006F88) {
     case 0:
         sub_08069E78();
-        sub_0806B530(0,5,0,0);
+        SetObjectAnimationState(0,5,0,0);
         gUnknown_03006F88++;
         break;
     case 1:
         if (gFrameObjects[0].unknown1A == 180) {
-            sub_08074DE0(0x42);
+            PlaySoundEffect(0x42);
             sub_08043240(0x26,12);
             sub_08043240(0x32,12);
             sub_08043240(0x3E,12);
-            sub_0806B530(1,10,0,0);
-            sub_0806B530(2,10,1,0);
-            sub_0806B530(3,10,2,0);
+            SetObjectAnimationState(1,10,0,0);
+            SetObjectAnimationState(2,10,1,0);
+            SetObjectAnimationState(3,10,2,0);
             gUnknown_03006FF8[1] = 0;
             gUnknown_03006FF8[0] = 0;
             gUnknown_03007000[1] = 0;

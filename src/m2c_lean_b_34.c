@@ -60,25 +60,25 @@ void sub_0806AAA4(void) {
                 sub_08043240(gEncounterFrameSlotsView[i][gUnknown_03006F8C[i]] - 3, 4);
                 gView6AAA4[gEncounterFrameSlotsView[i][gUnknown_03006F8C[i]]].state = 1;
                 if (++gUnknown_03006F8C[i] > 2) {
-                    sub_0806B530(i + 1, 0, 0, 0);
+                    SetObjectAnimationState(i + 1, 0, 0, 0);
                     if (gSelectionOrder03006F94[0] == 0) {
                         gSelectionOrder03006F94[0] = i + 1;
                         for (k = 0; k <= 15; k++) {
                             u8 frame = gRandomBytes_083F7D80[(gFrameCounter + k) & 0xFF];
                             frame &= 3;
-                            sub_08048864(k + 4, 0xC400, frame + 0x10C, 0xB, 3);
+                            InitFrameObject(k + 4, 0xC400, frame + 0x10C, 0xB, 3);
                             gView6AAA4[k + 4].priority = 0x64;
-                            sub_0806B530(k + 4, 8, frame, (k * 16) & 0x7F);
+                            SetObjectAnimationState(k + 4, 8, frame, (k * 16) & 0x7F);
                         }
                     } else if (gSelectionOrder03006F94[1] == 0) {
                         gSelectionOrder03006F94[1] = i + 1;
                     } else if (gSelectionOrder03006F94[2] == 0) {
                         gSelectionOrder03006F94[2] = i + 1;
                     }
-                    sub_08074DE0(0x43);
+                    PlaySoundEffect(0x43);
                     continue;
                 }
-                sub_08074DE0(0x44);
+                PlaySoundEffect(0x44);
                 gView6AAA4[gEncounterFrameSlotsView[i][gUnknown_03006F8C[i]]].timer = 0;
                 gUnknown_03006FEC[i] = 0x20;
                 gUnknown_03006FF0[i] = 0;

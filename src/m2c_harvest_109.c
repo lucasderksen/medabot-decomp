@@ -13,7 +13,7 @@ extern void *gUnknown_03007014;
 extern void sub_080750AC(u32);
 
 u32 sub_08074FA4(u32 mode);
-void sub_080750F0(u32 arg0);
+void FadeOutMusic(u32 arg0);
 
 u32 sub_08074FA4(u32 mode) {
     void **root;
@@ -34,7 +34,7 @@ u32 sub_08074FA4(u32 mode) {
     return temp_r2;
 }
 
-void sub_080750F0(u32 arg0) {
+void FadeOutMusic(u32 arg0) {
     void **root;
     u16 temp_r0;
     u16 temp_r1;

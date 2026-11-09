@@ -26,15 +26,15 @@ struct Words3A840 {
 
 extern struct Frame3A840 gFrames3A840[] asm("gFrameObjects");
 extern struct Words3A840 gWords3A840 asm("gCounter6ED08_03001800");
-extern void sub_0803D450(void);
-extern void sub_0803D4AC(void);
+extern void LoadActionHalfwordScriptParams(void);
+extern void AdvanceActionHalfwordScript(void);
 
 void sub_0803A840(void);
 
 void sub_0803A840(void) {
 
 
-    sub_0803D450();
+    LoadActionHalfwordScriptParams();
     if (!(2 & gCounter6ED08_03001800.flagsF8)) {
         gFrames3A840[2].byte2B = 1;
         if (2 & gCounter6ED08_03001800.flagsF6)
@@ -52,5 +52,5 @@ void sub_0803A840(void) {
         gFrames3A840[1].word30 = gWords3A840.words[0];
         gFrames3A840[1].byte2D = 1;
     }
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }

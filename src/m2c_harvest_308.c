@@ -24,7 +24,7 @@ void sub_0802B810(void) {
   s8 *var_r1;
   s8 var_r0;
   sub_0803836C();
-  gCounter6ED08_03001800.b60 = (u8) sub_08032FC4((u32) gCounter6ED08_03001800.b87);
+  gCounter6ED08_03001800.b60 = (u8) GetSlotGroupStart((u32) gCounter6ED08_03001800.b87);
   var_r3 = 0;
   do
   {

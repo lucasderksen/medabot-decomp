@@ -41,7 +41,7 @@ void sub_08063474(void) {
         sub_08062B48(ctx->firstX, ctx->firstY, 0);
         sub_08062B48(((struct LinkSwapContext *)gMainContextPointer_03006F74)->secondX, ((struct LinkSwapContext *)gMainContextPointer_03006F74)->secondY, 1);
         if (remaining == 1) {
-            sub_08040CD0(0U, 0x80U);
+            ClearFrameObjects(0U, 0x80U);
         }
     } else {
         remaining = ctx->firstX;
@@ -57,7 +57,7 @@ void sub_08063474(void) {
         sub_08062A10(zero);
         sub_08062A10(1);
         ((struct LinkSwapContext *)gMainContextPointer_03006F74)->timer = zero;
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
         fill = &hiddenOamAttribute;
         *fill = 0x200;
         CpuSet(fill, gRenderWork->objects, 0x01000200U);

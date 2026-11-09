@@ -47,28 +47,28 @@ void sub_0806BF18(void);
 void sub_0800EA98(void) {
 
     s32 v;
-    sub_0800EBFC();
-    sub_0800F440();
-    sub_08041C14(4U, gFrameCounter, 0xA8U);
-    sub_080100BC();
+    ScrollBg3Diagonally3();
+    UpdateSelectedPartPreview();
+    SetObjectXWobble(4U, gFrameCounter, 0xA8U);
+    MoveObject4RowCursorUpDown();
     if (1 & gFamilyKeyBytes49558_0300058C) {
         if (gState0TypedWork.bytes[0x4A] == 1) {
             v = (u16) sub_08042114(gState0TypedWork.bytes[0x3D], gState0TypedWork.bytes[0x3E]);
             if (((v >> 8) & 0xFF) == (v & 0xFF)) {
-                sub_08074DE0(6U);
+                PlaySoundEffect(6U);
                 return;
             }
         }
-        sub_08074DE0(4U);
-        sub_08010040();
-        gUnknown_0300137C += 1;
+        PlaySoundEffect(4U);
+        InitObject4RowCursor();
+        gNestedCallbackIndex += 1;
         return;
     }
     if (2 & gFamilyKeyBytes49558_0300058C) {
-        sub_08074DE0(5U);
+        PlaySoundEffect(5U);
         gState0TypedWork.bytes[0x4A] = 2;
-        sub_08010040();
-        gUnknown_0300137C += 1;
+        InitObject4RowCursor();
+        gNestedCallbackIndex += 1;
     }
 }
 
@@ -140,7 +140,7 @@ void sub_08029C64(void) {
         }
         var_r4 += 1;
     } while (var_r4 <= 2U);
-    sub_08074DE0(0x5BU);
+    PlaySoundEffect(0x5BU);
     gState0TypedWork.bytes[0x84] = 0;
     gCounter6ED08_03001800.bAA = (u8) (gCounter6ED08_03001800.bAA + 1);
 }
@@ -169,7 +169,7 @@ void sub_0802E294(void) {
         }
         var_r4 += 1;
     } while (var_r4 <= 2U);
-    sub_08074DE0(0x5BU);
+    PlaySoundEffect(0x5BU);
     gState0TypedWork.bytes[0x84] = 0;
     gCounter6ED08_03001800.bAA = (u8) (gCounter6ED08_03001800.bAA + 1);
 }
@@ -188,17 +188,17 @@ void sub_08031704(void) {
     gFrameObjects[0x21].palette = 7;
     gFrameObjects[0x21].priority = 0x81;
     b = (u8 *)gUnknownPointers_083B6100;
-    sub_08040B90(*(u8 **)(b + 0x134), 0x21U);
+    InitFrameObjectCommands(*(u8 **)(b + 0x134), 0x21U);
     gFrameObjects[0x22].flags = (((g = gUnknown_03001800)[0x3C] + 2) << 0xA) | 0xC004;
     gFrameObjects[0x22].tableSelector = 0;
     gFrameObjects[0x22].screenX = gFrameObjects[0x5D + g[0x87] * 4].screenX;
     gFrameObjects[0x22].screenY = gFrameObjects[0x5D + g[0x87] * 4].screenY - 4;
     gFrameObjects[0x22].palette = 7;
     gFrameObjects[0x22].priority = (g[0x87] * 4) + 0x59;
-    sub_08040B90(*(u8 **)(b + 0x138), 0x22U);
+    InitFrameObjectCommands(*(u8 **)(b + 0x138), 0x22U);
     {struct SetupRec *rec = (struct SetupRec *)gSetupBuffer_03000590; u8 v = rec[g[0x87]].bytes[0xAA];
     g[0x51] = v;}
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 u32 sub_080352EC(u32 index, s32 first, s32 second) {
@@ -261,15 +261,15 @@ void sub_08038650(void) {
     struct FrameObject *o;
     u8 *b;
     u32 x;
-    if (sub_080355F0(gState0TypedWork.bytes[0x12F]) != 0) {
+    if (StepFrameObjectToTarget(gState0TypedWork.bytes[0x12F]) != 0) {
         b = (u8 *)gUnknownPointers_083B6100;
-        sub_08040B90(*(u8 **)(b + 0x1AC), gState0TypedWork.bytes[0x12F]);
+        InitFrameObjectCommands(*(u8 **)(b + 0x1AC), gState0TypedWork.bytes[0x12F]);
         gFrameObjects[gState0TypedWork.bytes[0x12F]].palette = 6;
         gFrameObjects[gState0TypedWork.bytes[0x12F]].unknown23[5] = 0;
         temp_r0 = &gFrameObjects[gState0TypedWork.bytes[0x12F]];
         temp_r0->unknown23[6] += 1;
-        sub_0803F63C(&gFrameObjects[gState0TypedWork.bytes[0x12F]], &(&gFrameObjects[3])[gState0TypedWork.bytes[0x12F]], 0x40U);
-        sub_08040B90(*(u8 **)(b + 0x1B0), (u8) (gState0TypedWork.bytes[0x12F] + 3));
+        CopyBytes(&gFrameObjects[gState0TypedWork.bytes[0x12F]], &(&gFrameObjects[3])[gState0TypedWork.bytes[0x12F]], 0x40U);
+        InitFrameObjectCommands(*(u8 **)(b + 0x1B0), (u8) (gState0TypedWork.bytes[0x12F] + 3));
         gFrameObjects[gState0TypedWork.bytes[0x12F] + 3].priority = (((gState0TypedWork.bytes[0x12F] + 0xDF) + gUnknown_03001800[0x60]) << 2) + 0x59;
         gFrameObjects[gState0TypedWork.bytes[0x12F] + 3].unknown23[6] = 3;
     }

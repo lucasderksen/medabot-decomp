@@ -30,12 +30,12 @@ void sub_0802F2F4(void) {
     u8 *scaleX;
     s32 delta;
     s32 counter;
-    sub_080353CC(gState0TypedWork.bytes[0x84] + 0x21);
+    StepObjectHop(gState0TypedWork.bytes[0x84] + 0x21);
     frameBase = gFrameObjects;
     index = gState0TypedWork.bytes[0x84] + 0x21;
     frame = &frameBase[index];
     if (frame->unknown23[4] == 0x20) {
-        sub_08040CD0((u8)index, 1);
+        ClearFrameObjects((u8)index, 1);
         scaleX = &((struct ScaleFrameView *)frameBase)->scaleX;
         counter = gState0TypedWork.bytes[0x84];
         delta = counter * 0x10;

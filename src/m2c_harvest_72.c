@@ -54,7 +54,7 @@ void sub_0802B388(void) {
     do {
         if (*(u8 *) (i + (u32) flags) != 0) {
             active++;
-            if (sub_080355F0(i + 0x21) != 0)
+            if (StepFrameObjectToTarget(i + 0x21) != 0)
                 finished++;
         }
         i++;

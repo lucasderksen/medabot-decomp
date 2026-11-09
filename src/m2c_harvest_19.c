@@ -24,7 +24,7 @@ extern s8 gUnknown_03006F90;
 extern u8 gUnknown_03006F84;
 
 void sub_0803D6AC(void);
-void sub_0803E870(void);
+void LoadScrollControlRecord2(void);
 void sub_0804AF94(void);
 void sub_08069490(void);
 
@@ -41,11 +41,11 @@ void sub_0803D6AC(void) {
     gState0TransferWork.bytes[0x1AF] = 0;
     gState0TransferWork.bytes[0x1B0] = 1;
     gState0TypedWork.widths.word86 = 0;
-    gUnknown_0300137C = 0x50;
+    gNestedCallbackIndex = 0x50;
 }
 
-void sub_0803E870(void) {
-    sub_0803F63C(gState0ScrollControls_083C3C84[gState0TransferWork.bytes[0x38]], &gState0TransferWork.bytes[0x39], 8U);
+void LoadScrollControlRecord2(void) {
+    CopyBytes(gState0ScrollControls_083C3C84[gState0TransferWork.bytes[0x38]], &gState0TransferWork.bytes[0x39], 8U);
 }
 
 void sub_0804AF94(void) {
@@ -58,7 +58,7 @@ void sub_08069490(void) {
     (*(s16 *)((u8 *)((void *)0x0400000C) + 2)) = 0x1F0B;
     gState0TransferWork.bytes[0x38] = gUnknown_03006F84;
     sub_08043B7C((u32) gState0TransferWork.bytes[0x38], 0U);
-    sub_0803F63C(gState0ScrollControls_083C3C84[gState0TransferWork.bytes[0x38]], &gState0TransferWork.bytes[0x39], 8U);
+    CopyBytes(gState0ScrollControls_083C3C84[gState0TransferWork.bytes[0x38]], &gState0TransferWork.bytes[0x39], 8U);
     sub_08043DF8();
     sub_080441A8(gEquipmentAssets_083B2578[(gState0TransferWork.bytes[0x38] * 5) + 1]);
     gBgScroll2.x = 0;

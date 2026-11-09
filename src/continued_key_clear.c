@@ -3,7 +3,7 @@
 
 void sub_08050B9C(void)
 {
-    sub_08049714(&gNewKeys, 4);
-    sub_08049714(&gRepeatedKeys, 4);
-    sub_08049714(&gHeldKeys, 4);
+    ClearBytes(&gNewKeys, 4);
+    ClearBytes(&gRepeatedKeys, 4);
+    ClearBytes(&gHeldKeys, 4);
 }

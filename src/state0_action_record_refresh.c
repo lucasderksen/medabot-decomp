@@ -21,6 +21,6 @@ void sub_08033A2C(void)
     if (!setup[work->selected87 * 256 + 0xE1])
         sub_08035528(work->selected87);
     sub_080355C4(work->selected87);
-    sub_08034F08();
+    AdvanceActionByteScript();
 }
 

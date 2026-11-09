@@ -10,8 +10,8 @@ void sub_080116C4(void)
     u8 *state;
     u8 *work;
     s32 selector;
-    sub_08043CA8();
-    sub_08040CD0(0, 128);
+    ClearBgScrolls2();
+    ClearFrameObjects(0, 128);
     state = gUnknown_03000440;
     {
         u8 *counter = state + 0x96;
@@ -26,7 +26,7 @@ void sub_080116C4(void)
     case 2:
         {
             u8 *buffer = state + 0x3C;
-            sub_0803F624(buffer, 20, 0);
+            FillBytes(buffer, 20, 0);
             *buffer = selector;
         }
     {
@@ -35,12 +35,12 @@ void sub_080116C4(void)
     }
     state[0x3E] = selector;
     gMainSubstate = 5;
-    gUnknown_0300137C = 16;
+    gNestedCallbackIndex = 16;
         break;
     case 0:
         {
             u8 *buffer = state + 0x3C;
-            sub_0803F624(buffer, 20, 0);
+            FillBytes(buffer, 20, 0);
             *buffer = 2;
         }
     {
@@ -49,12 +49,12 @@ void sub_080116C4(void)
     }
     state[0x3E] = selector;
     gMainSubstate = 5;
-    gUnknown_0300137C = 16;
+    gNestedCallbackIndex = 16;
         break;
     case 1:
         {
             u8 *buffer = state + 0x3C;
-            sub_0803F624(buffer, 20, 0);
+            FillBytes(buffer, 20, 0);
             *buffer = 2;
         }
     {
@@ -63,12 +63,12 @@ void sub_080116C4(void)
     }
     state[0x3E] = selector;
     gMainSubstate = 5;
-    gUnknown_0300137C = 16;
+    gNestedCallbackIndex = 16;
         break;
     case 3:
         {
             u8 *buffer = state + 0x3C;
-            sub_0803F624(buffer, 20, 0);
+            FillBytes(buffer, 20, 0);
             *buffer = 2;
         }
     {
@@ -77,7 +77,7 @@ void sub_080116C4(void)
     }
     state[0x3E] = selector;
     gMainSubstate = 5;
-    gUnknown_0300137C = 16;
+    gNestedCallbackIndex = 16;
         break;
     default:
         return;

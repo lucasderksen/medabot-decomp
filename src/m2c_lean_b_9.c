@@ -21,14 +21,14 @@ void sub_0802C1A4(void) {
 
     u32 i;
 
-    gCounter6ED08_03001800.base60 = sub_08032FC4(gCounter6ED08_03001800.slot87);
+    gCounter6ED08_03001800.base60 = GetSlotGroupStart(gCounter6ED08_03001800.slot87);
     for (i = 0; i <= 2; i++) {
         if (gCounter6ED08_03001800.activeD2[i] != 0) {
             gFrameObjects[i + 0x21].scaleX -= 8;
             gFrameObjects[i + 0x21].scaleY += 8;
         }
     }
-    gCounter6ED08_03001800.base60 = sub_08032FB8(gCounter6ED08_03001800.slot87);
+    gCounter6ED08_03001800.base60 = GetOtherSlotGroupStart(gCounter6ED08_03001800.slot87);
     for (i = 0; i <= 2; i++) {
         if (gCounter6ED08_03001800.valuesD6[i] != 0) {
             gFrameObjects[i + 0x24].scaleX -= 8;
@@ -36,7 +36,7 @@ void sub_0802C1A4(void) {
         }
     }
     if (gFrameObjects[0x21].scaleX == 8) {
-        sub_08040CD0(0x21, 6);
+        ClearFrameObjects(0x21, 6);
         gCounter6ED08_03001800.counterAA++;
     }
 }

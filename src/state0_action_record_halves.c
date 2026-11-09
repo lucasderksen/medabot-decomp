@@ -52,5 +52,5 @@ void sub_08034910(void)
         *sum += setup[*selected * 256 + count * 24 + 0x59] / 2;
         count++;
     } while (count <= 3);
-    sub_08034F08();
+    AdvanceActionByteScript();
 }

@@ -9,7 +9,7 @@ void sub_0804B1B0(void);
 extern u8 gUnknown_030057E0[];
 extern u8 gLaterBuffer_03005310[];
 extern u8 gLaterBuffer_03006D40[];
-extern u32 gUnknown_0300137C;
+extern u32 gNestedCallbackIndex;
 extern void (*const gFrameCallbacks_083D212C[])(void);
 struct ContinuedSettings { u32 unknown00, counter; };
 extern struct ContinuedSettings gContinuedSettings_03005310;
@@ -35,14 +35,14 @@ void sub_0804A220(void)
             u32 nextAddress = (u32)gUnknown_030057E0;
             u32 nextOffset = 0xC5F;
             if (*(u8 *)(nextAddress + nextOffset))
-                gFrameCallbacks_083D212C[gUnknown_0300137C]();
+                gFrameCallbacks_083D212C[gNestedCallbackIndex]();
         }
     }
     else
-        gFrameCallbacks_083D212C[gUnknown_0300137C]();
+        gFrameCallbacks_083D212C[gNestedCallbackIndex]();
     sub_08052784();
     sub_08052204();
-    sub_08048174();
+    StepMapTileAnimation();
     for (index = 0; index < 32; index++)
         sub_08049374((u8)index);
     sub_0804B1B0();

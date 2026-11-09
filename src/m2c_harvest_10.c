@@ -35,7 +35,7 @@ s32 sub_08068888();
 s32 sub_080733BC(s32, s32);
 s32 sub_080734F4(s32, s32);
 s32 sub_08073810(s32, s32);
-void sub_08073A48(s32);
+void LoadWaveRamPattern(s32);
 void sub_0807490C(void *);
 s32 sub_080751E4(s32, s32);
 
@@ -67,7 +67,7 @@ void sub_08025E88(void) {
     if (0x8000 & gFrameObjects[0x21].flags) {
         gFrameObjects[0x21].flags |= 0x220;
         if (gFrameObjects[0x21].scaleX == 1) {
-            sub_08040CD0(0x21U, 1U);
+            ClearFrameObjects(0x21U, 1U);
         } else {
             gFrameObjects[0x21].scaleX -= 1;
             gFrameObjects[0x21].scaleY -= 1;
@@ -84,14 +84,14 @@ void sub_08025E88(void) {
 
 void sub_08030D58(void) {
     if (sub_0801C0BC(0) != 0) {
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
 }
 
 void sub_08030D90(void) {
     sub_0801C2F0(0);
     if (sub_0801C0BC(1) != 0) {
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
 }
 
@@ -103,7 +103,7 @@ void sub_08030E14(void) {
     if ((temp_r5 + sub_0801B0E8(gState0TransferWork.bytes[0x87])) == 2) {
         sub_0801AEF4();
         sub_0801AEB4();
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
 }
 
@@ -117,7 +117,7 @@ void sub_0803EB0C(void) {
 
 void sub_0803ECF0(void) {
     if (gState0TransferWork.bytes[0x1A0] == 0x60) {
-        sub_08074DE0(7U);
+        PlaySoundEffect(7U);
     }
 }
 
@@ -127,17 +127,17 @@ void sub_080606A8(void) {
     CpuFastSet((void *)0x06002800, &gState0FrameBackup, 0x28U);
     sp0 = 0;
     CpuFastSet(&sp0, (void *)0x06002800, 0x01000200U);
-    sub_080415BC();
+    ClearBgScrolls();
     sub_08059E50();
     (*(s16 *)((u8 *)((void *)0x04000000) + 0)) = 0x60;
     (*(s16 *)((u8 *)((void *)0x04000000) + 0x50)) = 0x2FF;
     (*(s16 *)((u8 *)(((void *)0x04000000 + 0x50)) + 4)) = 0x10;
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_08068E88(void) {
     if (sub_08068888() != 0) {
-        gUnknown_0300137C = gUnknown_03006F80;
+        gNestedCallbackIndex = gUnknown_03006F80;
     }
 }
 
@@ -159,7 +159,7 @@ void sub_08073A88(void) {
     *(s16 *)0x04000084 = 0x80;
     *(s16 *)0x04000082 = 0x400E;
     *(s16 *)0x04000070 = 0xC0;
-    sub_08073A48(0);
+    LoadWaveRamPattern(0);
     sub_080751E4(7, 7);
 }
 

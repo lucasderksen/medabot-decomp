@@ -53,7 +53,7 @@ void sub_0802D7EC(void) {
 
     u32 i;
 
-    sub_08040CD0(0x21, 1);
+    ClearFrameObjects(0x21, 1);
     LeDecompress(gUnknown_084D7ABC, (void *)0x06014800);
     CpuFastSet(gUnknown_0850FDF8, (void *)0x050002E0, 8);
     for (i = 0; i <= 2; i++) {

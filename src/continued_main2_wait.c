@@ -20,7 +20,7 @@ void sub_0805C410(void)
 {
     if (sub_08065710((u8 *)gMainContextPointer_03006F74 + 0x50))
     {
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
         ((struct Main2StateContext *)gMainContextPointer_03006F74)->halfword3A = 0;
         ((struct Main2StateContext *)gMainContextPointer_03006F74)->halfword3A = sub_0805BC5C(0);
         DISPLAY_CONTROL |= 0x400;

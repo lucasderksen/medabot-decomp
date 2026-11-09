@@ -18,12 +18,12 @@ extern u16 gCopy6280C0202F800[];
 extern u16 gUnknown_0202FC00[];
 extern u16 gUnknown_0202FE00[];
 
-void sub_0803F684(u32 rawColor, u32 weight, u32 paletteMask);
-void sub_0803F788(u32 rawColor, u32 weight, u32 paletteMask);
-void sub_0803F890(u32 rawColor, u32 weight, u32 paletteMask);
-void sub_0803F998(u32 rawColor, u32 weight, u32 paletteMask);
+void BlendBgPaletteBanksNow(u32 rawColor, u32 weight, u32 paletteMask);
+void BlendBgPaletteBanks(u32 rawColor, u32 weight, u32 paletteMask);
+void BlendObjPaletteBanks(u32 rawColor, u32 weight, u32 paletteMask);
+void BlendObjPaletteBanksNow(u32 rawColor, u32 weight, u32 paletteMask);
 
-void sub_0803F684(u32 rawColor, u32 weight, u32 paletteMask) {
+void BlendBgPaletteBanksNow(u32 rawColor, u32 weight, u32 paletteMask) {
 
     u32 color = (u16)rawColor;
     u16 mask = paletteMask;
@@ -52,7 +52,7 @@ void sub_0803F684(u32 rawColor, u32 weight, u32 paletteMask) {
     CpuFastSet(gUnknown_0202FE00, palette, 0x80);
 }
 
-void sub_0803F788(u32 rawColor, u32 weight, u32 paletteMask) {
+void BlendBgPaletteBanks(u32 rawColor, u32 weight, u32 paletteMask) {
 
   u32 color = (u16) rawColor;
   u16 mask = paletteMask;
@@ -91,7 +91,7 @@ void sub_0803F788(u32 rawColor, u32 weight, u32 paletteMask) {
   gUnknownCallback_03000B98 = ApplyBlendedPalettes;
 }
 
-void sub_0803F890(u32 rawColor, u32 weight, u32 paletteMask) {
+void BlendObjPaletteBanks(u32 rawColor, u32 weight, u32 paletteMask) {
 
     u32 color = (u16)rawColor;
     u16 mask = paletteMask;
@@ -121,7 +121,7 @@ void sub_0803F890(u32 rawColor, u32 weight, u32 paletteMask) {
     gUnknownCallback_03000B98 = callback;
 }
 
-void sub_0803F998(u32 rawColor, u32 weight, u32 paletteMask) {
+void BlendObjPaletteBanksNow(u32 rawColor, u32 weight, u32 paletteMask) {
 
     u32 color = (u16)rawColor;
     u16 mask = paletteMask;

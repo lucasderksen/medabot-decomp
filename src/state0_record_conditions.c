@@ -15,8 +15,8 @@ u32 sub_08015648(u32 first)
 
 void sub_080156D0(void)
 {
-    u32 offset = (sub_080424B8() & 31) * 4;
-    sub_08041D04(gState0PriorityTable_083AD470 + offset,
+    u32 offset = (NextRandomByte() & 31) * 4;
+    CopyBytesU8Count(gState0PriorityTable_083AD470 + offset,
                 gState0TransferWork.bytes + 0x64, 4);
 }
 

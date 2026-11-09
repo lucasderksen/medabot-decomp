@@ -38,7 +38,7 @@ void sub_08074500(s32 value) {
 void sub_08074BCC(s32 value,s32 parameter) {
 
  {struct Counter74BCC *work=*(struct Counter74BCC**)0x03007014;u32 old=work->count;if(old<=0xFFFE)work->count=old+1;}
- sub_08074A8C(value,parameter);
+ StartMusicTracks(value,parameter);
  {struct Counter74BCC *work=*(struct Counter74BCC**)0x03007014;u32 old=work->count;if(old!=0)work->count=old-1;}
 }
 
@@ -52,7 +52,7 @@ void sub_08074CA0(s32 value) {
 void sub_08074E24(s32 value,s32 parameter) {
 
  {struct Counter74E24 *work=*(struct Counter74E24**)0x03007014;u32 old=work->count;if(old<=0xFFFE)work->count=old+1;}
- sub_08074D50(value,parameter);
+ StartSoundEffectTracks(value,parameter);
  {struct Counter74E24 *work=*(struct Counter74E24**)0x03007014;u32 old=work->count;if(old!=0)work->count=old-1;}
 }
 

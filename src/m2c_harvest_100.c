@@ -20,17 +20,17 @@ void sub_08065590(void);
 void sub_08065590(void) {
     s32 waiting = 1;
     if (*((u8*)gMainContextPointer_03006F74 + 0x4C) != 0) {
-        if (sub_08041CA4() != 0) {
+        if (RunDialogueClose() != 0) {
             u32 zero;
             *((u8*)gMainContextPointer_03006F74 + 0x4C) = (zero = 0);
-            sub_0803FAA0(1,zero,zero);
+            InitDialogue(1,zero,zero);
         }
     } else {
         const void *const *scripts = gMain2ScriptSlots_0848521C;
-        if (sub_0803FB3C(scripts[15]) != 0) waiting = 0;
+        if (RunDialogue(scripts[15]) != 0) waiting = 0;
     }
     if (waiting == 0 && (*(u8*)&gNewKeys & 3)) {
-        sub_0803FB0C();
-        gUnknown_0300137C = 5;
+        RestartDialogueText();
+        gNestedCallbackIndex = 5;
     }
 }

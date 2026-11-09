@@ -14,22 +14,22 @@ void sub_08050554(u32 valueWord)
     {
         struct FrameObject *objects = gFrameObjects;
         u8 currentIndex = index;
-        s32 mapped = sub_0804DBF0(currentIndex);
+        s32 mapped = GetScriptObjectSlot(currentIndex);
         u8 x;
         u8 y;
         mapped += 79;
-        x = sub_0805273C((u16)(objects[mapped].positionX.value >> 8));
-        mapped = sub_0804DBF0(currentIndex);
+        x = ConvertXToCellColumn((u16)(objects[mapped].positionX.value >> 8));
+        mapped = GetScriptObjectSlot(currentIndex);
         mapped += 79;
-        y = sub_08052760((u16)(objects[mapped].positionY >> 8));
+        y = ConvertYToCellRow((u16)(objects[mapped].positionY >> 8));
         if (sub_08052C68(x, y))
             if (gLaterBuffer_03006D38[3])
                 sub_08047BA8(gSetupByteLookup_083D2B66[gLaterBuffer_03006D38[3]]);
     }
     {
         u8 currentIndex = index;
-        sub_08048888((u8)(sub_0804DBF0(currentIndex) + 79));
-        sub_08048888((u8)(sub_0804DBF0(currentIndex) + 121));
-        sub_0804DBB4(currentIndex);
+        ResetFrameObjectSlot((u8)(GetScriptObjectSlot(currentIndex) + 79));
+        ResetFrameObjectSlot((u8)(GetScriptObjectSlot(currentIndex) + 121));
+        ClearScriptObjectSlot(currentIndex);
     }
 }

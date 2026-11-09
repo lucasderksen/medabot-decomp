@@ -19,7 +19,7 @@ s32 sub_0806B2F4(u32 index);
 s32 sub_0806B3D8(u32 index);
 s32 sub_0806B484(u32 index);
 void sub_0806B0D4(void);
-void sub_0806B530(u8 index, u8 state, u8 first, u8 second);
+void SetObjectAnimationState(u8 index, u8 state, u8 first, u8 second);
 
 /* Word index/status for the third and fourth handlers at 08485BB8. The dispatcher
  * supplies indices 0..25; the handler narrows to a byte at entry. */

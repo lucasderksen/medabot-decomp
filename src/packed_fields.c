@@ -21,5 +21,5 @@ u8 sub_08050300(u8 index, u8 value)
 /* 0x08050320: the mapper's result is biased by 79 record strides. */
 u8 sub_08050320(u8 index, u8 value)
 {
-    return gFrameObjects[sub_0804DBF0(index) + 0x4F].byte2B * 12 + value * 3;
+    return gFrameObjects[GetScriptObjectSlot(index) + 0x4F].byte2B * 12 + value * 3;
 }

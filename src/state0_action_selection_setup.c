@@ -10,12 +10,12 @@ void sub_080346C4(void)
     u8 *selected = work + 0x87;
     u32 next;
     struct ObservedSetupE0 *base, *record;
-    work[0x60] = sub_08032FB8(*selected);
-    next = sub_08033090(work[0x60]);
+    work[0x60] = GetOtherSlotGroupStart(*selected);
+    next = PickRandomGroupSlot(work[0x60]);
     base = (void *)gSetupBuffer_03000590;
     record = &base[*selected];
     record->byteE0 = next + 1;
     sub_08035528(*selected);
     sub_080355C4(*selected);
-    sub_08034F08();
+    AdvanceActionByteScript();
 }

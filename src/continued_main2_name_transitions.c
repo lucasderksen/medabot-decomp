@@ -27,8 +27,8 @@ void sub_0805E9E0(void)
 {
     if (NAME_PHASE->byte84 <= 8)
     {
-        sub_0803F684(0, 32 - NAME_PHASE->byte84 * 4, 0xFFFF);
-        sub_0803F998(0, 32 - NAME_PHASE->byte84 * 4, 0xFFFF);
+        BlendBgPaletteBanksNow(0, 32 - NAME_PHASE->byte84 * 4, 0xFFFF);
+        BlendObjPaletteBanksNow(0, 32 - NAME_PHASE->byte84 * 4, 0xFFFF);
         NAME_PHASE->byte84++;
     }
     else
@@ -36,7 +36,7 @@ void sub_0805E9E0(void)
         struct NameTransitionContext *context = NAME_CONTEXT;
         context->halfword02 = 0;
         context->byte06 = 0;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -45,7 +45,7 @@ void sub_0805EFD4(void)
     if (sub_08074FA4(7) == 0)
     {
         NAME_PHASE->byte84 = 0;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -53,8 +53,8 @@ void sub_0805EFFC(void)
 {
     if (NAME_PHASE->byte84 <= 8)
     {
-        sub_0803F684(0, NAME_PHASE->byte84 * 4, 0xFFFF);
-        sub_0803F998(0, NAME_PHASE->byte84 * 4, 0xFFFF);
+        BlendBgPaletteBanksNow(0, NAME_PHASE->byte84 * 4, 0xFFFF);
+        BlendObjPaletteBanksNow(0, NAME_PHASE->byte84 * 4, 0xFFFF);
         NAME_PHASE->byte84++;
     }
     else
@@ -77,7 +77,7 @@ void sub_0805EFFC(void)
         case 2:
             CpuSet(NAME_CONTEXT->bytes58, gInventoryNames[gQuantityResult_030017EC], 7);
             gMainSubstate = 18;
-            gUnknown_0300137C = 10;
+            gNestedCallbackIndex = 10;
             break;
         }
     }
@@ -85,7 +85,7 @@ void sub_0805EFFC(void)
 
 void sub_0805F104(void)
 {
-    gMain2NameCallbacks_08483700[gUnknown_0300137C]();
+    gMain2NameCallbacks_08483700[gNestedCallbackIndex]();
     if (gFrameCounter & 1)
     {
         gBgScroll3.x++;

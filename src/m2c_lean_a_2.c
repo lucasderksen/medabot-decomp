@@ -76,7 +76,7 @@ void sub_0801AD48(u32 side) {
 
     u32 i;
 
-    sub_08040CD0(0x78, 8);
+    ClearFrameObjects(0x78, 8);
     for (i = 0; i <= 7; i++) {
         gFrameObjects[i + 0x78].flags = 0xC404;
         gFrameObjects[i + 0x78].tableSelector = 0;
@@ -136,7 +136,7 @@ void sub_0801EEE4(void) {
         gFrameObjects[0xA].screenY = gCounter6ED08_03001800.positions[1] - 0x10;
         *(u16 *)&gFrameObjects[0xA].unknown2C[4] = gCounter6ED08_03001800.positions[1];
     }
-    sub_08074DE0(0x2F);
+    PlaySoundEffect(0x2F);
     gCounter6ED08_03001800.stepAA++;
 }
 
@@ -172,7 +172,7 @@ void sub_0801F2DC(void) {
     }
     sub_0801A28C(gUnknown_0300052E, gCounter6ED08_03001800.valueC8, 0);
     sub_080368C4(gUnknown_0300052E, 10, gCounter6ED08_03001800.group8B, (s16)x, (s16)y);
-    sub_08074DE0(0x5B);
+    PlaySoundEffect(0x5B);
     gCounter6ED08_03001800.stepAA++;
 }
 
@@ -198,7 +198,7 @@ void sub_08026924(void) {
     sub_080369C8(gDebugMenuTextBuffer + 0x28, 18, 2, (s16)x, (s16)y);
     sub_0801A28C(gDebugMenuTextBuffer + 0x3C, gCounter6ED08_03001800.valuesD6[3], 1);
     sub_080369C8(gDebugMenuTextBuffer + 0x3C, 22, 3, (s16)x, (s16)y);
-    sub_08074DE0(0x5B);
+    PlaySoundEffect(0x5B);
     gCounter6ED08_03001800.stepAA++;
 }
 
@@ -245,7 +245,7 @@ void sub_08026D98(void) {
     LeDecompress(gUnknown_084CBBBC, (void *)0x06010000);
     CpuFastSet(gUnknown_0850F738, (void *)0x050003C0, 8);
     gFrameObjects[0xA].frameAndGroup = 0x1500;
-    sub_08074DE0(0x2A);
+    PlaySoundEffect(0x2A);
     gFrameObjects[0xA].flags = 0xC404;
     gFrameObjects[0xA].tableSelector = 0;
     gFrameObjects[0xA].palette = 0xE;

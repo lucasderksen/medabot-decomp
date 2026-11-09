@@ -20,7 +20,7 @@ float sub_08053380(float value)
     return 1.0f;
 }
 
-float sub_080533A4(float value)
+float AbsFloat(float value)
 {
     if (value < 0.0f)
         value *= -1.0f;
@@ -46,5 +46,5 @@ void sub_08053464(void)
         double *next = destination + 1;
         *next = (s32)*(u32 *)(base + 0x1DC) - (s16)gBgScroll1.y - 80;
     }
-    sub_08049714(gSetupPointer_03006D30, 0x3000);
+    ClearBytes(gSetupPointer_03006D30, 0x3000);
 }

@@ -72,7 +72,7 @@ void sub_0802D3D4(void) {
         }
         i++;
     }while(i<=2);
-    sub_08074DE0(0x5B);
+    PlaySoundEffect(0x5B);
     gState0TypedWork.bytes[0x84]=0;
     gState0TransferWork.bytes[0xAA]++;
 }

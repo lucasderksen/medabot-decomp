@@ -33,8 +33,8 @@ struct MedalDisplayWork { /* Observed fields plus the received 64-byte packet. *
 };
 
 extern const u8 *const gDebugMedalMetadata_083B6590[];
-extern u32 sub_0807CEC8(u32, u32);
-extern u32 sub_0807CF40(u32, u32);
+extern u32 __udivsi3(u32, u32);
+extern u32 __umodsi3(u32, u32);
 extern void sub_08062D60(void);
 
 void sub_0806412C(void);
@@ -61,7 +61,7 @@ void sub_0806412C(void) {
   timer = ++entryWork->timer;
   if (((s32) timer) > 0xF)
   {
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
     if (entryWork->mode == 0)
     {
       gFrameObjects->flags &= 0xBFFF;
@@ -69,7 +69,7 @@ void sub_0806412C(void) {
     }
     gFrameObjects->flags |= 0x4000;
     percent = ((struct MedalDisplayWork *) entryWork)->received.byte5;
-    sub_08040DB8(entryWork->received.unknown06 + 4, 0x20U, 4, 4, 0xAU, 2U, 0U, 1U);
+    PlaceAlignedTextObjects(entryWork->received.unknown06 + 4, 0x20U, 4, 4, 0xAU, 2U, 0U, 1U);
     characterIndex = 0;
     textRoot = (u32) gDebugMenuTextBuffer;
     metadataRoot = (u32) gDebugMedalMetadata_083B6590;
@@ -81,7 +81,7 @@ void sub_0806412C(void) {
       characterIndex += 1;
     }
     while (characterIndex <= 9);
-    sub_08040DB8(gDebugMenuTextBuffer, 0x10U, 5, 8, 0xAU, 1U, 1U, 1U);
+    PlaceAlignedTextObjects(gDebugMenuTextBuffer, 0x10U, 5, 8, 0xAU, 1U, 1U, 1U);
     *((volatile u16 *) (0x06000218 + (((((u16) (*((volatile u16 *) 0x0400000C))) >> 8) & 0x1F) << 0xB))) = (u16) ((struct MedalDisplayWork *) gMainContextPointer_03006F74)->savedTiles[0];
     *((volatile u16 *) (0x0600021A + (((((u16) (*((volatile u16 *) 0x0400000C))) >> 8) & 0x1F) << 0xB))) = (u16) ((struct MedalDisplayWork *) gMainContextPointer_03006F74)->savedTiles[1];
     *((volatile u16 *) (0x06000258 + (((((u16) (*((volatile u16 *) 0x0400000C))) >> 8) & 0x1F) << 0xB))) = (u16) ((struct MedalDisplayWork *) gMainContextPointer_03006F74)->savedTiles[2];
@@ -97,12 +97,12 @@ void sub_0806412C(void) {
     {
       tensCursor = (volatile u16 *) ((((((u16) (*((volatile u16 *) 0x0400000A))) >> 8) & 0x1F) << 0xB) + 0x0600021A);
       tensWork = gMainContextPointer_03006F74;
-      tensTile = (((u32) sub_0807CEC8(percent, 0xA)) << 0x18) >> 0x17;
+      tensTile = (((u32) __udivsi3(percent, 0xA)) << 0x18) >> 0x17;
       *tensCursor = (((struct MedalDisplayWork *) tensWork)->tile + tensTile) | 0x7000;
       *((volatile u16 *) (0x0600025A + (((((u16) (*((volatile u16 *) 0x0400000A))) >> 8) & 0x1F) << 0xB))) = (s16) (((((struct MedalDisplayWork *) gMainContextPointer_03006F74)->tile + tensTile) + 1) | 0x7000);
       onesCursor = (volatile u16 *) ((((((u16) (*((volatile u16 *) 0x0400000A))) >> 8) & 0x1F) << 0xB) + 0x0600021C);
       onesWork = gMainContextPointer_03006F74;
-      onesTile = (((u32) sub_0807CF40(percent, 0xA)) << 0x18) >> 0x17;
+      onesTile = (((u32) __umodsi3(percent, 0xA)) << 0x18) >> 0x17;
       *onesCursor = (((struct MedalDisplayWork *) onesWork)->tile + onesTile) | 0x7000;
       *((volatile u16 *) (0x0600025C + (((((u16) (*((volatile u16 *) 0x0400000A))) >> 8) & 0x1F) << 0xB))) = (s16) (((((struct MedalDisplayWork *) gMainContextPointer_03006F74)->tile + onesTile) + 1) | 0x7000);
     }

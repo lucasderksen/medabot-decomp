@@ -29,7 +29,7 @@ void sub_08060400(void) {
  *(volatile u16 *)0x04000000|=0x1000;
  *(u8 *)gMainContextPointer_03006F74=0x20;
  *(volatile u16 *)0x04000054=*(u8 *)gMainContextPointer_03006F74>>1;
- gUnknown_0300137C++;
+ gNestedCallbackIndex++;
 }
 
 void sub_0807266C(void *record) {

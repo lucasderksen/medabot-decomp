@@ -44,7 +44,7 @@ void sub_080291E0(void) {
     LeDecompress(gUnknown_084DE9FC, (void *)0x06014800);
     CpuFastSet(gUnknown_08510238, (void *)0x050002E0, 8);
     sub_0803836C();
-    gWork291E0.base60 = sub_08032FC4(gWork291E0.setup87);
+    gWork291E0.base60 = GetSlotGroupStart(gWork291E0.setup87);
     for (i = 0; i < 3; i++) {
         if (gSetup291E0[gWork291E0.base60 + i].active40 != 0 && gSetup291E0[gWork291E0.base60 + i].byte59 != 0) {
             gWork291E0.activeD2[i] = 1;
@@ -54,7 +54,7 @@ void sub_080291E0(void) {
             gFrameObjects[0x21 + i].screenY = gFrameObjects[(gWork291E0.base60 + i) * 4 + 0x5D].screenY - 4;
             gFrameObjects[0x21 + i].palette = 7;
             gFrameObjects[0x21 + i].priority = 0xF0;
-            sub_08040B90(gState0NextCommands_083B6100[95], i + 0x21);
+            InitFrameObjectCommands(gState0NextCommands_083B6100[95], i + 0x21);
         }
     }
     gWork291E0.counterAA++;

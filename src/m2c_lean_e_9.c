@@ -139,7 +139,7 @@ void sub_080619B0(void) {
       record = (struct Main2PartRecord *)(i * 8 + (u32)records);
       record->identifier = *part;
       record->byte2 = gObjectHalfwordBytes[(record->identifier * 2) + ((*((struct Main2PartContext **) (&gMainContextPointer_03006F74)))->selection19 * 0xF0)];
-      sub_08042B58(record->identifier, (*((struct Main2PartContext **) (&gMainContextPointer_03006F74)))->selection19, gUnknown_0300052E);
+      CopyPartMetadataSlot(record->identifier, (*((struct Main2PartContext **) (&gMainContextPointer_03006F74)))->selection19, gUnknown_0300052E);
       record->byte3 = gUnknown_0300052E[3];
       values[i * 2] = gUnknown_0300052E[0xB] * 100;
     }
@@ -171,5 +171,5 @@ void sub_080619B0(void) {
   {
     ((struct Main2PartContext *) gMainContextPointer_03006F74)->total1C = 99999;
   }
-  gUnknown_0300137C++;
+  gNestedCallbackIndex++;
 }

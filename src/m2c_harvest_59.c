@@ -62,7 +62,7 @@ void sub_0801F018(void) {
         objects->x = (s16) *(u16 *) (work + 0x154);
         objects->y = *(s16 *) (work + 0x156);
     }
-    sub_08074DE0(0x2A);
+    PlaySoundEffect(0x2A);
     gState0TransferWork.bytes[0xAA] += 1;
 }
 
@@ -87,6 +87,6 @@ void sub_0801F0F0(void) {
         objects->x = (s16) *(u16 *) (work + 0x154);
         objects->y = *(s16 *) (work + 0x156);
     }
-    sub_08074DE0(0x2A);
+    PlaySoundEffect(0x2A);
     gState0TransferWork.bytes[0xAA] += 1;
 }

@@ -25,7 +25,7 @@ void sub_08032A68(void) {
     /* Three candidates per scan; byte cursors retain the whole transfer buffer. */
     u32 entryIndex;
 
-    gState0TransferWork.bytes[0x60] = (u8) sub_08032FB8((u32) gState0TransferWork.bytes[0x5C]);
+    gState0TransferWork.bytes[0x60] = (u8) GetOtherSlotGroupStart((u32) gState0TransferWork.bytes[0x5C]);
     entryIndex = 0;
     {
         u8 *setup = gSetupBuffer_03000590;
@@ -44,7 +44,7 @@ void sub_08032A68(void) {
     if (sub_08032FFC() != 0) {
         gState0TransferWork.bytes[0x5E] = sub_0803301C() + 1;
     } else {
-        gState0TransferWork.bytes[0x60] = (u8) sub_08032FB8((u32) gState0TransferWork.bytes[0x5C]);
+        gState0TransferWork.bytes[0x60] = (u8) GetOtherSlotGroupStart((u32) gState0TransferWork.bytes[0x5C]);
         entryIndex = 0;
         {
             u8 *setup = gSetupBuffer_03000590;
@@ -63,7 +63,7 @@ void sub_08032A68(void) {
         if (sub_08032FFC() != 0) {
             gState0TransferWork.bytes[0x5E] = sub_0803301C() + 1;
         } else {
-            gState0TransferWork.bytes[0x60] = (u8) sub_08032FB8((u32) gState0TransferWork.bytes[0x5C]);
+            gState0TransferWork.bytes[0x60] = (u8) GetOtherSlotGroupStart((u32) gState0TransferWork.bytes[0x5C]);
             entryIndex = 0;
             {
                 u8 *setup = gSetupBuffer_03000590;
@@ -82,8 +82,8 @@ void sub_08032A68(void) {
             if (sub_08032FFC() != 0) {
                 gState0TransferWork.bytes[0x5E] = sub_0803301C() + 1;
             } else {
-                gState0TransferWork.bytes[0x60] = (u8) sub_08032FB8((u32) gState0TransferWork.bytes[0x5C]);
-                gState0TransferWork.bytes[0x5E] = sub_08033090((u32) gState0TransferWork.bytes[0x60]) + 1;
+                gState0TransferWork.bytes[0x60] = (u8) GetOtherSlotGroupStart((u32) gState0TransferWork.bytes[0x5C]);
+                gState0TransferWork.bytes[0x5E] = PickRandomGroupSlot((u32) gState0TransferWork.bytes[0x60]) + 1;
             }
         }
     }
@@ -96,7 +96,7 @@ void sub_08032C08(void) {
     /* Three candidates per scan; byte cursors retain the whole transfer buffer. */
     u32 entryIndex;
 
-    gState0TransferWork.bytes[0x60] = (u8) sub_08032FB8((u32) gState0TransferWork.bytes[0x5C]);
+    gState0TransferWork.bytes[0x60] = (u8) GetOtherSlotGroupStart((u32) gState0TransferWork.bytes[0x5C]);
     entryIndex = 0;
     {
         u8 *setup = gSetupBuffer_03000590;
@@ -115,7 +115,7 @@ void sub_08032C08(void) {
     if (sub_08032FFC() != 0) {
         gState0TransferWork.bytes[0x5E] = sub_0803301C() + 1;
     } else {
-        gState0TransferWork.bytes[0x60] = (u8) sub_08032FB8((u32) gState0TransferWork.bytes[0x5C]);
+        gState0TransferWork.bytes[0x60] = (u8) GetOtherSlotGroupStart((u32) gState0TransferWork.bytes[0x5C]);
         entryIndex = 0;
         {
             u8 *setup = gSetupBuffer_03000590;
@@ -134,7 +134,7 @@ void sub_08032C08(void) {
         if (sub_08032FFC() != 0) {
             gState0TransferWork.bytes[0x5E] = sub_0803301C() + 1;
         } else {
-            gState0TransferWork.bytes[0x60] = (u8) sub_08032FB8((u32) gState0TransferWork.bytes[0x5C]);
+            gState0TransferWork.bytes[0x60] = (u8) GetOtherSlotGroupStart((u32) gState0TransferWork.bytes[0x5C]);
             entryIndex = 0;
             {
                 u8 *setup = gSetupBuffer_03000590;
@@ -153,8 +153,8 @@ void sub_08032C08(void) {
             if (sub_08032FFC() != 0) {
                 gState0TransferWork.bytes[0x5E] = sub_0803301C() + 1;
             } else {
-                gState0TransferWork.bytes[0x60] = (u8) sub_08032FB8((u32) gState0TransferWork.bytes[0x5C]);
-                gState0TransferWork.bytes[0x5E] = sub_08033090((u32) gState0TransferWork.bytes[0x60]) + 1;
+                gState0TransferWork.bytes[0x60] = (u8) GetOtherSlotGroupStart((u32) gState0TransferWork.bytes[0x5C]);
+                gState0TransferWork.bytes[0x5E] = PickRandomGroupSlot((u32) gState0TransferWork.bytes[0x60]) + 1;
             }
         }
     }

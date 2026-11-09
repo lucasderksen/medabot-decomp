@@ -10,7 +10,7 @@
 
 extern u8 gUnknown_03000440[];
 
-void sub_080415BC(void)
+void ClearBgScrolls(void)
 {
     gBgScroll0.x = 0;
     gBgScroll0.y = 0;
@@ -22,37 +22,37 @@ void sub_080415BC(void)
     gBgScroll3.y = 0;
 }
 
-void sub_080415E8(u8 first, u8 second, u8 third)
+void StartChoiceBox(u8 first, u8 second, u8 third)
 {
-    sub_0803F624(gObjectParameterWork, 8, 0);
+    FillBytes(gObjectParameterWork, 8, 0);
     gObjectParameterWork[2] = first;
     gObjectParameterWork[3] = 0x7F;
     gObjectParameterWork[4] = second;
     gObjectParameterWork[5] = third;
 }
 
-void sub_08041624(u8 first, u8 second, u8 third, u8 fourth)
+void StartChoiceBoxWithObject(u8 first, u8 second, u8 third, u8 fourth)
 {
-    sub_0803F624(gObjectParameterWork, 8, 0);
+    FillBytes(gObjectParameterWork, 8, 0);
     gObjectParameterWork[2] = first;
     gObjectParameterWork[3] = fourth;
     gObjectParameterWork[4] = second;
     gObjectParameterWork[5] = third;
 }
 
-u32 sub_08041674(void)
+u32 RunChoiceBox(void)
 {
     gObjectCallbacks_083B2994[gUnknown_03000440[0x29]]();
     return gUnknown_03000440[0x28];
 }
 
-void sub_08041BF4(void)
+void SetChoiceBoxResult(void)
 {
     gUnknown_03000440[0x28] = (gUnknown_03000440[0x2A] << 4) + 1;
     gUnknown_03000440[0x29]++;
 }
 
-void sub_08041C14(u8 index, u8 operation, u16 value)
+void SetObjectXWobble(u8 index, u8 operation, u16 value)
 {
     switch ((operation & 0xC) >> 2)
     {
@@ -62,7 +62,7 @@ void sub_08041C14(u8 index, u8 operation, u16 value)
     }
 }
 
-void sub_08041C5C(u8 index, u8 operation, u16 value)
+void SetObjectYWobble(u8 index, u8 operation, u16 value)
 {
     switch ((operation & 0xC) >> 2)
     {
@@ -72,7 +72,7 @@ void sub_08041C5C(u8 index, u8 operation, u16 value)
     }
 }
 
-u32 sub_08041CA4(void)
+u32 RunDialogueClose(void)
 {
     gUnknown_03000440[4] = 0;
     gObjectCallbacks_083B29CC[gUnknown_03000440[0x1B]]();
@@ -81,7 +81,7 @@ u32 sub_08041CA4(void)
     return 0;
 }
 
-u32 sub_08041CD4(void)
+u32 RunDialoguePortraitClose(void)
 {
     gUnknown_03000440[4] = 0;
     gObjectCallbacks_083B29E4[gUnknown_03000440[0x1B]]();
@@ -90,21 +90,21 @@ u32 sub_08041CD4(void)
     return 0;
 }
 
-void sub_08041D04(const u8 *source, u8 *destination, u8 size)
+void CopyBytesU8Count(const u8 *source, u8 *destination, u8 size)
 {
     u32 i;
     for (i = 0; i < size; i++)
         *destination++ = *source++;
 }
 
-void sub_08041D28(void)
+void InitInventoryRecordIndices(void)
 {
     u32 i;
     for (i = 0; i <= 29; i++)
         gInventoryRecords[i].byte0 = i;
 }
 
-u32 sub_08041D3C(u8 identifier)
+u32 FindInventoryRecordById(u8 identifier)
 {
     u32 i;
     for (i = 0; i <= 29; i++)
@@ -115,7 +115,7 @@ u32 sub_08041D3C(u8 identifier)
     return 0;
 }
 
-void sub_08041FE4(u8 identifier)
+void ClearInventoryRecordById(u8 identifier)
 {
     u32 i;
     for (i = 0; i <= 29; i++)
@@ -123,7 +123,7 @@ void sub_08041FE4(u8 identifier)
         if ((gInventoryRecords[i].byte0 & 0x80) && gInventoryRecords[i].byte1 == identifier)
         {
             u8 flags = gInventoryRecords[i].byte0 & 0x1F;
-            sub_0803F624(&gInventoryRecords[i], 64, 0);
+            FillBytes(&gInventoryRecords[i], 64, 0);
             gInventoryRecords[i].byte0 = flags;
             return;
         }
@@ -180,7 +180,7 @@ void sub_080421A0(void)
         gUnknownRecords_030017A0[i].byte7 = i;
 }
 
-void sub_0804169C(void)
+void LoadChoiceBoxGraphics(void)
 {
     LeDecompress(gUnknownBytes_08487388, (void *)0x06002600);
     LeDecompress(gUnknownBytes_08487408, (void *)0x060026E0);
@@ -191,20 +191,20 @@ void sub_0804169C(void)
     gUnknown_03000440[0x29]++;
 }
 
-void sub_0804172C(void)
+void ClearChoiceBoxTilemaps(void)
 {
-    sub_0803EF8C(8, 6, gUnknown_03000440[0x2C], gUnknown_03000440[0x2D], (*(volatile u16 *)0x04000008), 0);
-    sub_0803EF8C(8, 6, 0, 21, (*(volatile u16 *)0x04000008), 0);
+    FillTilemapRect(8, 6, gUnknown_03000440[0x2C], gUnknown_03000440[0x2D], (*(volatile u16 *)0x04000008), 0);
+    FillTilemapRect(8, 6, 0, 21, (*(volatile u16 *)0x04000008), 0);
     gUnknown_03000440[0x29]++;
 }
 
-void sub_08041BA4(void)
+void ShrinkChoiceCursor(void)
 {
     gFrameObjects[gUnknown_03000440[0x2B]].scaleX -= 8;
     gFrameObjects[gUnknown_03000440[0x2B]].scaleY -= 8;
     if (gFrameObjects[gUnknown_03000440[0x2B]].scaleX == 0)
     {
-        sub_08040CD0(gUnknown_03000440[0x2B], 1);
+        ClearFrameObjects(gUnknown_03000440[0x2B], 1);
         gUnknown_03000440[0x29]++;
     }
 }
@@ -219,7 +219,7 @@ u32 sub_08042218(void)
 }
 
 
-void sub_0804177C(void)
+void DrawChoiceBoxTwoRows(void)
 {
     u32 offset = gUnknown_03000440[0x2D] * 64;
     u16 *start = (u16 *)(gUnknown_03000440[0x2C] * 2 + 0x06002800);
@@ -254,7 +254,7 @@ void sub_0804177C(void)
     gUnknown_03000440[0x29]++;
 }
 
-void sub_08041818(void)
+void DrawChoiceBoxFourRows(void)
 {
     u32 offset = gUnknown_03000440[0x2D] * 64;
     u16 *start = (u16 *)(gUnknown_03000440[0x2C] * 2 + 0x06002800);
@@ -294,7 +294,7 @@ void sub_08041818(void)
     gUnknown_03000440[0x29]++;
 }
 
-void sub_080418C0(void)
+void DrawChoiceBoxSixRows(void)
 {
     u32 offset = gUnknown_03000440[0x2D] * 64;
     u16 *start = (u16 *)(gUnknown_03000440[0x2C] * 2 + 0x06002800);
@@ -316,7 +316,7 @@ void sub_080418C0(void)
     gUnknown_03000440[0x29]++;
 }
 
-void sub_08041920(void)
+void InitChoiceCursor(void)
 {
     gFrameObjects[gUnknown_03000440[0x2B]].flags = 0xD204;
     gFrameObjects[gUnknown_03000440[0x2B]].screenX = gUnknown_03000440[0x2C] * 8 + 20;
@@ -331,7 +331,7 @@ void sub_08041920(void)
     gUnknown_03000440[0x29]++;
 }
 
-void sub_080419CC(void)
+void GrowChoiceCursor(void)
 {
     gFrameObjects[gUnknown_03000440[0x2B]].scaleX += 8;
     gFrameObjects[gUnknown_03000440[0x2B]].scaleY += 8;
@@ -344,7 +344,7 @@ void sub_080419CC(void)
     gUnknown_03000440[0x84] = 0;
 }
 
-void sub_0804253C(u8 mode, u16 control, u16 duration)
+void StartBlendFade(u8 mode, u16 control, u16 duration)
 {
     u32 effect;
     u32 first;
@@ -370,7 +370,7 @@ void sub_0804253C(u8 mode, u16 control, u16 duration)
 
 /* The matching caller initializes mode to 1..6. The original default path
  * consumes uninitialized coefficient registers; it has no defined C value. */
-u32 sub_080425DC(void)
+u32 StepBlendFade(void)
 {
     u8 *base = gUnknown_03000440;
     u8 *work;
@@ -410,7 +410,7 @@ u32 sub_080425DC(void)
 extern struct ObjectSortEntry gObjectSortEntries[];
 extern u16 gObjectFourthKey;
 extern u8 gObjectCountPairs[64][2];
-void sub_0804242C(u8 count);
+void SortObjectEntriesDescending(u8 count);
 
 /* Sorting is performed by the original callee; ties use its second halfword. */
 s32 sub_0804206C(void)
@@ -422,7 +422,7 @@ s32 sub_0804206C(void)
     CpuFastSet(&fill, gObjectSortEntries, CPU_SET_FILL | 0x80);
     for (i = 0; i <= 29; i++)
         gObjectSortEntries[i].key = gInventoryRecords[i].byte5;
-    sub_0804242C(30);
+    SortObjectEntriesDescending(30);
     first = gObjectSortEntries[0].key;
     fourth = gObjectFourthKey;
     return (first - fourth) / 2 + fourth;

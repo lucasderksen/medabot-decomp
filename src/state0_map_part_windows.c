@@ -47,7 +47,7 @@ void sub_08012468(void)
 void sub_080124B8(void)
 {
     u8 *work;
-    sub_080445F4();
+    InitRecordDisplayRendering();
     work = gState0TransferWork.bytes;
     switch (work[0x168])
     {

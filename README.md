@@ -16,8 +16,8 @@ produce it), and check that every rebuild is identical to the original.
 
 ## Status
 
-- **3,526 of 3,540 functions** match as C or assembly (98.1% of the code bytes).
-  The 14 functions left, 9,148 bytes, are `NONMATCH` functions: the build
+- **3,530 of 3,540 functions** match as C or assembly (98.4% of the code bytes).
+  The 10 functions left, 7,564 bytes, are `NONMATCH` functions: the build
   assembles their original code, and the closest C attempt sits alongside in
   `src/non_matching/`. Each one's problem is listed in
   [docs/NONMATCHING.md](docs/NONMATCHING.md).
@@ -29,9 +29,9 @@ produce it), and check that every rebuild is identical to the original.
   profiles are recorded in `config/segments.json`.
 - Most functions still have address names (`sub_08xxxxxx`). Naming is the
   next phase.
-- Three functions use a marked *fake match* (a `FORCE_REGISTER` pin) and five
-  fall off the end like the reference; both are listed in
-  [docs/NONMATCHING.md](docs/NONMATCHING.md).
+- Five functions use a marked *fake match* (four `FORCE_REGISTER` pins and one
+  `do { } while (0)` wrap) and five fall off the end like the reference; both
+  are listed in [docs/NONMATCHING.md](docs/NONMATCHING.md).
 
 Progress is measured from `config/segments.json` on every push to `main` by
 [.github/workflows/progress.yml](.github/workflows/progress.yml). The workflow
@@ -121,6 +121,12 @@ The main tools:
 - `tools/permute.py <name>` runs
   [decomp-permuter](https://github.com/simonlindholm/decomp-permuter) on a
   near-miss and byte-verifies any score-0 result.
+- `tools/rename.py OLD=NEW` renames a function everywhere it is referenced.
+- `tools/find_siblings.py [name]` lists the matched functions whose code most resembles
+  an unmatched one; a sibling's source is the best draft.
+- `tools/alloc_priorities.py name` lists a draft's global-allocation priorities.
+- `tools/asm_grep.py PATTERN` finds an instruction pattern in the matched functions,
+  so the C that produces a missing shape can be copied from a function that has it.
 - `tools/le_codec.py` unpacks the game's custom `Le` graphics compression
   ([docs/COMPRESSION.md](docs/COMPRESSION.md)).
 - `tools/emulator.py` runs optional mGBA traces ([docs/EMULATION.md](docs/EMULATION.md)).

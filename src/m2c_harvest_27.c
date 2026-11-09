@@ -102,7 +102,7 @@ void sub_0802DCDC(void) {
         gFrameObjects[0x21].screenX = 0x40;
     }
     work0 = (u8 *) &gState0NextCommands_083B6100;
-    sub_08040B90((*(u8 **)((u8 *)(work0) + 0x1A4)), 0x21U);
+    InitFrameObjectCommands((*(u8 **)((u8 *)(work0) + 0x1A4)), 0x21U);
     gState0TransferWork.bytes[0xAA] += 1;
 }
 
@@ -111,7 +111,7 @@ void sub_08030DB4(void) {
     u8 var_r0;
 
     sub_0801C2F0(0);
-    sub_08074DE0(0x51U);
+    PlaySoundEffect(0x51U);
     late0 = (u8 *) gSetupBuffer_03000590;
     if (8 & (*(u8 *)((u8 *)((late0 + (gState0TransferWork.bytes[0x87] << 8))) + 0xC0))) {
         gState0TransferWork.bytes[0x51] = 0x50;
@@ -119,7 +119,7 @@ void sub_08030DB4(void) {
         gState0TransferWork.bytes[0x51] = 0x28;
     }
     sub_0801B004(gState0TransferWork.bytes[0x87]);
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_0803572C(u8 *arg0, s32 arg1) {

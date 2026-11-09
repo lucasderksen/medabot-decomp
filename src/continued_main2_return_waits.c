@@ -27,80 +27,80 @@ struct Main2ReturnWork
 
 void sub_0805DB20(void)
 {
-    if (sub_0803FB3C(gMain2ScriptSlots_08485678[18]))
+    if (RunDialogue(gMain2ScriptSlots_08485678[18]))
     {
-        sub_080415E8(1, 22, 7);
-        gUnknown_0300137C++;
+        StartChoiceBox(1, 22, 7);
+        gNestedCallbackIndex++;
     }
 }
 
 void sub_0805DB4C(void)
 {
-    if (sub_08041674())
+    if (RunChoiceBox())
     {
-        sub_0803FB0C();
+        RestartDialogueText();
         if (!WORK->byte2A)
-            gUnknown_0300137C = 6;
+            gNestedCallbackIndex = 6;
         else
-            gUnknown_0300137C = 9;
+            gNestedCallbackIndex = 9;
     }
 }
 
 void sub_0805DB84(void)
 {
-    if (sub_0803FB3C(gMain2ScriptSlots_0848521C[10]))
+    if (RunDialogue(gMain2ScriptSlots_0848521C[10]))
     {
-        sub_08074B88(0);
-        sub_08074DE0(0);
+        PlayMusic(0);
+        PlaySoundEffect(0);
         Unknown_0805DEB0();
         CONTEXT_HALFWORDS[1] = 0;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
 void sub_0805DC4C(void)
 {
     u8 previous = CONTEXT_HALFWORDS[1]++;
-    if (sub_0803FB3C(gMain2ScriptSlots_0848521C[11]) && previous > 60)
-        gUnknown_0300137C++;
+    if (RunDialogue(gMain2ScriptSlots_0848521C[11]) && previous > 60)
+        gNestedCallbackIndex++;
 }
 
 void sub_0805DC88(void)
 {
-    sub_0803FB0C();
+    RestartDialogueText();
     SnapshotPalettes();
     WORK->phase = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0805DCB0(void)
 {
-    if (sub_08041CA4())
-        gUnknown_0300137C++;
+    if (RunDialogueClose())
+        gNestedCallbackIndex++;
 }
 
 void sub_0805DCCC(void)
 {
     if (WORK->phase <= 8)
     {
-        sub_0803F684(0, WORK->phase * 4, 0x3FFF);
-        sub_0803F998(0, WORK->phase * 4, 0xFFFF);
+        BlendBgPaletteBanksNow(0, WORK->phase * 4, 0x3FFF);
+        BlendObjPaletteBanksNow(0, WORK->phase * 4, 0xFFFF);
         WORK->phase++;
     }
     else
     {
         DISPCNT &= 0xFDFF;
         DISPCNT &= 0xFBFF;
-        sub_08040CD0(0, 128);
+        ClearFrameObjects(0, 128);
         gMainState = 0;
         gMainSubstate = 1;
-        gUnknown_0300137C = 16;
+        gNestedCallbackIndex = 16;
     }
 }
 
 void sub_0805DD50(void)
 {
     u8 previous = CONTEXT_HALFWORDS[1]++;
-    if (sub_0803FB3C(gMain2ScriptSlots_0848521C[12]) && previous > 60)
-        gUnknown_0300137C = 9;
+    if (RunDialogue(gMain2ScriptSlots_0848521C[12]) && previous > 60)
+        gNestedCallbackIndex = 9;
 }

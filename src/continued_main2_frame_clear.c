@@ -22,7 +22,7 @@ struct Main2TileContext
 void sub_0805CB50(void)
 {
     const MainCallback *callbacks = gMain2Subcallbacks_0848360C + 10;
-    callbacks[gUnknown_0300137C]();
+    callbacks[gNestedCallbackIndex]();
     if (gFrameCounter & 1)
     {
         gBgScroll3.x++;
@@ -34,8 +34,8 @@ void sub_0805CBFC(void)
 {
     u32 fill = 0;
     CpuFastSet(&fill, gMainContextPointer_03006F74, 0x01000100);
-    sub_080415BC();
+    ClearBgScrolls();
     DISPLAY_CONTROL = 0x160;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 

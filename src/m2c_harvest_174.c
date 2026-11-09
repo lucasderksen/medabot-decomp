@@ -39,7 +39,7 @@ void sub_0802F4D0(void) {
  frames->frame.screenY = (u16)gFrameObjects[*bank * 4 + 0x5D].screenY - 4;
  frames->frame.palette = 7;
  frames->frame.priority = zero;
- sub_08040B90(gState0NextCommands_083B6100[0x68], 0x21);
- sub_08074DE0(0x2C);
+ InitFrameObjectCommands(gState0NextCommands_083B6100[0x68], 0x21);
+ PlaySoundEffect(0x2C);
  work[0xAA]++;
 }

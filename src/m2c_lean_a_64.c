@@ -16,15 +16,15 @@
 #include "state0_work.h"
 
 
-void sub_0800A1E4(void);
+void CycleOwnedInventoryOnLeftRight(void);
 
-void sub_0800A1E4(void) {
+void CycleOwnedInventoryOnLeftRight(void) {
 
     s32 found;
 
     if (gState0TypedWork.bytes[0x41] > 1) {
         if (0x20 & (u8)gRepeatedKeys) {
-            sub_08074DE0(2);
+            PlaySoundEffect(2);
             found = 0;
             do {
                 if (gState0TypedWork.bytes[0x3D] == 0) {
@@ -46,7 +46,7 @@ void sub_0800A1E4(void) {
         }
     second:
         if (0x10 & (u8)gRepeatedKeys) {
-            sub_08074DE0(2);
+            PlaySoundEffect(2);
             found = 0;
             do {
                 if (gState0TypedWork.bytes[0x3D] == 0x1D) {

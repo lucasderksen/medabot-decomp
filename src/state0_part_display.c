@@ -6,7 +6,7 @@
 #include "object_helpers.h"
 #include "tile_text.h"
 
-void sub_0800EE34(void)
+void DrawPartPageStatusTiles(void)
 {
     u32 i = 0;
     u8 *parts = gObjectHalfwordBytes;
@@ -24,13 +24,13 @@ void sub_0800EE34(void)
         offset += i * 2;
         if (parts[offset])
         {
-            sub_08042B58(part + i, group, &work[0xEE]);
+            CopyPartMetadataSlot(part + i, group, &work[0xEE]);
             if (*status)
-                sub_08042698(2, 2, 27, row, *control, 0xA354);
+                FillTilemapRectSequential(2, 2, 27, row, *control, 0xA354);
             else
-                sub_08042698(2, 2, 27, row, *control, 0xA350);
+                FillTilemapRectSequential(2, 2, 27, row, *control, 0xA350);
         }
         else
-            sub_0803EF8C(2, 2, 27, row, *control, 0);
+            FillTilemapRect(2, 2, 27, row, *control, 0);
     }
 }

@@ -15,11 +15,11 @@ struct SetupDmaRegisters { u32 source, destination, control; };
 void sub_0805718C(void)
 {
     void **setup;
-    sub_08049714(gContinuedCommandWork_030064A0, 0x874);
+    ClearBytes(gContinuedCommandWork_030064A0, 0x874);
     LZ77UnCompVram(gUnknownBytes_085FB6E4, (void *)0x06000F80);
     LZ77UnCompVram(gUnknownBytes_085FBB78, (void *)0x06002100);
     setup = &gSetupPointer_03006D14;
-    sub_08049714(*setup, 0x2000);
+    ClearBytes(*setup, 0x2000);
     {
         volatile struct SetupDmaRegisters *dma = (void *)0x040000D4;
         u8 *destination;
@@ -84,7 +84,7 @@ void sub_0805718C(void)
         dma->destination = 0x050003A0;
         dma->control = 0x84000008;
         (void)dma->control;
-        sub_0803F3A8();
+        LoadDialogueWindowGraphics();
         dma->source = (u32)gUnknownBytes_084C7F34;
         dma->destination = 0x050001C0;
         dma->control = 0x84000008;

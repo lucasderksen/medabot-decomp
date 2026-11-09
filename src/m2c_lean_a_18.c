@@ -16,7 +16,7 @@
 struct Work22648 { u8 pad[0x87]; u8 setup87; u8 pad88[0x22]; u8 counterAA; };
 
 extern struct Work22648 gWork22648 asm("gCounter6ED08_03001800");
-extern void sub_08074DE0(u32);
+extern void PlaySoundEffect(u32);
 
 void sub_08022648(void);
 
@@ -26,7 +26,7 @@ void sub_08022648(void) {
     union { struct TileCoordinates tile; s32 packed; } coords;
 
     for (i = 0; i < 2; i++) {
-        coords.tile = sub_08042BC0(gFrameObjects[0x21 + i].unknown2C[0], gFrameObjects[0x21 + i].byte2B,
+        coords.tile = GetPolarOffsetPoint(gFrameObjects[0x21 + i].unknown2C[0], gFrameObjects[0x21 + i].byte2B,
                                    gFrameObjects[gWork22648.setup87 * 4 + 0x5D].screenX,
                                    gFrameObjects[gWork22648.setup87 * 4 + 0x5D].screenY - 4);
         gFrameObjects[0x21 + i].screenX = coords.packed;
@@ -41,8 +41,8 @@ void sub_08022648(void) {
         }
     }
     if (gFrameObjects[0x21].byte2B == 0) {
-        sub_08074DE0(0x30);
-        sub_08040CD0(0x22, 1);
+        PlaySoundEffect(0x30);
+        ClearFrameObjects(0x22, 1);
         gWork22648.counterAA++;
     }
 }

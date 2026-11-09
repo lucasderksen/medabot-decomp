@@ -6,7 +6,7 @@
 #include "equipment_helpers.h"
 #include "post_dispatch.h"
 
-extern u32 gUnknown_0300137C;
+extern u32 gNestedCallbackIndex;
 extern u8 gContinuedWork_030057E0[];
 extern u8 gContinuedOtherWork_030057A0[];
 extern const void *const gContinuedScripts_08411AE0[];
@@ -28,7 +28,7 @@ void sub_0804A6BC(void) { sub_0804A210(); }
 
 void sub_0804A6C8(void)
 {
-    if (sub_08049E08(32767))
+    if (StepPaletteFadeToColor(32767))
         sub_0804A210();
 }
 
@@ -42,7 +42,7 @@ void sub_0804A6F8(void)
     sub_080506BC();
     sub_0804842C(5, 0);
     gBackgroundState_03005310.unknown00[1] = 0;
-    gUnknown_0300137C = 5;
+    gNestedCallbackIndex = 5;
 }
 
 void sub_0804A724(void)
@@ -55,37 +55,37 @@ void sub_0804A734(void)
 {
     u32 index = sub_08052624();
     const void *script = gContinuedScripts_08411AE0[index];
-    if (sub_08047C24(0, 0, 0, script))
-        gUnknown_0300137C = 5;
+    if (InitAndRunDialogue(0, 0, 0, script))
+        gNestedCallbackIndex = 5;
 }
 
 void sub_0804A900(void)
 {
-    if (sub_08049E08(32767))
+    if (StepPaletteFadeToColor(32767))
     {
         gBackgroundState_03005310.unknown00[1] = 0;
         sub_080517F0();
         sub_08052B70();
         sub_08052E0C(gContinuedWork_030057E0[0xC67]);
-        gUnknown_0300137C = 5;
+        gNestedCallbackIndex = 5;
     }
 }
 
 void sub_0804AA04(void)
 {
-    if (sub_08049E08(0))
+    if (StepPaletteFadeToColor(0))
     {
         gBackgroundState_03005310.unknown00[1] = 0;
         sub_080517F0();
         sub_08052B70();
         sub_08052E0C(gContinuedWork_030057E0[0xC67]);
-        gUnknown_0300137C = 5;
+        gNestedCallbackIndex = 5;
     }
 }
 
 void sub_0804AB04(void)
 {
-    if (sub_08049E08(0))
+    if (StepPaletteFadeToColor(0))
         sub_0804A210();
 }
 
@@ -94,7 +94,7 @@ void sub_0804AB18(void) { sub_0804A210(); }
 void sub_0804AB24(void)
 {
     gBackgroundState_03005310.unknown00[1] = 0;
-    gUnknown_0300137C = 5;
+    gNestedCallbackIndex = 5;
 }
 
 void sub_0804AB3C(void) { sub_0804A210(); }
@@ -102,7 +102,7 @@ void sub_0804AB3C(void) { sub_0804A210(); }
 void sub_0804ABA8(void)
 {
     gBackgroundState_03005310.unknown00[1] = 0;
-    gUnknown_0300137C = 5;
+    gNestedCallbackIndex = 5;
 }
 
 void sub_0804ABC0(void) { sub_0804A210(); }

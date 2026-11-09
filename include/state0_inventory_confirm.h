@@ -4,7 +4,7 @@
 #include "global.h"
 
 void sub_0800B498(void);
-void sub_0800B4EC(void);
+void IncrementInventoryByte5OnStartL(void);
 void sub_0800B594(void);
 void sub_0800B5E8(void);
 void sub_0800B668(void);

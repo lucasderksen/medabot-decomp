@@ -75,7 +75,7 @@ u8 sub_080460B0(struct RenderWork *render, void *names, s32 mode, void *objects,
     fill = zero;
     CpuFastSet((void *)&fill, render, 0x01000426);
     gRenderWork = render;
-    sub_08047414(&work, render, gUnknownBytes_083D1D78, data);
+    InitRecordDisplayWork(&work, render, gUnknownBytes_083D1D78, data);
     gRenderWork->byte1094 = zero;
     gRenderWork->byte1095 = mode;
     ((u8 *)gRenderWork)[0x1097] = zero;
@@ -106,7 +106,7 @@ u8 sub_080460B0(struct RenderWork *render, void *names, s32 mode, void *objects,
         if (((const u8 *)c1)[0] << 26) {
             for (k = 0; ((const u8 *)((const u32 (*)[4])gLaterCmdF610)[i1])[k] << 26; k += 4) {
                 if (!(((const struct LaterBytes *)((const u8 *)((const u32 (*)[4])gLaterCmdF610)[i1] + k))->b1 >> 7))
-                    sub_08046034(work.source, work.data, ((const u32 (*)[4])gLaterCmdFDB0)[i1],
+                    LoadRecordCommandTiles(work.source, work.data, ((const u32 (*)[4])gLaterCmdFDB0)[i1],
                         ((u32)((((const u8 *)((const u32 (*)[4])gLaterCmdFDB0)[i1])[k]) << 26) >> 26),
                         ((u32)((((const u8 *)((const u32 (*)[4])gLaterCmdF610)[i1])[k]) << 26) >> 26));
             }
@@ -114,7 +114,7 @@ u8 sub_080460B0(struct RenderWork *render, void *names, s32 mode, void *objects,
         do {
         for (k = 0; gLaterCmdFDB0[i2][k].count; k++) {
             if (!gLaterCmdFDB0[i2][k].flag) {
-                sub_08046034(work.source, work.data, (const u32 *)gLaterCmdF610[i2], gLaterCmdF610[i2][k].count, gLaterCmdFDB0[i2][k].count);
+                LoadRecordCommandTiles(work.source, work.data, (const u32 *)gLaterCmdF610[i2], gLaterCmdF610[i2][k].count, gLaterCmdFDB0[i2][k].count);
             }
         }
         } while (0);

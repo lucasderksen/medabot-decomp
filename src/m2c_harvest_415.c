@@ -43,7 +43,7 @@ void sub_080732F0(struct SoundChannel32F0 *channel, u16 *out, u8 *control) {
 void sub_0807334C(struct SoundChannel32F0 *channel, s16 *out) {
 
     if (channel->flags & 0x20) {
-        sub_08073A48(channel->low);
+        LoadWaveRamPattern(channel->low);
         channel->flags &= 0xDF;
     }
     if (channel->flags & 2) {

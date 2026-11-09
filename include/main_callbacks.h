@@ -25,7 +25,7 @@ extern const u8 gMain2Map_0879131C[];
 extern const u8 gMain2Tiles_0878F7E8[];
 extern const u8 gMain2ObjectTiles_08785FB4[];
 extern const u8 gMain2Palette_0878F5E8[];
-void sub_0805BA34(const void *source, u32 control);
+void LoadLz77SizedTilemap(const void *source, u32 control);
 void sub_08059E50(void);
 void sub_080656DC(void *work, u32 first, u32 second, u32 third, u32 fourth);
 void sub_0805C128(void);

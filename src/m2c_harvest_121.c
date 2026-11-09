@@ -27,12 +27,12 @@ void sub_080633FC(void) {
     u32 scaled;
     u8 zero;
     if ((scaled = (u32)gState0TypedWork.bytes[0x84] << 24), ((scaled >> 24)<=0x40U)) {
-        sub_0803F998(0x7FFFU, scaled >> 25, 0xFFU);
+        BlendObjPaletteBanksNow(0x7FFFU, scaled >> 25, 0xFFU);
         gState0TypedWork.bytes[0x84] += 1;
     } else {
         ((struct ResetContext*)gMainContextPointer_03006F74)->reset = 0;
         gState0TypedWork.bytes[0x84] = (zero = 0);
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
     sub_08062B48(((u8 *)gMainContextPointer_03006F74)[0x31], ((u8 *)gMainContextPointer_03006F74)[0x33], 0);
     sub_08062B48(((u8 *)gMainContextPointer_03006F74)[0x32], ((u8 *)gMainContextPointer_03006F74)[0x34], 1);

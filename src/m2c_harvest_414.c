@@ -19,11 +19,11 @@
 struct FrameTimerView { u8 unknown00[0x30]; u16 baseFrame; u16 timer; };
 
 extern const s8 gUnknown_080B00C8[];
-extern s32 sub_0806B718(u8);
+extern s32 ClearFrameObject(u8);
 
 s32 sub_0806B1FC(u32 arg);
 s32 sub_0806E074(u8 index);
-s32 sub_080706A4(u8 index);
+s32 BobObjectVertically(u8 index);
 
 s32 sub_0806B1FC(u32 arg) {
 
@@ -36,7 +36,7 @@ s32 sub_0806B1FC(u32 arg) {
     if ((u16)(object->unknown1A - 0xD2) <= 15)
         object->screenY -= 2;
     if (object->unknown1A > 0xE1) {
-        sub_0806B718(index);
+        ClearFrameObject(index);
         return 0;
     }
     return 1;
@@ -54,7 +54,7 @@ s32 sub_0806E074(u8 index) {
             ((struct FrameTimerView *)object)->timer = (NextRandom(0) & 0x1FF) + 0x20;
             object->frameAndGroup = ((struct FrameTimerView *)object)->baseFrame;
             object->unknown1A = 0;
-        } else if (gUnknown_0300137C == 9 && object->commandStopped == 0) {
+        } else if (gNestedCallbackIndex == 9 && object->commandStopped == 0) {
             ((struct FrameTimerView *)object)->timer = -1;
             object->unknown1A = 0;
         } else {
@@ -67,7 +67,7 @@ s32 sub_0806E074(u8 index) {
     return 1;
 }
 
-s32 sub_080706A4(u8 index) {
+s32 BobObjectVertically(u8 index) {
 
     if (index & 1) {
         gFrameObjects[index].screenY = gFrameObjects[index].unknown23[0] - gUnknown_080B00C8[gFrameObjects[index].commandOffset & 0x3F];

@@ -86,7 +86,7 @@ void sub_08024890(void) {
     frames->screenY=(u16)gFrameObjects[bankIndex+partIndex].screenY;
     frames->palette=7;
     frames->priority=0xF0;
-    sub_08040B90(gState0NextCommands_083B6100[0x22],0x21);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[0x22],0x21);
     work[0xAA]++;
 }
 
@@ -121,15 +121,15 @@ void sub_08041B1C(void) {
 
 void sub_08061468(void) {
     if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
-        sub_0803F684(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
-        sub_0803F998(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
+        BlendBgPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
+        BlendObjPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFFU);
         gState0TypedWork.bytes[0x84] += 1;
         return;
     }
     *(volatile u16 *)0x04000000 &= 0xFDFF;
     *(volatile u16 *)0x04000000 &= 0xFBFF;
     *(volatile u16 *)0x04000000 &= 0xF7FF;
-    sub_08040CD0(0U, 0x80U);
+    ClearFrameObjects(0U, 0x80U);
     sub_080476E8(3U);
 }
 
@@ -145,18 +145,18 @@ void sub_08065A94(void) {
     if (phase != 0) {
         var_r1 = 0x14;
     }
-    if (sub_0803FB3C(*(const void *const *)(scripts + var_r1)) != 0) {
+    if (RunDialogue(*(const void *const *)(scripts + var_r1)) != 0) {
         temp_r2 = (*(s32 *)((u8 *)(gMainContextPointer_03006F74) + 8));
         if (temp_r2 == 0) {
-            gUnknown_0300137C += 1;
+            gNestedCallbackIndex += 1;
             (*(s16 *)((u8 *)(gMainContextPointer_03006F74) + 0x3A)) = (s16) temp_r2;
             return;
         }
         if (1 & *(u8 *)&gNewKeys) {
-            sub_08074DE0(0xDU);
+            PlaySoundEffect(0xDU);
             gState0TypedWork.bytes[0x84] = 0;
             gState0TypedWork.bytes[0x1B] = 0;
-            gUnknown_0300137C -= 2;
+            gNestedCallbackIndex -= 2;
         }
     }
 }
@@ -184,7 +184,7 @@ case 4:
         if ((u16)(gMainSerialOutgoingWork.words[0][1]+0xFE) <= 1) { ((struct LocalSerialContext65ED0 *)gMainContextPointer_03006F74)->flag7C = gMainSerialOutgoingWork.words[0][1] != 0xFF02; gMainSerialOutgoingWork.word06=0xFF04; }
         if (gMainSerialOutgoingWork.words[0][1] == 0xFF05) ((struct LocalSerialContext65ED0 *)gMainContextPointer_03006F74)->phase3A++;
         break;
-case 5: gMainSerialOutgoingWork.word06=0xFF06; if (gMainSerialOutgoingWork.words[0][1] == 0xFF06) gUnknown_0300137C++; break; }
+case 5: gMainSerialOutgoingWork.word06=0xFF06; if (gMainSerialOutgoingWork.words[0][1] == 0xFF06) gNestedCallbackIndex++; break; }
     } else {
         switch ((u32)((struct LocalSerialContext65ED0 *)gMainContextPointer_03006F74)->phase3A) { case 0:
         if ((u16)(gMainSerialOutgoingWork.words[1][1]+0xFE) <= 1) { ((struct LocalSerialContext65ED0 *)gMainContextPointer_03006F74)->flag7B = gMainSerialOutgoingWork.words[1][1] != 0xFF02; gMainSerialOutgoingWork.word06=0xFF04; }
@@ -214,7 +214,7 @@ case 4:
 case 5:
         gMainSerialOutgoingWork.word06=0xFF05;
         if (gMainSerialOutgoingWork.words[0][1] == 0xFF05 && gMainSerialOutgoingWork.words[1][1] == 0xFF06) gMainSerialOutgoingWork.word06=gMainSerialOutgoingWork.words[1][1];
-        if (gMainSerialOutgoingWork.words[0][1] == 0xFF06) gUnknown_0300137C++;
+        if (gMainSerialOutgoingWork.words[0][1] == 0xFF06) gNestedCallbackIndex++;
         break; }
     }
 }

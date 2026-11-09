@@ -49,7 +49,7 @@
   "gFrameAffineOverride": "0x03005048",
   "gLibgccNanDouble": "0x03000408",
   "gLibgccNanSingle": "0x03000420",
-  "gUnknown_0300137C": "0x0300137C",
+  "gNestedCallbackIndex": "0x0300137C",
   "gUnknown_03002B70": "0x03002B70",
   "gUnknownPointers_083B5578": "0x083B5578",
   "gUnknownPointers_083B4C60": "0x083B4C60",
@@ -106,10 +106,6 @@
   "gState0NextRow_083AC5E8": "0x083AC5E8",
   "gTransferSelectedSlots": "0x03001841",
   "gUnknownPalette_0850F2F8": "0x0850F2F8",
-  "sub_08000840": {
-    "address": "0x8000841",
-    "kind": "thumb_function"
-  },
   "gUnknownBytes_083B2AEC": "0x083B2AEC",
   "gUnknownPalette_0850F3D8": "0x0850F3D8",
   "gUnknownBytes_083B2AF0": "0x083B2AF0",
@@ -719,18 +715,6 @@
   "gUnknown_084F4F40": "0x084F4F40",
   "gUnknown_085104F8": "0x085104F8",
   "gUnknown_0300198A": "0x0300198A",
-  "sub_0807CF40": {
-    "address": "0x0807CF41",
-    "kind": "thumb_function"
-  },
-  "sub_0807CD2C": {
-    "address": "0x0807CD2D",
-    "kind": "thumb_function"
-  },
-  "sub_0807CEC8": {
-    "address": "0x0807CEC9",
-    "kind": "thumb_function"
-  },
   "gUnknown_08484FC0": "0x08484FC0",
   "gUnknown_020264E0": "0x020264E0",
   "gUnknown_03006F80": "0x03006F80",
@@ -738,10 +722,6 @@
   "gUnknown_03006FDC": "0x03006FDC",
   "gUnknown_030018E8": "0x030018E8",
   "gUnknown_0202F800": "0x0202F800",
-  "sub_0807CDF8": {
-    "address": "0x0807CDF9",
-    "kind": "thumb_function"
-  },
   "gUnknown_03006F84": "0x03006F84",
   "gUnknown_03006F90": "0x03006F90",
   "gUnknown_084CE3E8": "0x084CE3E8",
@@ -2972,5 +2952,7 @@
   "gUnknown_03002C24": "0x03002C24",
   "gUnknown_03001794": "0x03001794",
   "gUnknown_03006432": "0x03006432",
-  "gUnknown_03006434": "0x03006434"
+  "gUnknown_03006434": "0x03006434",
+  "gUnknown_02030400": "0x02030400",
+  "gUnknown_02030800": "0x02030800"
 }

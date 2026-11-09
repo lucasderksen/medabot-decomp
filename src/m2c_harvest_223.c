@@ -36,14 +36,14 @@ struct ChoiceRecord6A024 {u8 fixed,value;u8 pad2[10];};
 
 extern const struct ChoiceRecord6A024 gChoiceRecords6A024[];
 extern const u8 gRandomBytes_083F7D80[256];
-extern s32 sub_0807CD2C(s32,s32);
-extern s32 sub_0807CDF8(s32,s32);
+extern s32 __divsi3(s32,s32);
+extern s32 __modsi3(s32,s32);
 extern struct ContinueCounterTriplet gUnknown_03001800;
 extern struct ContinueStatusFlags gUnknown_03000590[];
 extern struct Scratch60620 gScratch60620;
 extern u16 gUnknown_030018E8;
-extern u32 sub_08036E54(u32);
-extern u32 sub_0807CF40(u32,u32);
+extern u32 Clamp1To99(u32);
+extern u32 __umodsi3(u32,u32);
 extern u8 gUnknown_030018D2[3];
 extern u8 gUnknown_03006F84,gUnknown_03006FDC;
 
@@ -97,14 +97,14 @@ void sub_08025104(void) {
     struct ContinuedSetupMode29 *setup;
     u8 *work,*bank;
     u32 zero;
-    sub_08040CD0(0x21,1);
+    ClearFrameObjects(0x21,1);
     setup=(struct ContinuedSetupMode29 *)gSetupBuffer_03000590;
     work=gState0TransferWork.bytes;
     bank=work+0x88;
     {u8 *mode=&setup[*bank].mode;zero=0;*mode=0x2C;}
     setup[*bank].zero=zero;
-    setup[*bank].first=sub_08036E54(*(s16 *)(work+0xE8));
-    setup[*bank].second=sub_08036E54(*(s16 *)(work+0xEC));
+    setup[*bank].first=Clamp1To99(*(s16 *)(work+0xE8));
+    setup[*bank].second=Clamp1To99(*(s16 *)(work+0xEC));
     work[0xAA]++;
 }
 
@@ -133,7 +133,7 @@ void sub_0802EF5C(void) {
     }while(i<=2);
     if(finished){
         struct ContinuedPhaseWork29 *work;
-        sub_08040CD0(0x21,6);
+        ClearFrameObjects(0x21,6);
         work=(struct ContinuedPhaseWork29 *)&gState0TransferWork;
         work->phase++;
     }
@@ -176,9 +176,9 @@ void sub_08060620(void) {
         ((struct AnimationWork60620 *)gMainContextPointer_03006F74)->phase = 0U;
     }
     temp_r5 = (s16) ((struct AnimationWork60620 *)gMainContextPointer_03006F74)->phase;
-    if (((u32)sub_0807CDF8(temp_r5, 0xA) << 0x10) == 0) {
+    if (((u32)__modsi3(temp_r5, 0xA) << 0x10) == 0) {
         const u8 *blocks=gAnimationBlocks60620;
-        s16 selected=(s16)sub_0807CD2C(temp_r5,10);
+        s16 selected=(s16)__divsi3(temp_r5,10);
         CpuSet(gScratch60620.bytes+((blocks[selected]+1)*0x1E0),(void *)0x06004020,0xF0U);
     }
 }
@@ -239,5 +239,5 @@ void sub_0806A024(void) {
  const struct ChoiceRecord6A024 *records=gChoiceRecords6A024;
  const struct ChoiceRecord6A024 *selected=&records[gUnknown_03006FDC];
  if(selected->fixed) {gUnknown_03006F84=selected->value;return;}
- gUnknown_03006F84=sub_0807CF40(gRandomBytes_083F7D80[*(u8 *)&gFrameCounter],11);
+ gUnknown_03006F84=__umodsi3(gRandomBytes_083F7D80[*(u8 *)&gFrameCounter],11);
 }

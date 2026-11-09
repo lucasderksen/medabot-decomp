@@ -50,10 +50,10 @@ void sub_0805F19C(void)
     bg3 = (volatile u16 *)0x0400000E;
     control = 0x3C07;
     *bg3 = control;
-    sub_0805BA34(gMain2NameMap_08792888, BG1CNT);
-    sub_0805BA34(gMain2NameMap_087929E8, BG2CNT);
-    sub_0805BA34(gMain2NameMap_08792BB8, BG3CNT);
-    length = sub_08044D0C(gMain2NameTiles_087917F4, (void *)0x02030000);
+    LoadLz77SizedTilemap(gMain2NameMap_08792888, BG1CNT);
+    LoadLz77SizedTilemap(gMain2NameMap_087929E8, BG2CNT);
+    LoadLz77SizedTilemap(gMain2NameMap_08792BB8, BG3CNT);
+    length = DecompressLz77OrCopy(gMain2NameTiles_087917F4, (void *)0x02030000);
     CpuSet((void *)0x02030000, (void *)0x06004000, (length << 10) >> 11);
     {
         const u8 *source = gMain2AdditionalTiles_08785EC0;
@@ -98,5 +98,5 @@ void sub_0805F19C(void)
     gFrameObjects[3].screenY = 48;
     gFrameObjects[4].screenX = 144;
     gFrameObjects[4].screenY = 48;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

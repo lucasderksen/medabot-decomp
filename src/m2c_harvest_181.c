@@ -33,7 +33,7 @@ void sub_0806CC80(void);
 void sub_08021370(void) {
     if(gFrameObjects[0x21].unknown23[4]==0x10) {
         if(gState0TransferWork.bytes[0x51]==2)gState0TransferWork.bytes[0xAA]=0x14;
-        else {sub_08074DE0(0x3E);gState0TransferWork.bytes[0xAA]=0xE;}
+        else {PlaySoundEffect(0x3E);gState0TransferWork.bytes[0xAA]=0xE;}
     } else {
         if(gFrameObjects[0x21].unknown23[4]<=7)gFrameObjects[0x21].scaleX+=8;
         else gFrameObjects[0x21].scaleX-=8;

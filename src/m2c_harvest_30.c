@@ -23,7 +23,7 @@ void sub_080195C0(void) {
     u32 var_r4;
     u8 *var_r5;
 
-    sub_08040D0C(0x46U, 0x12U);
+    HideFrameObjects(0x46U, 0x12U);
     var_r4 = 0;
     offset0 = gSetupBuffer_03000590;
     var_r5 = offset0 + 0x40;

@@ -13,9 +13,9 @@
 
 extern const u8 gAudioWaveformBytes_080B0820[];
 
-void sub_08073A48(s32 waveform);
+void LoadWaveRamPattern(s32 waveform);
 
-void sub_08073A48(s32 waveform) {
+void LoadWaveRamPattern(s32 waveform) {
 
   u16 soundControl;
   u32 value;

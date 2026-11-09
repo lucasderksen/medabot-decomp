@@ -46,7 +46,7 @@ void sub_08034120(void)
     if (work->completeB5)
     {
         gUnknown_03000440[0x130] = 0;
-        sub_08034F08();
+        AdvanceActionByteScript();
     }
 }
 
@@ -62,7 +62,7 @@ void sub_08034170(void)
     work->byte160 = sub_08036218();
     work->byteD0 = work->byte8B;
     sub_08034F68(work->selected88, work->byteD0, work->signedEC);
-    sub_08034F08();
+    AdvanceActionByteScript();
 }
 
 
@@ -77,7 +77,7 @@ void sub_080341C0(void)
     work->byte160 = sub_08036218();
     sub_0801E2D8();
     if (work->completeB5)
-        sub_08034F08();
+        AdvanceActionByteScript();
 }
 
 
@@ -92,6 +92,6 @@ void sub_08034200(void)
     work->byte160 = sub_08036218();
     sub_0801F484();
     if (work->completeB5)
-        sub_08034F08();
+        AdvanceActionByteScript();
 }
 

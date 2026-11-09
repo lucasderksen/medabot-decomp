@@ -20,16 +20,16 @@
 #include "state0_work.h"
 #include "tile_text.h"
 
-extern void sub_0800F300(void);
+extern void RefreshSelectedPartPreview(void);
 extern void sub_0800F6E4(void);
 extern void sub_0800F77C(void);
 extern void sub_0800F7D0(void);
-extern void sub_0800F844(void);
+extern void DrawSelectedPartText(void);
 extern void sub_0800F8A0(void);
-extern void sub_0800FA7C(void);
+extern void DrawPartCategoryValueRows(void);
 
 u32 sub_0800AD58(void);
-s32 sub_0800FDD8(void);
+s32 CycleSelectablePartOnLeftRight(void);
 
 u32 sub_0800AD58(void) {
 
@@ -39,7 +39,7 @@ u32 sub_0800AD58(void) {
     up = 0x40 & (u8)gRepeatedKeys;
     if (up) {
         u32 root;
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         root = (u32)gInventoryRecords;
         value = (u8 *)((gState0TypedWork.bytes[0x46] + (gState0TypedWork.bytes[0x3D] << 6)) + 0x18 + root);
         if (*value == 0) {
@@ -51,7 +51,7 @@ u32 sub_0800AD58(void) {
     }
     if (0x80 & (u8)gRepeatedKeys) {
         u32 root;
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         root = (u32)gInventoryRecords;
         value = (u8 *)((gState0TypedWork.bytes[0x46] + (gState0TypedWork.bytes[0x3D] << 6)) + 0x18 + root);
         if (*value == 7) {
@@ -64,7 +64,7 @@ u32 sub_0800AD58(void) {
     return 0;
 }
 
-s32 sub_0800FDD8(void) {
+s32 CycleSelectablePartOnLeftRight(void) {
 
     u16 value;
     s32 low;
@@ -84,7 +84,7 @@ s32 sub_0800FDD8(void) {
                 break;
             if ((value >> 8) == (low = value & 0xFF))
                 continue;
-            sub_08042B58(gState0TypedWork.bytes[0x3D], gState0TypedWork.bytes[0x3E], &gState0TypedWork.bytes[0x10E]);
+            CopyPartMetadataSlot(gState0TypedWork.bytes[0x3D], gState0TypedWork.bytes[0x3E], &gState0TypedWork.bytes[0x10E]);
             if (gUnknownRecords_030017A0[gState0TypedWork.bytes[0x51]].unknown00[1] == gState0TypedWork.bytes[0x111])
                 break;
         }
@@ -102,21 +102,21 @@ s32 sub_0800FDD8(void) {
                 break;
             if ((value >> 8) == (low = value & 0xFF))
                 continue;
-            sub_08042B58(gState0TypedWork.bytes[0x3D], gState0TypedWork.bytes[0x3E], &gState0TypedWork.bytes[0x10E]);
+            CopyPartMetadataSlot(gState0TypedWork.bytes[0x3D], gState0TypedWork.bytes[0x3E], &gState0TypedWork.bytes[0x10E]);
             if (gUnknownRecords_030017A0[gState0TypedWork.bytes[0x51]].unknown00[1] == gState0TypedWork.bytes[0x111])
                 break;
         }
     }
     if (0x30 & (u8)gRepeatedKeys) {
-        sub_08074DE0(2);
-        sub_08042B58(gState0TypedWork.bytes[0x3D], gState0TypedWork.bytes[0x3E], &gState0TypedWork.bytes[0xEE]);
+        PlaySoundEffect(2);
+        CopyPartMetadataSlot(gState0TypedWork.bytes[0x3D], gState0TypedWork.bytes[0x3E], &gState0TypedWork.bytes[0xEE]);
         sub_0800F6E4();
         sub_0800F77C();
         sub_0800F7D0();
-        sub_0800F844();
+        DrawSelectedPartText();
         sub_0800F8A0();
-        sub_0800FA7C();
-        sub_0800F300();
+        DrawPartCategoryValueRows();
+        RefreshSelectedPartPreview();
         return 1;
     }
 end:

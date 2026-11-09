@@ -10,27 +10,27 @@ extern u8 gUnknown_0300058C[];
 extern void (*const gContinuedStateCallbacks_083D2630[])(void);
 extern void sub_0804DDCC(void);
 
-void sub_0804D8CC(u32 count)
+void ReadBankedScriptArgs(u32 count)
 {
     s32 i;
     u8 limit = count;
     for (i = 0; i < limit; i++)
-        gContinuedArguments_03006474[i] = sub_0804D83C();
+        gContinuedArguments_03006474[i] = ReadBankedScriptByte();
 }
 
 void sub_0804DB80(void)
 {
     u8 *work;
     u32 value;
-    sub_08048888(48);
-    sub_08048888(90);
+    ResetFrameObjectSlot(48);
+    ResetFrameObjectSlot(90);
     work = gUnknown_030057E0;
     work[0xC76] = 0;
     value = work[0xC5E];
     work[0xC5D] = value;
 }
 
-void sub_0804DBB4(u32 index)
+void ClearScriptObjectSlot(u32 index)
 {
     u8 narrowed = index;
     u32 address = (u32)gUnknown_030057E0;
@@ -38,7 +38,7 @@ void sub_0804DBB4(u32 index)
     ((u8 *)address)[narrowed] = 0;
 }
 
-void sub_0804DBD0(u32 index, u32 value)
+void SetScriptObjectSlot(u32 index, u32 value)
 {
     u8 narrowedIndex = index;
     u8 narrowedValue = value;
@@ -47,7 +47,7 @@ void sub_0804DBD0(u32 index, u32 value)
     ((u8 *)address)[narrowedIndex] = narrowedValue + 1;
 }
 
-s32 sub_0804DBF0(u32 index)
+s32 GetScriptObjectSlot(u32 index)
 {
     u8 narrowed = index;
     u32 address = (u32)gUnknown_030057E0;
@@ -64,7 +64,7 @@ void sub_0804DC34(void) { }
 void sub_0804DCF8(void) { sub_08050290(); }
 void sub_0804DD04(void)
 {
-    if (sub_08041CA4())
+    if (RunDialogueClose())
         sub_08050290();
 }
 
@@ -96,22 +96,22 @@ void sub_0804DD3C(void)
 
 void sub_0804DD5C(void)
 {
-    if (sub_08049E08(0))
+    if (StepPaletteFadeToColor(0))
         sub_08050290();
 }
 void sub_0804DD70(void)
 {
-    if (sub_08049E08(0))
+    if (StepPaletteFadeToColor(0))
         sub_08050290();
 }
 void sub_0804DD84(void)
 {
-    if (sub_08049E08(0x7FFF))
+    if (StepPaletteFadeToColor(0x7FFF))
         sub_08050290();
 }
 void sub_0804DD9C(void)
 {
-    if (sub_08049E08(0x7FFF))
+    if (StepPaletteFadeToColor(0x7FFF))
         sub_08050290();
 }
 void sub_0804DDB4(void) { sub_0804DDCC(); }

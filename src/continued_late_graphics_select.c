@@ -26,13 +26,13 @@ void sub_080574D4(void)
                 break;
             case 2:
                 gContinuedCommandWork_030064A0[0x70] = 0;
-                gUnknown_0300137C = 11;
+                gNestedCallbackIndex = 11;
                 break;
             case 3:
-                gUnknown_0300137C = 13;
+                gNestedCallbackIndex = 13;
                 break;
             case 4: case 5: case 6:
-                gUnknown_0300137C = 15;
+                gNestedCallbackIndex = 15;
                 break;
             }
         }
@@ -41,13 +41,13 @@ void sub_080574D4(void)
             sub_080492A8((const u16 *)0x06002800, (u16 *)(work + 0x72),
                 0, 0, 30, 20, 32, 32, 0, 0);
             sub_08047BA8(4);
-            gUnknown_0300137C = 10;
+            gNestedCallbackIndex = 10;
         }
     }
     else if (*(u8 *)&gNewKeys & 2)
     {
         sub_08047BA8(5);
-        sub_08048888(127);
+        ResetFrameObjectSlot(127);
         work[0x6F] = 16;
         sub_0804A210();
     }

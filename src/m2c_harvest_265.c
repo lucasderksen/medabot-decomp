@@ -47,9 +47,9 @@ void sub_0803C8AC(void) {
         temp_r6 = temp_r4->unknown23[4];
         if (temp_r6 == 0) {
             if (!(2 & gUnknown_03001800.flags)) {
-                sub_0803F1C8((u32) temp_r4->unknown2C[2], (u32) temp_r4->unknown2C[3], (temp_r4->screenX + temp_r4->unknown2C[1]) & 0x3F, (u32) temp_r4->screenY, gUnknown_083B4C60[temp_r4->unknown2C[0]], (u32) *(volatile u16*)0x04000008, (u32) temp_r6);
+                CopyTilemapRect64((u32) temp_r4->unknown2C[2], (u32) temp_r4->unknown2C[3], (temp_r4->screenX + temp_r4->unknown2C[1]) & 0x3F, (u32) temp_r4->screenY, gUnknown_083B4C60[temp_r4->unknown2C[0]], (u32) *(volatile u16*)0x04000008, (u32) temp_r6);
             } else {
-                sub_0803F1C8((u32) temp_r4->unknown2C[2], (u32) temp_r4->unknown2C[3], (temp_r4->screenX - temp_r4->unknown2C[1]) & 0x3F, (u32) temp_r4->screenY, gUnknown_083B4C60[temp_r4->unknown2C[0]], (u32) *(volatile u16*)0x04000008, (u32) temp_r6);
+                CopyTilemapRect64((u32) temp_r4->unknown2C[2], (u32) temp_r4->unknown2C[3], (temp_r4->screenX - temp_r4->unknown2C[1]) & 0x3F, (u32) temp_r4->screenY, gUnknown_083B4C60[temp_r4->unknown2C[0]], (u32) *(volatile u16*)0x04000008, (u32) temp_r6);
             }
             lateRoot=(u32)gFrameObjects;
             temp_r0_3=(struct FrameObject*)(lateRoot+((u32)gState0TypedWork.bytes[0x12F]<<6));

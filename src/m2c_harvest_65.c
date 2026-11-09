@@ -24,7 +24,7 @@ void sub_08025570(void) {
     gFrameObjects[0x22].screenX = (s16) (u16) gFrameObjects[0x21].screenX;
     gFrameObjects[0x22].screenY = (s16) (u16) gFrameObjects[0x21].screenY;
     if (gFrameObjects[0x21].scaleX == 1) {
-        sub_08040CD0(0x21U, 2U);
+        ClearFrameObjects(0x21U, 2U);
         gState0TransferWork.bytes[0xAA] = gState0TransferWork.bytes[0xAA] + 1;
     } else {
         gFrameObjects[0x21].scaleX -= 1;
@@ -41,7 +41,7 @@ void sub_08027D98(void) {
     gState0TypedWork.widths.word86 += 1;
     gFrameObjects[0x21].angle = (gFrameObjects[0x21].angle + 0x40) & 0x3FF;
     if (gFrameObjects[0x21].scaleX == 4) {
-        sub_08040CD0(0x21U, 2U);
+        ClearFrameObjects(0x21U, 2U);
         gState0TransferWork.bytes[0xAA] = gState0TransferWork.bytes[0xAA] + 1;
     } else {
         gFrameObjects[0x21].scaleX -= 4;

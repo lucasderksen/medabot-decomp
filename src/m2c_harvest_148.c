@@ -20,7 +20,7 @@ void sub_08023900(void);
 
 void sub_08023900(void) {
     const u8 *const *commands=gState0NextCommands_083B6100;
-    sub_08040BD8(commands[gState0TypedWork.bytes[0x84]],0x21);
+    RunFrameObjectCommands(commands[gState0TypedWork.bytes[0x84]],0x21);
     if (!(1 & gState0TransferWork.bytes[0xF8])) {
         struct ContinuedAngleFrame21 *frame=(struct ContinuedAngleFrame21 *)gFrameObjects;
         frame->angle=(frame->angle-0x40)&0x3FF;
@@ -28,7 +28,7 @@ void sub_08023900(void) {
         struct ContinuedAngleFrame21 *frame=(struct ContinuedAngleFrame21 *)gFrameObjects;
         frame->angle=(frame->angle+0x40)&0x3FF;
     }
-    if (sub_080355F0(0x21)!=0) {
+    if (StepFrameObjectToTarget(0x21)!=0) {
         struct ContinuedAngleFrame21 *frame=(struct ContinuedAngleFrame21 *)gFrameObjects;
         frame->angle=0;
         gState0TransferWork.bytes[0xAA]++;

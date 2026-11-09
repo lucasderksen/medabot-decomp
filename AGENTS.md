@@ -41,6 +41,14 @@ score-0 result.
   matching by then, start `tools/permute.py` on it in the background, record
   one line with `tools/target_queue.py --record <name> --minutes N --note ...`
   and move on. Do not write per-function research documents.
+- Before working on an unmatched function, run `python tools/find_siblings.py <name>`:
+  a matched function with similar code is the best draft to copy forms from.
+- When the diff needs an instruction shape your C does not produce, search the
+  matched functions for it first: `python tools/asm_grep.py '<regex>'` lists every
+  matching function with the C that emits the shape (often a sibling function).
+- When registers are rotated between long-lived values, `python tools/alloc_priorities.py <name>`
+  (after `tools/try_draft.py`) shows global-allocation priorities, so the refs or live
+  length a value needs can be computed (see docs/IDIOMS.md on loop-depth weights).
 - For register-only near-misses run `tools/try_flags.py` (every flag profile the ROM already uses),
   `tools/try_wraps.py` and `tools/try_decls.py` before the
   permuter (see docs/IDIOMS.md). Then try the variable-sharing sweeps
@@ -87,6 +95,11 @@ score-0 result.
   it as it is. `tools/m2c_integrate.py` replaces the NONMATCH entry once the
   function matches. Unmatched code that is still an `.incbin` gap gets one with
   `python tools/nonmatch.py <name>`.
+- Name a function only when its body establishes what it does (CamelCase
+  verb + object, e.g. `FillTilemapRect`); otherwise keep the address name.
+  Rename with `python tools/rename.py OLD=NEW` (or `--file`), which updates
+  sources, headers, assembly, config, docs and tools together, then rebuild.
+  libgcc address aliases go to their real names with `--alias`.
 - Only document findings that help many functions (compiler idioms in
   [docs/IDIOMS.md](docs/IDIOMS.md), struct
   layouts); put struct knowledge in `include/` headers rather than prose.

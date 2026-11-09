@@ -33,16 +33,16 @@ void sub_0801D878(void)
     u8 *selected = &work[0xDE];
     sub_080432A0((*selected - 1) * 4 + 90, *selected - 1, (work[0xF8] & 1) ^ 1);
     if (gUnknown_03000440[0x84] & 4)
-        sub_08040D0C(*selected * 4 + 86, 4);
+        HideFrameObjects(*selected * 4 + 86, 4);
     else
-        sub_08040D44(*selected * 4 + 86, 4);
+        ShowFrameObjects(*selected * 4 + 86, 4);
     if (++gUnknown_03000440[0x84] == 60)
     {
         u8 *work = gState0TransferWork.bytes;
         u8 *selected = &work[0xDE];
         struct ObservedActionPartnerFrame *frames;
-        sub_08040D44(*selected * 4 + 86, 4);
-        sub_08074DE0(64);
+        ShowFrameObjects(*selected * 4 + 86, 4);
+        PlaySoundEffect(64);
         frames = (void *)gFrameObjects;
         frames[*selected * 4 + 89].byte24 = 4;
         frames[*selected * 4 + 89].byte25 = 0;

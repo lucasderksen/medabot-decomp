@@ -17,13 +17,13 @@ void sub_0801427C(void)
         sub_08018C78();
     }
     if (*flags & 2)
-        gUnknown_0300137C = 96;
+        gNestedCallbackIndex = 96;
     else if (*flags & 4)
-        gUnknown_0300137C = 104;
+        gNestedCallbackIndex = 104;
     else if (*flags & 8)
-        gUnknown_0300137C = 112;
+        gNestedCallbackIndex = 112;
     else if (*flags & 16)
-        gUnknown_0300137C = 120;
+        gNestedCallbackIndex = 120;
     else
     {
         sub_0801902C();
@@ -32,7 +32,7 @@ void sub_0801427C(void)
         if (sub_08019EF0())
         {
             sub_08019078();
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
         }
     }
 }
@@ -45,7 +45,7 @@ void sub_08014314(void)
     sub_0801A5D8();
     work = gState0TransferWork.bytes;
     if (work[0x45] == 0)
-        gUnknown_0300137C = 68;
+        gNestedCallbackIndex = 68;
     else
     {
         u8 *record;
@@ -58,12 +58,12 @@ void sub_08014314(void)
         {
             u8 mask = record[0xBD] & 4;
             if (mask)
-                gUnknown_0300137C = 71;
+                gNestedCallbackIndex = 71;
             else
             {
                 sub_0801A0D0();
                 gMainSubstate = 8;
-                gUnknown_0300137C = mask;
+                gNestedCallbackIndex = mask;
             }
         }
     }
@@ -87,9 +87,9 @@ void sub_080143A0(void)
     sub_08015414(*selected);
     if (sub_0801A6B0())
     {
-        sub_0803F624(work + 0x45, 12, 0);
-        gUnknown_0300137C = 76;
+        FillBytes(work + 0x45, 12, 0);
+        gNestedCallbackIndex = 76;
     }
     else
-        gUnknown_0300137C = 69;
+        gNestedCallbackIndex = 69;
 }

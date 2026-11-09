@@ -21,13 +21,13 @@
 
 extern s32 sub_08037230(s32,s32);
 extern s32 sub_0803725C(void);
-extern void sub_08034F08(void);
+extern void AdvanceActionByteScript(void);
 extern void sub_0803579C(u32,u32);
 extern void sub_08035814(s32);
 extern void sub_08037280(u32,u32);
-extern void sub_0803EF8C(u32, u32, u32, u32, u32, u32);
-extern void sub_0804253C(u8, u16, u16);
-extern void sub_08043CA8(void);
+extern void FillTilemapRect(u32, u32, u32, u32, u32, u32);
+extern void StartBlendFade(u8, u16, u16);
+extern void ClearBgScrolls2(void);
 
 void sub_0801BACC(void);
 void sub_08020844(void);
@@ -49,7 +49,7 @@ void sub_0801BACC(void) {
                 }
             }
         }
-        sub_08040CD0(9U, 1U);
+        ClearFrameObjects(9U, 1U);
     }
 }
 
@@ -73,7 +73,7 @@ void sub_08021F90(void) {
     } else {
         gFrameObjects[0x21].angle=(gFrameObjects[0x21].angle+0x40)&0x3FF;
     }
-    if (sub_080355F0(0x21U) != 0) {
+    if (StepFrameObjectToTarget(0x21U) != 0) {
         gFrameObjects[0x21].flags &= 0xFDFF;
         gFrameObjects[0x21].angle = 0;
         gState0TransferWork.bytes[0xAA] = (u8) (gState0TransferWork.bytes[0xAA] + 1);
@@ -100,7 +100,7 @@ void sub_08033F9C(void) {
             work[0xB7] = 3;
         }
     }
-    sub_08034F08();
+    AdvanceActionByteScript();
 }
 
 void sub_0803E4F4(void) {
@@ -113,7 +113,7 @@ void sub_0803E4F4(void) {
     volatile u16 *bg1;
     volatile u16 *bg2;
     volatile u16 *bg3;
-    sub_08043CA8();
+    ClearBgScrolls2();
     display = (volatile u16 *)0x04000000;
     *display &= 0xE0FF;
     bg0 = (volatile u16 *)0x04000008;
@@ -128,13 +128,13 @@ void sub_0803E4F4(void) {
     CpuFastSet(&paletteZero, (void *)0x05000120, 0x01000008);
     tileFill = 0x11111111;
     CpuFastSet(&tileFill, (void *)0x06004120, 0x01000008);
-    sub_0803EF8C(0x20,0x20,0,0,*bg0,0x9209);
-    sub_0803EF8C(0x20,0x20,0,0,*bg1,0x9209);
-    sub_0803EF8C(0x20,0x20,0,0,*bg2,0x9209);
-    sub_0803EF8C(0x20,0x20,0,0,*bg3,0x9209);
+    FillTilemapRect(0x20,0x20,0,0,*bg0,0x9209);
+    FillTilemapRect(0x20,0x20,0,0,*bg1,0x9209);
+    FillTilemapRect(0x20,0x20,0,0,*bg2,0x9209);
+    FillTilemapRect(0x20,0x20,0,0,*bg3,0x9209);
     frameZero = zero;
     CpuFastSet(&frameZero, gFrameObjects, 0x01000800);
     *display |= 0x1F60;
-    sub_0804253C(5,0x3F,0x20);
-    gUnknown_0300137C += 1;
+    StartBlendFade(5,0x3F,0x20);
+    gNestedCallbackIndex += 1;
 }

@@ -14,7 +14,7 @@ void sub_08059E50(void)
     } while ((s32)gFrameObjects + index * 64 >= (s32)gFrameObjects);
 }
 
-void sub_0805BA34(const void *source, u32 control)
+void LoadLz77SizedTilemap(const void *source, u32 control)
 {
     u8 *scratch = (void *)0x02030000;
     s32 width, height;

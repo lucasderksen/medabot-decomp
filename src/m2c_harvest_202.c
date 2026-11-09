@@ -34,8 +34,8 @@ extern const u8 gUnknown_084D819C[];
 extern const u8 gUnknown_084D8F0C[];
 extern s32 gTransferStep03000000;
 extern s32 sub_0803725C(void);
-extern s32 sub_0807CD2C(s32,s32);
-extern s32 sub_0807CDF8(s32,s32);
+extern s32 __divsi3(s32,s32);
+extern s32 __modsi3(s32,s32);
 extern u16 gTransferOffsets03000008[];
 extern u32 sub_08033184(u32);
 extern u32 sub_0803325C(u32);
@@ -50,8 +50,8 @@ extern void sub_08035814(u32);
 extern void sub_08036CCC(u32,u32,s32);
 extern void sub_08037280(u32,u32);
 extern void sub_080372D4(u32,u32,s32);
-extern void sub_0803D4AC(void);
-extern void sub_08074DE0(u32);
+extern void AdvanceActionHalfwordScript(void);
+extern void PlaySoundEffect(u32);
 
 void sub_08019078(void);
 u32 sub_08019EF0(void);
@@ -187,7 +187,7 @@ void sub_0802DA60(void) {
  do {
   if(*(u8 *)(i+(u32)selected)) {
    struct FrameObject *frame;
-   sub_08040D44(start>>24,1);
+   ShowFrameObjects(start>>24,1);
    frame=(struct FrameObject *)(offset+(u32)gFrameObjects);
    frame->flags|=0x220;
    frame->scaleX=0x80;
@@ -204,8 +204,8 @@ void sub_0803133C(void){
  gUnknownCallback_030017F0=DummyInterruptHandler;
  work=(void *)&gState0TypedWork;
  work->pending=1;
- if(work->mode!=1){gMainSubstate=6;gUnknown_0300137C=48;}
- else {gMainSubstate=10;gUnknown_0300137C=32;}
+ if(work->mode!=1){gMainSubstate=6;gNestedCallbackIndex=48;}
+ else {gMainSubstate=10;gNestedCallbackIndex=32;}
 }
 
 void sub_08031390(void){
@@ -219,7 +219,7 @@ void sub_08031390(void){
  frames->frame.screenY=(u16)gFrameObjects[work[0x87]*4+0x5D].screenY-4;
  frames->frame.palette=12;frames->frame.priority=0x80;
  frames->frame.frameAndGroup=0x5800;frames->frame.unknown23[0]=zero;
- sub_08074DE0(0x2A);gUnknown_0300137C++;
+ PlaySoundEffect(0x2A);gNestedCallbackIndex++;
 }
 
 void sub_08031538(void){
@@ -230,7 +230,7 @@ void sub_08031538(void){
  
  sub_0801A4F4(buffer,work[0x87],0x23,gFrameObjects[work[0x87]*4+0x5D].screenX+24,gFrameObjects[work[0x87]*4+0x5D].screenY+4);
  *(u8 *)((u32)buffer-0x6A)=0;
- gUnknown_0300137C++;
+ gNestedCallbackIndex++;
 }
 
 void sub_0803B374(void){
@@ -238,7 +238,7 @@ void sub_0803B374(void){
  u32 offset=work[0x87]*256;u8 *row=(u8 *)(offset+(u32)setup);
  if(row[0xDD]<=3)sub_0801BC5C(*(u8 *)((work[0xA7]*24)+offset+(u32)setup+0x49));
  else sub_0801BC5C(row[0xA8]+0x50);
- sub_0803D4AC();
+ AdvanceActionHalfwordScript();
 }
 
 void sub_08060248(void) {
@@ -266,24 +266,24 @@ s32 sub_08068978(void) {
  divisor=&gTransferDivisor03000005;
  firstDivisor=*divisor;
  count=*counter;
- if(sub_0807CDF8(count,firstDivisor)==0) {
+ if(__modsi3(count,firstDivisor)==0) {
   dma=(volatile struct DmaRegisters68978 *)0x040000D4;
   dma->source=(u32)&fill;
   offsets=gTransferOffsets03000008;
-  dma->destination=offsets[sub_0807CD2C(count,*divisor)]+0x0600C000;
+  dma->destination=offsets[__divsi3(count,*divisor)]+0x0600C000;
   control=0x80000001;
   dma->control=control;
   (void)dma->control;
   dma->source=(u32)&fill;
-  dma->destination=offsets[sub_0807CD2C(count,*divisor)]+0x0600C004;
+  dma->destination=offsets[__divsi3(count,*divisor)]+0x0600C004;
   dma->control=control;
   (void)dma->control;
   dma->source=(u32)&fill;
-  dma->destination=offsets[sub_0807CD2C(count,*divisor)]+0x0600C008;
+  dma->destination=offsets[__divsi3(count,*divisor)]+0x0600C008;
   dma->control=control;
   (void)dma->control;
   dma->source=(u32)&fill;
-  dma->destination=offsets[sub_0807CD2C(count,*divisor)]+0x0600C00C;
+  dma->destination=offsets[__divsi3(count,*divisor)]+0x0600C00C;
   dma->control=control;
   (void)dma->control;
  }

@@ -18,7 +18,7 @@ struct Work22E14 { u8 pad[0x88]; u8 setup88; u8 pad89[0x21]; u8 counterAA; };
 
 extern const u8 *gState0NextCommands_083B6100[];
 extern struct Work22E14 gWork22E14 asm("gCounter6ED08_03001800");
-extern void sub_08074DE0(u32);
+extern void PlaySoundEffect(u32);
 
 void sub_08022E14(void);
 
@@ -35,10 +35,10 @@ void sub_08022E14(void) {
     gFrameObjects[0x25].scaleX = 0x40;
     gFrameObjects[0x25].scaleY = 0x40;
     gFrameObjects[0x25].priority = 0xF0;
-    sub_08040B90(gState0NextCommands_083B6100[63], 0x25);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[63], 0x25);
     for (i = 0; i < 4; i++) {
         gFrameObjects[0x21 + i].flags = 0xC604;
-        coords.tile = sub_08042BC0(i << 6, 0x10,
+        coords.tile = GetPolarOffsetPoint(i << 6, 0x10,
                                    gFrameObjects[gWork22E14.setup88 * 4 + 0x5D].screenX,
                                    gFrameObjects[gWork22E14.setup88 * 4 + 0x5D].screenY - 4);
         gFrameObjects[0x21 + i].screenX = coords.packed;
@@ -53,6 +53,6 @@ void sub_08022E14(void) {
         gFrameObjects[0x21 + i].unknown2C[0] = i << 6;
         gFrameObjects[0x21 + i].unknown2C[1] = 0;
     }
-    sub_08074DE0(0x4B);
+    PlaySoundEffect(0x4B);
     gWork22E14.counterAA++;
 }

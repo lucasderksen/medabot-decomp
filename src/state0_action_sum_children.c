@@ -12,7 +12,7 @@ void sub_08035BD4(void)
 {
     struct ObservedActionAccumulator *work = (void *)gState0TransferWork.bytes;
     if (work->valueEC <= 2)
-        work->valueEC += sub_080424B8() & 3;
+        work->valueEC += NextRandomByte() & 3;
 }
 
 void sub_08035BFC(u32 selected, u32 index)

@@ -91,7 +91,7 @@ void sub_0802A5C0(void) {
         }
         i += 1;
     } while (i <= 2U);
-    sub_08074DE0(0x5BU);
+    PlaySoundEffect(0x5BU);
     gState0TypedWork.bytes[0x84] = 0;
     gUnknown_03001800[0xAA] += 1;
 }

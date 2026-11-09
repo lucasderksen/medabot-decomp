@@ -35,12 +35,12 @@ void sub_0803CAB0(void) {
     firstTable = gUnknown_083CEDF4;
     sub_0801BD58(firstTable[temp_r2->byte2B], 0);
     if (gState0TypedWork.bytes[0x66] == 0xFF) {
-        sub_08040CD0(gState0TypedWork.bytes[0x12F], 1U);
+        ClearFrameObjects(gState0TypedWork.bytes[0x12F], 1U);
         return;
     }
     temp_r4 = &frames[gState0TypedWork.bytes[0x12F]];
     temp_r6 = temp_r4->unknown2C[1];
     if (temp_r6 == 0) {
-        sub_0803F1C8((u32) temp_r4->unknown2C[2], (u32) temp_r4->unknown2C[3], (u32) temp_r4->screenX, (u32) temp_r4->screenY, (secondTable = gState0NextText_083B4C60, secondTable[temp_r4->unknown2C[0]]), (u32) *(volatile u16 *)0x04000008, (u32) temp_r6);
+        CopyTilemapRect64((u32) temp_r4->unknown2C[2], (u32) temp_r4->unknown2C[3], (u32) temp_r4->screenX, (u32) temp_r4->screenY, (secondTable = gState0NextText_083B4C60, secondTable[temp_r4->unknown2C[0]]), (u32) *(volatile u16 *)0x04000008, (u32) temp_r6);
     }
 }

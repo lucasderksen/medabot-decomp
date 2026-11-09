@@ -46,15 +46,15 @@ void sub_08064524(void) {
  u16 *wordA;
  u32 rowOffset;
  if(mode) offset=0x68;
- if(sub_0803FB3C(*(const void *const *)((u32)scripts+offset))) {
-  if(*(u8 *)&gRepeatedKeys &1) {sub_08074DE0(13);gUnknown_0300137C++;}
+ if(RunDialogue(*(const void *const *)((u32)scripts+offset))) {
+  if(*(u8 *)&gRepeatedKeys &1) {PlaySoundEffect(13);gNestedCallbackIndex++;}
   else {
    serial=(struct SerialView64524 *)&gMainSerialOutgoingWork;
    connected=*(u8 *)&gUnknown_03000B90;
    rowOffset=0;
    if(connected==0) rowOffset=4;
    wordA=&serial->wordA;
-   if(*(u16 *)((u32)wordA+rowOffset)==0xFEFF) gUnknown_0300137C++;
+   if(*(u16 *)((u32)wordA+rowOffset)==0xFEFF) gNestedCallbackIndex++;
   }
  }
 }
@@ -72,7 +72,7 @@ void sub_0806E184(void) {
   *(volatile u16 *)0x04000000 &=0x80FF;
   gMainState=gGraphicsWork6E18403001800.state;
   gMainSubstate=gGraphicsWork6E18403001800.substate;
-  gUnknown_0300137C=gGraphicsWork6E18403001800.step;
+  gNestedCallbackIndex=gGraphicsWork6E18403001800.step;
  }
 }
 

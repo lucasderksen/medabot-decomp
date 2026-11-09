@@ -56,8 +56,8 @@ extern const u8 gUnknown_083D2A83[];
 extern s8 gUnknown_03006494;
 extern struct BlendWorkA6C gBlendSetupWork_03006F40;
 extern struct Work2284 gWork2284 asm("gContinuedWork_030057E0");
-extern u16 sub_0807CEC8(u16 value, s32 divisor);
-extern u16 sub_0807CF40(u16 value, s32 divisor);
+extern u16 __udivsi3(u16 value, s32 divisor);
+extern u16 __umodsi3(u16 value, s32 divisor);
 extern void DummyInterruptHandler(void);
 
 u32 sub_08049A6C(void);
@@ -256,9 +256,9 @@ void sub_08059F58(u32 numberArg, u32 widthArg, u32 xArg, u32 yArg, u32 paletteAr
                     *dst = palette << 12;
                     dst--;
                 } else {
-                    *dst = (sub_0807CF40(number, 10) + tile) | (palette << 12);
+                    *dst = (__umodsi3(number, 10) + tile) | (palette << 12);
                     dst--;
-                    number = sub_0807CEC8(number, 10);
+                    number = __udivsi3(number, 10);
                 }
             }
         } else {
@@ -269,19 +269,19 @@ void sub_08059F58(u32 numberArg, u32 widthArg, u32 xArg, u32 yArg, u32 paletteAr
                     *dst = tile | (palette << 12);
                     dst--;
                 } else {
-                    *dst = (sub_0807CF40(number, 10) + tile) | (palette << 12);
+                    *dst = (__umodsi3(number, 10) + tile) | (palette << 12);
                     dst--;
-                    number = sub_0807CEC8(number, 10);
+                    number = __udivsi3(number, 10);
                 }
             }
         }
     } else {
         dst = ((u16 *)((block << 11) + 0x06000000) + x) + (y << 5);
         for (i = 0; i <= 4; i++) {
-            digits[i] = sub_0807CF40(number, 10);
+            digits[i] = __umodsi3(number, 10);
             if (number == 0 && i != 0)
                 break;
-            number = sub_0807CEC8(number, 10);
+            number = __udivsi3(number, 10);
         }
         for (i--; i >= 0; i--)
             *dst++ = (digits[i] + tile) | (palette << 12);

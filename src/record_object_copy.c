@@ -11,13 +11,13 @@ struct ObjectAttributes
     u32 tile:10, priority:2, palette:4, key:16;
 };
 
-u32 sub_08045794(const struct RecordObjectWork *work, struct OamEntry *output, u16 index, s32 inputPriority, u32 inputLimit, u32 mode)
+u32 InsertAffineRecordObjects(const struct RecordObjectWork *work, struct OamEntry *output, u16 index, s32 inputPriority, u32 inputLimit, u32 mode)
 {
     u8 priority = inputPriority;
     u16 limit = inputLimit;
     u32 count = work->rows * work->columns;
     u16 i;
-    output = sub_08045588(output, index, count, work->key);
+    output = MakeOamInsertGap(output, index, count, work->key);
     for (i = 0; i < count && index < limit; output++, index++, i++)
     {
         struct ObjectAttributes *object = (struct ObjectAttributes *)output;
@@ -41,14 +41,14 @@ u32 sub_08045794(const struct RecordObjectWork *work, struct OamEntry *output, u
 
 
 
-u32 sub_08045680(const struct RecordObjectWork *work, struct OamEntry *output, u16 index, s32 inputPriority, u32 inputLimit, u32 inputMode)
+u32 InsertRecordObjects(const struct RecordObjectWork *work, struct OamEntry *output, u16 index, s32 inputPriority, u32 inputLimit, u32 inputMode)
 {
     u8 priority = inputPriority;
     u16 limit = inputLimit;
     u8 mode = inputMode;
     u32 count = work->rows * work->columns;
     u16 i;
-    output = sub_08045588(output, index, count, work->key);
+    output = MakeOamInsertGap(output, index, count, work->key);
     for (i = 0; i < count && index < limit; output++, index++, i++)
     {
         struct ObjectAttributes *object = (struct ObjectAttributes *)output;
@@ -69,7 +69,7 @@ u32 sub_08045680(const struct RecordObjectWork *work, struct OamEntry *output, u
 
 #include "record_helpers.h"
 
-struct OamEntry *sub_08045588(struct OamEntry *objects, u16 count, s32 inputGap, s32 inputKey)
+struct OamEntry *MakeOamInsertGap(struct OamEntry *objects, u16 count, s32 inputGap, s32 inputKey)
 {
     u16 gap = inputGap;
     u16 key = inputKey;
@@ -101,7 +101,7 @@ struct OamEntry *sub_08045588(struct OamEntry *objects, u16 count, s32 inputGap,
     return objects;
 }
 
-u32 sub_080455E0(const struct RecordObjectWork *work, struct OamEntry *output, u16 index, u16 limit)
+u32 CopyRecordObjects(const struct RecordObjectWork *work, struct OamEntry *output, u16 index, u16 limit)
 {
     u16 i = 0;
     for (i = 0; i < work->rows * work->columns && index < limit; i++, index++)

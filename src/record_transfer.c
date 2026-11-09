@@ -20,7 +20,7 @@ struct DmaRegisters
     u32 control;
 };
 
-void sub_08044DA8(struct OamEntry *object, s32 width, s32 height)
+void SetOamShapeAndSize(struct OamEntry *object, s32 width, s32 height)
 {
     u8 *bytes = (u8 *)object;
     if (width > height)
@@ -61,15 +61,15 @@ void sub_08044DA8(struct OamEntry *object, s32 width, s32 height)
     }
 }
 
-void sub_08045084(const void *source, s32 shape, s32 size, s32 rows, s32 columns, s32 mode, u32 tile, u32 unused, void *scratch, u32 useCpu)
+void LoadReorderedObjectTiles(const void *source, s32 shape, s32 size, s32 rows, s32 columns, s32 mode, u32 tile, u32 unused, void *scratch, u32 useCpu)
 {
     u16 destinationTile = tile;
     tile = (u16)tile;
     if (source != 0)
     {
-        u32 bytes = sub_08044D0C(source, scratch);
+        u32 bytes = DecompressLz77OrCopy(source, scratch);
         u8 *reordered = (u8 *)scratch + bytes;
-        sub_08044FB4(reordered, scratch, shape, size, rows, columns, mode);
+        ReorderObjectTileGrid(reordered, scratch, shape, size, rows, columns, mode);
         if (useCpu != 0)
             CpuSet(reordered, (u8 *)0x06010000 + tile * 32, (bytes & 0x7FFFFF) / 4 | CPU_SET_32BIT);
         else

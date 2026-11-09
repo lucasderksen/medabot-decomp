@@ -84,7 +84,7 @@ extern struct ObjectAttributes13C8 gObjectAttributes13C8[] asm("gLaterBuffer_030
 extern struct SelectionWork13C8 gSelectionWork13C8 asm("gContinuedWork_030057E0");
 extern void Refresh13C8(u8 index) asm("sub_080487C8");
 extern void SetFrame13C8(u8 index, u8 value, void *record) asm("sub_0805218C");
-extern void SetObject13C8(u8 index, u16 flags, u8 frame, u8 palette, u8 selector) asm("sub_08048864");
+extern void SetObject13C8(u8 index, u16 flags, u8 frame, u8 palette, u8 selector) asm("InitFrameObject");
 extern void SetPose13C8(u8 index, u8 value) asm("sub_08049420");
 
 void sub_080513C8(s32 value);
@@ -105,9 +105,9 @@ void sub_080513C8(s32 value) {
     s32 i;
 
     records = gSelectionRecords_03005DBC;
-    sub_08049714(saved, 0x200);
-    sub_080497C0(records, saved, 0x200);
-    sub_08049714(records, 0x200);
+    ClearBytes(saved, 0x200);
+    CopyBytes2(records, saved, 0x200);
+    ClearBytes(records, 0x200);
     count = 0;
     slot = 0;
     k = 0;

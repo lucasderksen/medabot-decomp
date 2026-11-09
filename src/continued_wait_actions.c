@@ -7,7 +7,7 @@
 
 extern u8 gUnknown_030057E0[];
 extern u8 gLaterBuffer_03006D20[];
-extern void sub_0804B2B0(void);
+extern void LoadMapBgLayers(void);
 
 void sub_0804E43C(void) { if (sub_080508B4()) sub_08050290(); }
 

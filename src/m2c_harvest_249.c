@@ -13,9 +13,9 @@ extern const s16 *const gUnknown_083CE164[];
 extern const u8 gUnknown_083CE374[];
 extern u8 gUnknown_03001800[];
 
-void sub_0803D4AC(void);
+void AdvanceActionHalfwordScript(void);
 
-void sub_0803D4AC(void) {
+void AdvanceActionHalfwordScript(void) {
 
  const s16 *const *tables=gUnknown_083CE164;
  u8 *work=gUnknown_03001800;

@@ -26,11 +26,11 @@ void sub_08013E30(void)
         sub_08017CE8();
         sub_0801830C();
         counter = *(u8 *)&gFrameCounter;
-        sub_08041C14(8, counter, sub_0801827C());
+        SetObjectXWobble(8, counter, sub_0801827C());
         sub_080183A4();
         if ((gUnknown_0300058C[1] & 1) && work[0x3C] == 0)
         {
-            sub_08074DE0(2);
+            PlaySoundEffect(2);
             sub_080185A8();
             work[0x40] = 0;
             (*state)++;
@@ -43,7 +43,7 @@ void sub_08013E30(void)
                 if (other[0x3C] == 1)
                 {
                     u8 *cleared;
-                    sub_08074DE0(2);
+                    PlaySoundEffect(2);
                     sub_080185A8();
                     cleared = other;
                     cleared += 0x40;
@@ -55,9 +55,9 @@ void sub_08013E30(void)
             }
             if (gUnknown_0300058C[0] & 2)
             {
-                sub_08074DE0(5);
-                sub_0804253C(6, 63, 32);
-                gUnknown_0300137C++;
+                PlaySoundEffect(5);
+                StartBlendFade(6, 63, 32);
+                gNestedCallbackIndex++;
             }
         }
         break;
@@ -85,7 +85,7 @@ void sub_08013E30(void)
         sub_08018074(part[0], part[1], part[2], part[3]);
         sub_08018098();
         sub_08043240(0, 8);
-        sub_08042698(2, 2, 11, 2, *(volatile u16 *)0x0400000A, 0x63C0);
+        FillTilemapRectSequential(2, 2, 11, 2, *(volatile u16 *)0x0400000A, 0x63C0);
         sub_08018180();
         *state = 0;
         break;
@@ -101,9 +101,9 @@ void sub_08013FA8(void)
     sub_08018218();
     sub_0801830C();
     counter = *(u8 *)&gFrameCounter;
-    sub_08041C14(8, counter, sub_0801827C());
+    SetObjectXWobble(8, counter, sub_0801827C());
     sub_080182AC();
-    if (sub_080425DC())
+    if (StepBlendFade())
     {
         u8 *cleared = gUnknown_03000440;
         u32 zero;
@@ -120,6 +120,6 @@ void sub_08013FA8(void)
         CpuFastSet(&palette, (void *)0x05000200, 0x01000080);
         background = zero;
         CpuFastSet(&background, (void *)0x05000000, 0x01000080);
-        gUnknown_0300137C = 60;
+        gNestedCallbackIndex = 60;
     }
 }

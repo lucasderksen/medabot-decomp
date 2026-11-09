@@ -52,33 +52,33 @@ extern void sub_08017E00(void);
 extern void sub_08017EA8(void);
 extern void sub_08017F9C(void);
 
-void sub_08008CA0(void);
+void RunInventoryRecordDialogue(void);
 void sub_0800E78C(void);
 void sub_080173B4(u32 value);
 void sub_080183A4(void);
 
-void sub_08008CA0(void) {
+void RunInventoryRecordDialogue(void) {
 
     u8 result;
 
-    sub_080093F8();
+    ScrollBg3Diagonally();
     switch (gState0TypedWork.bytes[0x42]) {
     case 0:
         switch (gState0TypedWork.bytes[0x44]) {
         case 0:
-            result = sub_0803FB3C(gState0NextScripts_083B5578[6]);
+            result = RunDialogue(gState0NextScripts_083B5578[6]);
             break;
         case 1:
-            result = sub_0803FB3C(gState0NextScripts_083B5578[7]);
+            result = RunDialogue(gState0NextScripts_083B5578[7]);
             break;
         case 2:
-            result = sub_0803FB3C(gUnknown_083B6B48[gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown02[2]]);
+            result = RunDialogue(gUnknown_083B6B48[gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown02[2]]);
             break;
         case 3:
-            result = sub_0803FB3C(gState0PartStatusMessages_083B722C[gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[0]]);
+            result = RunDialogue(gState0PartStatusMessages_083B722C[gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[0]]);
             break;
         case 4:
-            result = sub_0803FB3C(gState0NextScripts_083B5578[8]);
+            result = RunDialogue(gState0NextScripts_083B5578[8]);
             break;
         }
         break;
@@ -86,64 +86,64 @@ void sub_08008CA0(void) {
         switch (gState0TypedWork.bytes[0x44]) {
         case 0:
             if (gInventoryRecords[gState0TypedWork.bytes[0x3D]].byte5 > 9) {
-                sub_08041D04(gUnknownBytes_083B7F8C + gInventoryRecords[gState0TypedWork.bytes[0x3D]].byte1 * 3, &gState0TypedWork.bytes[0xEE], 3);
-                sub_08041D04(gUnknownBytes_083B7E54 + gState0TypedWork.bytes[0xEE] * 6, &gState0TypedWork.bytes[0x10E], 6);
-                result = sub_0803FB3C(gUnknown_083B80C0[gState0TypedWork.bytes[0x113]]);
+                CopyBytesU8Count(gUnknownBytes_083B7F8C + gInventoryRecords[gState0TypedWork.bytes[0x3D]].byte1 * 3, &gState0TypedWork.bytes[0xEE], 3);
+                CopyBytesU8Count(gUnknownBytes_083B7E54 + gState0TypedWork.bytes[0xEE] * 6, &gState0TypedWork.bytes[0x10E], 6);
+                result = RunDialogue(gUnknown_083B80C0[gState0TypedWork.bytes[0x113]]);
             } else {
-                result = sub_0803FB3C(gUnknown_083B80C0[4]);
+                result = RunDialogue(gUnknown_083B80C0[4]);
             }
             break;
         case 1:
             if (gInventoryRecords[gState0TypedWork.bytes[0x3D]].byte5 > 0x1D) {
-                sub_08041D04(gUnknownBytes_083B7F8C + gInventoryRecords[gState0TypedWork.bytes[0x3D]].byte1 * 3, &gState0TypedWork.bytes[0xEE], 3);
-                sub_08041D04(gUnknownBytes_083B7E54 + gState0TypedWork.bytes[0xEF] * 6, &gState0TypedWork.bytes[0x10E], 6);
-                result = sub_0803FB3C(gUnknown_083B80C0[gState0TypedWork.bytes[0x113]]);
+                CopyBytesU8Count(gUnknownBytes_083B7F8C + gInventoryRecords[gState0TypedWork.bytes[0x3D]].byte1 * 3, &gState0TypedWork.bytes[0xEE], 3);
+                CopyBytesU8Count(gUnknownBytes_083B7E54 + gState0TypedWork.bytes[0xEF] * 6, &gState0TypedWork.bytes[0x10E], 6);
+                result = RunDialogue(gUnknown_083B80C0[gState0TypedWork.bytes[0x113]]);
             } else {
-                result = sub_0803FB3C(gUnknown_083B80C0[4]);
+                result = RunDialogue(gUnknown_083B80C0[4]);
             }
             break;
         case 2:
             if (gInventoryRecords[gState0TypedWork.bytes[0x3D]].byte5 > 0x3B) {
-                sub_08041D04(gUnknownBytes_083B7F8C + gInventoryRecords[gState0TypedWork.bytes[0x3D]].byte1 * 3, &gState0TypedWork.bytes[0xEE], 3);
-                sub_08041D04(gUnknownBytes_083B7E54 + gState0TypedWork.bytes[0xF0] * 6, &gState0TypedWork.bytes[0x10E], 6);
-                result = sub_0803FB3C(gUnknown_083B80C0[gState0TypedWork.bytes[0x113]]);
+                CopyBytesU8Count(gUnknownBytes_083B7F8C + gInventoryRecords[gState0TypedWork.bytes[0x3D]].byte1 * 3, &gState0TypedWork.bytes[0xEE], 3);
+                CopyBytesU8Count(gUnknownBytes_083B7E54 + gState0TypedWork.bytes[0xF0] * 6, &gState0TypedWork.bytes[0x10E], 6);
+                result = RunDialogue(gUnknown_083B80C0[gState0TypedWork.bytes[0x113]]);
             } else {
-                result = sub_0803FB3C(gUnknown_083B80C0[4]);
+                result = RunDialogue(gUnknown_083B80C0[4]);
             }
             break;
         case 3:
-            result = sub_0803FB3C(gState0NextScripts_083B5578[9]);
+            result = RunDialogue(gState0NextScripts_083B5578[9]);
             break;
         case 4:
-            result = sub_0803FB3C(gState0NextScripts_083B5578[10]);
+            result = RunDialogue(gState0NextScripts_083B5578[10]);
             break;
         case 5:
             switch (gState0TypedWork.bytes[0x46]) {
             case 0:
             if (gInventoryRecords[gState0TypedWork.bytes[0x3D]].byte5 > 9) {
-                sub_08041D04(gUnknownBytes_083B7F8C + gInventoryRecords[gState0TypedWork.bytes[0x3D]].byte1 * 3, &gState0TypedWork.bytes[0xEE], 3);
-                sub_08041D04(gUnknownBytes_083B7E54 + (&gState0TypedWork.bytes[0xEE])[gState0TypedWork.bytes[0x46]] * 6, &gState0TypedWork.bytes[0x10E], 6);
-                result = sub_0803FB3C(gUnknown_083B82F0[gState0TypedWork.bytes[0x10F]]);
+                CopyBytesU8Count(gUnknownBytes_083B7F8C + gInventoryRecords[gState0TypedWork.bytes[0x3D]].byte1 * 3, &gState0TypedWork.bytes[0xEE], 3);
+                CopyBytesU8Count(gUnknownBytes_083B7E54 + (&gState0TypedWork.bytes[0xEE])[gState0TypedWork.bytes[0x46]] * 6, &gState0TypedWork.bytes[0x10E], 6);
+                result = RunDialogue(gUnknown_083B82F0[gState0TypedWork.bytes[0x10F]]);
             } else {
-                result = sub_0803FB3C(gState0NextScripts_083B5578[11]);
+                result = RunDialogue(gState0NextScripts_083B5578[11]);
             }
             break;
             case 1:
             if (gInventoryRecords[gState0TypedWork.bytes[0x3D]].byte5 > 0x1D) {
-                sub_08041D04(gUnknownBytes_083B7F8C + gInventoryRecords[gState0TypedWork.bytes[0x3D]].byte1 * 3, &gState0TypedWork.bytes[0xEE], 3);
-                sub_08041D04(gUnknownBytes_083B7E54 + (&gState0TypedWork.bytes[0xEE])[gState0TypedWork.bytes[0x46]] * 6, &gState0TypedWork.bytes[0x10E], 6);
-                result = sub_0803FB3C(gUnknown_083B82F0[gState0TypedWork.bytes[0x10F]]);
+                CopyBytesU8Count(gUnknownBytes_083B7F8C + gInventoryRecords[gState0TypedWork.bytes[0x3D]].byte1 * 3, &gState0TypedWork.bytes[0xEE], 3);
+                CopyBytesU8Count(gUnknownBytes_083B7E54 + (&gState0TypedWork.bytes[0xEE])[gState0TypedWork.bytes[0x46]] * 6, &gState0TypedWork.bytes[0x10E], 6);
+                result = RunDialogue(gUnknown_083B82F0[gState0TypedWork.bytes[0x10F]]);
             } else {
-                result = sub_0803FB3C(gState0NextScripts_083B5578[11]);
+                result = RunDialogue(gState0NextScripts_083B5578[11]);
             }
             break;
             case 2:
             if (gInventoryRecords[gState0TypedWork.bytes[0x3D]].byte5 > 0x3B) {
-                sub_08041D04(gUnknownBytes_083B7F8C + gInventoryRecords[gState0TypedWork.bytes[0x3D]].byte1 * 3, &gState0TypedWork.bytes[0xEE], 3);
-                sub_08041D04(gUnknownBytes_083B7E54 + (&gState0TypedWork.bytes[0xEE])[gState0TypedWork.bytes[0x46]] * 6, &gState0TypedWork.bytes[0x10E], 6);
-                result = sub_0803FB3C(gUnknown_083B82F0[gState0TypedWork.bytes[0x10F]]);
+                CopyBytesU8Count(gUnknownBytes_083B7F8C + gInventoryRecords[gState0TypedWork.bytes[0x3D]].byte1 * 3, &gState0TypedWork.bytes[0xEE], 3);
+                CopyBytesU8Count(gUnknownBytes_083B7E54 + (&gState0TypedWork.bytes[0xEE])[gState0TypedWork.bytes[0x46]] * 6, &gState0TypedWork.bytes[0x10E], 6);
+                result = RunDialogue(gUnknown_083B82F0[gState0TypedWork.bytes[0x10F]]);
             } else {
-                result = sub_0803FB3C(gState0NextScripts_083B5578[11]);
+                result = RunDialogue(gState0NextScripts_083B5578[11]);
             }
             break;
             }
@@ -153,17 +153,17 @@ void sub_08008CA0(void) {
     case 2:
         switch (gState0TypedWork.bytes[0x44]) {
         case 0:
-            result = sub_0803FB3C(gState0NextScripts_083B5578[13]);
+            result = RunDialogue(gState0NextScripts_083B5578[13]);
             break;
         case 1:
-            result = sub_0803FB3C(gState0NextScripts_083B5578[14]);
+            result = RunDialogue(gState0NextScripts_083B5578[14]);
             break;
         }
         break;
     }
     if (result != 0) {
-        sub_0803FB0C();
-        gUnknown_0300137C = 0x49;
+        RestartDialogueText();
+        gNestedCallbackIndex = 0x49;
     }
 }
 
@@ -171,31 +171,31 @@ void sub_0800E78C(void) {
 
     u8 result;
 
-    sub_0800EBFC();
-    sub_0800F440();
+    ScrollBg3Diagonally3();
+    UpdateSelectedPartPreview();
     switch (gState0TypedWork.bytes[0x3E]) {
     case 0:
         switch (gState0TypedWork.bytes[0x44]) {
         case 0:
-            result = sub_0803FB3C(gUnknown_083B82F0[gState0TypedWork.bytes[0xF0]]);
+            result = RunDialogue(gUnknown_083B82F0[gState0TypedWork.bytes[0xF0]]);
             break;
         case 1:
-            result = sub_0803FB3C(gUnknown_083B6FA4[gState0TypedWork.bytes[0xEE]]);
+            result = RunDialogue(gUnknown_083B6FA4[gState0TypedWork.bytes[0xEE]]);
             break;
         case 2:
-            result = sub_0803FB3C(gState0NextScripts_083B5578[sub_08042B80(gState0TypedWork.bytes[0xF0]) + 0x11]);
+            result = RunDialogue(gState0NextScripts_083B5578[sub_08042B80(gState0TypedWork.bytes[0xF0]) + 0x11]);
             break;
         case 3:
-            result = sub_0803FB3C(gUnknown_083BDA04[0]);
+            result = RunDialogue(gUnknown_083BDA04[0]);
             break;
         case 4:
-            result = sub_0803FB3C(gUnknown_083BDA04[1]);
+            result = RunDialogue(gUnknown_083BDA04[1]);
             break;
         case 5:
-            result = sub_0803FB3C(gUnknown_083BDA04[2]);
+            result = RunDialogue(gUnknown_083BDA04[2]);
             break;
         case 6:
-            result = sub_0803FB3C(gUnknown_083BDA04[3]);
+            result = RunDialogue(gUnknown_083BDA04[3]);
             break;
         }
         break;
@@ -203,63 +203,63 @@ void sub_0800E78C(void) {
     case 2:
         switch (gState0TypedWork.bytes[0x44]) {
         case 0:
-            result = sub_0803FB3C(gUnknown_083B82F0[gState0TypedWork.bytes[0xF0]]);
+            result = RunDialogue(gUnknown_083B82F0[gState0TypedWork.bytes[0xF0]]);
             break;
         case 1:
-            result = sub_0803FB3C(gUnknown_083B6FA4[gState0TypedWork.bytes[0xEE]]);
+            result = RunDialogue(gUnknown_083B6FA4[gState0TypedWork.bytes[0xEE]]);
             break;
         case 2:
-            result = sub_0803FB3C(gState0NextScripts_083B5578[sub_08042B80(gState0TypedWork.bytes[0xF0]) + 0x11]);
+            result = RunDialogue(gState0NextScripts_083B5578[sub_08042B80(gState0TypedWork.bytes[0xF0]) + 0x11]);
             break;
         case 3:
-            result = sub_0803FB3C(gUnknown_083BDA04[0]);
+            result = RunDialogue(gUnknown_083BDA04[0]);
             break;
         case 4:
-            result = sub_0803FB3C(gUnknown_083BDA04[1]);
+            result = RunDialogue(gUnknown_083BDA04[1]);
             break;
         case 5:
-            result = sub_0803FB3C(gUnknown_083BDA04[2]);
+            result = RunDialogue(gUnknown_083BDA04[2]);
             break;
         case 6:
-            result = sub_0803FB3C(gUnknown_083BDA04[4]);
+            result = RunDialogue(gUnknown_083BDA04[4]);
             break;
         case 7:
-            result = sub_0803FB3C(gUnknown_083BDA04[5]);
+            result = RunDialogue(gUnknown_083BDA04[5]);
             break;
         }
         break;
     case 3:
         switch (gState0TypedWork.bytes[0x44]) {
         case 0:
-            result = sub_0803FB3C(gUnknown_083B6FA4[gState0TypedWork.bytes[0xEE]]);
+            result = RunDialogue(gUnknown_083B6FA4[gState0TypedWork.bytes[0xEE]]);
             break;
         case 1:
-            result = sub_0803FB3C(gState0NextScripts_083B5578[0x13]);
+            result = RunDialogue(gState0NextScripts_083B5578[0x13]);
             break;
         case 2:
-            result = sub_0803FB3C(gUnknown_083BDA04[0]);
+            result = RunDialogue(gUnknown_083BDA04[0]);
             break;
         case 3:
-            result = sub_0803FB3C(gUnknown_083BDA04[6]);
+            result = RunDialogue(gUnknown_083BDA04[6]);
             break;
         case 4:
-            result = sub_0803FB3C(gUnknown_083BDA04[7]);
+            result = RunDialogue(gUnknown_083BDA04[7]);
             break;
         case 5:
-            result = sub_0803FB3C(gUnknown_083BDA04[8]);
+            result = RunDialogue(gUnknown_083BDA04[8]);
             break;
         case 6:
-            result = sub_0803FB3C(gUnknown_083BDA04[9]);
+            result = RunDialogue(gUnknown_083BDA04[9]);
             break;
         case 7:
-            result = sub_0803FB3C(gUnknown_083BDA04[10]);
+            result = RunDialogue(gUnknown_083BDA04[10]);
             break;
         }
         break;
     }
     if (result != 0) {
-        sub_0803FB0C();
-        gUnknown_0300137C = 0x21;
+        RestartDialogueText();
+        gNestedCallbackIndex = 0x21;
     }
 }
 
@@ -269,10 +269,10 @@ void sub_080173B4(u32 value) {
     s32 cleared = 0;
     u8 *record;
 
-    sub_08040D0C(0x24, 0xD);
+    HideFrameObjects(0x24, 0xD);
     switch (gCounter6ED08_03001800.buffer64[0x1E]) {
     case 0:
-        sub_08042678(gDebugMenuTextBuffer, 0xD);
+        FillTextWithHyphens(gDebugMenuTextBuffer, 0xD);
         cleared = 1;
         break;
     case 1:
@@ -283,20 +283,20 @@ void sub_080173B4(u32 value) {
         if (record[5] > 9) {
             if (gCounter6ED08_03001800.pad56[2] == 0) {
                 if (record[0xC1] == 0x50) {
-                    sub_08041D04(gUnknownBytes_083B7F8C + record[1] * 3, gUnknown_0300052E, 3);
-                    sub_08041D04(gUnknownBytes_083B7E54 + gUnknown_0300052E[0] * 6, gUnknown_0300052E + 0x20, 6);
-                    sub_0803F63C(gUnknownPointers_083B7048[gUnknown_0300052E[0x21]], gUnknown_0300052E - 0x50, 0xE);
+                    CopyBytesU8Count(gUnknownBytes_083B7F8C + record[1] * 3, gUnknown_0300052E, 3);
+                    CopyBytesU8Count(gUnknownBytes_083B7E54 + gUnknown_0300052E[0] * 6, gUnknown_0300052E + 0x20, 6);
+                    CopyBytes(gUnknownPointers_083B7048[gUnknown_0300052E[0x21]], gUnknown_0300052E - 0x50, 0xE);
                     sub_08017734(0);
                 } else {
-                    sub_08041D04(gUnknown_083C4B90[4], gDebugMenuTextBuffer, 0xE);
+                    CopyBytesU8Count(gUnknown_083C4B90[4], gDebugMenuTextBuffer, 0xE);
                     done = 1;
                 }
             } else {
-                sub_08041D04(gUnknown_083C4B90[1], gDebugMenuTextBuffer, 0xE);
+                CopyBytesU8Count(gUnknown_083C4B90[1], gDebugMenuTextBuffer, 0xE);
                 done = 1;
             }
         } else {
-            sub_08041D04(gUnknown_083C4B90[5], gDebugMenuTextBuffer, 0xE);
+            CopyBytesU8Count(gUnknown_083C4B90[5], gDebugMenuTextBuffer, 0xE);
             done = 1;
         }
         break;
@@ -308,20 +308,20 @@ void sub_080173B4(u32 value) {
         if (record[5] > 0x1D) {
             if (gCounter6ED08_03001800.pad56[2] == 0) {
                 if (record[0xC1] == 0x50) {
-                    sub_08041D04(gUnknownBytes_083B7F8C + record[1] * 3, gUnknown_0300052E, 3);
-                    sub_08041D04(gUnknownBytes_083B7E54 + gUnknown_0300052E[1] * 6, gUnknown_0300052E + 0x20, 6);
-                    sub_0803F63C(gUnknownPointers_083B7048[gUnknown_0300052E[0x21]], gUnknown_0300052E - 0x50, 0xE);
+                    CopyBytesU8Count(gUnknownBytes_083B7F8C + record[1] * 3, gUnknown_0300052E, 3);
+                    CopyBytesU8Count(gUnknownBytes_083B7E54 + gUnknown_0300052E[1] * 6, gUnknown_0300052E + 0x20, 6);
+                    CopyBytes(gUnknownPointers_083B7048[gUnknown_0300052E[0x21]], gUnknown_0300052E - 0x50, 0xE);
                     sub_08017734(0);
                 } else {
-                    sub_08041D04(gUnknown_083C4B90[4], gDebugMenuTextBuffer, 0xE);
+                    CopyBytesU8Count(gUnknown_083C4B90[4], gDebugMenuTextBuffer, 0xE);
                     done = 1;
                 }
             } else {
-                sub_08041D04(gUnknown_083C4B90[1], gDebugMenuTextBuffer, 0xE);
+                CopyBytesU8Count(gUnknown_083C4B90[1], gDebugMenuTextBuffer, 0xE);
                 done = 1;
             }
         } else {
-            sub_08041D04(gUnknown_083C4B90[5], gDebugMenuTextBuffer, 0xE);
+            CopyBytesU8Count(gUnknown_083C4B90[5], gDebugMenuTextBuffer, 0xE);
             done = 1;
         }
         break;
@@ -333,20 +333,20 @@ void sub_080173B4(u32 value) {
         if (record[5] > 0x3B) {
             if (gCounter6ED08_03001800.pad56[2] == 0) {
                 if (record[0xC1] == 0x50) {
-                    sub_08041D04(gUnknownBytes_083B7F8C + record[1] * 3, gUnknown_0300052E, 3);
-                    sub_08041D04(gUnknownBytes_083B7E54 + gUnknown_0300052E[2] * 6, gUnknown_0300052E + 0x20, 6);
-                    sub_0803F63C(gUnknownPointers_083B7048[gUnknown_0300052E[0x21]], gUnknown_0300052E - 0x50, 0xE);
+                    CopyBytesU8Count(gUnknownBytes_083B7F8C + record[1] * 3, gUnknown_0300052E, 3);
+                    CopyBytesU8Count(gUnknownBytes_083B7E54 + gUnknown_0300052E[2] * 6, gUnknown_0300052E + 0x20, 6);
+                    CopyBytes(gUnknownPointers_083B7048[gUnknown_0300052E[0x21]], gUnknown_0300052E - 0x50, 0xE);
                     sub_08017734(0);
                 } else {
-                    sub_08041D04(gUnknown_083C4B90[4], gDebugMenuTextBuffer, 0xE);
+                    CopyBytesU8Count(gUnknown_083C4B90[4], gDebugMenuTextBuffer, 0xE);
                     done = 1;
                 }
             } else {
-                sub_08041D04(gUnknown_083C4B90[1], gDebugMenuTextBuffer, 0xE);
+                CopyBytesU8Count(gUnknown_083C4B90[1], gDebugMenuTextBuffer, 0xE);
                 done = 1;
             }
         } else {
-            sub_08041D04(gUnknown_083C4B90[5], gDebugMenuTextBuffer, 0xE);
+            CopyBytesU8Count(gUnknown_083C4B90[5], gDebugMenuTextBuffer, 0xE);
             done = 1;
         }
         break;
@@ -356,12 +356,12 @@ void sub_080173B4(u32 value) {
     if (value != 0) {
         if (done != 0) {
             if ((u8)(8 & gState0TypedWork.bytes[0x84]) == 0)
-                sub_08040DB8(&gState0TypedWork.bytes[0x9E], 0x24, 0x13, 0xE, 0xA, 0xE, 0, 0);
+                PlaceAlignedTextObjects(&gState0TypedWork.bytes[0x9E], 0x24, 0x13, 0xE, 0xA, 0xE, 0, 0);
         } else {
-            sub_08040DB8(gDebugMenuTextBuffer, 0x24, 0x13, 0xE, 0xA, 0xE, done, done);
+            PlaceAlignedTextObjects(gDebugMenuTextBuffer, 0x24, 0x13, 0xE, 0xA, 0xE, done, done);
         }
     } else {
-        sub_08040DB8(gDebugMenuTextBuffer, 0x24, 0x13, 0xE, 0xA, 0xE, value, value);
+        PlaceAlignedTextObjects(gDebugMenuTextBuffer, 0x24, 0x13, 0xE, 0xA, 0xE, value, value);
     }
 }
 
@@ -429,7 +429,7 @@ void sub_080183A4(void) {
         }
     }
     if (changed != 0) {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         sub_08017B24();
         sub_08017BD0();
         sub_08017D50();
@@ -443,6 +443,6 @@ void sub_080183A4(void) {
         sub_08018180();
         sub_08017A14(gState0TypedWork.bytes[0x3C] * 3, 0);
         sub_08043240(0, 8);
-        sub_08042698(2, 2, 0xB, 2, *(u16 *)0x0400000A, 0x63C0);
+        FillTilemapRectSequential(2, 2, 0xB, 2, *(u16 *)0x0400000A, 0x63C0);
     }
 }

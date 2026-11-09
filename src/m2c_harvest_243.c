@@ -36,7 +36,7 @@ extern struct TimerWork6445C *gTimerRoot6445C;
 extern u32 sub_08033184(u32);
 extern u32 sub_08038E9C(void);extern s32 sub_08038F84(void);extern void sub_08039068(void);
 extern u32 sub_080732B8(u32);
-extern u32 sub_0807CEC8(u32,u32);
+extern u32 __udivsi3(u32,u32);
 extern void sub_0801A0A4(u32,u32);
 extern void sub_08036CCC(u32,u32,s32);
 extern void sub_08036FA0(u32);
@@ -125,7 +125,7 @@ void sub_08021300(void) {
     }else if(work->mode==2){
         ((struct ContinuedPhase32 *)work)->phase=0x14;
     }else{
-        sub_08074DE0(0x3E);
+        PlaySoundEffect(0x3E);
         ((struct ContinuedPhase32 *)work)->phase=0xE;
     }
 }
@@ -142,9 +142,9 @@ void sub_08021DAC(void) {
 
 void sub_080229C0(void) {
 
-    sub_08040BD8(gState0NextCommands_083B6100.commands,0x21);
+    RunFrameObjectCommands(gState0NextCommands_083B6100.commands,0x21);
     if(gFrameObjects[0x21].scaleX==8){
-        sub_08040CD0(0x21,1);
+        ClearFrameObjects(0x21,1);
         ((struct ContinuedPhase32 *)&gState0TransferWork)->phase++;
     }else gFrameObjects[0x21].scaleX-=8;
 }
@@ -230,7 +230,7 @@ void sub_0806445C(void) {
  work = gTimerRoot6445C;
  if (--work->timer < 0) {
   work->delay = 0x280;
-  gUnknown_0300137C += 1;
+  gNestedCallbackIndex += 1;
   return;
  }
  if (work->timer <= 7) {
@@ -274,6 +274,6 @@ void sub_080726D4(struct PitchWork726D4 *work) {
  work->duration = work->range >> 1;
  upper = sub_080732B8((u32)work->note + 2);
  lower = sub_080732B8(work->note);
- work->step = sub_0807CEC8(((s32)(u16)upper-(s32)(u16)lower)*work->scale,work->duration);
+ work->step = __udivsi3(((s32)(u16)upper-(s32)(u16)lower)*work->scale,work->duration);
  work->offset = zero;
 }

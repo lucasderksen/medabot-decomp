@@ -15,7 +15,7 @@ void sub_0801DD30(void);
 
 void sub_0801DD30(void) {
     if (gFrameObjects[0x21].scaleX == 0x40) {
-        sub_08074DE0(0x30);
+        PlaySoundEffect(0x30);
         gState0TransferWork.bytes[0xAA]++;
     } else {
         gFrameObjects[0x21].scaleX -= 4;

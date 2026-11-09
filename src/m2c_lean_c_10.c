@@ -41,7 +41,7 @@ void sub_08063FB0(void) {
     u8 *slot;
     struct LinkContext63FB0 **rootp;
 
-    sub_0803FB3C(gMain2ScriptSlots_08485678[25]);
+    RunDialogue(gMain2ScriptSlots_08485678[25]);
     rootp = &gLinkContext63FB0;
     buffer = (*rootp)->buffer230;
     word = gMainSerialOutgoingWork.words[gUnknown_03000B90 == 0][1];
@@ -71,8 +71,8 @@ void sub_08063FB0(void) {
             sub_08042028(buffer);
             sub_08062C28(buffer[1], buffer[8]);
         } else {
-            sub_08041FE4(buffer[1]);
+            ClearInventoryRecordById(buffer[1]);
         }
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }

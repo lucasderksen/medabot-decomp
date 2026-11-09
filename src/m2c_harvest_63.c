@@ -18,7 +18,7 @@
 
 extern const void *const gState0NextCommands_083B6100[];
 extern s32 gUnknown_03000648;
-extern s32 sub_08035740(void *, s16, s32);
+extern s32 AddByteCapped(void *, s16, s32);
 
 void sub_080236E0(void);
 void sub_080239C0(void);
@@ -35,13 +35,13 @@ void sub_080236E0(void) {
     u8 *base = (u8 *) &gUnknown_03000648;
     u8 *record = (u8 *) (index + (u32) base);
     record++;
-    sub_08035740(record, *(s16 *) (work + 0xEC), 0x78);
+    AddByteCapped(record, *(s16 *) (work + 0xEC), 0x78);
     work[0xAA]++;
 }
 
 void sub_080239C0(void) {
     const void *const *commands = gState0NextCommands_083B6100;
-    sub_08040BD8(commands[gState0TypedWork.bytes[0x84]], 0x21);
+    RunFrameObjectCommands(commands[gState0TypedWork.bytes[0x84]], 0x21);
     if (gFrameObjects[0x21].commandStopped == 0xFF)
         gState0TransferWork.bytes[0xAA]++;
 }
@@ -103,10 +103,10 @@ s32 sub_08035880(s32 slot, s32 row, s32 other) {
 }
 
 void sub_0805F9C8(void) {
-    if (sub_0803FB3C(gMain2ScriptSlots_0848521C[16]) != 0) {
+    if (RunDialogue(gMain2ScriptSlots_0848521C[16]) != 0) {
         u16 *context = gMainContextPointer_03006F74;
         u16 count = context[1]++;
         if (count > 0x3C)
-            gUnknown_0300137C = 0xD;
+            gNestedCallbackIndex = 0xD;
     }
 }

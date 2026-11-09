@@ -79,9 +79,9 @@ extern void sub_0801A0D0(void);
 extern void sub_0801A678(void);
 extern void sub_080356B4(u32);
 
-void sub_08004AF8(void);
-void sub_0800ED10(void);
-void sub_0800EDA0(void);
+void ExchangeTransferBuffersOverSerial(void);
+void DrawPartPageCounts(void);
+void DrawPartPageAssignedCounts(void);
 void sub_08014404(void);
 void sub_08014F90(u32 first, u32 count);
 void sub_0801D5A8(void);
@@ -89,13 +89,13 @@ void sub_0801D738(void);
 void sub_0801D9DC(void);
 void sub_0801DAEC(void);
 
-void sub_08004AF8(void) {
+void ExchangeTransferBuffersOverSerial(void) {
 
     u8 *row;
     u16 count;
     u16 word;
 
-    sub_08004E74();
+    ScrollBg3Diagonally2();
     sub_080054C0();
     if (gCounter6ED08_03001800.frame51 != 3) {
         row = gSetupBuffer_03000590 + (gCounter6ED08_03001800.frame51 << 8);
@@ -124,12 +124,12 @@ void sub_08004AF8(void) {
         }
     }
     if (gCounter6ED08_03001800.frame51 == 3) if (gCounter6ED08_03001800.frame53 == 3) {
-        gUnknown_0300137C = 0x3A;
+        gNestedCallbackIndex = 0x3A;
         gState0TypedWork.widths.word86 = 0;
     }
 }
 
-void sub_0800ED10(void) {
+void DrawPartPageCounts(void) {
 
     u32 i;
 
@@ -144,7 +144,7 @@ void sub_0800ED10(void) {
     } while (i <= 3);
 }
 
-void sub_0800EDA0(void) {
+void DrawPartPageAssignedCounts(void) {
 
     u32 i;
 
@@ -172,27 +172,27 @@ void sub_08014404(void) {
     if (gCounter6ED08_03001800.slot87 > 2) {
         if (gState0TypedWork.bytes[0x89] != 1) {
             sub_08015358(gCounter6ED08_03001800.slot87);
-            gUnknown_0300137C = 0x45;
+            gNestedCallbackIndex = 0x45;
         } else {
             if (gSetup14404s[gCounter6ED08_03001800.slot87].kindC9 == 0x2C) {
                 sub_08015358(gCounter6ED08_03001800.slot87);
             }
-            gUnknown_0300137C = 0xA0;
+            gNestedCallbackIndex = 0xA0;
         }
     } else if (gSetup14404s[gCounter6ED08_03001800.slot87].kindC9 == 0x2C) {
         sub_08015358(gCounter6ED08_03001800.slot87);
         sub_08018900(gCounter6ED08_03001800.slot87);
         if (gState0TypedWork.bytes[0x89] != 1) {
-            gUnknown_0300137C = 0x45;
+            gNestedCallbackIndex = 0x45;
         } else {
-            gUnknown_0300137C = 0xA0;
+            gNestedCallbackIndex = 0xA0;
         }
     } else {
         if (sub_0801A6EC(gCounter6ED08_03001800.slot87) != 0) {
             if (!(2 & gContinuedByte_03002B64)) {
                 sub_08015358(gCounter6ED08_03001800.slot87);
                 sub_08018900(gCounter6ED08_03001800.slot87);
-                gUnknown_0300137C = 0x45;
+                gNestedCallbackIndex = 0x45;
                 return;
             }
             sub_0801A744(gCounter6ED08_03001800.slot87);
@@ -203,7 +203,7 @@ void sub_08014404(void) {
         gCounter6ED08_03001800.buffer64[0x1F] = 0;
         gCounter6ED08_03001800.buffer64[0x21] = 0;
         sub_0801A0D0();
-        gUnknown_0300137C = 4;
+        gNestedCallbackIndex = 4;
     }
 }
 
@@ -215,22 +215,22 @@ void sub_08014F90(u32 first, u32 count) {
     if (i < count) do {
         gSetup14F90[first].byteB8 = first;
         gSetup14F90[first].byteBA = 1;
-        sub_08042B58(gSetup14F90[first].parts43[0], 0, gUnknown_0300052E);
-        sub_0803F63C(gUnknown_0300052E, gSetup14F90[first].parts[0].name, 13);
+        CopyPartMetadataSlot(gSetup14F90[first].parts43[0], 0, gUnknown_0300052E);
+        CopyBytes(gUnknown_0300052E, gSetup14F90[first].parts[0].name, 13);
         gSetup14F90[first].parts[0].byte10 = gSetup14F90[first].parts[0].name[8];
         gSetup14F90[first].parts[0].data11[0] = gSetup14F90[first].parts[0].name[4];
         gSetup14F90[first].parts[0].id17 = gSetup14F90[first].parts43[0];
-        sub_08042B58(gSetup14F90[first].parts43[1], 1, gUnknown_0300052E);
-        sub_0803F63C(gUnknown_0300052E, gSetup14F90[first].parts[1].name, 13);
+        CopyPartMetadataSlot(gSetup14F90[first].parts43[1], 1, gUnknown_0300052E);
+        CopyBytes(gUnknown_0300052E, gSetup14F90[first].parts[1].name, 13);
         gSetup14F90[first].parts[1].data11[0] = gSetup14F90[first].parts[1].name[4];
         gSetup14F90[first].parts[1].id17 = gSetup14F90[first].parts43[1];
-        sub_08042B58(gSetup14F90[first].parts43[2], 2, gUnknown_0300052E);
-        sub_0803F63C(gUnknown_0300052E, gSetup14F90[first].parts[2].name, 13);
+        CopyPartMetadataSlot(gSetup14F90[first].parts43[2], 2, gUnknown_0300052E);
+        CopyBytes(gUnknown_0300052E, gSetup14F90[first].parts[2].name, 13);
         gSetup14F90[first].parts[2].data11[0] = gSetup14F90[first].parts[2].name[4];
         gSetup14F90[first].parts[2].id17 = gSetup14F90[first].parts43[2];
-        sub_08042B58(gSetup14F90[first].parts43[3], 3, gUnknown_0300052E);
-        sub_0803F63C(gUnknown_0300052E, gSetup14F90[first].parts[3].name, 13);
-        sub_0803F63C(&gSetup14F90[first].parts[3].name[4], gSetup14F90[first].parts[3].data11, 6);
+        CopyPartMetadataSlot(gSetup14F90[first].parts43[3], 3, gUnknown_0300052E);
+        CopyBytes(gUnknown_0300052E, gSetup14F90[first].parts[3].name, 13);
+        CopyBytes(&gSetup14F90[first].parts[3].name[4], gSetup14F90[first].parts[3].data11, 6);
         gSetup14F90[first].parts[3].id17 = gSetup14F90[first].parts43[3];
         first++;
     } while (++i < count);
@@ -245,7 +245,7 @@ void sub_0801D5A8(void) {
         gCounter6ED08_03001800.flagB5 = 1;
         return;
     }
-    first = sub_08032FC4(gCounter6ED08_03001800.value88);
+    first = GetSlotGroupStart(gCounter6ED08_03001800.value88);
     for (i = 0; i <= 2; i++) {
         if (gSetupD5A8[first + i].active40 != 0
             && (8 & gSetupD5A8[first + i].flagsBD)
@@ -265,11 +265,11 @@ void sub_0801D5A8(void) {
 
 void sub_0801D738(void) {
 
-    sub_0803F63C(&gFrameObjects[(gCounter6ED08_03001800.flagDE - 1) * 4 + 0x5A], &gFrameObjects[0x21], 0x40);
-    sub_0803F63C(&gFrameObjects[(gCounter6ED08_03001800.flagDE - 1) * 4 + 0x5B], &gFrameObjects[0x22], 0x40);
-    sub_0803F63C(&gFrameObjects[(gCounter6ED08_03001800.flagDE - 1) * 4 + 0x5C], &gFrameObjects[0x23], 0x40);
-    sub_0803F63C(&gFrameObjects[(gCounter6ED08_03001800.flagDE - 1) * 4 + 0x5D], &gFrameObjects[0x24], 0x40);
-    sub_08040D0C(0x21, 4);
+    CopyBytes(&gFrameObjects[(gCounter6ED08_03001800.flagDE - 1) * 4 + 0x5A], &gFrameObjects[0x21], 0x40);
+    CopyBytes(&gFrameObjects[(gCounter6ED08_03001800.flagDE - 1) * 4 + 0x5B], &gFrameObjects[0x22], 0x40);
+    CopyBytes(&gFrameObjects[(gCounter6ED08_03001800.flagDE - 1) * 4 + 0x5C], &gFrameObjects[0x23], 0x40);
+    CopyBytes(&gFrameObjects[(gCounter6ED08_03001800.flagDE - 1) * 4 + 0x5D], &gFrameObjects[0x24], 0x40);
+    HideFrameObjects(0x21, 4);
     sub_08015838(gCounter6ED08_03001800.flagDE - 1, gCounter6ED08_03001800.buffer64);
     sub_0804305C(gCounter6ED08_03001800.buffer64[0], gCounter6ED08_03001800.buffer64[1],
         gCounter6ED08_03001800.buffer64[2], gCounter6ED08_03001800.buffer64[3],
@@ -319,7 +319,7 @@ void sub_0801DAEC(void) {
             (s16)(gFrameObjects[0x5D + gCounter6ED08_03001800.slot87 * 4].screenY + 0x10)) != 0) {
         sub_080356CC(gCounter6ED08_03001800.flagDE * 4 + 0x59, gCounter6ED08_03001800.flagDE + 0x71);
         sub_080432A0((gCounter6ED08_03001800.flagDE - 1) * 4 + 0x5A, gCounter6ED08_03001800.flagDE - 1, (1 & gCounter6ED08_03001800.flagsF8) ^ 1);
-        sub_08074DE0(0x41);
+        PlaySoundEffect(0x41);
         sub_08015838(gCounter6ED08_03001800.flagDE - 1, gCounter6ED08_03001800.buffer64);
         sub_0804305C(gCounter6ED08_03001800.buffer64[0], gCounter6ED08_03001800.buffer64[1],
             gCounter6ED08_03001800.buffer64[2], gCounter6ED08_03001800.buffer64[3],

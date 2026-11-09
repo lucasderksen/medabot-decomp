@@ -51,14 +51,14 @@ void sub_08060180(void) {
  *(volatile u16 *)0x04000000&=0xFDFF;
  gMainState=3;
  gMainSubstate=0;
- gUnknown_0300137C=0;
+ gNestedCallbackIndex=0;
 }
 
 void sub_080649BC(void) {
 
  struct CallbackBlock_080649BC local;
  local=gUnknown_080AFC48;
- local.entries[gUnknown_0300137C]();
+ local.entries[gNestedCallbackIndex]();
  if(gFrameCounter&1) gBgScroll3.x++;
 }
 
@@ -67,19 +67,19 @@ void sub_080655FC(void) {
  s32 busy=1;
  u32 high;
  if(((struct PurchaseContextView *)gMainContextPointer_03006F74)->active){
-  if(sub_08041CA4()){
+  if(RunDialogueClose()){
    ((struct PurchaseContextView *)gMainContextPointer_03006F74)->active=0;
-   sub_0803FAA0(1,0,0);
+   InitDialogue(1,0,0);
   }
- }else if(sub_0803FB3C(gMain2ScriptSlots_0848521C[14]))busy=0;
- if(busy==0&&(busy=sub_08041674())!=0){
+ }else if(RunDialogue(gMain2ScriptSlots_0848521C[14]))busy=0;
+ if(busy==0&&(busy=RunChoiceBox())!=0){
   high=busy&0xF0;
   if(high){
    ((struct PurchaseContextView *)gMainContextPointer_03006F74)->active=1;
-   gUnknown_0300137C=5;
+   gNestedCallbackIndex=5;
   }else if(gPostDispatchWord_03002B70<=99U){
    struct PurchaseContextView *work;
-   gUnknown_0300137C=8;
+   gNestedCallbackIndex=8;
    work=gMainContextPointer_03006F74;
    work->timer=0xB4;
    work->active=1;
@@ -96,7 +96,7 @@ void sub_080655FC(void) {
    selection+=*choices;
    *quantity=work->values[selection];
    gState0TypedWork.bytes[0x84]=high;
-   gUnknown_0300137C=6;
+   gNestedCallbackIndex=6;
   }
  }
 }
@@ -105,7 +105,7 @@ void sub_08066824(void) {
 
  void (*local[13])(void);
  memcpy(local,gUnknown_080AFCC0,52);
- local[gUnknown_0300137C]();
+ local[gNestedCallbackIndex]();
  if(gFrameCounter&1) {gBgScroll3.x++;gBgScroll3.y++;}
 }
 

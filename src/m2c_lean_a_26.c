@@ -105,7 +105,7 @@ void sub_080150FC(u32 selected) {
     index = selected;
     root = (u32)gWork150FC;
     record = (u8 *)(root + index * 12);
-    sub_08041D04(&gInventoryMetadata_083B62D8[record[8] * 16], &gState0TypedWork.bytes[0xEE], 16);
+    CopyBytesU8Count(&gInventoryMetadata_083B62D8[record[8] * 16], &gState0TypedWork.bytes[0xEE], 16);
     gSetup150FC[index + 3].flags00 = 0x80;
     gSetup150FC[index + 3].byte01 = gState0TypedWork.bytes[0xEE];
     gSetup150FC[index + 3].byte04 = gState0TypedWork.bytes[0xEF];
@@ -113,7 +113,7 @@ void sub_080150FC(u32 selected) {
     gSetup150FC[index + 3].byte06 = gState0TypedWork.bytes[0xF0];
     gSetup150FC[index + 3].byte07 = gState0TypedWork.bytes[0xF5];
     gSetup150FC[index + 3].byte09 = record[0xE];
-    sub_08041D04(gPostDispatchPointers_083BA658[record[4]], gSetup150FC[index + 3].name0A, 14);
+    CopyBytesU8Count(gPostDispatchPointers_083BA658[record[4]], gSetup150FC[index + 3].name0A, 14);
     for (i = 0; i < 4; i++) {
         gSetup150FC[index + 3].digits18[i * 2] = gWork150FC[index * 12 + 0xA + i] >> 4;
         gSetup150FC[index + 3].digits18[i * 2 + 1] = gWork150FC[index * 12 + 0xA + i] & 0xF;
@@ -138,10 +138,10 @@ u32 sub_080187D4(void) {
     u32 root;
     u32 x;
 
-    sub_08040D0C(4, 1);
-    sub_08040D0C(5, 1);
-    sub_08040D0C(6, 1);
-    sub_08040D0C(7, 1);
+    HideFrameObjects(4, 1);
+    HideFrameObjects(5, 1);
+    HideFrameObjects(6, 1);
+    HideFrameObjects(7, 1);
     if (gState0TypedWork.bytes[0x3C] == 0) {
         for (i = 0, root = (u32)gSetup187D4; i < 3; i++) {
             index = gState0TypedWork.bytes[0x3C] * 3 + i;
@@ -256,7 +256,7 @@ u32 sub_08019440(u32 selected) {
 
 void sub_0801B894(void) {
 
-    sub_08040CD0(9, 1);
+    ClearFrameObjects(9, 1);
     if (gWork1B894.choice82 == 0)
         return;
     if (gWork1B894.used15C[gWork1B894.choice82 - 1] != 0)
@@ -273,5 +273,5 @@ void sub_0801B894(void) {
     gFrameObjects[9].unknown23[2] = gSetup1B894[gWork1B894.setup80].parts[gWork1B894.choice82 - 1].target0E;
     gFrameObjects[9].unknown23[3] = 0;
     gFrameObjects[9].unknown23[4] = 0;
-    sub_08040B90(gState0NextCommands_083B6100[24], 9);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[24], 9);
 }

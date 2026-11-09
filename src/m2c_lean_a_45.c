@@ -35,5 +35,5 @@ void sub_0805FF1C(void) {
     gFrameObjects[1].angle = 0;
     gFrameObjects[1].unknown1A = 0;
     *(s16 *)((u8 *)gMainContextPointer_03006F74 + 0x3A) = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

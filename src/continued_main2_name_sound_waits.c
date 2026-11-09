@@ -37,7 +37,7 @@ struct Main2SoundContext
 void sub_0805F8E0(void)
 {
     if (CONTEXT->byte00 == 1)
-        sub_08074DE0(CONTEXT->byte49 ? 5 : 4);
+        PlaySoundEffect(CONTEXT->byte49 ? 5 : 4);
     if (CONTEXT->byte00 != 32)
     {
         CONTEXT->byte00++;
@@ -48,26 +48,26 @@ void sub_0805F8E0(void)
         DISPCNT &= 0xFDFF;
         gMainState = 3;
         gMainSubstate = 2;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
         gMain2Byte_03007008 = 1;
     }
 }
 
 void sub_0805F960(void)
 {
-    if (sub_0803FB3C(gMain2ScriptSlots_0848521C[3]))
-        gUnknown_0300137C++;
+    if (RunDialogue(gMain2ScriptSlots_0848521C[3]))
+        gNestedCallbackIndex++;
 }
 
 void sub_0805F984(void)
 {
-    if (sub_08041674())
+    if (RunChoiceBox())
     {
         CONTEXT->half02 = 0;
-        sub_0803FB0C();
+        RestartDialogueText();
         if (gUnknown_03000440[0x2A] == 0)
-            gUnknown_0300137C = 9;
+            gNestedCallbackIndex = 9;
         else
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
     }
 }

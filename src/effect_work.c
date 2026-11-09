@@ -8,7 +8,7 @@
 
 /* Character bytes are unchecked in the reference, including empty inserts.
  * Form mapped ROM addresses before glyph offsets can leave a stored bank. */
-extern void sub_08074DE0(u32);
+extern void PlaySoundEffect(u32);
 
 extern u8 gUnknown_03000440[];
 extern const void *const gUnknownPointers_083B4C60[];
@@ -61,7 +61,7 @@ struct EffectDelayWork
 };
 #define DELAY_WORK ((const struct EffectDelayWork *)gUnknown_03000440)
 
-void sub_0803FB0C(void)
+void RestartDialogueText(void)
 {
     struct EffectWork *work = WORK;
     work->state = 4;
@@ -79,7 +79,7 @@ void sub_0803FB0C(void)
     work->font = 0;
 }
 
-u32 sub_0803FB3C(const void *script)
+u32 RunDialogue(const void *script)
 {
     struct EffectWork *work = WORK;
     work->script = script;
@@ -89,7 +89,7 @@ u32 sub_0803FB3C(const void *script)
     return 0;
 }
 
-void sub_0803FB6C(void)
+void BeginDialogueFadeToColor(void)
 {
     struct EffectWork *work = WORK;
     if (work->first == 0)
@@ -102,19 +102,19 @@ void sub_0803FB6C(void)
         work->state = 2;
 }
 
-void sub_0803FB94(void)
+void StepDialogueFadeToColor(void)
 {
     u32 color = 0x1B2;
     struct EffectWork *work = WORK;
-    sub_0803F684(color, work->blend * 2, 0x1FFF);
-    sub_0803F998(color, work->blend * 2, 0x3FFF);
+    BlendBgPaletteBanksNow(color, work->blend * 2, 0x1FFF);
+    BlendObjPaletteBanksNow(color, work->blend * 2, 0x3FFF);
     if (work->blend > 8)
         work->state++;
     else
         work->blend++;
 }
 
-void sub_0803FBDC(void)
+void BeginDialogueBoxOpen(void)
 {
     struct EffectWork *work = WORK;
     if (work->mode == 1)
@@ -131,12 +131,12 @@ void sub_0803FBDC(void)
     }
 }
 
-void sub_0803FEA8(void)
+void AdvanceDialoguePosition(void)
 {
     WORK->position++;
 }
 
-void sub_0803FC20(void)
+void StepDialogueBoxOpen(void)
 {
     switch (WORK->transition)
     {
@@ -161,7 +161,7 @@ void sub_0803FC20(void)
     }
 }
 
-void sub_0803FCC8(void)
+void BeginDialogueText(void)
 {
     u32 i = 0;
     u32 destination = 0x06000280;
@@ -170,12 +170,12 @@ void sub_0803FCC8(void)
         CpuFastSet((const void *)0x084BFC64, (void *)destination, 16);
         destination += 64;
     }
-    sub_0803F15C(26, 4, 2, 14, gUnknownPointers_083B4C60[18], *(volatile u16 *)0x04000008, 0);
+    CopyTilemapRect(26, 4, 2, 14, gUnknownPointers_083B4C60[18], *(volatile u16 *)0x04000008, 0);
     WORK->state++;
-    sub_0803FD28();
+    RunDialogueCommands();
 }
 
-void sub_08040A40(void)
+void StepDialogueBoxClose(void)
 {
     switch (WORK->transition)
     {
@@ -190,7 +190,7 @@ void sub_08040A40(void)
         WORK->transition--;
         break;
     case 1:
-        sub_0803EF8C(30, 6, 0, 13, *(volatile u16 *)0x04000008, 0);
+        FillTilemapRect(30, 6, 0, 13, *(volatile u16 *)0x04000008, 0);
         WORK->transition--;
         break;
     default:
@@ -199,14 +199,14 @@ void sub_08040A40(void)
     }
 }
 
-void sub_080408D0(void)
+void DispatchDialogueEndMode(void)
 {
     const IntrFunc *table = gUnknownCallbacks_083B2940;
     struct EffectWork *work = WORK;
     table[work->script[work->position + 1]]();
 }
 
-void sub_0804056C(void)
+void BreakDialogueLine(void)
 {
     if (WORK->x & 7)
     {
@@ -224,7 +224,7 @@ void sub_0804056C(void)
         WORK->line = 1;
 }
 
-void sub_08040038(void)
+void DrawDialogueGlyph(void)
 {
     u8 width;
     u8 oldBits;
@@ -320,7 +320,7 @@ void sub_08040038(void)
     }
 }
 
-void sub_0803FEB8(void)
+void SetDialoguePortrait(void)
 {
     u32 x;
     if (WORK->x & 7)
@@ -343,9 +343,9 @@ void sub_0803FEB8(void)
             if (WORK->mapBank == mapBank && WORK->graphicsBank == bank)
             {
                 if (bank == 0xFF)
-                    sub_0803EF8C(8, 8, x, 5, *(volatile u16 *)0x04000008, 0);
+                    FillTilemapRect(8, 8, x, 5, *(volatile u16 *)0x04000008, 0);
                 else
-                    sub_0803F480(bank, frame, x, 5, mapBank);
+                    DrawPortrait(bank, frame, x, 5, mapBank);
                 WORK->mapBank = mapBank;
                 WORK->graphicsBank = bank;
                 WORK->graphicsFrame = frame;
@@ -355,7 +355,7 @@ void sub_0803FEB8(void)
             {
                 if (WORK->second == 0)
                 {
-                    if ((u8)sub_0803F51C(WORK->graphicsBank, WORK->graphicsFrame, x, 5, WORK->mapBank, 1) == 1)
+                    if ((u8)StepPortraitAnimation(WORK->graphicsBank, WORK->graphicsFrame, x, 5, WORK->mapBank, 1) == 1)
                     {
                         WORK->frame = 0;
                         WORK->graphicsActive = 0;
@@ -363,7 +363,7 @@ void sub_0803FEB8(void)
                 }
                 else
                 {
-                    sub_0803EF8C(8, 8, x, 5, *(volatile u16 *)0x04000008, 0);
+                    FillTilemapRect(8, 8, x, 5, *(volatile u16 *)0x04000008, 0);
                     WORK->frame = 0;
                     WORK->graphicsActive = 0;
                 }
@@ -376,7 +376,7 @@ void sub_0803FEB8(void)
             {
                 if (WORK->second == 0)
                 {
-                    if ((u8)sub_0803F51C(bank, frame, x, 5, mapBank, 0) == 1)
+                    if ((u8)StepPortraitAnimation(bank, frame, x, 5, mapBank, 0) == 1)
                 {
                     WORK->frame = 0;
                     WORK->graphicsActive = 1;
@@ -388,7 +388,7 @@ void sub_0803FEB8(void)
                 }
                 else
                 {
-                    sub_0803F480(bank, frame, x, 5, mapBank);
+                    DrawPortrait(bank, frame, x, 5, mapBank);
                     WORK->graphicsActive = 1;
                     WORK->mapBank = mapBank;
                     WORK->graphicsBank = bank;
@@ -407,7 +407,7 @@ void sub_0803FEB8(void)
     }
 }
 
-void sub_0804070C(void)
+void WaitDialogueDelaySkippable(void)
 {
     if (WORK->delay == 0)
     {
@@ -442,7 +442,7 @@ void sub_0804070C(void)
     }
 }
 
-void sub_0803FD28(void)
+void RunDialogueCommands(void)
 {
     WORK->wait = 0;
     do
@@ -453,84 +453,84 @@ void sub_0803FD28(void)
             if (WORK->wrap == 1)
             {
                 WORK->wait = 0;
-                sub_0804056C();
+                BreakDialogueLine();
             }
             else if (WORK->wrap == 2)
             {
                 WORK->wait = 1;
-                sub_080405D0();
+                WaitDialoguePageInput();
             }
             else
             {
                 WORK->wait = 0;
-                sub_080402B4();
+                DrawDialogueReplacementGlyph();
                 if (WORK->delay == 0xFF)
                     WORK->wait = 0;
             }
             break;
         case 0xFA:
-            sub_0804070C();
+            WaitDialogueDelaySkippable();
             if (WORK->delay == 0xFF)
                 WORK->wait = 0;
             else
                 WORK->wait = 1;
             break;
         case 0xF7:
-            sub_080407A4();
+            WaitDialogueDelay();
             if (WORK->delay == 0xFF)
                 WORK->wait = 0;
             else
                 WORK->wait = 1;
             break;
         case 0xFB:
-            sub_0803FEB8();
+            SetDialoguePortrait();
             WORK->wait = 1;
             break;
         case 0xFC:
-            if ((u8)sub_080405D0() == 1)
+            if ((u8)WaitDialoguePageInput() == 1)
                 WORK->position++;
             break;
         case 0xFD:
             if (WORK->wrap == 2)
             {
                 WORK->wait = 1;
-                if ((u8)sub_080405D0() == 1)
+                if ((u8)WaitDialoguePageInput() == 1)
                     WORK->position++;
             }
             else
             {
                 WORK->wait = 0;
-                sub_0804056C();
+                BreakDialogueLine();
                 if (WORK->wrap == 0)
                     WORK->position++;
             }
             break;
         case 0xFE:
-            sub_0803FEA8();
+            AdvanceDialoguePosition();
             break;
         case 0xF8:
             WORK->font ^= 1;
             WORK->position++;
             break;
         case 0xFF:
-            sub_08040820();
+            EndDialogueText();
             WORK->wait = 1;
             break;
         default:
             if (WORK->wrap == 1)
             {
                 WORK->wait = 0;
-                sub_0804056C();
+                BreakDialogueLine();
             }
             else if (WORK->wrap == 2)
             {
                 WORK->wait = 1;
-                sub_080405D0();
+                WaitDialoguePageInput();
             }
             else
             {
                 WORK->wait = 0;
-                sub_08040038();
+                DrawDialogueGlyph();
                 if (WORK->delay == 0xFF)
                     WORK->wait = 0;
             }
@@ -539,7 +539,7 @@ void sub_0803FD28(void)
     } while (WORK->wait == 0);
 }
 
-u32 sub_080405D0(void)
+u32 WaitDialoguePageInput(void)
 {
     if (WORK->x & 7)
     {
@@ -548,22 +548,22 @@ u32 sub_080405D0(void)
                (u8 *)0x06000280 + tile * 64 + WORK->line * 13 * 128, 32);
     }
     if ((u8)(WORK->unknown25 & 8))
-        sub_0803F15C(2, 1, 14, 18, gUnknownPointers_083B4C60[73], *(volatile u16 *)0x04000008, 0);
+        CopyTilemapRect(2, 1, 14, 18, gUnknownPointers_083B4C60[73], *(volatile u16 *)0x04000008, 0);
     else
-        sub_0803F15C(2, 1, 14, 18, gUnknownPointers_083B4C60[74], *(volatile u16 *)0x04000008, 0);
+        CopyTilemapRect(2, 1, 14, 18, gUnknownPointers_083B4C60[74], *(volatile u16 *)0x04000008, 0);
     WORK->unknown25++;
     WORK->wait = 1;
     if (*(u8 *)&gRepeatedKeys & 3)
     {
         u8 i;
-        sub_08074DE0(13);
+        PlaySoundEffect(13);
         WORK->x = 0;
         WORK->bits = 0;
         WORK->inWord = 0;
         WORK->wrap = 0;
         WORK->line = 0;
         WORK->unknown25 = 0;
-        sub_0803F15C(2, 1, 14, 18, gUnknownPointers_083B4C60[73], *(volatile u16 *)0x04000008, 0);
+        CopyTilemapRect(2, 1, 14, 18, gUnknownPointers_083B4C60[73], *(volatile u16 *)0x04000008, 0);
         for (i = 0; i < 52; i++)
             CpuSet((const void *)0x084BFC64, (u8 *)0x06000280 + i * 64, 32);
         WORK->wait = 0;
@@ -572,7 +572,7 @@ u32 sub_080405D0(void)
     return 0;
 }
 
-void sub_08040994(void)
+void RemoveDialoguePortrait(void)
 {
     struct EffectWork *work = WORK;
     if (work->second != 2 && work->graphicsActive == 1)
@@ -584,7 +584,7 @@ void sub_08040994(void)
             x = 3;
         if (work->second == 0)
         {
-            if ((u8)sub_0803F51C(work->graphicsBank, work->graphicsFrame, x, 5, work->mapBank, 1) == 1)
+            if ((u8)StepPortraitAnimation(work->graphicsBank, work->graphicsFrame, x, 5, work->mapBank, 1) == 1)
             {
                 work->frame = 0;
                 work->graphicsActive = 0;
@@ -593,7 +593,7 @@ void sub_08040994(void)
         }
         else
         {
-            sub_0803EF8C(8, 8, x, 5, *(volatile u16 *)0x04000008, 0);
+            FillTilemapRect(8, 8, x, 5, *(volatile u16 *)0x04000008, 0);
             work->frame = 0;
             work->graphicsActive = 0;
             work->substate++;
@@ -603,7 +603,7 @@ void sub_08040994(void)
         work->substate++;
 }
 
-void sub_080407A4(void)
+void WaitDialogueDelay(void)
 {
     if (WORK->delay == 0)
     {
@@ -633,7 +633,7 @@ void sub_080407A4(void)
     }
 }
 
-void sub_08040820(void)
+void EndDialogueText(void)
 {
     if (WORK->x & 7)
     {
@@ -649,7 +649,7 @@ void sub_08040820(void)
     case 3:
         if (*(u8 *)&gRepeatedKeys & 3)
         {
-            sub_08074DE0(13);
+            PlaySoundEffect(13);
             WORK->state++;
         }
         break;
@@ -663,44 +663,44 @@ void sub_08040820(void)
     }
 }
 
-void sub_080408F4(void)
+void RunDialogueEndMode0(void)
 {
     gUnknownCallbacks_083B2954[WORK->substate]();
 }
 
-void sub_08040914(void)
+void RunDialogueEndMode1(void)
 {
     gUnknownCallbacks_083B296C[WORK->substate]();
 }
 
-void sub_08040934(void)
+void RunDialogueEndMode2(void)
 {
     gUnknownCallbacks_083B2984[WORK->substate]();
 }
 
-void sub_08040954(void)
+void RunDialogueEndMode3(void)
 {
     gUnknownCallbacks_083B2988[WORK->substate]();
 }
 
-void sub_08040974(void)
+void RunDialogueEndMode4(void)
 {
     gUnknownCallbacks_083B2990[WORK->substate]();
 }
 
-void sub_08040A00(void)
+void BeginDialogueBoxClose(void)
 {
     struct EffectWork *work = WORK;
     if (work->mode == 1)
     {
-        sub_0803EF8C(30, 6, 0, 13, *(volatile u16 *)0x04000008, 0);
+        FillTilemapRect(30, 6, 0, 13, *(volatile u16 *)0x04000008, 0);
         work->substate += 2;
     }
     else
         work->substate++;
 }
 
-void sub_08040AF0(void)
+void BeginDialogueFadeFromColor(void)
 {
     struct EffectWork *work = WORK;
     if (work->first == 0)
@@ -709,19 +709,19 @@ void sub_08040AF0(void)
         work->substate += 2;
 }
 
-void sub_08040B0C(void)
+void StepDialogueFadeFromColor(void)
 {
     u32 color = 0x1B2;
     struct EffectWork *work = WORK;
-    sub_0803F684(color, work->blend * 2, 0x1FFF);
-    sub_0803F998(color, work->blend * 2, 0x1FFF);
+    BlendBgPaletteBanksNow(color, work->blend * 2, 0x1FFF);
+    BlendObjPaletteBanksNow(color, work->blend * 2, 0x1FFF);
     if (work->blend == 0)
         work->substate++;
     else
         work->blend--;
 }
 
-void sub_080402B4(void)
+void DrawDialogueReplacementGlyph(void)
 {
     u8 width;
     u8 oldBits;

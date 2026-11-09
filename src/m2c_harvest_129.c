@@ -18,7 +18,7 @@ void sub_080238A0(void) {
     const u8 *const *commands;
     u32 keys;
     commands = gState0NextCommands_083B6100;
-    sub_08040BD8(commands[gState0TypedWork.bytes[0x84]], 0x21);
+    RunFrameObjectCommands(commands[gState0TypedWork.bytes[0x84]], 0x21);
     if (((gState0TypedWork.bytes[0x89] != 0) || !((keys = *(u8 *)&gRepeatedKeys), (keys & 1u) & keys)) && (gState0TypedWork.widths.word86 != 0)) {
         gState0TypedWork.widths.word86 -= 1;
         return;

@@ -19,7 +19,7 @@ void sub_08013164(void)
     sub_080195C0();
     selection = gState0TransferWork.bytes;
     selection += 0x80;
-    sub_080164F4(*selection);
+    CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     sub_0801B9C4();
     base = gUnknown_03000440;
@@ -34,20 +34,20 @@ void sub_08013164(void)
     cancel = (u8)(keys & 2);
     if (cancel)
     {
-        sub_08074DE0(5);
-        sub_08040CD0(0, 6);
+        PlaySoundEffect(5);
+        ClearFrameObjects(0, 6);
         sub_0801BACC();
-        sub_08040CD0(20, 38);
-        sub_0803EF8C(7, 1, 14, 12, *(volatile u16 *)0x04000008, zero);
+        ClearFrameObjects(20, 38);
+        FillTilemapRect(7, 1, 14, 12, *(volatile u16 *)0x04000008, zero);
         *counter = zero;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     else if (keys & 1)
     {
-        sub_08074DE0(4);
+        PlaySoundEffect(4);
         sub_0801BACC();
         *(u16 *)(base + 0x86) = cancel;
-        gUnknown_0300137C = 21;
+        gNestedCallbackIndex = 21;
     }
 }
 

@@ -13,10 +13,10 @@ extern void sub_0800DF14(void);
 extern void sub_0800DF4C(void);
 extern void sub_0800DF78(void);
 extern void sub_0800DFB8(void);
-extern void sub_0800E020(void);
+extern void LoadPartDetailDisplay(void);
 extern void sub_0800E2B0(void);
 extern void sub_0800E328(void);
-extern void sub_0800E350(void);
+extern void RunPartOrTerrainDialogue(void);
 extern void sub_0800E3A0(void);
 extern void sub_0800E43C(void);
 extern void sub_0800E488(void);
@@ -28,7 +28,7 @@ extern void sub_0800E78C(void);
 extern void sub_0800E9F0(void);
 extern void sub_0800EA2C(void);
 extern void sub_0800EA98(void);
-extern void sub_0800EB34(void);
+extern void WaitRowCursorBlinkAndShrink(void);
 extern void sub_0800EB60(void);
 extern void sub_0800EBB8(void);
 extern void sub_0800EBE4(void);
@@ -50,10 +50,10 @@ const MainCallback gState0NextCallbacks_083ACCD4[80] __attribute__((section(".ro
     DummyInterruptHandler, /* 13 */
     DummyInterruptHandler, /* 14 */
     DummyInterruptHandler, /* 15 */
-    sub_0800E020, /* 16 */
+    LoadPartDetailDisplay, /* 16 */
     sub_0800E2B0, /* 17 */
     sub_0800E328, /* 18 */
-    sub_0800E350, /* 19 */
+    RunPartOrTerrainDialogue, /* 19 */
     sub_0800E3A0, /* 20 */
     sub_0800E43C, /* 21 */
     sub_0800E488, /* 22 */
@@ -100,7 +100,7 @@ const MainCallback gState0NextCallbacks_083ACCD4[80] __attribute__((section(".ro
     DummyInterruptHandler, /* 63 */
     sub_0800EA2C, /* 64 */
     sub_0800EA98, /* 65 */
-    sub_0800EB34, /* 66 */
+    WaitRowCursorBlinkAndShrink, /* 66 */
     sub_0800EB60, /* 67 */
     sub_0800DEC8, /* 68 */
     sub_0800DF14, /* 69 */

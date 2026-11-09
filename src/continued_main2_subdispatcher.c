@@ -6,7 +6,7 @@
 
 void sub_0805C0D4(void)
 {
-    gMain2Subcallbacks_0848360C[gUnknown_0300137C]();
+    gMain2Subcallbacks_0848360C[gNestedCallbackIndex]();
     gBgScroll2.x++;
     gBgScroll2.y++;
     if (gFrameCounter & 1)

@@ -27,14 +27,14 @@ void sub_0802E820(void) {
                 gFrameObjects[i + 0xA].angle = (gFrameObjects[i + 0xA].angle - 0x40) & 0x3FF;
             else
                 gFrameObjects[i + 0xA].angle = (gFrameObjects[i + 0xA].angle + 0x40) & 0x3FF;
-            if (sub_080355F0(i + 0xA) != 0) {
+            if (StepFrameObjectToTarget(i + 0xA) != 0) {
                 gFrameObjects[i + 0xA].angle = 0;
                 done++;
             }
         }
     }
     if (done == active) {
-        sub_08074DE0(0x2B);
+        PlaySoundEffect(0x2B);
         gCounter6ED08_03001800.counterAA++;
     }
 }

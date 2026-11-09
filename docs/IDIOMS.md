@@ -52,7 +52,7 @@ s32 rx[4][4] = {
 
 - Base loaded before the index shift (`ldr rB,=gFrameObjects; lsls r0,rI,#6`):
   `u32 root = (u32)gFrameObjects; object = (struct FrameObject *)(root + (index << 6));`
-  (sub_0806E074, sub_0806B1FC, sub_080706A4; older sub_0806E038, sub_08070648).
+  (sub_0806E074, sub_0806B1FC, BobObjectVertically; older sub_0806E038, sub_08070648).
   When the reference reloads the base literal for each later access, give each
   access its own block-scoped `u32 root` (sub_0807190C, sub_080719B8).
 - Symbol + offset kept as `ldr base; adds #off` instead of one folded literal:
@@ -69,8 +69,8 @@ s32 rx[4][4] = {
 
 - A label loop with a block and `if (mask) goto loop` can keep the counter in
   a high register and spill the long-lived parameter, where `do/while` chooses
-  the opposite lifetimes. This matched `sub_08074D50`; the same form also
-  matches `sub_08074A8C`. Both dispatchers take full-word arguments; m2c's
+  the opposite lifetimes. This matched `StartSoundEffectTracks`; the same form also
+  matches `StartMusicTracks`. Both dispatchers take full-word arguments; m2c's
   inferred narrow parameters introduced extra truncations.
 - The reference reloads constants each iteration and keeps a separate counter,
   with no strength reduction: write the loop as a label plus `goto`
@@ -137,13 +137,13 @@ s32 rx[4][4] = {
   integer types use `python tools/try_decls.py <name> <draft.c> -fprologue-bugfix`.
 - `digits[k] = rest / 1000;` with the `/` operator (libcall `__udivsi3`) evaluates the stack
   array address before the call (`mov r6, sp; bl; strb r0,[r6]`); an explicit
-  `__udivsi3`/`sub_0807CEC8(...)` call or a temporary computes it after the call (sub_08041164).
-- A constant used once at the end, held in an initialized local declared at entry (`void *palette = (void *)0x05000000; ... CpuFastSet(buf, palette, 0x80);`, `IntrFunc callback = Fn; ... gCallback = callback;`), fixed call-argument load order and loop register allocation (lean_b: sub_0803F684, sub_0803F788, sub_0803F890; first found by tools/permute.py).
+  `__udivsi3`/`__udivsi3(...)` call or a temporary computes it after the call (sub_08041164).
+- A constant used once at the end, held in an initialized local declared at entry (`void *palette = (void *)0x05000000; ... CpuFastSet(buf, palette, 0x80);`, `IntrFunc callback = Fn; ... gCallback = callback;`), fixed call-argument load order and loop register allocation (lean_b: BlendBgPaletteBanksNow, BlendBgPaletteBanks, BlendObjPaletteBanks; first found by tools/permute.py).
 - A global read twice with a reloaded literal although nothing clobbers it can
   be a second asm-label alias of the same symbol (near-miss sub_0805B984).
 
 - A returned `struct TileCoordinates` split as `strh r0; asrs r0,#16; strh` (signed high half) came from
-  `union { struct TileCoordinates tile; s32 packed; } c; c.tile = sub_08042BC0(...);` then
+  `union { struct TileCoordinates tile; s32 packed; } c; c.tile = GetPolarOffsetPoint(...);` then
   `x = c.packed; y = c.packed >> 16;` (lean_a: sub_080222A8, sub_08022648, sub_08022A04, sub_08022E14).
 - A spilled loop value whose stack slot sits after the hoisted invariants is
   a strength-reduced giv: write `x + i * 16` in the body instead of a
@@ -193,7 +193,7 @@ s32 rx[4][4] = {
   (`name[13]` at +0, byte +0x10, `data11[6]` at +0x11, id +0x17); `parts[k]` as a nested
   struct array reproduced the reference givs (sub_08014F90, sub_0801D5A8).
 - `(i << 8) + base` added before `+ j`: write `row = buf + (i << 8); row[j]`, not
-  `buf[(i << 8) + j]` or a 2D array (sub_08004AF8).
+  `buf[(i << 8) + j]` or a 2D array (ExchangeTransferBuffersOverSerial).
 - m2c `D_0300xxxx` bases with offsets like `0xFFFFF1C0` are one symbol at several
   offsets (gcc CSE of symbol+const): here `&gFrameObjects[n]` (sub_0801D738).
 - `(k << 8) + root + 0x1664` (big folded constant after the base) came from
@@ -201,9 +201,9 @@ s32 rx[4][4] = {
   `u32 root = (u32)gFrameObjects` (sub_0801D9DC); `gFrameObjects[0x59 + k * 4]` gives
   `(k << 8) + 0x1640 + base`.
 - `a == 3 && b == 3` on adjacent bytes compiles to one word compare; the reference's
-  two byte compares came from nested `if (a == 3) if (b == 3)` (sub_08004AF8).
+  two byte compares came from nested `if (a == 3) if (b == 3)` (ExchangeTransferBuffersOverSerial).
 - An `adds` of literal `0xFFFF8000` before a u16 store came from
-  `+ (u16)(x + 0x8000)`; `- 0x8000` and `+ 0xFFFF8000` emit `0x8000` (sub_08004AF8).
+  `+ (u16)(x + 0x8000)`; `- 0x8000` and `+ 0xFFFF8000` emit `0x8000` (ExchangeTransferBuffersOverSerial).
 - A loop whose body starts with `if (!x) break;` is rotated by gcc (entry jump to a
   bottom copy of the test). The reference's top-of-loop exit test came from `return`
   or `goto label_after_loop` instead of `break` (sub_08018D0C, sub_08018DF4, near-miss sub_0801A33C).
@@ -265,14 +265,14 @@ s32 rx[4][4] = {
 - An `adds rX,rY,#0` copy right after a load (root base copied to a callee-saved register, or a byte compared through a copy) came from re-reading the same field/global instead of a cached local, e.g. `gFrameObjects[i].unknown1A` in each test, `ctx->cursor05 != 0 ? ctx->cursor05 - 1 : 4` (sub_0806B248, sub_08066280).
 
 - A comparison temp assigned inside the condition, `(value >> 8) == (low = value & 0xFF)`, moved the
-  `movs #0xFF` after the shift (found by tools/permute.py, sub_0800FDD8).
+  `movs #0xFF` after the shift (found by tools/permute.py, CycleSelectablePartOnLeftRight).
 - A pointer computed from a base loaded first (`ldr rB,=gX` before the index math, then `adds rI,rB`)
   also applies to non-frame bases: block-scoped `u32 root = (u32)gSetupBuffer_03000590;` (sub_080173B4) and
   `(... + 0x18 + root)` for gInventoryRecords (sub_0800AD58).
 - Values from a table passed later as call arguments stayed in low registers only as `u32` locals;
   `u8 x = table[i]` moved them to high registers (sub_080183A4).
 - A field read twice instead of a `u8 flags` local avoided the in-place `ands` on the dying register
-  (`movs r0,#0x40; ands r0,r1` in the reference) (near-miss sub_0800A1E4, 13 -> 9 rows).
+  (`movs r0,#0x40; ands r0,r1` in the reference) (near-miss CycleOwnedInventoryOnLeftRight, 13 -> 9 rows).
 - A constant reused in a later compare as `lsls/lsrs #16` of the OR operand register came from a `u16` comparison temp (`u16 mask = w0 & 0xC000; if (mask == 0x4000 ...)`) (sub_08063254).
 - `(u8)(field += 8) > 0x40` kept one hoisted `movs rK,#0xFF` used by a later `ands` test (sub_0806CB28).
 
@@ -373,7 +373,7 @@ from them. Drafts: build/lc4/ in the lean_c worktree.
 - A u16 sum zero-extended in place (`lsls r2,r2,#16; lsrs r2,r2,#16`) followed by `lsrs r3,r2,#8`
   needed an `s32 full = seed;` copy and `u8 high = full >> 8`; with u32 temps combine folds the
   extension into `lsls #16; lsrs #24`. A `u16 shifted = low << 8;` temp placed before `high`
-  reproduced the reference order (sub_080424B8, 10 -> 2 rows).
+  reproduced the reference order (NextRandomByte, 10 -> 2 rows).
 - A fresh literal for a pointer the reference reuses after a loop (`ldr r2,=gFrameObjects` inside
   the loop while addresses use the hoisted base) is not reproduced by `root = (u32)gFrameObjects`
   (CSE copies the hoisted register). An asm-label alias gives identical code but a second
@@ -400,7 +400,7 @@ from them. Drafts: build/lc4/ in the lean_c worktree.
 - sub_08030780 (8 -> 7 rows): `u16 *word = &gState0TypedWork.widths.word86;` after the busy
   read gives the reference base copy (`adds r2, r0, #0`); the reference still adds 0x86 at the
   use.
-- sub_080424B8 stays at 2 rows. `u32 low = full & 0xFF` gives the reference `movs #0xff; ands`,
+- NextRandomByte stays at 2 rows. `u32 low = full & 0xFF` gives the reference `movs #0xff; ands`,
   but `high ^ low` then overwrites the dying `low` instead of copying `high`. About 200 type and
   expression variants did not change this.
 ## Late-range batch (lean_b round 7)
@@ -528,7 +528,7 @@ rows), sub_080465B8 (1,192 B) and sub_08046D1C (1,256 B); drafts in docs/drafts/
 
 ## Division libcalls and constant arguments (lean_b round 8)
 
-- `sub_0807CD2C`, `sub_0807CDF8`, `sub_0807CEC8` and `sub_0807CF40` are
+- `__divsi3`, `__modsi3`, `__udivsi3` and `__umodsi3` are
   `__divsi3`, `__modsi3`, `__udivsi3` and `__umodsi3`. Drafts call them as
   functions; the `/` and `%` operators instead emit const libcalls
   (`call_insn/u`), which neither clobber memory for CSE/GCSE nor force
@@ -542,7 +542,7 @@ rows), sub_080465B8 (1,192 B) and sub_08046D1C (1,256 B); drafts in docs/drafts/
   new register while the libcall result stays live) came from writing the
   division twice as an operator: `if ((u8)(L / 10u) * b + b > 100) s = 100; else
   s = b + (L / 10u) * b;`. The const libcall is CSE'd, the truncation is not
-  (sub_08041D70; a `u8 t` temporary merges both sums instead).
+  (AddInventoryRecord; a `u8 t` temporary merges both sums instead).
 - A constant base the reference keeps in a caller-saved register across a loop
   and reloads only at one join (`ldr r2, =gFrameObjects` after the `next:`
   label) is a variable with two definitions, which GCSE cprop cannot replace:
@@ -635,7 +635,7 @@ rows), sub_080465B8 (1,192 B) and sub_08046D1C (1,256 B); drafts in docs/drafts/
   (`slot = extra[index].slot;`) and kept using the copy for indexing (sub_08046D1C,
   132 -> 72 rows; the sub_080460B0/sub_08046A60 `struct LaterCmd` loops without
   `if`/`do`-wrappers then matched exactly).
-- Explicit `sub_0807CD2C(x, divisor)` calls replaced by `x / divisor` with a local
+- Explicit `__divsi3(x, divisor)` calls replaced by `x / divisor` with a local
   `divisor = 0x400` (expanded before constant propagation, so it stays a `__divsi3`
   libcall with the divisor in a callee-saved register): the const libcall lets GCSE keep
   `gSineTable` and `&gMainContextPointer_03006F74` in sb/sl, inserted as copies right
@@ -843,7 +843,7 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
 - To make the ior result share the constant's register (`movs r2,#0xC0; lsls r2,#23;
   orrs r2,r0`), shift first into a temp, then `t = 0x60000000; t |= shifted; t >>= 16;`.
   The one-expression form ties the result to the shifted operand (sub_080639C4).
-- sub_0804B2B0 (844 B) matched once the call arguments `gContinuedWork_030057E0.halfC4A >> 3`
+- LoadMapBgLayers (844 B) matched once the call arguments `gContinuedWork_030057E0.halfC4A >> 3`
   were written `halfC4A / 8` (u16 field): the unsigned division expands later than the
   shift, so the argument value no longer took a high register (ip/sb/r8 copies before the
   calls disappeared, 35 -> 0 rows). Worth one try wherever a shifted field argument is
@@ -917,7 +917,7 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
 - Same lever with two call arms: `u32 object` declared at function scope and assigned in
   both `if`/`else if` arms (`object = twice + base;` with block-local `twice`/`base`)
   gave the reference's separate object register and pointer temp, the cross-jumped
-  `step++`/`column++` tail and all DMA registers, with no do/while wraps (sub_0806FF2C,
+  `step++`/`column++` tail and all DMA registers, with no do/while wraps (StepBridgeSegmentDraw,
   26 -> 0 rows). Block-local `object` in each arm, or one combined expression, does not.
 - Inner tile-copy loop the reference runs as a reversed countdown (`cmp width,#0; beq`,
   then `subs rN,#1; cmp rN,#0; bne`, with `palette << 12` recomputed per row) appeared
@@ -953,7 +953,7 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
 - Indexing an array through a pointer cast, `((struct R *)gArray)[j + 1]`, distributes the `+ 1` into
   the base (`adds rB, #8` before adding `j * 8`); an array-typed view keeps `(j + 1) * 8`. A flat u8
   array view `gBytes[i * 2 + 1]` keeps `(i * 2 + 1) + base` where `gPairs[i][1]` hoists `base + 1`
-  (near-misses sub_080423A0, sub_08042318).
+  (near-misses SortObjectEntriesAscending, sub_08042318).
 - Loop-invariant hoisting order follows the order the invariants appear in the body.
   sub_08062614 hoists the `gObjectHalfwordBytes` literal before the `0x02040000` records
   base (table r6, records r5). It matched with a block-local records pointer in the loop
@@ -961,7 +961,7 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
   `{ u8 *slot; struct R *records = (struct R *)0x02040000; slot = &table[records[i].id * 2 + ...]; *slot += amount[i]; }`.
   `table[...] += ...` or a for-init `records` kept the opposite order. No agbcc flag
   (all -f/-fno- options, singly and in pairs, and old_agbcc) changed any of the 2-3 row
-  near-misses sub_08067974, sub_08067D00, sub_0805DEC8, sub_08065208, sub_08060708 (lean_c r9).
+  near-misses StepCreditsTextScroll, sub_08067D00, sub_0805DEC8, sub_08065208, sub_08060708 (lean_c r9).
 ## Variable scope and pseudo sharing (lean_e, 21 October)
 
 - Repeated if/else-chain branches that each build `&gFrameObjects[arg0 * 3 + 0x47]` matched only with
@@ -977,20 +977,20 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
   (`lsrs r1,r1,#8; ands r1,r0; lsls r1,r1,#0xb; adds r1,r1,r0 ...`) came from compound statements on
   one variable (`screen = control >> 8; screen &= 0x1F; screen <<= 11; screen += xAddress;
   screen += y << 6; base = screen + 0x1000;`), and `out = (u16 *)base + (row << 5)` rather than a
-  byte-address cast fixed the loop-invariant register order (sub_0803F1C8).
+  byte-address cast fixed the loop-invariant register order (CopyTilemapRect64).
 - A stack argument the reference loads after the first statement (`ldr r6,[sp,#0x28]` after the
   global store) was a parameter copied to a local there (`source = data;`).
 - Repeated computed-address stores (`dst = BG-map address; ctx = gMainContextPointer; *dst = ...`) matched only
   with `dst`/`ctx` declared in a fresh block per store; reusing one function-scope `dst`/`ctx` gave 120 rows
   of register differences at the exact size (sub_08067F64).
-- One variable reused for a call result, a product and a final total (`value = sub_08044E64(...); ...
+- One variable reused for a call result, a product and a final total (`value = GetOamDimensions(...); ...
   value = dims[0] * dims[1]; ... value = columns * (rows * value);`) reproduces the reference keeping all
   three in the same callee-saved register (sub_0804545C, 38 -> 10 rows).
 - The opposite of scope splitting, variable *reuse*, fixed two near-misses where the reference does not
   reuse a constant it already holds (lean_c r10). sub_0805DEC8: the first call's result and the fill byte
   are one variable, `value = sub_08074FA4(4); if (value) return value; ... name[i] = value = 0xFE;`
   (the result lands in r1, and the store-chained `0xFE` comes after the loop base load).
-  sub_08067974: the `0x1F` mask is loaded through the later `s8 row` variable, `low = timer; row = 0x1F;
+  StepCreditsTextScroll: the `0x1F` mask is loaded through the later `s8 row` variable, `low = timer; row = 0x1F;
   low &= row; ... row = timer / 32 + 0x10; row &= 0x1F;`. Reassigning `row` kills the equivalence, so
   the second mask is a fresh `movs #0x1F` (try_decls then picked `s8`).
 - sub_08064A80 (lean_c r10): one variable for two roles in disjoint branches matched; `bits` is the
@@ -1046,7 +1046,7 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
   (sub_08042318, sub_080422B8). A fresh `u8 key = kind & 0x3F` local always won r7.
 - regmove skips a two-address fix-up when the source is a "remote constant"
   (`reg_is_remote_constant_p`): set once, the setter not in the insn's LOG_LINKS, and *any*
-  REG_EQUAL note on the setter. That is why the u8-`low` draft of sub_080424B8 kept the
+  REG_EQUAL note on the setter. That is why the u8-`low` draft of NextRandomByte kept the
   reference's `adds r0, r3, #0; eors r0, r1` (the lsl/lsr zero-extension carries a REG_EQUAL),
   while `u32 low = full & 0xFF` tied the xor to `low`. The full match used a `u32 mask = 0xFF`
   local inside a u16 store, `seed = ((full & mask) << 8) | ((high = full >> 8) ^ (full & mask))`:
@@ -1058,7 +1058,7 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
   function-scope `k` set in several blocks is global and `k + 1` gets a new register
   (sub_080366DC switch cases, sub_08038428 if/else).
 - Bubble sorts whose swap temporaries sit in r4-r6 while the record pointers take r2/r3
-  (sub_080423A0, sub_0804242C): the swap was written twice, `if (a.key < b.key) { swap }
+  (SortObjectEntriesAscending, SortObjectEntriesDescending): the swap was written twice, `if (a.key < b.key) { swap }
   else if (a.key == b.key && a.tie < b.tie) { swap }`, with the temporaries at function
   scope. Each temporary is then set in two blocks (global, allocated after the pointers);
   cross-jumping merges the copies and leaves the second copy's `key = a.key` reload in front
@@ -1143,16 +1143,23 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
 - A register copy the reference places on one exit edge only (`adds r4,r5,#0; b second` in its own block,
   ours hoisted before the branch) is a GCSE PRE copy inserted at the end of the edge's source block. The
   block survives until GCSE only if it holds an insn: a dead store before the `goto` (`if (x != 1) { found = 1;
-  goto second; }`; flow deletes the store later) reproduced it (sub_0800A1E4).
+  goto second; }`; flow deletes the store later) reproduced it (CycleOwnedInventoryOnLeftRight).
 - `table[idx]` with a constant pointer argument: a symbol (`D_02020000`) is PRE-hoisted into a callee-saved
   register before an earlier loop; `(u16 *)0x02020000` is not a pool load and stays at the call (sub_080185E8).
 - A loop counter giv `slot = i + 4` that the reference strength-reduces (init after the hoisted constants,
   `lsls rS,#6` per iteration) appears only when no other `4 + i` is computed: reading the counter bytes as
   `pad3D[4 + i]` makes CSE share that index and the giv is "not worth while"; an array field view starting
   at the byte (`cells41[i]`) plus `gFrameObjects[i + 4].field` per store and `call(i + 4)` matched
-  (sub_0800712C). Read `-dL` (`giv of insn N not worth while`) to see such decisions.
+  (PlaceTransferSlotMarkers). Read `-dL` (`giv of insn N not worth while`) to see such decisions.
 
 ## Allocation debug compiler and priorities (lean_c, 21 October)
+
+On Linux the same patch builds with the project's flags (output byte-identical to
+`tools/downloads/agbcc/agbcc`, checked with `cmp` on a draft's .s):
+
+    mkdir -p build/dbgcc && cp -r tools/downloads/agbcc/source/gcc build/dbgcc/gcc
+    cd build/dbgcc && patch -p1 --binary < ../../tools/agbcc_debug.patch
+    cd gcc && make normal -j1 CC=gcc        # -j>1 races on genrtl.h
 
 **Debug agbcc** (`tools/agbcc_debug.patch`). It patches local-alloc.c, reload1.c and
 combine.c and prints to stderr only when `AGBDBG` is set; the assembly output is
@@ -1275,17 +1282,17 @@ step ahead from the case-1 `0x31000000` reload on).
   (`half = size >> 1; mask = 0x1FFFFF; CpuSet(.., half & mask)`), reused by the second CpuSet, and (c)
   `chars = 0x4000; chars += vram;` instead of `vram + 0x4000`: global alloc gives a copy preference for
   `(set A (plus B const))`, which tied the sum to vram's r8; the two-statement form has none.
-- Header-field products and arguments (sub_0804545C; same 0x58-0x92 sequence in sub_08045120):
+- Header-field products and arguments (sub_0804545C; same 0x58-0x92 sequence in LoadRecordObjectGrid):
   the reference recomputes the rows argument from the cached `d << 20` and passes the columns argument
   through `adds r5, r0, #0` (a reload_cse copy: the arguments are recomputed shifts and r0 still holds
   the columns value). Source: one `t` for rows and columns, `x = value * t; t = cols; value = x * (u16)t;`
   (the no-op `(u16)` cast is what gave `t` r0 and `x` r1 in global alloc), `x = d << 26; x >>= 30;`
   for the shape (no separate shift temp, so `x` prefers only r1), then `t = descriptor;` and the
   argument shifts written on `t` (which kills the CSE equivalences).
-- A loop-invariant header word whose spill slot order and store position differ (sub_08045120 draft):
+- A loop-invariant header word whose spill slot order and store position differ (LoadRecordObjectGrid draft):
   reading it through a block-local `const u32 *h = header;` around the loops reorders the gcse PRE
   pseudos, so the slots follow the reference (`row + 1` below the header word).
-- sub_08045120 matched once the two PRE pseudos (`row + 1` and the loop-invariant header word) were
+- LoadRecordObjectGrid matched once the two PRE pseudos (`row + 1` and the loop-invariant header word) were
   created in the reference order: gcse's pre_delete walks the expression hash table bucket by bucket,
   so the order depends on the hashed register numbers modulo the table size. Reading the header in
   the loops through a pointer local assigned just before the `if (palette)` block
@@ -1385,6 +1392,44 @@ scores are search metrics, and exact bytes still require `tools/match.py`.
   and its use lengthened it from 3 to 4 and got it hoisted in the reference order (sub_08060BE4).
 - Global-alloc refs are weighted by loop depth, and a `do { } while (0)` counts as a loop: a use
   inside a wrap counts 2. This decided a hoisted constant (refs 4 vs 3) against a parameter.
+- `-fno-expensive-optimizations` makes agbcc emit an unreferenced `.LC` constant-pool word in
+  `.rodata` for every global-symbol constant the function loads (integer addresses such as
+  `*(u16 *)0x0400000A` emit none). The ROM has no such words, so that profile is ruled out for any
+  function that loads a symbol address, whatever its text bytes say (sub_08064EB4).
+- A constant passed to a call and added to a value after it (`CpuSet(src, (void *)0x06004000, n);
+  ... (void *)(size + 0x06004000)`) is kept in a callee-saved register across the call; the
+  reference reloads the literal when the address is built in steps:
+  `u32 destination = 0x06000000; destination += size; destination += 0x4000;` (sub_08064EB4,
+  copied from the matched sibling sub_0805E478 found with `tools/asm_grep.py`).
+- Search the matched functions for a missing instruction shape before hand-searching C forms:
+  `python tools/asm_grep.py 'ldr (r\d), =0x0000FFFF\nadds r\d, \1, #0'` lists every matched
+  function that emits it, with its source file and flags.
+- `ldr r3, =K; adds r2, r3, #0; ands` comes from an HImode constant: `x = (x + 0x10) & 0x3FF`
+  stored to a `u16` narrows the `and` to HImode, and movhi of a large constant goes through r3.
+- `ldr r1, [sp, #N]; ldrh r1, [r1]; adds r0, r0, r1; ldr r2, [sp, #N]; strh r0, [r2]` after a
+  call is a HImode `u16 += u16` through a spilled pointer: combine keeps
+  `(subreg:SI (mem:HI p))` as an operand of the add and reload loads it with the address in the same
+  register. It needs both operands to be 16-bit; when the other operand is a call result, the callee
+  must be declared to return `u16` (sub_08045E6C: `*tileBase += InitRecordSpriteObject(...)` matched
+  once InitRecordSpriteObject returned `u16`; the matched sibling shape is sub_08029FE0's
+  `valuesD6[i] += valueC8`, found with tools/asm_grep.py). Check the callee still matches after
+  changing its return type.
+- `ldr r4, =0xFFFB; adds r1, r4, #0; ldrb r0, [..]; adds r1, r1, r0; ldrh r0, [..]; adds r0, r0, r1`
+  is `dst->screenY = src->screenY + 0xFFFB + byte;` with the constant written as an unsigned 16-bit
+  literal between the two operands (HImode narrowing; sub_08019D9C, sub_08052784). `(u16)(byte - 5) +
+  screenY` gives a plain `subs`.
+- A reload register must be in the insn's `used_spill_regs`, so it can never be a hard register
+  that an allocated pseudo occupies across the insn. `ldr r1, [sp, #N]; ldrh r1, [r1]` (address
+  reload and loaded value in the same register) therefore means the loaded value was itself a
+  reload (an unallocated pseudo), not an allocated temporary; with an allocated value the address
+  reload takes the next spill register and a later store through the same spilled pointer inherits
+  it instead of reloading (sub_08045E6C, AGBDBG `RELOAD`/`EMIT` lines).
+- To raise a strength-reduced giv (a pointer stepped per iteration) without losing it, wrap the
+  loop *increment*, not the store: `for (i = 0; i <= 0xFF; ) { ...; do { i++; } while (0); }`.
+  loop.c emits every giv update next to the biv increment, so the giv's update refs get the extra
+  depth; a wrap around the store instead makes it an inner-loop use and the giv is dropped. This put
+  the destination giv (7 -> 9 refs) ahead of a hoisted `inv * 31` and matched sub_08072080;
+  `tools/try_wraps.py` tries the move for every `for` loop without `continue`.
 - local-alloc's update_equiv_regs moves a constant pseudo that is set once and used once next to its
   use, even into another basic block, unless the use is inside a loop (depth > 0). A
   `do { work->data = ...; } while (0)` around the only use kept `work = (T *)0x02026000;` before the
@@ -1414,7 +1459,7 @@ scores are search metrics, and exact bytes still require `tools/match.py`.
   parameter's zero extension is deleted by combine. The helpers' return type also
   matters: returning `u16` instead of `u32` from the tail wraps changed global
   priorities (live length) enough to swap two callee-saved registers
-  (sub_0803BE44; the permuter found the return-type change).
+  (ScrollBgToFollowObject; the permuter found the return-type change).
 - Global-allocation priorities use live lengths computed by flow, before combine, so
   insns combine deletes later (here the u16 helper's zero extensions) still lengthen
   every pseudo live across them; plain inline copies are usually gone by then (CSE).

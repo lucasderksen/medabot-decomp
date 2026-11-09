@@ -60,7 +60,7 @@ extern u8 gUnknown_084DD368;
 extern void *gUnknown_03007014;
 extern void *gUnknown_08485A70;
 
-void sub_080103A4(void);
+void AlternateMosaicPulses(void);
 void sub_08015738(void);
 void sub_08015A90(void);
 void sub_08015AFC(void);
@@ -134,7 +134,7 @@ void sub_08031174(void);
 void sub_080312CC(void);
 void sub_08031608(void);
 void sub_08036340(s32 arg0);
-u32 sub_08036E54(u32 arg0);
+u32 Clamp1To99(u32 arg0);
 void sub_08039430(void);
 void sub_080396C4(void);
 void sub_0803D5A0(void);
@@ -144,7 +144,7 @@ void sub_0803E768(void);
 void sub_0803E774(void);
 void sub_0803E780(void);
 s32 sub_0803E79C(void);
-void sub_0803E894(void);
+void ScrollBg3Diagonally4(void);
 void sub_0803ED10(void);
 void sub_08040B5C(void);
 void sub_080513B8(void);
@@ -180,17 +180,17 @@ void sub_08073FB8(void *arg0);
 s32 sub_08074540(void);
 s32 sub_08075130(void);
 
-void sub_080103A4(void) {
+void AlternateMosaicPulses(void) {
     if ((u32) gState0TypedWork.bytes[0x85] <= 2U) {
         if (1 & gState0TypedWork.bytes[0x85]) {
-            gUnknown_0300137C = 1;
+            gNestedCallbackIndex = 1;
         } else {
-            gUnknown_0300137C = 3;
+            gNestedCallbackIndex = 3;
         }
         gState0TypedWork.bytes[0x85] += 1;
         return;
     }
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_08015738(void) {
@@ -593,11 +593,11 @@ void sub_0803080C(void) {
 }
 
 void sub_08030C94(void) {
-    gUnknown_0300137C = 0x40;
+    gNestedCallbackIndex = 0x40;
 }
 
 void sub_08030CA0(void) {
-    gUnknown_0300137C = 0x50;
+    gNestedCallbackIndex = 0x50;
 }
 
 void sub_08030CAC(void) {
@@ -605,7 +605,7 @@ void sub_08030CAC(void) {
     CpuFastSet(&gUnknown_084E44B8, (void *)0x05000320, 8U);
     CpuFastSet(gState0Palette_084E44D8, (void *)0x05000340, 8U);
     gMainSubstate = 7;
-    gUnknown_0300137C = 0x46;
+    gNestedCallbackIndex = 0x46;
 }
 
 void sub_08030F10(void) {
@@ -620,7 +620,7 @@ void sub_08030F10(void) {
     gFrameObjects[0x21].frameAndGroup = 0x902;
     gFrameObjects[0x21].scaleY = 0x80;
     gFrameObjects[0x21].scaleX = 0x40;
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_08031174(void) {
@@ -635,17 +635,17 @@ void sub_08031174(void) {
     gFrameObjects[0x21].frameAndGroup = 0x903;
     gFrameObjects[0x21].scaleY = 0x80;
     gFrameObjects[0x21].scaleX = 0x40;
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_080312CC(void) {
     SnapshotPalettes();
     gState0TypedWork.bytes[0x84] = 0;
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_08031608(void) {
-    gUnknown_0300137C = 0x4F;
+    gNestedCallbackIndex = 0x4F;
 }
 
 void sub_08036340(s32 arg0) {
@@ -658,7 +658,7 @@ void sub_08036340(s32 arg0) {
     LoadLeTilemap(var_r1, 0U, &gUnknown_08488450, (u32) *(u16 *)0x0400000A, 0x329U);
 }
 
-u32 sub_08036E54(u32 arg0) {
+u32 Clamp1To99(u32 arg0) {
     u32 var_r0;
 
     var_r0 = arg0;
@@ -687,7 +687,7 @@ void sub_0803D5A0(void) {
     CpuFastSet(&sp0, &gState0TransferWork, 0x01000100U);
     gState0TypedWork.widths.word86 = 0;
     gState0TypedWork.bytes[0x84] = 0;
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_0803D634(void) {
@@ -695,7 +695,7 @@ void sub_0803D634(void) {
         gState0TypedWork.bytes[0x8D] = (u8) gFrameCounter;
         gMainSerialOutgoingWork.word06 = gState0TypedWork.bytes[0x8D] + 0x8000;
     }
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_0803D674(void) {
@@ -706,16 +706,16 @@ void sub_0803D674(void) {
         }
     } else {
 block_3:
-        gUnknown_0300137C += 1;
+        gNestedCallbackIndex += 1;
     }
 }
 
 void sub_0803E768(void) {
-    gUnknown_0300137C = 6;
+    gNestedCallbackIndex = 6;
 }
 
 void sub_0803E774(void) {
-    gUnknown_0300137C = 5;
+    gNestedCallbackIndex = 5;
 }
 
 void sub_0803E780(void) {
@@ -732,7 +732,7 @@ s32 sub_0803E79C(void) {
     return 0;
 }
 
-void sub_0803E894(void) {
+void ScrollBg3Diagonally4(void) {
     if (gFrameCounter & 1) {
         gBgScroll3.x += 1;
         gBgScroll3.y += 1;
@@ -785,64 +785,64 @@ void sub_0805BB38(u16 arg0) {
 void sub_08060DAC(void) {
     (*(s8 *)((u8 *)(gMainContextPointer_03006F74) + 5)) = 0;
     (*(s8 *)((u8 *)(gMainContextPointer_03006F74) + 6)) = 0;
-    gUnknown_0300137C = 0xE;
+    gNestedCallbackIndex = 0xE;
 }
 
 void sub_08060DC8(void) {
-    gUnknown_0300137C = 1;
+    gNestedCallbackIndex = 1;
 }
 
 void sub_080640DC(void) {
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_08064BBC(void) {
     gMainSerialOutgoingWork.word06 = 0xFEDF;
     if ((gMainSerialOutgoingWork.words[0][1] == 0xFEDF) && (gMainSerialOutgoingWork.words[1][1] == gMainSerialOutgoingWork.words[0][1])) {
         gMainSubstate = 0x14;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
     }
 }
 
 void sub_08064BEC(void) {
     gMainState = 2;
     gMainSubstate = 0x1A;
-    gUnknown_0300137C = 0;
+    gNestedCallbackIndex = 0;
 }
 
 void sub_08064C0C(void) {
     gMainState = 2;
     gMainSubstate = 0x11;
-    gUnknown_0300137C = 0;
+    gNestedCallbackIndex = 0;
 }
 
 void sub_08064C2C(void) {
     gMainState = 2;
     gMainSubstate = 0x10;
-    gUnknown_0300137C = 0;
+    gNestedCallbackIndex = 0;
 }
 
 void sub_08064C4C(void) {
     gMainState = 2;
     gMainSubstate = 0x14;
-    gUnknown_0300137C = 0;
+    gNestedCallbackIndex = 0;
 }
 
 void sub_08064DA8(void) {
-    gUnknown_0300137C = 1;
+    gNestedCallbackIndex = 1;
 }
 
 void sub_08064DF4(void) {
     (*(s8 *)((u8 *)(gMainContextPointer_03006F74) + 0x2E)) = 0;
     (*(s8 *)((u8 *)(gMainContextPointer_03006F74) + 0x2F)) = 0;
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_08067BDC(u32 value) {
     gQuantityResult_030017EC = (u8) value;
     gMainState = 2;
     gMainSubstate = 0x18;
-    gUnknown_0300137C = 0;
+    gNestedCallbackIndex = 0;
 }
 
 s32 sub_08068920(void) {
@@ -881,7 +881,7 @@ void sub_0806B4A4(void) {
 void sub_0806E9C0(void) {
     gMainState = 3;
     gMainSubstate = 1;
-    gUnknown_0300137C = 0;
+    gNestedCallbackIndex = 0;
 }
 
 void sub_0806EA54(void) {
@@ -890,20 +890,20 @@ void sub_0806EA54(void) {
         gRenderMode = 0;
         gMainState = 3;
         gMainSubstate = 2;
-        gUnknown_0300137C = 0;
+        gNestedCallbackIndex = 0;
     }
 }
 
 void sub_0806F0E0(void) {
     LZ77UnCompVram(gUnknown_08485A70, (void *)0x06010000);
     LZ77UnCompVram(&gUnknown_087C9F48, &gUnknown_03001830);
-    gUnknown_0300137C = 6;
+    gNestedCallbackIndex = 6;
 }
 
 void sub_0806F9B8(void) {
     gMainState = 3;
     gMainSubstate = 2;
-    gUnknown_0300137C = 0;
+    gNestedCallbackIndex = 0;
 }
 
 void sub_08070804(void) {
@@ -921,11 +921,11 @@ void sub_08072B18(void *arg0, u8 arg1) {
     (*(s32 *)((u8 *)(arg0) + 0x2C)) = (s32) arg1;
 }
 
-void sub_08073C5C(const struct SoundSampleHeader *const *bank) {
+void SetSoundInstrumentBank(const struct SoundSampleHeader *const *bank) {
     gFamilySoundRoot74028->instruments = bank;
 }
 
-void sub_08073C70(const struct SoundSampleHeader *const *bank) {
+void SetSoundDrumBank(const struct SoundSampleHeader *const *bank) {
     gFamilySoundRoot74028->drums = bank;
 }
 
@@ -945,15 +945,15 @@ s32 sub_08074540(void) {
     return ((u8) (*(u8 *)((u8 *)(gUnknown_03007014) + 0x72C)) >> 1) & 1;
 }
 
-void sub_08074A78(const struct SoundSongHeader *const *bank) {
+void SetSoundMusicBank(const struct SoundSongHeader *const *bank) {
     gFamilySoundRoot74028->music = bank;
 }
 
-void sub_08074D3C(const struct SoundSongHeader *const *bank) {
+void SetSoundEffectBank(const struct SoundSongHeader *const *bank) {
     gFamilySoundRoot74028->effects = bank;
 }
 
-void sub_08074FE8(const struct SoundAuxBank *bank) {
+void SetSoundAuxBank(const struct SoundAuxBank *bank) {
     gFamilySoundRoot74028->aux = bank;
 }
 

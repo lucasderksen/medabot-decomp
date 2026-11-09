@@ -2,7 +2,7 @@
 
 #include "state0_display.h"
 
-void sub_08047414(struct RecordDisplayWork *work, struct RenderWork *render, const void *source, void *data)
+void InitRecordDisplayWork(struct RecordDisplayWork *work, struct RenderWork *render, const void *source, void *data)
 {
     work->render = render;
     work->source = source;
@@ -29,25 +29,25 @@ extern u8 gLaterBuffer_03005590[];
 extern u8 gLaterBuffer_03005350[];
 extern u8 gLaterBuffer_03006D30[];
 extern u8 gLaterBuffer_030064A0[];
-extern void sub_08049714(void *destination, u32 length);
+extern void ClearBytes(void *destination, u32 length);
 
 void sub_08047574(void)
 {
-    sub_08049714(gLaterBuffer_03005310, 60);
-    sub_08049714(gLaterBuffer_030057A0, 56);
-    sub_08049714(gLaterBuffer_03006D14, 4);
-    sub_08049714(gLaterBuffer_030057DC, 4);
-    sub_08049714(gLaterBuffer_0300534C, 4);
-    sub_08049714(gLaterBuffer_030055A0, 512);
-    sub_08049714(gLaterBuffer_03006D40, 512);
-    sub_08049714(gLaterBuffer_03006F40, 52);
-    sub_08049714(gLaterBuffer_03006D38, 8);
-    sub_08049714(gLaterBuffer_03006D20, 16);
-    sub_08049714(gLaterBuffer_030057D8, 4);
-    sub_08049714(gLaterBuffer_03005590, 4);
-    sub_08049714(gLaterBuffer_03005350, 576);
-    sub_08049714(gLaterBuffer_03006D30, 4);
-    sub_08049714(gLaterBuffer_030064A0, 0x874);
+    ClearBytes(gLaterBuffer_03005310, 60);
+    ClearBytes(gLaterBuffer_030057A0, 56);
+    ClearBytes(gLaterBuffer_03006D14, 4);
+    ClearBytes(gLaterBuffer_030057DC, 4);
+    ClearBytes(gLaterBuffer_0300534C, 4);
+    ClearBytes(gLaterBuffer_030055A0, 512);
+    ClearBytes(gLaterBuffer_03006D40, 512);
+    ClearBytes(gLaterBuffer_03006F40, 52);
+    ClearBytes(gLaterBuffer_03006D38, 8);
+    ClearBytes(gLaterBuffer_03006D20, 16);
+    ClearBytes(gLaterBuffer_030057D8, 4);
+    ClearBytes(gLaterBuffer_03005590, 4);
+    ClearBytes(gLaterBuffer_03005350, 576);
+    ClearBytes(gLaterBuffer_03006D30, 4);
+    ClearBytes(gLaterBuffer_030064A0, 0x874);
 }
 
 
@@ -132,7 +132,7 @@ void sub_0804725C(void *unused, struct RecordDisplayWork *work, s32 mode, u32 in
                 do
                 {
                 if (!(((const u8 *)cursor)[1] >> 7))
-                    sub_08046034(work->source, work->data, gLaterCommands_0807FDB0[index], ((u32)*(const u8 *)(const void *)(cursorOffset + (u32)gLaterCommands_0807FDB0) << 26 >> 26), ((u32)*(const u8 *)cursor << 26 >> 26));
+                    LoadRecordCommandTiles(work->source, work->data, gLaterCommands_0807FDB0[index], ((u32)*(const u8 *)(const void *)(cursorOffset + (u32)gLaterCommands_0807FDB0) << 26 >> 26), ((u32)*(const u8 *)cursor << 26 >> 26));
                 cursor++;
                 cursorOffset += 4;
             } while (((u32)*(const u8 *)cursor << 26) != 0);
@@ -159,7 +159,7 @@ void sub_0804725C(void *unused, struct RecordDisplayWork *work, s32 mode, u32 in
                 do
                 {
                 if (!(((const u8 *)cursor)[1] >> 7))
-                    sub_08046034(work->source, work->data, gLaterCommands_0807F610[index], ((u32)*(const u8 *)(const void *)(cursorOffset + (u32)gLaterCommands_0807F610) << 26 >> 26), ((u32)*(const u8 *)cursor << 26 >> 26));
+                    LoadRecordCommandTiles(work->source, work->data, gLaterCommands_0807F610[index], ((u32)*(const u8 *)(const void *)(cursorOffset + (u32)gLaterCommands_0807F610) << 26 >> 26), ((u32)*(const u8 *)cursor << 26 >> 26));
                 cursor++;
                 cursorOffset += 4;
             } while (((u32)*(const u8 *)cursor << 26) != 0);

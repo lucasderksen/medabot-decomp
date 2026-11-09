@@ -11,14 +11,14 @@ struct ContinueFrameCounter {u8 pad[0x2A];u8 action;u8 gap[5];u16 counter;u8 tai
 
 extern struct ContinueCounterMode gUnknown_03001800;
 extern struct ContinueFrameCounter gUnknown_03002C30[128];
-extern void sub_0803D450(void);extern void sub_0803D4AC(void);
+extern void LoadActionHalfwordScriptParams(void);extern void AdvanceActionHalfwordScript(void);
 
 void sub_080399EC(void);
 
 void sub_080399EC(void) {
  u16 current;
- sub_0803D450();current=gUnknown_03002C30[0].counter;
+ LoadActionHalfwordScriptParams();current=gUnknown_03002C30[0].counter;
  if(current!=gUnknown_03001800.mode)gUnknown_03002C30[0].counter=current+1;
- else{gUnknown_03002C30[0].counter=0;sub_0803D4AC();}
+ else{gUnknown_03002C30[0].counter=0;AdvanceActionHalfwordScript();}
  gUnknown_03002C30[0].action=1;
 }

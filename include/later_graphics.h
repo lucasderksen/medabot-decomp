@@ -16,13 +16,13 @@ void sub_08049318(void);
 void sub_08049420(u32 index, u32 value);
 void sub_080496EC(void);
 void sub_080496F0(u32 index, const void *source);
-void sub_08049714(void *destination, u32 size);
+void ClearBytes(void *destination, u32 size);
 void sub_08049728(void *destination, u32 size, u32 value);
 s32 sub_08049740(const void *first, const void *second, s32 size);
 u32 sub_08049768(const void *source, s32 size);
-void sub_080497C0(const void *source, void *destination, u32 size);
+void CopyBytes2(const void *source, void *destination, u32 size);
 
 void sub_08049374(u32 index);
-u32 sub_08049780(u32 range);
+u32 NextLookupRandom(u32 range);
 
 #endif

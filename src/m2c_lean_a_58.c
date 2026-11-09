@@ -12,7 +12,7 @@ extern u8 gContinuedWork_030057E0[];
 
 /* Kept as a helper: its 0/1 result in r0 reproduces the reference test. */
 static inline u32 ContinuedRollChance(void) {
-    if ((0x1F & sub_080424B8()) == 0x1F)
+    if ((0x1F & NextRandomByte()) == 0x1F)
         return 1;
     return 0;
 }

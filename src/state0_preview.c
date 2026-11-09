@@ -5,7 +5,7 @@
 #include "later_helpers.h"
 
 
-void sub_0800F300(void)
+void RefreshSelectedPartPreview(void)
 {
     u8 *work;
     u32 fill;
@@ -32,7 +32,7 @@ void sub_0800F300(void)
     gRenderWork->byte1095 = 0;
 }
 
-void sub_0800F440(void)
+void UpdateSelectedPartPreview(void)
 {
     u8 *work = gState0TypedWork.bytes;
     if ((u8)(work[0x3C] - 2) <= 1)
@@ -81,20 +81,20 @@ void sub_0800F440(void)
     }
 }
 
-void sub_0800F60C(void)
+void InitPartDetailPreview(void)
 {
     u32 fill;
     u8 *work;
     void *objects;
-    sub_0803F624(&gRecordDisplayWork, 0xD0, 0);
-    sub_0803F624(gRecordDisplayData, 0x800, 0);
-    sub_0803F624(gRecordDisplayExtra, 0x60, 0);
+    FillBytes(&gRecordDisplayWork, 0xD0, 0);
+    FillBytes(gRecordDisplayData, 0x800, 0);
+    FillBytes(gRecordDisplayExtra, 0x60, 0);
     gRenderMode = 2;
     gRenderWork = (struct RenderWork *)0x02024000;
     fill = 0;
     CpuFastSet(&fill, gRenderWork, CPU_SET_FILL | 0x426);
     gRecordDisplayExtraPointer = gRecordDisplayExtra;
-    sub_08047414(&gRecordDisplayWork, gRenderWork, gUnknownBytes_083D1D78, gRecordDisplayData);
+    InitRecordDisplayWork(&gRecordDisplayWork, gRenderWork, gUnknownBytes_083D1D78, gRecordDisplayData);
     gRecordDisplayWork.data = gRecordDisplayData;
     objects = gRenderWork->objects;
     work = gState0TypedWork.bytes;

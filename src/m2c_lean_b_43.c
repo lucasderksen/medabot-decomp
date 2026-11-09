@@ -127,7 +127,7 @@ void sub_08069CC0(void) {
     sub_08069BFC_Int(7, -0x20, 0x52, 0, 4);
     sub_08069BFC_Int(8, -0x20, 0x52, 0, 4);
     for (i = 0; i <= 8; i++)
-        sub_08048864(i + 0x14, 0xCC00, 0x110, 0xD, 3);
+        InitFrameObject(i + 0x14, 0xCC00, 0x110, 0xD, 3);
     for (i = 0; i < 3; i++) {
         gFrameObjects[0x14 + i * 3].screenX = 0x2C;
         gFrameObjects[0x15 + i * 3].screenX = -0x20;

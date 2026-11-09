@@ -4,7 +4,7 @@
 
 u32 sub_08033074(void)
 {
-    return gState0ChoiceWeights_083AF080[sub_080424B8() & 15];
+    return gState0ChoiceWeights_083AF080[NextRandomByte() & 15];
 }
 
 u32 sub_08033318(u32 first, u32 second)

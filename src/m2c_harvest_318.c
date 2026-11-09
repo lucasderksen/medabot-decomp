@@ -20,14 +20,14 @@ extern u8 gUnknown_03000491;
 extern u8 gUnknown_03001845[];
 extern u8 gUnknown_083AF490[];
 
-s32 sub_08007440(u32 arg0);
+s32 IsSelectionAbsentFromTransferSlots(u32 arg0);
 void sub_0801A5D8(void);
 s32 sub_0801B4C8(s32 arg0);
 void sub_0801BBC4(void);
-u32 sub_080353CC(u32 index);
+u32 StepObjectHop(u32 index);
 void sub_08035844(u32 arg0);
 
-s32 sub_08007440(u32 arg0) {
+s32 IsSelectionAbsentFromTransferSlots(u32 arg0) {
 
     u32 i;
 
@@ -120,7 +120,7 @@ void sub_0801BBC4(void) {
         if (*var_r5 != 0) {
             sub_0801BC04(var_r4);
         } else {
-            sub_08040D0C((u8) (var_r6 >> 0x18), 1U);
+            HideFrameObjects((u8) (var_r6 >> 0x18), 1U);
         }
         var_r6 += 0x01000000;
         var_r5 += 0x100;
@@ -128,7 +128,7 @@ void sub_0801BBC4(void) {
     } while (var_r4 <= 5U);
 }
 
-u32 sub_080353CC(u32 index) {
+u32 StepObjectHop(u32 index) {
 
     struct FrameObject *temp_r3;
     struct FrameObject *objs;
@@ -156,5 +156,5 @@ void sub_08035844(u32 arg0) {
     setup = gSetupBuffer_03000590;
     *p = *p + setup[(arg0 << 8) + 5];
     *p = *p + sub_0803576C(arg0);
-    *p = (sub_080424B8() & 7) + *p;
+    *p = (NextRandomByte() & 7) + *p;
 }

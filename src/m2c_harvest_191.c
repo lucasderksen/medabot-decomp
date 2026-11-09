@@ -24,9 +24,9 @@ struct FrameWork601D4 {u8 pad00[0x46];u16 frame1;u8 pad48[0x12];u16 timer1;};
 struct Dma6941C {const void *volatile source;void *volatile destination;volatile u32 control;};
 
 extern const u16 gFrames080AFAE0[12];
-extern s32 sub_0807CEC8(s32,s32);
-extern void sub_0803D450(void);
-extern void sub_0803D4AC(void);
+extern s32 __udivsi3(s32,s32);
+extern void LoadActionHalfwordScriptParams(void);
+extern void AdvanceActionHalfwordScript(void);
 extern void sub_0805FB4C(s32);
 
 void sub_08039BFC(void);
@@ -38,7 +38,7 @@ void sub_08039BFC(void) {
  struct Continued39BFCWork *work;
  u8 mask;
 
- sub_0803D450();
+ LoadActionHalfwordScriptParams();
  frames = (struct Continued39BFCFrame3 *)&gFrameObjects;
  work = (struct Continued39BFCWork *)&gState0TransferWork;
  frames->frame.unknown23[1] = work->word102;
@@ -57,7 +57,7 @@ void sub_08039BFC(void) {
  }
 
  ((struct Continued39BFCFrame3 *)&gFrameObjects)->frame.unknown23[6] = 9;
- sub_0803D4AC();
+ AdvanceActionHalfwordScript();
 }
 
 void sub_080601D4(void) {
@@ -71,9 +71,9 @@ void sub_080601D4(void) {
  ((struct FrameWork601D4 *)gFrameObjects)->timer1=next;
  if((u16)next>0x47)((struct FrameWork601D4 *)gFrameObjects)->timer1=0;
  frames=gFrames080AFAE0;
- ((struct FrameWork601D4 *)gFrameObjects)->frame1=frames[(u16)sub_0807CEC8(((struct FrameWork601D4 *)gFrameObjects)->timer1,6)];
+ ((struct FrameWork601D4 *)gFrameObjects)->frame1=frames[(u16)__udivsi3(((struct FrameWork601D4 *)gFrameObjects)->timer1,6)];
  if(*(s16 *)((u8 *)gMainContextPointer_03006F74+0x3A)>0xD){
-  *(s8 *)gMainContextPointer_03006F74=0;gUnknown_0300137C--;
+  *(s8 *)gMainContextPointer_03006F74=0;gNestedCallbackIndex--;
  }
 }
 

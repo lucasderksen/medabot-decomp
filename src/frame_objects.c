@@ -1,8 +1,8 @@
 #include "frame_objects.h"
 
-extern void sub_08074DE0(u32 value);
+extern void PlaySoundEffect(u32 value);
 
-void sub_08040B90(const u8 *commands, u8 index)
+void InitFrameObjectCommands(const u8 *commands, u8 index)
 {
     u8 offset;
     const u8 *command;
@@ -21,7 +21,7 @@ found:
 }
 
 
-void sub_08040BD8(const u8 *commands, u8 index)
+void RunFrameObjectCommands(const u8 *commands, u8 index)
 {
     u32 repeat;
     if (gFrameObjects[index].commandStopped == 0xFF)
@@ -49,7 +49,7 @@ void sub_08040BD8(const u8 *commands, u8 index)
             gFrameObjects[index].commandOffset += 3;
             break;
         case 0xFD:
-            sub_08074DE0(commands[gFrameObjects[index].commandOffset + 1]);
+            PlaySoundEffect(commands[gFrameObjects[index].commandOffset + 1]);
             gFrameObjects[index].commandOffset += 3;
             break;
         case 0xFE:
@@ -67,7 +67,7 @@ void sub_08040BD8(const u8 *commands, u8 index)
     } while (repeat);
 }
 
-void sub_08040CD0(u8 start, u8 count)
+void ClearFrameObjects(u8 start, u8 count)
 {
     u32 i;
     u32 zero;
@@ -78,14 +78,14 @@ void sub_08040CD0(u8 start, u8 count)
     }
 }
 
-void sub_08040D0C(u8 start, u8 count)
+void HideFrameObjects(u8 start, u8 count)
 {
     u32 i;
     for (i = 0; i < count; i++)
         gFrameObjects[start + i].flags &= 0x7FFF;
 }
 
-void sub_08040D44(u8 start, u8 count)
+void ShowFrameObjects(u8 start, u8 count)
 {
     u32 i;
     for (i = 0; i < count; i++)
@@ -106,7 +106,7 @@ finish:
     return start;
 }
 
-void sub_08041370(u8 *output, u32 value)
+void FormatDecimalString(u8 *output, u32 value)
 {
     u8 digits[6];
     volatile u32 remainder;
@@ -314,7 +314,7 @@ void sub_08040EE4(const u8 *bytes, u8 start, s32 x, s32 y, u8 boxWidth, u8 palet
 
 #include "frame_objects.h"
 extern const u8 gFrameByteMetrics[][2];
-void sub_08040DB8(const u8 *bytes, u32 argument_start, s32 x, s32 y, u32 argument_boxWidth, u32 argument_palette, u32 argument_alignment, u32 argument_flags)
+void PlaceAlignedTextObjects(const u8 *bytes, u32 argument_start, s32 x, s32 y, u32 argument_boxWidth, u32 argument_palette, u32 argument_alignment, u32 argument_flags)
 {
     u8 start = argument_start;
     u8 boxWidth = argument_boxWidth;

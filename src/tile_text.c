@@ -5,7 +5,7 @@ extern const u8 gUnknownBytes_083B83FC[];
 extern const s16 gUnknownSines_083D6A2C[];
 extern const s16 gUnknownSines_083D6C2C[];
 
-void sub_08042678(void *destination, u32 inputLength)
+void FillTextWithHyphens(void *destination, u32 inputLength)
 {
     u8 *out = destination;
     u8 length = inputLength;
@@ -15,7 +15,7 @@ void sub_08042678(void *destination, u32 inputLength)
     *out = 0xFE;
 }
 
-void sub_08042698(u32 width, u32 height, u32 x, u32 y, u32 control, u32 inputEntry)
+void FillTilemapRectSequential(u32 width, u32 height, u32 x, u32 y, u32 control, u32 inputEntry)
 {
     u16 entry = inputEntry;
     u32 screenOffset = ((control >> 8) & 31) << 11;
@@ -41,8 +41,8 @@ void sub_080426F0(u32 inputValue, u32 inputX, u32 inputY, u32 control, u32 input
     u8 remainder;
     if (value == 255)
     {
-        sub_08042698(1, 2, x, y, control, (u16)(entry + 24));
-        sub_08042698(1, 2, x + 1, y, control, (u16)(entry + 24));
+        FillTilemapRectSequential(1, 2, x, y, control, (u16)(entry + 24));
+        FillTilemapRectSequential(1, 2, x + 1, y, control, (u16)(entry + 24));
     }
     else
     {
@@ -52,23 +52,23 @@ void sub_080426F0(u32 inputValue, u32 inputX, u32 inputY, u32 control, u32 input
         digits[2] = remainder - (u8)(remainder / 10) * 10;
         if (digits[0] != 0)
         {
-            sub_08042698(1, 2, x, y, control, (u16)(entry + 20));
-            sub_08042698(1, 2, x + 1, y, control, (u16)(entry + 22));
+            FillTilemapRectSequential(1, 2, x, y, control, (u16)(entry + 20));
+            FillTilemapRectSequential(1, 2, x + 1, y, control, (u16)(entry + 22));
         }
         else if (digits[1] != 0)
         {
-            sub_08042698(1, 2, x, y, control, (u16)(entry + digits[1] * 2));
-            sub_08042698(1, 2, x + 1, y, control, (u16)(entry + digits[2] * 2));
+            FillTilemapRectSequential(1, 2, x, y, control, (u16)(entry + digits[1] * 2));
+            FillTilemapRectSequential(1, 2, x + 1, y, control, (u16)(entry + digits[2] * 2));
         }
         else
         {
-            sub_0803EF8C(1, 2, x, y, control, 0);
-            sub_08042698(1, 2, x + 1, y, control, (u16)(entry + digits[2] * 2));
+            FillTilemapRect(1, 2, x, y, control, 0);
+            FillTilemapRectSequential(1, 2, x + 1, y, control, (u16)(entry + digits[2] * 2));
         }
     }
 }
 
-void sub_08042838(u32 value, u32 x, u32 y, u32 inputColumns, u32 control, u32 inputEntry)
+void DrawNumberTileRow(u32 value, u32 x, u32 y, u32 inputColumns, u32 control, u32 inputEntry)
 {
     u8 columns = inputColumns;
     u16 entry = inputEntry;
@@ -224,7 +224,7 @@ void sub_08042A90(u32 first, u32 second, u32 x, u32 y, u32 separator, u32 contro
     }
 }
 
-void sub_08042B58(u32 record, u32 slot, void *destination)
+void CopyPartMetadataSlot(u32 record, u32 slot, void *destination)
 {
     u8 *out = destination;
     u32 i = 0;
@@ -240,7 +240,7 @@ void sub_08042B58(u32 record, u32 slot, void *destination)
     }
 }
 
-struct TileCoordinates sub_08042BC0(u32 angle, u32 radius, u32 x, u32 y)
+struct TileCoordinates GetPolarOffsetPoint(u32 angle, u32 radius, u32 x, u32 y)
 {
     struct TileCoordinates result;
     x += (u32)((float)gUnknownSines_083D6C2C[angle] * ((float)radius * (1.0f / 256.0f)));

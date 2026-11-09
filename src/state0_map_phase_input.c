@@ -14,9 +14,9 @@ void sub_08012C64(void)
     sub_080195C0();
     work = gState0TransferWork.bytes;
     selection = work + 0x80;
-    sub_080164F4(*selection);
+    CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
-    sub_08016288();
+    HandleRingRotationInput();
     sub_080178CC();
     if (work[0x83] != 0)
         return;
@@ -26,13 +26,13 @@ void sub_08012C64(void)
     {
         if (gUnknown_03000440[0x89] == 1 && work[0x81] == 5)
         {
-            sub_08074DE0(6);
+            PlaySoundEffect(6);
             return;
         }
-        sub_08074DE0(4);
+        PlaySoundEffect(4);
         sub_08017914();
         gUnknown_03000440[0x84] = 0;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
     else if (keys & 2)
     {
@@ -41,7 +41,7 @@ void sub_08012C64(void)
         {
             u32 selected;
             u8 component;
-            sub_08074DE0(5);
+            PlaySoundEffect(5);
             selected = *selection;
             component = selected % 3u;
             sub_08015A00(selected, 0x28, component * 24 + 0x24);
@@ -50,10 +50,10 @@ void sub_08012C64(void)
             sub_0801A744(*selection);
             work[0x81] = counter;
             work[0x82] = counter;
-            sub_08040CD0(0, 0x46);
-            sub_0803EF8C(30, 8, 0, 12, *(volatile u16 *)0x04000008, 0);
-            sub_0803EF8C(30, 8, 0, 12, *(volatile u16 *)0x0400000A, 0);
-            gUnknown_0300137C = 4;
+            ClearFrameObjects(0, 0x46);
+            FillTilemapRect(30, 8, 0, 12, *(volatile u16 *)0x04000008, 0);
+            FillTilemapRect(30, 8, 0, 12, *(volatile u16 *)0x0400000A, 0);
+            gNestedCallbackIndex = 4;
         }
     }
 }

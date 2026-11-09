@@ -7,7 +7,7 @@
 extern const u8 gState0MapImage_084C7F08[];
 extern const u8 gState0MapPalette_084C8014[];
 
-void sub_080103F4(void)
+void LoadBg0ImageAndPalette(void)
 {
     volatile u32 *dma;
     *(volatile u16 *)0x04000000 |= 0x100;
@@ -23,5 +23,5 @@ void sub_080103F4(void)
     gState0TypedWork.bytes[0x3F] = 0;
     gState0TypedWork.selection.word48 = 0;
     gState0TypedWork.bytes[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

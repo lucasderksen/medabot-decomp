@@ -96,8 +96,8 @@ extern u8 gUnknown_0202FBA0[32];
 extern u8 gUnknown_03001864[4];
 extern void sub_0801BCE4(u32,s32,s32);
 extern void sub_0801BD1C(const void *,s32,s32);
-extern void sub_0803D450(void);
-extern void sub_0803D4AC(void);
+extern void LoadActionHalfwordScriptParams(void);
+extern void AdvanceActionHalfwordScript(void);
 extern void sub_08062B48(u8, u8, u32);
 
 void sub_08017A7C(u32 arg0, u32 arg1, u32 arg2);
@@ -184,12 +184,12 @@ u32 sub_0801A788(u32 value) {
         ((struct ContinuedGraphics1A788 *)&gState0TypedWork)->phase++;
         break;
     case 7:
-        sub_0803EF8C(0x20U, 0x20U, 0U, 0U, (u32) *(u16 *)0x0400000A, 0U);
+        FillTilemapRect(0x20U, 0x20U, 0U, 0U, (u32) *(u16 *)0x0400000A, 0U);
         ((struct ContinuedGraphics1A788 *)&gState0TypedWork)->phase++;
         break;
     case 8:
         if (value == 0) {
-            sub_0803EF8C(0x20U, 0x20U, 0U, 0U, (u32) *(u16 *)0x04000008, value);
+            FillTilemapRect(0x20U, 0x20U, 0U, 0U, (u32) *(u16 *)0x04000008, value);
             sub_08043C08((u32) gState0TransferWork.bytes[0x38], 1U);
             CpuFastSet(gUnknown_084C7FB4, gUnknown_0202FB00, 8U);
             CpuFastSet(gUnknown_08488560, gUnknown_0202FB40, 8U);
@@ -240,8 +240,8 @@ void sub_080234A8(void) {
  frames->frame.screenY = (u16)gFrameObjects[work[0x87] * 4 + 0x5D].screenY - 4;
  frames->frame.palette = 7;
  frames->frame.priority = 0xF0;
- sub_08040B90(gState0NextCommands_083B6100[0x40], 0x21);
- sub_08074DE0(0x4D);
+ InitFrameObjectCommands(gState0NextCommands_083B6100[0x40], 0x21);
+ PlaySoundEffect(0x4D);
  work[0xAA]++;
 }
 
@@ -280,7 +280,7 @@ void sub_0802F7B8(void) {
 void sub_080398AC(void) {
  u8 *setup,*work,*initialWork;struct ContinuedFrame398AC *frames;
  s32 offset;u32 value;u8 *record;
- sub_0803D450();
+ LoadActionHalfwordScriptParams();
  setup=gSetupBuffer_03000590;initialWork=gState0TransferWork.bytes;
  offset=initialWork[0x87]<<8;record=setup+offset;
  if(*(u8*)(record+0xDD)<=3U)
@@ -304,18 +304,18 @@ void sub_080398AC(void) {
   frames->tileX=work[0x110]+2;
  }
  ((struct ContinuedFrame398AC*)gFrameObjects)->clear=0;
- sub_0803D4AC();
+ AdvanceActionHalfwordScript();
 }
 
 void sub_080636FC(void) {
     if ((u32)(u8)((struct Phase636FC *)&gState0TypedWork)->phase <= 0x40) {
-        sub_0803F998(0x7FFF, 0x20 - ((u8)((struct Phase636FC *)&gState0TypedWork)->phase >> 1), 0xFF);
+        BlendObjPaletteBanksNow(0x7FFF, 0x20 - ((u8)((struct Phase636FC *)&gState0TypedWork)->phase >> 1), 0xFF);
         ++((struct Phase636FC *)&gState0TypedWork)->phase;
     } else {
         CpuFastSet(gUnknown_080AFBC4, (void *)0x05000300, 8);
         CpuFastSet(gUnknown_080AFBC4, gUnknown_0202F900, 8);
         ((struct Phase636FC *)&gState0TypedWork)->phase = 0;
-        ++gUnknown_0300137C;
+        ++gNestedCallbackIndex;
         ((struct Context636FC *)gMainContextPointer_03006F74)->timer = 0x280;
     }
     sub_08062B48(((struct Context636FC *)gMainContextPointer_03006F74)->firstX, ((struct Context636FC *)gMainContextPointer_03006F74)->firstY, 0);
@@ -329,7 +329,7 @@ void sub_08069F44(void) {
     u32 zero;
     s16 screenY;
     u8 *cursor;
-    sub_08048864(2, 0xCB20, 0x108, 2, 3);
+    InitFrameObject(2, 0xCB20, 0x108, 2, 3);
     frames = gFrameObjects;
     cursor = (u8 *)frames + 0x84;
     zero = 0;
@@ -343,7 +343,7 @@ void sub_08069F44(void) {
     *(u16 *)cursor = zero;
     cursor += 2;
     *(u16 *)cursor = zero;
-    sub_08048864(3, 0xCB20, 0x109, 2, 3);
+    InitFrameObject(3, 0xCB20, 0x109, 2, 3);
     cursor = (u8 *)frames + 0xC4;
     *(u16 *)cursor = screenY;
     cursor += 4;
@@ -354,7 +354,7 @@ void sub_08069F44(void) {
     *(u16 *)cursor = zero;
     cursor += 2;
     *(u16 *)cursor = zero;
-    sub_08048864(4, 0xCB20, 0x10A, 2, 3);
+    InitFrameObject(4, 0xCB20, 0x10A, 2, 3);
     *(u16 *)((u8 *)frames + 0x104) = screenY;
     *((u8 *)frames + 0x108) = 0x88;
     *((u8 *)frames + 0x109) = 0x88;

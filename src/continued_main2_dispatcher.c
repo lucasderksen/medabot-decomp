@@ -25,7 +25,7 @@ void sub_0805BBE0(void)
     {
         gMainState=zero;
         gMainSubstate=10;
-        gUnknown_0300137C=16;
+        gNestedCallbackIndex=16;
     }
     else
         gMain2Callbacks_08483594[gMainSubstate]();

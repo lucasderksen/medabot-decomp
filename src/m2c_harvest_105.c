@@ -22,6 +22,6 @@ void sub_08027D24(void) {
         *work -= 1;
         return;
     }
-    sub_08074DE0(0x2BU);
+    PlaySoundEffect(0x2BU);
     gState0TransferWork.bytes[0xAA] += 1;
 }

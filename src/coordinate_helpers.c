@@ -34,7 +34,7 @@ void sub_08042D94(u32 first, u32 second, u32 third, u32 fourth, u32 graphicsSlot
 
 void sub_08042E58(u32 first, u32 second, u32 third, u32 fourth, u32 tileGroup, u32 firstObject, u32 x, u32 y, u32 flip, u32 flagGroup, u32 priority)
 {
-    sub_08040CD0(firstObject, 4);
+    ClearFrameObjects(firstObject, 4);
     gFrameObjects[firstObject].flags = 0;
     gFrameObjects[firstObject].flags = 0xC004 | (flagGroup << 10);
     if (flip)
@@ -200,28 +200,28 @@ void sub_080432A0(u32 firstObject, u32 tileGroup, u32 unused)
     {
     case 0:
         gFrameObjects[firstObject + 1].angle = phase * 4;
-        coordinates.pair = sub_08042BC0(phase + 96, 5, gFrameObjects[firstObject + 3].screenX, gFrameObjects[firstObject + 3].screenY);
+        coordinates.pair = GetPolarOffsetPoint(phase + 96, 5, gFrameObjects[firstObject + 3].screenX, gFrameObjects[firstObject + 3].screenY);
         copy = coordinates.packed;
         gFrameObjects[firstObject + 1].screenX = copy - 5;
         gFrameObjects[firstObject + 1].screenY = (copy >> 16) - 3;
         break;
     case 1:
         gFrameObjects[firstObject + 1].angle = 128 - phase * 4;
-        coordinates.pair = sub_08042BC0(128 - phase, 5, gFrameObjects[firstObject + 3].screenX, gFrameObjects[firstObject + 3].screenY);
+        coordinates.pair = GetPolarOffsetPoint(128 - phase, 5, gFrameObjects[firstObject + 3].screenX, gFrameObjects[firstObject + 3].screenY);
         copy = coordinates.packed;
         gFrameObjects[firstObject + 1].screenX = copy - 5;
         gFrameObjects[firstObject + 1].screenY = (copy >> 16) - 3;
         break;
     case 2:
         gFrameObjects[firstObject + 1].angle = 1024 - phase * 4;
-        coordinates.pair = sub_08042BC0(96 - phase, 5, gFrameObjects[firstObject + 3].screenX, gFrameObjects[firstObject + 3].screenY);
+        coordinates.pair = GetPolarOffsetPoint(96 - phase, 5, gFrameObjects[firstObject + 3].screenX, gFrameObjects[firstObject + 3].screenY);
         copy = coordinates.packed;
         gFrameObjects[firstObject + 1].screenX = copy - 5;
         gFrameObjects[firstObject + 1].screenY = (copy >> 16) - 3;
         break;
     case 3:
         gFrameObjects[firstObject + 1].angle = phase * 4 + 896;
-        coordinates.pair = sub_08042BC0(phase + 64, 5, gFrameObjects[firstObject + 3].screenX, gFrameObjects[firstObject + 3].screenY);
+        coordinates.pair = GetPolarOffsetPoint(phase + 64, 5, gFrameObjects[firstObject + 3].screenX, gFrameObjects[firstObject + 3].screenY);
         copy = coordinates.packed;
         gFrameObjects[firstObject + 1].screenX = copy - 5;
         gFrameObjects[firstObject + 1].screenY = (copy >> 16) - 3;
@@ -240,28 +240,28 @@ void sub_080432A0(u32 firstObject, u32 tileGroup, u32 unused)
     {
     case 2:
         gFrameObjects[firstObject + 2].angle = phase * 4;
-        coordinates.pair = sub_08042BC0(phase + 32, 5, gFrameObjects[firstObject + 3].screenX, gFrameObjects[firstObject + 3].screenY);
+        coordinates.pair = GetPolarOffsetPoint(phase + 32, 5, gFrameObjects[firstObject + 3].screenX, gFrameObjects[firstObject + 3].screenY);
         copy = coordinates.packed;
         gFrameObjects[firstObject + 2].screenX = copy + 5;
         gFrameObjects[firstObject + 2].screenY = (copy >> 16) - 3;
         break;
     case 3:
         gFrameObjects[firstObject + 2].angle = 128 - phase * 4;
-        coordinates.pair = sub_08042BC0(64 - phase, 5, gFrameObjects[firstObject + 3].screenX, gFrameObjects[firstObject + 3].screenY);
+        coordinates.pair = GetPolarOffsetPoint(64 - phase, 5, gFrameObjects[firstObject + 3].screenX, gFrameObjects[firstObject + 3].screenY);
         copy = coordinates.packed;
         gFrameObjects[firstObject + 2].screenX = copy + 5;
         gFrameObjects[firstObject + 2].screenY = (copy >> 16) - 3;
         break;
     case 0:
         gFrameObjects[firstObject + 2].angle = 1024 - phase * 4;
-        coordinates.pair = sub_08042BC0(32 - phase, 5, gFrameObjects[firstObject + 3].screenX, gFrameObjects[firstObject + 3].screenY);
+        coordinates.pair = GetPolarOffsetPoint(32 - phase, 5, gFrameObjects[firstObject + 3].screenX, gFrameObjects[firstObject + 3].screenY);
         copy = coordinates.packed;
         gFrameObjects[firstObject + 2].screenX = copy + 5;
         gFrameObjects[firstObject + 2].screenY = (copy >> 16) - 3;
         break;
     case 1:
         gFrameObjects[firstObject + 2].angle = phase * 4 + 896;
-        coordinates.pair = sub_08042BC0(phase, 5, gFrameObjects[firstObject + 3].screenX, gFrameObjects[firstObject + 3].screenY);
+        coordinates.pair = GetPolarOffsetPoint(phase, 5, gFrameObjects[firstObject + 3].screenX, gFrameObjects[firstObject + 3].screenY);
         copy = coordinates.packed;
         gFrameObjects[firstObject + 2].screenX = copy + 5;
         gFrameObjects[firstObject + 2].screenY = (copy >> 16) - 3;

@@ -50,10 +50,10 @@ void sub_0801CDB4(void)
 
 void sub_0801CE94(void)
 {
-    sub_08040BD8(gUnknownPointers_083B6100[34], 33);
+    RunFrameObjectCommands(gUnknownPointers_083B6100[34], 33);
     if (((struct ObservedActionFrameBacking *)gFrameObjects)->commandStopped862 == 255)
     {
-        sub_08040CD0(33, 1);
+        ClearFrameObjects(33, 1);
         sub_080158F8();
         sub_0801A0D0();
         switch (gState0TransferWork.bytes[0x51])

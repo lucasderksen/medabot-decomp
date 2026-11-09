@@ -39,15 +39,15 @@ extern struct Setup17F9C gSetup17F9C[] asm("gSetupBuffer_03000590");
 extern struct SetupBF14 gSetupBF14[] asm("gSetupBuffer_03000590");
 extern struct Work16288 gWork16288 asm("gCounter6ED08_03001800");
 extern u32 sub_08016138(u32);
-extern void sub_08074DE0(u32);
+extern void PlaySoundEffect(u32);
 
-void sub_08016288(void);
+void HandleRingRotationInput(void);
 void sub_08017E00(void);
 void sub_08017F9C(void);
 void sub_0801A4F4(u8 *source, u32 selected, u32 first, s32 x, s32 y);
 void sub_0801BF14(u32 index);
 
-void sub_08016288(void) {
+void HandleRingRotationInput(void) {
 
     const u8 *table;
 
@@ -63,15 +63,15 @@ void sub_08016288(void) {
                 gWork16288.value81 = *(const u8 *)(base + offset);
             }
             gWork16288.choice83 = 0;
-            sub_08015F24();
+            DrawSelectedMenuLabel();
         }
     } else {
         if (*(u8 *)&gRepeatedKeys & 0x10) {
-            sub_08074DE0(2);
+            PlaySoundEffect(2);
             gWork16288.choice83 = 1;
         }
         if (*(u8 *)&gRepeatedKeys & 0x20) {
-            sub_08074DE0(2);
+            PlaySoundEffect(2);
             gWork16288.choice83 = 2;
         }
     }
@@ -81,11 +81,11 @@ void sub_08017E00(void) {
 
     u32 i;
 
-    sub_08040D0C(0x20, 0x38);
+    HideFrameObjects(0x20, 0x38);
     for (i = 0; i < 4; i++) {
-        sub_08041D04(gPartTextPointers_083BBB4C[gSetup17E00[gState0TypedWork.bytes[0x3D] + gState0TypedWork.bytes[0x3C] * 3].parts[i].byte17 * 4 + i],
+        CopyBytesU8Count(gPartTextPointers_083BBB4C[gSetup17E00[gState0TypedWork.bytes[0x3D] + gState0TypedWork.bytes[0x3C] * 3].parts[i].byte17 * 4 + i],
                      &gState0TypedWork.bytes[0x9E], 15);
-        sub_08040DB8(&gState0TypedWork.bytes[0x9E], (u8)(i * 14 + 0x20), 13, i * 2 + 4, 10, 13, 1, 2);
+        PlaceAlignedTextObjects(&gState0TypedWork.bytes[0x9E], (u8)(i * 14 + 0x20), 13, i * 2 + 4, 10, 13, 1, 2);
     }
 }
 
@@ -101,7 +101,7 @@ void sub_08017F9C(void) {
             palette = 0xB000;
         sub_08042950(gSetup17F9C[gState0TypedWork.bytes[0x3D] + gState0TypedWork.bytes[0x3C] * 3].parts[i].byte11,
                      0x17, i * 2 + 4, 3, *(volatile u16 *)0x0400000A, palette | 0x390);
-        sub_08042698(1, 2, 0x1A, i * 2 + 4, *(volatile u16 *)0x0400000A, palette | 0x3A4);
+        FillTilemapRectSequential(1, 2, 0x1A, i * 2 + 4, *(volatile u16 *)0x0400000A, palette | 0x3A4);
         sub_08042950(gSetup17F9C[gState0TypedWork.bytes[0x3D] + gState0TypedWork.bytes[0x3C] * 3].parts[i].byte04,
                      0x1B, i * 2 + 4, 3, *(volatile u16 *)0x0400000A, palette | 0x390);
     }
@@ -136,7 +136,7 @@ void sub_0801BF14(u32 index) {
     u32 slot;
     u32 i;
 
-    slot = sub_08041D3C(gSetupBF14[index].byte01) - 1;
+    slot = FindInventoryRecordById(gSetupBF14[index].byte01) - 1;
     for (i = 0; i < 8; i++) {
         gInventoryBF14[slot].name20[i] = gSetupBF14[index].name20[i];
         gInventoryBF14[slot].name28[i] = gSetupBF14[index].name28[i];

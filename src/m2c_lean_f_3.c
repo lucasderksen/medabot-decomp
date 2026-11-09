@@ -33,33 +33,33 @@ void sub_080364A8(s32 mode, s32 slot) {
         x = 0x14;
     row = 2;
     if (gSetupRecords364A8[slot].parts[0].count != 0) {
-        sub_08042838(gSetupRecords364A8[slot].parts[0].count, x, row, 3, *(volatile u16 *)0x0400000A, 0xA330);
+        DrawNumberTileRow(gSetupRecords364A8[slot].parts[0].count, x, row, 3, *(volatile u16 *)0x0400000A, 0xA330);
         
-        sub_08042838(gSetupRecords364A8[slot].parts[0].name[4], x + 4, row, 3, *(volatile u16 *)0x0400000A, 0xA330);
+        DrawNumberTileRow(gSetupRecords364A8[slot].parts[0].name[4], x + 4, row, 3, *(volatile u16 *)0x0400000A, 0xA330);
     } else {
-        sub_08042838(gSetupRecords364A8[slot].parts[0].count, x, row, 3, *(volatile u16 *)0x0400000A, 0x8330);
+        DrawNumberTileRow(gSetupRecords364A8[slot].parts[0].count, x, row, 3, *(volatile u16 *)0x0400000A, 0x8330);
         
-        sub_08042838(gSetupRecords364A8[slot].parts[0].name[4], x + 4, row, 3, *(volatile u16 *)0x0400000A, 0x8330);
+        DrawNumberTileRow(gSetupRecords364A8[slot].parts[0].name[4], x + 4, row, 3, *(volatile u16 *)0x0400000A, 0x8330);
     }
     if (gSetupRecords364A8[slot].parts[1].count != 0) {
-        sub_08042838(gSetupRecords364A8[slot].parts[1].count, x, row + 3, 3, *(volatile u16 *)0x0400000A, 0xA330);
-        sub_08042838(gSetupRecords364A8[slot].parts[1].name[4], x + 4, row + 3, 3, *(volatile u16 *)0x0400000A, 0xA330);
+        DrawNumberTileRow(gSetupRecords364A8[slot].parts[1].count, x, row + 3, 3, *(volatile u16 *)0x0400000A, 0xA330);
+        DrawNumberTileRow(gSetupRecords364A8[slot].parts[1].name[4], x + 4, row + 3, 3, *(volatile u16 *)0x0400000A, 0xA330);
     } else {
-        sub_08042838(gSetupRecords364A8[slot].parts[1].count, x, row + 3, 3, *(volatile u16 *)0x0400000A, 0x8330);
-        sub_08042838(gSetupRecords364A8[slot].parts[1].name[4], x + 4, row + 3, 3, *(volatile u16 *)0x0400000A, 0x8330);
+        DrawNumberTileRow(gSetupRecords364A8[slot].parts[1].count, x, row + 3, 3, *(volatile u16 *)0x0400000A, 0x8330);
+        DrawNumberTileRow(gSetupRecords364A8[slot].parts[1].name[4], x + 4, row + 3, 3, *(volatile u16 *)0x0400000A, 0x8330);
     }
     if (gSetupRecords364A8[slot].parts[2].count != 0) {
-        sub_08042838(gSetupRecords364A8[slot].parts[2].count, x, row + 6, 3, *(volatile u16 *)0x0400000A, 0xA330);
-        sub_08042838(gSetupRecords364A8[slot].parts[2].name[4], x + 4, row + 6, 3, *(volatile u16 *)0x0400000A, 0xA330);
+        DrawNumberTileRow(gSetupRecords364A8[slot].parts[2].count, x, row + 6, 3, *(volatile u16 *)0x0400000A, 0xA330);
+        DrawNumberTileRow(gSetupRecords364A8[slot].parts[2].name[4], x + 4, row + 6, 3, *(volatile u16 *)0x0400000A, 0xA330);
     } else {
-        sub_08042838(gSetupRecords364A8[slot].parts[2].count, x, row + 6, 3, *(volatile u16 *)0x0400000A, 0x8330);
-        sub_08042838(gSetupRecords364A8[slot].parts[2].name[4], x + 4, row + 6, 3, *(volatile u16 *)0x0400000A, 0x8330);
+        DrawNumberTileRow(gSetupRecords364A8[slot].parts[2].count, x, row + 6, 3, *(volatile u16 *)0x0400000A, 0x8330);
+        DrawNumberTileRow(gSetupRecords364A8[slot].parts[2].name[4], x + 4, row + 6, 3, *(volatile u16 *)0x0400000A, 0x8330);
     }
     if (gSetupRecords364A8[slot].parts[3].count != 0) {
-        sub_08042838(gSetupRecords364A8[slot].parts[3].count, x, row + 9, 3, *(volatile u16 *)0x0400000A, 0xA330);
-        sub_08042838(gSetupRecords364A8[slot].parts[3].name[4], x + 4, row + 9, 3, *(volatile u16 *)0x0400000A, 0xA330);
+        DrawNumberTileRow(gSetupRecords364A8[slot].parts[3].count, x, row + 9, 3, *(volatile u16 *)0x0400000A, 0xA330);
+        DrawNumberTileRow(gSetupRecords364A8[slot].parts[3].name[4], x + 4, row + 9, 3, *(volatile u16 *)0x0400000A, 0xA330);
     } else {
-        sub_08042838(gSetupRecords364A8[slot].parts[3].count, x, row + 9, 3, *(volatile u16 *)0x0400000A, 0x8330);
-        sub_08042838(gSetupRecords364A8[slot].parts[3].name[4], x + 4, row + 9, 3, *(volatile u16 *)0x0400000A, 0x8330);
+        DrawNumberTileRow(gSetupRecords364A8[slot].parts[3].count, x, row + 9, 3, *(volatile u16 *)0x0400000A, 0x8330);
+        DrawNumberTileRow(gSetupRecords364A8[slot].parts[3].name[4], x + 4, row + 9, 3, *(volatile u16 *)0x0400000A, 0x8330);
     }
 }

@@ -73,11 +73,11 @@ void sub_0806ED08(void) {
     ((struct Dma6ED08 *)0x040000D4)->destination = (void *)0x05000200;
     ((struct Dma6ED08 *)0x040000D4)->control = 0x80000050;
     (void)((struct Dma6ED08 *)0x040000D4)->control;
-    sub_08048864(0U, 0xC000U, 0x30DU, 4U, 3);
+    InitFrameObject(0U, 0xC000U, 0x30DU, 4U, 3);
     gFrameObjects->screenX = 0x90;
     gFrameObjects->screenY = 0x40;
     sub_08068460(2, 1, 0);
     gRenderMode = 0;
     gCounter6ED08_03001800.field4 = (u16) gCounter6ED08_03001800.fieldC;
-    gUnknown_0300137C = 3;
+    gNestedCallbackIndex = 3;
 }

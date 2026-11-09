@@ -72,7 +72,7 @@ void sub_08023B44(void) {
     view->kind = 6;
     typed = gState0TypedWork.bytes;
     typed[0x84]=(command=0x45);
-    sub_08040B90(gState0NextCommands_083B6100[command],0x21);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[command],0x21);
     *(u16 *)(typed+0x86)=0x3C;
     transfer[0xAA]++;
 }
@@ -105,7 +105,7 @@ void sub_08023D44(void) {
     view->kind = 6;
     typed = gState0TypedWork.bytes;
     typed[0x84]=(command=0x42);
-    sub_08040B90(gState0NextCommands_083B6100[command],0x21);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[command],0x21);
     *(u16 *)(typed+0x86)=0x3C;
     transfer[0xAA]++;
 }
@@ -185,7 +185,7 @@ s32 sub_080701F8(void) {
     if (gGraphicsTransferCounter.counter != 0x3C) {
         if ((s32) gGraphicsTransferCounter.counter > 0x3C) {
             sub_08068684(2, 2, 0);
-            gUnknown_0300137C = 2;
+            gNestedCallbackIndex = 2;
             return 1;
         }
         goto advanceTimer;
@@ -195,9 +195,9 @@ s32 sub_080701F8(void) {
     *(volatile u16 *)0x04000052 = 0x10;
     *(volatile u16 *)0x04000054 = 0;
     *(volatile u16 *)0x04000000 |= 0x400;
-    gGraphicsTransferCounter.previousState = (s16) gUnknown_0300137C;
+    gGraphicsTransferCounter.previousState = (s16) gNestedCallbackIndex;
     gGraphicsTransferCounter.flagEE = 0x10;
-    gUnknown_0300137C = 5;
+    gNestedCallbackIndex = 5;
 advanceTimer:
     gGraphicsTransferCounter.counter = (s32) (gGraphicsTransferCounter.counter + 1);
     return 0;

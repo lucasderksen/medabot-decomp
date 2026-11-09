@@ -18,7 +18,7 @@ void sub_08013288(void)
     sub_080195C0();
     selection = gState0TransferWork.bytes;
     selection += 0x80;
-    sub_080164F4(*selection);
+    CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     base = gUnknown_03000440;
     counter = base + 0x84;
@@ -32,11 +32,11 @@ void sub_08013288(void)
     (*timer)++;
     if (*timer == 16)
     {
-        sub_08040CD0(0, 70);
-        sub_0803EF8C(30, 8, 0, 12, *(volatile u16 *)0x04000008, zero);
-        sub_0803EF8C(30, 8, 0, 12, *(volatile u16 *)0x0400000A, zero);
+        ClearFrameObjects(0, 70);
+        FillTilemapRect(30, 8, 0, 12, *(volatile u16 *)0x04000008, zero);
+        FillTilemapRect(30, 8, 0, 12, *(volatile u16 *)0x0400000A, zero);
         CpuFastSet(gState0Palette_084E44D8, (void *)0x05000340, 8);
-        gUnknown_0300137C = 13;
+        gNestedCallbackIndex = 13;
     }
 }
 
@@ -46,15 +46,15 @@ void sub_08013330(void)
     sub_080195C0();
     selection = gState0TransferWork.bytes;
     selection += 0x80;
-    sub_080164F4(*selection);
+    CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     CpuFastSet(gState0Palette_084E4518, (void *)0x05000340, 8);
-    sub_08040CD0(0, 6);
-    sub_08040CD0(30, 11);
+    ClearFrameObjects(0, 6);
+    ClearFrameObjects(30, 11);
     sub_08017004();
-    sub_08044118(12, 4, 9, 21, *(volatile u16 *)0x04000008, (u16 *)0x02020800);
+    ReadTilemapRect(12, 4, 9, 21, *(volatile u16 *)0x04000008, (u16 *)0x02020800);
     gUnknown_03000440[0x84] = 0;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_080133B8(void)
@@ -65,7 +65,7 @@ void sub_080133B8(void)
     sub_080195C0();
     selection = gState0TransferWork.bytes;
     selection += 0x80;
-    sub_080164F4(*selection);
+    CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     sub_08017048();
     sub_08017084();
@@ -84,7 +84,7 @@ void sub_080133B8(void)
         sub_08017268();
         sub_080173B4(0);
         *counter = 0;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
     }
 }
 
@@ -95,7 +95,7 @@ void sub_08013508(void)
     sub_080195C0();
     selection = gState0TransferWork.bytes;
     selection += 0x80;
-    sub_080164F4(*selection);
+    CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     sub_08016EDC();
     sub_08017948();
@@ -105,7 +105,7 @@ void sub_08013508(void)
     if (*counter == 16)
     {
         CpuFastSet(gState0Palette_084E44D8, (void *)0x05000340, 8);
-        gUnknown_0300137C = 11;
+        gNestedCallbackIndex = 11;
     }
 }
 
@@ -120,7 +120,7 @@ void sub_08013568(void)
     sub_080195C0();
     selection = gState0TransferWork.bytes;
     selection += 0x80;
-    sub_080164F4(*selection);
+    CycleActionSpriteFrames(*selection);
     sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
     base = gUnknown_03000440;
     counter = base + 0x84;
@@ -134,10 +134,10 @@ void sub_08013568(void)
     (*timer)++;
     if (*timer == 16)
     {
-        sub_08040CD0(0, 70);
-        sub_0803EF8C(30, 8, 0, 12, *(volatile u16 *)0x04000008, zero);
-        sub_0803EF8C(30, 8, 0, 12, *(volatile u16 *)0x0400000A, zero);
+        ClearFrameObjects(0, 70);
+        FillTilemapRect(30, 8, 0, 12, *(volatile u16 *)0x04000008, zero);
+        FillTilemapRect(30, 8, 0, 12, *(volatile u16 *)0x0400000A, zero);
         CpuFastSet(gState0Palette_084E44D8, (void *)0x05000340, 8);
-        gUnknown_0300137C = 13;
+        gNestedCallbackIndex = 13;
     }
 }

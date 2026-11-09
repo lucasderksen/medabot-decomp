@@ -20,8 +20,8 @@ extern struct FamilyRecord351E8 gUnknown_03000590[];
 extern struct FamilyWork4C588 gFamilyWork4C588;
 extern void (*const gUnknown_083AF8C0[])(void);
 extern void *sub_0804D938(u32 identifier);
-extern void sub_0803D4AC(void);
-extern void sub_0804D8CC(u32 mode);
+extern void AdvanceActionHalfwordScript(void);
+extern void ReadBankedScriptArgs(u32 mode);
 extern void sub_0805218C(u32 index,u32 value,void *record);
 extern volatile u16 *const gUnknown_08486E64[];
 
@@ -45,7 +45,7 @@ void sub_080393EC(void) {
  gFrameObjects[0].unknown23[6]=initial;
  if((s32)((u32)initial<<24)<0) {
   s32 value;
-  do {sub_0803D4AC();value=sub_0803D424();gFrameObjects[0].unknown23[6]=value;}while((s32)((u32)value<<24)<0);
+  do {AdvanceActionHalfwordScript();value=sub_0803D424();gFrameObjects[0].unknown23[6]=value;}while((s32)((u32)value<<24)<0);
  }
  gUnknown_083AF8C0[gFrameObjects[0].unknown23[6]]();
 }
@@ -54,7 +54,7 @@ void sub_0804C588(void) {
 
  struct FamilyWork4C588 *work;
  u8 *record;
- sub_0804D8CC(3);work=&gFamilyWork4C588;
+ ReadBankedScriptArgs(3);work=&gFamilyWork4C588;
  {u32 mode=(u32)work->mode<<8;record=sub_0804D938(work->amount|mode);}
  if(record!=0) {
   u32 flags=record[4];

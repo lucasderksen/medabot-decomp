@@ -42,7 +42,7 @@ void sub_0802AAF8(void) {
     frames->first.byte2B = 0x1C;
     frames->first.unknown2C[0] = 0;
     frames->first.unknown2C[1] = 0;
-    commands=gState0NextCommands_083B6100;sub_08040B90(commands[0x1C],0x21);
+    commands=gState0NextCommands_083B6100;InitFrameObjectCommands(commands[0x1C],0x21);
     frames->second.flags = -0x39DC;
     frames->second.tableSelector = 0;
     frames->second.screenX = (u16)gFrameObjects[*selection*4+0x5D].screenX + 0x20;
@@ -54,7 +54,7 @@ void sub_0802AAF8(void) {
     frames->second.byte2B = 0x1C;
     frames->second.unknown2C[0] = 0x80;
     frames->second.unknown2C[1] = 0;
-    sub_08040B90(commands[0x1C],0x22);
-    sub_08074DE0(0x33U);
+    InitFrameObjectCommands(commands[0x1C],0x22);
+    PlaySoundEffect(0x33U);
     work[0xAA]++;
 }

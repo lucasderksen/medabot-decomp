@@ -22,8 +22,8 @@ void sub_080576E0(void)
 {
     void **setup;
     sub_0804B248();
-    sub_08049714(gFrameObjects, 0x2000);
-    sub_08049714(gLaterBuffer_030055A0, 0x200);
+    ClearBytes(gFrameObjects, 0x2000);
+    ClearBytes(gLaterBuffer_030055A0, 0x200);
     {
         u32 fill = 0;
         volatile struct SetupDmaRegisters *dma = (void *)0x040000D4;
@@ -53,7 +53,7 @@ void sub_080576E0(void)
         LZ77UnCompVram(gUnknownBytes_085FBB78, (void *)0x06002100);
     }
     setup = &gSetupPointer_03006D14;
-    sub_08049714(*setup, 0x2000);
+    ClearBytes(*setup, 0x2000);
     {
         volatile struct SetupDmaRegisters *dma = (void *)0x040000D4;
         u8 *destination;

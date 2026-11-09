@@ -57,7 +57,7 @@ void sub_08037BF4(void) {
  u8 *selected=work+0x12F;
  struct FrameObject *frame;
  u32 y;
- sub_08040BD8(commands[frames[*selected].unknown2C[2]],*selected);
+ RunFrameObjectCommands(commands[frames[*selected].unknown2C[2]],*selected);
  frame=&frames[*selected];
  y=(u16)frame->screenY;
  if(frame->screenY==20) frame->unknown23[6]++;

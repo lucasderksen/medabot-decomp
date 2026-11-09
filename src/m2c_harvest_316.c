@@ -34,14 +34,14 @@ void sub_080618B4(void) {
     s32 zero2;
 
     if ((u32) gState0TypedWork.bytes[0x84] <= 8U) {
-        sub_0803F684(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFEU);
-        sub_0803F998(0U, gState0TypedWork.bytes[0x84] * 4, 0x7FFDU);
+        BlendBgPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0xFFFEU);
+        BlendObjPaletteBanksNow(0U, gState0TypedWork.bytes[0x84] * 4, 0x7FFDU);
         gState0TypedWork.bytes[0x84] += 1;
         return;
     }
     ctx = &gMainContextPointer_03006F74;
     substate = &gMainSubstate;
-    state = &gUnknown_0300137C;
+    state = &gNestedCallbackIndex;
     objs = gFrameObjects;
     mask = 0xBFFF;
     var_r2 = objs + 12;

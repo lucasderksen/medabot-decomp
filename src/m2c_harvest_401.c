@@ -18,7 +18,7 @@ void sub_080333E4(void) {
   u32 index;
   u32 step;
   root = gState0TransferWork.bytes;
-  root[0x60] = sub_08032FC4(root[0x5C]);
+  root[0x60] = GetSlotGroupStart(root[0x5C]);
   i = 0;
   count = 0;
   setup = gSetupBuffer_03000590;

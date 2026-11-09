@@ -32,7 +32,7 @@ struct Context614 {
     u8 speed;
 };
 
-extern s32 sub_0807CD2C(s32 value, s32 divisor);
+extern s32 __divsi3(s32 value, s32 divisor);
 
 s32 sub_0805B614(struct FrameObject *objects);
 

@@ -69,6 +69,6 @@ void sub_08028A38(void) {
             }
         }
     }
-    sub_08074DE0(0x5B);
+    PlaySoundEffect(0x5B);
     gWork28A38.counterAA++;
 }

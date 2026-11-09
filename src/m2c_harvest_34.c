@@ -25,7 +25,7 @@ extern s32 gUnknown_0850FC38;
 extern s32 sub_08073BC8();
 extern u8 gUnknown_084D6A5C;
 s32 sub_08015BF4(u8);
-s32 sub_0803D4AC();
+s32 AdvanceActionHalfwordScript();
 
 void sub_0800B498(void);
 void sub_080178CC(void);
@@ -87,7 +87,7 @@ void sub_08021950(void) {
     LeDecompress(&gUnknown_084D6A5C, (void *)0x06014800);
     CpuFastSet(&gUnknown_0850FC38, (void *)0x050002E0, 8U);
     work0 = (u8 *) &gState0NextCommands_083B6100;
-    sub_08040B90((*(u8 **)((u8 *)(work0) + 0xE4)), 0x21U);
+    InitFrameObjectCommands((*(u8 **)((u8 *)(work0) + 0xE4)), 0x21U);
     if (1 & gState0TransferWork.bytes[0xF8]) {
         gFrameObjects[0x21].flags |= 0x1000;
     }
@@ -100,21 +100,21 @@ void sub_08021AFC(void) {
     u32 var_r4;
 
     work0 = (u8 *) &gState0NextCommands_083B6100;
-    sub_08040BD8((*(u8 **)((u8 *)(work0) + 0xEC)), 0x21U);
-    sub_08040BD8((*(u8 **)((u8 *)(work0) + 0xEC)), 0x22U);
-    sub_08040BD8((*(u8 **)((u8 *)(work0) + 0xEC)), 0x23U);
-    temp_r0 = sub_080355F0(0x21U);
+    RunFrameObjectCommands((*(u8 **)((u8 *)(work0) + 0xEC)), 0x21U);
+    RunFrameObjectCommands((*(u8 **)((u8 *)(work0) + 0xEC)), 0x22U);
+    RunFrameObjectCommands((*(u8 **)((u8 *)(work0) + 0xEC)), 0x23U);
+    temp_r0 = StepFrameObjectToTarget(0x21U);
     var_r4 = (u32) ((0 - temp_r0) | temp_r0) >> 0x1F;
-    if (sub_080355F0(0x22U) != 0) {
+    if (StepFrameObjectToTarget(0x22U) != 0) {
         var_r4 += 1;
     }
-    if (sub_080355F0(0x23U) != 0) {
+    if (StepFrameObjectToTarget(0x23U) != 0) {
         var_r4 += 1;
     }
     if (var_r4 == 3) {
-        sub_08040B90((*(u8 **)((u8 *)(work0) + 0xE8)), 0x21U);
-        sub_08040B90((*(u8 **)((u8 *)(work0) + 0xE8)), 0x22U);
-        sub_08040B90((*(u8 **)((u8 *)(work0) + 0xE8)), 0x23U);
+        InitFrameObjectCommands((*(u8 **)((u8 *)(work0) + 0xE8)), 0x21U);
+        InitFrameObjectCommands((*(u8 **)((u8 *)(work0) + 0xE8)), 0x22U);
+        InitFrameObjectCommands((*(u8 **)((u8 *)(work0) + 0xE8)), 0x23U);
         gState0TransferWork.bytes[0xAA] += 1;
     }
 }
@@ -221,8 +221,8 @@ void sub_0803858C(void) {
     array0 = gFrameObjects;
     temp_r1 = &array0[gState0TypedWork.bytes[0x12F]];
     temp_r1->angle = (temp_r1->angle + 0x10) & 0x3FF;
-    if (sub_080355F0((u32) gState0TypedWork.bytes[0x12F]) != 0) {
-        sub_08040CD0(gState0TypedWork.bytes[0x12F], 1U);
+    if (StepFrameObjectToTarget((u32) gState0TypedWork.bytes[0x12F]) != 0) {
+        ClearFrameObjects(gState0TypedWork.bytes[0x12F], 1U);
     }
 }
 
@@ -236,7 +236,7 @@ void sub_08039CB4(void) {
     } else {
         gState0TransferWork.bytes[0xFD] = temp_r2;
     }
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }
 
 void sub_0803CB54(void) {
@@ -260,14 +260,14 @@ void sub_0803CB54(void) {
         return;
     }
     if (temp_r1->unknown2C[2] != 0) {
-        sub_08074DE0((u32) temp_r1->byte2B);
+        PlaySoundEffect((u32) temp_r1->byte2B);
         temp_r0_3 = &array0[gState0TypedWork.bytes[0x12F]];
         temp_r0_3->unknown2C[0] = temp_r0_3->unknown2C[1];
         temp_r0_4 = &array0[gState0TypedWork.bytes[0x12F]];
         temp_r0_4->unknown2C[2] -= 1;
         return;
     }
-    sub_08040CD0(gState0TypedWork.bytes[0x12F], 1U);
+    ClearFrameObjects(gState0TypedWork.bytes[0x12F], 1U);
 }
 
 u32 sub_08073BFC(u32 value, s32 factor) {

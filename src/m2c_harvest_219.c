@@ -33,10 +33,10 @@ void sub_08039068(void) {
         sub_08035844(gUnknown_03001800.target);
         gUnknown_03001800.amount = (u16) (gUnknown_03001800.amount + gUnknown_03000590[gUnknown_03001800.target].bonus);
         if (!(4 & gUnknown_03000590[gUnknown_03001800.target].flags)) {
-            sub_08035754(&gUnknown_03001800.amount, 8);
+            SubtractWithZeroFloor(&gUnknown_03001800.amount, 8);
         }
         if ((sub_08038E9C() == 0) && ((s32) (s16) gUnknown_03001800.amount > 0x1F)) {
-            sub_08035754(&gUnknown_03001800.remaining, (s32) (s16) gUnknown_03001800.amount);
+            SubtractWithZeroFloor(&gUnknown_03001800.remaining, (s32) (s16) gUnknown_03001800.amount);
             gUnknown_03001800.saved = (u16) gUnknown_03001800.remaining;
             temp_r1=&gUnknown_03000590[gUnknown_03001800.target];
             temp_r1->flags = (u8) (0x20 | temp_r1->flags);

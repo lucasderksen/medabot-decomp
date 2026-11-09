@@ -446,7 +446,7 @@ loop:
                             if (gScriptActors[i].hide.limit != 0xFFFF && gScriptActors[i].hide.timer >= gScriptActors[i].hide.limit)
                             {
                                 for (j = 0; j < gScriptActors[i].count; j++)
-                                    sub_08048888(gScriptActors[i].objects[j]);
+                                    ResetFrameObjectSlot(gScriptActors[i].objects[j]);
                                 gScriptActors[i].hide.active = 0;
                                 gScriptActors[i].flag208 = 0;
                             }
@@ -510,7 +510,7 @@ loop:
             {
                 done++;
                 for (j = 0; j < gScriptActors[i].count; j++)
-                    sub_08048888(gScriptActors[i].objects[j]);
+                    ResetFrameObjectSlot(gScriptActors[i].objects[j]);
             }
         }
         for (i = 0; i < 16; i++)
@@ -541,14 +541,14 @@ loop:
                 switch (gScriptScene.fadeMode)
                 {
                 case 1:
-                    if (sub_08049E08(0x7FFF) != 0)
+                    if (StepPaletteFadeToColor(0x7FFF) != 0)
                     {
                         gScriptScene.fadeMode = 0;
                         done++;
                     }
                     break;
                 case 2:
-                    if (sub_08049E08(0x7FFF) != 0)
+                    if (StepPaletteFadeToColor(0x7FFF) != 0)
                     {
                         gScriptScene.fadeMode = 0;
                         done++;
@@ -798,7 +798,7 @@ loop:
             progress = &gScriptActors[j].motion[1];
         else if (gScriptScene.opcode == 18)
             progress = &gScriptActors[j].motion[2];
-        sub_080497C0(&script[gScriptScene.pc], setup, 0x40);
+        CopyBytes2(&script[gScriptScene.pc], setup, 0x40);
         gScriptScene.pc += 16;
         sub_080569E4(progress, setup);
         break;
@@ -985,7 +985,7 @@ loop:
                 dma->control = 0x84000008;
                 (void)dma->control;
             }
-            sub_08048864(gScriptActors[j].objects[index], (u16)flags, (u16)frame, 13, 1);
+            InitFrameObject(gScriptActors[j].objects[index], (u16)flags, (u16)frame, 13, 1);
             gFrameObjects[gScriptActors[j].objects[index]].flags |= extra;
             gFrameObjects[gScriptActors[j].objects[index]].affineIndex = j * 4 + index;
         }
@@ -1243,8 +1243,8 @@ loop:
     case 0x84:
         gScriptScene.pc++;
         sub_080505FC();
-        sub_08049714(gFrameObjects, 0x2000);
-        sub_08049714(gLaterBuffer_030055A0, 0x200);
+        ClearBytes(gFrameObjects, 0x2000);
+        ClearBytes(gLaterBuffer_030055A0, 0x200);
         zero = 0;
         {
             volatile struct ScriptDma *dma = (void *)0x040000D4;
@@ -1264,8 +1264,8 @@ loop:
             gScriptScene.word1DC = gUnknown_083D2C34[gScriptFresh[5] * 4 + 3] * 16;
             gScriptContinued.halfC52 = gScriptScene.word1D8;
             gScriptContinued.halfC54 = gScriptScene.word1DC;
-            gScriptContinued.byteC56 = sub_0805273C(gScriptContinued.halfC52);
-            gScriptContinued.byteC57 = sub_08052760(gScriptContinued.halfC54);
+            gScriptContinued.byteC56 = ConvertXToCellColumn(gScriptContinued.halfC52);
+            gScriptContinued.byteC57 = ConvertYToCellRow(gScriptContinued.halfC54);
             gScriptContinued.byte7FE = gScriptScene.word1E0;
             sub_0804842C(12, 0);
         }
@@ -1276,8 +1276,8 @@ loop:
             gScriptScene.word1DC = gUnknown_083D2C59[3] * 16;
             gScriptContinued.halfC52 = gScriptScene.word1D8;
             gScriptContinued.halfC54 = gScriptScene.word1DC;
-            gScriptContinued.byteC56 = sub_0805273C(gScriptContinued.halfC52);
-            gScriptContinued.byteC57 = sub_08052760(gScriptContinued.halfC54);
+            gScriptContinued.byteC56 = ConvertXToCellColumn(gScriptContinued.halfC52);
+            gScriptContinued.byteC57 = ConvertYToCellRow(gScriptContinued.halfC54);
             gScriptContinued.byte7FE = gScriptScene.word1E0;
             sub_0804842C(10, 0);
         }
@@ -1286,12 +1286,12 @@ loop:
         sub_0804387C();
         sub_080528F8(gScriptContinued.byte7FE);
         sub_08052AA4();
-        sub_08048888(0x2F);
-        sub_08048888(0x59);
+        ResetFrameObjectSlot(0x2F);
+        ResetFrameObjectSlot(0x59);
         gFrameObjects[0x2F].flags = 0;
         gFrameObjects[0x59].flags = 0;
         for (j = 0; j < 0x28; j++)
-            sub_08048888((u8)j);
+            ResetFrameObjectSlot((u8)j);
         break;
     case 0x85:
         gScriptScene.pc++;

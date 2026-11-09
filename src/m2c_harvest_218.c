@@ -58,14 +58,14 @@ void sub_08017D90(void) {
  const u8 *record;
  const u8 *label;
  u8 *destination;
- sub_08040D0C(0x16,0xA);
+ HideFrameObjects(0x16,0xA);
  metadata=gDebugMedalMetadata_083B6590;setup=gSetupBuffer_03000590;work=gState0TypedWork.bytes;
  part=work+0x3D;bank=work[0x3C];
  record=setup+((bank*3+*part)<<8);
  label=metadata[record[1]];
  destination=work+0x9E;
- sub_0803F63C(label,destination,11);
- sub_08040DB8(destination,0x16,13,2,7,12,1,2);
+ CopyBytes(label,destination,11);
+ PlaceAlignedTextObjects(destination,0x16,13,2,7,12,1,2);
 }
 
 s32 sub_08018FF0(u32 bank,u32 part,s32 amount) {
@@ -112,12 +112,12 @@ void sub_08024DA8(void) {
  case 2: label=gState0PartMessages_083C6F68[2];break;
  default:label=gState0PartMessages_083C6F68[0];break;
  }
- sub_0803F63C(label,gDebugMenuTextBuffer,14);
+ CopyBytes(label,gDebugMenuTextBuffer,14);
  {u8 *work=gState0TransferWork.bytes;work[0xA6]=0x30;work[0xAA]++;}
 }
 
 void sub_08026284(void) {
-    sub_08040BD8(gState0NextCommands_083B6100[0x4A], 0x21U);
+    RunFrameObjectCommands(gState0NextCommands_083B6100[0x4A], 0x21U);
     if (gFrameObjects[0x21].commandStopped == 0xFF) {
         gFrameObjects[0x21].scaleX = 0x80;
         gFrameObjects[0x21].scaleY = 0x80;
@@ -178,12 +178,12 @@ s32 sub_08071FF8(void) {
         temp_r0 = (u16) gFrameObjects->screenY + 1;
         gFrameObjects->screenY = temp_r0;
         if (((u32)temp_r0 << 0x10) == 0) {
-            sub_08074DE0(0x59U);
+            PlaySoundEffect(0x59U);
         }
     }
     gFrameObjects->frameAndGroup = (((u16) gFrameObjects->unknown1A >> 2) & 3) + 0x50F;
     if ((s32) gFrameObjects->screenY > 0x3F) {
-        sub_08074DE0(7U);
+        PlaySoundEffect(7U);
         gPalettePointer71FF80300700C = gEquipmentPaletteShadow;
         gPaletteWork71FF803001800.delay = 0;
         dma=(volatile struct Dma71FF8 *)0x040000D4;

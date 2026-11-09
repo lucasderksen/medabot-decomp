@@ -14,6 +14,6 @@
 void sub_0803E658(void);
 
 void sub_0803E658(void) {
-    sub_0804253C(4U, 0x3FU, 0x20U);
-    gUnknown_0300137C += 1;
+    StartBlendFade(4U, 0x3FU, 0x20U);
+    gNestedCallbackIndex += 1;
 }

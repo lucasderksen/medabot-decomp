@@ -2,7 +2,7 @@
 #include "object_helpers.h"
 #include "tile_text.h"
 
-void sub_0800FC60(void)
+void CountSelectablePartsInCategory(void)
 {
     u8 *initialWork = gState0TypedWork.bytes;
     u8 *initialCounter = &initialWork[0x41];
@@ -22,7 +22,7 @@ void sub_0800FC60(void)
                     (*counter)++;
                 else if ((u8)(value >> 8) != (value & 0xFF))
                 {
-                    sub_08042B58(index, *group, work + 0x10E);
+                    CopyPartMetadataSlot(index, *group, work + 0x10E);
                     if (gUnknownRecords_030017A0[work[0x51]].unknown00[1] == work[0x111])
                         (*counter)++;
                 }

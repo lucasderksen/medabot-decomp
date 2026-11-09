@@ -34,7 +34,7 @@ extern const u8 gUnknown_083B29EC[];
 
 s32 sub_080366DC(s32 index, u32 path);
 void sub_08038428(void);
-u32 sub_080424B8(void);
+u32 NextRandomByte(void);
 
 s32 sub_080366DC(s32 index, u32 path) {
 
@@ -90,7 +90,7 @@ void sub_08038428(void) {
     if (phase != 0)
         return;
     index = sub_08040D78(gState0TypedWork.bytes[0x12F] + 1, 0xA);
-    sub_08040CD0(index, 1);
+    ClearFrameObjects(index, 1);
     { struct FrameObject *root = gFrameObjects; f = &root[index]; }
     f->flags = 0xC604;
     f->tableSelector = 0;
@@ -105,7 +105,7 @@ void sub_08038428(void) {
     f->unknown23[6] = 2;
     f->unknown23[1] = 3;
     f->unknown23[0] = 0;
-    r = sub_080424B8() & 3;
+    r = NextRandomByte() & 3;
     if (!(1 & gCounter6ED08_03001800.flagsF8)) {
         u32 k;
         f->screenX = (gFrameObjects[gState0TypedWork.bytes[0x12F]].screenX + gUnknown_083AF850[k = r * 2]) & 0x1FF;
@@ -121,7 +121,7 @@ void sub_08038428(void) {
     }
 }
 
-u32 sub_080424B8(void) {
+u32 NextRandomByte(void) {
 
     u16 seed;
     u8 high;

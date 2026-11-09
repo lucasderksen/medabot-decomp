@@ -12,13 +12,13 @@ extern void sub_08052E58(u32 first, u32 second, u32 mode);
 
 void sub_0804CD84(void)
 {
-    sub_0804D8CC(1);
+    ReadBankedScriptArgs(1);
     gUnknown_030057E0[0xC89] = 1;
 }
 
 void sub_0804CDA4(void)
 {
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     u8 *work = gUnknown_030057E0;
     u8 *argument = work + 0xC94;
     u8 *objects;
@@ -38,7 +38,7 @@ void sub_0804CE04(void)
     u32 previous = *position;
     u16 *saved = (u16 *)(work + 0xC8C);
     *saved = previous;
-    sub_0804D8CC(1);
+    ReadBankedScriptArgs(1);
     if ((s32)sub_08047F9C() <= 2)
         *position = *saved + work[0xC95];
 }
@@ -50,14 +50,14 @@ void sub_0804CE44(void)
     u32 previous = *position;
     u16 *saved = (u16 *)(work + 0xC8C);
     *saved = previous;
-    sub_0804D8CC(2);
+    ReadBankedScriptArgs(2);
     if (sub_08047FBC(work[0xC94]) == 0)
         *position = *saved + work[0xC95];
 }
 
 void sub_0804CEF8(void)
 {
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     u8 *work = gUnknown_030057E0;
     work[0xC94] = value;
     if ((u8)value == 1)
@@ -68,7 +68,7 @@ void sub_0804CEF8(void)
 
 void sub_0804CF40(void)
 {
-    u32 value = sub_0804D83C();
+    u32 value = ReadBankedScriptByte();
     gUnknown_030057E0[0xC2C] = value;
 }
 
@@ -84,6 +84,6 @@ void sub_0804D204(void) { }
 
 void sub_0804D0E0(void)
 {
-    sub_0804D8CC(2);
+    ReadBankedScriptArgs(2);
     gUnknown_030057E0[0xC89] = 1;
 }

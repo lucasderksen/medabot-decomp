@@ -26,20 +26,20 @@ extern const u8 *const gState0NextScripts_083BE564[];
 extern const u8 *const gState0NextScripts_083BEAAC[];
 extern const u8 gUnknown_083AD524[12];
 extern u8 gUnknown_030018A8[0xC0];
-extern void sub_0804422C(u32);
+extern void ApplyObjectMotionStep(u32);
 
-void sub_0800E350(void);
+void RunPartOrTerrainDialogue(void);
 u32 sub_0801827C(void);
 void sub_0801B5FC(u32 arg0);
 s32 sub_0803325C(u32 arg0);
 void sub_0803C5F8(void);
 
-void sub_0800E350(void) {
+void RunPartOrTerrainDialogue(void) {
  const u8 *script;
- sub_0800EBFC();sub_0800F440();sub_0800FD74();
+ ScrollBg3Diagonally3();UpdateSelectedPartPreview();BlinkPartDetailMarkerPair();
  if(gState0TypedWork.bytes[0x3E]<=2)script=gState0NextScripts_083BE564[sub_0800F6CC()];
  else script=gState0NextScripts_083BEAAC[sub_0800F6CC()];
- if(sub_0803FB3C(script))gUnknown_0300137C++;
+ if(RunDialogue(script))gNestedCallbackIndex++;
 }
 
 u32 sub_0801827C(void) {
@@ -85,8 +85,8 @@ s32 sub_0803325C(u32 arg0) {
     u32 mask;
     u32 var_r2;
 
-    var_r5 = sub_080424B8() & 3;
-    temp_r1 = sub_080424B8() & 1;
+    var_r5 = NextRandomByte() & 3;
+    temp_r1 = NextRandomByte() & 1;
     var_r2 = 0;
     base = gSetupBuffer_03000590;
     mask=3;
@@ -122,7 +122,7 @@ void sub_0803C5F8(void) {
         temp_r2->unknown2C[0] = temp_r0 - 1;
     } else {
         temp_r2->flags |= 0x8000;
-        sub_08040BD8((commands=gState0NextCommands_083B6100,commands[frames[gState0TypedWork.bytes[0x12F]].unknown2C[1]]), gState0TypedWork.bytes[0x12F]);
+        RunFrameObjectCommands((commands=gState0NextCommands_083B6100,commands[frames[gState0TypedWork.bytes[0x12F]].unknown2C[1]]), gState0TypedWork.bytes[0x12F]);
     }
     { struct FrameObject *lateFrames=gFrameObjects;
     temp_r0_2 = &lateFrames[gState0TypedWork.bytes[0x12F]];
@@ -131,6 +131,6 @@ void sub_0803C5F8(void) {
         temp_r0_2->byte2B = temp_r0_3 - 1;
         return;
     }
-    sub_0804422C((u32) gState0TypedWork.bytes[0x12F]);
+    ApplyObjectMotionStep((u32) gState0TypedWork.bytes[0x12F]);
     }
 }

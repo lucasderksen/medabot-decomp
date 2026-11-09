@@ -57,8 +57,8 @@ extern const u8 gUnknown_0850FF18[32];
 extern const u8 gUnknown_085102D8[32];
 extern struct ContinuedRotatingFrame33Root gUnknown_03002C30;
 extern struct ContinuedTransferPhaseAA gUnknown_03001800;
-extern u32 sub_080353CC(u32);
-extern void sub_08040CD0(u8,u8);
+extern u32 StepObjectHop(u32);
+extern void ClearFrameObjects(u8,u8);
 
 void sub_0801D45C(void);
 void sub_08024A30(void);
@@ -72,7 +72,7 @@ void sub_08030494(void);
 void sub_0801D45C(void) {
     struct ContinuedFrame9Setup *frames;
     u8 *work;
-    sub_08040CD0(9u,1u);
+    ClearFrameObjects(9u,1u);
     frames = (struct ContinuedFrame9Setup *)gFrameObjects;
     frames->flags = 0xC404;
     frames->selector25C = 0;
@@ -84,7 +84,7 @@ void sub_0801D45C(void) {
     frames->savedX = (u16)gFrameObjects[work[0x88]*4+0x5D].screenX;
     frames->savedY = (u16)gFrameObjects[work[0x88]*4+0x5D].screenY - 4;
     frames->increment264 = 6;
-    sub_08040B90(gState0NextCommands_083B6100[0x1B],9u);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[0x1B],9u);
     work[0xAA] += 1;
 }
 
@@ -131,7 +131,7 @@ void sub_08025B9C(void) {
     frames->reset863 = zero;
     gState0TypedWork.bytes[0x84] = 0x48;
     command = gState0TypedWork.bytes[0x84];
-    sub_08040B90(gState0NextCommands_083B6100[command],0x21u);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[command],0x21u);
     gState0TypedWork.widths.word86 = 0x3C;
     work[0xAA] += 1;
 }
@@ -157,7 +157,7 @@ void sub_08026184(void) {
     frames->first.priority = 0xF0;
     frames->first.frameAndGroup = 0x616;
     frames->first.unknown23[0] = 0;
-    sub_08040B90(gState0NextCommands_083B6100[0x4A], 0x21U);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[0x4A], 0x21U);
     work[0xAA] = (u8) (work[0xAA] + 1);
 }
 
@@ -198,7 +198,7 @@ void sub_0802A110(void) {
     frames->first.scaleX = 4;
     frames->first.scaleY = 4;
     frames->first.angle = 0;
-    sub_08040B90(gState0NextCommands_083B6100[0x61], 0x21U);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[0x61], 0x21U);
     frames->second.flags = 0xC604;
     frames->second.tableSelector = 0;
     frames->second.screenX = 0x78;
@@ -209,13 +209,13 @@ void sub_0802A110(void) {
     frames->second.scaleY = 4;
     frames->second.angle = 0;
     frames->second.frameAndGroup = 0x7604;
-    sub_08074DE0(0x67U);
+    PlaySoundEffect(0x67U);
     work[0xAA] = (u8) (work[0xAA] + 1);
 }
 
 void sub_0802F13C(void) {
     struct ContinuedRotatingFrame33Root *firstFrames;
-    sub_080353CC(0x21u);
+    StepObjectHop(0x21u);
     firstFrames = &gUnknown_03002C30;
     if (firstFrames->counter867 == 0x20) {
         firstFrames->angle858 = 0;
@@ -248,7 +248,7 @@ void sub_0802F13C(void) {
 void sub_08030494(void) {
 
     if (gState0TypedWork.widths.word86 == 0x20) {
-        sub_08040CD0(0x21U, 4U);
+        ClearFrameObjects(0x21U, 4U);
         gState0TypedWork.widths.word86 = 0;
         gState0TransferWork.bytes[0xAA] = (u8) (gState0TransferWork.bytes[0xAA] + 1);
         return;

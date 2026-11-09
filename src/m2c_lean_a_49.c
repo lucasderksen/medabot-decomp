@@ -32,7 +32,7 @@ void sub_08036C20(u32 index, s32 path, u16 x, u16 y, s32 command) {
     struct FrameObject *f;
     u32 k;
 
-    sub_08040CD0(index, 1);
+    ClearFrameObjects(index, 1);
     { struct FrameObject *root = gFrameObjects; f = &root[index]; }
     f->flags = 0xC404;
     f->tableSelector = 0;
@@ -40,5 +40,5 @@ void sub_08036C20(u32 index, s32 path, u16 x, u16 y, s32 command) {
     f->priority = 0x80;
     { s32 t = gUnknown_083AF600[k = path * 2] + (s16)x; f->screenX = t & 0x1FF; }
     { s32 t = gUnknown_083AF600[k + 1] + (s16)y; f->screenY = t & 0xFF; }
-    sub_08040B90(gState0NextCommands_083B6100[command], index);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[command], index);
 }

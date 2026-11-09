@@ -38,11 +38,11 @@ void sub_08029680(void) {
             gFrameObjects[i + 0x21].screenY = gFrameObjects[(gCounter6ED08_03001800.firstObject + i) * 4 + 0x5D].screenY - 4;
             gFrameObjects[i + 0x21].palette = 7;
             gFrameObjects[i + 0x21].priority = 0xF0;
-            sub_08040B90(gState0NextCommands_083B6100[0x3C], i + 0x21);
+            InitFrameObjectCommands(gState0NextCommands_083B6100[0x3C], i + 0x21);
             if (gCounter6ED08_03001800.flagsF8 & 1)
                 gFrameObjects[i + 0x21].flags |= 0x1000;
         }
     }
-    sub_08074DE0(0x37);
+    PlaySoundEffect(0x37);
     gCounter6ED08_03001800.stepAA++;
 }

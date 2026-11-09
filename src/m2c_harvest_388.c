@@ -88,8 +88,8 @@ void sub_0806E2A0(void) {
     (void)dma->control;
     *(volatile u16 *)0x0400000A=0xF8B;
     sub_08068460(2,1,0);
-    sub_0803FAA0(1U,2U,0U);
+    InitDialogue(1U,2U,0U);
     *(volatile u16 *)0x04000000 |=0x200;
     work->backgroundSetup.word04=4;
-    gUnknown_0300137C=1;
+    gNestedCallbackIndex=1;
 }

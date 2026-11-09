@@ -1,7 +1,7 @@
 #include "gba.h"
 #include "audio.h"
 
-extern void sub_08002438(void);
+extern void SerialHandler(void);
 extern void VBlankHandler(void);
 extern void HBlankHandler(void);
 extern void DummyInterruptHandler(void);
@@ -11,7 +11,7 @@ extern void DummyInterruptHandler(void);
  */
 const IntrFunc gDefaultIntrTable[14] =
 {
-    sub_08002438,
+    SerialHandler,
     VBlankHandler,
     DummyInterruptHandler,
     HBlankHandler,

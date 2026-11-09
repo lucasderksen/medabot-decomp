@@ -111,7 +111,7 @@ void sub_0801F5BC(void) {
     gFrameObjects[0xB].screenY = y;
     gFrameObjects[0xB].palette = 0xD;
     gFrameObjects[0xB].priority = 0x80;
-    sub_08040B90(gState0NextCommands_083B6100[0x21], 0xB);
-    sub_08074DE0(0x2F);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[0x21], 0xB);
+    PlaySoundEffect(0x2F);
     gCounter6ED08_03001800.stepAA++;
 }

@@ -29,7 +29,7 @@ void sub_0804EE00(void)
             break;
         }
     case 1:
-        if (sub_08047C24(0, 0, 0, gQuantityScripts_0847E388[27]))
+        if (InitAndRunDialogue(0, 0, 0, gQuantityScripts_0847E388[27]))
             sub_08050290();
         break;
     }

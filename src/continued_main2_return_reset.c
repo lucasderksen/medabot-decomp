@@ -28,14 +28,14 @@ struct Main2ReturnWork
 void sub_0805DD88(void)
 {
     gMainFlag_03005030 = 0;
-    sub_080021A4();
+    StopSerialLink();
     VBlankIntrWait();
     *(volatile u16 *)0x04000050 = 0xFF;
     *(volatile u16 *)0x04000054 = 16;
     *(volatile u16 *)0x04000084 = 0;
     gMainState = 3;
     gMainSubstate = 0;
-    gUnknown_0300137C = 0;
+    gNestedCallbackIndex = 0;
     *(volatile u16 *)0x040000BA = 0;
     VBlankIntrWait();
     InitAudio((void *)0x03002430);

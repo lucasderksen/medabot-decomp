@@ -45,6 +45,33 @@ def elf_symbols(listing):
     return symbols
 
 
+ADDRESS_NAME = re.compile(r"^(?:gUnknown|D|sub)_([0-9A-Fa-f]{8})$")
+
+
+def address_named_symbols(names):
+    """Definitions for undefined address-named symbols (gUnknown_/D_/sub_<address>).
+
+    Drafts keep such placeholder names for RAM, ROM data and calls that the
+    last full build does not define (dead NONMATCH references, m2c output).
+    Their address is in the name, so the isolated link can still place them.
+    """
+    symbols = {}
+    for name in names:
+        match = ADDRESS_NAME.match(name)
+        if match:
+            address = int(match.group(1), 16)
+            if name.startswith("sub_"):
+                symbols[name] = {"address": f"0x{address | 1:08X}", "kind": "thumb_function"}
+            else:
+                symbols[name] = f"0x{address:08X}"
+    return symbols
+
+
+def undefined_symbols(path):
+    listing = run([tool("nm"), "-u", path], capture_output=True, text=True).stdout
+    return [line.split()[-1] for line in listing.splitlines() if line.strip()]
+
+
 def read_symbols(path):
     return elf_symbols(run([tool("readelf"), "-sW", path], capture_output=True, text=True).stdout)
 
@@ -186,6 +213,8 @@ def match(spec_path, output_dir, rom_path=None, session=None):
     else:
         symbols = session.symbols()
     symbols.update(spec.get("symbols", {}))
+    missing = [name for name in undefined_symbols(candidate) if name not in symbols]
+    symbols.update(address_named_symbols(missing))
     for name in read_symbols(candidate):
         symbols.pop(name, None)
     if session is None:

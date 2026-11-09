@@ -108,7 +108,7 @@ void sub_08059960(void)
     u32 index;
     u32 shadowIndex;
 
-    sub_080482CC(gNavigationWork9960.half20);
+    LoadObjTilesIntoAllSlots(gNavigationWork9960.half20);
     sub_0804877C(gNavigationWork9960.half20);
     {
         u32 zero = 0;
@@ -124,15 +124,15 @@ void sub_08059960(void)
     SetupNav(0x38, 48, -16)->frameAndGroup = 0x5d; sub_08049420(0x38, 0x23);
     index = 0x39;
     shadowIndex = index + 0x2A;
-    sub_08048888(index);
-    sub_08048888(shadowIndex);
+    ResetFrameObjectSlot(index);
+    ResetFrameObjectSlot(shadowIndex);
     obj = &gNavObjects[index];
     obj->value30 = gNavigationWork9960.half20;
     if (gCopiedBytes_083D2DBD[gNavigationWork9960.half20] == 3)
     {
         u8 frame = sub_080502C8(0);
         u8 palette = ExtractHighNibble(0);
-        sub_08048864(0x39, 0xC804, frame, palette, 1);
+        InitFrameObject(0x39, 0xC804, frame, palette, 1);
         obj->byte2B = ExtractHighNibble(0);
         obj->x.parts.integer = gUnknown_03006432 - 0x30;
         obj->y.parts.integer = gUnknown_03006434 + 0x30;

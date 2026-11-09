@@ -25,8 +25,8 @@ void sub_080222A8(void) {
     union { struct TileCoordinates tile; s32 packed; } coords;
 
     for (i = 0; i < 4; i++) {
-        sub_08040BD8(gState0NextCommands_083B6100[61], i + 0x21);
-        coords.tile = sub_08042BC0(gFrameObjects[0x21 + i].unknown2C[0], gFrameObjects[0x21 + i].byte2B,
+        RunFrameObjectCommands(gState0NextCommands_083B6100[61], i + 0x21);
+        coords.tile = GetPolarOffsetPoint(gFrameObjects[0x21 + i].unknown2C[0], gFrameObjects[0x21 + i].byte2B,
                               gFrameObjects[gWork222A8.setup87 * 4 + 0x5D].screenX,
                               gFrameObjects[gWork222A8.setup87 * 4 + 0x5D].screenY - 4);
         gFrameObjects[0x21 + i].screenX = coords.packed;
@@ -41,7 +41,7 @@ void sub_080222A8(void) {
         }
     }
     if (gFrameObjects[0x21].scaleY == 4) {
-        sub_08040CD0(0x21, 4);
+        ClearFrameObjects(0x21, 4);
         gWork222A8.counterAA++;
     }
 }

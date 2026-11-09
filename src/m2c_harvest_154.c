@@ -51,11 +51,11 @@ extern const u8 gUnknown_0879D594[];
 extern s32 sub_08074CE0(void);
 extern struct ContinuedNibbleWork gUnknown_03001800;
 extern struct LocalResetTransferWork gGraphicsTransferCounter;
-extern u32 sub_08032FB8(u32);
-extern u32 sub_08033090(u32);
+extern u32 GetOtherSlotGroupStart(u32);
+extern u32 PickRandomGroupSlot(u32);
 extern u32 sub_08037830(u32, u32);
 extern u8 gUnknown_02030000[];
-extern void sub_08034F08(void);
+extern void AdvanceActionByteScript(void);
 extern void sub_08035528(u32);
 extern void sub_080355C4(u32);
 
@@ -83,14 +83,14 @@ void sub_0802503C(void) {
     frames->screenY=(u16)gFrameObjects[work[0x88]*4+0x5D].screenY-12;
     gState0TypedWork.bytes[0x84]=0x47;
     command=gState0TypedWork.bytes[0x84];
-    sub_08040B90(gState0NextCommands_083B6100[command],0x21);
-    sub_08074DE0(0x4F);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[command],0x21);
+    PlaySoundEffect(0x4F);
     work[0xAA]++;
 }
 
 void sub_080282E0(void) {
     if(gFrameObjects[0x21].unknown23[4]==0x10) {
-        sub_08074DE0(0x28);
+        PlaySoundEffect(0x28);
         gFrameObjects[0x21].unknown23[4]=0;
         gState0TransferWork.bytes[0xAA]++;
     } else {
@@ -106,7 +106,7 @@ void sub_08034AF4(void) {
  u8 *first;
  u32 result;
  {
-  u32 side = sub_08032FB8(*selected);
+  u32 side = GetOtherSlotGroupStart(*selected);
   first = &work->byte60;
   *first = side;
  }
@@ -116,8 +116,8 @@ void sub_08034AF4(void) {
   records[*selected].byteE0 = result + 1;
  } else {
   u32 next;
-  *first = sub_08032FB8(*selected);
-  next = sub_08033090(*first);
+  *first = GetOtherSlotGroupStart(*selected);
+  next = PickRandomGroupSlot(*first);
   {
    struct ContinuedSetupRecord *records = (void *)gSetupBuffer_03000590;
    records[*selected].byteE0 = next + 1;
@@ -129,7 +129,7 @@ void sub_08034AF4(void) {
   sub_08035528(*laterSelected);
   sub_080355C4(*laterSelected);
  }
- sub_08034F08();
+ AdvanceActionByteScript();
 }
 
 void sub_0803EB5C(void) {
@@ -155,8 +155,8 @@ void sub_08065D44(void) {
 
     sp4 = (fillZero=0);
     CpuFastSet(&sp4, (void *)0x06000000, 0x01006000U);
-    sub_08040CD0(0U, 0x80U);
-    sub_080415BC();
+    ClearFrameObjects(0U, 0x80U);
+    ClearBgScrolls();
     display=(volatile u16 *)0x04000000;
     *display = 0x60;
     background1=(volatile u16 *)0x0400000A;
@@ -165,10 +165,10 @@ void sub_08065D44(void) {
     *background2 = 0x1D06;
     background3=(volatile u16 *)0x0400000E;
     *background3 = 0x3C07;
-    sub_0805BA34(gUnknown_0879D260, (u32) *background1);
-    sub_0805BA34(gUnknown_0879D454, (u32) *background2);
-    sub_0805BA34(gUnknown_0879D594, (u32) *background3);
-    decompressedSize = sub_08044D0C(gUnknown_0879BE34, gUnknown_02030000);
+    LoadLz77SizedTilemap(gUnknown_0879D260, (u32) *background1);
+    LoadLz77SizedTilemap(gUnknown_0879D454, (u32) *background2);
+    LoadLz77SizedTilemap(gUnknown_0879D594, (u32) *background3);
+    decompressedSize = DecompressLz77OrCopy(gUnknown_0879BE34, gUnknown_02030000);
     CpuSet(gUnknown_02030000, (void *)0x06004000, (decompressedSize << 10) >> 11);
     CpuFastSet(gUnknown_0879BC34, (void *)0x05000000, 0x80U);
     CpuFastSet(gUnknownWords_084E43F8, (void *)0x050003C0, 8U);
@@ -189,9 +189,9 @@ void sub_08065D44(void) {
     ((struct LocalInitContext65D44 *)gMainContextPointer_03006F74)->byte05 = frameZero;
     ((struct LocalInitContext65D44 *)gMainContextPointer_03006F74)->byte7A = 0xFF;
     if (sub_08074CE0() != 0x18) {
-        sub_08074B88(0x18U);
+        PlayMusic(0x18U);
     }
-    gUnknown_0300137C += 1;
+    gNestedCallbackIndex += 1;
 }
 
 void sub_0806EC30(void) {
@@ -237,5 +237,5 @@ void sub_0806EC30(void) {
     gGraphicsTransferCounter.blend = 0x7C0;
     gGraphicsTransferCounter.brightness = 0x100;
     gMain2Byte_03007008 = 0;
-    gUnknown_0300137C = 8;
+    gNestedCallbackIndex = 8;
 }

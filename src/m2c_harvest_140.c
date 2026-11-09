@@ -29,8 +29,8 @@ extern const u8 gActionPartnerPalette_0850F698[32];
 extern const u8 gActionPartnerPalette_0850F6B8[32];
 extern const u8 gActionPartnerPalette_0850F6D8[32];
 extern struct ContinuedFramePositionWork gGraphicsTransferCounter;
-extern void sub_0803D450(void);
-extern void sub_0803D4AC(void);
+extern void LoadActionHalfwordScriptParams(void);
+extern void AdvanceActionHalfwordScript(void);
 
 void sub_080217D8(void);
 void sub_08022480(void);
@@ -39,7 +39,7 @@ void sub_0803AA00(void);
 
 void sub_080217D8(void) {
     if (gFrameObjects[33].unknown23[4]==0x10) {
-        sub_08074DE0(0x3E);
+        PlaySoundEffect(0x3E);
         gState0TransferWork.bytes[0xAA]++;
     } else {
         if (gFrameObjects[33].unknown23[4]<=7) {
@@ -77,7 +77,7 @@ void sub_08022480(void) {
     frames->first.byte2B = 0x1C;
     frames->first.unknown2C[0] = 0;
     frames->first.unknown2C[1] = 0;
-    commands=gState0NextCommands_083B6100;sub_08040B90(commands[0x1C],0x21);
+    commands=gState0NextCommands_083B6100;InitFrameObjectCommands(commands[0x1C],0x21);
     frames->second.flags = -0x39DC;
     frames->second.tableSelector = 0;
     frames->second.screenX = (u16)gFrameObjects[*selection*4+0x5D].screenX + 0x20;
@@ -89,8 +89,8 @@ void sub_08022480(void) {
     frames->second.byte2B = 0x1C;
     frames->second.unknown2C[0] = 0x80;
     frames->second.unknown2C[1] = 0;
-    sub_08040B90(commands[0x1C],0x22);
-    sub_08074DE0(0x33U);
+    InitFrameObjectCommands(commands[0x1C],0x22);
+    PlaySoundEffect(0x33U);
     work[0xAA]++;
 }
 
@@ -111,12 +111,12 @@ void sub_0802FB74(void) {
 }
 
 void sub_0803AA00(void) {
-    sub_0803D450();
+    LoadActionHalfwordScriptParams();
     if (!(2 & gGraphicsTransferCounter.directions)) {
         gFrameObjects[gGraphicsTransferCounter.frameIndex].unknown23[2]=(u8)gGraphicsTransferCounter.x;
     } else {
         gFrameObjects[gGraphicsTransferCounter.frameIndex].unknown23[2]=(0x20-(u8)gGraphicsTransferCounter.x)&0x1F;
     }
     gFrameObjects[gGraphicsTransferCounter.frameIndex].unknown23[1]=(u8)gGraphicsTransferCounter.y;
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }

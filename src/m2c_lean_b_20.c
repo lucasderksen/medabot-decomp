@@ -71,7 +71,7 @@ extern struct SetupRecC588 gSetupRecC588[] asm("gSetupBuffer_03000590");
 extern u8 gUnknown_03001887;
 extern u8 gUnknown_030018F8;
 extern void sub_0803572C(u8 *, s32);
-extern void sub_08035740(u8 *, s32, u32);
+extern void AddByteCapped(u8 *, s32, u32);
 extern void sub_08037330(s32, u8, s32);
 extern void sub_080373D4(s32);
 extern void sub_0803836C(void);
@@ -93,7 +93,7 @@ void sub_0802A824(void) {
     u32 i;
 
     sub_0803836C();
-    gCounter6ED08_03001800.base60 = sub_08032FB8(gCounter6ED08_03001800.slot87);
+    gCounter6ED08_03001800.base60 = GetOtherSlotGroupStart(gCounter6ED08_03001800.slot87);
     for (i = 0; i <= 2; i++) {
         if (gSetupRecA824[gCounter6ED08_03001800.base60 + i].byte40 != 0
             && gSetupRecA824[gCounter6ED08_03001800.base60 + i].byte59 != 0) {
@@ -109,7 +109,7 @@ void sub_0802A824(void) {
             gFrameObjects[i + 0x22].screenY = gFrameObjects[(gCounter6ED08_03001800.base60 + i) * 4 + 0x5D].screenY - 0x10;
             gFrameObjects[i + 0x22].palette = 7;
             gFrameObjects[i + 0x22].priority = 0xE0;
-            sub_08040B90(gState0NextCommands_083B6100[0x63], i + 0x22);
+            InitFrameObjectCommands(gState0NextCommands_083B6100[0x63], i + 0x22);
             if (1 & gCounter6ED08_03001800.flagsF8)
                 gFrameObjects[i + 0x22].flags |= 0x1000;
         }
@@ -152,7 +152,7 @@ void sub_0802B258(void) {
             }
         }
     }
-    sub_08074DE0(0x24);
+    PlaySoundEffect(0x24);
     gCounter6ED08_03001800.counterAA++;
 }
 
@@ -162,7 +162,7 @@ void sub_0802B4D8(void) {
 
     for (i = 0; i <= 2; i++) {
         if (gCounter6ED08_03001800.activeD2[i] != 0) {
-            gCounter6ED08_03001800.valuesD6[i] = sub_080424B8() & 7;
+            gCounter6ED08_03001800.valuesD6[i] = NextRandomByte() & 7;
             switch (gCounter6ED08_03001800.valuesD6[i]) {
             case 0:
                 if (sub_08036D64(gCounter6ED08_03001800.base60 + i, 0xD) != 0)
@@ -185,7 +185,7 @@ void sub_0802B4D8(void) {
             gFrameObjects[i + 0x21].unknown23[0] = 0;
         }
     }
-    sub_08074DE0(0x5B);
+    PlaySoundEffect(0x5B);
     gCounter6ED08_03001800.counterAA++;
 }
 
@@ -203,10 +203,10 @@ void sub_0802B8BC(void) {
             gFrameObjects[i + 0x21].screenY = 0xF0;
             gFrameObjects[i + 0x21].palette = 6;
             gFrameObjects[i + 0x21].priority = 0xF0;
-            sub_08040B90(gState0NextCommands_083B6100[0x67], i + 0x21);
+            InitFrameObjectCommands(gState0NextCommands_083B6100[0x67], i + 0x21);
         }
     }
-    sub_08074DE0(0x2C);
+    PlaySoundEffect(0x2C);
     gCounter6ED08_03001800.counterAA++;
 }
 
@@ -219,7 +219,7 @@ void sub_0802B980(void) {
     for (i = 0; i <= 2; i++) {
         if (gCounter6ED08_03001800.activeD2[i] != 0) {
             active++;
-            sub_08040BD8(gState0NextCommands_083B6100[0x67], i + 0x21);
+            RunFrameObjectCommands(gState0NextCommands_083B6100[0x67], i + 0x21);
             if (gFrameObjects[i + 0x21].screenY == gFrameObjects[(gCounter6ED08_03001800.base60 + i) * 4 + 0x5D].screenY - 4)
                 done++;
             else
@@ -238,10 +238,10 @@ void sub_0802BA2C(void) {
         if (gCounter6ED08_03001800.activeD2[i] != 0) {
             gFrameObjects[i + 0x21].flags = 0xCC04;
             gFrameObjects[i + 0x21].priority = 0;
-            sub_08040B90(gState0NextCommands_083B6100[0x68], i + 0x21);
+            InitFrameObjectCommands(gState0NextCommands_083B6100[0x68], i + 0x21);
         }
     }
-    sub_08074DE0(0x30);
+    PlaySoundEffect(0x30);
     gCounter6ED08_03001800.counterAA++;
 }
 
@@ -249,7 +249,7 @@ void sub_0802BF9C(void) {
 
     u32 i;
 
-    gCounter6ED08_03001800.base60 = sub_08032FC4(gCounter6ED08_03001800.slot87);
+    gCounter6ED08_03001800.base60 = GetSlotGroupStart(gCounter6ED08_03001800.slot87);
     for (i = 0; i <= 2; i++) {
         if (gCounter6ED08_03001800.activeD2[i] != 0) {
             gFrameObjects[i + 0x21].flags = 0xC624;
@@ -263,7 +263,7 @@ void sub_0802BF9C(void) {
             gFrameObjects[i + 0x21].frameAndGroup = 0x4801;
         }
     }
-    gCounter6ED08_03001800.base60 = sub_08032FB8(gCounter6ED08_03001800.slot87);
+    gCounter6ED08_03001800.base60 = GetOtherSlotGroupStart(gCounter6ED08_03001800.slot87);
     for (i = 0; i <= 2; i++) {
         if (gCounter6ED08_03001800.valuesD6[i] != 0) {
             gFrameObjects[i + 0x24].flags = 0xC624;
@@ -278,7 +278,7 @@ void sub_0802BF9C(void) {
         }
     }
     gState0TypedWork.bytes[0x84] = 0;
-    sub_08074DE0(0x2E);
+    PlaySoundEffect(0x2E);
     gCounter6ED08_03001800.counterAA++;
 }
 
@@ -288,7 +288,7 @@ void sub_0802C2D4(void) {
 
     LeDecompress(gUnknown_084D745C, (void *)0x06014800);
     CpuFastSet(gUnknown_0850FD58, (void *)0x050002E0, 8);
-    gCounter6ED08_03001800.base60 = sub_08032FC4(gCounter6ED08_03001800.slot87);
+    gCounter6ED08_03001800.base60 = GetSlotGroupStart(gCounter6ED08_03001800.slot87);
     for (i = 0; i <= 2; i++) {
         if (gCounter6ED08_03001800.activeD2[i] != 0) {
             gFrameObjects[i + 0x21].flags = 0xC404;
@@ -297,10 +297,10 @@ void sub_0802C2D4(void) {
             gFrameObjects[i + 0x21].screenY = gFrameObjects[(gCounter6ED08_03001800.base60 + i) * 4 + 0x5D].screenY - 4;
             gFrameObjects[i + 0x21].palette = 7;
             gFrameObjects[i + 0x21].priority = 0xF0;
-            sub_08040B90(gState0NextCommands_083B6100[0x40], i + 0x21);
+            InitFrameObjectCommands(gState0NextCommands_083B6100[0x40], i + 0x21);
         }
     }
-    gCounter6ED08_03001800.base60 = sub_08032FB8(gCounter6ED08_03001800.slot87);
+    gCounter6ED08_03001800.base60 = GetOtherSlotGroupStart(gCounter6ED08_03001800.slot87);
     for (i = 0; i <= 2; i++) {
         if (gCounter6ED08_03001800.valuesD6[i] != 0) {
             gFrameObjects[i + 0x24].flags = 0xC404;
@@ -309,10 +309,10 @@ void sub_0802C2D4(void) {
             gFrameObjects[i + 0x24].screenY = gFrameObjects[(gCounter6ED08_03001800.base60 + i) * 4 + 0x5D].screenY - 4;
             gFrameObjects[i + 0x24].palette = 7;
             gFrameObjects[i + 0x24].priority = 0xF0;
-            sub_08040B90(gState0NextCommands_083B6100[0x41], i + 0x24);
+            InitFrameObjectCommands(gState0NextCommands_083B6100[0x41], i + 0x24);
         }
     }
-    sub_08074DE0(0x4D);
+    PlaySoundEffect(0x4D);
     gCounter6ED08_03001800.counterAA++;
 }
 
@@ -321,7 +321,7 @@ void sub_0802C4F8(void) {
     u32 i;
 
     gState0TypedWork.bytes[0x84]++;
-    gCounter6ED08_03001800.base60 = sub_08032FC4(gCounter6ED08_03001800.slot87);
+    gCounter6ED08_03001800.base60 = GetSlotGroupStart(gCounter6ED08_03001800.slot87);
     for (i = 0; i <= 2; i++) {
         if (gCounter6ED08_03001800.activeD2[i] != 0)
             sub_08037330(gCounter6ED08_03001800.base60 + i, gState0TypedWork.bytes[0x84], 2);
@@ -339,12 +339,12 @@ void sub_0802C588(void) {
 
     u32 i;
 
-    gCounter6ED08_03001800.base60 = sub_08032FC4(gCounter6ED08_03001800.slot87);
+    gCounter6ED08_03001800.base60 = GetSlotGroupStart(gCounter6ED08_03001800.slot87);
     for (i = 0; i <= 2; i++) {
         if (gCounter6ED08_03001800.activeD2[i] != 0)
-            sub_08035740(&gSetupRecC588[gCounter6ED08_03001800.base60 + i].bytesB8[1], gCounter6ED08_03001800.valueEC, 0x78);
+            AddByteCapped(&gSetupRecC588[gCounter6ED08_03001800.base60 + i].bytesB8[1], gCounter6ED08_03001800.valueEC, 0x78);
     }
-    gCounter6ED08_03001800.base60 = sub_08032FB8(gCounter6ED08_03001800.slot87);
+    gCounter6ED08_03001800.base60 = GetOtherSlotGroupStart(gCounter6ED08_03001800.slot87);
     for (i = 0; i <= 2; i++) {
         if (gCounter6ED08_03001800.valuesD6[i] != 0)
             sub_0803572C(&gSetupRecC588[gCounter6ED08_03001800.base60 + i].bytesB8[1], gCounter6ED08_03001800.valueEC);

@@ -17,8 +17,8 @@ extern u8 gUnknown_08487D90;
 extern u8 gUnknown_084C3E64;
 extern u8 gUnknown_084C571C;
 extern u8 gUnknown_084C7B64;
-s32 sub_0803D450();
-s32 sub_0803D4AC();
+s32 LoadActionHalfwordScriptParams();
+s32 AdvanceActionHalfwordScript();
 
 void sub_0803B5DC(void);
 
@@ -26,7 +26,7 @@ void sub_0803B5DC(void) {
     u8 *work0;
     u8 temp_r3;
 
-    sub_0803D450();
+    LoadActionHalfwordScriptParams();
     LeDecompress(&gUnknown_084C571C, (void *)0x06006400);
     LeDecompress(&gUnknown_08487D90, (void *)0x06006520);
     LeDecompress(&gUnknown_084C3E64, (void *)0x06006600);
@@ -45,5 +45,5 @@ void sub_0803B5DC(void) {
     gFrameObjects[9].byte2B = (u8) (*(u16 *)((u8 *)(work0) + 0x102));
     gFrameObjects[9].unknown2C[0] = (u8) (*(u16 *)((u8 *)(work0) + 0x104));
     gFrameObjects[9].unknown23[6] = 0x38;
-    sub_0803D4AC();
+    AdvanceActionHalfwordScript();
 }

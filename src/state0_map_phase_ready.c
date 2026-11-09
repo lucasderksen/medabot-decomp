@@ -31,7 +31,7 @@ void sub_08014548(void)
             if (first || second)
             {
                 *ready = zero;
-                gUnknown_0300137C = 69;
+                gNestedCallbackIndex = 69;
                 break;
             }
         }

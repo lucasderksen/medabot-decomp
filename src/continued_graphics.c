@@ -3,7 +3,7 @@
 
 #include "continued_blend_work.h"
 #include "continued_graphics.h"
-extern u32 gUnknown_0300137C;
+extern u32 gNestedCallbackIndex;
 
 void sub_08049CC8(void)
 {
@@ -28,17 +28,17 @@ void sub_08049EC0(u32 input, u32 weight, u32 maskInput)
 {
     u16 color = input;
     u16 mask = maskInput;
-    sub_0803F684(color, weight, mask);
+    BlendBgPaletteBanksNow(color, weight, mask);
 }
 
 void sub_08049ED4(u32 input, u32 weight, u32 maskInput)
 {
     u16 color = input;
     u16 mask = maskInput;
-    sub_0803F998(color, weight, mask);
+    BlendObjPaletteBanksNow(color, weight, mask);
 }
 
 void sub_0804A210(void)
 {
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }

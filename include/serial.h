@@ -51,13 +51,13 @@ struct MainSerialWork
 extern struct SerialContext gSerialState;
 extern struct MainSerialWork gMainSerialWork;
 
-void sub_080020C8(void);
-void sub_08002190(void);
-void sub_080021A4(void);
-u32 sub_080021F4(u16 words[4][2]);
-void sub_080022DC(const void *payload);
-u8 sub_08002328(u16 words[4][2]);
-void sub_080023D8(void);
-void sub_08002438(void);
+void InitSerialLink(void);
+void RequestSerialTransfer(void);
+void StopSerialLink(void);
+u32 PollSerialLink(u16 words[4][2]);
+void PrepareSerialSendPacket(const void *payload);
+u8 ReceiveSerialPackets(u16 words[4][2]);
+void StartSerialTransfer(void);
+void SerialHandler(void);
 
 #endif

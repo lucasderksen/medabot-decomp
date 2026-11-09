@@ -47,7 +47,7 @@ struct FrameCounterBacking {
     u8 count;
 };
 
-extern __typeof__(sub_08032FC4) sub_08032FB8;
+extern __typeof__(GetSlotGroupStart) GetOtherSlotGroupStart;
 extern s32 sub_08032FD0(u32, u32);
 extern s32 sub_08032FFC(void);
 extern s32 sub_0803301C(void);
@@ -91,7 +91,7 @@ void sub_0802CC10(void) {
     u32 i;
     sub_0803836C();
     work = gState0TransferWork.bytes;
-    work[0x60] = sub_08032FB8(work[0x87]);
+    work[0x60] = GetOtherSlotGroupStart(work[0x87]);
     i = 0;
     setup = gSetupBuffer_03000590;
     root = (u32) work;

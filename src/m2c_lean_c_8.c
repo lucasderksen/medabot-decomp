@@ -40,7 +40,7 @@ s32 sub_0805B8EC(void) {
         context[0x17] = table[offset + 3];
     else
         goto none;
-    sub_08074DE0(previous != (*root)[0x17] ? 2 : 6);
+    PlaySoundEffect(previous != (*root)[0x17] ? 2 : 6);
     return 1;
 none:
     return 0;

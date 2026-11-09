@@ -28,8 +28,8 @@ extern const u16 gUnknown_085104B8[32];
 #include "action_scene_data.h"
 extern void sub_0801BCE4(u32,s32,s32);
 extern void sub_0801BD1C(const void *,s32,s32);
-extern void sub_0803D450(void);
-extern void sub_0803D4AC(void);
+extern void LoadActionHalfwordScriptParams(void);
+extern void AdvanceActionHalfwordScript(void);
 
 void sub_0802FC3C(void);
 void sub_0803A474(void);
@@ -38,7 +38,7 @@ void sub_0802FC3C(void) {
  struct ContinuedFC3CFrame33 *frames;
  u8 *work;
  u8 *bank;
- sub_08040CD0(0x21, 2);
+ ClearFrameObjects(0x21, 2);
  CpuFastSet(gUnknown_085104B8, (void *)0x050002C0, 0x10u);
  frames = (struct ContinuedFC3CFrame33 *)&gFrameObjects;
  frames->frame.flags = 0xC624;
@@ -59,8 +59,8 @@ void sub_0802FC3C(void) {
 void sub_0803A474(void) {
  u8 *setup,*work,*initialWork;struct ContinuedFrame35Mirror *frames;
  s32 offset,halfWidth;u32 value;void *record;
- sub_0803D450();
- sub_08040CD0(0x23,1);
+ LoadActionHalfwordScriptParams();
+ ClearFrameObjects(0x23,1);
  setup=gSetupBuffer_03000590;initialWork=gState0TransferWork.bytes;
  offset=initialWork[0x87]<<8;record=setup+offset;
  if(*(u8*)(record+0xDD)<=3U)
@@ -86,5 +86,5 @@ void sub_0803A474(void) {
  }
  ((struct ContinuedFrame35Mirror*)gFrameObjects)->clear=0;
  ((struct ContinuedFrame35Mirror*)gFrameObjects)->group=0;
- sub_0803D4AC();
+ AdvanceActionHalfwordScript();
 }

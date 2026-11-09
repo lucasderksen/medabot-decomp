@@ -29,7 +29,7 @@ void sub_08042318(u8 kind, u8 amount) {
                 next = i + 1;
                 if (gObjectCountBytes[next * 2] != 0) {
                     do {
-                        sub_0803F65C(&gObjectCountBytes[i * 2], &gObjectCountBytes[next * 2], 2);
+                        SwapBytes(&gObjectCountBytes[i * 2], &gObjectCountBytes[next * 2], 2);
                         i = next;
                         next = i + 1;
                     } while (gObjectCountBytes[next * 2] != 0);

@@ -79,10 +79,10 @@ void sub_0805E478(void) {
   bg3 = (volatile u16 *) 0x0400000E;
   control = 0x1D07;
   *bg3 = control;
-  sub_0805BA34(gBiosLz77Stream_08796060, *bg1);
-  sub_0805BA34(gBiosLz77Stream_08796340, *bg2);
-  sub_0805BA34(gBiosLz77Stream_0879660C, *bg3);
-  length = sub_08044D0C(gBiosLz77Stream_0879481C, (void *) 0x02030000);
+  LoadLz77SizedTilemap(gBiosLz77Stream_08796060, *bg1);
+  LoadLz77SizedTilemap(gBiosLz77Stream_08796340, *bg2);
+  LoadLz77SizedTilemap(gBiosLz77Stream_0879660C, *bg3);
+  length = DecompressLz77OrCopy(gBiosLz77Stream_0879481C, (void *) 0x02030000);
   CpuSet((void *) 0x02030000, (void *) 0x06004000, (length << 10) >> 11);
   ((struct Main2CursorContext *) gMainContextPointer_03006F74)->halfword36 = (length >> 5) - 1;
   {
@@ -155,7 +155,7 @@ void sub_0805E478(void) {
   gFrameObjects[4].tableSelector = 2;
   gFrameObjects[4].palette = 14;
   gFrameObjects[4].frameAndGroup = 0x26;
-  gUnknown_0300137C++;
+  gNestedCallbackIndex++;
 }
 
 void sub_08066460(void) {
@@ -176,11 +176,11 @@ void sub_08066460(void) {
     }
     if (gMainSerialOutgoingWork.words[1][1] == 0xFE0F) {
         if (gMenuContext66460->cursor05 == 4) {
-            gUnknown_0300137C = 8;
-            sub_0803FB0C();
+            gNestedCallbackIndex = 8;
+            RestartDialogueText();
             return;
         }
         sub_080656DC(gMenuContext66460->area50, 0, 0, 1, 0xC0);
-        gUnknown_0300137C += 2;
+        gNestedCallbackIndex += 2;
     }
 }

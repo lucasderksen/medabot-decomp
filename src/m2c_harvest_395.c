@@ -48,7 +48,7 @@ void sub_0802E8D4(void) {
       if (scale == 2)
       {
         stopped = 1;
-        sub_08040CD0(phase >> 24, 1);
+        ClearFrameObjects(phase >> 24, 1);
       }
       else
       {

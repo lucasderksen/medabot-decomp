@@ -35,9 +35,9 @@ extern struct CreditsContext67974 *gCreditsContext67974 asm("gMainContextPointer
 extern void sub_08067314(s8 width, s32 column);
 extern void sub_080673AC(s32 row, s32 column);
 
-void sub_08067974(void);
+void StepCreditsTextScroll(void);
 
-void sub_08067974(void) {
+void StepCreditsTextScroll(void) {
 
     struct CreditsContext67974 *ctx;
     s32 limit;
@@ -67,7 +67,7 @@ void sub_08067974(void) {
                 gCreditsContext67974->width7D = sub_080672F4(*gCreditsContext67974->listAC);
             gCreditsContext67974->listAC++;
         } else {
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
             ctx->timer3A = -1;
         }
     }

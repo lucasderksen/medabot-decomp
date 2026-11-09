@@ -4,7 +4,7 @@
 #include "frame.h"
 #include "input.h"
 
-void sub_080100BC(void)
+void MoveObject4RowCursorUpDown(void)
 {
     if (*(u8 *)&gRepeatedKeys & 64)
     {
@@ -22,7 +22,7 @@ void sub_080100BC(void)
     }
     if (*(u8 *)&gRepeatedKeys & 192)
     {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         gFrameObjects[4].screenY = gState0TypedWork.bytes[0x4A] * 16 + 56;
     }
 }

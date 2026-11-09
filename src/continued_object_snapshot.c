@@ -32,7 +32,7 @@ struct SnapshotMetadata
 void sub_080505FC(void)
 {
     s32 i;
-    sub_08049714(gUnknown_030057E0 + 0x7DC, 0x20);
+    ClearBytes(gUnknown_030057E0 + 0x7DC, 0x20);
     for (i = 0; i <= 5; i++)
     {
         struct SnapshotMetadata *metadata = (struct SnapshotMetadata *)gLaterBuffer_030055A0;
@@ -41,11 +41,11 @@ void sub_080505FC(void)
         {
             struct FrameObject *objects = gFrameObjects;
             struct FrameObject *object = &objects[frameIndex];
-            u32 x = sub_0805273C((u16)(object->positionX.value >> 8));
+            u32 x = ConvertXToCellColumn((u16)(object->positionX.value >> 8));
             u8 *base = gUnknown_030057E0;
             struct SnapshotWorkView *work = (struct SnapshotWorkView *)(base + i * 4);
             work->x = x;
-            work->y = sub_08052760((u16)(object->positionY >> 8));
+            work->y = ConvertYToCellRow((u16)(object->positionY >> 8));
             work->selector = ((object->byte2B & 15) << 4) | (object->commandDelay & 3);
             work->flags.index = i;
             work->flags.skip = object->unknown2C[1] & 1;

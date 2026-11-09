@@ -85,7 +85,7 @@ void sub_08061CE0(void) {
         sub_0805A0CC(((u8 *)0x02023000)[((u8 *)0x02023000)[0x78] + 2], 2, 0x1B, 14, 6, (*(volatile u16 *)0x0400000A >> 8) & 0x1F);
     if (((struct Main2PartContext *)gMainContextPointer_03006F74)->count20 > 3)
         sub_0805A0CC(((u8 *)0x02023000)[((u8 *)0x02023000)[0x78] + 3], 2, 0x1B, 16, 6, (*(volatile u16 *)0x0400000A >> 8) & 0x1F);
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_08062C98(void) {

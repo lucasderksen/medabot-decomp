@@ -8,7 +8,7 @@ u8 sub_080669AC(u32 target, u32 current, u32 divisor);
 /* Observed float-array slots and outputs; complete RAM layout remains unknown. */
 float sub_08053360(float value);
 float sub_08053380(float value);
-float sub_080533A4(float value);
+float AbsFloat(float value);
 double sub_080533CC(double value);
 void sub_08053464(void);
 void sub_080534C4(const float *first, const float *second, const float *third);

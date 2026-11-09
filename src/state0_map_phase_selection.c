@@ -12,7 +12,7 @@ void sub_08012F00(void)
         sub_080195C0();
         work = gState0TransferWork.bytes;
         selection = work + 0x80;
-        sub_080164F4(*selection);
+        CycleActionSpriteFrames(*selection);
         sub_080432A0(*selection * 4 + 0x5A, *selection, 0);
         switch (work[0x81])
         {
@@ -23,7 +23,7 @@ void sub_08012F00(void)
             {
                 u8 *amount = work + 0x82;
                 if (*amount != 0)
-                    sub_08015668(*selection, *amount - 1);
+                    CopySetupSelectionRecord(*selection, *amount - 1);
                 else
                     sub_08015564(*selection, 0);
             }
@@ -45,14 +45,14 @@ void sub_08012F00(void)
         if (work[0x84] == 0)
         {
             if (*selection != 3 && *selection < work[0x5A])
-                gUnknown_0300137C = 4;
+                gNestedCallbackIndex = 4;
             else if (gUnknown_03000440[0x89] != 1)
-                gUnknown_0300137C = 64;
+                gNestedCallbackIndex = 64;
             else
-                gUnknown_0300137C = 144;
+                gNestedCallbackIndex = 144;
         }
         else
-            gUnknown_0300137C++;
+            gNestedCallbackIndex++;
     }
 }
 
@@ -62,7 +62,7 @@ void sub_08012FF8(void)
     sub_08018900(gState0TransferWork.bytes[0x87]);
     sub_08018AB4(0);
     if (gUnknown_03000440[0x89] != 1)
-        gUnknown_0300137C = 69;
+        gNestedCallbackIndex = 69;
     else
-        gUnknown_0300137C = 160;
+        gNestedCallbackIndex = 160;
 }

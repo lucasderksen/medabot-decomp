@@ -59,8 +59,8 @@ void sub_0801C774(void) {
         gFrameObjects[0x21].scaleX = 8;
         gFrameObjects[0x21].screenY = 0x3C;
         gCounter6ED08_03001800.count52 = 0x19;
-        sub_08040B90(gState0NextCommands_083B6100[25], 0x21);
-        sub_08074DE0(0x3E);
+        InitFrameObjectCommands(gState0NextCommands_083B6100[25], 0x21);
+        PlaySoundEffect(0x3E);
         gCounter6ED08_03001800.counterAA++;
         break;
     case 1:
@@ -68,8 +68,8 @@ void sub_0801C774(void) {
         gFrameObjects[0x21].scaleX = 8;
         gFrameObjects[0x21].screenY = 0x3C;
         gCounter6ED08_03001800.count52 = 0x1A;
-        sub_08040B90(gState0NextCommands_083B6100[26], 0x21);
-        sub_08074DE0(0x3E);
+        InitFrameObjectCommands(gState0NextCommands_083B6100[26], 0x21);
+        PlaySoundEffect(0x3E);
         gCounter6ED08_03001800.counterAA++;
         break;
     case 2:
@@ -80,7 +80,7 @@ void sub_0801C774(void) {
         gFrameObjects[0x21].unknown23[1] = 8;
         gFrameObjects[0x21].unknown23[2] = 0;
         gFrameObjects[0x21].value30 = 0;
-        sub_08074DE0(0x61);
+        PlaySoundEffect(0x61);
         gCounter6ED08_03001800.counterAA = 0x10;
         break;
     case 3:
@@ -92,7 +92,7 @@ void sub_0801C774(void) {
         gFrameObjects[0x21].unknown23[1] = 8;
         gFrameObjects[0x21].unknown23[2] = 0;
         gFrameObjects[0x21].value30 = 0;
-        sub_08074DE0(0x61);
+        PlaySoundEffect(0x61);
         gCounter6ED08_03001800.counterAA = 0x10;
         break;
     }

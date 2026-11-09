@@ -116,7 +116,7 @@ void sub_080127DC(void) {
     u8 *row;
     u32 index;
 
-    sub_0803F624(gCounter6ED08_03001800.levelUp16E, 0x18, 0);
+    FillBytes(gCounter6ED08_03001800.levelUp16E, 0x18, 0);
     for (i = 0; i <= 2; i++) {
         {
             u32 root = (u32)gSetupBuffer_03000590;
@@ -124,7 +124,7 @@ void sub_080127DC(void) {
         }
         if (row[0xBA] == 0)
             continue;
-        index = sub_08041D3C(row[1]) - 1;
+        index = FindInventoryRecordById(row[1]) - 1;
         {
             u32 base = (u32)gInventoryView27DC;
             record = (struct InventoryView27DC *)((index << 6) + base);
@@ -138,7 +138,7 @@ void sub_080127DC(void) {
         record->level5++;
         record->exp2 = (record->level5 + 1) * 100;
         gCounter6ED08_03001800.levelUp16E[i][0] = record->id1 + 1;
-        sub_08041D04(gInventoryMetadata_083B62D8 + record->id1 * 16, gUnknown_0300052E, 0x10);
+        CopyBytesU8Count(gInventoryMetadata_083B62D8 + record->id1 * 16, gUnknown_0300052E, 0x10);
         value = sub_080420C4(record->level5, gUnknown_0300052E[3], gUnknown_0300052E[4], gUnknown_0300052E[5], gUnknown_0300052E[6]);
         if (value != record->value8) {
             gCounter6ED08_03001800.levelUp16E[i][1] = 1;
@@ -148,7 +148,7 @@ void sub_080127DC(void) {
             gCounter6ED08_03001800.levelUp16E[i][5] = value;
             record->value8 = value;
         }
-        sub_08041D04(gUnknownBytes_083B7F8C + record->id1 * 3, gUnknown_0300052E, 3);
+        CopyBytesU8Count(gUnknownBytes_083B7F8C + record->id1 * 3, gUnknown_0300052E, 3);
         if (record->level5 == 10) {
             gCounter6ED08_03001800.levelUp16E[i][6] = 1;
             gCounter6ED08_03001800.levelUp16E[i][7] = gUnknown_0300052E[0];
@@ -170,7 +170,7 @@ void sub_08012A20(void) {
 
     switch (gState0TypedWork.bytes[0x139]) {
     case 0:
-        sub_08043CA8();
+        ClearBgScrolls2();
         sub_08043E54();
         *(volatile u16 *)0x04000000 &= 0xF0FF;
         *(volatile u16 *)0x04000008 = 0x500;
@@ -197,7 +197,7 @@ void sub_08012A20(void) {
         sub_08043F9C();
         sub_080441A8(gEquipmentAssets_083B2628[gCounter6ED08_03001800.shift38 * 5 + 1]);
         gUnknownCallback_030017F0 = sub_08044100;
-        gUnknown_0300137C++;
+        gNestedCallbackIndex++;
         gState0TypedWork.bytes[0x139] = 0;
         break;
     }
@@ -211,14 +211,14 @@ void sub_08017EA8(void) {
     i = 0;
     work = gState0TypedWork.bytes;
     for (; i < 4; i++) {
-        sub_08042B58(gSetup17EA8[gState0TypedWork.bytes[0x3D] + gState0TypedWork.bytes[0x3C] * 3].parts[i].byte17, i,
+        CopyPartMetadataSlot(gSetup17EA8[gState0TypedWork.bytes[0x3D] + gState0TypedWork.bytes[0x3C] * 3].parts[i].byte17, i,
                      &gState0TypedWork.bytes[0xEE]);
-        sub_08041D04(&gInventoryMetadata_083B62D8[gSetup17EA8[gState0TypedWork.bytes[0x3D] + gState0TypedWork.bytes[0x3C] * 3].byte01 * 16],
+        CopyBytesU8Count(&gInventoryMetadata_083B62D8[gSetup17EA8[gState0TypedWork.bytes[0x3D] + gState0TypedWork.bytes[0x3C] * 3].byte01 * 16],
                      &work[0x10E], 16);
         if (gState0TypedWork.bytes[0xEE] == work[0x10F])
-            sub_08042698(2, 2, 0xB, i * 2 + 4, *(volatile u16 *)0x0400000A, (u16)(gState0TypedWork.bytes[0x115] * 4 + 0xD340));
+            FillTilemapRectSequential(2, 2, 0xB, i * 2 + 4, *(volatile u16 *)0x0400000A, (u16)(gState0TypedWork.bytes[0x115] * 4 + 0xD340));
         else
-            sub_08042698(2, 2, 0xB, i * 2 + 4, *(volatile u16 *)0x0400000A, 0xD340);
+            FillTilemapRectSequential(2, 2, 0xB, i * 2 + 4, *(volatile u16 *)0x0400000A, 0xD340);
     }
 }
 
@@ -302,5 +302,5 @@ void sub_0803CC8C(void) {
     g->priority = 0x80;
     g->byte29 = 0x23;
     g->command2D = ((struct Frame3CC8C *)gFrameObjects)[gState0TypedWork.bytes[0x12F]].command2D;
-    sub_08040B90(gState0NextCommands_083B6100[((struct Frame3CC8C *)gFrameObjects)[gState0TypedWork.bytes[0x12F]].command2D], slot);
+    InitFrameObjectCommands(gState0NextCommands_083B6100[((struct Frame3CC8C *)gFrameObjects)[gState0TypedWork.bytes[0x12F]].command2D], slot);
 }

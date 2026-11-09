@@ -1,55 +1,55 @@
 #include "object_helpers.h"
 extern void DummyInterruptHandler(void);
 extern void SetUnknownState8(void);
-extern void sub_08040994(void);
-extern void sub_08040A00(void);
-extern void sub_08040A40(void);
-extern void sub_08040AF0(void);
-extern void sub_08040B0C(void);
-extern void sub_0804169C(void);
-extern void sub_0804172C(void);
-extern void sub_0804177C(void);
-extern void sub_08041818(void);
-extern void sub_080418C0(void);
-extern void sub_08041920(void);
-extern void sub_080419CC(void);
+extern void RemoveDialoguePortrait(void);
+extern void BeginDialogueBoxClose(void);
+extern void StepDialogueBoxClose(void);
+extern void BeginDialogueFadeFromColor(void);
+extern void StepDialogueFadeFromColor(void);
+extern void LoadChoiceBoxGraphics(void);
+extern void ClearChoiceBoxTilemaps(void);
+extern void DrawChoiceBoxTwoRows(void);
+extern void DrawChoiceBoxFourRows(void);
+extern void DrawChoiceBoxSixRows(void);
+extern void InitChoiceCursor(void);
+extern void GrowChoiceCursor(void);
 extern void sub_08041A28(void);
 extern void sub_08041B1C(void);
-extern void sub_08041BA4(void);
-extern void sub_08041BF4(void);
+extern void ShrinkChoiceCursor(void);
+extern void SetChoiceBoxResult(void);
 
 
 /* GBA text-background tile index, flip bits and palette bank. */
 #define MAP_ENTRY(tile, flip, palette) ((tile) | ((flip) << 10) | ((palette) << 12))
 
 const ObjectHelperCallback gObjectCallbacks_083B2994[14] = {
-    sub_0804169C,
-    sub_0804177C,
-    sub_08041818,
-    sub_080418C0,
-    sub_08041920,
-    sub_080419CC,
+    LoadChoiceBoxGraphics,
+    DrawChoiceBoxTwoRows,
+    DrawChoiceBoxFourRows,
+    DrawChoiceBoxSixRows,
+    InitChoiceCursor,
+    GrowChoiceCursor,
     sub_08041A28,
     sub_08041B1C,
-    sub_08041BA4,
-    sub_08041818,
-    sub_0804177C,
-    sub_0804172C,
-    sub_08041BF4,
+    ShrinkChoiceCursor,
+    DrawChoiceBoxFourRows,
+    DrawChoiceBoxTwoRows,
+    ClearChoiceBoxTilemaps,
+    SetChoiceBoxResult,
     DummyInterruptHandler,
 };
 
 const ObjectHelperCallback gObjectCallbacks_083B29CC[6] = {
-    sub_08040994,
-    sub_08040A00,
-    sub_08040A40,
-    sub_08040AF0,
-    sub_08040B0C,
+    RemoveDialoguePortrait,
+    BeginDialogueBoxClose,
+    StepDialogueBoxClose,
+    BeginDialogueFadeFromColor,
+    StepDialogueFadeFromColor,
     SetUnknownState8,
 };
 
 const ObjectHelperCallback gObjectCallbacks_083B29E4[2] = {
-    sub_08040994,
+    RemoveDialoguePortrait,
     SetUnknownState8,
 };
 

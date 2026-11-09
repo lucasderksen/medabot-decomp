@@ -15,7 +15,7 @@
 
 extern s32 gUnknown_0300059A;
 extern s32 gUnknown_03000660;
-s32 sub_08035740(void *, s16, s32);
+s32 AddByteCapped(void *, s16, s32);
 
 void sub_08015B3C(u32 value);
 void sub_08020004(void);
@@ -24,22 +24,22 @@ s32 sub_0806B484(u32 inputIndex);
 
 void sub_08015B3C(u32 value) {
     if (value <= 2U) {
-        sub_08040D0C(0xAU, 0xAU);
-        sub_08040DB8((value << 8) + (u8 *) &gUnknown_0300059A, 0xAU, 1, 0xE, 0xAU, 0xFU, 0U, 1U);
+        HideFrameObjects(0xAU, 0xAU);
+        PlaceAlignedTextObjects((value << 8) + (u8 *) &gUnknown_0300059A, 0xAU, 1, 0xE, 0xAU, 0xFU, 0U, 1U);
         return;
     }
-    sub_08040D0C(0x14U, 0xDU);
-    sub_08040DB8((value << 8) + (u8 *) &gUnknown_0300059A, 0x14U, 0x13, 0xE, 0xAU, 0xFU, 0U, 1U);
+    HideFrameObjects(0x14U, 0xDU);
+    PlaceAlignedTextObjects((value << 8) + (u8 *) &gUnknown_0300059A, 0x14U, 0x13, 0xE, 0xAU, 0xFU, 0U, 1U);
 }
 
 void sub_08020004(void) {
-    sub_0803F63C((gState0TransferWork.bytes[0x51] << 8) + (u8 *) &gUnknown_0300059A, gDebugMenuTextBuffer, 0xEU);
+    CopyBytes((gState0TransferWork.bytes[0x51] << 8) + (u8 *) &gUnknown_0300059A, gDebugMenuTextBuffer, 0xEU);
     gState0TransferWork.bytes[0xA6] = 0x14;
     gState0TransferWork.bytes[0xAA] += 1;
 }
 
 void sub_0802AFB0(void) {
-    sub_08035740((gState0TransferWork.bytes[0x87] << 8) + (u8 *) &gUnknown_03000660, (*(s16 *)((u8 *)(&gState0TransferWork) + 0xEC)), 0xFF);
+    AddByteCapped((gState0TransferWork.bytes[0x87] << 8) + (u8 *) &gUnknown_03000660, (*(s16 *)((u8 *)(&gState0TransferWork) + 0xEC)), 0xFF);
     gState0TransferWork.bytes[0xAA] += 1;
 }
 

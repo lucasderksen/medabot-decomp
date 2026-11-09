@@ -74,7 +74,7 @@ void sub_080347F8(void)
         else
             work->byte115 = 0;
     }
-    sub_08034F08();
+    AdvanceActionByteScript();
 }
 
 void sub_080348D0(void)
@@ -88,34 +88,34 @@ void sub_080348D0(void)
     work->byte160 = sub_08036218();
     sub_08026ED0();
     if (work->completeB5)
-        sub_08034F08();
+        AdvanceActionByteScript();
 }
 
 void sub_08034AA0(void)
 {
-    u32 random = sub_080424B8();
+    u32 random = NextRandomByte();
     struct ObservedActionResultWork *work = (void *)gState0TransferWork.bytes;
     const u8 *table = gActionRandomBytes_083AF380;
     u32 mask = 15;
     work->byte188 = table[random & mask];
-    work->byte189 = table[sub_080424B8() & mask];
+    work->byte189 = table[NextRandomByte() & mask];
     work->halfEC = (work->byte188 + work->byte189) * 10;
-    sub_08034F08();
+    AdvanceActionByteScript();
 }
 
 void sub_08034B68(void)
 {
     struct ObservedActionResultWork *work = (void *)gState0TransferWork.bytes;
     u8 *selected = &work->selected87;
-    work->byte60 = sub_08032FB8(*selected);
+    work->byte60 = GetOtherSlotGroupStart(*selected);
     if (sub_08037830(work->byte60, *selected) == 255)
         work->halfEC = 10;
-    sub_08034F08();
+    AdvanceActionByteScript();
 }
 
 void sub_08034BA0(void)
 {
     sub_08026FD0();
     if (gState0TransferWork.bytes[0xB5])
-        sub_08034F08();
+        AdvanceActionByteScript();
 }

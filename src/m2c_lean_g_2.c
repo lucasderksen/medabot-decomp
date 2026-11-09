@@ -48,9 +48,9 @@ struct OamData45120 {
 };
 
 
-u32 sub_08045120(struct OamEntry *objects, const void *source, const void *palette, const u32 *header, const struct RecordObjectPlacement *placement, u8 bank, u16 tile);
+u32 LoadRecordObjectGrid(struct OamEntry *objects, const void *source, const void *palette, const u32 *header, const struct RecordObjectPlacement *placement, u8 bank, u16 tile);
 
-u32 sub_08045120(struct OamEntry *objects, const void *source, const void *palette, const u32 *header, const struct RecordObjectPlacement *placement, u8 bank, u16 tile) {
+u32 LoadRecordObjectGrid(struct OamEntry *objects, const void *source, const void *palette, const u32 *header, const struct RecordObjectPlacement *placement, u8 bank, u16 tile) {
 
     u16 width;
     u16 dims[2];
@@ -61,7 +61,7 @@ u32 sub_08045120(struct OamEntry *objects, const void *source, const void *palet
     u32 y;
     const u32 *layout;
 
-    value = sub_08044E64(((*header << 26) >> 30) << 14, ((*header << 24) >> 30) << 30);
+    value = GetOamDimensions(((*header << 26) >> 30) << 14, ((*header << 24) >> 30) << 30);
     dims[0] = value >> 16;
     dims[1] = value;
     value = dims[0] * dims[1];
@@ -79,7 +79,7 @@ u32 sub_08045120(struct OamEntry *objects, const void *source, const void *palet
         x = descriptor << 26;
         x >>= 30;
         t = descriptor;
-        sub_08045084(source, x << 14, ((t << 24) >> 30) << 30, (t << 20) >> 28, (t << 16) >> 28,
+        LoadReorderedObjectTiles(source, x << 14, ((t << 24) >> 30) << 30, (t << 20) >> 28, (t << 16) >> 28,
                      (descriptor << 28) >> 28, tile, value, (void *)0x02030000, 1);
     }
     layout = header;

@@ -31,7 +31,7 @@ struct Setup255F8 { u8 unknown00[0x48]; struct Part255F8 parts[7]; u8 unknownF0[
 extern struct Setup255F8 gSetup255F8[] asm("gSetupBuffer_03000590");
 extern struct Work255F8 gWork255F8 asm("gCounter6ED08_03001800");
 extern void sub_0803572C(u8 *, s32);
-extern void sub_08035740(u8 *, s32, u32);
+extern void AddByteCapped(u8 *, s32, u32);
 extern void sub_08037458(u32, s32);
 extern void sub_08037498(s32, s32);
 
@@ -44,6 +44,6 @@ void sub_080255F8(void) {
     sub_0803572C(gSetup255F8[gWork255F8.setup88].parts[0].block10, gWork255F8.value51);
     sub_08037498(gWork255F8.setup87, gWork255F8.value51);
     gWork255F8.value52 = gWork255F8.valueC8;
-    sub_08035740(gSetup255F8[gWork255F8.setup87].parts[0].block10, gWork255F8.value52, gSetup255F8[gWork255F8.setup87].parts[0].byte08);
+    AddByteCapped(gSetup255F8[gWork255F8.setup87].parts[0].block10, gWork255F8.value52, gSetup255F8[gWork255F8.setup87].parts[0].byte08);
     gWork255F8.counterAA++;
 }

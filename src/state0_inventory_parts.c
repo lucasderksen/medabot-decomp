@@ -19,8 +19,8 @@ void sub_0800A05C(void);
 void sub_0800A0B8(void);
 void sub_0800A0FC(void);
 void sub_0800A180(void);
-void sub_0800A1E4(void);
-void sub_0800A2B4(void);
+void CycleOwnedInventoryOnLeftRight(void);
+void RedrawInventoryDetailOnLeftRight(void);
 
 void sub_0800A000(void)
 {
@@ -29,7 +29,7 @@ void sub_0800A000(void)
     u8 *work;
     u8 *record;
     u8 *buffer;
-    sub_08040D0C(30, 15);
+    HideFrameObjects(30, 15);
     names = gUnknownPointers_083B66EC;
     records = gInventoryRecords;
     work = gState0TypedWork.bytes;
@@ -37,9 +37,9 @@ void sub_0800A000(void)
     {
         const void *name = names[record[4]];
         buffer = &work[0x9E];
-        sub_0803F63C(name, buffer, 14);
+        CopyBytes(name, buffer, 14);
     }
-    sub_08040DB8(buffer, 30, 10, 7, 8, 11, 1, 1);
+    PlaceAlignedTextObjects(buffer, 30, 10, 7, 8, 11, 1, 1);
 }
 
 void sub_0800A05C(void)
@@ -49,7 +49,7 @@ void sub_0800A05C(void)
     u8 *work;
     u8 *record;
     u8 *buffer;
-    sub_08040D0C(45, 13);
+    HideFrameObjects(45, 13);
     names = gUnknownPointers_083B7048;
     records = gInventoryRecords;
     work = gState0TypedWork.bytes;
@@ -57,15 +57,15 @@ void sub_0800A05C(void)
     {
         const void *name = names[record[6]];
         buffer = &work[0x9E];
-        sub_0803F63C(name, buffer, 14);
+        CopyBytes(name, buffer, 14);
     }
-    sub_08040DB8(buffer, 45, 10, 10, 10, 10, 1, 1);
+    PlaceAlignedTextObjects(buffer, 45, 10, 10, 10, 10, 1, 1);
 }
 
 void sub_0800A0B8(void)
 {
  
- sub_08042698(2, 2, 27, 7, *(volatile u16 *)0x0400000A, (u16)(0xD340 + gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[1] * 4));
+ FillTilemapRectSequential(2, 2, 27, 7, *(volatile u16 *)0x0400000A, (u16)(0xD340 + gInventoryRecords[gState0TypedWork.bytes[0x3D]].unknown06[1] * 4));
 }
 
 void sub_0800A0FC(void)
@@ -106,7 +106,7 @@ void sub_0800A180(void)
     }
 }
 
-void sub_0800A2B4(void)
+void RedrawInventoryDetailOnLeftRight(void)
 {
     if (*(u8 *)&gRepeatedKeys & 48)
     {
@@ -134,15 +134,15 @@ void sub_0800A05C(void);
 void sub_0800A0B8(void);
 void sub_0800A0FC(void);
 void sub_0800A180(void);
-void sub_0800A1E4(void);
-void sub_0800A2B4(void);
+void CycleOwnedInventoryOnLeftRight(void);
+void RedrawInventoryDetailOnLeftRight(void);
 
 extern const u8 gUnknownBytes_083B7F8C[];
 extern const u8 gUnknownBytes_083B7E54[];
 
 void sub_0800A2E8(void)
 {
-    sub_08040D0C(30, 60);
+    HideFrameObjects(30, 60);
     {
         struct InventoryRecord *records = gInventoryRecords;
         u8 *work = gState0TypedWork.bytes;
@@ -153,22 +153,22 @@ void sub_0800A2E8(void)
             u8 *buffer;
             const u8 *source = gUnknownBytes_083B7F8C + record->byte1 * 3;
             part = &work[0xEE];
-            sub_08041D04(source, part, 3);
-            sub_08041D04(gUnknownBytes_083B7E54 + *part * 6, &work[0x10E], 6);
+            CopyBytesU8Count(source, part, 3);
+            CopyBytesU8Count(gUnknownBytes_083B7E54 + *part * 6, &work[0x10E], 6);
             {
                 const void *name = gUnknownPointers_083B74B8[*part];
                 buffer = &work[0x9E];
-                sub_0803F63C(name, buffer, 17);
+                CopyBytes(name, buffer, 17);
             }
-            sub_08040DB8(buffer, 30, 2, 6, 10, 10, 1, 1);
-            sub_08042698(2, 2, 12, 6, *(volatile u16 *)0x0400000A, (u16)(0x5300 + work[0x113] * 4));
+            PlaceAlignedTextObjects(buffer, 30, 2, 6, 10, 10, 1, 1);
+            FillTilemapRectSequential(2, 2, 12, 6, *(volatile u16 *)0x0400000A, (u16)(0x5300 + work[0x113] * 4));
         }
         else
         {
             u8 *buffer = &work[0x9E];
-            sub_08042678(buffer, 13);
-            sub_08040DB8(buffer, 30, 2, 6, 10, 10, 1, 1);
-            sub_0803EF8C(2, 2, 12, 6, *(volatile u16 *)0x0400000A, 0);
+            FillTextWithHyphens(buffer, 13);
+            PlaceAlignedTextObjects(buffer, 30, 2, 6, 10, 10, 1, 1);
+            FillTilemapRect(2, 2, 12, 6, *(volatile u16 *)0x0400000A, 0);
         }
     }
     {
@@ -179,21 +179,21 @@ void sub_0800A2E8(void)
         {
             u8 *part = &work[0xef];
             u8 *buffer;
-            sub_08041D04(gUnknownBytes_083B7E54 + *part * 6, &work[0x10E], 6);
+            CopyBytesU8Count(gUnknownBytes_083B7E54 + *part * 6, &work[0x10E], 6);
             {
                 const void *name = gUnknownPointers_083B74B8[*part];
                 buffer = &work[0x9E];
-                sub_0803F63C(name, buffer, 17);
+                CopyBytes(name, buffer, 17);
             }
-            sub_08040DB8(buffer, 50, 2, 8, 10, 10, 1, 1);
-            sub_08042698(2, 2, 12, 8, *(volatile u16 *)0x0400000A, (u16)(0x5300 + work[0x113] * 4));
+            PlaceAlignedTextObjects(buffer, 50, 2, 8, 10, 10, 1, 1);
+            FillTilemapRectSequential(2, 2, 12, 8, *(volatile u16 *)0x0400000A, (u16)(0x5300 + work[0x113] * 4));
         }
         else
         {
             u8 *buffer = &work[0x9E];
-            sub_08042678(buffer, 13);
-            sub_08040DB8(buffer, 50, 2, 8, 10, 10, 1, 1);
-            sub_0803EF8C(2, 2, 12, 8, *(volatile u16 *)0x0400000A, 0);
+            FillTextWithHyphens(buffer, 13);
+            PlaceAlignedTextObjects(buffer, 50, 2, 8, 10, 10, 1, 1);
+            FillTilemapRect(2, 2, 12, 8, *(volatile u16 *)0x0400000A, 0);
         }
     }
     {
@@ -204,21 +204,21 @@ void sub_0800A2E8(void)
         {
             u8 *part = &work[0xf0];
             u8 *buffer;
-            sub_08041D04(gUnknownBytes_083B7E54 + *part * 6, &work[0x10E], 6);
+            CopyBytesU8Count(gUnknownBytes_083B7E54 + *part * 6, &work[0x10E], 6);
             {
                 const void *name = gUnknownPointers_083B74B8[*part];
                 buffer = &work[0x9E];
-                sub_0803F63C(name, buffer, 17);
+                CopyBytes(name, buffer, 17);
             }
-            sub_08040DB8(buffer, 70, 2, 10, 10, 10, 1, 1);
-            sub_08042698(2, 2, 12, 10, *(volatile u16 *)0x0400000A, (u16)(0x5300 + work[0x113] * 4));
+            PlaceAlignedTextObjects(buffer, 70, 2, 10, 10, 10, 1, 1);
+            FillTilemapRectSequential(2, 2, 12, 10, *(volatile u16 *)0x0400000A, (u16)(0x5300 + work[0x113] * 4));
         }
         else
         {
             u8 *buffer = &work[0x9E];
-            sub_08042678(buffer, 13);
-            sub_08040DB8(buffer, 70, 2, 10, 10, 10, 1, 1);
-            sub_0803EF8C(2, 2, 12, 10, *(volatile u16 *)0x0400000A, 0);
+            FillTextWithHyphens(buffer, 13);
+            PlaceAlignedTextObjects(buffer, 70, 2, 10, 10, 10, 1, 1);
+            FillTilemapRect(2, 2, 12, 10, *(volatile u16 *)0x0400000A, 0);
         }
     }
 }
@@ -242,8 +242,8 @@ void sub_0800A05C(void);
 void sub_0800A0B8(void);
 void sub_0800A0FC(void);
 void sub_0800A180(void);
-void sub_0800A1E4(void);
-void sub_0800A2B4(void);
+void CycleOwnedInventoryOnLeftRight(void);
+void RedrawInventoryDetailOnLeftRight(void);
 
 extern const u8 gUnknownBytes_083B7F8C[];
 extern const u8 gUnknownBytes_083B7E54[];
@@ -252,7 +252,7 @@ void sub_0800A594(void)
 {
     u8 *work;
     u32 selector;
-    sub_08040D0C(90, 15);
+    HideFrameObjects(90, 15);
     work = gState0TypedWork.bytes;
     selector = work[0x46];
     switch (selector)
@@ -266,22 +266,22 @@ void sub_0800A594(void)
             const u8 *source = gUnknownBytes_083B7F8C + record->byte1 * 3;
             u8 *buffer;
             u8 *part = &work[0xEE];
-            sub_08041D04(source, part, 3);
-            sub_08041D04(gUnknownBytes_083B7E54 + *part * 6, &work[0x10E], 6);
+            CopyBytesU8Count(source, part, 3);
+            CopyBytesU8Count(gUnknownBytes_083B7E54 + *part * 6, &work[0x10E], 6);
             {
                 const void *name = gUnknownPointers_083B7048[work[0x10F]];
                 buffer = &work[0x9E];
-                sub_0803F63C(name, buffer, 14);
+                CopyBytes(name, buffer, 14);
             }
-            sub_08040DB8(buffer, 90, 19, 7, 10, 11, 1, 1);
-            sub_08042838(work[0x110], 25, 10, 2, *(volatile u16 *)0x0400000A, 0xD334);
+            PlaceAlignedTextObjects(buffer, 90, 19, 7, 10, 11, 1, 1);
+            DrawNumberTileRow(work[0x110], 25, 10, 2, *(volatile u16 *)0x0400000A, 0xD334);
         }
         else
         {
             u8 *buffer = &work[0x9E];
-            sub_08042678(buffer, 13);
-            sub_08040DB8(buffer, 90, 19, 7, 10, 11, 1, 1);
-            sub_08042838(0, 25, 10, 2, *(volatile u16 *)0x0400000A, 0xD334);
+            FillTextWithHyphens(buffer, 13);
+            PlaceAlignedTextObjects(buffer, 90, 19, 7, 10, 11, 1, 1);
+            DrawNumberTileRow(0, 25, 10, 2, *(volatile u16 *)0x0400000A, 0xD334);
         }
         break;
     }
@@ -293,22 +293,22 @@ void sub_0800A594(void)
         {
             const u8 *source = gUnknownBytes_083B7F8C + record->byte1 * 3;
             u8 *buffer;
-            sub_08041D04(source, &work[0xEE], 3);
-            sub_08041D04(gUnknownBytes_083B7E54 + work[0xef] * 6, &work[0x10E], 6);
+            CopyBytesU8Count(source, &work[0xEE], 3);
+            CopyBytesU8Count(gUnknownBytes_083B7E54 + work[0xef] * 6, &work[0x10E], 6);
             {
                 const void *name = gUnknownPointers_083B7048[work[0x10F]];
                 buffer = &work[0x9E];
-                sub_0803F63C(name, buffer, 14);
+                CopyBytes(name, buffer, 14);
             }
-            sub_08040DB8(buffer, 90, 19, 7, 10, 11, selector, selector);
-            sub_08042838(work[0x110], 25, 10, 2, *(volatile u16 *)0x0400000A, 0xD334);
+            PlaceAlignedTextObjects(buffer, 90, 19, 7, 10, 11, selector, selector);
+            DrawNumberTileRow(work[0x110], 25, 10, 2, *(volatile u16 *)0x0400000A, 0xD334);
         }
         else
         {
             u8 *buffer = &work[0x9E];
-            sub_08042678(buffer, 13);
-            sub_08040DB8(buffer, 90, 19, 7, 10, 11, selector, selector);
-            sub_08042838(0, 25, 10, 2, *(volatile u16 *)0x0400000A, 0xD334);
+            FillTextWithHyphens(buffer, 13);
+            PlaceAlignedTextObjects(buffer, 90, 19, 7, 10, 11, selector, selector);
+            DrawNumberTileRow(0, 25, 10, 2, *(volatile u16 *)0x0400000A, 0xD334);
         }
         break;
     }
@@ -320,22 +320,22 @@ void sub_0800A594(void)
         {
             const u8 *source = gUnknownBytes_083B7F8C + record->byte1 * 3;
             u8 *buffer;
-            sub_08041D04(source, &work[0xEE], 3);
-            sub_08041D04(gUnknownBytes_083B7E54 + work[0xf0] * 6, &work[0x10E], 6);
+            CopyBytesU8Count(source, &work[0xEE], 3);
+            CopyBytesU8Count(gUnknownBytes_083B7E54 + work[0xf0] * 6, &work[0x10E], 6);
             {
                 const void *name = gUnknownPointers_083B7048[work[0x10F]];
                 buffer = &work[0x9E];
-                sub_0803F63C(name, buffer, 14);
+                CopyBytes(name, buffer, 14);
             }
-            sub_08040DB8(buffer, 90, 19, 7, 10, 11, 1, 1);
-            sub_08042838(work[0x110], 25, 10, 2, *(volatile u16 *)0x0400000A, 0xD334);
+            PlaceAlignedTextObjects(buffer, 90, 19, 7, 10, 11, 1, 1);
+            DrawNumberTileRow(work[0x110], 25, 10, 2, *(volatile u16 *)0x0400000A, 0xD334);
         }
         else
         {
             u8 *buffer = &work[0x9E];
-            sub_08042678(buffer, 13);
-            sub_08040DB8(buffer, 90, 19, 7, 10, 11, 1, 1);
-            sub_08042838(0, 25, 10, 2, *(volatile u16 *)0x0400000A, 0xD334);
+            FillTextWithHyphens(buffer, 13);
+            PlaceAlignedTextObjects(buffer, 90, 19, 7, 10, 11, 1, 1);
+            DrawNumberTileRow(0, 25, 10, 2, *(volatile u16 *)0x0400000A, 0xD334);
         }
         break;
     }

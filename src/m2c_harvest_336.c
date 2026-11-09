@@ -53,13 +53,13 @@ void sub_0802F6CC(void) {
             frame->unknown23[1] = 4;
             frame->unknown23[2] = 0;
             (*(s16 *)((u8 *)frame+0x30)) = 0;
-            sub_08040B90(gState0NextCommands_083B6100[0x6D], frameIndex);
+            InitFrameObjectCommands(gState0NextCommands_083B6100[0x6D], frameIndex);
             if (1 & gState0TransferWork.bytes[0xF8]) {
                 frame->flags |= 0x1000;
             }
         }
         entryIndex += 1;
     } while (entryIndex <= 2U);
-    sub_08074DE0(0x61U);
+    PlaySoundEffect(0x61U);
     gState0TransferWork.bytes[0xAA] = (u8) (gState0TransferWork.bytes[0xAA] + 1);
 }

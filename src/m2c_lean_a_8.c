@@ -75,7 +75,7 @@ void sub_080169AC(void) {
     if (gFamilyKeyBytes49558_0300058C & 0x10)
         gCounter6ED08_03001800.byte82 = 3;
     if (gCounter6ED08_03001800.byte82 != old) {
-        sub_08074DE0(2);
+        PlaySoundEffect(2);
         sub_0801677C();
         sub_080167BC(1);
         sub_08016804(1);
@@ -94,10 +94,10 @@ void sub_08021A6C(void) {
 
     struct FrameObject *objects;
 
-    sub_08040BD8(gState0NextCommands_083B6100[0x3B], 0x21);
+    RunFrameObjectCommands(gState0NextCommands_083B6100[0x3B], 0x21);
     objects = (struct FrameObject *)gActionTransferBuffer_03003470;
-    sub_0803F63C(&objects[0], &objects[1], 0x40);
-    sub_0803F63C(&objects[0], &objects[2], 0x40);
+    CopyBytes(&objects[0], &objects[1], 0x40);
+    CopyBytes(&objects[0], &objects[2], 0x40);
     *(s16 *)&objects[0].unknown2C[6] = 0x58;
     objects[0].unknown23[1] = 6;
     *(s16 *)&objects[1].unknown2C[6] = 0x40;

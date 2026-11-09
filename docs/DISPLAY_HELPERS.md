@@ -66,7 +66,7 @@ current shared offset to each entry, while destination rows are separated by
 32 entries. Source-pointer initialization occurs after destination construction;
 moving it earlier changes its parameter-load position in the emitted code.
 
-`sub_0803EF20` clears byte `0x03005030`, resets serial activity, waits for VBlank,
+`ResetGameAndInitAudio` clears byte `0x03005030`, resets serial activity, waits for VBlank,
 disables sound and interrupts, and calls the matching memory and IRQ initializers.
 It then initializes serial state, sets main state 3 and clears the subordinate
 state/countdown words. It stops DMA0 and performs another VBlank wait before
@@ -78,12 +78,12 @@ copy uses CpuFastSet count 8, meaning eight words (sixteen RGB555 colors).
 The saved-palette branch writes to `0x0202FA00 + paletteSlot*32`; the immediate
 branch writes to `0x05000000 + paletteSlot*32`.
 
-`sub_0803F480` enables BG0 with DISPCNT bit 8, writes BG0CNT `0x0500`, decompresses
+`DrawPortrait` enables BG0 with DISPCNT bit 8, writes BG0CNT `0x0500`, decompresses
 graphics to `0x06000F80`, and copies its palette to slot 13 at `0x050001A0`.
 It selects the final frame of an independently supplied tilemap bank from
 `0x083B4C60[mapBank*9 + 8]` and copies an 8x8 map with entry offset zero.
 
-`sub_0803F3A8` decompresses `0x08486E6C` to VRAM `0x06000020` and `0x084C39D8`
+`LoadDialogueWindowGraphics` decompresses `0x08486E6C` to VRAM `0x06000020` and `0x084C39D8`
 to `0x06001780`, then loads sixteen colors from `0x08488520` into palette slot 15.
 The sixteen-color palette is reconstructed in `src/interface_palette_banks.c`;
 these calls do not establish the full compressed asset boundaries.
@@ -113,7 +113,7 @@ These 7,040 bytes are typed data, rather than decompiled game instructions.
 
 ## Nine-frame sequence
 
-`sub_0803F51C` initializes graphics/palette data only when callback-work byte
+`StepPortraitAnimation` initializes graphics/palette data only when callback-work byte
 `0x0E` is zero. Each call draws an 8x8 map from the table at `0x083B4C60` and
 increments that byte. Forward indexing is `mapBank*9 + frame`; reverse indexing
 is `mapBank*9 - (frame - 8)`. It returns one when the incremented byte equals

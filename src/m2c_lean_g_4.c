@@ -100,7 +100,7 @@ void sub_0804FE9C(void) {
     }
     if (finished) {
         ((struct CommandSlots *)gContinuedCommandWork_030064A0)->count = 0;
-        sub_08049714(((struct CommandSlots *)gContinuedCommandWork_030064A0)->cmds, 0x40);
+        ClearBytes(((struct CommandSlots *)gContinuedCommandWork_030064A0)->cmds, 0x40);
         sub_08050290();
     }
 }

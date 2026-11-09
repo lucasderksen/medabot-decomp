@@ -16,7 +16,7 @@ void sub_0804C778(void) {
   u32 address;
   u32 value;
   u32 offset;
-  sub_0804D8CC(2);
+  ReadBankedScriptArgs(2);
   root = (u32) gUnknown_030057E0;
   value = *((u8 *) (root + 0xC94));
   if (value == 0)

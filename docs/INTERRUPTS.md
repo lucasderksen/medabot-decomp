@@ -53,7 +53,7 @@ zero alignment padding.
 `VBlankHandler` tests bit zero of the volatile halfword at `03002B90`. A nested
 entry with that bit set returns immediately. Otherwise it sets the bit, calls
 `RunVBlankWork`, then clears the bit through the original `FFFE` halfword mask.
-It next calls the serial routine `sub_080023D8` if bit `80` is present in
+It next calls the serial routine `StartSerialTransfer` if bit `80` is present in
 `gMainSerialWork.polledBits`.
 
 It disables `IME`, increments the signed byte at `03002410`, and checks the

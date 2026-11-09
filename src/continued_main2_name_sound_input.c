@@ -34,14 +34,14 @@ struct Main2SoundContext
 
 void sub_0805F488(void)
 {
-    sub_08041C14(0, *(u8 *)&gFrameCounter, 20);
+    SetObjectXWobble(0, *(u8 *)&gFrameCounter, 20);
     if (CONTEXT->byte48)
     {
         u32 delay = CONTEXT->byte48;
         delay--;
         CONTEXT->byte48 = delay;
         if ((u8)delay == 0)
-            sub_08074DE0(2);
+            PlaySoundEffect(2);
     }
     if (REPEATED_BYTE & KEY_UP)
     {
@@ -49,7 +49,7 @@ void sub_0805F488(void)
             CONTEXT->byte05--;
         else
             CONTEXT->byte05 = 3;
-        sub_08074B88(0);
+        PlayMusic(0);
         CONTEXT->byte48 = 2;
     }
     if (REPEATED_BYTE & KEY_DOWN)
@@ -58,7 +58,7 @@ void sub_0805F488(void)
             CONTEXT->byte05++;
         else
             CONTEXT->byte05 = 0;
-        sub_08074B88(0);
+        PlayMusic(0);
         CONTEXT->byte48 = 2;
     }
     gFrameObjects[0].screenY = CONTEXT->byte05 * 16 + 32;
@@ -142,7 +142,7 @@ void sub_0805F488(void)
         CONTEXT->byte4B--;
     if (CONTEXT->byte4A && CONTEXT->byte4B == 0)
     {
-        sub_08074DE0(CONTEXT->byte4A);
+        PlaySoundEffect(CONTEXT->byte4A);
         CONTEXT->byte4A = 0;
     }
     if (NEW_BYTE & KEY_A)
@@ -153,7 +153,7 @@ void sub_0805F488(void)
             {
                 u32 base = (u32)gMain2SoundTable_080AF9CC;
                 u32 offset = CONTEXT->byte2B;
-                sub_08074B88(*(const u8 *)(base + offset));
+                PlayMusic(*(const u8 *)(base + offset));
             }
             break;
         case 1:
@@ -164,14 +164,14 @@ void sub_0805F488(void)
                 u32 offset = context->half2C;
                 context->byte4A = *(const u8 *)(base + offset);
             }
-            sub_08074B88(0);
-            sub_08074DE0(0);
+            PlayMusic(0);
+            PlaySoundEffect(0);
             break;
         case 2:
-            sub_08074DE0(4);
-            sub_080415E8(1, 22, 7);
-            sub_0803FAA0(1, 2, 0);
-            gUnknown_0300137C = 6;
+            PlaySoundEffect(4);
+            StartChoiceBox(1, 22, 7);
+            InitDialogue(1, 2, 0);
+            gNestedCallbackIndex = 6;
             break;
         case 3:
             CONTEXT->byte49 = 0;
@@ -182,9 +182,9 @@ void sub_0805F488(void)
     {
         CONTEXT->byte49 = 1;
 leave:
-        sub_08074B88(0);
+        PlayMusic(0);
         CONTEXT->byte00 = 0;
-        gUnknown_0300137C = 5;
+        gNestedCallbackIndex = 5;
         gFrameObjects[0].flags &= 0xBFFF;
         gFrameObjects[1].flags &= 0xBFFF;
         gFrameObjects[2].flags &= 0xBFFF;

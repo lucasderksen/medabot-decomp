@@ -4,7 +4,7 @@
 #include "global.h"
 
 /* Observed row and preview helpers; gameplay names remain provisional. */
-void sub_0800A854(void);
+void InitObject3RowCursor(void);
 u32 sub_0800A8A0(void);
 u32 sub_0800A928(void);
 u32 sub_0800A960(void);

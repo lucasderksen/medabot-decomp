@@ -15,5 +15,5 @@ void sub_08010264(void)
         dma[2] = 0x85000100;
         (void)dma[2];
     }
-    gState0MapCallbacks_083ACE24[gUnknown_0300137C]();
+    gState0MapCallbacks_083ACE24[gNestedCallbackIndex]();
 }

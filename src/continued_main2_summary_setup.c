@@ -17,16 +17,16 @@ struct Main2PhaseWork { u8 unknown00[0x84]; u8 phase; };
 
 void sub_0805D658(void)
 {
-    if (sub_08041CA4())
-        gUnknown_0300137C++;
+    if (RunDialogueClose())
+        gNestedCallbackIndex++;
 }
 
 void sub_0805D674(void)
 {
     if (PHASE_WORK->phase <= 8)
     {
-        sub_0803F684(0, PHASE_WORK->phase * 4, 0xFFFF);
-        sub_0803F998(0, PHASE_WORK->phase * 4, 0xFFFF);
+        BlendBgPaletteBanksNow(0, PHASE_WORK->phase * 4, 0xFFFF);
+        BlendObjPaletteBanksNow(0, PHASE_WORK->phase * 4, 0xFFFF);
         PHASE_WORK->phase++;
     }
     else
@@ -48,7 +48,7 @@ void sub_0805D6E4(u32 frameWord)
 void sub_0805D704(void)
 {
     const MainCallback *callbacks = gMain2Subcallbacks_0848360C + 25;
-    callbacks[gUnknown_0300137C]();
+    callbacks[gNestedCallbackIndex]();
     if (gFrameCounter & 1)
     {
         gBgScroll3.x++;
@@ -61,13 +61,13 @@ void sub_0805D750(void)
 {
     u32 zero = 0;
     CpuFastSet(&zero, CONTEXT, 0x01000100);
-    sub_080415BC();
+    ClearBgScrolls();
     DISPCNT = 0x0160;
-    gUnknown_0300137C++;
+    gNestedCallbackIndex++;
 }
 
 void sub_0805DAB0(void)
 {
-    if (sub_0803FB3C(gMain2ScriptSlots_0848521C[9]))
-        gUnknown_0300137C++;
+    if (RunDialogue(gMain2ScriptSlots_0848521C[9]))
+        gNestedCallbackIndex++;
 }

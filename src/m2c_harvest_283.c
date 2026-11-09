@@ -22,7 +22,7 @@ struct ResetBytes42 {u8 beforeA1[0xA1];u8 fields[5];};
 struct Work309C8 {u8 before87[0x87];u8 bank;u8 beforeA6[0x1E];u8 mode;};
 
 extern const u8 gUnknown_083AD579[];
-extern s32 sub_0807CD2C(s32,s32);
+extern s32 __divsi3(s32,s32);
 extern struct ResetBytes42 gGraphicsTransferCounter;
 extern struct Work309C8 gCounter6ED08_03001800;
 
@@ -81,9 +81,9 @@ void sub_080309C8(void) {
  u32 setupRoot=(u32)gSetupBuffer_03000590;
  struct Work309C8 *work=&gCounter6ED08_03001800;
  u8 *record=(u8 *)(setupRoot+((u32)work->bank<<8));
- if(record[0xBD]&1) {work->mode=4;gUnknown_0300137C=0x20;}
- else if(record[0xDD]==0) gUnknown_0300137C=0x10;
- else gUnknown_0300137C++;
+ if(record[0xBD]&1) {work->mode=4;gNestedCallbackIndex=0x20;}
+ else if(record[0xDD]==0) gNestedCallbackIndex=0x10;
+ else gNestedCallbackIndex++;
 }
 
 void sub_08035410(u32 arg0, u8 *arg1, u8 *arg2) {
@@ -138,7 +138,7 @@ void sub_08066C8C(u16 angle) {
   u8 *record=(void*)(workRoot+(index<<4));
   s16 *scale=(s16*)(record+0xD0);
   s32 first=*scale;
-  u32 phase=(sub_0807CD2C(index<<8,18)+angle)&255;
+  u32 phase=(__divsi3(index<<8,18)+angle)&255;
   s32 x=(first**(s16*)((phase<<1)+tableRoot))>>8;
   s32 y;
   *(s16*)(record+0xD8)=x;
@@ -158,7 +158,7 @@ void sub_08066D0C(u16 angle) {
   u8 *record=(void*)(workRoot+(index<<4));
   s16 *scale=(s16*)(record+0xD0);
   s32 first=*scale;
-  u32 phase=(sub_0807CD2C(index<<8,18)+angle)&255;
+  u32 phase=(__divsi3(index<<8,18)+angle)&255;
   s32 x=(first**(s16*)((phase<<1)+tableRoot))>>8;
   s32 y;
   *(s16*)(record+0xD8)=x;

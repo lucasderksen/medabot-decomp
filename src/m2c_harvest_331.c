@@ -24,7 +24,7 @@ void sub_0803279C(void) {
   /* Observed transfer bytes 5C..63; cursors use the whole work buffer. */
   u32 i;
   u8 *work = gState0TransferWork.bytes;
-  work[0x60] = sub_08032FC4(work[0x5C]);
+  work[0x60] = GetSlotGroupStart(work[0x5C]);
   i = 0;
   {
     u8 *setup = gSetupBuffer_03000590;
@@ -50,7 +50,7 @@ void sub_0803279C(void) {
   else
   {
     u8 *work = gState0TransferWork.bytes;
-    work[0x60] = sub_08032FC4(((struct Continued3279CWork *) work)->owner);
+    work[0x60] = GetSlotGroupStart(((struct Continued3279CWork *) work)->owner);
     i = 0;
     {
       u8 *setup = gSetupBuffer_03000590;
@@ -76,8 +76,8 @@ void sub_0803279C(void) {
     else
     {
       u8 *work = gState0TransferWork.bytes;
-      work[0x60] = sub_08032FC4(work[0x5C]);
-      ((struct Continued3279CWork *) work)->selected = sub_08033090(work[0x60]) + 1;
+      work[0x60] = GetSlotGroupStart(work[0x5C]);
+      ((struct Continued3279CWork *) work)->selected = PickRandomGroupSlot(work[0x60]) + 1;
     }
   }
   {
