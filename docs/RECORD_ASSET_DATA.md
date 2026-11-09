@@ -42,4 +42,4 @@ checked. Report: `build/analysis/record-assets-cpu.json`.
 
 Fixtures establish the consumer's behavior for each stored pair; they do not
 establish gameplay reachability or full rendering behavior. The original
-08045E6C remains assembly/raw: its fresh m2c draft does not match.
+08045E6C is integrated C (`src/m2c_final_08045E6C_0.c`, one marked register pin).

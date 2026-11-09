@@ -74,7 +74,7 @@ u32 sub_08045AEC(struct RecordObjectWork *, struct OamEntry *, u16 index, s16 y,
 u32 sub_08045B68(struct RecordObjectWork *, struct OamEntry *, u16 index, s16 y, s16 x, u16 key, u8 priority, u8 flip, u16 scale, u16 *affine, u32 mode);
 u32 sub_08045C30(struct RecordObjectWork *, struct OamEntry *, u16 index, s16 y, s16 x, u16 key, u8 priority, u16 angle, u16 *affine, u32 mode);
 void sub_08045D1C(u8 *work);
-u32 sub_08045D34(struct OamEntry *, const struct RecordAssetSet *, u8 palette, u32 tile);
+u16 sub_08045D34(struct OamEntry *, const struct RecordAssetSet *, u8 palette, u32 tile);
 u32 sub_08045E6C(const struct RecordAssetSet *const *, const u32 *commands, u8 selector, u8 palette, struct RecordTileBlock *records, u16 *tileBase, u32 mode);
 void sub_08046034(const struct RecordAssetSet *const *, struct RecordTileBlock *, const u32 *commands, u8 selector, u8 recordIndex);
 void sub_08046CC8(s32 first, s32 second, s32 third, s32 fourth);
