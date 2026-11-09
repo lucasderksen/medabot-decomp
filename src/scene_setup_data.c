@@ -157,19 +157,19 @@ const u8 gSceneSourceAlignment_083D2E6D[3] __attribute__((aligned(1))) = {
 };
 
 /* Twelve transition records; preserved flags/modes are interpreted by 0804842C. */
-const struct SceneTransitionChoice gSceneTransitionChoices_083D2B36[12] __attribute__((aligned(1))) = {
-    { 1, 39, 1, 49 },
-    { 1, 39, 1, 49 },
-    { 0, 41, 1, 49 },
-    { 0, 44, 0, 35 },
-    { 0, 44, 0, 44 },
-    { 0, 34, 0, 34 },
-    { 1, 39, 0, 39 },
-    { 1, 39, 0, 39 },
-    { 0, 40, 0, 40 },
-    { 0, 41, 0, 41 },
-    { 0, 29, 0, 29 },
-    { 1, 45, 0, 45 },
+const u8 gSceneTransitionChoices_083D2B36[48] __attribute__((aligned(1))) = {
+    1, 39, 1, 49,
+    1, 39, 1, 49,
+    0, 41, 1, 49,
+    0, 44, 0, 35,
+    0, 44, 0, 44,
+    0, 34, 0, 34,
+    1, 39, 0, 39,
+    1, 39, 0, 39,
+    0, 40, 0, 40,
+    0, 41, 0, 41,
+    0, 29, 0, 29,
+    1, 45, 0, 45,
 };
 
 /* Scene 0E restoration destination. */

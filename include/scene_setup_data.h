@@ -2,8 +2,8 @@
 #define GUARD_SCENE_SETUP_DATA_H
 #include "main_callbacks.h"
 
-/* 0804842C indexes four-byte records and reads offsets 0/1 or 2/3. */
-struct SceneTransitionChoice { u8 firstFlag, firstScene, secondMode, secondScene; };
+/* 0804842C indexes four-byte records { firstFlag, firstScene, secondMode, secondScene }
+   and reads offsets 0/1 or 2/3. */
 
 extern const u8 gContinuedLookup_083D2A30[16];
 extern const u8 gObjectFactorBytes_083D2A40[3];
@@ -22,7 +22,7 @@ extern const u8 gFramePriorityLookup_083D2C5D[176];
 extern const u8 gObjectAuxiliaryLookup_083D2D0D[176];
 extern const u8 gCopiedBytes_083D2DBD[176];
 extern const u8 gSceneSourceAlignment_083D2E6D[3];
-extern const struct SceneTransitionChoice gSceneTransitionChoices_083D2B36[12];
+extern const u8 gSceneTransitionChoices_083D2B36[48];
 extern const u8 gUnknown_083D2C58;
 extern const MainCallback gUnknownCallbacks_083D5FF4[64];
 
