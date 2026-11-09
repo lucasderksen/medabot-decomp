@@ -41,7 +41,6 @@ Rows are the differing instruction rows from `tools/asm_diff.py`.
 | `sub_080465B8` | [sub_080465B8.c](../src/non_matching/sub_080465B8.c) | `-fprologue-bugfix` | 1,192 B; 1,192 B, 49 rows | Register allocation in the visible block (&matrix/k/0x1095 in r5/r3/r6, reference r6/r5/r3) |
 | `sub_0804842C` | [sub_0804842C.c](../src/non_matching/sub_0804842C.c) | `-fprologue-bugfix` | 600 B; 600 B, 82 rows | The reference keeps r6 as a reload register for the 0xC30 constant in several cases |
 | `sub_08048BE0` | [sub_08048BE0.c](../src/non_matching/sub_08048BE0.c) | `-fprologue-bugfix` | 200 B; 200 B, 6 rows | Constant copy `ldr r3,=0xFFFF; adds r1,r3,#0`: cse folds the constant straight into r1 |
-| `sub_080513C8` | [sub_080513C8.c](../src/non_matching/sub_080513C8.c) | `-fprologue-bugfix` | 1,064 B; 1,056 B, 81 rows | Reloads of `value`/`k` before the `value == 2` test; posY's `work + 0xC4A` and 0xFF are loop-hoisted (reference rematerialises them); u8 index/hi*4 swap r5/r6; gFO not reused after the inner if |
 | `sub_08051CB8` | [sub_08051CB8.c](../src/non_matching/sub_08051CB8.c) | `-fprologue-bugfix -fno-regmove` | 384 B; 384 B, 7 rows | Register swap: direction r8 and work base r7 (reference r4 and r8); global-alloc priority |
 | `sub_08052784` | [sub_08052784.c](../src/non_matching/sub_08052784.c) | `-fprologue-bugfix` | 372 B; 364 B, 38 rows | Loop counters i and k allocated the other way round |
 | `sub_08059960` | [sub_08059960.c](../src/non_matching/sub_08059960.c) | `-O1 -fprologue-bugfix` | 1,264 B; 1,264 B, 187 rows | cse's 1,000-insn hash flush lands in block 8; the reference's source expands to more RTL per object, so it lands in block 5 |
@@ -57,6 +56,7 @@ them.
 
 | Function | File | Construct |
 | --- | --- | --- |
+| `sub_080513C8` | `src/m2c_final_080513C8_0.c` | two `skip = 0;` padding stores: a redundant one in the `value == 0` arm (own block for the gcse insertions) and a dead one before `goto store` in the `value == 1` arm (label survives until jump2, so `value`/`k` are reloaded) |
 | `sub_080185E8` | `src/m2c_harvest_419.c` | `FORCE_REGISTER(u32 twice, r0)`: keeps `index * 2` in r0 |
 | `sub_080488E8` | `src/m2c_harvest_419.c` | `FORCE_REGISTER(s32 i, r4)`: global-alloc would give r4 to `power` |
 | `sub_08060708` | `src/m2c_harvest_420.c` | `FORCE_REGISTER(u8 one, r0) = 1`: a fresh 1, so the two arms cross-jump |

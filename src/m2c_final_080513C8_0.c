@@ -1,24 +1,24 @@
 /*
- * sub_080513C8: not matching yet. The build assembles asm/non_matching/sub_080513C8.inc
- * in its place; the C below is the closest attempt (docs/drafts/README.md).
+ * Byte-verified functions derived from m2c drafts, source rewrites and clones.
+ * Names and types are provisional;
+ * see docs/M2C.md.
  */
 
 #include "global.h"
 #include "action_aux_data.h"
+#include "action_scene_data.h"
 #include "background_state.h"
 #include "battle_work.h"
 #include "bg_scroll.h"
 #include "continued_commands.h"
-#include "continued_late_graphics.h"
 #include "continued_scene_records.h"
 #include "encounter_choices.h"
 #include "frame.h"
 #include "graphics.h"
 #include "later_graphics.h"
+#include "link_menu.h"
 #include "map_metadata.h"
 #include "map_object_spawns.h"
-#include "object_numeric_helpers.h"
-#include "palette_transfer_helpers.h"
 #include "pose_channels.h"
 #include "record_helpers.h"
 #include "render_work.h"
@@ -77,18 +77,20 @@ struct ObjectView13C8
     s16 value30;                            /* 30 */
     u8 unknown32[0xE];
 };
-extern struct SelectionWork13C8 gSelectionWork13C8 asm("gContinuedWork_030057E0");
-extern struct ObjectAttributes13C8 gObjectAttributes13C8[] asm("gLaterBuffer_030055A0");
-extern const struct SelectionRecord *const gUnknown_08483234[] asm("gMapObjectLists_08483234");
 
-extern void SetObject13C8(u8 index, u16 flags, u8 frame, u8 palette, u8 selector) asm("sub_08048864");
+extern const struct SelectionRecord *const gMapObjectLists13C8[] asm("gMapObjectLists_08483234");
 extern s32 PaletteFor13C8(u8 index) asm("sub_08048684");
+extern struct ObjectAttributes13C8 gObjectAttributes13C8[] asm("gLaterBuffer_030055A0");
+extern struct SelectionWork13C8 gSelectionWork13C8 asm("gContinuedWork_030057E0");
 extern void Refresh13C8(u8 index) asm("sub_080487C8");
 extern void SetFrame13C8(u8 index, u8 value, void *record) asm("sub_0805218C");
+extern void SetObject13C8(u8 index, u16 flags, u8 frame, u8 palette, u8 selector) asm("sub_08048864");
 extern void SetPose13C8(u8 index, u8 value) asm("sub_08049420");
 
-NONMATCH("asm/non_matching/sub_080513C8.inc", void sub_080513C8(s32 value))
-{
+void sub_080513C8(s32 value);
+
+void sub_080513C8(s32 value) {
+
     s32 slot;
     struct SelectionRecord saved[64];
     s32 k;
@@ -111,7 +113,7 @@ NONMATCH("asm/non_matching/sub_080513C8.inc", void sub_080513C8(s32 value))
     k = 0;
     for (row = 0; row < 32; row++)
     {
-        entry = gUnknown_08483234[gSelectionWork13C8.byte7FE];
+        entry = gMapObjectLists13C8[gSelectionWork13C8.byte7FE];
         while (entry->x != 0xFF)
         {
             if (((entry->unknown06 >> gSelectionWork13C8.byte7FF) & 1) && entry->frame == row
@@ -121,12 +123,13 @@ NONMATCH("asm/non_matching/sub_080513C8.inc", void sub_080513C8(s32 value))
                 found = 0;
                 if (value == 0)
                 {
-                    skip = 0; /* FAKE MATCH: redundant store keeps this arm a block of its own, so gcse inserts the work reload and slot + 1 here as the reference does */
+                    skip = 0; /* FAKE MATCH: redundant store gives this arm a block of its own, so gcse inserts the work reload and slot + 1 here as the reference does */
                     goto store;
                 }
+                if (value >= 0)
                 {
-                if (value >= 0) if (value <= 2)
-                {
+                    if (value <= 2)
+                    {
                         for (k = 0; k <= 0x3F; k++)
                         {
                             if ((0xFFF & entry->attributes) == (0xFFF & saved[k].attributes))
@@ -134,23 +137,26 @@ NONMATCH("asm/non_matching/sub_080513C8.inc", void sub_080513C8(s32 value))
                             if (found != 0)
                                 break;
                         }
-                    if (k != 0x40)
-                    {
-                        if (value == 1)
-                            goto store;
-                        if (value == 2 && saved[k].flags.bits.active != 1)
+                        if (k != 0x40)
+                        {
+                            if (value == 1)
+                            {
+                                skip = 0; /* FAKE MATCH: dead store; flow deletes it only after reload, so value and k are reloaded before the value == 2 test as in the reference */
+                                goto store;
+                            }
+                            if (value == 2 && saved[k].flags.bits.active != 1)
+                                skip = 1;
+                        }
+                        else if (value == 2)
+                        {
                             skip = 1;
-                    }
-                    else if (value == 2)
-                    {
-                        skip = 1;
+                        }
                     }
                 }
                 if (skip != 0)
                     goto next;
             store:
                 hi = entry->flags.value >> 4;
-                }
                 gSelectionWork13C8.records[slot].x = entry->x;
                 gSelectionWork13C8.records[slot].y = entry->y;
                 gSelectionWork13C8.records[slot].attributes = entry->attributes;
@@ -192,11 +198,11 @@ NONMATCH("asm/non_matching/sub_080513C8.inc", void sub_080513C8(s32 value))
                             objects[objIndex].x.parts.integer = entry->x * 16 + gSelectionWork13C8.halfC48;
                             objects[objIndex].y.parts.integer = entry->y * 16 + gSelectionWork13C8.halfC4A;
                         }
-                        SetFrame13C8(objIndex, 0xF & entry->flags.value, &gSelectionRecords_03005DBC[slot]);
+                        SetFrame13C8(objIndex, 0xF & entry->flags.value, &gSelectionWork13C8.records[slot]);
                         SetPose13C8(objIndex, hi * 4 + (0xF & entry->flags.value));
                         if (value != 0 && found != 0)
                         {
-                            SetFrame13C8(objIndex, saved[k].frame, &gSelectionRecords_03005DBC[slot]);
+                            SetFrame13C8(objIndex, saved[k].frame, &gSelectionWork13C8.records[slot]);
                             SetPose13C8(objIndex, saved[k].frame + hi * 4);
                         }
                         {
@@ -233,4 +239,3 @@ NONMATCH("asm/non_matching/sub_080513C8.inc", void sub_080513C8(s32 value))
     }
     gSelectionWork13C8.byteCBA = 2;
 }
-END_NONMATCH

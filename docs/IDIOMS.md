@@ -1439,3 +1439,29 @@ scores are search metrics, and exact bytes still require `tools/match.py`.
   into a register copy (`adds r7, r6, #0`), and later blocks get new constant
   registers. If the reference shows that copy in an earlier block than ours, its
   source expanded to more RTL per statement than ours.
+
+## Narrow callee views, PRE indices and late labels (sub_080513C8, 9 November)
+
+- **A copy of a variable right before a call (`mov r4, sb` then `adds r3, r4, #0`)
+  is the caller-side narrowing of a `u8` parameter.** Declaring the callee with
+  `u8` parameters (an asm-label view such as
+  `extern void SetObject13C8(u8 index, ...) asm("sub_08048864");`) makes
+  expand_call copy `(zero_extend (subreg:QI hi))` into a fresh pseudo; combine
+  then drops the extension and cse reuses the copy for later calls taking `hi`.
+- **`count + 0x31` written out at every use, not an index variable, when the
+  reference computes it in both default leaves of a switch decision tree and
+  copies it before the last branch of the case body.** That pattern is gcse PRE
+  of the expression for the code after the switch. An index variable assigned
+  after the switch keeps a copy at the merge unless its last use stays within
+  the cse2 block; a block-scoped `s32 obj = count + 0x31;` after a later `if`
+  gets canonicalised onto the PRE register. Do not index a pointer with
+  `p[count + 0x31]`: `pointer_int_sum` distributes the constant (`0xC6B`
+  literals); arrays (`ARRAY_REF`) and pointer + variable are safe.
+- **Reloads of spilled variables right after a `beq` (no inheritance) mean a
+  label that survived until reload.** `if (x == 1) { dead = 0; goto L; }` leaves
+  `bne next; b L; next:` until flow deletes the dead store, and only jump2 (after
+  reload) inverts it, so the label resets reload inheritance.
+- **loop.c hoists `base + 0xC4A` (and it then folds into a single literal) when
+  that insn is the last use of the cached base register** (`force_movables`).
+  Writing a later access through the same base (`&work.records[slot]` instead of
+  the separate `gSelectionRecords` symbol at the same address) keeps it in place.
