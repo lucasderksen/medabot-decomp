@@ -1,6 +1,7 @@
 /*
- * sub_08064EB4: not matching yet. The build assembles asm/non_matching/sub_08064EB4.inc
- * in its place; the C below is the closest attempt (docs/drafts/README.md).
+ * Byte-verified functions derived from m2c drafts, source rewrites and clones.
+ * Names and types are provisional;
+ * see docs/M2C.md.
  */
 
 #include "global.h"
@@ -18,6 +19,7 @@
 #include "map_metadata.h"
 #include "native_le_streams.h"
 #include "record_helpers.h"
+#include "scene_graphics_loads.h"
 #include "sound_samples.h"
 #include "sound_work.h"
 #include "state0_callbacks.h"
@@ -30,12 +32,15 @@ struct MenuContext64EB4 {
     u8 pad2F[7];
     s16 tile36;
 };
+
 extern struct MenuContext64EB4 *gMenuContext64EB4 asm("gMainContextPointer_03006F74");
 extern u32 gPostDispatchWord_03002B70;
 extern u8 gScratch6030C02030000[];
 
-NONMATCH("asm/non_matching/sub_08064EB4.inc", void sub_08064EB4(void))
-{
+void sub_08064EB4(void);
+
+void sub_08064EB4(void) {
+
     u32 size;
     u8 i;
 
@@ -49,7 +54,11 @@ NONMATCH("asm/non_matching/sub_08064EB4.inc", void sub_08064EB4(void))
     sub_0805BA34(gBiosLz77Stream_0879B980, *(volatile u16 *)0x0400000C);
     sub_0805BA34(gBiosLz77Stream_0879BAB0, *(volatile u16 *)0x0400000E);
     size = sub_08044D0C(gBiosLz77Stream_0879AF8C, gScratch6030C02030000);
-    CpuSet(gScratch6030C02030000, (void *)0x06004000, (size << 10) >> 11);
+    {
+        /* FAKE MATCH: loading the destination straight into r1 keeps CSE from sharing 0x06004000 with size + 0x06004000 below; the reference loads the literal twice */
+        FORCE_REGISTER(void *dest, r1) = (void *)0x06004000;
+        CpuSet(gScratch6030C02030000, dest, (size << 10) >> 11);
+    }
     gMenuContext64EB4->tile36 = (size >> 5) - 1;
     CpuFastSet(gUnknownBytes_084C29D8, (void *)(size + 0x06004000), 0x400);
     LeDecompress(gNativeLeStream_08785FB4, (void *)0x06010000);
@@ -68,8 +77,7 @@ NONMATCH("asm/non_matching/sub_08064EB4.inc", void sub_08064EB4(void))
         gFrameObjects[i + 10].screenX = 0x20;
         gFrameObjects[i + 10].screenY = i * 0x48 + 0x14;
     }
-    do {
-    { FORCE_REGISTER(u16 r, r0) = gFrameObjects[11].flags | 0x2000; gFrameObjects[11].flags = r; } /* FAKE MATCH: the reference ors into the copied constant in r0 */
+    gFrameObjects[11].flags |= 0x2000;
     gFrameObjects[7].flags = 0xC000;
     gFrameObjects[7].tableSelector = 2;
     gFrameObjects[7].palette = 0xA;
@@ -77,8 +85,6 @@ NONMATCH("asm/non_matching/sub_08064EB4.inc", void sub_08064EB4(void))
     gFrameObjects[7].screenX = 0x98;
     gFrameObjects[7].screenY = 0;
     sub_08041164(gDebugMenuTextBuffer, gPostDispatchWord_03002B70);
-    } while (0);
     sub_08040DB8(gDebugMenuTextBuffer, 0, 0x15, 1, 7, 0xF, 1, 0);
     gUnknown_0300137C++;
 }
-END_NONMATCH

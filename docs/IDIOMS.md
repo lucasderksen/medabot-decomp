@@ -1192,6 +1192,10 @@ With expensive optimizations combine runs one more simplify pass on the substitu
 source, which swaps `(ior (subreg a) (subreg b))` operands: under the default profile
 `x.f = c | x.f` ends constant-first (output tied to the constant), under
 `-fno-expensive-optimizations` flags-first.
+A constant call argument that the reference reloads later (`ldr r1,=K` before the call and again
+for `x + K` after it) matched under the default profile once the argument was loaded straight into
+its argument register, `FORCE_REGISTER(void *dest, r1) = (void *)K;`: CSE then records K only in r1,
+which the call clobbers, so the later `x + K` keeps its own literal (sub_08064EB4).
 
 ## Reload rotation, priorities and dead stores (lean_d, 21 October)
 
