@@ -35788,13 +35788,11 @@
     "kind": "c",
     "compiler": "agbcc",
     "cflags": [
-      "-O1",
       "-fprologue-bugfix"
     ],
-    "source": "src/non_matching/sub_08059960.c",
+    "source": "src/m2c_final_08059960.c",
     "input_section": ".text.sub_08059960",
-    "nonmatching": true,
-    "description": "Not matching yet: original assembly in a NONMATCH function, closest C attempt alongside"
+    "description": "Byte-verified hand-written C (fake match: dead padding and a register pin); names and types provisional"
   },
   {
     "name": "sub_08059E50",
