@@ -1098,6 +1098,12 @@ Row reductions measured with tools/try_draft.py; drafts in docs/drafts/.
   its operands is set in that bottom block before it: a per-row copy `u16 py = y; ... object->y = py;
   ... y = py + height;` (sub_0804538C draft). Quick check: compile a stand-alone copy with
   `agbcc -O2 -mthumb-interwork -fprologue-bugfix -dG` and grep `PRE/HOIST`.
+- `dst = src & 0xFFFF` compiles to `ldr rD, =0xFFFF; ands rD, rS` because regmove's last backward pass
+  ties the constant's pseudo to dst. The reference form `ldr r1, =0xFFFF; adds rD, rS, #0; ands rD, r1`
+  needs that tie to fail: `mask = 0xFFFF; do { dst = src & mask; } while (0);` puts a loop note between
+  the constant and the and (sub_0804538C).
+- A no-op `v = (u16)v;` (v already known 16-bit) that combine reduces to `v = v` makes combine forget v's
+  nonzero bits until the next label, so a later `(u16)v` in the same stretch keeps its `lsls/lsrs`.
 - A sign extension the reference keeps before a 9-bit bitfield store (`lsls/asrs #16; ands ip`) needs
   `s32 sx; sx = (s16)x; object->x = sx;`; `object->x = (s16)x` (and an `s16 sx`) is folded away by the
   bitfield narrowing.
