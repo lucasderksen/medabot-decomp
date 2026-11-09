@@ -1,8 +1,7 @@
 /*
  * sub_0804842C: not matching yet. The build assembles asm/non_matching/sub_0804842C.inc
- * in its place; the C below is the closest attempt (600 B, 5 rows: the reference
- * compares a copy of the case-3 byte, `adds r1, r2, #0; cmp r1, #0xff`, and the
- * path-1 0xC31 reload then uses r2 instead of r6).
+ * in its place; the C below is the closest attempt (600 B, 2 rows: the path-1
+ * 0xC31 reload uses r6 where the reference's reload rotation reaches r2).
  */
 
 #include "global.h"
@@ -48,8 +47,12 @@ NONMATCH("asm/non_matching/sub_0804842C.inc", u32 sub_0804842C(u32 first, u32 se
     case 3: {
         u8 *work = gContinuedWork_030057E0;
         u8 *p = &work[0xC30];
+        u32 k;
         value = *p;
-        if (value != 0xFF) {
+        k = (u8)value;
+        if (k != 0xFF) {
+            /* FAKE MATCH: k & 0x100 is always 0; the dead use keeps k live past the compare so combine leaves the reference's copy `adds r1, r2, #0` */
+            second |= k & 0x100;
             if (!(0x80 & second)) {
                 FORCE_REGISTER(u32 c, r1) = 0x7F; /* FAKE MATCH: the reference reloads 0x7F into r1 instead of tying it to the result */
                 FORCE_REGISTER(u32 m, r0) = second; /* FAKE MATCH: masked copy of second in r0 */
@@ -67,7 +70,7 @@ NONMATCH("asm/non_matching/sub_0804842C.inc", u32 sub_0804842C(u32 first, u32 se
         }
         work[0xC31] = second;
         {
-            FORCE_REGISTER(u32 x, r1) = 0xFF; /* FAKE MATCH: keeps the reference's 0xFF | old (combine folds it to 0xFF otherwise) */
+            u32 x = 0xFF;
             x |= value;
             *p = x;
         }
