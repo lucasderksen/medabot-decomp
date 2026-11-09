@@ -113,6 +113,7 @@ s32 rx[4][4] = {
 - A narrow (u8) parameter that is spilled shows as `str r1,[sp]` plus a later
   `ldrb [sp]`, with no lsl/lsr at entry.
 - `ldr rH,=0xFFFFF000; adds rL,rH,#0; ands` (constant in a callee-saved register, then copied) came from a sign-extended mask on an s16 store, `field = (a * b) & ~0xFFF;`, sometimes chained (`*out = field = ...`) (sub_080732F0, sub_0807334C, sub_080733BC). An `0xFFFFF000` literal or an s32 temporary does not reproduce it.
+- The `ldr r3,=K; adds rL,r3,#0; and/orr` copy is reload's work on a paradoxical `(subreg:SI (reg:HI))` operand (u16-narrowed stores such as `field = (field + k) & 0x3FF`). For K = 0xFFFF, where no narrowed form survives fold, a u16 hard-register operand reproduces it as a fake match: `FORCE_REGISTER(u16 mask, r1) = 0xFFFF; x = (x & mask) % 0x100;` (sub_08048BE0).
 - A two-case switch compiled as a signed tree (`cmp #1; beq; cmp #1; bgt default; cmp #0; bne default`) had an extra empty case, e.g. `case 2: break;` (sub_080722B0). Without it gcc emits `cmp #0; beq; cmp #1; bne`.
 - A local initialized array compiles to `memcpy` from the ROM constant; call
   `memcpy(local, gConstant, n)` explicitly (sub_08071804).
