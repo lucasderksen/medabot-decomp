@@ -1,6 +1,7 @@
 /*
- * sub_08052784: not matching yet. The build assembles asm/non_matching/sub_08052784.inc
- * in its place; the C below is the closest attempt (docs/drafts/README.md).
+ * Byte-verified functions derived from m2c drafts, source rewrites and clones.
+ * Names and types are provisional;
+ * see docs/M2C.md.
  */
 
 #include "global.h"
@@ -33,17 +34,21 @@ struct ContinuedWorkC48
     u16 cameraX;
     u16 cameraY;
 };
+
 extern struct ContinuedWorkC48 gContinuedWork_030057E0;
 
-NONMATCH("asm/non_matching/sub_08052784.inc", void sub_08052784(void))
-{
-    s32 i;
+void sub_08052784(void);
+
+void sub_08052784(void) {
+
     s32 k;
 
-    i = 0x31;
-    for (k = 0; k < 36; k++, i++) {
+    for (k = 0; k < 36; k++) {
+        s32 i;
         s32 visible;
         struct FrameObject *obj;
+
+        i = k + 0x31;
 
         if (((u16 *)gLaterBuffer_030055A0)[i * 2] == 0)
             continue;
@@ -64,7 +69,7 @@ NONMATCH("asm/non_matching/sub_08052784.inc", void sub_08052784(void))
                 if (gObjectAuxiliaryLookup_083D2D0D[(u16)o->value30]) {
                     gFrameObjects[i + 0x2A].flags = 0xCC0C;
                     gFrameObjects[i + 0x2A].screenX = o->screenX;
-                    gFrameObjects[i + 0x2A].screenY = (u16)(o->unknown2C[0] - 5) + o->screenY;
+                    gFrameObjects[i + 0x2A].screenY = o->screenY - 5 + o->unknown2C[0];
                 } else {
                     gFrameObjects[i + 0x2A].flags = 0;
                 }
@@ -74,12 +79,9 @@ NONMATCH("asm/non_matching/sub_08052784.inc", void sub_08052784(void))
                 gFrameObjects[i + 0x2A].flags = 0;
             }
         } else {
-            do {
-            gFrameObjects[i].flags = 0;
-            gFrameObjects[i].unknown2C[2] = 0;
+            gFrameObjects[k + 0x31].flags = 0;
+            gFrameObjects[k + 0x31].unknown2C[2] = 0;
             gFrameObjects[i + 0x2A].flags = 0;
-            } while (0);
         }
     }
 }
-END_NONMATCH
