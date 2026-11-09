@@ -46,7 +46,6 @@ Rows are the differing instruction rows from `tools/asm_diff.py`.
 | `sub_08052784` | [sub_08052784.c](../src/non_matching/sub_08052784.c) | `-fprologue-bugfix` | 372 B; 364 B, 38 rows | Loop counters i and k allocated the other way round |
 | `sub_08059960` | [sub_08059960.c](../src/non_matching/sub_08059960.c) | `-O1 -fprologue-bugfix` | 1,264 B; 1,264 B, 187 rows | cse's 1,000-insn hash flush lands in block 8; the reference's source expands to more RTL per object, so it lands in block 5 |
 | `sub_08064EB4` | [sub_08064EB4.c](../src/non_matching/sub_08064EB4.c) | `-fprologue-bugfix -fno-expensive-optimizations` | 448 B; 448 B, 2 rows | `movs r5, #0` is emitted after the `orrs` instead of before it; empty `asm("")` barriers do not move it |
-| `sub_080697B4` | [sub_080697B4.c](../src/non_matching/sub_080697B4.c) | `-fprologue-bugfix` | 348 B; 348 B, 61 rows | Stack tables and indexed DMA reads; permuter got no closer |
 | `sub_08072080` | [sub_08072080.c](../src/non_matching/sub_08072080.c) | `-fprologue-bugfix` | 264 B; 264 B, 7 rows | Global-alloc order: the reference allocates the destination pointer before `inv * 31` |
 
 ## Fake-matching functions
