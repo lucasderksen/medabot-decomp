@@ -1,19 +1,36 @@
 /*
- * sub_0804842C: not matching yet. The build assembles asm/non_matching/sub_0804842C.inc
- * in its place; the C below is the closest attempt (600 B, 2 rows: the path-1
- * 0xC31 reload uses r6 where the reference's reload rotation reaches r2).
+ * Byte-verified functions derived from m2c drafts, source rewrites and clones.
+ * Names and types are provisional;
+ * see docs/M2C.md.
  */
 
 #include "global.h"
+#include "battle_work.h"
+#include "bg_scroll.h"
+#include "bios_lz77.h"
+#include "bridge_labels.h"
+#include "continued_callbacks.h"
+#include "continued_commands.h"
+#include "continued_scene_records.h"
+#include "encounter_choices.h"
+#include "frame.h"
 #include "fresh_helpers.h"
+#include "graphics.h"
+#include "pose_channels.h"
 #include "post_dispatch.h"
+#include "record_helpers.h"
 #include "scene_setup_data.h"
+#include "sprite_layouts.h"
+#include "state0_work.h"
+#include "tile_text.h"
 
-extern u8 gFreshWork_03006D38[];
 extern u8 gContinuedWork_030057E0[];
+extern u8 gFreshWork_03006D38[];
 
-NONMATCH("asm/non_matching/sub_0804842C.inc", u32 sub_0804842C(u32 first, u32 second))
-{
+u32 sub_0804842C(u32 first, u32 second);
+
+u32 sub_0804842C(u32 first, u32 second) {
+
     /* Falls off the end like the reference (r0 keeps first or the last call result); no caller uses it: sub_0804A6A0, sub_0804A6F8, sub_0804A764, sub_0804A944, sub_0804AA74, sub_0804AB60, sub_0804ABCC, sub_0804ACD4, sub_0804AE80, sub_0804C960, sub_0804C984, sub_0804C9A0, sub_0804C9C4, sub_08050CCC, sub_0805424C */
     u32 v;
     u32 value;
@@ -51,27 +68,38 @@ NONMATCH("asm/non_matching/sub_0804842C.inc", u32 sub_0804842C(u32 first, u32 se
         value = *p;
         k = (u8)value;
         if (k != 0xFF) {
-            /* FAKE MATCH: k & 0x100 is always 0; the dead use keeps k live past the compare so combine leaves the reference's copy `adds r1, r2, #0` */
-            second |= k & 0x100;
-            if (!(0x80 & second)) {
+            /* FAKE MATCH: dead (k <= 0xFF); its label stops combine from folding 0xFF | value in the next arm, which then cross-jumps into the identical else arm after its 0xC31 reload has advanced the reload rotation */
+            if (k & 0x100)
+                second |= 1;
+            if (0x80 & second) {
+                {
+                    FORCE_REGISTER(u32 c, r1) = 0x7F; /* FAKE MATCH: 0x7F reloaded into r1 as in the reference */
+                    second &= c;
+                }
+                work[0xC31] = second;
+                {
+                    FORCE_REGISTER(u32 x, r1) = 0xFF; /* FAKE MATCH: keeps cse from reusing k (== 0xFF) for the constant */
+                    x |= value;
+                    *p = x;
+                }
+            } else {
                 FORCE_REGISTER(u32 c, r1) = 0x7F; /* FAKE MATCH: the reference reloads 0x7F into r1 instead of tying it to the result */
                 u32 m = second & c;
                 work[0xC31] = m;
                 sub_08047BB4(second);
                 *p = 0xFF;
-                break;
             }
-        } else if (!(0x80 & second))
-            break;
-        {
-            FORCE_REGISTER(u32 c, r1) = 0x7F; /* FAKE MATCH: 0x7F reloaded into r1 as in the reference */
-            second &= c;
-        }
-        work[0xC31] = second;
-        {
-            u32 x = 0xFF;
-            x |= value;
-            *p = x;
+        } else if (0x80 & second) {
+            {
+                FORCE_REGISTER(u32 c, r1) = 0x7F; /* FAKE MATCH: 0x7F reloaded into r1 as in the reference */
+                second &= c;
+            }
+            work[0xC31] = second;
+            {
+                FORCE_REGISTER(u32 x, r1) = 0xFF; /* FAKE MATCH: keeps cse from reusing k (== 0xFF) for the constant */
+                x |= value;
+                *p = x;
+            }
         }
         break;
     }
@@ -152,4 +180,3 @@ NONMATCH("asm/non_matching/sub_0804842C.inc", u32 sub_0804842C(u32 first, u32 se
         break;
     }
 }
-END_NONMATCH

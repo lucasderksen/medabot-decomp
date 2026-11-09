@@ -1250,6 +1250,10 @@ step ahead from the case-1 `0x31000000` reload on).
 - Reload-rotation residue in two flag set/clear blocks (`if (a && b) set; else clear;`) disappeared when each
   was written as `if (!a) clear; else if (b) set; else clear;`: the duplicated clear arm is cross-jumped
   away, but its reloads advance the round-robin first (sub_0805B984, 6 -> 0 rows).
+- Combine only trusts a multi-set pseudo's last-set nonzero bits until the next CODE_LABEL. A duplicated
+  arm that falls through from the load folds `0xFF | byte` to 0xFF, while its twin after a label keeps the
+  `orrs`, so they no longer cross-jump. A dead `if (k & 0x100) ...;` (k a byte) adds such a label and costs no
+  code (sub_0804842C: the duplicated arm's reload supplied the missing rotation step, 2 -> 0 rows).
 - Under `-fprologue-bugfix -fno-expensive-optimizations` (an existing profile) expand no longer forces
   large constant operands into pseudos outside loops, so `size + 0x06004000` keeps its own literal instead
   of being CSE'd with an earlier `vram + 0x4000` register; this is the profile when the reference reloads a
